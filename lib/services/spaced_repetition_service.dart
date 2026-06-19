@@ -53,7 +53,8 @@ class SpacedRepetitionService {
     return karte;
   }
 
-  bool istFaellig(Karteikarte karte) => !karte.faelligAm.isAfter(DateTime.now());
+  bool istFaellig(Karteikarte karte) =>
+      !karte.faelligAm.isAfter(DateTime.now());
 
   double _begrenzeEase(double ease) =>
       ease < _minEaseFactor ? _minEaseFactor : ease;

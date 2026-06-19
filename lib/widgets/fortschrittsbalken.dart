@@ -14,10 +14,7 @@ class Fortschrittsbalken extends StatelessWidget {
         Expanded(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(4),
-            child: LinearProgressIndicator(
-              value: anteil,
-              minHeight: 8,
-            ),
+            child: LinearProgressIndicator(value: anteil, minHeight: 8),
           ),
         ),
         const SizedBox(width: 8),

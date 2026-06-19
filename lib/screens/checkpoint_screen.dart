@@ -63,7 +63,8 @@ class _CheckpointScreenState extends State<CheckpointScreen> {
   @override
   Widget build(BuildContext context) {
     if (_abgeschlossen) {
-      final bestanden = _richtigeAntworten / widget.modul.checkpointFragen.length >=
+      final bestanden =
+          _richtigeAntworten / widget.modul.checkpointFragen.length >=
           CheckpointErgebnis.bestehensSchwelle;
       return Scaffold(
         appBar: AppBar(title: Text('${widget.modul.titel} – Checkpoint')),
@@ -84,7 +85,11 @@ class _CheckpointScreenState extends State<CheckpointScreen> {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 const SizedBox(height: 8),
-                Text(bestanden ? 'Bestanden!' : 'Noch nicht bestanden – weiter üben.'),
+                Text(
+                  bestanden
+                      ? 'Bestanden!'
+                      : 'Noch nicht bestanden – weiter üben.',
+                ),
                 const SizedBox(height: 24),
                 ElevatedButton(
                   onPressed: () => Navigator.pop(context),
@@ -110,7 +115,10 @@ class _CheckpointScreenState extends State<CheckpointScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(frage.frageText, style: Theme.of(context).textTheme.titleLarge),
+            Text(
+              frage.frageText,
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
             const SizedBox(height: 24),
             for (var i = 0; i < frage.antwortOptionen.length; i++)
               Padding(

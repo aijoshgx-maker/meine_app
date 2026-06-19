@@ -26,9 +26,9 @@ class LernplanState extends ChangeNotifier {
     LernplanLoader? loader,
     FortschrittRepository? repository,
     SpacedRepetitionService? srsService,
-  })  : _loader = loader ?? LernplanLoader(),
-        _repository = repository ?? FortschrittRepository(),
-        _srsService = srsService ?? SpacedRepetitionService();
+  }) : _loader = loader ?? LernplanLoader(),
+       _repository = repository ?? FortschrittRepository(),
+       _srsService = srsService ?? SpacedRepetitionService();
 
   Future<void> initialisieren() async {
     final geladenerLernplan = await _loader.laden();
@@ -56,16 +56,17 @@ class LernplanState extends ChangeNotifier {
   }
 
   List<Karteikarte> _alleKarten() => [
-        for (final themenbereich in lernplan?.themenbereiche ?? <Themenbereich>[])
-          for (final modul in themenbereich.module) ...modul.karteikarten,
-      ];
+    for (final themenbereich in lernplan?.themenbereiche ?? <Themenbereich>[])
+      for (final modul in themenbereich.module) ...modul.karteikarten,
+  ];
 
   int faelligeKartenGesamt() =>
       _alleKarten().where(_srsService.istFaellig).length;
 
   int faelligeKartenFuer(String themenbereichId) {
-    final themenbereich = lernplan?.themenbereiche
-        .firstWhere((tb) => tb.id == themenbereichId);
+    final themenbereich = lernplan?.themenbereiche.firstWhere(
+      (tb) => tb.id == themenbereichId,
+    );
     if (themenbereich == null) return 0;
     return [
       for (final modul in themenbereich.module) ...modul.karteikarten,
@@ -78,8 +79,9 @@ class LernplanState extends ChangeNotifier {
   // Anteil der Karten in diesem Themenbereich, die schon mindestens einmal
   // gelernt wurden (0.0 bis 1.0). Dient als einfacher Fortschrittsindikator.
   double fortschrittFuer(String themenbereichId) {
-    final themenbereich = lernplan?.themenbereiche
-        .firstWhere((tb) => tb.id == themenbereichId);
+    final themenbereich = lernplan?.themenbereiche.firstWhere(
+      (tb) => tb.id == themenbereichId,
+    );
     if (themenbereich == null) return 0;
 
     final karten = [
@@ -92,8 +94,9 @@ class LernplanState extends ChangeNotifier {
   }
 
   CheckpointErgebnis? letztesErgebnisFuer(String modulId) {
-    final ergebnisseFuerModul =
-        checkpointErgebnisse.where((e) => e.modulId == modulId);
+    final ergebnisseFuerModul = checkpointErgebnisse.where(
+      (e) => e.modulId == modulId,
+    );
     if (ergebnisseFuerModul.isEmpty) return null;
     return ergebnisseFuerModul.reduce(
       (a, b) => a.abgeschlossenAm.isAfter(b.abgeschlossenAm) ? a : b,

@@ -35,11 +35,11 @@ class ModulScreen extends StatelessWidget {
               onPressed: modul.karteikarten.isEmpty
                   ? null
                   : () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => KartenlernenScreen(modul: modul),
-                        ),
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => KartenlernenScreen(modul: modul),
                       ),
+                    ),
               child: const Text('Karten lernen'),
             ),
             const SizedBox(height: 12),
@@ -47,11 +47,11 @@ class ModulScreen extends StatelessWidget {
               onPressed: modul.checkpointFragen.isEmpty
                   ? null
                   : () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => CheckpointScreen(modul: modul),
-                        ),
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => CheckpointScreen(modul: modul),
                       ),
+                    ),
               child: const Text('Checkpoint starten'),
             ),
             if (letztesErgebnis != null) ...[

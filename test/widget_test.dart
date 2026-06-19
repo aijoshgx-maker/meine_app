@@ -5,8 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:meine_app/main.dart';
 
 void main() {
-  testWidgets('Dashboard zeigt alle Themenbereiche nach dem Laden an',
-      (WidgetTester tester) async {
+  testWidgets('Dashboard zeigt alle Themenbereiche nach dem Laden an', (
+    WidgetTester tester,
+  ) async {
     // Ohne echtes Gerät gibt es keine native shared_preferences-Implementierung;
     // dieses Mock lässt LernplanState.initialisieren() trotzdem normal laden.
     SharedPreferences.setMockInitialValues({});

@@ -26,9 +26,9 @@ class _KartenlernenScreenState extends State<KartenlernenScreen> {
   @override
   void initState() {
     super.initState();
-    _faelligeKarten = context
-        .read<LernplanState>()
-        .faelligeKartenInModul(widget.modul);
+    _faelligeKarten = context.read<LernplanState>().faelligeKartenInModul(
+      widget.modul,
+    );
   }
 
   void _karteUmdrehen() {
@@ -90,7 +90,8 @@ class _KartenlernenScreenState extends State<KartenlernenScreen> {
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                   const SizedBox(height: 24),
-                  if (_antwortSichtbar) BewertungsButtons(onBewertet: _bewerten),
+                  if (_antwortSichtbar)
+                    BewertungsButtons(onBewertet: _bewerten),
                 ],
               ),
             ),

@@ -6,12 +6,12 @@ void main() {
   final service = SpacedRepetitionService();
 
   Karteikarte neueKarte() => Karteikarte(
-        id: 'test_001',
-        frage: 'Frage?',
-        antwort: 'Antwort.',
-        themenbereich: 'Test',
-        modulId: 'test_modul',
-      );
+    id: 'test_001',
+    frage: 'Frage?',
+    antwort: 'Antwort.',
+    themenbereich: 'Test',
+    modulId: 'test_modul',
+  );
 
   test('"Nochmal" setzt Wiederholungen und Intervall zurück', () {
     var karte = neueKarte();
@@ -30,8 +30,10 @@ void main() {
     final zweiteBewertungGut = service.bewerten(karteGut, Bewertung.gut);
 
     final karteLeicht = service.bewerten(neueKarte(), Bewertung.leicht);
-    final zweiteBewertungLeicht =
-        service.bewerten(karteLeicht, Bewertung.leicht);
+    final zweiteBewertungLeicht = service.bewerten(
+      karteLeicht,
+      Bewertung.leicht,
+    );
 
     expect(
       zweiteBewertungLeicht.intervallTage,

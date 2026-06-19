@@ -15,9 +15,7 @@ class DashboardScreen extends StatelessWidget {
     final state = context.watch<LernplanState>();
 
     if (state.ladeLaeuft || state.lernplan == null) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
     }
 
     final lernplan = state.lernplan!;

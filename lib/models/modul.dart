@@ -33,14 +33,18 @@ class Modul {
       themenbereichId: themenbereichId,
       hatInhalt: json['hatInhalt'] as bool,
       karteikarten: (json['karteikarten'] as List)
-          .map((karte) => Karteikarte.fromJson(
-                karte as Map<String, dynamic>,
-                themenbereich: themenbereichTitel,
-                modulId: modulId,
-              ))
+          .map(
+            (karte) => Karteikarte.fromJson(
+              karte as Map<String, dynamic>,
+              themenbereich: themenbereichTitel,
+              modulId: modulId,
+            ),
+          )
           .toList(),
       checkpointFragen: (json['checkpointFragen'] as List)
-          .map((frage) => CheckpointFrage.fromJson(frage as Map<String, dynamic>))
+          .map(
+            (frage) => CheckpointFrage.fromJson(frage as Map<String, dynamic>),
+          )
           .toList(),
     );
   }

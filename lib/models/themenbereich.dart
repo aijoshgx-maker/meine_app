@@ -23,11 +23,13 @@ class Themenbereich {
       titel: titel,
       beschreibung: json['beschreibung'] as String,
       module: (json['module'] as List)
-          .map((modul) => Modul.fromJson(
-                modul as Map<String, dynamic>,
-                themenbereichId: themenbereichId,
-                themenbereichTitel: titel,
-              ))
+          .map(
+            (modul) => Modul.fromJson(
+              modul as Map<String, dynamic>,
+              themenbereichId: themenbereichId,
+              themenbereichTitel: titel,
+            ),
+          )
           .toList(),
     );
   }

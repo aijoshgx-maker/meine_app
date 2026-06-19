@@ -34,22 +34,24 @@ class ThemenbereichScreen extends StatelessWidget {
                           anteil: modul.karteikarten.isEmpty
                               ? 0
                               : modul.karteikarten
-                                      .where((k) => k.zuletztGelernt != null)
-                                      .length /
-                                  modul.karteikarten.length,
+                                        .where((k) => k.zuletztGelernt != null)
+                                        .length /
+                                    modul.karteikarten.length,
                         ),
                       )
                     : const Text('Inhalte folgen'),
                 trailing: modul.hatInhalt
-                    ? Text('${state.faelligeKartenInModul(modul).length} fällig')
+                    ? Text(
+                        '${state.faelligeKartenInModul(modul).length} fällig',
+                      )
                     : null,
                 onTap: modul.hatInhalt
                     ? () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (_) => ModulScreen(modul: modul),
-                          ),
-                        )
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => ModulScreen(modul: modul),
+                        ),
+                      )
                     : null,
               ),
             ),

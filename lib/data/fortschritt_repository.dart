@@ -25,7 +25,9 @@ class FortschrittRepository {
 
   Future<void> kartenStandSpeichern(Map<String, KartenStand> stand) async {
     final prefs = await SharedPreferences.getInstance();
-    final json = stand.map((id, kartenStand) => MapEntry(id, kartenStand.toJson()));
+    final json = stand.map(
+      (id, kartenStand) => MapEntry(id, kartenStand.toJson()),
+    );
     await prefs.setString(_kartenStandKey, jsonEncode(json));
   }
 
@@ -40,7 +42,9 @@ class FortschrittRepository {
         .toList();
   }
 
-  Future<void> checkpointErgebnisHinzufuegen(CheckpointErgebnis ergebnis) async {
+  Future<void> checkpointErgebnisHinzufuegen(
+    CheckpointErgebnis ergebnis,
+  ) async {
     final bisherige = await checkpointErgebnisseLaden();
     bisherige.add(ergebnis);
 
