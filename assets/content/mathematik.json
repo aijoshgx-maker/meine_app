@@ -1,0 +1,14 @@
+{
+  "id": "mathematik",
+  "titel": "Mathematik / Technische Berechnung",
+  "beschreibung": "Technische Berechnungen, Formeln und Größengleichungen für die AP2-Prüfung.",
+  "module": [
+    {
+      "id": "mathematik_platzhalter",
+      "titel": "Inhalte folgen",
+      "hatInhalt": false,
+      "karteikarten": [],
+      "checkpointFragen": []
+    }
+  ]
+}

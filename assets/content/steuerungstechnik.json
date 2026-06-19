@@ -1,0 +1,14 @@
+{
+  "id": "steuerungstechnik",
+  "titel": "Steuerungstechnik",
+  "beschreibung": "Pneumatik, Elektropneumatik, SPS-Grundlagen und Steuerungsarten.",
+  "module": [
+    {
+      "id": "steuerungstechnik_platzhalter",
+      "titel": "Inhalte folgen",
+      "hatInhalt": false,
+      "karteikarten": [],
+      "checkpointFragen": []
+    }
+  ]
+}

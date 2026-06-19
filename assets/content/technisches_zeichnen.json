@@ -1,0 +1,14 @@
+{
+  "id": "technisches_zeichnen",
+  "titel": "Technisches Zeichnen",
+  "beschreibung": "Normgerechtes Lesen und Erstellen technischer Zeichnungen, Bemaßung, Toleranzen, Projektionen.",
+  "module": [
+    {
+      "id": "technisches_zeichnen_platzhalter",
+      "titel": "Inhalte folgen",
+      "hatInhalt": false,
+      "karteikarten": [],
+      "checkpointFragen": []
+    }
+  ]
+}

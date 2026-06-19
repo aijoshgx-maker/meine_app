@@ -1,30 +1,37 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:meine_app/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Dashboard zeigt alle Themenbereiche nach dem Laden an',
+      (WidgetTester tester) async {
+    // Ohne echtes Gerät gibt es keine native shared_preferences-Implementierung;
+    // dieses Mock lässt LernplanState.initialisieren() trotzdem normal laden.
+    SharedPreferences.setMockInitialValues({});
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    await tester.pumpWidget(const MeineApp());
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
+    // Direkt nach dem Start läuft das Laden des Lernplans noch.
+    expect(find.byType(CircularProgressIndicator), findsOneWidget);
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Warten, bis LernplanState.initialisieren() (asset laden + setState) fertig ist.
+    await tester.pumpAndSettle();
+
+    expect(find.text('Fertigungstechnik'), findsOneWidget);
+    expect(find.text('Technisches Zeichnen'), findsOneWidget);
+
+    // Die übrigen Themenbereiche liegen außerhalb des sichtbaren Bereichs
+    // im Test-Viewport und müssen erst hin-gescrollt werden.
+    await tester.dragUntilVisible(
+      find.text('Mathematik / Technische Berechnung'),
+      find.byType(ListView),
+      const Offset(0, -200),
+    );
+
+    expect(find.text('Steuerungstechnik'), findsOneWidget);
+    expect(find.text('Werkstoffkunde'), findsOneWidget);
+    expect(find.text('Mathematik / Technische Berechnung'), findsOneWidget);
   });
 }

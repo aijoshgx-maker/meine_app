@@ -1,0 +1,230 @@
+{
+  "id": "fertigungstechnik",
+  "titel": "Fertigungstechnik",
+  "beschreibung": "Spanende und umformende Fertigungsverfahren, Wärmebehandlung und Fügetechnik.",
+  "module": [
+    {
+      "id": "fertigungstechnik_spanen",
+      "titel": "Spanende Fertigungsverfahren",
+      "hatInhalt": true,
+      "karteikarten": [
+        {
+          "id": "ft_001",
+          "frage": "Was versteht man unter \"Spanen\"?",
+          "antwort": "Spanen ist der Oberbegriff für Fertigungsverfahren, bei denen Werkstoff in Form von Spänen vom Werkstück abgetragen wird, z. B. Drehen, Fräsen, Bohren, Schleifen und Sägen."
+        },
+        {
+          "id": "ft_002",
+          "frage": "Was passiert beim Drehen?",
+          "antwort": "Das Werkstück rotiert um seine eigene Achse, während ein feststehendes Werkzeug (Drehmeißel) Späne abträgt."
+        },
+        {
+          "id": "ft_003",
+          "frage": "Was passiert beim Fräsen?",
+          "antwort": "Ein mehrschneidiges, rotierendes Werkzeug (der Fräser) trägt Material vom meist feststehenden Werkstück ab."
+        },
+        {
+          "id": "ft_004",
+          "frage": "Wofür wird Bohren eingesetzt?",
+          "antwort": "Bohren dient dem Erzeugen zylindrischer Löcher mit einem rotierenden, meist mehrschneidigen Werkzeug (Bohrer)."
+        },
+        {
+          "id": "ft_005",
+          "frage": "Wozu dient Schleifen?",
+          "antwort": "Schleifen ist ein Feinbearbeitungsverfahren mit einer Schleifscheibe. Es dient hoher Maßgenauigkeit und Oberflächengüte."
+        },
+        {
+          "id": "ft_006",
+          "frage": "Was bedeutet die Schnittgeschwindigkeit vc?",
+          "antwort": "Sie beschreibt, wie schnell sich der Schneidenpunkt des Werkzeugs relativ zum Werkstück bewegt. Einheit: m/min."
+        },
+        {
+          "id": "ft_007",
+          "frage": "Was bedeutet der Vorschub f?",
+          "antwort": "Der Vorschub ist der Weg, den das Werkzeug pro Umdrehung (bzw. pro Hub) in Vorschubrichtung zurücklegt."
+        },
+        {
+          "id": "ft_016",
+          "frage": "Wofür wird ein Kühlschmierstoff (KSS) eingesetzt?",
+          "antwort": "Er kühlt und schmiert beim Spanen, transportiert Späne ab und verlängert dadurch die Standzeit des Werkzeugs."
+        }
+      ],
+      "checkpointFragen": [
+        {
+          "id": "ft_cp_spanen_001",
+          "frageText": "Was versteht man unter \"Spanen\"?",
+          "antwortOptionen": [
+            "Erzeugen eines festen Körpers aus formlosem Stoff",
+            "Oberbegriff für Verfahren, bei denen Werkstoff in Form von Spänen abgetragen wird",
+            "Verändern der Form eines Werkstücks ohne Masseänderung",
+            "Verbinden zweier Werkstücke durch Schweißen"
+          ],
+          "richtigeAntwortIndex": 1,
+          "erklaerung": "Spanen umfasst u. a. Drehen, Fräsen, Bohren, Schleifen und Sägen."
+        },
+        {
+          "id": "ft_cp_spanen_002",
+          "frageText": "Bei welchem Verfahren rotiert das Werkstück, während das Werkzeug feststeht?",
+          "antwortOptionen": ["Drehen", "Fräsen", "Bohren", "Schleifen"],
+          "richtigeAntwortIndex": 0,
+          "erklaerung": "Beim Drehen rotiert das Werkstück, der Drehmeißel steht fest."
+        },
+        {
+          "id": "ft_cp_spanen_003",
+          "frageText": "Was trägt beim Fräsen das Material ab?",
+          "antwortOptionen": [
+            "Ein feststehender Drehmeißel",
+            "Ein mehrschneidiges, rotierendes Werkzeug (Fräser)",
+            "Eine Schleifscheibe",
+            "Ein Bohrer"
+          ],
+          "richtigeAntwortIndex": 1,
+          "erklaerung": "Der Fräser ist mehrschneidig und rotiert, das Werkstück steht meist fest."
+        },
+        {
+          "id": "ft_cp_spanen_004",
+          "frageText": "Wofür wird Bohren eingesetzt?",
+          "antwortOptionen": [
+            "Erzeugen zylindrischer Löcher",
+            "Erzeugen ebener Flächen",
+            "Härten von Stahl",
+            "Verbinden von Blechen"
+          ],
+          "richtigeAntwortIndex": 0
+        },
+        {
+          "id": "ft_cp_spanen_005",
+          "frageText": "Welche Einheit hat die Schnittgeschwindigkeit vc üblicherweise?",
+          "antwortOptionen": ["m/min", "m/s²", "kg/m³", "N/mm²"],
+          "richtigeAntwortIndex": 0
+        },
+        {
+          "id": "ft_cp_spanen_006",
+          "frageText": "Wofür wird ein Kühlschmierstoff (KSS) eingesetzt?",
+          "antwortOptionen": [
+            "Kühlen, Schmieren und Späneabtransport beim Spanen",
+            "Härten von Stahl",
+            "Verbinden von Werkstücken",
+            "Erzeugen eines Gewindes"
+          ],
+          "richtigeAntwortIndex": 0
+        }
+      ]
+    },
+    {
+      "id": "fertigungstechnik_waermebehandlung_fuegen",
+      "titel": "Wärmebehandlung und Fügetechnik",
+      "hatInhalt": true,
+      "karteikarten": [
+        {
+          "id": "ft_008",
+          "frage": "Was ist \"Härten\" bei Stahl?",
+          "antwort": "Beim Härten wird Stahl über die Härtetemperatur erwärmt und anschließend schnell abgekühlt (Abschrecken), um die Härte zu erhöhen."
+        },
+        {
+          "id": "ft_009",
+          "frage": "Was ist \"Vergüten\"?",
+          "antwort": "Vergüten ist die Kombination aus Härten und anschließendem Anlassen. So lassen sich Härte und Zähigkeit gezielt einstellen."
+        },
+        {
+          "id": "ft_010",
+          "frage": "Was bewirkt Spannungsarmglühen?",
+          "antwort": "Es baut innere Spannungen im Werkstück ab, ohne das Gefüge wesentlich zu verändern, z. B. nach dem Schweißen oder Härten."
+        },
+        {
+          "id": "ft_011",
+          "frage": "Was ist WIG-Schweißen?",
+          "antwort": "Wolfram-Inertgasschweißen: Ein Lichtbogen brennt zwischen einer nicht abschmelzenden Wolframelektrode und dem Werkstück, geschützt durch ein Inertgas wie Argon."
+        },
+        {
+          "id": "ft_012",
+          "frage": "Was ist MAG-Schweißen?",
+          "antwort": "Metall-Aktivgasschweißen: Eine abschmelzende Drahtelektrode dient als Zusatzwerkstoff, geschützt durch ein aktives Schutzgas (z. B. CO2-Mischgas)."
+        },
+        {
+          "id": "ft_013",
+          "frage": "Was beschreibt eine Passung?",
+          "antwort": "Eine Passung beschreibt die Maßbeziehung zwischen zwei zusammengefügten Teilen, z. B. Welle und Bohrung (Spiel-, Übergangs- oder Presspassung)."
+        },
+        {
+          "id": "ft_014",
+          "frage": "Was ist Urformen?",
+          "antwort": "Urformen ist die Herstellung eines festen Körpers aus formlosem Stoff, z. B. durch Gießen oder Sintern."
+        },
+        {
+          "id": "ft_015",
+          "frage": "Was ist Umformen?",
+          "antwort": "Beim Umformen wird die Form eines Werkstücks verändert, ohne Masse oder Stoffzusammenhalt zu verändern, z. B. durch Biegen, Tiefziehen oder Schmieden."
+        }
+      ],
+      "checkpointFragen": [
+        {
+          "id": "ft_cp_waerme_001",
+          "frageText": "Was passiert beim Härten von Stahl?",
+          "antwortOptionen": [
+            "Erwärmen über Härtetemperatur und schnelles Abschrecken",
+            "Langsames Abkühlen im Ofen",
+            "Erwärmen ohne anschließendes Abkühlen",
+            "Nur mechanisches Schleifen der Oberfläche"
+          ],
+          "richtigeAntwortIndex": 0
+        },
+        {
+          "id": "ft_cp_waerme_002",
+          "frageText": "Was ist Vergüten?",
+          "antwortOptionen": [
+            "Nur Härten",
+            "Kombination aus Härten und anschließendem Anlassen",
+            "Nur Anlassen ohne vorheriges Härten",
+            "Eine Form des Spannungsarmglühens"
+          ],
+          "richtigeAntwortIndex": 1
+        },
+        {
+          "id": "ft_cp_waerme_003",
+          "frageText": "Wozu dient Spannungsarmglühen?",
+          "antwortOptionen": [
+            "Abbau innerer Spannungen ohne wesentliche Gefügeänderung",
+            "Erhöhung der Härte des Werkstücks",
+            "Erzeugen eines Lichtbogens beim Schweißen",
+            "Verbinden zweier Bleche"
+          ],
+          "richtigeAntwortIndex": 0
+        },
+        {
+          "id": "ft_cp_waerme_004",
+          "frageText": "Was kennzeichnet das WIG-Schweißen?",
+          "antwortOptionen": [
+            "Eine abschmelzende Drahtelektrode",
+            "Eine nicht abschmelzende Wolframelektrode mit Inertgasschutz",
+            "Reibung zweier Werkstücke ohne Schutzgas",
+            "Erwärmen ohne Lichtbogen"
+          ],
+          "richtigeAntwortIndex": 1
+        },
+        {
+          "id": "ft_cp_waerme_005",
+          "frageText": "Was kennzeichnet das MAG-Schweißen?",
+          "antwortOptionen": [
+            "Abschmelzende Drahtelektrode mit aktivem Schutzgas",
+            "Wolframelektrode mit Argon als Schutzgas",
+            "Schweißen ohne jeden Schutzgaseinsatz",
+            "Ein Verfahren nur für Kunststoffe"
+          ],
+          "richtigeAntwortIndex": 0
+        },
+        {
+          "id": "ft_cp_waerme_006",
+          "frageText": "Was beschreibt eine Passung?",
+          "antwortOptionen": [
+            "Die Maßbeziehung zwischen zwei zusammengefügten Teilen",
+            "Die Oberflächenrauheit eines Bauteils",
+            "Die chemische Zusammensetzung eines Werkstoffs",
+            "Die Schnittgeschwindigkeit eines Werkzeugs"
+          ],
+          "richtigeAntwortIndex": 0
+        }
+      ]
+    }
+  ]
+}
