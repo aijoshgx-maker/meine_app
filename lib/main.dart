@@ -1,28 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-import 'screens/dashboard_screen.dart';
-import 'state/lernplan_state.dart';
+import 'app/app.dart';
+import 'data/fsrs_card_store.dart';
 
-void main() {
-  runApp(const MeineApp());
-}
-
-class MeineApp extends StatelessWidget {
-  const MeineApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => LernplanState()..initialisieren(),
-      child: MaterialApp(
-        title: 'AP2 Lern-App',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
-          useMaterial3: true,
-        ),
-        home: const DashboardScreen(),
-      ),
-    );
-  }
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Hive.openBox(FsrsCardStore.boxName);
+  runApp(const ProviderScope(child: Ap2App()));
 }
