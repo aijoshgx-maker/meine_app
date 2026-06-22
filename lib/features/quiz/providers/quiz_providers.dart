@@ -4,18 +4,22 @@ import 'package:flutter/foundation.dart' show setEquals;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/spaced_repetition/fsrs_scheduler.dart';
+import '../../../data/attempt_history_store.dart';
 import '../../../data/frage_repository.dart';
 import '../../../data/fsrs_card_store.dart';
 import '../../../models/frage.dart';
+import '../../../models/konfidenz.dart';
 import 'quiz_fragen_auswahl.dart';
 import 'quiz_modus.dart';
 
+export '../../../models/konfidenz.dart';
 export 'quiz_modus.dart';
 
 final frageRepositoryProvider = Provider((ref) => FrageRepository());
 final fsrsSchedulerProvider = Provider((ref) => FsrsScheduler());
 final fsrsCardStoreProvider = Provider((ref) => FsrsCardStore());
 final quizFragenAuswahlProvider = Provider((ref) => QuizFragenAuswahl());
+final attemptHistoryStoreProvider = Provider((ref) => AttemptHistoryStore());
 
 final fragenProvider = FutureProvider<List<Frage>>(
   (ref) => ref.read(frageRepositoryProvider).laden(),
@@ -33,10 +37,6 @@ final faelligeAnzahlProvider = FutureProvider<int>((ref) async {
     return !stand.card.due.isAfter(jetzt);
   }).length;
 });
-
-// Selbsteinschätzung der Sicherheit, abgefragt vor dem Aufdecken (Prinzip:
-// Metakognition & Konfidenz-Kalibrierung).
-enum Konfidenz { sicher, unsicher, geraten }
 
 // Ablaufphase der aktuell angezeigten Frage, steuert was der QuizScreen zeigt.
 enum FragePhase { antworten, konfidenz, aufgedeckt }
@@ -251,6 +251,22 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
         hochkonfidentFalsch: hochkonfidentFalsch,
       ),
     );
+
+    await ref
+        .read(attemptHistoryStoreProvider)
+        .anhaengen(
+          Attempt(
+            frageId: frage.id,
+            zeitpunkt: jetzt,
+            konfidenz: aktuell.antwort.konfidenz ?? Konfidenz.geraten,
+            korrekt: aktuell.antwort.korrekt ?? false,
+            bereich: frage.bereich,
+            kategorie: frage.kategorie,
+            selbsterklaerung: aktuell.antwort.selbsterklaerung.trim().isEmpty
+                ? null
+                : aktuell.antwort.selbsterklaerung.trim(),
+          ),
+        );
 
     final neuerZaehler =
         aktuell.richtigBeantwortet + (aktuell.antwort.korrekt == true ? 1 : 0);

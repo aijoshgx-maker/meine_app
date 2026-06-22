@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/data/attempt_history_store.dart';
 import 'package:meine_app/data/fsrs_card_store.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/features/quiz/screens/quiz_screen.dart';
@@ -22,6 +23,16 @@ class _FakeFsrsCardStore implements FsrsCardStore {
   }
 }
 
+class _FakeAttemptHistoryStore implements AttemptHistoryStore {
+  final List<Attempt> _eintraege = [];
+
+  @override
+  Future<void> anhaengen(Attempt attempt) async => _eintraege.add(attempt);
+
+  @override
+  List<Attempt> alle() => List.of(_eintraege);
+}
+
 void main() {
   const modus = QuizModus.freiUebung();
 
@@ -32,6 +43,9 @@ void main() {
         ProviderScope(
           overrides: [
             fsrsCardStoreProvider.overrideWithValue(_FakeFsrsCardStore()),
+            attemptHistoryStoreProvider.overrideWithValue(
+              _FakeAttemptHistoryStore(),
+            ),
           ],
           child: const MaterialApp(home: QuizScreen(modus: modus)),
         ),
