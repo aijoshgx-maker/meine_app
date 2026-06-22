@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import '../features/arbeitsauftrag/screens/arbeitsauftrag_screen.dart';
 import '../features/dashboard/screens/dashboard_screen.dart';
 import '../features/pruefungssimulation/screens/pruefungs_auswahl_screen.dart';
 import '../features/quiz/providers/quiz_modus.dart';
@@ -15,6 +16,10 @@ final router = GoRouter(
     GoRoute(
       path: '/pruefungssimulation',
       builder: (context, state) => const PruefungsAuswahlScreen(),
+    ),
+    GoRoute(
+      path: '/arbeitsauftrag',
+      builder: (context, state) => const ArbeitsauftragScreen(),
     ),
   ],
 );

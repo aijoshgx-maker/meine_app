@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../arbeitsauftrag/providers/arbeitsauftrag_providers.dart';
 import '../../quiz/providers/quiz_modus.dart';
 import '../providers/dashboard_providers.dart';
 import '../widgets/behaltensquote_chart.dart';
@@ -18,6 +19,7 @@ class DashboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final faelligeAnzahl = ref.watch(faelligeAnzahlProvider);
+    final arbeitsauftragFortschritt = ref.watch(checklistFortschrittProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('AP2 Industriemechaniker')),
@@ -40,35 +42,62 @@ class DashboardScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: 16),
-          Row(
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
             children: [
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () =>
-                      context.go('/quiz', extra: const QuizModus.freiUebung()),
-                  child: const Text('Frei üben'),
-                ),
+              ElevatedButton(
+                onPressed: () =>
+                    context.go('/quiz', extra: const QuizModus.freiUebung()),
+                child: const Text('Frei üben'),
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () => context.go(
-                    '/quiz',
-                    extra: const QuizModus.heuteFaellig(),
-                  ),
-                  child: const Text('Heute fällig'),
-                ),
+              ElevatedButton(
+                onPressed: () =>
+                    context.go('/quiz', extra: const QuizModus.heuteFaellig()),
+                child: const Text('Heute fällig'),
               ),
-              const SizedBox(width: 8),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () => context.go('/pruefungssimulation'),
-                  child: const Text('Prüfungssimulation'),
-                ),
+              ElevatedButton(
+                onPressed: () => context.go('/pruefungssimulation'),
+                child: const Text('Prüfungssimulation'),
+              ),
+              ElevatedButton(
+                onPressed: () => context.go('/arbeitsauftrag'),
+                child: const Text('Arbeitsauftrag'),
               ),
             ],
           ),
           const SizedBox(height: 16),
+          Card(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Arbeitsauftrag-Fortschritt',
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(4),
+                          child: LinearProgressIndicator(
+                            value: arbeitsauftragFortschritt,
+                            minHeight: 8,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Text('${(arbeitsauftragFortschritt * 100).round()}%'),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
           const BehaltensquoteChart(),
           const SizedBox(height: 12),
           const PruefungsreifeChart(),

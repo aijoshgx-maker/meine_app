@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/data/arbeitsauftrag_store.dart';
 import 'package:meine_app/data/attempt_history_store.dart';
 import 'package:meine_app/data/fsrs_card_store.dart';
+import 'package:meine_app/features/arbeitsauftrag/providers/arbeitsauftrag_providers.dart';
 import 'package:meine_app/features/dashboard/screens/dashboard_screen.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 
@@ -25,6 +27,26 @@ class _FakeAttemptHistoryStore implements AttemptHistoryStore {
   List<Attempt> alle() => [];
 }
 
+class _FakeArbeitsauftragStore implements ArbeitsauftragStore {
+  @override
+  Map<String, bool> checklistStatus() => {};
+
+  @override
+  Future<void> checklistSetzen(String itemId, bool erledigt) async {}
+
+  @override
+  Map<String, String> dokumentationLaden() => {};
+
+  @override
+  Future<void> dokumentationSpeichern(Map<String, String> felder) async {}
+
+  @override
+  Map<String, String> fachgespraechAntworten() => {};
+
+  @override
+  Future<void> fachgespraechAntwortSetzen(String fragId, String text) async {}
+}
+
 void main() {
   testWidgets('Dashboard rendert alle Kennzahlen ohne Fehler (leere Daten)', (
     tester,
@@ -36,6 +58,9 @@ void main() {
           attemptHistoryStoreProvider.overrideWithValue(
             _FakeAttemptHistoryStore(),
           ),
+          arbeitsauftragStoreProvider.overrideWithValue(
+            _FakeArbeitsauftragStore(),
+          ),
         ],
         child: const MaterialApp(home: DashboardScreen()),
       ),
@@ -46,17 +71,23 @@ void main() {
     expect(find.text('Frei üben'), findsOneWidget);
     expect(find.text('Heute fällig'), findsOneWidget);
     expect(find.text('Prüfungssimulation'), findsOneWidget);
-    expect(find.text('Behaltensquote'), findsOneWidget);
-    expect(find.text('Prüfungsreife (schriftlich)'), findsOneWidget);
+    expect(find.text('Arbeitsauftrag'), findsOneWidget);
+    expect(find.text('Arbeitsauftrag-Fortschritt'), findsOneWidget);
 
-    // Die unteren Karten liegen außerhalb des sichtbaren Testviewports.
-    await tester.dragUntilVisible(
-      find.text('Schwache Themen'),
-      find.byType(ListView),
-      const Offset(0, -300),
-    );
-
-    expect(find.text('Konfidenz-Kalibrierung'), findsOneWidget);
-    expect(find.text('Schwache Themen'), findsOneWidget);
+    // Die Karten liegen weiter unten als der sichtbare Testviewport, daher
+    // einzeln (in Reihenfolge) hin-scrollen statt alle gleichzeitig zu prüfen.
+    for (final text in [
+      'Behaltensquote',
+      'Prüfungsreife (schriftlich)',
+      'Konfidenz-Kalibrierung',
+      'Schwache Themen',
+    ]) {
+      await tester.dragUntilVisible(
+        find.text(text),
+        find.byType(ListView),
+        const Offset(0, -300),
+      );
+      expect(find.text(text), findsOneWidget);
+    }
   });
 }
