@@ -7,14 +7,32 @@ import '../../../core/spaced_repetition/fsrs_scheduler.dart';
 import '../../../data/frage_repository.dart';
 import '../../../data/fsrs_card_store.dart';
 import '../../../models/frage.dart';
+import 'quiz_fragen_auswahl.dart';
+import 'quiz_modus.dart';
+
+export 'quiz_modus.dart';
 
 final frageRepositoryProvider = Provider((ref) => FrageRepository());
 final fsrsSchedulerProvider = Provider((ref) => FsrsScheduler());
 final fsrsCardStoreProvider = Provider((ref) => FsrsCardStore());
+final quizFragenAuswahlProvider = Provider((ref) => QuizFragenAuswahl());
 
 final fragenProvider = FutureProvider<List<Frage>>(
   (ref) => ref.read(frageRepositoryProvider).laden(),
 );
+
+// Anzahl der heute fälligen Karten über den gesamten Fragenkatalog hinweg.
+// Wird vom Dashboard (Phase 6) und vom Home-Screen als Badge genutzt.
+final faelligeAnzahlProvider = FutureProvider<int>((ref) async {
+  final alle = await ref.watch(fragenProvider.future);
+  final kartenstaende = ref.read(fsrsCardStoreProvider).alleKartenstaende();
+  final jetzt = DateTime.now();
+  return alle.where((f) {
+    final stand = kartenstaende[f.id];
+    if (stand == null) return true;
+    return !stand.card.due.isAfter(jetzt);
+  }).length;
+});
 
 // Selbsteinschätzung der Sicherheit, abgefragt vor dem Aufdecken (Prinzip:
 // Metakognition & Konfidenz-Kalibrierung).
@@ -65,15 +83,19 @@ class AntwortZustand {
 }
 
 class QuizSessionState {
+  final QuizModus modus;
   final List<Frage> fragen;
   final int index;
   final AntwortZustand antwort;
+  final int richtigBeantwortet;
   final bool fertig;
 
   const QuizSessionState({
+    required this.modus,
     required this.fragen,
     this.index = 0,
     this.antwort = const AntwortZustand(),
+    this.richtigBeantwortet = 0,
     this.fertig = false,
   });
 
@@ -83,27 +105,53 @@ class QuizSessionState {
   QuizSessionState copyWith({
     int? index,
     AntwortZustand? antwort,
+    int? richtigBeantwortet,
     bool? fertig,
   }) {
     return QuizSessionState(
+      modus: modus,
       fragen: fragen,
       index: index ?? this.index,
       antwort: antwort ?? this.antwort,
+      richtigBeantwortet: richtigBeantwortet ?? this.richtigBeantwortet,
       fertig: fertig ?? this.fertig,
     );
   }
 }
 
 final quizSessionProvider =
-    AsyncNotifierProvider<QuizSessionController, QuizSessionState>(
-      QuizSessionController.new,
-    );
+    AsyncNotifierProvider.family<
+      QuizSessionController,
+      QuizSessionState,
+      QuizModus
+    >((modus) => QuizSessionController(modus));
 
 class QuizSessionController extends AsyncNotifier<QuizSessionState> {
+  final QuizModus modus;
+
+  QuizSessionController(this.modus);
+
   @override
   Future<QuizSessionState> build() async {
-    final fragen = await ref.watch(fragenProvider.future);
-    return QuizSessionState(fragen: fragen);
+    final alle = await ref.watch(fragenProvider.future);
+    final kartenstaende = ref.read(fsrsCardStoreProvider).alleKartenstaende();
+    final fragen = ref
+        .read(quizFragenAuswahlProvider)
+        .waehleFragen(
+          modus,
+          alle,
+          kartenstaende: kartenstaende,
+          zufall: math.Random(),
+        );
+    return QuizSessionState(modus: modus, fragen: fragen);
+  }
+
+  // Beendet die Session sofort (z.B. wenn das Zeitlimit einer
+  // Prüfungssimulation abläuft).
+  void beenden() {
+    final aktuell = state.value;
+    if (aktuell == null) return;
+    state = AsyncData(aktuell.copyWith(fertig: true));
   }
 
   void auswahlUmschalten(int optionsIndex) {
@@ -204,13 +252,16 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
       ),
     );
 
+    final neuerZaehler =
+        aktuell.richtigBeantwortet + (aktuell.antwort.korrekt == true ? 1 : 0);
     final naechsterIndex = aktuell.index + 1;
     state = AsyncData(
       naechsterIndex >= aktuell.fragen.length
-          ? aktuell.copyWith(fertig: true)
+          ? aktuell.copyWith(fertig: true, richtigBeantwortet: neuerZaehler)
           : aktuell.copyWith(
               index: naechsterIndex,
               antwort: const AntwortZustand(),
+              richtigBeantwortet: neuerZaehler,
             ),
     );
   }

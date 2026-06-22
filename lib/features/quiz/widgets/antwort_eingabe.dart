@@ -10,12 +10,18 @@ import '../providers/quiz_providers.dart';
 class AntwortEingabe extends ConsumerWidget {
   final Frage frage;
   final AntwortZustand antwort;
+  final QuizModus modus;
 
-  const AntwortEingabe({super.key, required this.frage, required this.antwort});
+  const AntwortEingabe({
+    super.key,
+    required this.frage,
+    required this.antwort,
+    required this.modus,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.read(quizSessionProvider.notifier);
+    final controller = ref.read(quizSessionProvider(modus).notifier);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,

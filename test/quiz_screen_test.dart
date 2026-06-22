@@ -14,12 +14,17 @@ class _FakeFsrsCardStore implements FsrsCardStore {
   GespeicherteKarte? kartenStandFuer(String frageId) => _daten[frageId];
 
   @override
+  Map<String, GespeicherteKarte> alleKartenstaende() => Map.of(_daten);
+
+  @override
   Future<void> speichern(String frageId, GespeicherteKarte karte) async {
     _daten[frageId] = karte;
   }
 }
 
 void main() {
+  const modus = QuizModus.freiUebung();
+
   testWidgets(
     'Quiz-Screen: Single-Choice-Frage -> Konfidenz -> Aufdecken -> Bewertung',
     (tester) async {
@@ -28,7 +33,7 @@ void main() {
           overrides: [
             fsrsCardStoreProvider.overrideWithValue(_FakeFsrsCardStore()),
           ],
-          child: const MaterialApp(home: QuizScreen()),
+          child: const MaterialApp(home: QuizScreen(modus: modus)),
         ),
       );
 

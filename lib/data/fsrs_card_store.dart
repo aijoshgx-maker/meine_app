@@ -39,6 +39,17 @@ class FsrsCardStore {
     return GespeicherteKarte.fromMap(Map<String, dynamic>.from(roh as Map));
   }
 
+  // Alle bekannten Kartenstände, keyed nach Frage-id. Fragen ohne Eintrag
+  // (nie gelernt) tauchen hier bewusst nicht auf.
+  Map<String, GespeicherteKarte> alleKartenstaende() {
+    return {
+      for (final key in _box.keys)
+        key as String: GespeicherteKarte.fromMap(
+          Map<String, dynamic>.from(_box.get(key) as Map),
+        ),
+    };
+  }
+
   Future<void> speichern(String frageId, GespeicherteKarte karte) async {
     await _box.put(frageId, karte.toMap());
   }

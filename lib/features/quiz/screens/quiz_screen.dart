@@ -3,27 +3,52 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../models/frage.dart';
 import '../providers/quiz_providers.dart';
+import '../providers/session_timer_provider.dart';
 import '../widgets/antwort_eingabe.dart';
 import '../widgets/bewertungs_buttons.dart';
 import '../widgets/konfidenz_auswahl.dart';
 
 class QuizScreen extends ConsumerWidget {
-  const QuizScreen({super.key});
+  final QuizModus modus;
+
+  const QuizScreen({super.key, required this.modus});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final sessionAsync = ref.watch(quizSessionProvider);
+    final sessionAsync = ref.watch(quizSessionProvider(modus));
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Quiz')),
+      appBar: AppBar(
+        title: const Text('Quiz'),
+        actions: [
+          if (modus.zeitlimit != null) _TimerAnzeige(modus: modus),
+          if (sessionAsync.value != null && !sessionAsync.value!.fertig)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: Center(
+                child: Text(
+                  '${sessionAsync.value!.richtigBeantwortet}/${sessionAsync.value!.index}',
+                ),
+              ),
+            ),
+        ],
+      ),
       body: sessionAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (fehler, _) => Center(child: Text('Fehler beim Laden: $fehler')),
         data: (session) {
           if (session.fertig) {
-            return const Center(
-              child: Text('Fertig! Alle Fragen beantwortet.'),
+            return Center(
+              child: Text(
+                session.fragen.isEmpty
+                    ? 'Keine Fragen in diesem Modus.'
+                    : '${session.richtigBeantwortet} von ${session.fragen.length} richtig',
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             );
+          }
+          if (session.fragen.isEmpty) {
+            return const Center(child: Text('Keine Fragen in diesem Modus.'));
           }
           final frage = session.aktuelleFrage!;
           return Padding(
@@ -50,13 +75,16 @@ class QuizScreen extends ConsumerWidget {
                     FragePhase.antworten => AntwortEingabe(
                       frage: frage,
                       antwort: session.antwort,
+                      modus: modus,
                     ),
                     FragePhase.konfidenz => KonfidenzAuswahl(
                       ausgewaehlt: session.antwort.konfidenz,
+                      modus: modus,
                     ),
                     FragePhase.aufgedeckt => _AufdeckungsAnsicht(
                       frage: frage,
                       session: session,
+                      modus: modus,
                     ),
                   },
                 ],
@@ -69,15 +97,40 @@ class QuizScreen extends ConsumerWidget {
   }
 }
 
-class _AufdeckungsAnsicht extends ConsumerWidget {
-  final Frage frage;
-  final QuizSessionState session;
+class _TimerAnzeige extends ConsumerWidget {
+  final QuizModus modus;
 
-  const _AufdeckungsAnsicht({required this.frage, required this.session});
+  const _TimerAnzeige({required this.modus});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.read(quizSessionProvider.notifier);
+    final rest = ref.watch(sessionTimerProvider(modus));
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Center(
+        child: Text(
+          formatiereDauer(rest),
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+    );
+  }
+}
+
+class _AufdeckungsAnsicht extends ConsumerWidget {
+  final Frage frage;
+  final QuizSessionState session;
+  final QuizModus modus;
+
+  const _AufdeckungsAnsicht({
+    required this.frage,
+    required this.session,
+    required this.modus,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final controller = ref.read(quizSessionProvider(modus).notifier);
     final korrekt = session.antwort.korrekt ?? false;
 
     return Column(

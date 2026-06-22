@@ -6,12 +6,17 @@ import '../providers/quiz_providers.dart';
 // Konfidenz-Abfrage vor dem Aufdecken (Metakognition & Kalibrierung).
 class KonfidenzAuswahl extends ConsumerWidget {
   final Konfidenz? ausgewaehlt;
+  final QuizModus modus;
 
-  const KonfidenzAuswahl({super.key, required this.ausgewaehlt});
+  const KonfidenzAuswahl({
+    super.key,
+    required this.ausgewaehlt,
+    required this.modus,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.read(quizSessionProvider.notifier);
+    final controller = ref.read(quizSessionProvider(modus).notifier);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
