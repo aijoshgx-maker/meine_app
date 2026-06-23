@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/app/settings_providers.dart';
 import 'package:meine_app/data/arbeitsauftrag_store.dart';
 import 'package:meine_app/data/attempt_history_store.dart';
 import 'package:meine_app/data/fsrs_card_store.dart';
+import 'package:meine_app/data/settings_store.dart';
 import 'package:meine_app/features/arbeitsauftrag/providers/arbeitsauftrag_providers.dart';
 import 'package:meine_app/features/dashboard/screens/dashboard_screen.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
@@ -47,6 +49,20 @@ class _FakeArbeitsauftragStore implements ArbeitsauftragStore {
   Future<void> fachgespraechAntwortSetzen(String fragId, String text) async {}
 }
 
+class _FakeSettingsStore implements SettingsStore {
+  @override
+  String? themeModeLaden() => null;
+
+  @override
+  Future<void> themeModeSpeichern(String wert) async {}
+
+  @override
+  bool remindersAktiviert() => false;
+
+  @override
+  Future<void> remindersAktiviertSpeichern(bool aktiviert) async {}
+}
+
 void main() {
   testWidgets('Dashboard rendert alle Kennzahlen ohne Fehler (leere Daten)', (
     tester,
@@ -61,6 +77,7 @@ void main() {
           arbeitsauftragStoreProvider.overrideWithValue(
             _FakeArbeitsauftragStore(),
           ),
+          settingsStoreProvider.overrideWithValue(_FakeSettingsStore()),
         ],
         child: const MaterialApp(home: DashboardScreen()),
       ),

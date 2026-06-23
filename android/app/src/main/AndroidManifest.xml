@@ -1,4 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Für die Fällig-Erinnerung (flutter_local_notifications): Anzeigen
+         auf Android 13+ und Überleben eines Geräte-Neustarts. Keine
+         Exact-Alarm-Berechtigung nötig, da inexactAllowWhileIdle genutzt wird. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:label="meine_app"
         android:name="${applicationName}"

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../app/settings_providers.dart';
 import '../../arbeitsauftrag/providers/arbeitsauftrag_providers.dart';
 import '../../quiz/providers/quiz_modus.dart';
 import '../providers/dashboard_providers.dart';
@@ -21,8 +22,28 @@ class DashboardScreen extends ConsumerWidget {
     final faelligeAnzahl = ref.watch(faelligeAnzahlProvider);
     final arbeitsauftragFortschritt = ref.watch(checklistFortschrittProvider);
 
+    // Erinnerung bei jedem Dashboard-Aufbau opportunistisch neu planen (nur
+    // wenn der Nutzer Erinnerungen aktiviert hat). Bewusst direkt im Build
+    // statt nur via ref.listen, damit es auch beim allerersten Aufbau läuft
+    // und nicht erst bei einer späteren Änderung des Fällig-Werts.
+    if (ref.read(remindersEnabledProvider)) {
+      faelligeAnzahl.whenData(
+        (anzahl) => ref
+            .read(notificationServiceProvider)
+            .faelligeErinnerungPlanen(anzahl),
+      );
+    }
+
     return Scaffold(
-      appBar: AppBar(title: const Text('AP2 Industriemechaniker')),
+      appBar: AppBar(
+        title: const Text('AP2 Industriemechaniker'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.settings),
+            onPressed: () => context.go('/settings'),
+          ),
+        ],
+      ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

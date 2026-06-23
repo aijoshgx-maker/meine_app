@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../models/frage.dart';
 import '../providers/quiz_providers.dart';
+import '../providers/session_break_provider.dart';
 import '../providers/session_timer_provider.dart';
 import '../widgets/antwort_eingabe.dart';
 import '../widgets/bewertungs_buttons.dart';
@@ -16,6 +17,23 @@ class QuizScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final sessionAsync = ref.watch(quizSessionProvider(modus));
+
+    ref.listen(sessionBreakProvider, (zuvor, jetzt) {
+      if (jetzt) {
+        ScaffoldMessenger.of(context).showMaterialBanner(
+          MaterialBanner(
+            content: const Text('Du lernst schon eine Weile – kurze Pause?'),
+            actions: [
+              TextButton(
+                onPressed: () =>
+                    ScaffoldMessenger.of(context).hideCurrentMaterialBanner(),
+                child: const Text('Okay'),
+              ),
+            ],
+          ),
+        );
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -71,22 +89,28 @@ class QuizScreen extends ConsumerWidget {
                     Image.asset(frage.bildAsset!),
                   ],
                   const SizedBox(height: 24),
-                  switch (session.antwort.phase) {
-                    FragePhase.antworten => AntwortEingabe(
-                      frage: frage,
-                      antwort: session.antwort,
-                      modus: modus,
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 250),
+                    child: KeyedSubtree(
+                      key: ValueKey('${frage.id}-${session.antwort.phase}'),
+                      child: switch (session.antwort.phase) {
+                        FragePhase.antworten => AntwortEingabe(
+                          frage: frage,
+                          antwort: session.antwort,
+                          modus: modus,
+                        ),
+                        FragePhase.konfidenz => KonfidenzAuswahl(
+                          ausgewaehlt: session.antwort.konfidenz,
+                          modus: modus,
+                        ),
+                        FragePhase.aufgedeckt => _AufdeckungsAnsicht(
+                          frage: frage,
+                          session: session,
+                          modus: modus,
+                        ),
+                      },
                     ),
-                    FragePhase.konfidenz => KonfidenzAuswahl(
-                      ausgewaehlt: session.antwort.konfidenz,
-                      modus: modus,
-                    ),
-                    FragePhase.aufgedeckt => _AufdeckungsAnsicht(
-                      frage: frage,
-                      session: session,
-                      modus: modus,
-                    ),
-                  },
+                  ),
                 ],
               ),
             ),

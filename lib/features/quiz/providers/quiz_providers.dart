@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart' show setEquals;
+import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/spaced_repetition/fsrs_scheduler.dart';
@@ -159,6 +160,8 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     final frage = aktuell?.aktuelleFrage;
     if (aktuell == null || frage == null) return;
 
+    HapticFeedback.selectionClick();
+
     final Set<int> neue;
     if (frage.typ == 'single' || frage.typ == 'wahrfalsch') {
       neue = {optionsIndex};
@@ -204,6 +207,7 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     if (aktuell == null || frage == null) return;
 
     final korrekt = _pruefeKorrektheit(frage, aktuell.antwort);
+    korrekt ? HapticFeedback.lightImpact() : HapticFeedback.mediumImpact();
     _aktualisiereAntwort(
       aktuell.antwort.copyWith(phase: FragePhase.aufgedeckt, korrekt: korrekt),
     );

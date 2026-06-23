@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'router.dart';
+import 'settings_providers.dart';
 
-class Ap2App extends StatelessWidget {
+class Ap2App extends ConsumerWidget {
   const Ap2App({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeMode = ref.watch(themeModeProvider);
+
     return MaterialApp.router(
       title: 'AP2 Industriemechaniker',
       theme: ThemeData(
@@ -20,7 +24,7 @@ class Ap2App extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: themeMode,
       routerConfig: router,
     );
   }
