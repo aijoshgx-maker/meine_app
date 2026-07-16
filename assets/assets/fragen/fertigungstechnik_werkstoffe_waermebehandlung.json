@@ -5,12 +5,31 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "reihenfolge",
     "frage": "Bringe die Gefügebestandteile des Eisen-Kohlenstoff-Diagramms in die Reihenfolge ihres Härtegrades (weichster zuerst).",
-    "optionen": ["Martensit (gehärtet)", "Ferrit", "Zementit (Fe₃C)", "Perlit (Ferrit + Zementit-Lamellengemisch)"],
-    "richtigeIndizes": [], "reihenfolge": [1, 3, 0, 2], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Martensit (gehärtet)",
+      "Ferrit",
+      "Zementit (Fe₃C)",
+      "Perlit (Ferrit + Zementit-Lamellengemisch)"
+    ],
+    "richtigeIndizes": [],
+    "reihenfolge": [
+      1,
+      3,
+      0,
+      2
+    ],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Härtegrade: Ferrit (~80 HV, weich, duktil) < Perlit (~200 HV, Lamellen aus Ferrit + Zementit) < Martensit (600-800 HV, sehr hart, spröde, entsteht durch Abschrecken) < Zementit (1000+ HV, extrem hart und spröde). Härtbarer Stahl muss C-Gehalt > 0,2% haben.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
   },
   {
     "id": "ft-ww-002",
@@ -18,12 +37,25 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "kurzantwort",
     "frage": "Wie heißt das Wärmebehandlungsverfahren, bei dem nur die Randschicht eines Bauteils (z.B. Zahnrad) durch Induktionsstrom gehärtet wird, während der Kern weich und zäh bleibt?",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": ["Induktionshärten", "induktives Härten", "Randschichthärten durch Induktion"],
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [
+      "Induktionshärten",
+      "induktives Härten",
+      "Randschichthärten durch Induktion"
+    ],
     "wahr": null,
     "erklaerung": "Induktionshärten: Hochfrequenzstrom erzeugt elektromagnetisches Feld → Wirbelströme erhitzen die Randzone schnell auf Austenitisiertemperatur → Abschrecken mit Wasser/Öl → harte Randschicht. Vorteile: selektive Härtung, kurze Zeit, geringer Verzug, keine Schutzatmosphäre nötig. Einsatz: Zahnräder, Nockenwellen, Kurbelwellen.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
   },
   {
     "id": "ft-ww-003",
@@ -31,16 +63,34 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "lueckentext",
     "frage": "Beim Einsatzhärten wird die Randzone zunächst durch {{1}} mit Kohlenstoff angereichert (auf ~0,8%), dann abgeschreckt. Der Vorteil ist eine harte {{2}} bei zähem {{3}}.",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
     "luecken": [
-      ["Aufkohlen", "Zementation"],
-      ["Randschicht", "Oberfläche"],
-      ["Kern", "Kernbereich"]
+      [
+        "Aufkohlen",
+        "Zementation"
+      ],
+      [
+        "Randschicht",
+        "Oberfläche"
+      ],
+      [
+        "Kern",
+        "Kernbereich"
+      ]
     ],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Einsatzhärten: 1) Aufkohlen (Zementieren) bei 900–950°C in kohlehaltigem Medium (Gas/Feststoff) → Rand-C-Gehalt steigt auf 0,6–0,8%. 2) Härten: Abschrecken → Rand wird Martensit (hart), Kern bleibt zäh. Einsatz: Getriebezahnräder, Bolzen. Werkstoffe: Einsatzstähle (C < 0,25%) wie 16MnCr5, 20CrMo4.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
   },
   {
     "id": "ft-ww-004",
@@ -48,11 +98,21 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "wahrfalsch",
     "frage": "Das Nitrieren erhöht die Randschichthärte ohne Phasenumwandlung (kein Abschrecken nötig) und erzeugt dabei sehr geringe Maß- und Formänderungen am Werkstück.",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": true,
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": true,
     "erklaerung": "Korrekt! Nitrieren: Stickstoffatome diffundieren bei 500–580°C in die Randzone → bilden Nitride (Fe₂N, Fe₄N) → sehr hohe Randschichthärte (bis 1200 HV) ohne Abschrecken. Kein Härteverzug! Aber: dünne Härteschicht (0,1–0,8 mm), nur für speziell legierte Nitrierstähle (Al, Cr, Mo, V). Ideal für Präzisionsteile.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
   },
   {
     "id": "ft-ww-005",
@@ -60,13 +120,26 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "rechnung",
     "frage": "Ein Bauteil soll auf 60 HRC vergütet werden. Im ZTU-Diagramm ist abzulesen, dass die kritische Abkühlrate bei 100 K/s liegt. Die Abkühlung in Öl erreicht 80 K/s. Wird die erforderliche Härte erreicht?",
-    "optionen": ["Ja, weil v_Öl > v_krit", "Nein, weil v_Öl < v_krit", "Ja, wenn das Bauteil dünn genug ist", "Die Abkühlrate spielt keine Rolle"],
-    "richtigeIndizes": [1],
-    "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Ja, weil v_Öl > v_krit",
+      "Nein, weil v_Öl < v_krit",
+      "Ja, wenn das Bauteil dünn genug ist",
+      "Die Abkühlrate spielt keine Rolle"
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "v_Öl = 80 K/s < v_krit = 100 K/s → Abkühlrate im Öl reicht nicht aus → kein vollständiger Martensit → Härte < 60 HRC. Lösung: Abschrecken in Wasser (schneller) oder Legierungsanpassung (Cr, Ni, Mo vergrößern Martensitbereich, senken kritische Abkühlrate = bessere Einhärtbarkeit).",
-    "selfExplanationPrompt": null, "bildAsset": null,
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
     "workedExample": "v_Öl = 80 K/s < v_krit = 100 K/s → Abkühlrate unzureichend → Zieldichte nicht erreichbar",
     "schwierigkeit": 3
   },
@@ -76,17 +149,38 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "zuordnung",
     "frage": "Ordne die Legierungselemente ihrer wichtigsten Wirkung in Stahl zu.",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
     "paare": [
-      {"links": "Nickel (Ni)", "rechts": "Erhöht Zähigkeit und Tieftemperaturfestigkeit"},
-      {"links": "Molybdän (Mo)", "rechts": "Verbessert Anlassbeständigkeit und verhindert Anlasssprödigkeit"},
-      {"links": "Vanadium (V)", "rechts": "Feinkornbildung, erhöht Verschleißfestigkeit durch Karbide"},
-      {"links": "Mangan (Mn)", "rechts": "Erhöht Härtbarkeit, bindet Schwefel als MnS (verhindert Rotbruch)"}
+      {
+        "links": "Nickel (Ni)",
+        "rechts": "Erhöht Zähigkeit und Tieftemperaturfestigkeit"
+      },
+      {
+        "links": "Molybdän (Mo)",
+        "rechts": "Verbessert Anlassbeständigkeit und verhindert Anlasssprödigkeit"
+      },
+      {
+        "links": "Vanadium (V)",
+        "rechts": "Feinkornbildung, erhöht Verschleißfestigkeit durch Karbide"
+      },
+      {
+        "links": "Mangan (Mn)",
+        "rechts": "Erhöht Härtbarkeit, bindet Schwefel als MnS (verhindert Rotbruch)"
+      }
     ],
-    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Legierungselemente haben vielfältige Wirkungen. Hauptfaustregeln: Ni → Zähigkeit. Mo → Anlassbeständigkeit, Vergütungsstähle. V → Feinkorn, Hartstähle. Mn → Härtbarkeit (Mn-Stähle: Hadfield-Stahl mit 12% Mn für verschleißfeste Anwendungen). Cr → Rostfreiheit + Karbidbildung.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
   },
   {
     "id": "ft-ww-007",
@@ -101,12 +195,25 @@
       "Naturharte Legierungen (3000er, 5000er) werden durch Kaltumformung verfestigt",
       "Ausscheidungshärtbare Legierungen (2000er, 6000er, 7000er) können durch Wärmebehandlung gehärtet werden"
     ],
-    "richtigeIndizes": [0, 1, 3, 4],
-    "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "richtigeIndizes": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "EN AW-6082 (AlSi1MgMn): häufigste Konstruktionslegierung, gut schweißbar. 7075 (Al-Zn-Mg-Cu): höchste Festigkeit (~570 MPa), schlechter schweißbar. 5xxx (Al-Mg): naturharte, meerschweißgeeignet (Schiffbau). 2xxx (Al-Cu): ausscheidungshärtbar, Luftfahrt. Manche Alu-Legierungen sind sehr gut schweißbar (5xxx, 6xxx).",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
   },
   {
     "id": "ft-ww-008",
@@ -114,16 +221,37 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "lueckentext",
     "frage": "Gusseisen mit Lamellengrafit (GJL) ist gut {{1}}, hat aber eine geringe {{2}}. Gusseisen mit Kugelgrafit (GJS) dagegen hat durch die kugelige Grafitform deutlich bessere {{3}} als GJL.",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
     "luecken": [
-      ["gießbar", "vergießbar", "gießfähig"],
-      ["Zugfestigkeit", "Zugfähigkeit", "Bruchdehnung"],
-      ["Zähigkeit", "Duktilität", "Dehnung"]
+      [
+        "gießbar",
+        "vergießbar",
+        "gießfähig"
+      ],
+      [
+        "Zugfestigkeit",
+        "Zugfähigkeit",
+        "Bruchdehnung"
+      ],
+      [
+        "Zähigkeit",
+        "Duktilität",
+        "Dehnung"
+      ]
     ],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "GJL (grauem Gusseisen, Lamellengrafit): gute Dämpfung, gut spanend bearbeitbar, gießbar, aber spröde (Zugfestigkeit 100-400 N/mm², Bruchdehnung < 1%). GJS (duktiles Gusseisen, Kugelgrafit): Zugfestigkeit bis 900 N/mm², Bruchdehnung bis 22%! Durch Mg-Zugabe beim Schmelzen entstehen Kugeln statt Lamellen.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
   },
   {
     "id": "ft-ww-009",
@@ -137,12 +265,22 @@
       "Thermisches Spritzen",
       "Eloxieren"
     ],
-    "richtigeIndizes": [0],
-    "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "richtigeIndizes": [
+      0
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Elektrolytische Verzinkung: Gleichstrom fällt Zn auf Stahlteile ab (Zimmertemperatur). Gleichmäßig dünne Schicht (5-25 µm). Karosserien. Feuerverzinkung (450°C): Tauchen in Zinkschmelze → dickere Schicht (50-150 µm), rauher, besser für Außenbereich. Eloxieren: nur für Aluminium (Aluminiumoxidschicht).",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
   },
   {
     "id": "ft-ww-010",
@@ -150,13 +288,19 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "rechnung",
     "frage": "Eine Stahlwelle soll auf 58 HRC gehärtet werden. Laut Umrechnungstabelle entspricht 58 HRC ≈ 639 HV. Die gemessene Vickershärte nach dem Härten beträgt 580 HV. Um wie viel HRC fehlt die Welle ungefähr? (1 HRC ≈ 9 HV im Bereich 55-65 HRC)",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
     "loesungswert": 6.6,
     "einheit": "HRC",
     "toleranz": 0.5,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "ΔHV = 639 - 580 = 59 HV. ΔHRc = 59 HV / 9 HV/HRC ≈ 6,6 HRC. Erreichter Wert ≈ 58 - 6,6 ≈ 51,4 HRC. Ursache: unzureichende Abkühlrate, zu kurze Haltezeit, zu niedriger C-Gehalt oder falsche Austenitisiertemperatur. Korrekturmaßnahme: Prozessparameter überprüfen.",
-    "selfExplanationPrompt": null, "bildAsset": null,
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
     "workedExample": "ΔHV = 639 - 580 = 59 HV\nΔHRC = 59 / 9 ≈ 6,6 HRC → Welle erreicht nur ~51 HRC statt 58 HRC",
     "schwierigkeit": 3
   },
@@ -166,12 +310,25 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "kurzantwort",
     "frage": "Wie heißt das Kurzzeichen für die Wärmebehandlung 'Weichglühen' nach DIN EN 10052?",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": ["+A", "A", "Weichglühen (+A)"],
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [
+      "+A",
+      "A",
+      "Weichglühen (+A)"
+    ],
     "wahr": null,
     "erklaerung": "Wärmebehandlungskurzzeichen nach DIN EN 10052: +A = Weichglühen, +N = Normalglühen, +Q = Abschrecken, +T = Anlassen, +QT = Vergüten (Abschrecken + Anlassen), +C = Aufkohlen, +S = Spannungsarmglühen. Diese Symbole erscheinen auf Zeichnungen und in Bestellangaben.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
   },
   {
     "id": "ft-ww-012",
@@ -179,11 +336,21 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "wahrfalsch",
     "frage": "Das Spannungsarmglühen bei ca. 550–650°C bei Stahl beseitigt Eigenspannungen, die durch spanende Bearbeitung, Schweißen oder Kaltumformung entstanden sind, ohne die Gefügestruktur wesentlich zu verändern.",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": true,
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": true,
     "erklaerung": "Korrekt! Spannungsarmglühen (Entspannungsglühen): T = 550-650°C (unterhalb A1-Linie → keine Gefügeumwandlung), langsames Erhitzen und Abkühlen. Eigenspannungen relaxieren durch Kriechvorgänge im erhitzten Gefüge. Wichtig vor Präzisionsbearbeitung, nach dem Schweißen großer Bauteile.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
   },
   {
     "id": "ft-ww-013",
@@ -198,12 +365,25 @@
       "Bauteilgröße und Querschnittsverhältnis (Abkühlrate im Kern)",
       "Austenitisiertemperatur und Haltezeit"
     ],
-    "richtigeIndizes": [0, 1, 3, 4],
-    "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "richtigeIndizes": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Einhärtetiefe hängt ab von: Einhärtbarkeit (Legierung, C-Gehalt), Abkühlrate (Abschreckmittel: Wasser > Öl > Luft), Bauteilgröße (dicker → Kern kühlt langsamer → geringere Kernhärte), Austenitisierparameter. Bauteilfarbe hat keinen Einfluss beim Tauchhärten. Induktionshärten: Frequenz bestimmt Eindringtiefe (höher = flacher).",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
   },
   {
     "id": "ft-ww-014",
@@ -217,12 +397,22 @@
       "Austenitische Stähle reagieren magnetisch und müssen daher separat geerdet werden",
       "Austenitische Stähle müssen immer vorgewärmt werden wie Kohlenstoffstähle"
     ],
-    "richtigeIndizes": [0],
-    "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "richtigeIndizes": [
+      0
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Sensibilisierung: Im Temperaturbereich 400-900°C (Schweißwärme!) scheidet Cr als Cr₂₃C₆ an Korngrenzen aus → Chromverarmung → Korngrenzenkorrosion möglich. Gegenmaßnahme: Stabilisierung durch Nb oder Ti (1.4541), Niedrig-Kohlenstoff-Sorten (z.B. 1.4307 = 304L), schnelle Abkühlung. Austenitische Stähle sind nicht magnetisch (paramagnetisch).",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
   },
   {
     "id": "ft-ww-015",
@@ -230,106 +420,325 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "zuordnung",
     "frage": "Ordne die Verbundwerkstoffe ihrer Zusammensetzung zu.",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
     "paare": [
-      {"links": "CFK (Kohlenstofffaserverstärkter Kunststoff)", "rechts": "Kohlenstofffasern in Epoxidharzmatrix"},
-      {"links": "GFK (Glasfaserverstärkter Kunststoff)", "rechts": "Glasfasern in Polyesterharzmatrix"},
-      {"links": "Hartmetall (Cermet)", "rechts": "WC-Karbidkörner in Kobalt-Bindemetall"},
-      {"links": "Stahlbeton", "rechts": "Betongefüge mit eingebetteten Stahlstäben"}
+      {
+        "links": "CFK (Kohlenstofffaserverstärkter Kunststoff)",
+        "rechts": "Kohlenstofffasern in Epoxidharzmatrix"
+      },
+      {
+        "links": "GFK (Glasfaserverstärkter Kunststoff)",
+        "rechts": "Glasfasern in Polyesterharzmatrix"
+      },
+      {
+        "links": "Hartmetall (Cermet)",
+        "rechts": "WC-Karbidkörner in Kobalt-Bindemetall"
+      },
+      {
+        "links": "Stahlbeton",
+        "rechts": "Betongefüge mit eingebetteten Stahlstäben"
+      }
     ],
-    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Verbundwerkstoffe: Matrix gibt Form + Schutz, Verstärkung trägt Last. CFK: höchste spezifische Festigkeit (Luft-/Raumfahrt, Sportgeräte), aber teuer und schwer zu recyceln. Hartmetall: WC (Härte) + Co (Zähigkeit) = Schneidstoff für Zerspanung. Stahlbeton: Beton (Druckfestigkeit) + Stahl (Zugfestigkeit) = Bauwesen.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
   },
   {
-    "id": "ft-ww-016", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-016",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Welches Wärmebehandlungsverfahren wird für den Stahl 17Cr3 (Einsatzstahl) angewendet, um eine harte Oberfläche bei zähem Kern zu erzielen?",
-    "optionen": ["Vergüten", "Normalglühen", "Spannungsarmglühen", "Einsatzhärten (Aufkohlen und Härten)", "Nitrieren"],
-    "richtigeIndizes": [3], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Vergüten",
+      "Normalglühen",
+      "Spannungsarmglühen",
+      "Einsatzhärten (Aufkohlen und Härten)",
+      "Nitrieren"
+    ],
+    "richtigeIndizes": [
+      3
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Einsatzhärten ist das typische Verfahren für niedriggekohlte Einsatzstähle (C kleiner gleich 0,2 %) wie 17Cr3. Das Bauteil wird zunächst aufgekohlt (C-Gehalt der Randzone auf 0,7 bis 0,9 % erhöhen), dann gehärtet und angelassen. Ergebnis: harte, verschleißfeste Oberfläche (HRC 58 bis 64) bei zähem, schlagfestem Kern. Vergüten erhöht gleichmäßig Festigkeit und Zähigkeit; Nitrieren ist für höhergekohlte Stähle.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "W22",
+    "pruefungReihenfolge": 19
   },
   {
-    "id": "ft-ww-017", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-017",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Der Gehäusedeckel der Axialkolbenpumpe ist aus Grauguss EN-GJL-250 gefertigt. Welche Eigenschaft zeichnet diesen Werkstoff besonders aus?",
-    "optionen": ["Sehr hohe Bruchdehnung (über 20%)", "Gute Schweißbarkeit", "Hohe Schwingungsdämpfung", "Sehr geringe Dichte (leichter als Aluminium)", "Hohe elektrische Leitfähigkeit"],
-    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Sehr hohe Bruchdehnung (über 20%)",
+      "Gute Schweißbarkeit",
+      "Hohe Schwingungsdämpfung",
+      "Sehr geringe Dichte (leichter als Aluminium)",
+      "Hohe elektrische Leitfähigkeit"
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Grauguss (GJL) hat eine hervorragende Schwingungsdämpfung durch die im Gefüge verteilten Graphitlamellen, die Schwingungsenergie in Wärme umwandeln. Das macht ihn ideal für Maschinengehäuse, Motorblöcke und Pumpengehäuse. Nachteil: spröde (geringe Bruchdehnung unter 1 %) und schlecht schweißbar. EN-GJL-250: Zugfestigkeit Rm mindestens 250 MPa.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "W22",
+    "pruefungReihenfolge": 20
   },
   {
-    "id": "ft-ww-018", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-018",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Konsole und Schwenklager des Einstellantriebs sind Schweißkonstruktionen. Welches Wärmebehandlungsverfahren ist nach dem Schweißen vor der weiteren mechanischen Bearbeitung durchzuführen?",
-    "optionen": ["Weichglühen", "Spannungsarmglühen", "Grobkornglühen", "Rekristallisationsglühen", "Diffusionsglühen"],
-    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Weichglühen",
+      "Spannungsarmglühen",
+      "Grobkornglühen",
+      "Rekristallisationsglühen",
+      "Diffusionsglühen"
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Nach dem Schweißen entstehen im Bauteil Eigenspannungen durch ungleichmäßige Erwärmung und Abkühlung. Spannungsarmglühen (550–650 °C, langsames Abkühlen) baut diese Eigenspannungen ab, ohne das Gefüge wesentlich zu verändern. Weichglühen ist für gehärtete Stähle. Rekristallisationsglühen folgt auf Kaltumformung. Grobkornglühen verbessert die Zerspanbarkeit.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S17",
+    "pruefungReihenfolge": 20
   },
   {
-    "id": "ft-ww-019", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-019",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Die Antriebswelle (Pos. 3, 20MnCr5) muss an den Lagersitzen auf Endmaß geschliffen werden. Welches Schleifmittel ist für die einsatzgehärtete Stahloberfläche geeignet?",
-    "optionen": ["Siliciumcarbid (C) – für Stähle und Hartmetall", "Bornitrid (CBN, B) – für sehr harte Werkstoffe", "Diamant (D) – für Hartmetall und Keramik", "Korund (Edelkorund, A) – für Stähle und einsatzgehärtete Oberflächen", "Zirkonkorund (Z) – für Guss und Stahl im Schruppschleifen"],
-    "richtigeIndizes": [3], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Siliciumcarbid (C) – für Stähle und Hartmetall",
+      "Bornitrid (CBN, B) – für sehr harte Werkstoffe",
+      "Diamant (D) – für Hartmetall und Keramik",
+      "Korund (Edelkorund, A) – für Stähle und einsatzgehärtete Oberflächen",
+      "Zirkonkorund (Z) – für Guss und Stahl im Schruppschleifen"
+    ],
+    "richtigeIndizes": [
+      3
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Korund (Aluminiumoxid Al₂O₃, Kennbuchstabe A) ist das Standardschleifmittel für Stähle und einsatzgehärtete Oberflächen. Siliciumcarbid (C) ist für Grauguss, NE-Metalle und Hartmetall. Bornitrid (CBN) und Diamant sind Superabrasiva für extrem harte Werkstoffe und Hochleistungsbearbeitung. Zirkonkorund (Z) ist für grobe Abtragsanwendungen geeignet.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S17",
+    "pruefungReihenfolge": 21
   },
   {
-    "id": "ft-ww-020", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-020",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Das Stirnrad (Pos. 8, 16MnCr5) im Werkzeugspindelkasten (S19) wird einsatzgehärtet. Welche Randschichthärte (HRC) wird an der Oberfläche typischerweise erreicht?",
-    "optionen": ["20–30 HRC", "35–45 HRC", "58–63 HRC", "65–70 HRC", "75–80 HRC"],
-    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "20–30 HRC",
+      "35–45 HRC",
+      "58–63 HRC",
+      "65–70 HRC",
+      "75–80 HRC"
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Einsatzgehärtete Zahnräder aus 16MnCr5 erreichen eine Randschichthärte von typischerweise 58–63 HRC. Dies resultiert aus dem Martensitgefüge nach dem Abschrecken. Der Kern (mit originalem niedrigem C-Gehalt ~0,16 %) bleibt zäh (30–40 HRC). Härten über 63 HRC erhöht die Sprödigkeit und ist für diese Stähle kaum erreichbar.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S19",
+    "pruefungReihenfolge": 34
   },
   {
-    "id": "ft-ww-021", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-021",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Die Ritzelwelle (16MnCr5, einsatzgehärtet HRC 58–62) der Bohrstation (S19) muss an den Lagersitzen auf Endmaß geschliffen werden. Welches Schleifmittel ist geeignet?",
-    "optionen": ["Siliciumcarbid (SiC) – für NE-Metalle und Grauguss", "Normalkorund (A) – für gehärtete Stähle und einsatzgehärtete Oberflächen", "Zirkonkorund (ZA) – für grobes Abschruppen von Stahl", "Diamant (D) – für Hartmetall und Keramik", "Bornitrid (CBN) – ausschließlich für Hochleistungsbearbeitung"],
-    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Siliciumcarbid (SiC) – für NE-Metalle und Grauguss",
+      "Normalkorund (A) – für gehärtete Stähle und einsatzgehärtete Oberflächen",
+      "Zirkonkorund (ZA) – für grobes Abschruppen von Stahl",
+      "Diamant (D) – für Hartmetall und Keramik",
+      "Bornitrid (CBN) – ausschließlich für Hochleistungsbearbeitung"
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Normalkorund (Al₂O₃, Kennung A) ist das Standardschleifmittel für Stähle – auch für einsatzgehärtete Oberflächen bis ~65 HRC. Für Hochleistungsbearbeitung wird CBN bevorzugt, ist aber erheblich teurer. SiC ist für Grauguss und NE-Metalle. Diamant ist für Hartmetall/Keramik. Zirkonkorund für grobes Abschleifen mit hohem Materialabtrag.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S19",
+    "pruefungReihenfolge": 35
   },
   {
-    "id": "ft-ww-022", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-022",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Nach dem Einsatzhärten der Zahnräder (S19) ist die aufgekohlte Randschicht zu dünn. Was ist die wahrscheinlichste Ursache?",
-    "optionen": ["Die Aufkohlungstemperatur war zu hoch (Kornwachstum).", "Die Aufkohlungsdauer (Einwirkzeit im Ofen) war zu kurz.", "Das Abschrecken erfolgte in Wasser statt Öl.", "Der Anlassvorgang entfiel.", "Das Bauteil wurde zu langsam auf Austenitisierungstemperatur erwärmt."],
-    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Die Aufkohlungstemperatur war zu hoch (Kornwachstum).",
+      "Die Aufkohlungsdauer (Einwirkzeit im Ofen) war zu kurz.",
+      "Das Abschrecken erfolgte in Wasser statt Öl.",
+      "Der Anlassvorgang entfiel.",
+      "Das Bauteil wurde zu langsam auf Austenitisierungstemperatur erwärmt."
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Die Einhärtetiefe beim Einsatzhärten hängt hauptsächlich von der Aufkohlungsdauer und -temperatur ab. Kohlenstoff diffundiert von außen nach innen – je länger die Ofenzeit, desto tiefer die Einsatztiefe (Richtwert: ca. 0,1–0,2 mm/h bei 920 °C). Eine zu kurze Aufkohlungszeit ergibt eine zu dünne Randschicht. Zu hohe Temperatur würde zu Kornwachstum führen, nicht zur dünneren Schicht.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3,
+    "pruefung": "S19",
+    "pruefungReihenfolge": 36
   },
   {
-    "id": "ft-ww-023", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-023",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Die Zahnräder der Schaltvorrichtung (S18) bestehen aus dem Stahl 16MnCr5. Was bedeuten die Kurzzeichenbestandteile: die Zahl 16, das Kürzel MnCr und die Zahl 5?",
-    "optionen": ["16 = Zugfestigkeit in kN/mm²; MnCr = Stahlgruppe; 5 = Probendicke in mm.", "16 = mittlerer C-Gehalt in 1/100 % (= 0,16 % C); MnCr = Legierungselemente Mangan und Chrom; 5 = Cr-Gehalt × 4 = ca. 1,25 % Cr.", "16 = Zähnezahl; MnCr5 = Werkstoffnummer.", "16 = Anlasstemperatur in 10 °C (= 160 °C); MnCr = Normierungssystem; 5 = Gütegrad.", "16 = Aufkohlungstiefe in 1/10 mm; Mn = Mangangehalt in %; Cr5 = Chrom, 5. Sorte."],
-    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "16 = Zugfestigkeit in kN/mm²; MnCr = Stahlgruppe; 5 = Probendicke in mm.",
+      "16 = mittlerer C-Gehalt in 1/100 % (= 0,16 % C); MnCr = Legierungselemente Mangan und Chrom; 5 = Cr-Gehalt × 4 = ca. 1,25 % Cr.",
+      "16 = Zähnezahl; MnCr5 = Werkstoffnummer.",
+      "16 = Anlasstemperatur in 10 °C (= 160 °C); MnCr = Normierungssystem; 5 = Gütegrad.",
+      "16 = Aufkohlungstiefe in 1/10 mm; Mn = Mangangehalt in %; Cr5 = Chrom, 5. Sorte."
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Legierungsstahlbezeichnung nach DIN EN 10027-1: Zahl vor den Legierungskurzzeichen = C-Gehalt × 100 (hier: 16/100 = 0,16 % C, Einsatzstahl). Legierungskurzzeichen MnCr = Mangan und Chrom. Zahl hinter dem letzten Hauptlegierungselement = Gehalt × 4 (Sonderregel für Cr, Mo, V, Si, Mn): 5/4 = 1,25 % Cr. 16MnCr5 ist ein klassischer Einsatzstahl für Zahnräder, Wellen und Buchsen.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S18",
+    "pruefungReihenfolge": 32
   },
   {
-    "id": "ft-ww-024", "bereich": "fertigungstechnik", "kategorie": "Werkstoffe und Wärmebehandlung",
+    "id": "ft-ww-024",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Das Einsatzhärten der Zahnräder (16MnCr5) der Schaltvorrichtung (S18) besteht aus mehreren Wärmebehandlungsschritten. Welcher Schritt wird als letzter durchgeführt?",
-    "optionen": ["Aufkohlen (Zementieren) in kohlenstoffhaltiger Atmosphäre bei ca. 920 °C.", "Abschrecken (schnelles Abkühlen in Öl) zur Martensitbildung.", "Anlassen bei ca. 150–200 °C zum Abbau von Eigenspannungen und Erhöhung der Zähigkeit.", "Normalisieren zur Gefügeverbesserung.", "Nitrieren zur Verbesserung der Randschichthärte."],
-    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Aufkohlen (Zementieren) in kohlenstoffhaltiger Atmosphäre bei ca. 920 °C.",
+      "Abschrecken (schnelles Abkühlen in Öl) zur Martensitbildung.",
+      "Anlassen bei ca. 150–200 °C zum Abbau von Eigenspannungen und Erhöhung der Zähigkeit.",
+      "Normalisieren zur Gefügeverbesserung.",
+      "Nitrieren zur Verbesserung der Randschichthärte."
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Reihenfolge beim Einsatzhärten: 1) Aufkohlen (Zementieren) bei ~920 °C → C diffundiert in Randschicht. 2) Abschrecken (in Öl) → Martensitentstehung in C-reicher Randschicht, Kern bleibt zäh. 3) Anlassen (~150–200 °C) → Eigenspannungsabbau, Erhöhung der Zähigkeit, Reduktion der Sprödigkeit. Das Anlassen ist der letzte Schritt – ohne ihn wäre das Bauteil zu spröde für den Betrieb.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S18",
+    "pruefungReihenfolge": 33
   }
 ]

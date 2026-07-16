@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "id": "au-et-001",
     "bereich": "auftragsanalyse",
@@ -13,7 +13,12 @@
     "loesungswert": null,
     "einheit": null,
     "toleranz": null,
-    "akzeptierteKurzantworten": ["U = R · I", "U=R*I", "U=RI", "U = R mal I"],
+    "akzeptierteKurzantworten": [
+      "U = R · I",
+      "U=R*I",
+      "U=RI",
+      "U = R mal I"
+    ],
     "wahr": null,
     "erklaerung": "Das Ohm'sche Gesetz lautet: U = R · I. Spannung (U in Volt) = Widerstand (R in Ohm) multipliziert mit Stromstärke (I in Ampere). Es gilt nur für ohmsche Widerstände bei konstanter Temperatur.",
     "selfExplanationPrompt": null,
@@ -97,9 +102,18 @@
     "richtigeIndizes": [],
     "reihenfolge": [],
     "paare": [
-      {"links": "Schutzklasse I", "rechts": "Schutzleiteranschluss (PE), Berührungsschutz durch Erdung"},
-      {"links": "Schutzklasse II", "rechts": "Schutzisolierung, kein Schutzleiter erforderlich (doppelte Isolierung)"},
-      {"links": "Schutzklasse III", "rechts": "Betrieb mit Schutzkleinspannung (SELV ≤ 50 V AC / ≤ 120 V DC)"}
+      {
+        "links": "Schutzklasse I",
+        "rechts": "Schutzleiteranschluss (PE), Berührungsschutz durch Erdung"
+      },
+      {
+        "links": "Schutzklasse II",
+        "rechts": "Schutzisolierung, kein Schutzleiter erforderlich (doppelte Isolierung)"
+      },
+      {
+        "links": "Schutzklasse III",
+        "rechts": "Betrieb mit Schutzkleinspannung (SELV ≤ 50 V AC / ≤ 120 V DC)"
+      }
     ],
     "luecken": [],
     "loesungswert": null,
@@ -127,7 +141,13 @@
     "loesungswert": null,
     "einheit": null,
     "toleranz": null,
-    "akzeptierteKurzantworten": ["FI-Schutzschalter", "FI", "RCD", "Fehlerstromschutzschalter", "FI-Schalter"],
+    "akzeptierteKurzantworten": [
+      "FI-Schutzschalter",
+      "FI",
+      "RCD",
+      "Fehlerstromschutzschalter",
+      "FI-Schalter"
+    ],
     "wahr": null,
     "erklaerung": "Der FI-Schutzschalter (Fehlerstrom-Schutzschalter, engl. RCD – Residual Current Device) überwacht die Differenz zwischen Hin- und Rückstrom. Bei Differenz > 30 mA (Personenschutz) trennt er in < 0,3 s.",
     "selfExplanationPrompt": null,
@@ -170,7 +190,11 @@
       "Ultraschallsensor",
       "Magnetischer Sensor (Reed-Kontakt)"
     ],
-    "richtigeIndizes": [1, 2, 3],
+    "richtigeIndizes": [
+      1,
+      2,
+      3
+    ],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -196,8 +220,15 @@
     "reihenfolge": [],
     "paare": [],
     "luecken": [
-      ["100", "100 Ω"],
-      ["steigt", "nimmt zu", "erhöht sich"]
+      [
+        "100",
+        "100 Ω"
+      ],
+      [
+        "steigt",
+        "nimmt zu",
+        "erhöht sich"
+      ]
     ],
     "loesungswert": null,
     "einheit": null,
@@ -220,11 +251,26 @@
     "richtigeIndizes": [],
     "reihenfolge": [],
     "paare": [
-      {"links": "Grün-Gelb", "rechts": "Schutzleiter (PE)"},
-      {"links": "Blau (hellblau)", "rechts": "Neutralleiter (N)"},
-      {"links": "Braun", "rechts": "Außenleiter L1 (Wechselstrom)"},
-      {"links": "Schwarz", "rechts": "Außenleiter L2 oder L3 (Drehstrom)"},
-      {"links": "Grau", "rechts": "Außenleiter L3 (alternativ)"}
+      {
+        "links": "Grün-Gelb",
+        "rechts": "Schutzleiter (PE)"
+      },
+      {
+        "links": "Blau (hellblau)",
+        "rechts": "Neutralleiter (N)"
+      },
+      {
+        "links": "Braun",
+        "rechts": "Außenleiter L1 (Wechselstrom)"
+      },
+      {
+        "links": "Schwarz",
+        "rechts": "Außenleiter L2 oder L3 (Drehstrom)"
+      },
+      {
+        "links": "Grau",
+        "rechts": "Außenleiter L3 (alternativ)"
+      }
     ],
     "luecken": [],
     "loesungswert": null,
@@ -252,7 +298,11 @@
     "loesungswert": null,
     "einheit": null,
     "toleranz": null,
-    "akzeptierteKurzantworten": ["Spritzwasserschutz", "Schutz gegen Spritzwasser", "Schutz gegen Wasserspritzer aus allen Richtungen"],
+    "akzeptierteKurzantworten": [
+      "Spritzwasserschutz",
+      "Schutz gegen Spritzwasser",
+      "Schutz gegen Wasserspritzer aus allen Richtungen"
+    ],
     "wahr": null,
     "erklaerung": "Bei IP54 bedeutet die erste Ziffer (5) Schutz gegen Staub (staubgeschützt) und die zweite Ziffer (4) Schutz gegen Spritzwasser aus beliebiger Richtung. IP = Ingress Protection nach DIN EN 60529.",
     "selfExplanationPrompt": null,
@@ -295,7 +345,12 @@
       "Der Gesamtwiderstand ist kleiner als der kleinste Einzelwiderstand.",
       "Bei Unterbrechung eines Widerstands fließt in der Gesamtschaltung kein Strom mehr."
     ],
-    "richtigeIndizes": [0, 1, 2, 4],
+    "richtigeIndizes": [
+      0,
+      1,
+      2,
+      4
+    ],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -324,7 +379,13 @@
       "Spannung an der Einspeisung messen"
     ],
     "richtigeIndizes": [],
-    "reihenfolge": [3, 1, 4, 0, 2],
+    "reihenfolge": [
+      3,
+      1,
+      4,
+      0,
+      2
+    ],
     "paare": [],
     "luecken": [],
     "loesungswert": null,
@@ -349,8 +410,14 @@
     "reihenfolge": [],
     "paare": [],
     "luecken": [
-      ["50", "50 Hz"],
-      ["230", "230 V"]
+      [
+        "50",
+        "50 Hz"
+      ],
+      [
+        "230",
+        "230 V"
+      ]
     ],
     "loesungswert": null,
     "einheit": null,
@@ -377,7 +444,13 @@
     "loesungswert": null,
     "einheit": null,
     "toleranz": null,
-    "akzeptierteKurzantworten": ["NTC", "NTC-Widerstand", "NTC-Sensor", "Heißleiter", "Thermistor NTC"],
+    "akzeptierteKurzantworten": [
+      "NTC",
+      "NTC-Widerstand",
+      "NTC-Sensor",
+      "Heißleiter",
+      "Thermistor NTC"
+    ],
     "wahr": null,
     "erklaerung": "NTC (Negative Temperature Coefficient, Heißleiter) ist ein Halbleiterwiderstand, dessen Widerstand bei steigender Temperatur fällt. Er wird für preisgünstige Temperaturmessungen eingesetzt (z. B. Haushaltsgeräte, Kfz). PT100 dagegen hat einen positiven Koeffizienten (PTC).",
     "selfExplanationPrompt": null,
@@ -397,7 +470,9 @@
       "Betrieb mit Schutzkleinspannung (SELV)",
       "Nullung (veraltetes Verfahren ohne PE)"
     ],
-    "richtigeIndizes": [1],
+    "richtigeIndizes": [
+      1
+    ],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -469,7 +544,11 @@
       "Er wird häufig zum Schalten von Ventilen eingesetzt.",
       "Er arbeitet ausschließlich mit Gleichstrom."
     ],
-    "richtigeIndizes": [0, 1, 3],
+    "richtigeIndizes": [
+      0,
+      1,
+      3
+    ],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -498,7 +577,13 @@
     "loesungswert": null,
     "einheit": null,
     "toleranz": null,
-    "akzeptierteKurzantworten": ["90 Grad", "90°", "π/2", "Strom eilt 90° nach", "Strom eilt der Spannung um 90° nach"],
+    "akzeptierteKurzantworten": [
+      "90 Grad",
+      "90°",
+      "π/2",
+      "Strom eilt 90° nach",
+      "Strom eilt der Spannung um 90° nach"
+    ],
     "wahr": null,
     "erklaerung": "Bei einer rein induktiven Last (Spule) eilt der Strom der Spannung um 90° nach (Phasenverschiebung φ = –90°). Merksatz: 'UILI' – bei Induktivität (L) eilt U vor I.",
     "selfExplanationPrompt": "Erkläre, warum Phasenverschiebungen in Industrieanlagen zur Erhöhung des Energieverbrauchs führen können.",
@@ -507,25 +592,59 @@
     "schwierigkeit": 3
   },
   {
-    "id": "au-et-022", "bereich": "auftragsanalyse", "kategorie": "Elektrotechnik",
+    "id": "au-et-022",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Elektrotechnik",
     "typ": "rechnung",
     "frage": "An einem Heizwiderstand R = 1 500 Ω wird eine elektrische Leistung P = 5 W umgesetzt. Berechnen Sie die Stromstärke I (in mA).",
-    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": 57.7, "einheit": "mA", "toleranz": 0.5,
-    "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": 57.7,
+    "einheit": "mA",
+    "toleranz": 0.5,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "Aus P = I² · R folgt: I = √(P/R) = √(5/1500) = √(1/300) ≈ 0,05774 A = 57,7 mA.",
-    "selfExplanationPrompt": null, "bildAsset": null,
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
     "workedExample": "P = I² · R  →  I² = P/R\nI = √(P/R) = √(5 W / 1500 Ω) = √(0,003333) ≈ 0,05774 A = 57,7 mA",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "pruefung": "W22",
+    "pruefungReihenfolge": 1
   },
   {
-    "id": "au-et-023", "bereich": "auftragsanalyse", "kategorie": "Elektrotechnik",
+    "id": "au-et-023",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Elektrotechnik",
     "typ": "single",
     "frage": "In einem Heizkreis der Verzinkungsanlage ist ein NTC-Widerstand (Thermistor) verbaut. Wie verändert sich sein elektrischer Widerstand bei steigender Temperatur?",
-    "optionen": ["Er bleibt konstant.", "Er steigt proportional zur Temperatur.", "Er fällt exponentiell.", "Er steigt überproportional.", "Er steigt und fällt abwechselnd."],
-    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "optionen": [
+      "Er bleibt konstant.",
+      "Er steigt proportional zur Temperatur.",
+      "Er fällt exponentiell.",
+      "Er steigt überproportional.",
+      "Er steigt und fällt abwechselnd."
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
     "erklaerung": "NTC = Negative Temperature Coefficient. Der Widerstand sinkt bei steigender Temperatur (exponentiell). NTCs werden daher als Temperatursensoren verwendet: Höhere Temperatur → geringerer Widerstand → höherer Strom → messbar. Im Gegensatz dazu steigt der Widerstand von PTC-Widerständen (Positive Temperature Coefficient) bei höherer Temperatur.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "W22",
+    "pruefungReihenfolge": 2
   }
 ]
