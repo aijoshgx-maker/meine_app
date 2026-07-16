@@ -1,0 +1,630 @@
+﻿[
+    {
+        "id":  "ft-zg-001",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "kurzantwort",
+        "frage":  "Welchem DIN-Hauptbereich ist die spanende Fertigung nach DIN 8580 zugeordnet?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "Trennen",
+                                         "Hauptgruppe 3",
+                                         "3"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Die spanende Fertigung gehört zur Hauptgruppe 3 \u0027Trennen\u0027 der DIN 8580, die alle Fertigungsverfahren mit Stofftrennung umfasst.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "ft-zg-002",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "zuordnung",
+        "frage":  "Ordne die spanenden Fertigungsverfahren ihrer Hauptbewegungsart zu.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+                      {
+                          "links":  "Drehen",
+                          "rechts":  "Rotation des Werkstücks"
+                      },
+                      {
+                          "links":  "Fräsen",
+                          "rechts":  "Rotation des Werkzeugs"
+                      },
+                      {
+                          "links":  "Hobeln",
+                          "rechts":  "geradlinige Bewegung des Werkzeugs"
+                      },
+                      {
+                          "links":  "Schleifen",
+                          "rechts":  "Rotation der Schleifscheibe"
+                      }
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Beim Drehen rotiert das Werkstück, beim Fräsen und Schleifen das Werkzeug (Fräser/Schleifscheibe), beim Hobeln führt das Werkzeug eine geradlinige Hubbewegung aus.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "ft-zg-003",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "lueckentext",
+        "frage":  "Die drei wesentlichen Eingriffsgrößen beim Zerspanen sind die Schnitttiefe {{1}}, der Vorschub {{2}} und die Schnittgeschwindigkeit {{3}}.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+                        [
+                            "ap",
+                            "a_p"
+                        ],
+                        [
+                            "f",
+                            "fz"
+                        ],
+                        [
+                            "vc",
+                            "v_c"
+                        ]
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "ap (Schnitttiefe in mm), f (Vorschub in mm/U bzw. fz pro Zahn) und vc (Schnittgeschwindigkeit in m/min) sind die drei Haupteingriffsgrößen, die die Zerspanung vollständig beschreiben.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  "diag:schnittdaten",
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "ft-zg-004",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "single",
+        "frage":  "Welche Spanart entsteht bei der Bearbeitung von zähen, duktilen Werkstoffen wie Stahl mit hoher Schnittgeschwindigkeit?",
+        "optionen":  [
+                         "Reißspan",
+                         "Scherspan",
+                         "Fließspan",
+                         "Lamellenspan"
+                     ],
+        "richtigeIndizes":  [
+                                2
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Fließspan entsteht bei zähen Werkstoffen und hoher Schnittgeschwindigkeit durch kontinuierliche plastische Verformung ohne periodischen Bruch. Er ist die günstigste Spanform für gleichmäßige Schnittkräfte.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "ft-zg-005",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "multi",
+        "frage":  "Welche der folgenden Aussagen zu Schnittkräften sind korrekt? (Mehrfachauswahl)",
+        "optionen":  [
+                         "Die Schnittkraft Fc wirkt in Schnittrichtung.",
+                         "Die Vorschubkraft Ff ist stets größer als die Schnittkraft Fc.",
+                         "Die Passivkraft Fp wirkt senkrecht zur Bearbeitungsfläche.",
+                         "Die Gesamtzerspankraft ist die vektorielle Summe von Fc, Ff und Fp.",
+                         "Die Schnittkraft sinkt mit steigender Schnittgeschwindigkeit immer linear."
+                     ],
+        "richtigeIndizes":  [
+                                0,
+                                2,
+                                3
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Fc wirkt in Schnittrichtung, Fp senkrecht zur Bearbeitungsfläche (axial beim Drehen). Die Gesamtkraft ergibt sich vektoriell. Ff ist typischerweise kleiner als Fc. Die Abhängigkeit der Schnittkraft von vc ist nicht linear.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "ft-zg-006",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "wahrfalsch",
+        "frage":  "Beim Reißspan entstehen durch spröden Werkstoffbruch unregelmäßige Spanstücke, was zu unruhigem Schnitt und schlechter Oberflächenqualität führt.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  true,
+        "erklaerung":  "Reißspan tritt bei spröden Werkstoffen (z. B. Gusseisen, gehärteter Stahl) auf. Der periodische Bruch führt zu Schwingungen, unruhigem Schnitt und einer rauen Oberfläche mit hohem Ra-Wert.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "ft-zg-007",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "rechnung",
+        "frage":  "Beim Drehen eines Stahlbauteils beträgt die spezifische Schnittkraft kc = 2800 N/mm². Der Spanungsquerschnitt ergibt sich aus ap = 2,5 mm und f = 0,3 mm. Berechne die Schnittkraft Fc in Newton.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  2100,
+        "einheit":  "N",
+        "toleranz":  50,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Fc = kc · A = kc · ap · f = 2800 N/mm² · 2,5 mm · 0,3 mm = 2100 N.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  "diag:kraeftedreieck",
+        "workedExample":  "Gegeben: kc = 2800 N/mm², ap = 2,5 mm, f = 0,3 mm\nGesucht: Schnittkraft Fc\nFormel: Fc = kc · ap · f\nSchritt 1: Spanungsquerschnitt A = ap · f = 2,5 mm · 0,3 mm = 0,75 mm²\nSchritt 2: Fc = kc · A = 2800 N/mm² · 0,75 mm² = 2100 N\nErgebnis: Fc = 2100 N",
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "ft-zg-008",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "kurzantwort",
+        "frage":  "Wie lautet die Abkürzung für das Toleranzgradsystem nach DIN ISO 286, das die Fertigungsgenauigkeit klassifiziert?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "IT",
+                                         "IT-Grad",
+                                         "Toleranzgrad IT",
+                                         "ISO-Toleranzgrad"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "IT steht für \u0027International Tolerance\u0027 (Internationales Toleranzfeld). Die IT-Grade reichen von IT01 (sehr fein) bis IT18 (grob). Schleifen erreicht IT5–IT6, Drehen IT7–IT9, Bohren IT10–IT12.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "ft-zg-009",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "zuordnung",
+        "frage":  "Ordne dem Fertigungsverfahren den typischen erreichbaren IT-Toleranzgrad zu.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+                      {
+                          "links":  "Schleifen (Feinschleifen)",
+                          "rechts":  "IT 5 – IT 6"
+                      },
+                      {
+                          "links":  "Drehen (Feindrehen)",
+                          "rechts":  "IT 7 – IT 8"
+                      },
+                      {
+                          "links":  "Bohren",
+                          "rechts":  "IT 10 – IT 12"
+                      },
+                      {
+                          "links":  "Reiben",
+                          "rechts":  "IT 6 – IT 7"
+                      }
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Die erreichbaren IT-Grade sind ein Maß für die Verfahrensgenauigkeit: Schleifen ermöglicht die höchste Genauigkeit (IT5/IT6), Reiben folgt (IT6/IT7), dann Drehen (IT7/IT8), Bohren ist am ungenauesten (IT10–IT12).",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "ft-zg-010",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "lueckentext",
+        "frage":  "Kühlschmierstoffe haben die Aufgaben: {{1}} (Wärme abführen), {{2}} (Reibung mindern) und Spülwirkung (Späne abführen). Wasserlösliche KSS bestehen überwiegend aus {{3}}.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+                        [
+                            "Kühlen",
+                            "Kühlwirkung"
+                        ],
+                        [
+                            "Schmieren",
+                            "Schmierwirkung"
+                        ],
+                        [
+                            "Wasser",
+                            "Wasser und Emulgatoren"
+                        ]
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "KSS (Kühlschmierstoffe) erfüllen drei Hauptfunktionen: Kühlen, Schmieren und Spülen. Wasserlösliche KSS (Emulsionen) bestehen zu 90–98 % aus Wasser und bieten eine gute Kühlwirkung; nicht-wasserlösliche (Mineralöle) schmieren besser.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "ft-zg-011",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "multi",
+        "frage":  "Welche Faktoren begünstigen die Bildung von Fließspan? (Mehrfachauswahl)",
+        "optionen":  [
+                         "Hohe Schnittgeschwindigkeit",
+                         "Großer positiver Spanwinkel",
+                         "Niedriger Vorschub",
+                         "Spröder Werkstoff (z. B. Grauguss)",
+                         "Einsatz von Kühlschmierstoff"
+                     ],
+        "richtigeIndizes":  [
+                                0,
+                                1,
+                                4
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Fließspan wird durch hohe vc (weniger Zeit für Bruch), großen positiven Spanwinkel γ (günstigere Spanverformung) und KSS-Einsatz (Schmierung, Wärmeabfuhr) begünstigt. Spröde Werkstoffe bilden Reißspan; niedriger Vorschub allein erzeugt keinen Fließspan.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "ft-zg-012",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "reihenfolge",
+        "frage":  "Bringe die spanenden Verfahren in die Reihenfolge von der geringsten zur höchsten erreichbaren Oberflächengüte (Ra-Wert abnehmend).",
+        "optionen":  [
+                         "Bohren",
+                         "Drehen (Schruppen)",
+                         "Drehen (Schlichten)",
+                         "Feinschleifen",
+                         "Honen"
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+                            0,
+                            1,
+                            2,
+                            3,
+                            4
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Von rauest zu feinst: Bohren (Ra 3,2–12,5 µm) → Drehen Schruppen (Ra 6,3–25 µm, hier Ra größer) → Drehen Schlichten (Ra 0,8–3,2 µm) → Feinschleifen (Ra 0,2–0,8 µm) → Honen (Ra 0,025–0,4 µm). Honen erzielt die feinsten Oberflächen.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "ft-zg-013",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "wahrfalsch",
+        "frage":  "Beim Gegenlauffräsen greift der Fräser so ein, dass die Schnittbewegung entgegen der Vorschubbewegung des Werkstücks gerichtet ist.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  true,
+        "erklaerung":  "Beim Gegenlauffräsen (konventionelles Fräsen) laufen Schnittbewegung und Werkstückvorschub gegeneinander. Der Span beginnt dünn und wird dicker. Vorteil: kein Aufklettern bei Spiel in der Maschine. Nachteil: höhere Wärmeentwicklung und Werkzeugverschleiß gegenüber Gleichlauffräsen.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "ft-zg-014",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "kurzantwort",
+        "frage":  "Welches spanende Verfahren wird zur Herstellung von Innenverzahnungen oder Nuten mit sehr hoher Genauigkeit eingesetzt und arbeitet mit einem profilförmigen Vielschneidwerkzeug in einer einzigen Linearbewegung?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "Räumen",
+                                         "Räumverfahren"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Das Räumen erfolgt mit einem Räumwerkzeug (Räumnadel), das viele hintereinander angeordnete, leicht versetzte Schneiden trägt. In einem einzigen Hub entsteht die fertige Kontur. Es ist sehr produktiv, aber aufwendig in der Werkzeugherstellung.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "ft-zg-015",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "single",
+        "frage":  "Welches Verfahren nach DIN 8580 wird zur Herstellung von Bohrungen mit hoher Maß- und Formgenauigkeit nach dem Bohren eingesetzt, um z. B. H7-Passungen herzustellen?",
+        "optionen":  [
+                         "Senken",
+                         "Reiben",
+                         "Gewindeschneiden",
+                         "Honen"
+                     ],
+        "richtigeIndizes":  [
+                                1
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Das Reiben (Aufweiten) erzeugt Bohrungen der Güte IT6–IT7 (z. B. H7) mit Ra 0,4–1,6 µm. Es nimmt nur geringe Aufmaße von 0,1–0,3 mm ab und verbessert Maß-, Form- und Oberflächengüte nach dem Bohren.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "ft-zg-016",
+        "bereich":  "fertigungstechnik",
+        "kategorie":  "Zerspanung Grundlagen",
+        "typ":  "rechnung",
+        "frage":  "Ein Werkstück aus Stahl wird gedreht. Die spezifische Schnittkraft beträgt kc = 3200 N/mm², die Schnitttiefe ap = 3 mm, der Vorschub f = 0,4 mm/U und die Schnittgeschwindigkeit vc = 120 m/min. Berechne die Schnittleistung Pc in kW.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  7.68,
+        "einheit":  "kW",
+        "toleranz":  0.2,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Pc = Fc · vc / 60000. Fc = kc · ap · f = 3200 · 3 · 0,4 = 3840 N. Pc = 3840 · 120 / 60000 = 7,68 kW.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  "Gegeben: kc = 3200 N/mm², ap = 3 mm, f = 0,4 mm, vc = 120 m/min\nGesucht: Schnittleistung Pc in kW\nSchritt 1: Schnittkraft Fc = kc · ap · f = 3200 · 3 · 0,4 = 3840 N\nSchritt 2: Pc = Fc · vc / 60 000 = 3840 N · 120 m/min / 60 000 = 7,68 kW\n(Umrechnung: 1 kW = 1000 W = 1000 N·m/s; vc in m/min → Division durch 60 ergibt m/s, dann durch 1000 → kW)\nErgebnis: Pc ≈ 7,68 kW",
+        "schwierigkeit":  3
+    }
+]

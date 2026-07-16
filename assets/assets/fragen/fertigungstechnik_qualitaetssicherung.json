@@ -1,0 +1,333 @@
+[
+  {
+    "id": "ft-qs-001",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "kurzantwort",
+    "frage": "Wie lautet die internationale Norm für Qualitätsmanagementsysteme, die von Unternehmen als Basis für ihr QM-System und als Zertifizierungsgrundlage verwendet wird?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["DIN EN ISO 9001", "ISO 9001", "EN ISO 9001"],
+    "wahr": null,
+    "erklaerung": "ISO 9001: International anerkannte Norm für QM-Systeme. Zertifizierung zeigt Kunden: der Anbieter hat ein wirksames QMS. Struktur: prozessorientierter Ansatz, Risikodenken, PDCA-Zyklus, Kundenorientierung. Spezifische Branchennormen: IATF 16949 (Automotive), AS9100 (Luftfahrt), ISO 13485 (Medizin).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-002",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "reihenfolge",
+    "frage": "Bringe die PDCA-Zyklus-Phasen in die richtige Reihenfolge.",
+    "optionen": ["Check – Ergebnis prüfen und messen", "Act – Standardisieren oder korrigieren", "Do – Maßnahmen umsetzen", "Plan – Problem analysieren und Maßnahmen planen"],
+    "richtigeIndizes": [], "reihenfolge": [3, 2, 0, 1], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "PDCA (Deming-Kreis): Plan → Do → Check → Act. Kontinuierliche Verbesserung durch ständige Wiederholung. Plan: Problem + Ursache, Maßnahmen definieren. Do: Testweise umsetzen. Check: Wirksamkeit messen. Act: Wirksames standardisieren (neuer Standard), Unwirksames → zurück zu Plan.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-003",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "lueckentext",
+    "frage": "Die Regelkarte (SPC-Karte) zeigt Messwerte über die Zeit. Liegt ein Messwert außerhalb der {{1}} (= Xquer ± 3σ), ist die Fertigung {{2}}. Die Warngrenzen liegen bei ± {{3}}σ.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["Eingriffsgrenzen", "UCL/LCL", "Regelgrenzen"],
+      ["außer Kontrolle", "nicht unter Kontrolle", "gestört"],
+      ["2", "zwei"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "SPC (Statistical Process Control): Eingriffsgrenzen UCL/LCL = Xquer ± 3σ (99,73% der Normalverteilung). Außerhalb → Sonderursache, Prozess eingreifen. Warngrenzen bei ± 2σ (erste Warnung, noch kein Eingriff nötig). Prozessfahigkeit: cp = (USG - OSG) / (6σ) – bei cp ≥ 1,33 gilt der Prozess als fähig.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "ft-qs-004",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "zuordnung",
+    "frage": "Ordne die Qualitätswerkzeuge (Q7) ihrem Anwendungszweck zu.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "paare": [
+      {"links": "Ishikawa-Diagramm", "rechts": "Ursache-Wirkungs-Analyse (Fischgrätendiagramm)"},
+      {"links": "Pareto-Diagramm", "rechts": "Priorisierung: 20% der Ursachen → 80% der Fehler"},
+      {"links": "Histogramm", "rechts": "Häufigkeitsverteilung von Messwerten darstellen"},
+      {"links": "Fehlersammelkarte", "rechts": "Strukturiertes Erfassen von Fehlerarten und -häufigkeiten"}
+    ],
+    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Die 7 Qualitätswerkzeuge (Q7): Fehlersammelkarte, Histogramm, Qualitätsregelkarte, Pareto-Diagramm, Korrelationsdiagramm, Stratifizierung (Schichtung), Ishikawa-Diagramm. Q7 sind einfache, grafische Werkzeuge für die tägliche Qualitätsarbeit in der Fertigung.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-005",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "wahrfalsch",
+    "frage": "Bei einer 6-Sigma-Fertigung werden statistisch 3,4 Fehler pro Million Möglichkeiten (DPMO) zugelassen, was einem Prozess entspricht, der 99,99966% aller Gelegenheiten fehlerfrei erfüllt.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! 6 Sigma: DPMO = 3,4 (mit ±1,5σ-Drift-Annahme). 99,99966% Güte. Zum Vergleich: 3 Sigma = 66 807 DPMO (93,3%); 4 Sigma = 6210 DPMO; 5 Sigma = 233 DPMO. 6-Sigma-Ziel: praktisch keine Defekte – relevant für sicherheitskritische Branchen (Luftfahrt, Medizin).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "ft-qs-006",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "multi",
+    "frage": "Welche Prüfmerkmale werden im Rahmen der Wareneingangsprüfung typischerweise kontrolliert?",
+    "optionen": [
+      "Maßhaltigkeitsprüfung nach Zeichnungsvorgaben",
+      "Sichtprüfung auf Beschädigungen und Korrosion",
+      "Preis- und Lieferantenvergleich mit anderen Anbietern",
+      "Überprüfung der Begleitdokumente (Lieferschein, Prüfzertifikat)",
+      "Werkstoffprüfung (z.B. Härte, chemische Zusammensetzung) bei kritischen Teilen"
+    ],
+    "richtigeIndizes": [0, 1, 3, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Wareneingangsprüfung: Sicht- und Maßprüfung, Dokumentenprüfung (Prüfzeugnis nach EN 10204: 2.1 Konformitätsbescheinigung, 3.1 Abnahmeprüfzeugnis). Bei sicherheitsrelevanten Teilen: Werkstoffnachweis, Härteprüfung, ggf. ZfP. Preisvergleich ist Einkaufsaufgabe, keine Prüfaufgabe.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-007",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "rechnung",
+    "frage": "Von 2000 gefertigten Teilen werden 80 als Ausschuss und 40 als Nacharbeit bewertet. Berechne die Ausschussrate und die Erstgutrate FPY (First Pass Yield) in %.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 94.0,
+    "einheit": "%",
+    "toleranz": 0.5,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "FPY = Gutteile ohne Nacharbeit / Gesamtstückzahl. Gutteile auf Anhieb: 2000 - 80 (Ausschuss) - 40 (Nacharbeit) = 1880. FPY = 1880/2000 = 94%. Ausschussrate = 80/2000 = 4%. Nacharbeitsrate = 40/2000 = 2%. FPY ist wichtiger als reine Gutmenge, da Nacharbeit Kosten verursacht.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Gutteile (ohne Nacharbeit) = 2000 - 80 - 40 = 1880\nFPY = 1880 / 2000 = 0,94 = 94%",
+    "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-008",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "Was beschreibt der Prozessfähigkeitsindex cp?",
+    "optionen": [
+      "Das Verhältnis der Toleranzbreite zur tatsächlichen Prozessstreuung (6σ)",
+      "Die Anzahl der Ausschussteile pro 1000 Stück",
+      "Den Anteil korrekt geeichter Messmittel im Betrieb",
+      "Das Verhältnis von Hauptzeit zu Nebenzeit"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "cp = T / (6σ) = (OSG - USG) / 6σ. cp ≥ 1,33 ist in der Automobil-Industrie gefordert (Regelgrenze ± 4σ vom Mittelwert entfernt). cp berücksichtigt nur die Streuung, NICHT die Lage des Mittelwerts. Dafür gibt es cpk = min(CPU, CPL) = kleinerer Abstand Mittelwert–Grenze / 3σ.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "ft-qs-009",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt die Vorgehensweise bei der Fehleranalyse, bei der durch fünfmaliges Fragen nach dem \"Warum\" die eigentliche Grundursache eines Problems gefunden werden soll?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["5-Why", "5 Why", "5-Warum", "5 Warum", "Fünf-Warum-Methode"],
+    "wahr": null,
+    "erklaerung": "5-Why (5-Warum): Entwickelt von Sakichi Toyoda (Toyota). Durch iteratives Fragen 'Warum?' kommt man von Symptomen zur Grundursache (Root Cause). Beispiel: Maschine steht → Warum? Sicherung defekt → Warum? Überstrom → Warum? Lager blockiert → Warum? Schmierung vergessen → Root Cause: kein Schmierplan.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-010",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "wahrfalsch",
+    "frage": "Der 8D-Report ist ein strukturierter Problembehebungsprozess mit 8 Disziplinen, der auch die dauerhafte Verhinderung von Wiederholung (D7) und die Würdigung der Teamleistung (D8) beinhaltet.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! 8D: D1 Team bilden, D2 Problem beschreiben, D3 Sofortmaßnahmen (Kundenbelieferung sichern), D4 Ursachenanalyse (Ishikawa, 5-Why), D5 permanente Maßnahmen auswählen, D6 einführen und verifizieren, D7 Wiederholung dauerhaft verhindern (Standards anpassen), D8 Teamleistung anerkennen. Weit verbreitet in der Automobil-Lieferkette.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-011",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "lueckentext",
+    "frage": "Beim Koordinatenmessgerät (KMG) wird mit einem {{1}} die Werkstückoberfläche abgetastet. Die Messung erfolgt in einem klimatisierten Raum bei {{2}}°C, da Wärmedehnung die Messergebnisse verfälscht.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["Messtaster", "Rubintaster", "Tastkopf"],
+      ["20", "20 °C"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "KMG (Koordinatenmessgerät): Messtaster (meist Rubin-Kugeltaster) fährt Messpunkte an und erfasst 3D-Koordinaten (x,y,z). Auswertesoftware berechnet Maße, Form- und Lagetoleranzen. Normtemperatur: 20°C (ISO 1) – Abweichung um 10K verursacht bei Stahl ΔL = 0,12 mm/m. Hochgenaue KMGs mit Granit-Messplatte und Druckluftlager.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-012",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "multi",
+    "frage": "Welche Aussagen zur Messmittelüberwachung und Kalibrierung sind korrekt?",
+    "optionen": [
+      "Messmittel müssen in regelmäßigen Abständen kalibriert und der Status dokumentiert werden",
+      "Ein kalibriertes Messmittel muss immer von einer staatlichen Behörde freigegeben werden",
+      "Kalibrierhistorie und Kalibrierintervall sind im QMS festzulegen",
+      "Rückverfolgbarkeit auf nationale Standards (PTB/DIN) ist nachzuweisen",
+      "Beschädigte Messmittel dürfen bis zum nächsten Kalibrierintervall weiterverwendet werden"
+    ],
+    "richtigeIndizes": [0, 2, 3],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Kalibrierung: Betriebe können intern kalibrieren (nicht nur staatliche Stellen, aber Rückverfolgbarkeit auf Nationale Normale PTB nötig). Intervalle risikobasiert festlegen. Beschädigte Messmittel sofort sperren und neu kalibrieren/ersetzen – Sicherheitsnachweis ungültig! Kalibrieraufkleber und Dokumentation (CAL-Bericht) sind Nachweise.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-013",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "rechnung",
+    "frage": "Eine Messreihe ergibt folgende 5 Messwerte: 25,01; 24,98; 25,03; 24,99; 25,02 mm. Berechne den Mittelwert x̄ in mm.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 25.006,
+    "einheit": "mm",
+    "toleranz": 0.001,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "x̄ = Σxi / n = (25,01 + 24,98 + 25,03 + 24,99 + 25,02) / 5 = 125,03 / 5 = 25,006 mm. In der Messtechnik: mit Messgeräten immer mehrfach messen und Mittelwert bilden → reduziert zufällige Messfehler (Standardmessunsicherheit sinkt mit √n).",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "x̄ = (25,01 + 24,98 + 25,03 + 24,99 + 25,02) / 5 = 125,03 / 5 = 25,006 mm",
+    "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-014",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "Was ist der Unterschied zwischen einem internen und einem externen Audit im Qualitätswesen?",
+    "optionen": [
+      "Intern: vom eigenen Betrieb durchgeführt; Extern: von Kunden oder Zertifizierungsstellen",
+      "Intern: teurer; Extern: günstiger",
+      "Intern: ohne Dokumentation; Extern: mit Zertifikat",
+      "Intern: nur für ISO-zertifizierte Betriebe; Extern: für alle"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Internes Audit (1st Party): Eigene Auditoren prüfen das eigene QMS nach ISO 9001. Lieferantenaudit (2nd Party): Kunde prüft seinen Lieferanten. Zertifizierungsaudit (3rd Party): Unabhängige Zertifizierungsstelle (TÜV, DQS) prüft und erteilt Zertifikat. Alle drei Auditarten sind in ISO 9001 gefordert.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-015",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Qualitätssicherung",
+    "typ": "kurzantwort",
+    "frage": "Wie nennt man das Werkzeug der Qualitätssicherung, das in einer Matrix Fehlerarten gegen Ursachen (Maschine, Mensch, Material, Methode, Milieu) strukturiert darstellt und visuell die Hauptursachen eines Qualitätsproblems zeigt?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Ishikawa-Diagramm", "Ursache-Wirkungs-Diagramm", "Fischgrätendiagramm", "Fishbone-Diagramm"],
+    "wahr": null,
+    "erklaerung": "Das Ishikawa-Diagramm (Kaoru Ishikawa, 1960) zeigt Ursache-Wirkungs-Beziehungen. Die Hauptäste entsprechen den 5M (Maschine, Mensch, Material, Methode, Milieu). Fehlerwirkung am Pfeilkopf. Ermöglicht strukturierte Teamarbeit bei der Ursachenanalyse. Visuell leicht erfassbar.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-016", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "An einer Stichprobe von 200 Teilen werden Fehler bei der Zinkbeschichtung festgestellt. 4 Teile weisen eine zu dünne Zinkschichtdicke auf. Wie hoch ist der prozentuale Anteil dieser Fehlerart?",
+    "optionen": ["0,5 %", "1,0 %", "1,5 %", "2,0 %", "4,0 %"],
+    "richtigeIndizes": [3], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Anteil = 4 / 200 × 100 % = 2,0 %. Dies ist die Fehlerquote (auch: Fehleranteil p) für die Fehlerart 'zu dünne Zinkschichtdicke'. Für die statistische Prozesskontrolle (SPC) und p-Charts wäre dies der berechnete Anteilswert p.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-017", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "rechnung",
+    "frage": "In einer Stichprobenprüfung wurden insgesamt 11 fehlerhafte Teile gefunden. Davon hatten 3 Teile eine zu dünne Zinkschichtdicke. Wie viel Prozent (%) dieser Fehlerart entfallen auf alle Fehler (Anteil in der Fehlerstruktur)?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 27.3, "einheit": "%", "toleranz": 0.5,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "3 von 11 Fehlern entfallen auf 'zu dünne Zinkschichtdicke': 3/11 × 100 % ≈ 27,3 %. Dies ist der relative Anteil dieser Fehlerart an der Fehlergesamtheit – nützlich für die Pareto-Analyse zur Priorisierung von Verbesserungsmaßnahmen.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Anteil = (Anzahl dieser Fehlerart) / (Gesamtfehler) × 100\nAnteil = 3 / 11 × 100 % ≈ 27,3 %",
+    "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-018", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "Im Rahmen der SPC (Statistische Prozessregelung) soll die Oberflächengüte der Antriebswelle nach der spanenden Fertigung variabel geprüft werden. Welches Prüfmittel ist dafür auszuwählen?",
+    "optionen": ["Sichtprüfung mit Lupe", "Messuhr", "Tastschnittgerät (Profilometer)", "Feinzeiger", "Vergleichsnormale für Oberflächenrauheit"],
+    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Das Tastschnittgerät (Profilometer) tastet die Oberfläche mechanisch ab und ermittelt Rauheitskennwerte (Ra, Rz) numerisch. Es ist das einzige Prüfmittel, das Rauheit quantitativ erfasst. Sichtprüfung und Vergleichsnormale sind nur qualitativ. Messuhr und Feinzeiger messen Maße (Durchmesser, Rundheit), keine Rauheit.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-019", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "Durch welches zerstörungsfreie Werkstoffprüfverfahren (ZfP) können innenliegende Schlackeneinschlüsse in Schweißnähten des Schwenklagers erkannt werden?",
+    "optionen": ["Farbeindringverfahren (PT)", "Ultraschallprüfung (UT)", "Metallmikroskopie (Schliff)", "Vickers-Härteprüfung", "Zugversuch"],
+    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Die Ultraschallprüfung (UT) erkennt innere Fehler (Schlackeneinschlüsse, Poren, Risse) durch Reflexion von Schallwellen an Grenzflächen. Das Farbeindringverfahren (PT) erkennt nur Oberflächenfehler. Die Metallmikroskopie ist destruktiv (erfordert Schliffprobe). Härteprüfung und Zugversuch sind mechanische Prüfverfahren ohne ZfP-Funktion.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-020", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "Was ist laut DIN EN ISO 9000 ein 'Fehler' in der Qualitätssicherung?",
+    "optionen": ["Jede Abweichung vom Nennmaß", "Nichterfüllung einer festgelegten Forderung (Anforderung)", "Ein defektes Bauteil in der Fertigung", "Überschreitung des Toleranzfeldes um mehr als 10 %", "Eine Abweichung, die zur Kundenreklamation führt"],
+    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Nach DIN EN ISO 9000 ist ein Fehler die 'Nichterfüllung einer Anforderung'. Dieser Begriff ist bewusst weit gefasst: Eine Anforderung kann eine Maßtoleranz, eine Dokumentationspflicht, eine Oberflächenrauheit oder ein Liefertermin sein. Die Definition deckt technische und organisatorische Fehler ab. Eine Abweichung innerhalb des Toleranzfeldes ist KEIN Fehler.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-021", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "rechnung",
+    "frage": "In einer Stichprobe von 5 gebohrten Löchern werden folgende Durchmesser gemessen: 20,02 / 20,05 / 19,98 / 20,03 / 20,04 mm. Wie groß ist die Spannweite R (in mm)?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 0.07, "einheit": "mm", "toleranz": 0.005,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Spannweite R = Maximalwert − Minimalwert. Max = 20,05 mm; Min = 19,98 mm. R = 20,05 − 19,98 = 0,07 mm. Die Spannweite ist ein einfaches Streuungsmaß in der statistischen Prozesskontrolle (SPC). Sie zeigt, wie weit die Messwerte auseinanderliegen.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Max = 20,05 mm; Min = 19,98 mm\nR = Max − Min = 20,05 − 19,98 = 0,07 mm",
+    "schwierigkeit": 1
+  },
+  {
+    "id": "ft-qs-022", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "Die Bohrstation (S19) hat hohe Stillstandszeiten. Um die Hauptursachen zu identifizieren, sollen die Störungsmeldungen nach Häufigkeit geordnet und die wichtigsten Ursachen priorisiert werden. Welche Qualitätsmethode ist hierfür geeignet?",
+    "optionen": ["Ishikawa-Diagramm (Ursache-Wirkungs-Diagramm)", "Paretoanalyse (ABC-Analyse nach Häufigkeit)", "FMEA (Fehlermöglichkeits- und Einflussanalyse)", "Stichprobenkontrolle nach AQL", "Gage R&R (Messsystemanalyse)"],
+    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Die Paretoanalyse ordnet Fehlerarten oder Störungsursachen nach ihrer Häufigkeit oder Auswirkung. Das Pareto-Prinzip: ca. 20 % der Ursachen verursachen 80 % der Probleme. Die wichtigsten Störungsarten werden priorisiert und zuerst behoben. Das Ishikawa-Diagramm analysiert Ursachen für EINE bekannte Wirkung; FMEA analysiert potenzielle Fehler präventiv.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-023", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "Die Zylinderbohrung der Schaltvorrichtung (S18) hat die Toleranzangabe Ø80H7, der Schaltkolben (Pos. 16) die Toleranz Ø80g6. Welche ISO-Passungsart entsteht zwischen Zylinder und Kolben?",
+    "optionen": ["Presspassung (Übermaßpassung) – der Kolben muss eingepresst werden.", "Spielpassung (Gleitpassung) – der Kolben hat ein definiertes Spiel im Zylinder.", "Übergangspassung – es kann Spiel oder Übermaß entstehen.", "Engpassung – der Kolben lässt sich nur mit einem Hammer einschlagen.", "Normalpassung – kein Spiel, kein Übermaß."],
+    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "H7/g6 ist eine Spielpassung (Gleitpassung): H7 = Grundbohrung (Einheitsbohrung, Untermaß = 0), g6 = Welle mit negativem Abmaß (kleiner als Nennmaß). Das Ergebnis ist immer ein Spiel (positives Passungsmaß). Bei einem Hydraulikkolben ist Spielpassung erforderlich: Der Kolben muss leicht gleiten (reibungsarme Bewegung), das Spiel wird durch Dichtungen (O-Ringe, Kolbenringe) hydraulisch abgedichtet.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-qs-024", "bereich": "fertigungstechnik", "kategorie": "Qualitätssicherung",
+    "typ": "single",
+    "frage": "Der Kopfkreisdurchmesser des Primärrads (Pos. 6, Da = 177 mm) der Schaltvorrichtung (S18) soll nach der Fertigung auf Maßhaltigkeit geprüft werden. Welches Messmittel ist für dieses Außenmaß geeignet?",
+    "optionen": ["Rachenlehre (für Go/No-Go-Prüfung) – prüft nur, ob das Maß im Toleranzband liegt.", "Innenmessgerät (Drei-Punkt-Innenmesstaster) – geeignet für Bohrungen, nicht für Außendurchmesser.", "Außenmikrometer (Bügelmessschraube) im Bereich 175–200 mm oder Messschieber für grobe Kontrolle.", "Tastschnittgerät (Rauheitsmessgerät) – misst die Oberflächenrauheit, nicht das Maß.", "Koordinatenmessmaschine (KMM) ist das einzige mögliche Messmittel."],
+    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Außenmikrometer (Bügelmessschraube) für Außendurchmesser: Standardmessmittel für Außenmaße mit Auflösung 0,001 mm (1 µm). Für Ø177 mm wird der Bereich 175–200 mm benötigt. Der Messschieber eignet sich für Sichtkontrolle (±0,05 mm). Für Zahnradkopfkreise ist die Koordinatenmessmaschine (KMM) das präziseste Mittel; im Werkstattbetrieb genügt das Außenmikrometer.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  }
+]

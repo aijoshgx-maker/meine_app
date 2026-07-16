@@ -1,0 +1,239 @@
+[
+  {
+    "id": "wi-vs-001",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "kurzantwort",
+    "frage": "Wie viele Tage hat ein Verbraucher laut EU-Richtlinie und deutschem Recht (§ 355 BGB) grundsätzlich Zeit, um einen im Fernabsatz (z.B. Online-Shop) geschlossenen Vertrag zu widerrufen?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["14 Tage", "14", "vierzehn Tage"],
+    "wahr": null,
+    "erklaerung": "Widerrufsrecht (§§ 355, 312g BGB): 14 Tage ab Erhalt der Ware (Fernabsatz, Haustürgeschäft). Pflicht: Verkäufer muss über das Widerrufsrecht belehren. Ohne Belehrung: Widerrufsfrist verlängert sich auf 12 Monate und 14 Tage. Ausnahmen: maßgeschneiderte Waren, Hygieneartikel nach Versiegelungsöffnung, digitale Inhalte nach Download.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-vs-002",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "zuordnung",
+    "frage": "Ordne die Verbraucherschutzgesetze ihrem Anwendungsbereich zu.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "paare": [
+      {"links": "UWG (Gesetz gegen unlauteren Wettbewerb)", "rechts": "Schutz vor irreführender Werbung und aggressiven Geschäftspraktiken"},
+      {"links": "PAngV (Preisangabenverordnung)", "rechts": "Pflicht zur Angabe von Gesamtpreisen inklusive aller Steuern"},
+      {"links": "DSGVO (Datenschutz-Grundverordnung)", "rechts": "Schutz personenbezogener Daten der Verbraucher"},
+      {"links": "ProdHaftG (Produkthaftungsgesetz)", "rechts": "Haftung des Herstellers für fehlerhafte Produkte ohne Verschuldensnachweis"}
+    ],
+    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Verbraucherschutzrecht ist umfangreich: UWG (unlautere Werbung, Spam, Dark Patterns), PAngV (transparente Preisgestaltung), DSGVO (Datenschutz, Auskunfts- und Löschrechte), ProdHaftG (Herstellerhaftung, kein Verschuldensnachweis nötig – verschuldensunabhängige Gefährdungshaftung). Grundlage: Artikel 114 AEUV und nationale Umsetzungsgesetze.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-003",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "wahrfalsch",
+    "frage": "Das Produkthaftungsgesetz (ProdHaftG) verpflichtet den Verbraucher, dem Hersteller schuldhaftes Verhalten nachzuweisen, um Schadensersatz zu erhalten.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": false,
+    "erklaerung": "Falsch! ProdHaftG sieht eine verschuldensunabhängige Haftung vor: Der Verbraucher muss nur beweisen, dass das Produkt fehlerhaft war und der Schaden dadurch entstanden ist – KEIN Verschuldensnachweis gegen den Hersteller nötig. Haftungsgrenze: 85 Mio. € je Produktfehler, Selbstbehalt 500 € für Sachschäden. Personenschäden: unbegrenzt.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-004",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "multi",
+    "frage": "Welche Rechte haben Verbraucher nach der DSGVO?",
+    "optionen": [
+      "Recht auf Auskunft über gespeicherte personenbezogene Daten",
+      "Recht auf Löschung ('Recht auf Vergessenwerden')",
+      "Recht auf vollständige Anonymität im Internet",
+      "Recht auf Datenübertragbarkeit (Portabilität zu anderem Anbieter)",
+      "Recht auf Berichtigung unrichtiger Daten"
+    ],
+    "richtigeIndizes": [0, 1, 3, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "DSGVO-Rechte (Art. 12-22): Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Portabilität (Art. 20), Widerspruch (Art. 21). Kein absolutes Recht auf Anonymität – im Strafrecht kann Identität aufgedeckt werden. Beschwerderecht bei Datenschutzbehörde. Bußgelder bis 4% des weltweiten Jahresumsatzes.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-005",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "lueckentext",
+    "frage": "Laut UWG (§ 5) ist Werbung {{1}}, wenn sie falsche Angaben macht oder Verbraucher über wesentliche Merkmale täuscht. Unzulässig sind auch {{2}} Geschäftspraktiken (§ 4a UWG), die Verbraucher z.B. durch Belästigung oder Nötigung zur Kaufentscheidung zwingen.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["irreführend", "unlauter"],
+      ["aggressive", "aufdringliche"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "UWG (Gesetz gegen den unlauteren Wettbewerb): Schützt Verbraucher UND Mitbewerber vor unfairen Praktiken. Irreführung: falsche Preise, verschwiegene Kosten, falsche Aussagen über Herkunft. Aggressive Praktiken: aufdringliche Haustürwerbung, Dark Patterns im Internet, psychologischer Druck. Unterlassungsansprüche durch Verbände und Konkurrenten möglich.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-006",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "single",
+    "frage": "Was schützt das Gesetz gegen den unlauteren Wettbewerb (UWG) außer Verbrauchern?",
+    "optionen": [
+      "Auch Mitbewerber und die Allgemeinheit vor unfairen Geschäftspraktiken",
+      "Nur Verbraucher, nicht Unternehmen",
+      "Staatliche Monopole vor privatem Wettbewerb",
+      "Nur ausländische Unternehmen gegen inländische Konkurrenz"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "UWG § 1: Schutzzweck ist fairer Wettbewerb zugunsten aller Marktteilnehmer: Verbraucher (vor Täuschung), Mitbewerber (vor unfairern Wettbewerbsmethoden) und Allgemeinheit (intakter Wettbewerb als Ordnungsgut). Beispiel: Ein Unternehmen kann gegen das Nachahmungsprodukt eines Konkurrenten klagen (§ 4 UWG). Abmahnwesen: private Rechtsdurchsetzung durch Wettbewerbsverbände.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-007",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "wahrfalsch",
+    "frage": "AGB (Allgemeine Geschäftsbedingungen) können wirksam vereinbart werden, ohne dass der Verbraucher von jeder einzelnen Klausel Kenntnis nehmen musste – solange er der Einbeziehung der AGB insgesamt zugestimmt hat.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt (mit Einschränkungen)! § 305 BGB: AGB werden Vertragsbestandteil, wenn der Verwender auf sie hinweist, der Vertragspartner Möglichkeit der Kenntnisnahme hat und zustimmt. Der Verbraucher muss nicht jede Klausel lesen, aber: Überraschende Klauseln (§ 305c) und unangemessene Benachteiligungen (§ 307) sind unwirksam. AGB-Kontrolle durch Gerichte schützt Verbraucher.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-vs-008",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "reihenfolge",
+    "frage": "Bringe die Schritte vor, die ein Verbraucher bei einem Mangel an einer online gekauften Ware durchführen sollte.",
+    "optionen": ["Klage beim Amtsgericht oder Schlichtung", "Rüge des Mangels gegenüber dem Händler", "Fristsetzung zur Nacherfüllung (Reparatur oder Neulieferung)", "Rücktritt vom Vertrag nach fruchtloser Fristsetzung"],
+    "richtigeIndizes": [], "reihenfolge": [1, 2, 3, 0], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Mängelablauf: 1) Mängel rügen (schriftlich, Foto). 2) Nacherfüllung verlangen (Reparatur oder Neulieferung) + angemessene Frist setzen. 3) Nach fruchtlosem Ablauf: Rücktritt oder Minderung. 4) Gerichtlich oder außergerichtliche Schlichtung (Europäische Online-Streitbeilegung, OS-Plattform). Ohne Fristsetzung kein Rücktritt möglich (außer Erfüllung endgültig verweigert).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-009",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "kurzantwort",
+    "frage": "Welche Kennzeichnung müssen Lebensmittel in der EU zwingend tragen, die über mögliche Allergieauslöser informiert?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Allergenkennzeichnung", "Allergeninformation", "14 Hauptallergene", "Pflichtangabe Allergene"],
+    "wahr": null,
+    "erklaerung": "EU-Lebensmittelinformationsverordnung (LMIV, EU Nr. 1169/2011): 14 Hauptallergene müssen gekennzeichnet sein (Gluten, Krebstiere, Eier, Fisch, Erdnüsse, Soja, Milch, Nüsse, Sellerie, Senf, Sesam, SO₂, Lupinen, Weichtiere). In Deutschland auch für lose Ware (Restaurantbestellungen, Bäckereien) Allergenkennzeichnung Pflicht.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-010",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "multi",
+    "frage": "Welche Angaben muss eine Produktetikette nach EU-Recht für Lebensmittel enthalten?",
+    "optionen": [
+      "Bezeichnung des Lebensmittels",
+      "Zutatenverzeichnis (in absteigender Reihenfolge)",
+      "Mindesthaltbarkeitsdatum (MHD) oder Verbrauchsdatum",
+      "Name und Adresse des Herstellers des Verpackungsmaterials",
+      "Nährwertinformation (Brennwert, Fette, Kohlenhydrate, Eiweiß)"
+    ],
+    "richtigeIndizes": [0, 1, 2, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "LMIV-Pflichtangaben: Bezeichnung, Zutaten, Allergene (hervorgehoben), Nettofüllmenge, MHD/Verbrauchsdatum, besondere Aufbewahrungs-/Verwendungsbedingungen, Name/Adresse des Lebensmittelunternehmers (nicht Verpackungshersteller), Ursprungsland (bei Fleisch etc.), Nährwertinformation. Zutaten: absteigend nach Gewichtsanteil (schwerste Zutat zuerst).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-011",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "wahrfalsch",
+    "frage": "Das Mindesthaltbarkeitsdatum (MHD) bedeutet, dass ein Lebensmittel nach diesem Datum sofort gesundheitsgefährdend und unbedingt zu entsorgen ist.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": false,
+    "erklaerung": "Falsch! MHD ('mindestens haltbar bis') ≠ Verfallsdatum. Das MHD gibt an, bis wann der Hersteller bestimmte Eigenschaften (Geschmack, Konsistenz, Nährstoffe) garantiert. Danach kann das Produkt noch genießbar sein – Sicht- und Riechprüfung. Ausnahme: Verbrauchsdatum ('zu verbrauchen bis') bei verderblichen Lebensmitteln (Hackfleisch, Fisch) → danach wirklich nicht mehr essen!",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-vs-012",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "single",
+    "frage": "Was ist eine unzulässige 'Cold-Call'-Werbung und welches Gesetz schützt davor?",
+    "optionen": [
+      "Unerwünschte Werbeanrufe ohne vorherige Einwilligung; verboten durch UWG § 7",
+      "Werbung in Kaltenbach-Regionen Deutschlands; verboten durch regionale Gesetze",
+      "Werbung außerhalb der Hauptsendezeit; durch Rundfunkstaatsvertrag geregelt",
+      "Werbung für gekühlte Produkte; durch Lebensmittelrecht geregelt"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Cold Calling (Kaltakquise per Telefon): § 7 UWG verbietet Werbeanrufe gegenüber Verbrauchern ohne ausdrückliche Einwilligung (Opt-in). E-Mail-Werbung: nur mit Einwilligung. Ausnahme B2B: mutmaßliches Interesse ausreichend. Bundesnetzagentur: Beschwerden möglich. Bußgelder bis 300.000 € für hartnäckige Callcenter.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-013",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "lueckentext",
+    "frage": "Im B2C-Kaufrecht (Verbrauchsgüterkauf) gilt: Wenn innerhalb von {{1}} Monaten ein Mangel auftritt, wird vermutet, dass er bereits bei {{2}} vorhanden war. Diese Regelung nennt man {{3}}.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["12", "zwölf"],
+      ["Übergabe", "Lieferung"],
+      ["Beweislastumkehr", "Vermutungsregel"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "§ 477 BGB (seit 1.1.2022): 12 Monate Beweislastumkehr bei Verbrauchsgüterkauf (vorher 6 Monate). Danach: Käufer muss beweisen, dass Mangel bei Übergabe vorlag. Diese Regelung ist verbraucherfreundlich, da Verbraucher oft nicht wissen, ob ein Defekt schon bei Lieferung vorhanden war. Händler kann Gegenbeweis führen (z.B. Nutzungsschaden).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-014",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "multi",
+    "frage": "Welche Institutionen und Organisationen setzen Verbraucherschutz in Deutschland um?",
+    "optionen": [
+      "Verbraucherzentralen (bundesweit, beraten und klagen)",
+      "Bundeskartellamt (verhindert Preisabsprachen und Monopole)",
+      "Stiftung Warentest (unabhängige Produkttests und Veröffentlichungen)",
+      "Industrie- und Handelskammer (IHK)",
+      "Bundesamt für Verbraucherschutz und Lebensmittelsicherheit (BVL)"
+    ],
+    "richtigeIndizes": [0, 1, 2, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Verbraucherschutzakteure: Verbraucherzentralen (Beratung, Abmahnungen, Verbandsklagen), Bundeskartellamt (Wettbewerb), Stiftung Warentest (finanziert durch Bundesmittel, unabhängige Tests), BVL (Lebensmittelsicherheit, Produktsicherheit). IHK vertritt Unternehmensinteressen, nicht Verbraucherinteressen. Europäisch: BEUC (Dachverband der Verbraucherorganisationen).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-vs-015",
+    "bereich": "wiso",
+    "kategorie": "Verbraucherschutz",
+    "typ": "kurzantwort",
+    "frage": "Welches Recht ermöglicht Verbraucherverbänden, im Namen vieler betroffener Verbraucher eine gemeinsame Klage gegen ein Unternehmen einzureichen (seit 2018 in Deutschland und EU)?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Musterfeststellungsklage", "Verbandsklage", "Kollektivklage", "class action"],
+    "wahr": null,
+    "erklaerung": "Musterfeststellungsklage (§ 606 ZPO, seit Nov. 2018): Verbraucherverbände (z.B. vzbv) können für mind. 10 betroffene Verbraucher klagen. Gericht stellt Tatsachen und Rechtsfragen fest. Bekanntes Beispiel: VW-Dieselskandal (Klage des vzbv). Vorteil: Verbraucher ohne Prozesskostenrisiko. EU: Verbandsklagerichtlinie (2023 umgesetzt) stärkt kollektiven Rechtsschutz.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  }
+]

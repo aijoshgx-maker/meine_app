@@ -1,0 +1,321 @@
+[
+  {
+    "id": "fg-001",
+    "titel": "Instandsetzung Axialkolbenpumpe",
+    "kontext": "Sie haben soeben die Axialkolbenpumpe (Typ AKP-250) einer automatischen Verzinkungsanlage instandgesetzt. Der Prüfer befragt Sie zu Ihrem Vorgehen, zur Funktion der Bauteile und zu Ihren Entscheidungen während der Instandsetzung.",
+    "fertigungsauftrag": "FA-2023-047: Instandsetzung Axialkolbenpumpe Typ AKP-250 der Verzinkungsanlage. Fehlerursache: Rillenkugellager (Pos. 11) defekt, starke Laufgeräusche. Maßnahme: Lager ausbauen, Welle und Lagersitz prüfen, neues Lager (SKF 6205-2Z) einbauen, Anlage wieder in Betrieb nehmen.",
+    "zeichnungsKey": null,
+    "kategorien": ["Auftrags- und Funktionsanalyse", "Instandhaltung", "Maschinenelemente"],
+    "fragen": [
+      {
+        "id": "fg-001-f01",
+        "pruefer": "Beschreiben Sie kurz die Funktion der elastischen Klauenkupplung, die die Axialkolbenpumpe mit dem Antriebsmotor verbindet.",
+        "musterloesung": "Die elastische Klauenkupplung überträgt das Drehmoment formschlüssig vom Motor zur Pumpe. Der einvulkanisierte Elastomer-Stern dämpft dabei Drehmomentschwankungen und Stöße, die aus dem Pumpbetrieb entstehen. Kleine Winkel- und Achsversätze zwischen Motor- und Pumpenwelle werden ebenfalls toleriert.",
+        "schluesselwoerter": ["formschlüssig", "Elastomer", "Drehmoment", "Stöße dämpfen"],
+        "erklaerung": "Die elastische Klauenkupplung überträgt Drehmoment formschlüssig (nicht kraftschlüssig). Der Elastomer-Stern ist das Kernmerkmal – er dämpft Schwingungen und schützt die Lager vor Stoßbelastungen. Verwechslungsgefahr: Reibkupplung (kraftschlüssig), starre Kupplung (kein Ausgleich).",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-001-f02",
+        "pruefer": "Wie haben Sie festgestellt, dass das Rillenkugellager defekt ist, und welche Diagnose-Methoden stehen dafür zur Verfügung?",
+        "musterloesung": "Hauptindiz war ein zunehmendes Laufgeräusch (Knurren, Rattern), das auf Pittings oder Lagerschäden hinweist. Zur Diagnose können eingesetzt werden: akustische Kontrolle mit Körperschallmessgerät oder Hörrohr, Schwingungsmessung (Beschleunigungsaufnehmer), Temperaturmessung am Lager (IR-Thermometer), sowie die visuelle Sichtprüfung nach dem Ausbau (Pittings, Laufrillen, Korrosion).",
+        "schluesselwoerter": ["Laufgeräusch", "Körperschallmessung", "Schwingungsmessung", "Sichtprüfung"],
+        "erklaerung": "Im Prüfungsgespräch werden mindestens 2-3 Methoden erwartet. Akustik ist die schnellste und einfachste Methode im Feld. Schwingungsdiagnose ist die professionellste Methode (Frequenzanalyse). Temperaturanstieg ist ein Spätzeichen.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-001-f03",
+        "pruefer": "Warum haben Sie beim Einpressen des neuen Rillenkugellagers eine Einpresshülse verwendet, die nur den Außenring berührt?",
+        "musterloesung": "Der Außenring hat in der Lagerbohrung eine Presspassung (Umfangslast), muss also mit Kraft eingepresst werden. Die Montagekraft muss direkt auf den zu pressenden Laufring – hier den Außenring – übertragen werden. Würde man die Kraft über die Wälzkörper auf den Innenring leiten, entstehen Brinellmarken (Eindrücke) an den Laufbahnen, die das Lager sofort schädigen. Deshalb Einpresshülse, die ausschließlich auf dem Außenring aufliegt.",
+        "schluesselwoerter": ["Presspassung", "Umfangslast", "Brinellmarken", "Einpresshülse"],
+        "erklaerung": "Dieser Punkt wird in IHK-Prüfungen häufig abgefragt. Kernaussage: Kraft IMMER auf den zu pressenden Laufring, NIEMALS durch die Wälzkörper. Brinellmarken sind die typische Folge falscher Montage.",
+        "schwierigkeit": 3
+      },
+      {
+        "id": "fg-001-f04",
+        "pruefer": "Welcher Laufring des Rillenkugellagers benötigt in dieser Anwendung (rotierende Welle, fester Lagerblock) die Presspassung – und warum?",
+        "musterloesung": "Der Innenring benötigt die Presspassung, weil er auf der rotierenden Welle sitzt und Umfangslast trägt. Bei einer rotierenden Welle dreht sich der Innenring mit – die Belastung trifft nacheinander alle Stellen seines Umfangs. Ohne Presspassung würde der Innenring auf der Welle gleiten (Passungsrost, Wellenverschleiß). Der Außenring sitzt im feststehenden Lagerblock und trägt Punktlast; er kann mit Spielpassung eingebaut werden.",
+        "schluesselwoerter": ["Innenring", "Umfangslast", "Presspassung", "Punktlast"],
+        "erklaerung": "Merkregel: Der Laufring mit Umfangslast (rotierende Belastung über seinen gesamten Umfang) braucht immer Presspassung. Bei rotierender Welle = Innenring. Bei rotierendem Gehäuse = Außenring. Der Laufring mit Punktlast (Last trifft immer dieselbe Stelle) kann mit Spielpassung laufen.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-001-f05",
+        "pruefer": "Die Axialkolbenpumpe arbeitet mit Hydrauliköl ISO VG 46. Was versteht man unter der Viskositätsklasse ISO VG und was bedeutet die Zahl 46?",
+        "musterloesung": "ISO VG steht für ISO Viscosity Grade (ISO-Viskositätsklasse). Die Zahl 46 gibt die kinematische Viskosität des Öls bei 40 °C in Millimeter-Quadrat pro Sekunde (mm²/s) an. ISO VG 46 hat also bei 40 °C eine Viskosität von 46 mm²/s. Je höher die VG-Zahl, desto zähflüssiger ist das Öl. Für unsere Anlage (Betriebstemperatur 40–95 °C) ist VG 46 geeignet, da es im gesamten Temperaturbereich die Mindest-Schmierwirkung gewährleistet.",
+        "schluesselwoerter": ["ISO VG", "Viskosität", "40 °C", "mm²/s", "kinematisch"],
+        "erklaerung": "VG = Viscosity Grade. Die Zahl = kinematische Viskosität bei 40°C in mm²/s. Häufig geprüftes Wissen: Viskosität ist die Zähflüssigkeit des Öls; mit steigender Temperatur sinkt sie; VG46 ist Standard-Hydrauliköl für viele Industrieanlagen.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-001-f06",
+        "pruefer": "Welche Instandhaltungsmaßnahmen sind nach DIN 31051 nach dem Lagertausch zu dokumentieren, und welchem Instandhaltungsbegriff ordnen Sie den Lagertausch zu?",
+        "musterloesung": "Der Lagertausch ist eine Instandsetzung nach DIN 31051, da der Soll-Zustand der Maschine (geräuschloser Betrieb) wiederhergestellt wird. Zu dokumentieren sind: Datum und Uhrzeit der Maßnahme, ausgeführte Tätigkeit (Lageraustausch Pos. 11), verwendetes Ersatzteil (SKF 6205-2Z, Charge/Seriennummer), gemessene Werte vor und nach der Instandsetzung (Geräuschpegel, Lagertemperatur), Name des Ausführenden, sowie etwaige Besonderheiten oder Nacharbeiten.",
+        "schluesselwoerter": ["Instandsetzung", "DIN 31051", "Dokumentation", "Soll-Zustand"],
+        "erklaerung": "DIN 31051 unterscheidet: Wartung (Verzögerung des Abbaus), Inspektion (Ist-Zustand feststellen), Instandsetzung (Soll-Zustand wiederherstellen) und Verbesserung. Lagertausch nach Schaden = Instandsetzung. Ölwechsel nach Plan = Wartung. Geräuschwachaufnahme = Inspektion.",
+        "schwierigkeit": 2
+      }
+    ]
+  },
+  {
+    "id": "fg-002",
+    "titel": "Auftragsanalyse Verzinkungsanlage",
+    "kontext": "Sie sollen die automatische Verzinkungsanlage in Betrieb nehmen. Der Prüfer befragt Sie zum hydraulischen Steuerkreis, zur Sensorik und zur Sicherheitstechnik der Anlage.",
+    "fertigungsauftrag": "FA-2023-112: Inbetriebnahme automatische Verzinkungsanlage nach Umbau. Prüfung: Hydraulikkreis auf Funktion und Dichtigkeit, Sensoren auf korrekte Signalausgabe, GRAFCET-Ablauf auf Vollständigkeit. Dokumentation: Inbetriebnahmeprotokoll erstellen.",
+    "zeichnungsKey": null,
+    "kategorien": ["Steuerung und Regelung", "Hydraulik", "Funktionsanalyse"],
+    "fragen": [
+      {
+        "id": "fg-002-f01",
+        "pruefer": "Im hydraulischen Schaltplan ist ein Druckbegrenzungsventil eingezeichnet. Welche Aufgabe hat dieses Bauteil, und was passiert, wenn es falsch eingestellt ist?",
+        "musterloesung": "Das Druckbegrenzungsventil (DBV) begrenzt den maximalen Systemdruck der Hydraulikanlage. Es öffnet, sobald der eingestellte Grenzdruck überschritten wird, und leitet das Öl drucklos in den Tank zurück. Zu niedrig eingestellt: Die Anlage erreicht nicht den für den Hubzylinder notwendigen Arbeitsdruck – der Materialkorb kann nicht gehoben werden. Zu hoch eingestellt: Leitungen, Schläuche und Zylinder können überlastet und beschädigt werden; erhöhte Unfallgefahr.",
+        "schluesselwoerter": ["Druckbegrenzungsventil", "Systemdruck", "Tank", "Überlastung"],
+        "erklaerung": "Das DBV ist das primäre Sicherheitsbauteil in einer Hydraulikanlage. Es schützt alle druckführenden Komponenten vor Überdruck. Ohne funktionierendes DBV kann ein Druckstoß (z.B. beim Blockieren des Zylinders) Leitungen platzen lassen.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-002-f02",
+        "pruefer": "Beschreiben Sie den Unterschied zwischen einem Reedkontakt (BG7) und einem induktiven Näherungsschalter (BG10) hinsichtlich Wirkprinzip und Anwendung.",
+        "musterloesung": "Der Reedkontakt (BG7) besteht aus zwei ferromagnetischen Kontaktzungen in einem Glasrohr. Ein Permanentmagnet (z.B. am Zylinderhubkolben befestigt) schließt den Kontakt berührungslos. Er erkennt nur Magnetfelder – unabhängig vom Werkstoffmaterial. Der induktive Näherungsschalter (BG10) erzeugt ein elektromagnetisches Wechselfeld; metallische Objekte im Feld induzieren Wirbelströme und verändern die Feldenergie, was die Steuerung auslöst. Er erkennt nur metallische Objekte, aber ist robuster und ohne bewegliche Teile.",
+        "schluesselwoerter": ["Reedkontakt", "Permanentmagnet", "induktiv", "Wirbelstrom", "Metall"],
+        "erklaerung": "Reedkontakt: erkennt Magnetfelder (Magnet am Zylinder); Anwendung: Zylinderendlagenabfrage. Induktiver NS: erkennt Metall (Wirbelstromprinzip); Anwendung: Werkstückträgererkennung. Kapazitiver NS: erkennt fast alle Materialien inkl. Kunststoff, Flüssigkeiten.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-002-f03",
+        "bildAsset": "diag:grafcet_basis",
+        "pruefer": "Der GRAFCET-Plan zeigt, dass der Heizstab EH1 eingeschaltet wird, bis Sensor BT1 die Solltemperatur meldet. Welche zwei GRAFCET-Elemente beschreiben diesen Vorgang, und wie sind sie verknüpft?",
+        "musterloesung": "Ein Schritt mit der Aktion 'EH1 einschalten' folgt auf die Transition, die den vorherigen Schritt abgeschlossen hat. Dieser Schritt bleibt aktiv, solange die Transition 'BT1 >= Solltemperatur' nicht wahr ist. Wird die Bedingung wahr, schaltet die Transition und aktiviert den nächsten Schritt, in dem EH1 ausgeschaltet wird. Schritte beschreiben stabile Zustände mit Aktionen; Transitionen beschreiben Weiterschaltbedingungen.",
+        "schluesselwoerter": ["Schritt", "Transition", "Aktion", "Weiterschaltbedingung"],
+        "erklaerung": "GRAFCET-Grundstruktur: Schritt (Kasten mit Nummer, Aktionen darunter) → Transition (waagrechter Strich mit Bedingung) → nächster Schritt. Aktionen laufen solange der Schritt aktiv ist. Transitionen schalten sofort wenn ihre Bedingung erfüllt ist.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-002-f04",
+        "pruefer": "Warum verhindert das Rückschlagventil im Hubzylinderkreis ein unkontrolliertes Absenken des Materialkorbs bei Pumpenausfall?",
+        "musterloesung": "Das Rückschlagventil lässt Hydrauliköl nur in einer Richtung fließen (in den Zylinder hinein, zum Heben). In Gegenrichtung (Öl würde aus dem Zylinder fließen = Absenken) sperrt es selbsttätig. Bei Pumpenausfall oder Druckabfall kann das Öl nicht zurückfließen – der Zylinder bleibt in seiner Position. Das Rückschlagventil ist damit eine passive Sicherheitseinrichtung, die keine Energie und keine Steuerung benötigt.",
+        "schluesselwoerter": ["Rückschlagventil", "Sperrrichtung", "Pumpenausfall", "passive Sicherheit"],
+        "erklaerung": "Rückschlagventile sind einfachste Sicherheitsbauteile in Hydraulikkreisen. Sie verhindern unkontrollierte Lastbewegungen bei Energieausfall. Das Prinzip: Öffnen in Durchströmungsrichtung durch Druck, Sperren in Gegenrichtung durch Federkraft + Gegendruck.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-002-f05",
+        "pruefer": "Welche elektrische Leistung setzt ein Heizwiderstand R = 1500 Ohm bei einer Stromstärke I = 57,7 mA um? Rechnen Sie kurz nach.",
+        "musterloesung": "P = I² × R = (0,0577 A)² × 1500 Ohm = 0,003329 × 1500 = 4,99 W, also rund 5 W. Alternativ über die Spannung: U = I × R = 0,0577 × 1500 = 86,6 V; dann P = U × I = 86,6 × 0,0577 ≈ 5 W.",
+        "schluesselwoerter": ["P = I² × R", "Leistung", "5 W", "Ohmsches Gesetz"],
+        "erklaerung": "Grundformeln Elektrotechnik: P = U × I = I² × R = U²/R. Umformung je nach gegebenen Größen. Hier gegeben: I und R. Also P = I² × R. Einheiten: A² × Ohm = W.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-002-f06",
+        "pruefer": "Nach der Inbetriebnahme soll die Anlage regelmäßig gewartet werden. Nennen Sie drei typische Wartungsmaßnahmen an einer Hydraulikanlage und ordnen Sie sie dem richtigen Instandhaltungsbegriff nach DIN 31051 zu.",
+        "musterloesung": "Typische Wartungsmaßnahmen: (1) Ölwechsel nach Betriebsstunden (Wartung – verzögert Abbau des Soll-Zustands). (2) Filterwechsel (Wartung – hält die Ölqualität aufrecht). (3) Druckprüfung / Dichtigkeitskontrolle (Inspektion – stellt den Ist-Zustand fest). Optional: Schlauchkontrolle auf Risse/Porosität (Inspektion). All diese Maßnahmen dienen dazu, den Eintreten von Schäden zu verzögern (Wartung) oder frühzeitig zu erkennen (Inspektion).",
+        "schluesselwoerter": ["Wartung", "Inspektion", "Ölwechsel", "Filterwechsel", "DIN 31051"],
+        "erklaerung": "DIN 31051 Unterscheidung: Wartung = Maßnahmen zur Verzögerung des Verschleißes (Öl wechseln, schmieren, reinigen). Inspektion = Maßnahmen zur Feststellung des Ist-Zustands (prüfen, messen, kontrollieren). Instandsetzung = Wiederherstellen des Soll-Zustands (reparieren, austauschen).",
+        "schwierigkeit": 2
+      }
+    ]
+  },
+  {
+    "id": "fg-003",
+    "titel": "Fertigungsauftrag CNC-Flanschbearbeitung",
+    "kontext": "Sie haben einen Flansch (Werkstoff EN-GJL-250, Durchmesser 130 mm) auf der CNC-Fräsmaschine bearbeitet. Drei Bohrungen wurden auf einem Teilkreis (R = 65 mm) gefräst. Der Prüfer befragt Sie zur Programmierung, zur Werkstoffauswahl und zur Qualitätssicherung.",
+    "fertigungsauftrag": "FA-2023-089: Bearbeitung Flansch Pumpengehäuse. Werkstoff: EN-GJL-250. Bohrungsplan: 3 × Bohrungen Ø 8,5 mm auf Teilkreis R = 65 mm, gleichmäßig verteilt (P1: 270°, P2: 30°, P3: 150°). Qualitätsprüfung: Maßhaltigkeitskontrolle nach DIN ISO 2768-m.",
+    "zeichnungsKey": null,
+    "kategorien": ["Fertigungstechnik", "Werkstoffkunde", "Qualitätssicherung"],
+    "fragen": [
+      {
+        "id": "fg-003-f01",
+        "pruefer": "Warum haben Sie für die Programmierung der drei Bohrpositionen Polarkoordinaten verwendet?",
+        "musterloesung": "Alle drei Bohrungen liegen auf einem Teilkreis mit konstantem Radius R = 65 mm. In Polarkoordinaten sind sie direkt durch den Radius und den Winkel beschreibbar: P1(R=65, 270°), P2(R=65, 30°), P3(R=65, 150°). Diese Werte können direkt aus der Zeichnung abgelesen werden, ohne Umrechnung. In kartesischen Koordinaten müsste zuerst X = R × cos(φ) und Y = R × sin(φ) berechnet werden – mehr Aufwand mit Fehlerrisiko.",
+        "schluesselwoerter": ["Polarkoordinaten", "Teilkreis", "Radius", "Winkel"],
+        "erklaerung": "Polarkoordinaten eignen sich immer dann, wenn Punkte auf einem Kreis mit konstantem Radius beschrieben werden. Direkte Ablesbarkeit aus der Zeichnung reduziert Programmierfehler. Umrechnung: X = R·cos(φ), Y = R·sin(φ).",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-003-f02",
+        "pruefer": "Welche kartesischen Koordinaten hat Bohrung P2 bei R = 65 mm und φ = 30°? Rechnen Sie bitte vor.",
+        "musterloesung": "X = R × cos(φ) = 65 mm × cos(30°) = 65 × 0,866 = 56,3 mm, gerundet 56 mm. Y = R × sin(φ) = 65 mm × sin(30°) = 65 × 0,5 = 32,5 mm, gerundet 33 mm. P2 liegt also bei X56, Y33.",
+        "schluesselwoerter": ["X = R × cos(φ)", "Y = R × sin(φ)", "56 mm", "33 mm"],
+        "erklaerung": "cos(30°) = Wurzel(3)/2 ≈ 0,866; sin(30°) = 0,5. Diese Werte sollten auswendig bekannt sein. P2(56, 33) in kartesischen Koordinaten. Probe: Abstand vom Ursprung = Wurzel(56² + 33²) = Wurzel(3136 + 1089) = Wurzel(4225) = 65 mm – korrekt.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-003-f03",
+        "pruefer": "Der Flansch ist aus Grauguss EN-GJL-250 gefertigt. Welche besondere Eigenschaft qualifiziert diesen Werkstoff für Maschinengehäuse und was ist sein wesentlicher Nachteil?",
+        "musterloesung": "Der wesentliche Vorteil von Grauguss ist die hervorragende Schwingungsdämpfung durch die lamellare Graphitstruktur. Schwingungsenergie wird in den Graphitlamellen in Wärme umgewandelt. Das ist ideal für Pumpengehäuse, die Druckpulsationen ausgesetzt sind. Außerdem ist er gut gießbar, kostengünstig und selbstschmierend. Der Hauptnachteil: Grauguss ist spröde (geringe Bruchdehnung unter 1 %) und schlecht schweißbar, da beim Schweißen Weißeisen entstehen kann.",
+        "schluesselwoerter": ["Schwingungsdämpfung", "Graphitlamellen", "spröde", "schlecht schweißbar"],
+        "erklaerung": "Grauguss GJL: Vorteile – Dämpfung, Gießbarkeit, Selbstschmierung. Nachteile – spröde (kein Fließen vor dem Bruch), nicht schweißbar. EN-GJL-250 bedeutet: Grauguss (GJL), Mindestzugfestigkeit 250 MPa.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-003-f04",
+        "pruefer": "In der Stichprobenprüfung wurden 200 Flansche geprüft und 4 Teile mit zu dünner Zinkbeschichtung gefunden. Berechnen Sie den Fehleranteil und erklären Sie, wofür dieser Wert verwendet werden kann.",
+        "musterloesung": "Fehleranteil p = 4 / 200 = 0,02 = 2,0 %. Der Fehleranteil p ist ein zentrales Maß in der statistischen Prozesskontrolle (SPC). Mit p-Charts (Anteilskontrollkarte) kann über mehrere Stichproben überwacht werden, ob der Prozess unter Kontrolle ist (Werte schwanken zufällig um einen stabilen Mittelwert) oder ob ein systematischer Trend vorliegt (Prozess läuft aus dem Ruder). Ein Fehleranteil von 2 % würde im Produktionsalltag Maßnahmen zur Prozessverbesserung auslösen.",
+        "schluesselwoerter": ["2,0 %", "Fehleranteil", "SPC", "p-Chart"],
+        "erklaerung": "p = Anzahl fehlerhafte / Stichprobengröße = 4/200 = 0,02 = 2%. Anwendung: p-Chart in SPC zur Prozessüberwachung. Pareto-Analyse: Welche Fehlerart hat den größten Anteil? Six-Sigma-Kennzahl ppm (parts per million) = p × 1.000.000 = 20.000 ppm.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-003-f05",
+        "pruefer": "Der Stahl 17Cr3 wird für den Rotor der Axialkolbenpumpe verwendet. Erklären Sie das Einsatzhärten: Warum ist es für diesen Werkstoff geeignet und welche Gefügestruktur entsteht?",
+        "musterloesung": "17Cr3 ist ein Einsatzstahl mit niedrigem Kohlenstoffgehalt (0,17 % C). Er ist von Natur aus zu weich für die Wälzbelastung im Rotor. Beim Einsatzhärten wird die Oberfläche in einem kohlenstoffreichen Medium (Aufkohlen, z.B. bei 900 °C) auf 0,7–0,9 % C angereichert. Dann wird die Randschicht durch Abschrecken in Martensit umgewandelt (hart, HRC 58–64). Der Kern mit dem ursprünglich niedrigen C-Gehalt bleibt ferritisch-perlitisch und damit zäh. Ergebnis: harte, verschleißfeste Oberfläche – zäher Kern.",
+        "schluesselwoerter": ["Aufkohlen", "Martensit", "harte Oberfläche", "zäher Kern"],
+        "erklaerung": "Einsatzhärten = Aufkohlen + Härten + Anlassen. Geeignet für Stähle mit C unter 0,2 %. Randschicht: Martensit (hart, spröde). Kern: Ferrit-Perlit (zäh). Alternative für höher gekohlte Stähle: Nitrieren, Induktionshärten.",
+        "schwierigkeit": 3
+      }
+    ]
+  },
+  {
+    "id": "fg-004",
+    "titel": "Inspektion Einstellantrieb Stanzanlage",
+    "kontext": "Sie haben die planmäßige Inspektion am Einstellantrieb einer Stanzanlage (Coilhaspel-Antrieb) durchgeführt. Der Einstellantrieb ermöglicht die stufenlose Verstellung des Stanzwerkzeug-Abstands über ein Kegelradgetriebe (i=1) und eine Gelenkwelle. Der Prüfer befragt Sie zu Baugruppen, Vorgehensweise und Berechnungen.",
+    "fertigungsauftrag": "FA-S17-012: Planmäßige Inspektion Einstellantrieb Stanzanlage. Bauteile: Bogenzahnkupplung, Kegelradgetriebe (m=2, z=26, beide gleich), Sicherheitskupplung ECA 16, RWDR AS 25×35×7, Nadel-Axial-Zylinderrollenlager NKXR20Z (4×), Gelenkwelle Ø32 mm. Motor: P₁=9,24 kW, n=300 min⁻¹. Grenzdrehmoment: M=16 N·m, d_w=76,5 mm.",
+    "zeichnungsKey": null,
+    "kategorien": ["Maschinenelemente", "Technische Berechnungen", "Instandhaltung"],
+    "fragen": [
+      {
+        "id": "fg-004-f01",
+        "pruefer": "Die Bogenzahnkupplung verbindet Motor und Kegelradgetriebe. Erklären Sie Bauweise und Funktion dieser Kupplung und grenzen Sie sie von der elastischen Klauenkupplung ab.",
+        "musterloesung": "Die Bogenzahnkupplung ist eine formschlüssige Zahnkupplung. Zwei Kupplungshälften mit bogenverzahnten Zähnen greifen ineinander. Die ballig geformten (bogenförmigen) Zähne ermöglichen Winkelversatz und axiale Verschiebungen zwischen den Wellen auszugleichen. Sie überträgt hohe Drehmomente zuverlässig und ist wartungsarm. Abgrenzung zur elastischen Klauenkupplung: die Klauenkupplung hat einen Elastomer-Stern, der Schwingungen dämpft. Die Bogenzahnkupplung hat keinen Elastomer-Stern und dämpft daher nicht.",
+        "schluesselwoerter": ["formschlüssig", "Bogenverzahnung", "Winkelversatz", "kein Elastomer"],
+        "erklaerung": "Kernmerkmal: ballig geformte Zähne = Winkelversatz-Toleranz. Kein Elastomer-Stern = keine Schwingungsdämpfung. Kein Überlastschutz (Abgrenzung zur Sicherheitskupplung).",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-004-f02",
+        "pruefer": "Welche zwei Aufgaben erfüllt der Radialwellendichtring AS 25×35×7 im Einstellantrieb, und was bedeutet die Kennzeichnung 'AS'?",
+        "musterloesung": "Der RWDR hat eine Doppelfunktion: Erstens verhindert er den Austritt von Schmierstoff aus dem Getriebe nach außen. Zweitens verhindert er das Eindringen von Schmutz, Staub und Feuchtigkeit von außen. Die Kennzeichnung 'AS' bedeutet: A = mit Staubschutzlippe (zweite Dichtlippe zur Staubabwehr), S = mit Federspannung (Druckfeder drückt die Dichtlippe an die Welle). Die Maße 25×35×7 = Innen-Ø 25 mm, Außen-Ø 35 mm, Breite 7 mm.",
+        "schluesselwoerter": ["Schmierstoffaustritt verhindern", "Schmutzeindringen verhindern", "Staubschutzlippe", "Federspannung"],
+        "erklaerung": "Zwei Funktionen = zwei Punkte im Prüfungsgespräch. AS = Staubschutzlippe (A) + Federspannung (S). RWDR sitzt auf der rotierenden Welle; Dichtlippe liegt anliegend an Welle durch Federspannung.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-004-f03",
+        "pruefer": "Warum wurden Nadel-Axial-Zylinderrollenlager NKXR20Z eingebaut und keine einfachen Rillenkugellager?",
+        "musterloesung": "Das NKXR20Z ist ein Kombinationslager, das zwei Lastrichtungen aufnimmt: Die Nadelrollen tragen radiale Kräfte (aus Umfangskräften des Kegelrads), die Axial-Zylinderrollen nehmen axiale Kräfte auf (aus der Kegelradverzahnung entstehen axialen Schubkräfte). Ein einfaches Rillenkugellager kann begrenzte Axialkräfte aufnehmen, aber bei größeren Axialkräften an Kegelradgetrieben ist das NKXR-Lager überlegen. Außerdem ist das NKXR sehr kompakt – ideal für den beengten Bauraum.",
+        "schluesselwoerter": ["radiale Kräfte", "axiale Kräfte", "Kegelradverzahnung", "Kombinationslager"],
+        "erklaerung": "Axialkräfte bei Kegelrädern entstehen durch die Schrägverzahnung. Das Lager vereint Nadellager (radial, sehr belastbar) und Axialrollenlager (axial). NKXR20Z: N=Nadeln, KX=Axial-Komponente, R=Zylinderrollen (axial), 20=d_Innen=20mm, Z=Blechkäfig.",
+        "schwierigkeit": 3
+      },
+      {
+        "id": "fg-004-f04",
+        "pruefer": "Erklären Sie, wie der Reed-Kontakt die Auslösung der Sicherheitskupplung ECA 16 erkennt.",
+        "musterloesung": "Ein Reed-Kontakt besteht aus zwei ferromagnetischen Kontaktfedern in einem hermetisch verschlossenen Glasröhrchen. Bei normaler Stellung ist der Kontakt offen. Wenn sich ein am beweglichen Bauteil der Sicherheitskupplung befestigter Permanentmagnet nähert (beim Auslösen), werden die Kontaktfedern magnetisiert, biegen sich zueinander und schließen den Stromkreis. Dieses Signal signalisiert der Steuerung: 'Kupplung hat ausgelöst' – Motor wird abgeschaltet. Reed-Kontakte sind berührungslos, verschleißfrei und reagieren zuverlässig auf kleine Schaltwege.",
+        "schluesselwoerter": ["Permanentmagnet", "Glasröhrchen", "Kontaktfedern schließen", "berührungslos"],
+        "erklaerung": "Reed-Kontakt = magnetisch betätigter Schalter im Glasröhrchen. Abgrenzung: Induktiver Sensor reagiert auf Metall (nicht auf Magnet direkt). Reed-Kontakt reagiert auf Magnetfeld. Anwendung: kleine Schaltwege, Endschalter, Sicherheitsüberwachung.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-004-f05",
+        "pruefer": "Berechnen Sie die maximale Zugkraft F auf den Zahnriemen. Grenzdrehmoment der Sicherheitskupplung: M = 16 N·m, Wirkdurchmesser der Riemenscheibe: d_w = 76,5 mm.",
+        "musterloesung": "Die maximale Zugkraft entspricht der Umfangskraft an der Riemenscheibe beim Grenzdrehmoment: F = M / r, wobei r der Wirkradius ist. r = d_w / 2 = 76,5 mm / 2 = 38,25 mm = 0,03825 m. F = M / r = 16 N·m / 0,03825 m = 418,3 N. Der Zahnriemen muss diese Zugkraft dauerhaft aufnehmen können.",
+        "schluesselwoerter": ["F = M / r", "418", "Wirkradius", "Umfangskraft"],
+        "erklaerung": "F = M/r = 16000 N·mm / 38,25 mm = 418,3 N. r = d_w/2 (nicht d_w!). Wirkdurchmesser = der Durchmesser, auf dem die Zahnriemenzähne die Kraft übertragen (liegt zwischen Kopf- und Fußkreis).",
+        "schwierigkeit": 3
+      }
+    ]
+  },
+  {
+    "id": "fg-005",
+    "titel": "Instandhaltung Werkzeugspindelkasten – Bohrstation (S19)",
+    "kontext": "Sie erhalten den Auftrag, den Werkzeugspindelkasten einer Mehrspindel-Bohrstation (IHK S19) zu überholen. Der Spindelkasten enthält ein 2-stufiges Schieberadgetriebe (z=66/18 und z=33/33), Kegelrollenlager 30210 in O-Anordnung für die Spindel, ein Zylinderrollenlager NU2206 als Loslager der Zwischenwelle sowie hydraulische Spannzylinder (Ø 80×40 mm). Die Zahnräder sind aus 16MnCr5 einsatzgehärtet. Begleitend lesen Sie den GRAFCET-Steuerungsplan der Anlage.",
+    "fragen": [
+      {
+        "id": "fg-005-f01",
+        "pruefer": "Erklären Sie die Funktion der Fest-Los-Lagerung der Zwischenwelle im Werkzeugspindelkasten.",
+        "musterloesung": "Bei der Fest-Los-Lagerung übernimmt das Festlager (hier: Rillenkugellager) die axiale Führung der Welle – es nimmt Radialkräfte und Axialkräfte in beide Richtungen auf und verhindert axiale Verschiebung. Das Loslager (NU2206 Zylinderrollenlager) nimmt nur Radialkräfte auf und lässt axiale Verschiebungen zu. Das ist notwendig, weil sich die Welle im Betrieb durch Wärmedehnung ausdehnt. Würden beide Lager axial fixiert, entstehen thermische Verspannungen, die Lager und Gehäuse beschädigen können.",
+        "schluesselwoerter": ["Festlager axiale Führung", "Loslager axiale Verschiebung", "Wärmedehnung", "NU2206 Zylinderrollenlager"],
+        "erklaerung": "Merkregel: Festlager = fest in beiden axialen Richtungen. Loslager = los, darf axial gleiten. NU2206: N=Zylinderrollen, U=Innenring ohne Bord → Innenring kann axial gleiten.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-005-f02",
+        "pruefer": "Welche Wärmebehandlung wurde für die Zahnräder aus 16MnCr5 gewählt und warum?",
+        "musterloesung": "Die Zahnräder wurden einsatzgehärtet (Aufkohlen + Abschrecken). 16MnCr5 ist ein Einsatzstahl mit nur 0,16 % Kohlenstoff – zu wenig für direktes Härten. Durch Aufkohlen (Einbringen von Kohlenstoff in die Randschicht bis ca. 0,8 % C) und anschließendes Abschrecken entsteht eine harte Martensit-Randschicht (HRC 58–63) bei zähem Kern. Die harte Oberfläche ist verschleiß- und grübchenbeständig (wichtig für Zahnflanken); der zähe Kern verhindert Dauerbruch durch Biegewechselbeanspruchung der Zahnfüße.",
+        "schluesselwoerter": ["Einsatzhärten", "Aufkohlen", "0,8 % C Randschicht", "Martensit", "HRC 58–63", "zäher Kern"],
+        "erklaerung": "Einsatzstahl = niedriger C-Gehalt, wird durch Aufkohlen an der Oberfläche härtbar. Kern bleibt zäh. Vergütungsstahl (z.B. 42CrMo4) würde durchgehend gehärtet → gleiche Festigkeit, aber keine extra-harte Oberfläche.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-005-f03",
+        "bildAsset": "diag:zahnrad_geometrie",
+        "pruefer": "Berechnen Sie die Spindeldrehzahl in Gangstufe 1 (z₁=66 antreibend, z₂=18 Spindel) bei Motorantrieb n₁ = 750 min⁻¹.",
+        "musterloesung": "Übersetzungsverhältnis: i = z₁ / z₂ = 66 / 18 = 3,667. Spindeldrehzahl: n₂ = n₁ · i = 750 min⁻¹ · 3,667 = 2 750 min⁻¹. Da das antreibende Rad (z₁=66) größer ist als das getriebene (z₂=18), handelt es sich um eine Übersetzung ins Schnelle (Drehzahl steigt, Drehmoment sinkt).",
+        "schluesselwoerter": ["i = z₁/z₂ = 3,667", "n₂ = 2 750 min⁻¹", "Übersetzung ins Schnelle"],
+        "erklaerung": "Übersetzung ins Schnelle: z_antrieb > z_abtrieb → n steigt, M sinkt. Übersetzung ins Langsame: z_antrieb < z_abtrieb → n sinkt, M steigt. Gangstufe 2 (z=33/33): i=1, n₂=750 min⁻¹.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-005-f04",
+        "pruefer": "Erklären Sie die Funktion der Druckschalter BP1 und BP2 im hydraulischen Spannkreis der Bohrstation.",
+        "musterloesung": "Die Druckschalter BP1 und BP2 sind hydraulisch-elektrische Wandler: Sie überwachen den Druck in den Spannzylindern MM2a und MM2b. Wenn der Spanndruck den eingestellten Schaltpunkt erreicht, schließen BP1 und BP2 und erzeugen ein elektrisches Signal. Die SPS-Steuerung wertet BP1 UND BP2 aus – erst wenn beide Druckschalter aktiviert sind, wird der Start der Bohrspindeln freigegeben. So wird sichergestellt, dass beide Werkstückspannungen vollständig aufgebaut sind, bevor der Bohrprozess beginnt. Dies verhindert Beschädigungen durch unvollständig gespannte Werkstücke.",
+        "schluesselwoerter": ["Druckschalter hydraulisch-elektrisch", "Schaltpunkt Spanndruck", "BP1 UND BP2", "Freigabe Bohrspindeln"],
+        "erklaerung": "Druckschalter = wandelt Druck in elektrisches Signal. Druckbegrenzungsventil (DBV) = begrenzt den Maximaldruck. Nicht verwechseln! BP → elektrisches Signal; QN → Druckbegrenzung.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-005-f05",
+        "bildAsset": "diag:hydraulik_kolben",
+        "pruefer": "Berechnen Sie die Spannkraft eines Spannzylinders (Ø 80 mm Kolben, p = 100 bar, η = 0,84).",
+        "musterloesung": "Kolbenfläche: A = π/4 · d² = π/4 · 80² = 5 026,5 mm². Druckumrechnung: 100 bar = 10 N/mm². Theoretische Kraft: F_th = p · A = 10 N/mm² · 5 026,5 mm² = 50 265 N. Mit Wirkungsgrad η = 0,84: F = F_th · η = 50 265 · 0,84 ≈ 42 200 N = 42,2 kN.",
+        "schluesselwoerter": ["A = π/4 · 80² = 5 026,5 mm²", "100 bar = 10 N/mm²", "F = 42,2 kN", "Wirkungsgrad"],
+        "erklaerung": "Einheit: 1 bar = 0,1 N/mm². Also 100 bar = 10 N/mm². Kolbenfläche immer mit Kolbendurchmesser (nicht Stangendurchmesser!) berechnen, außer bei der Stangenseite.",
+        "schwierigkeit": 3
+      }
+    ]
+  },
+  {
+    "id": "fg-006",
+    "titel": "Hydraulische Schaltvorrichtung Verladeanlage (S18)",
+    "kontext": "Sie haben die hydraulisch betätigte Schaltvorrichtung einer Verladeanlage für Betonteile (Windkraftanlagen) instandgesetzt. Der Prüfer befragt Sie zu Funktion, Berechnungen und Werkstoffwahl der Schaltvorrichtung sowie zur Kontaktkorrosion an der Anlage.",
+    "fertigungsauftrag": "FA-S18: Instandsetzung Schaltvorrichtung Verladeanlage. Primärrad (Pos. 6, 16MnCr5, m=3 z=57 / m=1.5 z=50), Sekundärrad (Pos. 8, 16MnCr5, m=3 z=82), Kolben (Pos. 16, CuSnB, Ø80mm), Buchse (Pos. 13, CuZn31Si1). Lagerung: NJ1021/NU1021 + 6021. Schaltdruck p=6bar.",
+    "zeichnungsKey": null,
+    "kategorien": ["Auftrags- und Funktionsanalyse", "Hydraulik", "Werkstoffkunde"],
+    "fragen": [
+      {
+        "id": "fg-006-f01",
+        "bildAsset": "diag:hydraulik_kolben",
+        "pruefer": "Erklären Sie das Schaltprinzip der hydraulischen Schaltvorrichtung: Wie wird der Gangwechsel zwischen den zwei Übersetzungsstufen ausgelöst?",
+        "musterloesung": "Der Hydraulikkolben (Pos. 16, CuSnB, Ø80mm) wird durch den Öldruck (p = 6 bar) betätigt und schiebt über die Schaltstange (Pos. 2, 42CrMo4) das Primärrad (Pos. 6) axial entlang der Schiebewelle (Pos. 4, 15CrNi6). In Stellung A kämmt der m=3-Verzahnungsabschnitt des Primärrads mit dem Sekundärrad (Pos. 8, m=3, z=82) – erste Übersetzungsstufe (i₁ = 82/57 ≈ 1,44). In Stellung B kämmt der m=1,5-Abschnitt mit dem Sekundärradträger (Pos. 7, m=1,5, z=50) – Direktgang (i₂ = 1). Die Schaltkraft beträgt F ≈ 3 kN bei 6 bar.",
+        "schluesselwoerter": ["Kolben axial", "Schaltstange", "Primärrad verschiebt sich", "m=3 kämmt Sekundärrad", "m=1,5 kämmt Träger", "Schiebewelle"],
+        "erklaerung": "Das Schaltprinzip ist eine hydraulisch betätigte Schieberadschaltung: Das Primärrad wird axial verschoben, um zwischen zwei Zahnradpaaren mit unterschiedlichem Modul umzuschalten. Entscheidend: Die Schaltstange überträgt die Axialkraft des Kolbens auf das Primärrad.",
+        "schwierigkeit": 3
+      },
+      {
+        "id": "fg-006-f02",
+        "bildAsset": "diag:hydraulik_kolben",
+        "pruefer": "Berechnen Sie die Schaltkraft F des Hydraulikkolbens (Kolbendurchmesser d = 80 mm, Schaltdruck p = 6 bar).",
+        "musterloesung": "Druckumrechnung: 6 bar = 0,6 N/mm². Kolbenfläche: A = π/4 · d² = π/4 · 80² = 5 026,5 mm². Schaltkraft: F = p · A = 0,6 N/mm² · 5 026,5 mm² = 3 015,9 N ≈ 3,0 kN.",
+        "schluesselwoerter": ["6 bar = 0,6 N/mm²", "A = π/4 · 80² = 5 026,5 mm²", "F = 0,6 · 5 026,5 ≈ 3 016 N ≈ 3,0 kN"],
+        "erklaerung": "Merkformel: 1 bar = 0,1 N/mm². Formel F = p · A gilt für den Kolben auf der Druckseite. Die tatsächliche Schaltkraft ist etwas kleiner wegen Reibungsverlusten (Wirkungsgrad η < 1).",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-006-f03",
+        "bildAsset": "diag:zahnrad_geometrie",
+        "pruefer": "Das Sekundärrad (Pos. 8, m = 3, z = 82) überträgt ein Drehmoment M = 210 N·m. Berechnen Sie die Umfangskraft Fu am Teilkreis.",
+        "musterloesung": "Teilkreisdurchmesser: d = m · z = 3 · 82 = 246 mm = 0,246 m. Teilkreisradius: r = d/2 = 0,123 m. Umfangskraft: Fu = M / r = 210 N·m / 0,123 m = 1 707 N ≈ 1,71 kN.",
+        "schluesselwoerter": ["d = m · z = 3 · 82 = 246 mm", "r = 0,123 m", "Fu = M/r = 210/0,123 = 1 707 N"],
+        "erklaerung": "Zusammenhang: M = Fu · r → Fu = M/r. Teilkreisdurchmesser d = m·z – die Grundformel der Zahnradgeometrie. Je größer das Zahnrad (größerer Teilkreisradius), desto kleiner die Umfangskraft bei gleichem Drehmoment.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-006-f04",
+        "pruefer": "Der Kolben (Pos. 16) ist aus CuSnB, die Buchse (Pos. 13) aus CuZn31Si1. Warum werden für diese Gleitelemente Kupferlegierungen statt Stahl eingesetzt?",
+        "musterloesung": "CuSnB (Zinnbronze mit Blei): Hervorragende Gleiteigenschaften (niedriger Reibungskoeffizient), Notlaufeigenschaften, hohe Korrosionsbeständigkeit gegenüber Hydrauliköl. Schont die Stahlbohrung (verhindert Fressen). CuZn31Si1 (Siliziummessing): Ähnliche Vorteile – gute Gleit- und Verschleißeigenschaften, Korrosionsbeständigkeit, gute Zerspanbarkeit. Grundregel: Werkstoffpaarung Kupferlegierung/Stahl verhindert Kaltverschweißen (Fressen) – die Bronzebauteile verschleißen, nicht die teure Zylinderbohrung.",
+        "schluesselwoerter": ["Gleiteigenschaften", "Korrosionsbeständigkeit Hydrauliköl", "kein Fressen", "Werkstoffpaarung", "Opferwerkstoff"],
+        "erklaerung": "Grundprinzip: Gleitpartner nie aus gleichem Werkstoff. Kupferlegierungen sind weicher als Stahl und 'opfern' sich bevorzugt. Das ist konstruktiv gewollt: Die günstige Buchse/Kolben verschleißt, nicht die teure Zylinderbohrung.",
+        "schwierigkeit": 2
+      },
+      {
+        "id": "fg-006-f05",
+        "pruefer": "An der Verladeanlage (S18) kommen Aluminiumabdeckungen in direktem Kontakt mit der Stahlkonstruktion. Nach einiger Zeit korrodieren die Aluminiumteile stark. Nennen Sie die Korrosionsart und eine geeignete Schutzmaßnahme.",
+        "musterloesung": "Korrosionsart: Kontaktkorrosion (galvanische Korrosion). Ursache: Stahl (edler) und Aluminium (unedler) bilden mit Feuchtigkeit als Elektrolyt ein galvanisches Element. Das unedlere Aluminium (Anode) wird aufgelöst, Stahl (Kathode) bleibt erhalten. Schutzmaßnahme: Elektrische Trennung durch Isolierbuchsen aus Kunststoff an den Schraubenverbindungen und Kunststoff-Dichtband zwischen den Metallen – so wird der galvanische Kreislauf unterbrochen und die Korrosion verhindert.",
+        "schluesselwoerter": ["Kontaktkorrosion", "galvanisch", "Aluminium unedler (Anode)", "Stahl edler (Kathode)", "Isolierbuchsen"],
+        "erklaerung": "Galvanische Korrosion erfordert: 1) zwei verschiedene Metalle, 2) Elektrolyt (Feuchtigkeit), 3) elektrischer Kontakt. Fehlende eine Bedingung → keine Korrosion. Einfachste und häufigste Maßnahme: Kontakt unterbrechen (Isolierung).",
+        "schwierigkeit": 2
+      }
+    ]
+  }
+]

@@ -1,0 +1,587 @@
+﻿[
+    {
+        "id":  "au-tp-001",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "kurzantwort",
+        "frage":  "Wie heißt die Differenz zwischen Höchstmaß und Mindestmaß eines Maßes?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "Toleranz",
+                                         "Maßtoleranz",
+                                         "Toleranzbreite",
+                                         "Toleranzfeld"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Die Toleranz (auch Maßtoleranz) ist die zulässige Maßabweichung und berechnet sich aus: T = Höchstmaß – Mindestmaß. Sie gibt an, in welchem Bereich das tatsächliche Maß liegen darf, ohne dass das Teil ausschussfähig wird.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  "diag:toleranzfeld",
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-tp-002",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "lueckentext",
+        "frage":  "Das {{1}} Abmaß (ES/ES) ist die algebraische Differenz zwischen dem {{2}} und dem Nennmaß. Das {{3}} Abmaß (EI/ei) ist die Differenz zwischen dem {{4}} und dem Nennmaß.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+                        [
+                            "obere",
+                            "oberes",
+                            "Oberes"
+                        ],
+                        [
+                            "Höchstmaß"
+                        ],
+                        [
+                            "untere",
+                            "unteres",
+                            "Unteres"
+                        ],
+                        [
+                            "Mindestmaß"
+                        ]
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Das obere Abmaß ES (für Bohrungen) bzw. es (für Wellen) = Höchstmaß – Nennmaß. Das untere Abmaß EI (für Bohrungen) bzw. ei (für Wellen) = Mindestmaß – Nennmaß. Abmaße können positiv, negativ oder null sein.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-tp-003",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "rechnung",
+        "frage":  "Eine Bohrung ist mit Ø 50 H7 angegeben. Die Grundabmaße für H7 (Ø 50 mm) lauten: EI = 0 µm, ES = +25 µm. Berechnen Sie das Höchstmaß der Bohrung in mm.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  50.025,
+        "einheit":  "mm",
+        "toleranz":  0.0005,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Das Höchstmaß einer Bohrung berechnet sich aus: G_max = Nennmaß + oberes Abmaß ES. Mit ES = +25 µm = +0,025 mm: G_max = 50 + 0,025 = 50,025 mm. Die Toleranz H7 bei Ø 50 mm beträgt 25 µm.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  "Gegeben: Nennmaß = 50 mm, ES = +25 µm = +0,025 mm, EI = 0 µm\nHöchstmaß G_max = Nennmaß + ES = 50 + 0,025 = 50,025 mm\nMindestmaß G_min = Nennmaß + EI = 50 + 0 = 50,000 mm\nToleranz T = G_max – G_min = 50,025 – 50,000 = 0,025 mm = 25 µm",
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-tp-004",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "rechnung",
+        "frage":  "Gegeben: Bohrung Ø 50 H7 (G_max = 50,025 mm; G_min = 50,000 mm) und Welle Ø 50 g6 (W_max = 49,991 mm; W_min = 49,975 mm). Berechnen Sie das Höchstspiel dieser Spielpassung in µm.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  50,
+        "einheit":  "µm",
+        "toleranz":  0,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Das Höchstspiel einer Spielpassung ergibt sich aus der größten Bohrung und der kleinsten Welle: S_max = G_max – W_min = 50,025 – 49,975 = 0,050 mm = 50 µm. Das Mindestspiel berechnet sich als S_min = G_min – W_max = 50,000 – 49,991 = 0,009 mm = 9 µm.",
+        "selfExplanationPrompt":  "Erkläre, warum beim Höchstspiel die größte Bohrung und die kleinste Welle verwendet werden.",
+        "bildAsset":  null,
+        "workedExample":  "Gegeben: G_max = 50,025 mm, G_min = 50,000 mm, W_max = 49,991 mm, W_min = 49,975 mm\nHöchstspiel: S_max = G_max – W_min = 50,025 – 49,975 = 0,050 mm = 50 µm\nMindestspiel: S_min = G_min – W_max = 50,000 – 49,991 = 0,009 mm = 9 µm\nFazit: Es liegt eine Spielpassung vor, da S_min \u003e 0.",
+        "schwierigkeit":  3
+    },
+    {
+        "id":  "au-tp-005",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "zuordnung",
+        "frage":  "Ordnen Sie die Passungsarten ihrer charakteristischen Eigenschaft zu.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+                      {
+                          "links":  "Spielpassung",
+                          "rechts":  "Welle ist stets kleiner als die Bohrung (immer Spiel)"
+                      },
+                      {
+                          "links":  "Übergangspassung",
+                          "rechts":  "Spiel oder Übermaß möglich, je nach tatsächlichen Maßen"
+                      },
+                      {
+                          "links":  "Übermaßpassung (Presspassung)",
+                          "rechts":  "Welle ist stets größer als die Bohrung (immer Übermaß)"
+                      },
+                      {
+                          "links":  "Einheitsbohrung",
+                          "rechts":  "Bohrung bleibt konstant H, Welle wird variiert"
+                      }
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Spielpassungen ermöglichen immer eine leichte Montage ohne Kraft. Übergangspassungen können je nach Istmaßen leicht gefügt oder leicht gepresst werden. Presspassungen erfordern stets Kraft oder Temperaturunterschied zur Montage. Das Einheitsbohrungs-System hält die Bohrung konstant auf H und variiert die Welle.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  "diag:passungsdiagramm",
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-tp-006",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "single",
+        "frage":  "Was bedeutet der Großbuchstabe H in der Toleranzfeldbezeichnung 50 H7?",
+        "optionen":  [
+                         "Das untere Abmaß EI = 0 (Grundabmaß liegt am Nennmaß)",
+                         "Das obere Abmaß ES = 0",
+                         "Die Toleranz beträgt 7 µm",
+                         "Es handelt sich um eine Wellentoleranz"
+                     ],
+        "richtigeIndizes":  [
+                                0
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Großbuchstaben (A–ZC) bezeichnen Bohrungstoleranzen im ISO-System. \u0027H\u0027 kennzeichnet speziell, dass das untere Abmaß EI = 0 ist, das Toleranzfeld also vom Nennmaß nach oben liegt. Das ist der Grundsatz des Einheitsbohrungssystems.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-tp-007",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "wahrfalsch",
+        "frage":  "Im Einheitswellen-System bleibt die Wellentoleranz konstant auf \u0027h\u0027 (oberes Abmaß = 0) und die Bohrung wird variiert.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  true,
+        "erklaerung":  "Beim Einheitswellen-System (EW-System) ist das Grundabmaß der Welle \u0027h\u0027 mit dem oberen Abmaß es = 0. Die Bohrungstoleranz wird variiert, um die gewünschte Passungsart zu erreichen. Das ist das Gegenstück zum häufiger verwendeten Einheitsbohrungssystem.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-tp-008",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "kurzantwort",
+        "frage":  "Wie bezeichnet man im ISO-Toleranzsystem die Zahl hinter dem Buchstaben (z.B. die \u00277\u0027 in H7), die die Größe der Toleranz festlegt?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "Toleranzgrad",
+                                         "IT-Grad",
+                                         "Qualitätsgrad",
+                                         "IT",
+                                         "Grundtoleranzgrad"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Der Toleranzgrad (auch Grundtoleranzgrad oder IT-Grad, IT = International Tolerance) bestimmt die Größe der Toleranz. IT01 und IT0 sind die engsten, IT18 die weiteste Toleranz. Für Passungen werden häufig IT5 bis IT10 verwendet.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-tp-009",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "multi",
+        "frage":  "Welche der folgenden Passungskombinationen sind typische Spielpassungen im Einheitsbohrungs-System (Bohrung H7)?",
+        "optionen":  [
+                         "H7/g6",
+                         "H7/f7",
+                         "H7/k6",
+                         "H7/e8",
+                         "H7/p6"
+                     ],
+        "richtigeIndizes":  [
+                                0,
+                                1,
+                                3
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Spielpassungen entstehen, wenn das Grundabmaß der Welle negativ ist (Welle liegt unterhalb des Nennmaßes). g6 (leichte Spielpassung für Lager), f7 (mittleres Spiel, gleitende Teile) und e8 (größeres Spiel) sind Spielpassungen. k6 ist eine Übergangspassung, p6 eine Übermaßpassung.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  3
+    },
+    {
+        "id":  "au-tp-010",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "lueckentext",
+        "frage":  "Die Toleranzfeldbezeichnung 40 H7/k6 beschreibt eine Passung mit Nennmaß {{1}} mm. H7 ist das Toleranzfeld der {{2}}, k6 das Toleranzfeld der {{3}}. Diese Paarung ist eine typische {{4}}.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+                        [
+                            "40"
+                        ],
+                        [
+                            "Bohrung"
+                        ],
+                        [
+                            "Welle"
+                        ],
+                        [
+                            "Übergangspassung"
+                        ]
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Die Notation \u0027Nennmaß Bohrungstoleranz/Wellentoleranz\u0027 ist genormt. Großbuchstaben (H) stehen für Bohrungen, Kleinbuchstaben (k) für Wellen. k6 bei H7 ergibt je nach Istmaß entweder leichtes Spiel oder leichtes Übermaß – typisch für Übergangspassungen.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-tp-011",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "wahrfalsch",
+        "frage":  "Eine Presspassung (Übermaßpassung) kann in der Regel ohne Hilfsmittel (Presse oder Temperaturausgleich) gefügt werden.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  false,
+        "erklaerung":  "Bei einer Presspassung ist die Welle stets größer als die Bohrung. Die Fügung erfordert eine Presse (Längspressverband) oder Temperaturunterschied (Querpress-/Schrumpfverband durch Erwärmen der Nabe oder Abkühlen der Welle). Die Verbindung überträgt Kräfte und Momente reibschlüssig.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-tp-012",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "reihenfolge",
+        "frage":  "Bringen Sie die folgenden Schritte zur Berechnung des Mindestspiels einer Spielpassung in die richtige Reihenfolge.",
+        "optionen":  [
+                         "Mindestmaß der Bohrung bestimmen (G_min = N + EI)",
+                         "Nennmaß und Toleranzfelder aus der Zeichnung ablesen",
+                         "S_min = G_min – W_max berechnen",
+                         "Höchstmaß der Welle bestimmen (W_max = N + es)"
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+                            1,
+                            0,
+                            3,
+                            2
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Zuerst werden Nennmaß und Toleranzfelder aus der Zeichnung abgelesen. Dann werden Bohrungsmaße (G_min aus EI) und Wellenmaße (W_max aus es) berechnet. Das Mindestspiel ergibt sich schließlich aus der kleinsten Bohrung minus der größten Welle.",
+        "selfExplanationPrompt":  "Erkläre, warum für das Mindestspiel die kleinste Bohrung und die größte Welle verwendet werden.",
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  3
+    },
+    {
+        "id":  "au-tp-013",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "kurzantwort",
+        "frage":  "Welche Passungsart entsteht, wenn die Toleranzfelder von Bohrung und Welle sich überschneiden, sodass sowohl Spiel als auch Übermaß möglich ist?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "Übergangspassung",
+                                         "Übergangpassung",
+                                         "Transition fit"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Bei der Übergangspassung überschneiden sich die Toleranzfelder von Bohrung und Welle. Je nach Istmaß kann ein geringes Spiel oder ein geringes Übermaß entstehen. Typische Grundabmaße der Welle: j, k, m, n. Sie werden verwendet, wenn eine gute Zentrierung bei noch lösbarer Verbindung gefordert ist.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-tp-014",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "multi",
+        "frage":  "Welche Aussagen zum ISO-Toleranzsystem sind korrekt?",
+        "optionen":  [
+                         "Großbuchstaben (A–ZC) bezeichnen Bohrungstoleranzen",
+                         "Kleinbuchstaben (a–zc) bezeichnen Wellentoleranzen",
+                         "Höhere IT-Grade bedeuten engere Toleranzen",
+                         "Das Toleranzfeld H hat immer EI = 0",
+                         "Das Toleranzfeld h hat immer es = 0"
+                     ],
+        "richtigeIndizes":  [
+                                0,
+                                1,
+                                3,
+                                4
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Im ISO-Toleranzsystem: Großbuchstaben = Bohrungen, Kleinbuchstaben = Wellen. H (EI = 0) und h (es = 0) sind die Grundlagen des Einheitssystems. Höhere IT-Grade bedeuten jedoch WEITERE (nicht engere) Toleranzen: IT1 ist enger als IT16.",
+        "selfExplanationPrompt":  "Erkläre den Zusammenhang zwischen IT-Grad und Fertigungsgenauigkeit.",
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  3
+    },
+    {
+        "id":  "au-tp-015",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Toleranzen \u0026 Passungen",
+        "typ":  "single",
+        "frage":  "Ein Nennmaß beträgt 80 mm, das Höchstmaß 80,030 mm und das Mindestmaß 80,010 mm. Wie groß ist das obere Abmaß?",
+        "optionen":  [
+                         "+0,030 mm",
+                         "+0,010 mm",
+                         "–0,030 mm",
+                         "0,020 mm"
+                     ],
+        "richtigeIndizes":  [
+                                0
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Das obere Abmaß ES = Höchstmaß – Nennmaß = 80,030 – 80,000 = +0,030 mm. Das untere Abmaß EI = Mindestmaß – Nennmaß = 80,010 – 80,000 = +0,010 mm. Die Toleranz beträgt T = 0,030 – 0,010 = 0,020 mm.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    }
+]

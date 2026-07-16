@@ -1,0 +1,231 @@
+[
+  {
+    "id": "wi-bo-001",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt das innerbetriebliche Gremium der Arbeitnehmervertretung, das nach dem Betriebsverfassungsgesetz (BetrVG) in Betrieben mit mind. 5 wahlberechtigten Arbeitnehmern gewählt werden kann?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Betriebsrat", "BR"],
+    "wahr": null,
+    "erklaerung": "Betriebsrat (BetrVG 1972): Gewählt von allen Arbeitnehmern des Betriebs (ab 18 J.). Mind. 5 wahlberechtigte AN. Schutzfunktion: Mitbestimmung in sozialen, personellen und wirtschaftlichen Angelegenheiten. Nicht zu verwechseln mit Gewerkschaft (Tarifvertragspartei) – BR arbeitet innerbetrieblich.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-bo-002",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "zuordnung",
+    "frage": "Ordne die Mitbestimmungsrechte des Betriebsrats ihrer Stärke zu.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "paare": [
+      {"links": "Echtes Mitbestimmungsrecht", "rechts": "Zustimmung des BR erforderlich (z.B. Betriebsvereinbarungen über Arbeitszeit)"},
+      {"links": "Mitwirkungsrecht", "rechts": "BR muss informiert und angehört werden, kann widersprechen"},
+      {"links": "Informationsrecht", "rechts": "AG muss BR rechtzeitig über Planungen unterrichten"},
+      {"links": "Vorschlagsrecht", "rechts": "BR kann Maßnahmen initiativ vorschlagen"}
+    ],
+    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "BR-Rechte in absteigender Stärke: Echte Mitbestimmung (Einigungsstellenverfahren wenn keine Einigung) > Zustimmungsverweigerung (personelle Maßnahmen) > Beratungsrecht > Informationsrecht. Soziale Angelegenheiten (§ 87 BetrVG): echte Mitbestimmung (z.B. Arbeitszeitgestaltung, Betriebsordnung, Lohngestaltung).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-003",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "lueckentext",
+    "frage": "In einem Betrieb mit {{1}} bis {{2}} Arbeitnehmern besteht der Betriebsrat aus einer Person. Bei 21 bis 50 Mitarbeitern sind es {{3}} Betriebsratsmitglieder.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [["5", "fünf"], ["20", "zwanzig"], ["3", "drei"]],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Betriebsratsgröße (§ 9 BetrVG): 5-20 AN: 1 BR-Mitglied; 21-50: 3; 51-100: 5; 101-200: 7; usw. Amtszeit: 4 Jahre. Ab 200 AN: freigestellte BR-Mitglieder (von der Arbeit befreit). Kosten trägt der AG. BR-Mitglieder genießen besonderen Kündigungsschutz.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-004",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "wahrfalsch",
+    "frage": "Der Betriebsrat und die Gewerkschaft sind identische Institutionen – der Betriebsrat ist der betriebsinterne Arm der Gewerkschaft und kann Tarifverträge für den Betrieb abschließen.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": false,
+    "erklaerung": "Falsch! Betriebsrat (BetrVG) und Gewerkschaft (TVG) sind rechtlich und funktional getrennt: Betriebsrat: innerbetrieblich, gewählt von ALLEN AN (auch Nicht-Gewerkschaftsmitglieder), kann KEINE Tarifverträge abschließen. Gewerkschaft: überbetrieblich, schließt Tarifverträge ab, finanziert durch Mitgliedsbeiträge. Doppelstruktur im deutschen Arbeitsrecht.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-005",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "multi",
+    "frage": "Welche Angelegenheiten unterliegen der erzwingbaren Mitbestimmung des Betriebsrats nach § 87 BetrVG?",
+    "optionen": [
+      "Beginn und Ende der täglichen Arbeitszeit",
+      "Einstellung und Entlassung von Arbeitnehmern",
+      "Regelung der Ordnung im Betrieb (Betriebsordnung)",
+      "Übernahme eines anderen Unternehmens durch den Arbeitgeber",
+      "Einführung und Nutzung technischer Kontrolleinrichtungen (z.B. Zeiterfassungssystem)"
+    ],
+    "richtigeIndizes": [0, 2, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "§ 87 BetrVG (erzwingbare Mitbestimmung): Arbeitszeit, Pausenregelung, Überstunden, Ordnung und Verhalten im Betrieb, Kontrolleinrichtungen (Überwachungskameras, Zeiterfassung), Urlaubsgrundsätze, Lohngestaltung. Einstellung: Mitwirkungsrecht (§ 99). Unternehmenserwerb: § 106 BetrVG (wirtschaftliche Angelegenheiten, schwächeres Recht).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-bo-006",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "single",
+    "frage": "Was ist eine Betriebsvereinbarung und welchen Rang hat sie gegenüber dem Arbeitsvertrag?",
+    "optionen": [
+      "Schriftliche Vereinbarung zwischen AG und BR; gilt wie ein Tarifvertrag direkt und unmittelbar und geht günstigeren Regelungen im Arbeitsvertrag vor",
+      "Mündliche Absprache zwischen AG und einzelnem AN",
+      "Vereinbarung, die nur dann gilt, wenn sie im Tarifvertrag vorgesehen ist",
+      "Interne Richtlinie des Arbeitgebers ohne Mitbestimmungspflicht"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Betriebsvereinbarung (BV, § 77 BetrVG): Schriftlicher Vertrag zwischen Arbeitgeber und Betriebsrat. Gilt unmittelbar und zwingend für alle Arbeitnehmer im Betrieb (auch Nicht-BR-Wähler). Rangfolge: Gesetz > Tarifvertrag > Betriebsvereinbarung > Arbeitsvertrag. Günstiger Arbeitsvertrag kann aber BV übertreffen (Günstigkeitsprinzip).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-007",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "reihenfolge",
+    "frage": "Bringe die Hierarchieebenen einer typischen Unternehmensorganisation in die richtige Reihenfolge (von oben nach unten).",
+    "optionen": ["Meister / Gruppenleiter", "Vorstand / Geschäftsführung", "Werker / Sachbearbeiter", "Abteilungsleiter / Bereichsleiter"],
+    "richtigeIndizes": [], "reihenfolge": [1, 3, 0, 2], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Hierarchieebenen: Unternehmensleitung (Vorstand/GF) → mittlere Führungsebene (Bereichs-/Abteilungsleiter) → untere Führungsebene (Meister/Gruppenleiter/Schichtleiter) → operative Ebene (Werker, Sachbearbeiter). Lean: flache Hierarchien bevorzugt. Führungsspanne: Anzahl der direkt unterstellten Mitarbeiter.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-bo-008",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "kurzantwort",
+    "frage": "Welche Organisationsform verknüpft die Vorteile der Linienorganisation (klare Verantwortung) und der Stablinienorganisation durch projektbezogene Querverbindungen über Funktionsbereiche hinweg?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Matrixorganisation", "Matrix-Organisation"],
+    "wahr": null,
+    "erklaerung": "Matrixorganisation: Zwei Dimensionen (z.B. Funktion: Entwicklung/Fertigung/Vertrieb + Projekt/Produkt). Mitarbeiter haben zwei Vorgesetzte: Funktionsleiter + Projektleiter. Vorteile: flexibel, Ressourcenteilung. Nachteile: Kompetenzkonflikte, Koordinationsaufwand. Typisch in großen Industrieunternehmen und Beratungen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-009",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "wahrfalsch",
+    "frage": "Der Betriebsrat kann die Einstellung eines Bewerbers endgültig verweigern, wenn er der Ansicht ist, dass ein geeigneterer betriebsinterner Kandidat vorhanden ist.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": false,
+    "erklaerung": "Falsch! Der BR hat bei Einstellungen kein Vetorecht (§ 99 BetrVG). Der BR kann die Zustimmung aus bestimmten Gründen (z.B. Verstoß gegen Auswahlrichtlinien, Nachteile für andere AN) verweigern. Der AG kann dann das Arbeitsgericht anrufen und die Zustimmung ersetzen lassen. Die bloße Präferenz für einen anderen Kandidaten reicht als Verweigerungsgrund nicht aus.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-bo-010",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "lueckentext",
+    "frage": "Bei einer Betriebsänderung (z.B. Massenentlassungen) muss der Arbeitgeber mit dem Betriebsrat einen {{1}} (§ 111 BetrVG) über die Durchführung verhandeln und ggf. einen {{2}} über Ausgleichsleistungen abschließen.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["Interessenausgleich"],
+      ["Sozialplan"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Betriebsänderung (§ 111 BetrVG): Bei größeren Betrieben (> 20 AN) z.B. Betriebsschließung, -verlagerung, Massenentlassungen. Interessenausgleich: Wie und wann wird die Änderung durchgeführt? Sozialplan: Ausgleich/Milderung der Nachteile (Abfindungen, Transfergesellschaft, Qualifizierung). Sozialplan ist erzwingbar.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-bo-011",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "multi",
+    "frage": "Welche Rechtsformen können Industrieunternehmen in Deutschland annehmen?",
+    "optionen": [
+      "GmbH (Gesellschaft mit beschränkter Haftung)",
+      "AG (Aktiengesellschaft)",
+      "KG (Kommanditgesellschaft)",
+      "BÜRGERGELD (staatliche Unternehmensform)",
+      "GbR (Gesellschaft bürgerlichen Rechts)"
+    ],
+    "richtigeIndizes": [0, 1, 2, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Rechtsformen: GmbH (häufigste Kapitalgesellschaft, Haftung auf Gesellschaftsvermögen), AG (Aktionäre haften nur mit Einlage), KG (Komplementär haftet unbeschränkt, Kommanditist beschränkt), GbR (einfachste Form, alle haften unbeschränkt), OHG (Vollhafter). Bürgergeld ist eine Sozialleistung, keine Unternehmensrechtsform.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-012",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "single",
+    "frage": "Welche Institution überwacht bei einer AG (Aktiengesellschaft) den Vorstand und wird von den Aktionären auf der Hauptversammlung gewählt?",
+    "optionen": [
+      "Aufsichtsrat",
+      "Betriebsrat",
+      "Wirtschaftsprüfer",
+      "Handelsregister"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "AG-Organe: Hauptversammlung (Aktionäre) → wählt Aufsichtsrat (Kontroll- und Beratungsorgan) → bestellt Vorstand (Leitungsorgan). Bei großen AG: Mitbestimmung im Aufsichtsrat (1/3 oder 1/2 der AR-Sitze für Arbeitnehmervertreter nach DrittelbG / MitbestG). Wirtschaftsprüfer: extern, prüft Jahresabschluss.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-013",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "rechnung",
+    "frage": "Ein Betrieb hat 3 Werkhallen. Halle A: 45 AN, Halle B: 80 AN, Halle C: 30 AN (Gesamtbetrieb: 155 AN). Wie viele Betriebsratsmitglieder hat der Betriebsrat? (101-200 AN → 7 Mitglieder laut § 9 BetrVG)",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 7.0,
+    "einheit": "Mitglieder",
+    "toleranz": 0.0,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Gesamtbetrieb: 45 + 80 + 30 = 155 Arbeitnehmer. § 9 BetrVG: 101-200 AN → 7 BR-Mitglieder. Die Hallen zusammen sind ein Betrieb (sofern gleiche Leitung). Bei selbstständigen Betrieben (eigene Leitung) je eigener BR. AB 200 AN: 1 freigestelltes BR-Mitglied.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Gesamt: 45 + 80 + 30 = 155 AN\n101-200 AN → 7 Betriebsratsmitglieder (§ 9 BetrVG)",
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-014",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "kurzantwort",
+    "frage": "Welches Prinzip der Unternehmensführung besagt, dass jeder Mitarbeiter nur von einem direkten Vorgesetzten Weisungen erhält (kein Meldungswirrwarr)?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Einlinienprinzip", "Einheitlichkeit der Auftragserteilung", "Einliniensystem"],
+    "wahr": null,
+    "erklaerung": "Einlinienprinzip (Henri Fayol): Jeder Mitarbeiter hat genau einen Vorgesetzten. Vorteile: klare Verantwortung, eindeutige Weisung. Nachteile: langer Dienstweg. Mehrlinienprinzip: mehrere Fachvorgesetzte (z.B. Matrixorganisation) → schnellere fachliche Kommunikation, aber potenzielle Kompetenzkonflikte.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-bo-015",
+    "bereich": "wiso",
+    "kategorie": "Betriebsorganisation",
+    "typ": "wahrfalsch",
+    "frage": "Mitglieder des Betriebsrats genießen während ihrer Amtszeit und in der Regel auch noch 1 Jahr nach Ende des Amtes einen besonderen Kündigungsschutz – eine ordentliche Kündigung ist in dieser Zeit grundsätzlich unzulässig.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! § 15 KSchG: BR-Mitglieder können während der Amtszeit und 1 Jahr danach nicht ordentlich (fristgemäß) gekündigt werden. Außerordentliche Kündigung nur mit Zustimmung des BR und bei wichtigem Grund (§ 626 BGB). Dieser Schutz soll Interessenvertretung ohne Angst vor Kündigung ermöglichen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  }
+]

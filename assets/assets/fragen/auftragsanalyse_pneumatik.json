@@ -1,0 +1,613 @@
+﻿[
+    {
+        "id":  "au-pn-001",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "kurzantwort",
+        "frage":  "Wie lautet die Abkürzung für die dreiteilige Druckluftaufbereitungseinheit, bestehend aus Filter, Regler und Öler?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "FRL",
+                                         "FRL-Einheit",
+                                         "FRL-Kombination"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "FRL steht für Filter – Regler – Lubrikator (Öler). Diese Kombination bereitet die Druckluft auf: Der Filter entfernt Schmutz und Kondenswasser, der Regler begrenzt den Druck, der Öler fügt bei Bedarf Schmiernebel bei.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-pn-002",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "wahrfalsch",
+        "frage":  "Ein 5/2-Wegeventil hat 5 Anschlüsse und 2 Schaltstellungen.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  true,
+        "erklaerung":  "Die Ventilbezeichnung X/Y-Wegeventil gibt an: X = Anschlussanzahl (Arbeits-, Versorgung- und Entlüftungsanschlüsse), Y = Anzahl der Schaltstellungen. Ein 5/2-Ventil hat 5 Anschlüsse (P, A, B, R, S) und 2 Stellungen.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  "diag:pneumatik_52_ventil",
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-pn-003",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "rechnung",
+        "frage":  "Ein doppeltwirkender Pneumatikzylinder hat einen Kolbendurchmesser von d = 80 mm. Der Betriebsdruck beträgt p = 6 bar. Berechnen Sie die theoretische Vorschubkraft F.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  3016.0,
+        "einheit":  "N",
+        "toleranz":  5.0,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Kolbenfläche: A = π/4 · d² = π/4 · (0,08 m)² ≈ 0,005027 m². Druck: p = 6 bar = 6 · 10⁵ Pa. Kraft: F = p · A = 6 · 10⁵ Pa · 0,005027 m² ≈ 3016 N.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  "Gegeben: d = 80 mm = 0,08 m, p = 6 bar = 6 · 10⁵ Pa\nSchritt 1: A = π/4 · d² = π/4 · 0,08² = 0,005027 m²\nSchritt 2: F = p · A = 6 · 10⁵ · 0,005027 = 3016 N",
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-004",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "rechnung",
+        "frage":  "Ein einfachwirkender Zylinder mit Kolbendurchmesser d = 50 mm und Hub h = 120 mm wird ausgefahren. Berechnen Sie das Luftvolumen V, das beim Ausfahren benötigt wird.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  235619.0,
+        "einheit":  "mm³",
+        "toleranz":  500.0,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "V = A · h = (π/4 · d²) · h = (π/4 · 50²) · 120 = 1963,5 mm² · 120 mm ≈ 235 619 mm³ ≈ 235,6 cm³.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  "Gegeben: d = 50 mm, h = 120 mm\nSchritt 1: A = π/4 · 50² = π/4 · 2500 ≈ 1963,5 mm²\nSchritt 2: V = A · h = 1963,5 · 120 ≈ 235 619 mm³",
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-005",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "zuordnung",
+        "frage":  "Ordnen Sie die Ventilbezeichnungen ihrer Funktion zu.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+                      {
+                          "links":  "3/2-Wegeventil (NC)",
+                          "rechts":  "Steuert einfachwirkende Zylinder, in Ruhe gesperrt"
+                      },
+                      {
+                          "links":  "5/2-Wegeventil",
+                          "rechts":  "Steuert doppeltwirkende Zylinder, zwei Arbeitsanschlüsse"
+                      },
+                      {
+                          "links":  "Rückschlagventil",
+                          "rechts":  "Lässt Luft nur in eine Richtung durch"
+                      },
+                      {
+                          "links":  "Druckbegrenzungsventil",
+                          "rechts":  "Begrenzt den Systemdruck auf einen Maximalwert"
+                      }
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "3/2-NC-Ventile steuern einfachwirkende Zylinder: in Ruhestellung gesperrt (Normally Closed). 5/2-Ventile haben zwei Arbeitsanschlüsse (A, B) für doppeltwirkende Zylinder. Rückschlagventile sind richtungsabhängig. Druckbegrenzungsventile schützen das System vor Überdrück.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-006",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "lueckentext",
+        "frage":  "Bei der indirekten Steuerung gibt ein kleines {{1}}-Signal ein größeres Steuerventil frei, das dann den Zylinder schaltet. Bei der direkten Steuerung wirkt das {{2}} direkt auf den Arbeitszylinder.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+                        [
+                            "Steuer",
+                            "Pilot",
+                            "Vorsteuer"
+                        ],
+                        [
+                            "Handventil",
+                            "Wegeventil",
+                            "Steuerventil",
+                            "Bediensignal"
+                        ]
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Bei der indirekten Steuerung (für große Zylinder oder lange Leitungen) steuert ein kleines Vorsteuerventil (Pilot) ein größeres Wegeventil an. Bei der direkten Steuerung betätigt der Bediener (oder ein Sensor) direkt das Wegeventil, das den Zylinder schaltet.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-pn-007",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "multi",
+        "frage":  "Welche Aussagen zum doppeltwirkenden Pneumatikzylinder sind korrekt?",
+        "optionen":  [
+                         "Der Zylinder kann in beide Richtungen aktiv Kraft ausüben.",
+                         "Beim Einfahren ist die wirksame Kolbenfläche kleiner als beim Ausfahren (Stangenseite).",
+                         "Ein doppeltwirkender Zylinder benötigt nur einen Druckluftanschluss.",
+                         "Für die Steuerung wird typisch ein 5/2-Wegeventil verwendet.",
+                         "Die Rückholbewegung erfolgt ausschließlich durch eine Feder."
+                     ],
+        "richtigeIndizes":  [
+                                0,
+                                1,
+                                3
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Doppeltwirkende Zylinder haben zwei Anschlüsse und können in beide Richtungen Kraft ausüben. Auf der Stangenseite ist die wirksame Fläche kleiner (Kolbenfläche minus Stangenquerschnitt), daher ist die Einfahrkraft geringer. Die Steuerung erfolgt typisch mit 5/2-Ventilen. Einfachwirkende Zylinder haben nur einen Anschluss und eine Rückzugsfeder.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-008",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "kurzantwort",
+        "frage":  "Welche DIN-Norm legt die grafischen Symbole (Schaltzeichen) für pneumatische und hydraulische Anlagen fest?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "DIN ISO 1219",
+                                         "ISO 1219",
+                                         "DIN ISO 1219-1",
+                                         "1219"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Die DIN ISO 1219 (Teil 1: Schaltzeichen; Teil 2: Schaltpläne) legt die grafischen Symbole für Fluid-Technik (Pneumatik und Hydraulik) international einheitlich fest.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-pn-009",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "wahrfalsch",
+        "frage":  "Eine Drossel-Rückschlagventil-Kombination (Drosselrückschlagventil) drosselt den Volumenstrom in beide Richtungen gleich.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  false,
+        "erklaerung":  "Das Drosselrückschlagventil drosselt nur in einer Richtung (über die einstellbare Drossel). In der anderen Richtung öffnet das Rückschlagventil und lässt die Luft ungedrosselt passieren. Damit lässt sich z. B. nur die Ausfahrgeschwindigkeit eines Zylinders einstellen.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-010",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "reihenfolge",
+        "frage":  "Ordnen Sie die Stationen des Druckluftweges vom Erzeuger bis zum Verbraucher in der richtigen Reihenfolge.",
+        "optionen":  [
+                         "Wegeventil (zur Zylindersteuerung)",
+                         "Druckluftbehälter (Pufferspeicher)",
+                         "Kompressor (Drucklufterzeugung)",
+                         "FRL-Einheit (Aufbereitung)",
+                         "Arbeitszylinder (Verbraucher)"
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+                            2,
+                            1,
+                            3,
+                            0,
+                            4
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Reihenfolge: Kompressor → Druckluftbehälter (Puffer, Druckschwankungen ausgleichen) → FRL-Einheit (Filter, Regler, Öler) → Wegeventil → Arbeitszylinder.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-pn-011",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "single",
+        "frage":  "Welches Schaltzeichen beschreibt im Pneumatikschaltplan einen federrückgestellten, handbetätigten 3/2-Wegeventil in Normalstellung gesperrt (NC)?",
+        "optionen":  [
+                         "Rechteck mit 3 Linien, zwei Pfeile nach rechts, Feder rechts, Handbetätigung links",
+                         "Rechteck mit 2 Feldern, in Ruhestellung alle Leitungen verbunden",
+                         "Kreis mit diagonaler Linie (Rückschlagventil)",
+                         "Dreieck mit Linie (Druckbegrenzungsventil)"
+                     ],
+        "richtigeIndizes":  [
+                                0
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Ein 3/2-Wegeventil wird als Rechteck mit 3 Anschlusslinien und zwei Schaltstellungen (2 Kästchen) dargestellt. NC (Normally Closed): In der Ruhestellung ist der Arbeitsanschluss gesperrt und entlüftet. Federrückstellung und Handbetätigung sind als Symbole angebaut.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-012",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "multi",
+        "frage":  "Welche Aufgaben übernimmt der Druckluftbehälter in einer pneumatischen Anlage?",
+        "optionen":  [
+                         "Ausgleich von Druckschwankungen bei wechselndem Verbrauch",
+                         "Speichern von Druckluft als kurzfristiger Puffer",
+                         "Filtern von Schmutzpartikeln aus der Druckluft",
+                         "Abscheiden von Kondensatwasser durch Abkühlung",
+                         "Regeln des Betriebsdrucks auf einen konstanten Wert"
+                     ],
+        "richtigeIndizes":  [
+                                0,
+                                1,
+                                3
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Der Behälter puffert Druckschwankungen, speichert Energie und kühlt die heiße Kompressorluft ab, sodass Kondenswasser ausfällt (Vorabscheidung). Filtern übernimmt der Filter der FRL-Einheit, Regeln der Druckminderer.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-013",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "lueckentext",
+        "frage":  "Im Signalflussplan einer pneumatischen Steuerung gibt die {{1}} (z. B. ein Endschalter) ein Signal, das über ein Steuerventil den {{2}} (Zylinder) auslöst.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+                        [
+                            "Signalgebereinheit",
+                            "Eingangseinheit",
+                            "Eingangselement",
+                            "Signalgeber"
+                        ],
+                        [
+                            "Stellantrieb",
+                            "Aktuator",
+                            "Arbeitselement",
+                            "Wirkungsglied"
+                        ]
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Der Signalfluss in pneumatischen Steuerungen: Signalgeber (Sensoren, Endschalter, Taster) → Verarbeitungsventile (logische Verknüpfung) → Steuerventile (Wegeventile) → Stellantriebe (Zylinder, Motoren).",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-014",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "kurzantwort",
+        "frage":  "Welche Bauart von Pneumatikzylinder verfügt nur über einen Druckluftanschluss und wird durch eine innenliegende Feder zurückgestellt?",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+                                         "einfachwirkender Zylinder",
+                                         "einfachwirkend",
+                                         "einfachwirkender Pneumatikzylinder",
+                                         "Einfachwirkender"
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Der einfachwirkende Zylinder (single-acting cylinder) hat nur einen Druckluftanschluss. Die Druckluft wirkt in einer Richtung (Ausfahren), eine Rückholfeder bringt den Kolben in die Ausgangslage zurück. Typisch für einfache Klemmvorrichtungen.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  1
+    },
+    {
+        "id":  "au-pn-015",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "wahrfalsch",
+        "frage":  "Druckluft ist im Vergleich zu Hydrauliköl kompressibel, was Positioniergenauigkeit erschwert aber Energiespeicherung ermöglicht.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  null,
+        "einheit":  null,
+        "toleranz":  null,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  true,
+        "erklaerung":  "Luft ist kompressibel (federnd), Öl praktisch inkompressibel. Die Kompressibilität der Luft erlaubt das Speichern von Druckluftenergie (Druckluftbehälter), macht aber genaue Positionierungen schwieriger, da sich der Kolben elastisch verhält.",
+        "selfExplanationPrompt":  null,
+        "bildAsset":  null,
+        "workedExample":  null,
+        "schwierigkeit":  2
+    },
+    {
+        "id":  "au-pn-016",
+        "bereich":  "auftragsanalyse",
+        "kategorie":  "Pneumatik",
+        "typ":  "rechnung",
+        "frage":  "Ein doppeltwirkender Zylinder (Kolben-Ø 63 mm, Stangen-Ø 20 mm) wird bei p = 5 bar eingefahren. Berechnen Sie die Einfahrkraft F_ein.",
+        "optionen":  [
+
+                     ],
+        "richtigeIndizes":  [
+
+                            ],
+        "reihenfolge":  [
+
+                        ],
+        "paare":  [
+
+                  ],
+        "luecken":  [
+
+                    ],
+        "loesungswert":  1404.0,
+        "einheit":  "N",
+        "toleranz":  10.0,
+        "akzeptierteKurzantworten":  [
+
+                                     ],
+        "wahr":  null,
+        "erklaerung":  "Wirksame Fläche (Ringfläche): A_ring = π/4 · (d_K² - d_St²) = π/4 · (63² - 20²) = π/4 · (3969 - 400) = π/4 · 3569 ≈ 2808 mm² = 0,002808 m². F = p · A = 5 · 10⁵ Pa · 0,002808 m² ≈ 1404 N.",
+        "selfExplanationPrompt":  "Erkläre, warum beim Einfahren eines doppeltwirkenden Zylinders eine geringere Kraft erzeugt wird als beim Ausfahren, obwohl derselbe Druck anliegt.",
+        "bildAsset":  null,
+        "workedExample":  "Gegeben: d_K = 63 mm, d_St = 20 mm, p = 5 bar = 5 · 10⁵ Pa\nSchritt 1: A_ring = π/4 · (63² - 20²) = π/4 · 3569 ≈ 2808 mm² = 0,002808 m²\nSchritt 2: F = p · A = 5 · 10⁵ · 0,002808 ≈ 1404 N",
+        "schwierigkeit":  3
+    }
+]

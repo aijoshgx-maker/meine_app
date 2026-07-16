@@ -1,0 +1,336 @@
+[
+  {
+    "id": "wi-kv-001",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "reihenfolge",
+    "frage": "Bringe die Entstehungsphasen eines Kaufvertrags in die richtige Reihenfolge.",
+    "optionen": ["Angebot (verbindliche Willenserklärung des Anbieters)", "Erfüllung (Lieferung und Zahlung)", "Vertragsschluss (Annahme des Angebots)", "Anfrage des Käufers (unverbindlich)"],
+    "richtigeIndizes": [], "reihenfolge": [3, 0, 2, 1], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Kaufvertragsanbahnung: 1) Anfrage (unverbindlich, nur Informationsbitte). 2) Angebot (verbindlich! enthält Menge, Preis, Qualität, Liefertermin, Zahlungsbedingungen). 3) Annahme = Vertragsschluss (mit gleichem Inhalt; geänderte Annahme = neues Angebot). 4) Erfüllung: Lieferung (AG = Lieferant) und Zahlung (Käufer). BGB §§ 433 ff.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-kv-002",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "kurzantwort",
+    "frage": "Was sind die zwei wesentlichen Pflichten des Verkäufers nach § 433 BGB beim Kaufvertrag?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Übergabe und Eigentumsübertragung", "Lieferung und Eigentumsübertragung", "die Sache übergeben und Eigentum verschaffen"],
+    "wahr": null,
+    "erklaerung": "§ 433 BGB Kaufvertrag: Verkäufer muss (1) die Sache übergeben und (2) dem Käufer das Eigentum verschaffen. Die Sache muss frei von Sach- und Rechtsmängeln sein. Käufer muss (1) den Kaufpreis bezahlen und (2) die Sache abnehmen. Synallagmatischer Vertrag: Leistung und Gegenleistung.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-003",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "wahrfalsch",
+    "frage": "Ein Kaufvertrag kommt nach deutschem Recht grundsätzlich formfrei zustande – auch ein mündlicher oder per Handschlag geschlossener Kaufvertrag ist rechtlich bindend.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! Grundsatz der Formfreiheit im BGB (§ 125 BGB): Verträge sind formfrei, sofern das Gesetz keine besondere Form vorschreibt. Ausnahmen mit Schriftformerfordernis: Grundstückskaufvertrag (notarielle Beurkundung), Verbraucherkreditvertrag (Schriftform), Bürgschaft. Empfehlung: immer schriftlich aus Beweiszwecken.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-004",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "multi",
+    "frage": "Was sind die Rechte des Käufers bei Sachmängeln nach § 437 BGB?",
+    "optionen": [
+      "Nacherfüllung (Reparatur oder Neulieferung)",
+      "Rücktritt vom Kaufvertrag",
+      "Minderung des Kaufpreises",
+      "Sofortige Strafverfolgung des Verkäufers",
+      "Schadensersatz (wenn Verkäufer Verschulden trifft)"
+    ],
+    "richtigeIndizes": [0, 1, 2, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Mängelrechte § 437 BGB: 1. Nacherfüllung (Vorrang! Reparatur oder Ersatzlieferung – Käufer muss Chance geben). 2. Rücktritt (Vertrag rückgängig). 3. Minderung (Preis reduzieren). 4. Schadensersatz (nur bei Verschulden des Verkäufers). 5. Aufwendungsersatz. Strafverfolgung ist Strafrecht, kein Mängelrecht.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-005",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "lueckentext",
+    "frage": "Die gesetzliche Mängelhaftungsfrist (Gewährleistung) beträgt beim Kauf von {{1}} grundsätzlich 2 Jahre ab {{2}}. Der Verkäufer kann die Frist bei Verbrauchsgüterkauf nicht {{3}}.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["neuen Sachen", "Neuwaren"],
+      ["Übergabe", "Lieferung", "Gefahrübergang"],
+      ["verkürzen", "unterschreiten"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "§ 438 BGB: Verjährungsfrist 2 Jahre (neue Sachen), 1 Jahr (gebrauchte Sachen, wenn vereinbart, aber mind. 1 Jahr bei B2C). Beginn: Übergabe der Sache. Verbrauchsgüterkauf (§ 475 BGB, B2C): Haftungsausschluss/-verkürzung zulasten Verbraucher unzulässig. Zwischen Unternehmen (B2B): Verkürzung auf 1 Jahr möglich.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-006",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "single",
+    "frage": "Was unterscheidet eine Garantie von der gesetzlichen Gewährleistung (Mängelhaftung)?",
+    "optionen": [
+      "Garantie ist eine freiwillige Herstellerzusage; Gewährleistung ist gesetzlich zwingend",
+      "Gewährleistung ist freiwillig; Garantie ist gesetzlich vorgeschrieben",
+      "Garantie und Gewährleistung sind identisch",
+      "Garantie gilt 10 Jahre; Gewährleistung nur 1 Jahr"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Gewährleistung (gesetzlich, §§ 434 ff. BGB): Pflicht des Verkäufers, für mangelfreie Ware einzustehen (2 Jahre). Garantie (freiwillig, § 443 BGB): Versprechen des Herstellers/Händlers über einen bestimmten Zustand (z.B. '5 Jahre Herstellergarantie'). Garantie kann zusätzlich, aber nicht anstelle der Gewährleistung gewährt werden.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-007",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "zuordnung",
+    "frage": "Ordne die kaufmännischen Klauseln ihrer Bedeutung zu.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "paare": [
+      {"links": "Zug-um-Zug", "rechts": "Lieferung und Zahlung gleichzeitig (kein Vorleistungsrisiko)"},
+      {"links": "2% Skonto bei Zahlung innerhalb 10 Tagen", "rechts": "Preisnachlass für schnelle Zahlung"},
+      {"links": "Eigentumsvorbehalt", "rechts": "Verkäufer bleibt Eigentümer bis zur vollständigen Zahlung"},
+      {"links": "Netto 30 Tage", "rechts": "Voller Rechnungsbetrag zahlbar innerhalb von 30 Tagen"}
+    ],
+    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Kaufmännische Zahlungsbedingungen: Zug um Zug (§ 320 BGB), Skonto (Anreiz für Schnellzahlung, i.d.R. 2-3%), Eigentumsvorbehalt (§ 449 BGB, wichtige Kreditsicherung für Lieferanten), Netto (ohne Abzug). Beispiel Zahlungsziel: '2/10 netto 30' = 2% Skonto wenn innerhalb 10 Tagen, sonst voller Betrag in 30 Tagen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-008",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "wahrfalsch",
+    "frage": "Bei einem Verbrauchsgüterkauf (Unternehmer an Privatperson) gilt für Mängel, die innerhalb der ersten 12 Monate auftreten, eine gesetzliche Beweislastumkehr: Der Verkäufer muss beweisen, dass der Mangel nicht schon bei Übergabe vorlag.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! § 477 BGB (Beweislastumkehr): Bei Verbrauchsgüterkauf gilt innerhalb der ersten 12 Monate (ab 1.1.2022 auf 12 Monate verlängert, war vorher 6 Monate) die Vermutung, dass der Mangel schon bei Übergabe vorhanden war. Verkäufer muss das Gegenteil beweisen. Nach 12 Monaten: Käufer muss beweisen, dass Mangel bei Übergabe vorlag.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-kv-009",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "lueckentext",
+    "frage": "Ein Angebot ist {{1}} für den Anbietenden, solange er es nicht widerruft. Eine Anfrage ist dagegen {{2}} und verpflichtet den Anfragenden zu nichts. Das Angebot enthält alle {{3}} des zukünftigen Vertrags.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["verbindlich", "bindend"],
+      ["unverbindlich", "nicht bindend"],
+      ["wesentlichen Bestandteile", "essentialia negotii", "Vertragsbedingungen"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Willenserklärungen: Anfrage (Bitte um Informationen, unverbindlich), Angebot/Offerte (verbindlich: Ware, Menge, Preis, Lieferfrist, Zahlungsbedingungen; § 145 BGB: Anbietender gebunden bis Frist oder angemessene Zeit), Annahme (Willenserklärung des Käufers = Vertragsschluss). Geänderte Annahme = Gegenangebot.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-010",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "rechnung",
+    "frage": "Listenpreis: 1500 € netto. Händlerrabatt: 20%. Skonto bei Zahlung innerhalb 10 Tagen: 2%. Berechne den Rechnungsbetrag nach Abzug aller Nachlässe (netto) in €.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 1176.0,
+    "einheit": "€",
+    "toleranz": 1.0,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "1) Rabatt: 1500 × 0,80 = 1200 € (nach Rabatt). 2) Skonto: 1200 × 0,98 = 1176 € (nach Skonto). Reihenfolge immer: Rabatt zuerst, dann Skonto auf den rabattierten Betrag. Rabatt: Preisabschlag auf Listenpreis. Skonto: Zahlungsabzug für schnelle Zahlung (gehört zu den Einkaufskosten, nicht zum Warenpreis).",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "1) Nach Rabatt (20%): 1500 × (1-0,20) = 1500 × 0,80 = 1200 €\n2) Nach Skonto (2%): 1200 × (1-0,02) = 1200 × 0,98 = 1176 €",
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-011",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "single",
+    "frage": "Was ist der Unterschied zwischen Anfechtung und Widerruf eines Kaufvertrags?",
+    "optionen": [
+      "Anfechtung beseitigt den Vertrag wegen Willensmangel (Irrtum, Täuschung) rückwirkend; Widerruf ist ein besonderes Lösungsrecht bei Fernabsatz/Haustürgeschäften",
+      "Anfechtung und Widerruf sind identisch",
+      "Widerruf beseitigt den Vertrag rückwirkend; Anfechtung gilt nur für die Zukunft",
+      "Anfechtung kann nur bei schriftlichen Verträgen eingesetzt werden"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Anfechtung (§§ 119 ff. BGB): Willensmangel (Irrtum, Täuschung, Drohung), macht Vertrag von Anfang an nichtig (ex tunc). Widerruf (§§ 355 ff. BGB): Verbraucherrecht bei Fernabsatz (Online-Shopping), Haustürgeschäften – 14-tägiges Widerrufsrecht ohne Angabe von Gründen. Nach Widerruf: beidseitige Rückgabe (ex nunc).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-kv-012",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "kurzantwort",
+    "frage": "Ab welchem Geschädigtenalter kann nach deutschem Recht (§ 106 BGB) eine Person allein schon beschränkt geschäftsfähig sein und Verträge mit Taschengeld (Taschengeldparagraph) abschließen?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["7 Jahre", "7", "ab 7 Jahren"],
+    "wahr": null,
+    "erklaerung": "Geschäftsfähigkeit: Unter 7 J.: geschäftsunfähig (§ 104 BGB). 7-17 J.: beschränkt geschäftsfähig (§ 106 BGB). Ab 18 J.: voll geschäftsfähig. Taschengeldparagraph (§ 110 BGB): Minderjährige können Geschäfte, die sie mit eigenen Mitteln (Taschengeld) vollständig erfüllt haben, ohne Zustimmung der Eltern abschließen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-013",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "multi",
+    "frage": "Welche Bestandteile müssen in einem gewerblichen Angebot enthalten sein?",
+    "optionen": [
+      "Genaue Warenbezeichnung und Menge",
+      "Preis (ggf. netto und mit MwSt.) und Zahlungsbedingungen",
+      "Lieferfrist und Lieferbedingungen",
+      "Persönliche Meinung des Verkäufers über die Qualität",
+      "Angebotsgültigkeitsdauer"
+    ],
+    "richtigeIndizes": [0, 1, 2, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Pflichtinhalt eines Angebots (wesentliche Vertragsbestandteile): Vertragsparteien, Ware (Art, Menge, Qualität), Preis, Liefertermin/-ort, Zahlungsbedingungen (Frist, Skonto), Angebotsgültigkeitsdauer. Persönliche Meinungsäußerungen sind keine rechtsverbindlichen Bestandteile des Angebots.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-014",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "wahrfalsch",
+    "frage": "Bei einem Gefahrübergang trägt der Käufer ab dem Zeitpunkt der Übergabe das Risiko des zufälligen Untergangs der Kaufsache – auch wenn er noch nicht bezahlt hat.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! § 446 BGB: Gefahrübergang beim Platzkauf: bei Übergabe der Sache. § 447 BGB: Versendungskauf: bei Übergabe an Transportunternehmen (Spediteur). Ab Gefahrübergang: Käufer muss Kaufpreis zahlen, auch wenn Sache zufällig untergeht (z.B. Blitzschlag). Eigentumsvorbehalt: Eigentum noch beim Verkäufer, Gefahr schon beim Käufer (nach § 446).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-kv-015",
+    "bereich": "wiso",
+    "kategorie": "Kaufvertrag",
+    "typ": "single",
+    "frage": "Welche besondere Schutznorm gilt bei der Anlieferung von Waren im B2B-Bereich (Handelsgewerbe) und verpflichtet den Käufer, die Ware unverzüglich zu prüfen und Mängel sofort zu rügen?",
+    "optionen": [
+      "§ 377 HGB (Untersuchungs- und Rügepflicht im Handelsrecht)",
+      "§ 437 BGB (Mängelrechte des Verbraucherkaufs)",
+      "§ 242 BGB (Treu und Glauben)",
+      "UWG (Gesetz gegen unlauteren Wettbewerb)"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "§ 377 HGB: Zwischen Kaufleuten muss die Ware unverzüglich nach Anlieferung untersucht und etwaige Mängel sofort gerügt werden ('sofortige Rüge'). Bei unterlassener Rüge gilt die Ware als genehmigt – Mängelrechte verfallen. Im B2C-Recht gibt es diese Rügepflicht nicht. Im Industriebetrieb: Eingangskontrolle ist deshalb rechtlich und qualitativ notwendig.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-kv-016", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "single",
+    "frage": "Ein Industriebetrieb bestellt Dichtungen bei einem Lieferanten. Die Lieferung erfolgt mit erheblicher Verspätung. Welches Recht hat der Käufer nach Ablauf einer gesetzten Nachfrist?",
+    "optionen": ["Er kann ausschließlich Schadensersatz fordern.", "Er kann vom Kaufvertrag zurücktreten oder Schadensersatz statt der Leistung fordern.", "Er kann nur einen Preisnachlass verlangen.", "Er kann die Ware sofort behalten und nichts mehr fordern.", "Er kann einen neuen Kaufvertrag erzwingen."],
+    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Bei Lieferverzug muss der Käufer eine angemessene Nachfrist setzen (§ 281 BGB). Nach erfolglosem Ablauf hat er das Recht: (1) vom Vertrag zurückzutreten (§ 323 BGB) ODER (2) Schadensersatz statt der Leistung zu verlangen. Preisnachlass (Minderung) ist ein Rechtsbehelf bei Sachmängeln, nicht bei Verzug.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-017", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "single",
+    "frage": "Ein Lieferant übergibt 500 Dichtungen, von denen 50 Stück fehlerhaft sind. Der Käufer rügt den Mangel. Welches Recht hat der Käufer als primären Rechtsbehelf?",
+    "optionen": ["Sofortiger Rücktritt vom Kaufvertrag", "Sofortiger Anspruch auf Schadensersatz", "Nacherfüllung (Nachbesserung oder Ersatzlieferung)", "Minderung des Kaufpreises", "Rücktritt und gleichzeitig Schadensersatz"],
+    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Bei Sachmängeln gilt das Stufenprinzip: Der primäre Rechtsbehelf ist die Nacherfüllung (§ 439 BGB) – der Käufer kann wählen zwischen Nachbesserung (Reparatur) oder Ersatzlieferung (mangelfreie Ware). Erst wenn die Nacherfüllung scheitert oder verweigert wird, darf der Käufer sekundäre Rechtsbehelfe nutzen: Rücktritt, Minderung oder Schadensersatz.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-018", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "single",
+    "frage": "Die Firma AllPrint ist eine Gesellschaft mit beschränkter Haftung (GmbH). Zu welcher Unternehmensform gehört die AllPrint GmbH?",
+    "optionen": ["Stille Gesellschaft", "Einzelunternehmung", "Personengesellschaft", "Genossenschaft", "Kapitalgesellschaft"],
+    "richtigeIndizes": [4], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Die GmbH (Gesellschaft mit beschränkter Haftung) ist eine Kapitalgesellschaft. Kennzeichen: Haftung nur mit Gesellschaftsvermögen (begrenzte Haftung), Mindestkapital 25.000 Euro, Stammkapital in Geschäftsanteile aufgeteilt. Kapitalgesellschaften: GmbH, AG, KGaA. Personengesellschaften (OHG, KG, GbR) haften mit Privatvermögen der Gesellschafter.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-kv-019", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "rechnung",
+    "frage": "Die AllPrint GmbH hat im Geschäftsjahr Erträge von 3 Mio. Euro und einen Aufwand von 2 Mio. Euro. Wie groß ist die Wirtschaftlichkeit des Unternehmens?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 1.5, "einheit": "", "toleranz": 0.01,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Wirtschaftlichkeit = Ertrag / Aufwand = 3 Mio. / 2 Mio. = 1,5. Ein Wert > 1 bedeutet: Erträge übersteigen den Aufwand → das Unternehmen wirtschaftet rentabel. Wert = 1,5 bedeutet: für jeden Euro Aufwand werden 1,50 Euro Ertrag erwirtschaftet.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Wirtschaftlichkeit = Ertrag / Aufwand\n= 3 000 000 / 2 000 000 = 1,5",
+    "schwierigkeit": 1
+  },
+  {
+    "id": "wi-kv-020", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "single",
+    "frage": "Ein Betrieb bestellt über einen Online-Händler neue Bohrwerkzeuge (Fernabsatzvertrag, § 312c BGB). Wie lange beträgt die gesetzliche Widerrufsfrist nach § 355 BGB?",
+    "optionen": ["7 Tage ab Vertragsschluss", "10 Tage ab Lieferung", "14 Tage ab Erhalt der Ware", "30 Tage ab Rechnungsdatum", "4 Wochen ab Vertragsschluss"],
+    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "§ 355 BGB: Die Widerrufsfrist bei Fernabsatzverträgen (Online-Kauf) beträgt 14 Tage. Die Frist beginnt mit Erhalt der Ware, sofern korrekt über das Widerrufsrecht belehrt wurde. Unterbleibt die Belehrung, verlängert sich die Frist auf 12 Monate + 14 Tage. Achtung: Bei B2B-Geschäften gilt kein gesetzliches Widerrufsrecht!",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-021", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "rechnung",
+    "frage": "Eine Bestellung für Bohrstations-Zubehör hat einen Nettobetrag von 1 000 €. Bei Zahlung innerhalb von 10 Tagen gewährt der Lieferant 3 % Skonto. Wie viel Euro zahlt der Betrieb bei Nutzung des Skontos?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 970.0, "einheit": "€", "toleranz": 0.01,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Skonto = 1 000 € · 3 % = 30 €. Zahlbetrag = 1 000 € − 30 € = 970 €. Skonto ist ein Preisnachlass bei fristgerechter Zahlung. Der effektive Jahreszins des Skontos ist meist sehr hoch, daher lohnt sich seine Inanspruchnahme fast immer.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Skonto = 1 000 · 0,03 = 30 €\nZahlbetrag = 1 000 − 30 = 970 €",
+    "schwierigkeit": 1
+  },
+  {
+    "id": "wi-kv-022", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "single",
+    "frage": "Ein Privatmann finanziert ein Maschinen-Werkzeug über einen Verbraucherkreditvertrag mit einer Bank. Wie lange beträgt die Widerrufsfrist nach § 495 BGB?",
+    "optionen": ["7 Tage ab Vertragsunterzeichnung", "10 Tage ab Geldauszahlung", "14 Tage ab Vertragsschluss", "30 Tage ab Vertragsschluss", "Kein Widerrufsrecht bei Kreditverträgen"],
+    "richtigeIndizes": [2], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Verbraucherkreditverträge (§ 495 BGB): Der Verbraucher hat ein 14-tägiges Widerrufsrecht ab Vertragsschluss (§ 355 BGB). Das Verbraucherkreditrecht gilt nur für Privatkonsumenten, nicht für Unternehmer. Bei gewerblichen Kreditverträgen (B2B) besteht kein gesetzliches Widerrufsrecht.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-023", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "single",
+    "frage": "Die Metall AG (eingetragener Vollkaufmann) bestellt Hydraulikzylinder für die Schaltvorrichtung (S18). Bei der Wareneingangskontrolle 3 Wochen nach Lieferung entdeckt der Lagerleiter einen versteckten Mangel. Welche gesetzliche Pflicht muss die Metall AG jetzt unverzüglich erfüllen?",
+    "optionen": ["Die Metall AG kann Mängelansprüche innerhalb von 2 Jahren geltend machen – keine Eile.", "Die Metall AG muss den Mangel nach § 377 HGB unverzüglich nach Entdeckung schriftlich beim Lieferanten rügen. Ohne rechtzeitige Mängelrüge gilt die Ware als genehmigt.", "Die Metall AG muss zunächst ein Gutachten einholen, bevor sie den Mangel melden kann.", "Die Metall AG muss den Mangel dem Betriebsrat melden.", "Die Metall AG braucht den Mangel nicht zu rügen, da er erst nach 3 Wochen entdeckt wurde."],
+    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "§ 377 HGB (Rügeobliegenheit): Beim Handelskauf (zwischen Kaufleuten) muss der Käufer die Ware unverzüglich nach Ablieferung untersuchen und entdeckte Mängel unverzüglich rügen. Versteckte Mängel müssen unverzüglich nach Entdeckung gerügt werden. Ohne rechtzeitige Rüge gilt die Ware als genehmigt und Gewährleistungsrechte erlöschen. Diese Obliegenheit gilt nur zwischen Vollkaufleuten (§ 377 HGB), nicht bei Verbrauchergeschäften (dort gilt § 437 BGB).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-kv-024", "bereich": "wiso", "kategorie": "Kaufvertragsrecht",
+    "typ": "single",
+    "frage": "Der Lieferant der Hydraulikzylinder für die Schaltvorrichtung (S18) liefert 4 Wochen zu spät. Die Metall AG erleidet dadurch einen Produktionsausfall (Schaden: 8.000 €). Welchen rechtlichen Anspruch hat die Metall AG gegen den Lieferanten?",
+    "optionen": ["Rücktritt vom Kaufvertrag nach § 323 BGB – sofortige Lieferungsverweigerung.", "Schadensersatz neben der Leistung nach § 280 Abs. 1 i.V.m. § 286 BGB (Schuldnerverzug) – Ersatz des Verzögerungsschadens.", "Minderung des Kaufpreises nach § 441 BGB – Preisreduzierung wegen Verzug.", "Strafanzeige wegen Vertragsverletzung.", "Kündigung des Rahmenvertrags nach § 314 BGB."],
+    "richtigeIndizes": [1], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null, "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Schuldnerverzug (§ 286 BGB): Liefert der Schuldner (Lieferant) nach Fälligkeit nicht, gerät er in Verzug. Folge: Schadensersatz neben der Leistung (§ 280 Abs. 1, 2 BGB) – der Gläubiger (Metall AG) behält den Lieferanspruch und kann zusätzlich den durch die Verzögerung entstandenen Schaden (Produktionsausfall 8.000 €) ersetzt verlangen. Rücktritt (§ 323 BGB) wäre nur nach Nachfristsetzung möglich. Minderung gilt bei Sachmängeln, nicht bei Verzug.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  }
+]

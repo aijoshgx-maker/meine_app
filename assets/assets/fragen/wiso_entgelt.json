@@ -1,0 +1,243 @@
+[
+  {
+    "id": "wi-ent-001",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "kurzantwort",
+    "frage": "Wie nennt man den Betrag, der dem Arbeitnehmer nach Abzug aller Steuern und Sozialversicherungsbeiträge vom Bruttolohn ausgezahlt wird?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Nettolohn", "Nettoverdienst", "Netto", "Auszahlungsbetrag"],
+    "wahr": null,
+    "erklaerung": "Brutto = Gesamtarbeitsentgelt. Davon werden abgezogen: Lohnsteuer, Solidaritätszuschlag, ggf. Kirchensteuer und Arbeitnehmeranteile zur Sozialversicherung (KV, RV, AV, PV). Was übrig bleibt = Nettolohn (Auszahlungsbetrag). Zusammenhang: Netto = Brutto - Steuern - AN-SV-Beiträge.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-ent-002",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "lueckentext",
+    "frage": "Beim Zeitlohn richtet sich die Vergütung nach der {{1}}. Beim Akkordlohn wird nach der {{2}} entlohnt. Eine Kombination beider Formen ist der {{3}}, bei dem ein Grundlohn plus eine leistungsabhängige Prämie gezahlt wird.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["Arbeitszeit", "geleisteten Zeit"],
+      ["Stückzahl", "Menge", "produzierten Menge"],
+      ["Prämienlohn", "Zeitlohn mit Prämie"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Entlohnungsformen: Zeitlohn (sicher, unabhängig von Menge; Gefahr: keine Leistungsanreize), Akkordlohn (Stück- oder Zeitakkord: direkte Leistungsanreize; Gefahr: Qualitätseinbußen, Hetze), Prämienlohn (Grundlohn + Prämie z.B. für Qualität, Einsparungen), Pensumlohn (Leistungsziel fixiert). Heute dominiert Zeitlohn + variable Anteile.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-003",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "rechnung",
+    "frage": "Ein Arbeitnehmer (ledig, Steuerklasse I, keine Kinder) hat ein Bruttogehalt von 2800 €/Monat. Lohnsteuer + Soli: 350 €. SV-Beiträge (AN-Anteil): 590 €. Wie hoch ist das Nettogehalt in €?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 1860.0,
+    "einheit": "€",
+    "toleranz": 5.0,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Netto = Brutto - Steuern - SV-Beiträge = 2800 - 350 - 590 = 1860 €. In der Praxis erstellt der Arbeitgeber monatlich eine Gehaltsabrechnung (Lohnabrechnung). Er führt die einbehaltene Lohnsteuer ans Finanzamt und SV-Beiträge an die jeweiligen Sozialversicherungsträger ab.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Netto = Brutto - LSt - SV = 2800 - 350 - 590 = 1860 €",
+    "schwierigkeit": 1
+  },
+  {
+    "id": "wi-ent-004",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "zuordnung",
+    "frage": "Ordne die Lohnsteuerklassen ihrer typischen Personensituation zu.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "paare": [
+      {"links": "Steuerklasse I", "rechts": "Ledige ohne besondere Merkmale"},
+      {"links": "Steuerklasse III", "rechts": "Verheirateter mit höherem Einkommen (Partner in Klasse V)"},
+      {"links": "Steuerklasse IV", "rechts": "Verheiratete mit ähnlichem Einkommen"},
+      {"links": "Steuerklasse VI", "rechts": "Zweites oder weiteres Dienstverhältnis (höchste Besteuerung)"}
+    ],
+    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Steuerklassen: I (ledig), II (Alleinerziehend, Entlastungsbetrag), III (verheiratet, Hauptverdiener; niedrige Steuer), IV (gleiche Einkünfte), V (verheiratet, Geringverdiener; hohe Steuer), VI (Zweitjob; immer maximal besteuert). Splittingvorteil: Klasse III/V spart Steuern bei stark unterschiedlichen Einkommen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-005",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "wahrfalsch",
+    "frage": "Sonderzahlungen wie Weihnachtsgeld und Urlaubsgeld sind steuer- und sozialversicherungsfrei, wenn sie im Rahmen eines Tarifvertrags gezahlt werden.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": false,
+    "erklaerung": "Falsch! Weihnachts- und Urlaubsgeld sind grundsätzlich steuer- und sozialversicherungspflichtig wie normales Arbeitsentgelt. Ausnahmen: Beitragsfreie Sachleistungen bis bestimmten Grenzen (z.B. monatlich 50 € steuerfreier Sachbezug), Zuschläge für Sonntags-/Feiertagsarbeit (innerhalb gesetzlicher Grenzen steuerfrei). Tarifvertrag ändert nichts an der Steuerpflicht.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-006",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "rechnung",
+    "frage": "Ein Arbeitnehmer arbeitet monatlich 168 Stunden. Sein Stundenlohn beträgt 18,50 €. Er hat 10 Überstunden geleistet, die mit 25% Zuschlag vergütet werden. Berechne das Bruttogehalt in €.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 3340.75,
+    "einheit": "€",
+    "toleranz": 1.0,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Grundlohn: 168 h × 18,50 €/h = 3108 €. Überstunden: 10 h × 18,50 × 1,25 = 10 × 23,125 = 231,25 €. Gesamt: 3108 + 231,25 = 3339,25 € ≈ 3340 €. Überstundenzuschlag: tariflich geregelt (meist 25-50%). Hinweis: Nur der Zuschlag (25%) ist steuer- und SV-frei, nicht der Grundlohn der Überstunde.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Grundgehalt: 168 h × 18,50 €/h = 3108 €\nÜberstunden: 10 h × 18,50 €/h × 1,25 = 231,25 €\nGesamt: 3108 + 231,25 = 3339,25 €",
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-007",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "multi",
+    "frage": "Welche Angaben muss eine Lohnabrechnung nach § 108 GewO enthalten?",
+    "optionen": [
+      "Zusammensetzung und Berechnung des Arbeitsentgelts",
+      "Art und Höhe der Abzüge (Steuern, SV-Beiträge)",
+      "Betriebliche Zulagen und Prämien",
+      "Privatadresse des Abteilungsleiters",
+      "Abrechnungszeitraum"
+    ],
+    "richtigeIndizes": [0, 1, 2, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "§ 108 GewO: Lohnabrechnung muss enthalten: Zusammensetzung des Entgelts (Grundlohn, Zulagen, Zuschläge), alle Abzüge (Steuer, SV), Abrechnungszeitraum, persönliche Angaben (Name, SV-Nummer). Privatadresse des Vorgesetzten ist datenschutzrechtlich unzulässig und nicht erforderlich.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-008",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "single",
+    "frage": "Was ist der Unterschied zwischen einem Tarifentgelt und einem außertariflichen (AT) Gehalt?",
+    "optionen": [
+      "AT-Gehalt liegt oberhalb der höchsten Tarifgruppe und ist einzelvertraglich vereinbart",
+      "AT-Gehalt ist niedriger als das Tarifgehalt und kompensiert andere Vorteile",
+      "AT-Gehalt ist ausschließlich für Beamte gedacht",
+      "Zwischen Tarif und AT gibt es keinen Unterschied – beide folgen Tarifregeln"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "AT-Mitarbeiter (Außertariflich): Entgelt liegt deutlich (meist >10-15%) über dem höchsten Tarifgehalt. Einzelarbeitsvertrag. Häufig Führungskräfte und hochqualifizierte Fachkräfte. Vorteile: flexible Vergütung, Boni. Nachteile: nicht tarifgeschützt, ggf. weniger Urlaub, kein Streikschutz.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-009",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "lueckentext",
+    "frage": "Der gesetzliche Mindestlohn gilt seit 2015 in Deutschland. Die Mindestlohnkommission empfiehlt alle {{1}} Jahre eine Anpassung. Der AG ist verpflichtet, den Mindestlohn für {{2}} Arbeitnehmer zu zahlen, unabhängig vom {{3}}.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["2", "zwei"],
+      ["alle", "jeden"],
+      ["Tarifvertrag", "Arbeitsvertrag", "Herkunftsland"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Mindestlohngesetz (MiLoG): Gilt für alle in Deutschland beschäftigten Arbeitnehmer (auch Entsendung aus EU-Ausland). Mindestlohnkommission: paritätisch (AG + AN + unparteiischer Vorsitz), Empfehlung alle 2 Jahre. Ausnahmen: unter 18 J. ohne Berufsausbildung, Auszubildende, Langzeitarbeitslose in ersten 6 Monaten.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-010",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "wahrfalsch",
+    "frage": "Sachbezüge (z.B. Jobticket, Essensgutscheine bis 6,90 €/Tag) können bis zu einem Freibetrag von 50 €/Monat steuer- und sozialversicherungsfrei an Arbeitnehmer gewährt werden.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! § 8 Abs. 2 EStG: Sachbezüge bis 50 €/Monat sind steuer- und SV-frei (sog. Sachbezugsfreigrenze, bis 2021: 44 €). Beispiele: Benzingutschein, Einkaufsgutschein, Jobticket-Zuschuss. Wichtig: muss tatsächlich Sachleistung sein, kein Bargeld. Überschreitung des Freibetrags → gesamter Betrag wird steuer-/SV-pflichtig.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-ent-011",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "kurzantwort",
+    "frage": "Wie bezeichnet man die Einkommenssteuer, die für Arbeitnehmer direkt vom Arbeitgeber einbehalten und ans Finanzamt abgeführt wird?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Lohnsteuer", "Lohneinkommensteuer"],
+    "wahr": null,
+    "erklaerung": "Lohnsteuer: Vorauszahlung auf die Einkommensteuer. AG behält sie vom Bruttogehalt ein und führt sie monatlich/quartalsweise/jährlich ans Finanzamt ab. Jahresausgleich (Steuererklärung): Falls zu viel einbehalten → Rückerstattung. Lohnsteuerbescheinigung: Jahresnachweis vom AG für den AN.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-ent-012",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "reihenfolge",
+    "frage": "Bringe die Abzüge bei der Entgeltabrechnung in die richtige Reihenfolge der Berechnung.",
+    "optionen": ["Nettolohn (Auszahlungsbetrag)", "Bruttolohn (vereinbartes Entgelt)", "Abzug Arbeitnehmeranteile Sozialversicherung", "Abzug Lohnsteuer + Soli + Kirchensteuer"],
+    "richtigeIndizes": [], "reihenfolge": [1, 3, 2, 0], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Gehaltsabrechnung: Brutto → minus Lohnsteuer/Soli/KiSt (berechnet auf Brutto) → minus SV-Beiträge (berechnet auf Brutto, bis BBG) → = Netto (Auszahlungsbetrag). In der Praxis werden Steuer und SV oft gleichzeitig berechnet, aber konzeptionell werden erst die Steuern dann die SV-Beiträge abgesetzt.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-013",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "single",
+    "frage": "Was versteht man unter 'vermögenswirksamen Leistungen' (VL)?",
+    "optionen": [
+      "Zahlungen des Arbeitgebers zum Vermögensaufbau des Arbeitnehmers (z.B. Bausparvertrag)",
+      "Bonuszahlungen für besondere Leistungen im Betrieb",
+      "Staatliche Förderung für Hauskäufe",
+      "Lohnerhöhungen aufgrund tariflicher Vereinbarungen"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Vermögenswirksame Leistungen (5. VermBG): Bis zu 40 €/Monat vom AG zusätzlich zum Lohn → angelegt in anerkannte Anlageformen (Bausparvertrag, Aktienfonds, Banksparplan). Staatl. Förderung: Arbeitnehmer-Sparzulage (9-20% des VL-Betrags) bei niedrigem zu versteuerndem Einkommen. Sperrfrist: 7 Jahre.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-014",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "rechnung",
+    "frage": "Ein Akkordarbeiter hat im Monat 600 Stück produziert. Der Richtsatz beträgt 500 Stück/Monat bei einem Richtsatzlohn von 2800 €. Berechne den Akkordlohn in €.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 3360.0,
+    "einheit": "€",
+    "toleranz": 10.0,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Stückakkord: Akkordlohn = Richtsatzlohn × (Ist-Stücke / Richtstücke) = 2800 × (600/500) = 2800 × 1,2 = 3360 €. Bei 120% Leistung gibt es 120% des Richtsatzlohns. Wichtig: Gesetzlich gilt der Mindestlohn als Untergrenze – auch im Akkord. Höchstakkord: oft tariflich auf 130-140% begrenzt.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Akkordlohn = Richtsatzlohn × (Ist/Soll) = 2800 € × (600/500) = 2800 × 1,2 = 3360 €",
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-ent-015",
+    "bereich": "wiso",
+    "kategorie": "Entgelt",
+    "typ": "multi",
+    "frage": "Welche Angaben sind für die Berechnung der Lohnsteuer relevant?",
+    "optionen": [
+      "Bruttoarbeitsentgelt",
+      "Steuerklasse des Arbeitnehmers",
+      "Kirchensteuer (falls Mitglied einer Kirche)",
+      "Zahl der Kinder (Kinderfreibeträge / Kindergeld-Verrechnung)",
+      "Bankverbindung des Arbeitnehmers"
+    ],
+    "richtigeIndizes": [0, 1, 2, 3],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Lohnsteuerberechnung: Bruttolohn (Bemessungsgrundlage), Steuerklasse (bestimmt Freibeträge und Tarif), Kinderfreibetrag (Zahl der Kinder auf Lohnsteuerkarte), Kirchensteuer (8 oder 9% der Lohnsteuer je nach Bundesland). Bankverbindung: für Auszahlung, aber kein Berechnungsfaktor für die Steuer.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  }
+]
