@@ -1,0 +1,710 @@
+[
+  {
+    "id": "wi-tr-001",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "kurzantwort",
+    "frage": "Wer sind die Tarifvertragsparteien in Deutschland, die Tarifverträge abschließen dürfen?",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [
+      "Gewerkschaften und Arbeitgeberverbände",
+      "Arbeitgeberverbände und Gewerkschaften",
+      "Gewerkschaft und Arbeitgeber"
+    ],
+    "wahr": null,
+    "erklaerung": "Tarifvertragsparteien: Auf Arbeitnehmerseite: Gewerkschaften (z.B. IG Metall, ver.di). Auf Arbeitgeberseite: Arbeitgeberverbände (z.B. Gesamtmetall) oder einzelne Arbeitgeber (Haustarifvertrag). Grundlage: Tarifvertragsgesetz (TVG). Einzelne Arbeitnehmer und Betriebsräte dürfen KEINE Tarifverträge abschließen.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 1
+  },
+  {
+    "id": "wi-tr-002",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "lueckentext",
+    "frage": "Das Tarifvertragsgesetz (TVG) unterscheidet zwischen dem {{1}}, der Löhne und Gehälter regelt, und dem {{2}}, der allgemeine Arbeitsbedingungen wie Arbeitszeit, Urlaub und Kündigungsfristen festlegt.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [
+      [
+        "Lohn-/Gehaltstarifvertrag",
+        "Entgelttarifvertrag",
+        "Lohntarifvertrag"
+      ],
+      [
+        "Manteltarifvertrag",
+        "Rahmentarifvertrag"
+      ]
+    ],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Tarifvertragsarten: Manteltarifvertrag (MTV): Rahmenbedingungen (Arbeitszeit, Urlaub, Mehrarbeit, Kündigungsfristen) – lange Laufzeit (mehrere Jahre). Entgelttarifvertrag: Löhne/Gehälter nach Lohngruppen – kurze Laufzeit (1–2 Jahre), jährlich neu verhandelt. Daneben: Tarifsozialpläne, Qualifizierungstarifverträge.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-003",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "wahrfalsch",
+    "frage": "Das Günstigkeitsprinzip besagt, dass ein individueller Arbeitsvertrag von Tarifbestimmungen nach unten abweichen darf, wenn dies für den Arbeitgeber günstiger ist.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": false,
+    "erklaerung": "Falsch! Das Günstigkeitsprinzip (§ 4 Abs. 3 TVG) besagt genau das Gegenteil: Einzelarbeitsverträge dürfen ZUGUNSTEN des Arbeitnehmers vom Tarifvertrag abweichen (mehr Urlaub, höherer Lohn), aber NICHT zu Ungunsten (weniger Lohn, weniger Urlaub als im TV). Tarifvertrag ist Mindestschutz.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-004",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Was bedeutet 'Allgemeinverbindlichkeitserklärung' eines Tarifvertrags?",
+    "optionen": [
+      "Der Tarifvertrag gilt für alle Arbeitnehmer und Arbeitgeber der Branche, auch wenn sie nicht Mitglied im Verband sind",
+      "Der Tarifvertrag wird vom Bundesverfassungsgericht für grundgesetzkonform erklärt",
+      "Alle Gewerkschaften einer Branche müssen dem Tarifvertrag zustimmen",
+      "Der Arbeitgeber muss jedem Arbeitnehmer den Tarifvertrag aushändigen"
+    ],
+    "richtigeIndizes": [
+      0
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Allgemeinverbindlichkeitserklärung (AVE) durch den Bundesarbeitsminister (§ 5 TVG): Tarifvertrag gilt dann für gesamte Branche, nicht nur für Verbandsmitglieder. Voraussetzung: Tarif deckt mind. 50% der Beschäftigten. Bekanntes Beispiel: Mindestlohn-Tarifverträge im Baugewerbe, Gebäudereinigung.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-005",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "multi",
+    "frage": "Welche Rechte hat die Gewerkschaft im Rahmen der Tarifautonomie?",
+    "optionen": [
+      "Kollektivverhandlungen mit Arbeitgeberverbänden führen",
+      "Streik als letztes Mittel nach Scheitern der Verhandlungen ausrufen",
+      "Einzelne Arbeitnehmer zur Gewerkschaftsmitgliedschaft zwingen",
+      "Tarifverträge für Mitglieder und allgemeinverbindlich erklärte Bereiche abschließen",
+      "Betriebliche Mitbestimmungsrechte des Betriebsrats ersetzen"
+    ],
+    "richtigeIndizes": [
+      0,
+      1,
+      3
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Tarifautonomie (Art. 9 Abs. 3 GG): Gewerkschaften dürfen verhandeln, Tarifverträge abschließen, bei Scheitern streiken (nach Urabstimmung und Friedenspflichtende). Niemand darf zur Gewerkschaftsmitgliedschaft gezwungen werden (negative Koalitionsfreiheit). Betriebsräte und Gewerkschaften haben getrennte Aufgaben (Betriebsräte = innerbetrieblich).",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
+  },
+  {
+    "id": "wi-tr-006",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "lueckentext",
+    "frage": "Während laufender Tarifverhandlungen gilt die {{1}}: Arbeitgeber und Gewerkschaft dürfen keine Kampfmaßnahmen (Streik, Aussperrung) ergreifen. Nach Ablauf des Tarifvertrags endet diese Pflicht und es beginnt die {{2}}.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [
+      [
+        "Friedenspflicht"
+      ],
+      [
+        "Tarifauseinandersetzung",
+        "Kampfphase",
+        "Schlichtungsphase"
+      ]
+    ],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Friedenspflicht (im laufenden Tarifvertrag): Kein Streik, keine Aussperrung. Nach Ablauf/Kündigung des TV: Verhandlungen → bei Scheitern: Schlichtung (neutral) → bei Scheitern: Urabstimmung → Streik (mind. 75% Zustimmung). Aussperrung: Arbeitgeberantwort auf Streik (umstritten, aber legal).",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-007",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "wahrfalsch",
+    "frage": "Der gesetzliche Mindestlohn in Deutschland gilt als absolute Untergrenze und kann durch Tarifverträge unterschritten werden, wenn beide Tarifparteien zustimmen.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": false,
+    "erklaerung": "Falsch! Der gesetzliche Mindestlohn (MiLoG, seit 2015) ist eine absolute Untergrenze – kein Tarifvertrag darf ihn unterschreiten. Ausnahme war eine Übergangsfrist bis 2017 für Sektoren mit bestehenden Tarifverträgen unterhalb des Mindestlohns. Seit 2017 gilt der MiLo für alle. Branchenmindestlöhne können höher, aber nicht niedriger sein.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-008",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "reihenfolge",
+    "frage": "Bringe den Ablauf einer Tarifauseinandersetzung in die richtige Reihenfolge.",
+    "optionen": [
+      "Schlichtungsverfahren (neutraler Vermittler)",
+      "Streik/Aussperrung (Kampfmaßnahmen)",
+      "Tarifverhandlungen (Forderungen beider Seiten)",
+      "Tarifvertrag abschließen und unterzeichnen"
+    ],
+    "richtigeIndizes": [],
+    "reihenfolge": [
+      2,
+      0,
+      1,
+      3
+    ],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Ablauf: 1) Verhandlungen (Forderungen der Gewerkschaft, Angebote des Arbeitgebers), 2) Schlichtung bei Scheitern (paritätische Kommission oder Einzelschlichter), 3) Kampfmaßnahmen wenn Schlichtung scheitert (Urabstimmung → Streik), 4) Einigung → Tarifvertrag. Praxis: oft Einigung ohne Streik oder nach wenigen Streiktagen.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-009",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt das Recht der Arbeitnehmer und Arbeitgeber, sich in Koalitionen zu organisieren und Arbeitsbedingungen eigenständig auszuhandeln, das im Grundgesetz verankert ist?",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [
+      "Koalitionsfreiheit",
+      "Tarifautonomie",
+      "Koalitions- und Tarifautonomie"
+    ],
+    "wahr": null,
+    "erklaerung": "Koalitionsfreiheit (Art. 9 Abs. 3 GG): Jedermann hat das Recht, Vereinigungen zur Wahrung und Förderung der Arbeits- und Wirtschaftsbedingungen zu bilden. Umfasst: positive Koalitionsfreiheit (Beitritt), negative (Nicht-Beitritt), kollektive Koalitionsfreiheit (als Gewerkschaft/Verband handeln). Grundlage der Tarifautonomie.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-010",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "zuordnung",
+    "frage": "Ordne die tariflichen Regelungsbereiche dem passenden Tarifvertragstyp zu.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [
+      {
+        "links": "Urlaubsdauer und Urlaubsgeld",
+        "rechts": "Manteltarifvertrag (MTV)"
+      },
+      {
+        "links": "Stundenlöhne nach Lohngruppen",
+        "rechts": "Lohntarifvertrag (LTV)"
+      },
+      {
+        "links": "Qualifizierungsansprüche und Weiterbildung",
+        "rechts": "Qualifizierungstarifvertrag"
+      },
+      {
+        "links": "Regelungen bei Betriebsänderungen und Entlassungen",
+        "rechts": "Tarifsoziallplan"
+      }
+    ],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Tarifverträge nach Gegenstand: MTV (Rahmenbedingungen, langjährig), LTV (Entgelt, kurzlebig), Qualifizierungstarifverträge (Weiterbildungsansprüche), Tarifsozialpläne (Abfindungen bei Betriebsschließungen, Transfergesellschaften). In manchen Branchen alles in einem Tarifvertrag zusammengefasst.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-011",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "multi",
+    "frage": "Welche Aussagen zum Streikrecht in Deutschland sind korrekt?",
+    "optionen": [
+      "Ein Streik muss tariflich zulässige Ziele verfolgen (kein politischer Streik)",
+      "Beamte haben kein Streikrecht",
+      "Streikende Arbeitnehmer behalten ihren vollen Lohnanspruch während des Streiks",
+      "Eine Urabstimmung mit mindestens 75% Ja-Stimmen ist in vielen Gewerkschaften Voraussetzung",
+      "Wildcat-Streiks ohne Gewerkschaftsbeschluss sind in Deutschland generell verboten"
+    ],
+    "richtigeIndizes": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Streikrecht: Nur für tarifliche Ziele, nicht politisch. Beamte: Streikverbot (BVerfG). Streikende: KEIN Lohnanspruch – Gewerkschaft zahlt Streikgeld aus Streikfonds. Urabstimmung: nicht gesetzlich vorgeschrieben, aber Gewerkschaftssatzung. Wildcat-Streiks: rechtswidrig (Gewerkschaft haftet für entstehende Schäden nicht, aber Arbeitnehmer verlieren Schutz).",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
+  },
+  {
+    "id": "wi-tr-012",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "wahrfalsch",
+    "frage": "Tarifverträge gelten unmittelbar und zwingend für alle Mitglieder beider Tarifvertragsparteien – der Arbeitgeber muss Tarifrecht also nur dann anwenden, wenn er Mitglied im Arbeitgeberverband ist.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": true,
+    "erklaerung": "Korrekt! Tarifbindung besteht nur für Mitglieder: Arbeitgeber im Verband + Arbeitnehmer in der Gewerkschaft. Viele Arbeitgeber treten OT (ohne Tarifbindung) dem Arbeitgeberverband bei – dann gilt der TV nicht. Aber: Arbeitsverträge können auf Tarifverträge Bezug nehmen → Tarifrecht dann arbeitsvertraglich bindend.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
+  },
+  {
+    "id": "wi-tr-013",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt das tarifliche Abkommen, das bei mehreren konkurrierenden Gewerkschaften in einem Betrieb die Frage regelt, welcher Tarifvertrag gilt (z.B. nach dem Tarifeinheitsgesetz)?",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [
+      "Tarifeinheitsgesetz",
+      "TEG",
+      "Tarifeinheit",
+      "Mehrheitstarifvertrag"
+    ],
+    "wahr": null,
+    "erklaerung": "Tarifeinheitsgesetz (TEG, 2015): Bei konkurrierenden Tarifverträgen im Betrieb gilt der TV der Gewerkschaft mit den meisten Mitgliedern im Betrieb (Mehrheitsprinzip). Hintergrund: Abgrenzungsprobleme zwischen Spartengewerkschaften (GDL/EVG bei der Bahn) und DGB-Gewerkschaften. Verfassungsmäßigkeit vom BVerfG mit Einschränkungen bestätigt.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
+  },
+  {
+    "id": "wi-tr-014",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "lueckentext",
+    "frage": "Im deutschen Tarifrecht gilt das Prinzip der {{1}}: Staat und Gesetzgeber sollen sich aus den Verhandlungen zwischen Arbeitgebern und Arbeitnehmern heraushalten. Dies ist im {{2}} garantiert.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [
+      [
+        "Tarifautonomie",
+        "Koalitionsfreiheit und Tarifautonomie"
+      ],
+      [
+        "Grundgesetz",
+        "Art. 9 Abs. 3 GG",
+        "Artikel 9 Absatz 3 GG"
+      ]
+    ],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Tarifautonomie bedeutet: Die Sozialpartner (Gewerkschaften und Arbeitgeberverbände) regeln die Arbeitsbedingungen eigenständig ohne staatliche Einmischung. Deutschland hat damit eine dezentrale Lohnfindung. Nur im Ausnahmefall (z.B. Mindestlohn, AVE) greift der Gesetzgeber ein.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-015",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Was ist ein Flächentarifvertrag (Verbandstarifvertrag) im Unterschied zu einem Firmen-/Haustarifvertrag?",
+    "optionen": [
+      "Gilt für alle Mitgliedsunternehmen eines Arbeitgeberverbands in einer Region/Branche",
+      "Gilt nur für Mitarbeiter einer bestimmten Abteilung (Fläche) im Betrieb",
+      "Wird direkt zwischen einem einzelnen Unternehmen und der Gewerkschaft abgeschlossen",
+      "Ist ein TV, der in mehreren EU-Ländern gleichzeitig gilt"
+    ],
+    "richtigeIndizes": [
+      0
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Flächentarifvertrag: Abschluss zwischen Arbeitgeberverband und Gewerkschaft → gilt für alle Mitgliedsunternehmen der Region/Branche (z.B. IG Metall Bezirk Bayern). Schafft gleiche Wettbewerbsbedingungen ('Lohn aus dem Wettbewerb herausnehmen'). Haustarifvertrag: direkt zwischen Einzelunternehmen und Gewerkschaft (z.B. Volkswagen-Tarifvertrag).",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-016",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Ein Arbeitnehmer wird fristlos entlassen und ist der Meinung, die Kündigung sei sozial nicht gerechtfertigt. An welches Gericht wendet er sich?",
+    "optionen": [
+      "Zivilgericht (Landgericht)",
+      "Strafgericht",
+      "Sozialgericht",
+      "Arbeitsgericht",
+      "Verwaltungsgericht"
+    ],
+    "richtigeIndizes": [
+      3
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Für Streitigkeiten aus dem Arbeitsverhältnis (Kündigung, Lohn, Urlaub, Abmahnung) ist das Arbeitsgericht zuständig (§ 2 ArbGG). Klagen gegen Kündigungen müssen innerhalb von 3 Wochen nach Zugang der Kündigung erhoben werden (§ 4 KSchG). Sozialgerichte entscheiden über Sozialversicherungsrecht; Verwaltungsgerichte über öffentlich-rechtliche Streitigkeiten mit Behörden.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 1
+  },
+  {
+    "id": "wi-tr-017",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Ein Tarifvertrag legt einen Mindestlohn von 16 Euro pro Stunde fest. Der Arbeitgeber bietet im Einzelarbeitsvertrag 15 Euro pro Stunde. Was gilt?",
+    "optionen": [
+      "Der Einzelarbeitsvertrag gilt, weil er jünger ist.",
+      "Der Tarifvertrag gilt, weil er für alle Betriebe verbindlich ist.",
+      "Der Einzelarbeitsvertrag gilt, weil er individuell ausgehandelt ist.",
+      "Der Tarifvertrag gilt – die ungünstigere Abweichung nach unten ist unwirksam (Günstigkeitsprinzip).",
+      "Beide Verträge sind ungültig."
+    ],
+    "richtigeIndizes": [
+      3
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Das Günstigkeitsprinzip (§ 4 Abs. 3 TVG) besagt: Vom Tarifvertrag abweichende Abmachungen sind nur zulässig, soweit sie zugunsten des Arbeitnehmers gehen. Die Abweichung nach unten (15 Euro < 16 Euro) ist unwirksam – es gilt der tarifliche Mindestlohn. Günstigere Vereinbarungen (z.B. 17 Euro pro Stunde) wären dagegen wirksam.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-018",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Welche Aussage über schwerbehinderte Arbeitnehmer (GdB ≥ 50) ist richtig?",
+    "optionen": [
+      "Sie haben automatisch eine kürzere wöchentliche Arbeitszeit.",
+      "Sie haben Anspruch auf zusätzliche bezahlte Pausen.",
+      "Sie haben Anspruch auf mindestens 5 zusätzliche Urlaubstage pro Jahr.",
+      "Sie sind unkündbar.",
+      "Sie haben Anspruch auf ein höheres Entgelt."
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "§ 208 SGB IX: Schwerbehinderte Arbeitnehmer haben Anspruch auf 5 zusätzliche Arbeitstage Urlaub im Jahr (Zusatzurlaub). Sie haben keinen automatischen Anspruch auf kürzere Arbeitszeit (nur bei ärztlicher Empfehlung), sind nicht unkündbar (nur erschwerte Kündigung mit Zustimmung des Integrationsamts) und haben keinen gesetzlichen Anspruch auf höheres Entgelt.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-019",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Ab welcher Betriebsgröße sind Arbeitgeber nach dem SGB IX verpflichtet, einen Anteil von 5 % der Arbeitsplätze mit schwerbehinderten Menschen zu besetzen?",
+    "optionen": [
+      "Ab 5 Beschäftigten",
+      "Ab 10 Beschäftigten",
+      "Ab 20 Beschäftigten",
+      "Ab 50 Beschäftigten",
+      "Ab 100 Beschäftigten"
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Nach § 154 SGB IX sind Arbeitgeber mit jahresdurchschnittlich mindestens 20 Arbeitsplätzen verpflichtet, mindestens 5 % der Arbeitsplätze mit schwerbehinderten Menschen zu besetzen. Bei Nichterfüllung ist eine Ausgleichsabgabe zu zahlen. Bis 40 Arbeitsplätze: mindestens 1 schwerbehinderter Mensch; bis 59 Arbeitsplätze: mindestens 2.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-020",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Eine Arbeitnehmerin hat 8 Jahre Betriebszugehörigkeit. Welche gesetzliche Mindestkündigungsfrist gilt für den Arbeitgeber nach § 622 BGB?",
+    "optionen": [
+      "4 Wochen zum 15. oder zum Monatsende",
+      "3 Monate zum Monatsende",
+      "4 Monate zum Monatsende",
+      "2 Monate zum Monatsende",
+      "6 Wochen zum Quartalsende"
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Nach § 622 Abs. 2 BGB steigt die Kündigungsfrist des Arbeitgebers mit der Betriebszugehörigkeit: bis 2 Jahre: 4 Wochen (Grundfrist); ab 5 Jahren: 2 Monate; ab 8 Jahren: 3 Monate zum Monatsende. Für den Arbeitnehmer gilt immer nur die Grundfrist von 4 Wochen, sofern kein Tarifvertrag etwas anderes bestimmt.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-021",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Ein Arbeitnehmer möchte seine eigene Personalakte einsehen. Welches Gesetz regelt dieses Einsichtsrecht?",
+    "optionen": [
+      "Betriebsverfassungsgesetz (BetrVG) § 83 – Arbeitnehmer hat Einsichtsrecht in eigene Personalakte",
+      "Tarifvertragsgesetz (TVG) – Tarifvertrag regelt Akteneinsicht",
+      "Bürgerliches Gesetzbuch (BGB) – allgemeines Dateneigentumsrecht",
+      "Arbeitsschutzgesetz (ArbSchG) – Sicherheit der Personaldaten",
+      "Sozialgesetzbuch IV (SGB IV) – Sozialversicherungsdaten"
+    ],
+    "richtigeIndizes": [
+      0
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "§ 83 BetrVG: Jeder Arbeitnehmer hat das Recht, in die über ihn geführten Personalakten Einsicht zu nehmen. Er kann dazu ein Betriebsratsmitglied hinzuziehen. Der Betriebsrat selbst hat kein allgemeines Akteneinsichtsrecht in Personalakten einzelner Mitarbeiter (nur mit Zustimmung des Betroffenen).",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-tr-022",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Welches ist ein echtes Mitbestimmungsrecht des Betriebsrats nach § 87 BetrVG, das eine zwingend zustimmungspflichtige Regelung darstellt?",
+    "optionen": [
+      "Die Wahl des Betriebsratsvorsitzenden",
+      "Regelungen zu Beginn und Ende der täglichen Arbeitszeit (§ 87 Abs. 1 Nr. 2 BetrVG)",
+      "Die Anzahl der Urlaubstage über den gesetzlichen Mindesturlaub hinaus",
+      "Die Auswahl des Betriebsrats für Schulungsmaßnahmen",
+      "Die Einberufung von Betriebsversammlungen"
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "§ 87 Abs. 1 Nr. 2 BetrVG: Beginn und Ende der täglichen Arbeitszeit sowie Verteilung auf Wochentage dürfen nur mit Zustimmung des Betriebsrats geregelt werden. Eine einseitige Änderung durch den Arbeitgeber ist unzulässig. Solche Regelungen werden in einer Betriebsvereinbarung festgehalten.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
+  },
+  {
+    "id": "wi-tr-023",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Die Metall AG (250 Beschäftigte) ist keinem Arbeitgeberverband angeschlossen. Paul Fleissig ist Mitglied der IG Metall. Gilt der Metalltarifvertrag automatisch für sein Arbeitsverhältnis bei der Metall AG?",
+    "optionen": [
+      "Ja, weil Paul IG-Metall-Mitglied ist, gilt der Tarifvertrag für ihn.",
+      "Nein, ein Tarifvertrag gilt nach § 3 Abs. 1 TVG nur, wenn beide Tarifparteien Mitglied in der tarifschließenden Organisation sind. Da die Metall AG keinem Arbeitgeberverband angehört, besteht keine Tarifbindung.",
+      "Ja, ab 200 Beschäftigten gilt grundsätzlich der Tarifvertrag der Branche.",
+      "Nein, Tarifverträge gelten generell nicht für befristete Arbeitsverhältnisse.",
+      "Ja, wenn der Betriebsrat eine entsprechende Betriebsvereinbarung abgeschlossen hat."
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Tarifbindung (§ 3 TVG): Ein Tarifvertrag gilt unmittelbar und zwingend nur für die Mitglieder beider Tarifvertragsparteien. Da die Metall AG keinem Arbeitgeberverband angehört, fehlt ihre Tarifbindung. Die Mitgliedschaft Pauls in der IG Metall allein genügt nicht. Ausnahmen: Allgemeinverbindlichkeitserklärung (§ 5 TVG) – dann gilt der TV auch für Nicht-Mitglieder – oder eine Bezugnahmeklausel im Arbeitsvertrag ('Es gilt der Metalltarifvertrag').",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S18",
+    "pruefungReihenfolge": 38
+  },
+  {
+    "id": "wi-tr-024",
+    "bereich": "wiso",
+    "kategorie": "Tarifrecht",
+    "typ": "single",
+    "frage": "Pauls Arbeitsvertrag bei der Metall AG ist ohne Sachgrund befristet (§ 14 Abs. 2 TzBfG). Was sind die gesetzlichen Höchstgrenzen für eine sachgrundlose Befristung?",
+    "optionen": [
+      "Max. 5 Jahre Gesamtdauer, max. 5 Verlängerungen.",
+      "Max. 2 Jahre Gesamtdauer, max. 3 Verlängerungen innerhalb dieser 2 Jahre; nur wenn zuvor kein Arbeitsverhältnis mit demselben Arbeitgeber bestanden hat.",
+      "Max. 1 Jahr Gesamtdauer, keine Verlängerung möglich.",
+      "Max. 3 Jahre Gesamtdauer, einmalige Verlängerung.",
+      "Keine zeitliche Begrenzung, Sachgrund entscheidet allein."
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "§ 14 Abs. 2 TzBfG (sachgrundlose Befristung): Max. 2 Jahre Gesamtdauer; innerhalb dieser 2 Jahre maximal 3-malige Verlängerung (d.h. bis zu 4 Verträge). Voraussetzung: Mit demselben Arbeitgeber darf zuvor kein Arbeitsverhältnis bestanden haben ('Befristungskettenverbot'). Eine Verlängerung ist nur ohne Veränderung der Arbeitsbedingungen zulässig. Pauls AV bis 30.06.2018 muss in diesen Grenzen liegen.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S18",
+    "pruefungReihenfolge": 39
+  }
+]

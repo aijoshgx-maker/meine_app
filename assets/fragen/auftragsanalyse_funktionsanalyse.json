@@ -1,0 +1,732 @@
+[
+  {
+    "id": "au-fa-001",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "kurzantwort",
+    "frage": "Wie nennt man die Methode zur systematischen Analyse möglicher Fehler, ihrer Ursachen und Auswirkungen in einem System?",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [
+      "FMEA",
+      "Fehlermöglichkeits- und Einflussanalyse"
+    ],
+    "wahr": null,
+    "erklaerung": "Die FMEA (Fehlermöglichkeits- und Einflussanalyse) ist eine präventive Methode zur Risikoabschätzung: Für jedes Bauteil werden potenzielle Fehler, ihre Ursachen und Folgen bewertet und mit einer Risikoprioritätszahl (RPZ) priorisiert.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "au-fa-002",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "wahrfalsch",
+    "frage": "Bei einer Welle-Nabe-Verbindung mit Passfeder überträgt die Feder das Drehmoment ausschließlich durch Formschluss.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": false,
+    "erklaerung": "Eine Passfeder überträgt das Drehmoment durch Formschluss (seitliche Flanken der Feder in der Nut), aber die axiale Sicherung erfolgt zusätzlich durch Kraftschluss (Presspassung der Nabe auf der Welle). Reine Formschluss-Aussage ist daher zu vereinfacht.",
+    "selfExplanationPrompt": "Erkläre in einem Satz, welche Kraftarten bei einer Passfederverbindung wirken.",
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
+  },
+  {
+    "id": "au-fa-003",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "zuordnung",
+    "frage": "Ordne den Systemgrenzen ihre korrekte Bedeutung bei der Funktionsanalyse zu.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [
+      {
+        "links": "Eingangsgrößen",
+        "rechts": "Energie, Stoff oder Information, die das System aufnimmt"
+      },
+      {
+        "links": "Ausgangsgrößen",
+        "rechts": "Energie, Stoff oder Information, die das System abgibt"
+      },
+      {
+        "links": "Störgrößen",
+        "rechts": "Ungewollte Einflüsse von außen auf das System"
+      },
+      {
+        "links": "Stellgrößen",
+        "rechts": "Größen, über die das System gezielt beeinflusst wird"
+      }
+    ],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Die Systembetrachtung mit Eingangs-/Ausgangs-/Stör-/Stellgrößen erlaubt eine übersichtliche Analyse ohne Details des internen Aufbaus. Erst wenn die Systemgrenzen klar sind, kann die Funktion vollständig beschrieben werden.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "au-fa-004",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "multi",
+    "frage": "Welche der folgenden Betriebszustände müssen bei der Funktionsanalyse einer Maschine berücksichtigt werden?",
+    "optionen": [
+      "Normalbetrieb",
+      "Anlauf/Hochfahren",
+      "Notabschaltung",
+      "Wartungszustand",
+      "Idealbetrieb ohne Verluste"
+    ],
+    "richtigeIndizes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Eine vollständige Funktionsanalyse betrachtet alle realen Betriebszustände: Normalbetrieb, Anlauf, Notabschaltung und Wartung. Der 'Idealbetrieb ohne Verluste' ist kein realer Zustand – jede Maschine hat Verluste durch Reibung, Wärme und Verschleiß.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "au-fa-005",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "lueckentext",
+    "frage": "Bei der Funktionsanalyse unterscheidet man die {{1}}-Funktion (eigentlicher Zweck) von der {{2}}-Funktion (unerwünschte, aber unvermeidliche Nebenwirkung).",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [
+      [
+        "Haupt",
+        "Hauptfunktion"
+      ],
+      [
+        "Neben",
+        "Nebenfunktion"
+      ]
+    ],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Hauptfunktionen sind die gewollten Wirkungen (z.B. Drehmoment übertragen), Nebenfunktionen sind unvermeidliche Begleiterscheinungen (z.B. Wärme erzeugen). Die Unterscheidung ist wichtig für die Bewertung von Effizienz und Verlustleistung.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 1
+  },
+  {
+    "id": "au-fa-006",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "reihenfolge",
+    "frage": "Bringe die Schritte einer systematischen Funktionsanalyse in die richtige Reihenfolge.",
+    "optionen": [
+      "Systemgrenzen festlegen",
+      "Ein-/Ausgangsgrößen bestimmen",
+      "Teilfunktionen identifizieren",
+      "Wirkprinzipien analysieren",
+      "Fehlerfolgen bewerten"
+    ],
+    "richtigeIndizes": [],
+    "reihenfolge": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Erst den Umfang (Systemgrenzen) klären, dann Schnittstellen (Ein-/Ausgang) bestimmen, Teilfunktionen zerlegen, die physikalischen Wirkprinzipien verstehen und zuletzt die Fehlerfolgen bewerten – jeder Schritt baut auf dem vorherigen auf.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "au-fa-007",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Welches Diagramm zeigt grafisch den Kraft- und Momentenfluss durch eine Baugruppe?",
+    "optionen": [
+      "Wirkliniendiagramm",
+      "Flussdiagramm",
+      "Schaltplan",
+      "Gantt-Diagramm"
+    ],
+    "richtigeIndizes": [
+      0
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Das Wirkliniendiagramm (auch Kraftflussdiagramm) zeigt, wie Kräfte und Momente durch die einzelnen Bauteile einer Baugruppe fließen. Es macht sichtbar, welche Bauteile belastet werden und wie Kräfte vom Ort der Einleitung zum Ort der Abstützung gelangen.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "au-fa-008",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt das Prinzip, bei dem ein System bei Ausfall eines Bauteils in einen sicheren Zustand übergeht?",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [
+      "Fail-Safe",
+      "Fail Safe",
+      "Ausfallsicher",
+      "Safety by design"
+    ],
+    "wahr": null,
+    "erklaerung": "Das Fail-Safe-Prinzip (auch: Sicherheitsprinzip) bedeutet, dass ein System bei Ausfall automatisch in einen sicheren Zustand wechselt. Beispiel: Eine federbelastete Bremse fällt bei Stromausfall ein (Öffner-Prinzip), um unkontrollierte Bewegungen zu verhindern.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "au-fa-009",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "wahrfalsch",
+    "frage": "Die Risikoprioritätszahl (RPZ) in der FMEA berechnet sich als Produkt aus Auftretenswahrscheinlichkeit, Bedeutung und Entdeckungswahrscheinlichkeit.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": true,
+    "erklaerung": "RPZ = A × B × E (Auftreten × Bedeutung × Entdeckung), jeweils auf einer Skala von 1–10. Hohe RPZ-Werte signalisieren Handlungsbedarf. Wichtig: Eine hohe Bedeutung (B=10) sollte immer zu Maßnahmen führen, unabhängig von RPZ.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "au-fa-010",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "lueckentext",
+    "frage": "Bei einem Lagerungssystem unterscheidet man die {{1}}-Lagerung (ein Lager nimmt alle Kräfte und Momente auf) von der {{2}}-Lagerung (zwei Lager teilen sich die Aufgaben).",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [
+      [
+        "Fest",
+        "Festlager"
+      ],
+      [
+        "Los",
+        "Loslager"
+      ]
+    ],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Das Festlager nimmt Axial- und Radialkräfte auf und fixiert die Welle in Längsrichtung. Das Loslager nimmt nur Radialkräfte auf und lässt Längenänderungen (Wärmedehnung) zu. Die Fest-Los-Lagerung ist die häufigste Lagerungsart für Wellen.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 1
+  },
+  {
+    "id": "au-fa-011",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "multi",
+    "frage": "Welche Informationen sollte eine vollständige Funktionsbeschreibung eines Bauteils enthalten?",
+    "optionen": [
+      "Zweck/Aufgabe des Bauteils",
+      "Wirkprinzip (physikalischer Effekt)",
+      "Herstellungskosten",
+      "Schnittstellen zu Nachbarbauteilen",
+      "Anforderungen (Kräfte, Temperaturen, Umgebung)"
+    ],
+    "richtigeIndizes": [
+      0,
+      1,
+      3,
+      4
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Eine Funktionsbeschreibung klärt WARUM ein Bauteil vorhanden ist (Zweck), WIE es funktioniert (Wirkprinzip), WAS es mit Nachbarbauteilen verbindet (Schnittstellen) und unter WELCHEN Bedingungen es funktionieren muss (Anforderungen). Herstellungskosten gehören zur Kostenanalyse, nicht zur Funktionsbeschreibung.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2
+  },
+  {
+    "id": "au-fa-012",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "zuordnung",
+    "frage": "Ordne die Bewegungsarten ihrer technischen Beschreibung zu.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [
+      {
+        "links": "Translation",
+        "rechts": "Geradlinige Verschiebung ohne Drehung"
+      },
+      {
+        "links": "Rotation",
+        "rechts": "Drehbewegung um eine feste Achse"
+      },
+      {
+        "links": "Schwenkbewegung",
+        "rechts": "Drehbewegung um begrenzte Winkel"
+      },
+      {
+        "links": "Überlagerung",
+        "rechts": "Gleichzeitige Translation und Rotation (z.B. Schraubbewegung)"
+      }
+    ],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Die korrekte Klassifikation der Bewegungsart ist Grundlage für die Auswahl geeigneter Führungen, Lager und Antriebe. Eine Schraubbewegung z.B. kombiniert Translation und Rotation und erfordert Linearführungen mit Spindel.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 1
+  },
+  {
+    "id": "au-fa-013",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Was versteht man unter dem Begriff 'Wirkprinzip' in der Funktionsanalyse?",
+    "optionen": [
+      "Den physikalischen Effekt, der die Funktion eines Bauteils ermöglicht",
+      "Die Reihenfolge der Montageschritte",
+      "Die gesetzlichen Vorschriften für den Betrieb",
+      "Die Materialauswahl für das Bauteil"
+    ],
+    "richtigeIndizes": [
+      0
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Das Wirkprinzip beschreibt den physikalischen Effekt, der eine Funktion realisiert (z.B. Hebelgesetz, Reibung, Magnetismus, hydraulischer Druck). Es ist die Brücke zwischen der Funktion ('Was soll es tun?') und der Konstruktion ('Wie wird es realisiert?').",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 1
+  },
+  {
+    "id": "au-fa-014",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt die grafische Methode, bei der die Ursachen eines Problems in Hauptkategorien (z.B. Mensch, Maschine, Methode, Material) eingeteilt werden?",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [
+      "Ishikawa",
+      "Ishikawa-Diagramm",
+      "Fischgräten-Diagramm",
+      "Fischgrätendiagramm",
+      "Ursache-Wirkungs-Diagramm"
+    ],
+    "wahr": null,
+    "erklaerung": "Das Ishikawa-Diagramm (auch Fischgräten- oder Ursache-Wirkungs-Diagramm) strukturiert Fehlerursachen in die 6M: Mensch, Maschine, Methode, Material, Milieu (Umwelt), Messung. Die Fischgrätenform macht Ursache-Wirkungs-Beziehungen auf einen Blick sichtbar.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 1
+  },
+  {
+    "id": "au-fa-015",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "wahrfalsch",
+    "frage": "Ein redundantes System enthält zwei parallele Funktionseinheiten, sodass der Ausfall einer Einheit zum Gesamtausfall führt.",
+    "optionen": [],
+    "richtigeIndizes": [],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": false,
+    "erklaerung": "Redundanz bedeutet das Gegenteil: Bei parallelen Systemen übernimmt die zweite Einheit die Funktion bei Ausfall der ersten. Erst wenn BEIDE Einheiten ausfallen, versagt das Gesamtsystem. Redundanz erhöht also die Zuverlässigkeit.",
+    "selfExplanationPrompt": "Beschreibe in einem Satz den Unterschied zwischen redundantem und seriellem System hinsichtlich Ausfallsicherheit.",
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3
+  },
+  {
+    "id": "au-fa-016",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Die Axialkolbenpumpe erzeugt durch die Bewegung der Kolben einen Druckfluss. Welche kinematische Anordnung erzeugt die Hubbewegung der Kolben in einer Schrägscheiben-Axialkolbenpumpe?",
+    "optionen": [
+      "Ein Exzenter auf der Antriebswelle",
+      "Ein Kurbelgetriebe",
+      "Die schräg gestellte Schrägscheibe, gegen die die Kolben laufen",
+      "Ein Nockenprofil im Zylinderblock",
+      "Eine Taumelscheibe am Zylinderblock"
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Bei der Schrägscheiben-Axialkolbenpumpe rotiert der Zylinderblock mit den axial angeordneten Kolben. Die Kolben stützen sich über Gleitschuhe auf einer feststehenden, schräg gestellten Schrägscheibe (Schwenkscheibe) ab. Durch die Schrägstellung werden die Kolben beim Rotieren abwechselnd heraus- und hereingezogen (Hub- und Saughub). Der Schrägwinkel bestimmt den Hub und damit das Fördervolumen.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "W22",
+    "pruefungReihenfolge": 3
+  },
+  {
+    "id": "au-fa-017",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Welche Aussage zum Funktionsprinzip der im Schaltplan dargestellten Hydraulikanlage ist korrekt?",
+    "optionen": [
+      "Die Pumpe -GP1 saugt Öl aus dem Druckspeicher.",
+      "Das 4/3-Wegeventil -QM2 steuert das Aus-/Einfahren des Hubzylinders und die Mittelstellung trennt die Pumpe vom Verbraucher.",
+      "Der Filter -HQ1 reinigt nur das Rücklauföl.",
+      "Das Druckbegrenzungsventil -QN1 erhöht den Systemdruck.",
+      "Beim Absenken des Materialkorbs öffnet das Rückschlagventil -RM1 selbstständig durch Schwerkraft."
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Das 4/3-Wegeventil hat 4 Anschlüsse (P, T, A, B) und 3 Schaltstellungen: Ausfahren (Öl zu A), Einfahren (Öl zu B) und Mittelstellung (gesperrte Variante: Pumpe läuft lastlos, alle Anschlüsse gesperrt). Rückschlagventile öffnen durch Druckunterschiede, nicht durch Schwerkraft. Das DRV leitet Überschussdruck ab (senkt nicht). Filter reinigen das gesamte durchfließende Öl.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S18",
+    "pruefungReihenfolge": 1
+  },
+  {
+    "id": "au-fa-018",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Das Kegelradgetriebe des Einstellantriebs besitzt zwei gleich große Kegelräder (m = 2, z = 26). Welche Aufgabe erfüllt dieses Getriebe?",
+    "optionen": [
+      "Es übersetzt die Eingangsdrehzahl ins Schnelle (Drehzahl steigt).",
+      "Es übersetzt die Eingangsdrehzahl ins Langsame (Drehzahl sinkt).",
+      "Es überträgt das Drehmoment zwischen zwei parallelen Wellen.",
+      "Es überträgt das Drehmoment zwischen zwei sich unter 90° schneidenden Wellen bei gleichbleibender Drehzahl.",
+      "Es erhöht das Drehmoment und senkt die Drehzahl durch das Übersetzungsverhältnis."
+    ],
+    "richtigeIndizes": [
+      3
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Kegelradgetriebe ermöglichen die Kraftübertragung zwischen Wellen, die sich unter einem Winkel (hier 90°) schneiden. Da beide Kegelräder gleich groß sind (z₁ = z₂ = 26), beträgt die Übersetzung i = z₂/z₁ = 1 – Drehzahl und Drehmoment bleiben unverändert. Nur die Kraftrichtung wird um 90° umgelenkt.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S17",
+    "pruefungReihenfolge": 1
+  },
+  {
+    "id": "au-fa-019",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Welche Aussage beschreibt den Unterschied zwischen Wellen und Achsen korrekt?",
+    "optionen": [
+      "Wellen und Achsen sind identisch, nur die Länge unterscheidet sich.",
+      "Wellen übertragen nur axiale Kräfte, Achsen übertragen nur radiale Kräfte.",
+      "Wellen werden ausschließlich auf Biegung beansprucht, Achsen auf Torsion.",
+      "Wellen sind ortsfeste Bauteile, Achsen drehen sich.",
+      "Wellen drehen sich und übertragen Drehmoment (Torsion); Achsen sind ortsfest oder leer mitlaufend ohne Drehmomentübertragung."
+    ],
+    "richtigeIndizes": [
+      4
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Wellen drehen sich und übertragen Drehmoment (Torsionsbeanspruchung) sowie oft Biegekräfte. Achsen dagegen drehen sich nicht (oder nur leer mit) und übertragen kein Drehmoment – sie nehmen nur Biegekräfte auf. Beispiel: Antriebswelle = Welle (treibt an); Straßenbahnachse = Achse (überträgt keine Antriebskraft, nur Gewichtskraft).",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 1
+  },
+  {
+    "id": "au-fa-020",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Im Werkzeugspindelkasten (S19) sind die Kegelrollenlager der Spindel in O-Anordnung eingebaut. Die Passscheibe (Pos. 34) befindet sich zwischen Lageraußenring und Gehäusedeckel. Welche Funktion hat diese Passscheibe?",
+    "optionen": [
+      "Sie dichtet das Gehäuse gegen Ölverlust ab.",
+      "Sie überträgt das Antriebsmoment vom Gehäuse auf den Lageraußenring.",
+      "Sie ermöglicht die axiale Einstellung des Lagerspiels und der Lagervorspannung.",
+      "Sie verhindert das Rotieren des Lageraußenrings im Gehäuse.",
+      "Sie kompensiert den Unterschied in der Wärmedehnung zwischen Spindel und Gehäuse."
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Passscheiben (Einstellscheiben) dienen bei Kegelrollenlagern in O- oder X-Anordnung zur axialen Einstellung. Durch Wahl der Scheibendicke wird die Vorlast (Vorspannung) oder das Spiel der Lageranordnung eingestellt. Zu wenig Vorspannung: Lager laufen mit Spiel (Ratterneigung). Zu viel Vorspannung: Lager überhitzen. Korrekte Vorspannung erhöht Lagersteifigkeit und Laufruhe der Spindel.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S19",
+    "pruefungReihenfolge": 1
+  },
+  {
+    "id": "au-fa-021",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Die Zwischenwelle (Pos. 6) im Werkzeugspindelkasten (S19) ist mit einem Zylinderrollenlager NU2206 und einem Rillenkugellager gelagert. Welche Lageranordnung beschreibt das?",
+    "optionen": [
+      "Stützlagerung (beide Lager fest, nehmen axiale Kräfte auf)",
+      "Schwimmende Lagerung (beide Lager können sich axial verschieben)",
+      "Fest-Los-Lagerung (ein Lager führt axial, ein Lager lässt axiale Verschiebung zu)",
+      "Pendellagerung (Lager haben Winkelfreiheit)",
+      "Loslagerung (beide Lager lassen axiale Verschiebung zu)"
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Fest-Los-Lagerung: Das Festlager (Rillenkugellager) übernimmt die axiale und radiale Führung der Welle. Das Loslager (NU2206 Zylinderrollenlager) nimmt nur Radialkräfte auf und lässt axiale Verschiebungen zu – Wärmedehnungen und Fertigungstoleranzen werden so kompensiert. Bei schwimmender Lagerung werden zwei Loslager verwendet; bei Stützlagerung zwei Festlager.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S19",
+    "pruefungReihenfolge": 2
+  },
+  {
+    "id": "au-fa-022",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Die hydraulische Schaltvorrichtung (S18) wechselt zwischen zwei Übersetzungsstufen. Welches Bauteil wird durch den Hydraulikkolben (Pos. 16) axial verschoben, um den Gangwechsel auszulösen?",
+    "optionen": [
+      "Das Sekundärrad (Pos. 8) wird axial verschoben.",
+      "Das Primärrad (Pos. 6) wird über die Schaltstange (Pos. 2) axial verschoben und kuppelt wahlweise mit dem Sekundärrad oder dem Sekundärradträger.",
+      "Die Schiebewelle (Pos. 4) dreht sich, um die Übersetzung zu ändern.",
+      "Das Rillenkugellager 6021 (Pos. 30) verändert seine axiale Position.",
+      "Der Sekundärradträger (Pos. 7) wird durch einen Elektromotor verschwenkt."
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Schaltprinzip (S18): Der Hydraulikkolben (Pos. 16) schiebt über die Schaltstange (Pos. 2) das Primärrad (Pos. 6) axial. In Stellung A (m=3, z=57) kämmt es mit dem Sekundärrad (Pos. 8, m=3, z=82) → Übersetzung i₁=82/57≈1,44. In Stellung B (m=1.5, z=50) kämmt es mit dem Sekundärradträger (Pos. 7, m=1.5, z=50) → Übersetzung i₂=1 (Direktgang). Die Schiebewelle (Pos. 4) führt das Primärrad axial.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 3,
+    "pruefung": "S18",
+    "pruefungReihenfolge": 2
+  },
+  {
+    "id": "au-fa-023",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Der Richtzylinder der Verladeanlage (S18) ist mit einem eigenen Druckbegrenzungsventil QN2 (60 bar) abgesichert, obwohl das Hauptsystem-DBV QN1 auf 130 bar eingestellt ist. Warum ist ein separates DBV für den Richtzylinder notwendig?",
+    "optionen": [
+      "Weil QN2 den Volumenstrom am Richtzylinder reguliert.",
+      "Weil der Richtzylinder nur geringe Ausrichtkräfte benötigt und zu hoher Druck die Betonteile oder die Führungskonstruktion beschädigen würde.",
+      "Weil QN1 zu weit vom Richtzylinder entfernt ist.",
+      "Weil QN2 den Richtzylinder nach dem Ausrichten arretiert.",
+      "Weil 130 bar für den Richtzylinder nicht ausreichend wären."
+    ],
+    "richtigeIndizes": [
+      1
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Der Richtzylinder dient nur zur Ausrichtung (Positionierung) der Palette – 130-bar-Druck wäre überdimensioniert und könnte die Betonteile oder die Führungskonstruktion überlasten. Das separate DBV QN2 (60 bar) begrenzt den Druck am Richtzylinder auf einen sicheren Wert. Dieses Prinzip – separate Druckbegrenzung für empfindliche Teilkreise – ist typisch in Hydraulikanlagen mit unterschiedlichen Kraftanforderungen.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S18",
+    "pruefungReihenfolge": 3
+  },
+  {
+    "id": "au-fa-024",
+    "bereich": "auftragsanalyse",
+    "kategorie": "Funktionsanalyse",
+    "typ": "single",
+    "frage": "Die Verladeanlage (S18) besteht aus einer Stahlrahmenkonstruktion; als Abdeckungen werden Aluminiumbleche direkt auf den Stahlträgern befestigt. Im Außenbereich tritt Korrosion an den Aluminiumblechen auf. Wie lässt sich diese Kontaktkorrosion gezielt verhindern?",
+    "optionen": [
+      "Durch regelmäßiges Reinigen der Stahlträger mit Säure.",
+      "Durch elektrische Heizungen, die Feuchtigkeit fernhalten.",
+      "Durch eine elektrisch isolierende Trennschicht (Kunststoffdichtband, Isolierbuchsen) zwischen Aluminium und Stahl, um den galvanischen Kontakt zu unterbrechen.",
+      "Durch Verwendung von feuerverzinktem Stahl statt normalem Baustahl.",
+      "Durch Lackierung nur der Aluminiumbleche."
+    ],
+    "richtigeIndizes": [
+      2
+    ],
+    "reihenfolge": [],
+    "paare": [],
+    "luecken": [],
+    "loesungswert": null,
+    "einheit": null,
+    "toleranz": null,
+    "akzeptierteKurzantworten": [],
+    "wahr": null,
+    "erklaerung": "Kontaktkorrosion benötigt: zwei unterschiedlich edle Metalle + Elektrolyt + elektrischer Kontakt. Unterbricht man eine dieser Voraussetzungen, stoppt die Korrosion. Einfachste Maßnahme: elektrische Trennung durch Kunststoffscheiben und Isolierbuchsen an den Befestigungsschrauben. So gibt es keinen direkten Metall-Metall-Kontakt → kein galvanischer Kreislauf → keine Korrosion.",
+    "selfExplanationPrompt": null,
+    "bildAsset": null,
+    "workedExample": null,
+    "schwierigkeit": 2,
+    "pruefung": "S18",
+    "pruefungReihenfolge": 4
+  }
+]

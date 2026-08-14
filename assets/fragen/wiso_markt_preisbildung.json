@@ -1,0 +1,238 @@
+[
+  {
+    "id": "wi-mp-001",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt der Preis, bei dem Angebot und Nachfrage genau übereinstimmen und kein Überschuss oder Mangel entsteht?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Gleichgewichtspreis", "Marktpreis", "Gleichgewicht"],
+    "wahr": null,
+    "erklaerung": "Gleichgewichtspreis (Marktgleichgewicht): Schnittpunkt von Angebots- und Nachfragekurve. Bei diesem Preis entspricht die angebotene Menge genau der nachgefragten Menge. Liegt der Preis darüber → Angebotsüberschuss (Druck auf Preis). Liegt er darunter → Nachfrageüberschuss (Druck auf Preis).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-mp-002",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "zuordnung",
+    "frage": "Ordne die Marktformen ihrer Beschreibung zu.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "paare": [
+      {"links": "Monopol", "rechts": "Ein Anbieter, viele Nachfrager (Preissetzungsmacht beim Anbieter)"},
+      {"links": "Oligopol", "rechts": "Wenige große Anbieter, viele Nachfrager (z.B. Automobilindustrie)"},
+      {"links": "Polypol", "rechts": "Viele Anbieter, viele Nachfrager (vollständiger Wettbewerb)"},
+      {"links": "Monopson", "rechts": "Viele Anbieter, ein Nachfrager (Käufermonopol)"}
+    ],
+    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Marktformen nach Anbieter/Nachfrager-Zahl: Monopol (1 AN, viele NF): höchste Preismacht. Oligopol (wenige AN, viele NF): strategische Interdependenz. Polypol (viele AN, viele NF): vollständiger Wettbewerb, nähert sich Idealmarkt an. Monopson/Oligopson: Nachfrager hat Preismacht (z.B. großer Automobilhersteller gegenüber kleinen Zulieferern).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-003",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "wahrfalsch",
+    "frage": "Das Gesetz von Angebot und Nachfrage besagt: Bei steigendem Preis sinkt die Nachfragemenge, bei sinkendem Preis steigt sie (ceteris paribus – alle anderen Einflussfaktoren bleiben gleich).",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! Nachfragegesetz: inverse Preis-Mengen-Beziehung → Nachfragekurve fällt. Angebotsgesetz: positive Beziehung → Angebotskurve steigt. Ausnahmen: Giffen-Güter (inferiore Güter, bei denen Preiserhöhung die Nachfrage steigern kann), Veblen-Güter (Luxus, höherer Preis steigert Prestige-Nachfrage).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-mp-004",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "lueckentext",
+    "frage": "Ein Kartell entsteht, wenn mehrere Unternehmen geheime {{1}} über Preise, Mengen oder Marktaufteilung treffen. Kartelle sind in Deutschland und der EU nach dem {{2}} grundsätzlich verboten.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["Absprachen", "Vereinbarungen"],
+      ["GWB", "Gesetz gegen Wettbewerbsbeschränkungen", "Kartellrecht", "Art. 101 AEUV"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Kartellrecht: GWB (Gesetz gegen Wettbewerbsbeschränkungen) national, Art. 101-106 AEUV EU-weit. Bundeskartellamt (BKartA) überwacht. Verstöße: Bußgelder bis 10% des Jahresumsatzes. Kronzeugenregelung: erster Kartellant, der auspackt, kann Bußgeld erlassen bekommen. Beispiele: Zement-, LKW-, Aufzugskartell.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-005",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "rechnung",
+    "frage": "Der Preis eines Produkts steigt von 10 € auf 12 €. Dadurch sinkt die Nachfragemenge von 1000 auf 800 Stück. Berechne die Preiselastizität der Nachfrage (Betrag).",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 1.0,
+    "einheit": "",
+    "toleranz": 0.05,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Preiselastizität ε = (ΔQ/Q₀) / (ΔP/P₀) = (-200/1000) / (2/10) = -0,2 / 0,2 = -1. Betrag = 1 (einheitselastisch). |ε| > 1: elastisch (Menge reagiert stark). |ε| < 1: unelastisch (Menge reagiert kaum). |ε| = 1: einheitselastisch. Unelastische Güter: lebenswichtig, ohne Substitute (Benzin, Wasser, Medikamente).",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "ΔQ/Q₀ = (800-1000)/1000 = -0,2 (−20%)\nΔP/P₀ = (12-10)/10 = +0,2 (+20%)\nε = −0,2 / +0,2 = −1 → |ε| = 1 (einheitselastisch)",
+    "schwierigkeit": 3
+  },
+  {
+    "id": "wi-mp-006",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "multi",
+    "frage": "Welche Faktoren verschieben die Nachfragekurve nach rechts (Nachfrage steigt bei gleichem Preis)?",
+    "optionen": [
+      "Steigendes Einkommen der Käufer (bei Normalgütern)",
+      "Preiserhöhung eines Komplementärguts (z.B. teureres Druckerpapierfür Drucker)",
+      "Preissteigerung eines Substitutguts (z.B. teureres Konkurrenzprodukt)",
+      "Positive Werbung / Trend für das Produkt",
+      "Erwartung sinkender Preise in der Zukunft"
+    ],
+    "richtigeIndizes": [0, 2, 3],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Verschiebungen der Nachfragekurve: rechts (mehr Nachfrage) = Einkommenserhöhung, teurere Substitute, Werbung/Trends. Links (weniger Nachfrage) = sinkende Einkommen, teurere Komplementärgüter (Drucker + Papier = komplementär, teureres Papier → weniger Drucker nachgefragt). Zukunftserwartung sinkender Preise → Kaufverzögerung → Nachfrage sinkt heute.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-mp-007",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "single",
+    "frage": "Was versteht man unter einem Käufermarkt?",
+    "optionen": [
+      "Angebot übersteigt Nachfrage; Käufer haben mehr Verhandlungsmacht",
+      "Nachfrage übersteigt Angebot; Verkäufer haben mehr Macht",
+      "Markt, auf dem nur gewerbliche Käufer zugelassen sind",
+      "Markt mit staatlich festgelegten Preisen"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Käufermarkt: Überangebot, Käufer können wählen → Preis- und Qualitätsdruck auf Anbieter → Verkäufer werben um Käufer. Nachfrageorientiertes Marketing nötig. Verkäufermarkt: Nachfrage > Angebot → Anbieter hat Macht (z.B. Wohnungsmarkt in Ballungsräumen). Heutiger Gütermarkt in Industrieländern ist weitgehend Käufermarkt.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-008",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "lueckentext",
+    "frage": "Preisdumping bedeutet, Produkte dauerhaft {{1}} als die Herstellkosten anzubieten, um {{2}} vom Markt zu verdrängen und dann als {{3}} höhere Preise durchzusetzen.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["billiger", "günstiger", "unter dem Preis"],
+      ["Wettbewerber", "Konkurrenten"],
+      ["Monopolist", "Marktbeherrscher", "Alleinanbieter"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Preisdumping (predatory pricing): Preise unter Selbstkosten, um Mitbewerber aus dem Markt zu drängen. Nach Marktbereinigung: Monopolpreise. Wettbewerbswidrig (§ 19 GWB, Art. 102 AEUV). Kartellamt kann eingreifen. Auch als Form des unfairen Wettbewerbs im Außenhandel bekannt (WTO-Antidumpingrecht).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-mp-009",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "wahrfalsch",
+    "frage": "Subventionen des Staates an Produzenten verschieben die Angebotskurve nach rechts, was bei gleichbleibender Nachfrage zu niedrigeren Gleichgewichtspreisen führt.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! Subvention senkt die Produktionskosten → Anbieter können mehr zum selben Preis anbieten → Angebotskurve verschiebt nach rechts → Gleichgewichtspreis sinkt, Gleichgewichtsmenge steigt. Beispiel: staatliche Subventionen für erneuerbare Energien senken den Preis von Solarstrom. Gegenteil: Steuer verschiebt Angebot nach links → Preis steigt.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-010",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "kurzantwort",
+    "frage": "Wie nennt man die Marktform, bei der ein Unternehmen aufgrund von Netzwerkeffekten, Skalenvorteilen oder staatlicher Regulierung als einziger Anbieter auf einem Markt tätig ist?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Monopol", "natürliches Monopol"],
+    "wahr": null,
+    "erklaerung": "Monopol: ein Anbieter. Natürliches Monopol: entsteht durch sehr hohe Fixkosten (z.B. Schienennetz, Wasserleitungen) – ein Anbieter kann günstiger produzieren als mehrere. Staatliche Regulierung nötig (z.B. Bundesnetzagentur). Technologisches Monopol durch Patente (zeitlich begrenzt, ca. 20 Jahre). Digitale Monopole durch Netzwerkeffekte (z.B. Suchmaschinen).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-011",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "reihenfolge",
+    "frage": "Bringe die Stufen der Preisbildung auf einem Wettbewerbsmarkt in die richtige Reihenfolge.",
+    "optionen": ["Neues Gleichgewicht bei höherem Preis", "Angebotsmenge sinkt (weniger Anbieter profitabel)", "Produktionskosten steigen (z.B. Rohstoffpreise hoch)", "Ursprünglicher Gleichgewichtspreis war stabil"],
+    "richtigeIndizes": [], "reihenfolge": [3, 2, 1, 0], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Dynamische Preisanpassung: 1) Stabiler Ausgangspreis. 2) Kostenschock (Angebotsreduzierende Faktoren: Energiekosten, Rohstoffe). 3) Angebot sinkt bei altem Preis (Angebotskurve links). 4) Neues Gleichgewicht: höherer Preis, geringere Menge. Markt passt sich an – zentraler Mechanismus der Marktwirtschaft.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-012",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "multi",
+    "frage": "Welche Aussagen zur sozialen Marktwirtschaft in Deutschland sind richtig?",
+    "optionen": [
+      "Freie Preisbildung durch Angebot und Nachfrage (Marktmechanismus)",
+      "Sozialer Ausgleich durch staatliche Umverteilung (Steuern, Sozialleistungen)",
+      "Der Staat legt alle Preise fest (Planwirtschaft)",
+      "Wettbewerbsrecht verhindert Monopole und Kartelle",
+      "Privateigentum an Produktionsmitteln ist garantiert"
+    ],
+    "richtigeIndizes": [0, 1, 3, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Soziale Marktwirtschaft (Alfred Müller-Armack, Ludwig Erhard): Verbindet Marktwirtschaft (freie Preise, Wettbewerb, Privateigentum) mit sozialem Ausgleich (Sozialversicherung, Umverteilung, Verbraucherschutz). Kein Laissez-faire, aber auch keine Planwirtschaft. Ordnungspolitik: Staat setzt Regeln, greift aber nicht direkt in die Preisbildung ein.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-013",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "rechnung",
+    "frage": "Ein Unternehmen verkauft 500 Einheiten zum Preis von 40 €. Umsatz = 20 000 €. Durch eine Preissenkung auf 35 € steigt der Absatz auf 650 Einheiten. Hat sich der Umsatz erhöht?",
+    "optionen": ["Ja, Umsatz steigt auf 22 750 €", "Nein, Umsatz sinkt auf 17 500 €", "Umsatz bleibt gleich", "Kann nicht berechnet werden"],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Neuer Umsatz = 35 € × 650 = 22 750 € > 20 000 €. Umsatz steigt um 2750 €. Mengeneffekt (650-500=150 × 35 = +5250 €) überwiegt den Preiseffekt (−5 × 500 = −2500 €). Dies ist typisch bei elastischer Nachfrage (|ε| > 1): Preissenkung → Umsatzsteigerung. Bei unelastischer Nachfrage: Preissenkung → Umsatzsenkung.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Alter Umsatz: 500 × 40 = 20 000 €\nNeuer Umsatz: 650 × 35 = 22 750 €\nΔ Umsatz: +2750 € → Umsatz gestiegen",
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-014",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "single",
+    "frage": "Welches staatliche Instrument setzt einen Preisuntergrenze (Mindestpreis) fest, unterhalb dessen ein Gut nicht verkauft werden darf?",
+    "optionen": [
+      "Preisuntergrenze / Mindestpreis (z.B. gesetzlicher Mindestlohn für Arbeitsleistung)",
+      "Preisobergrenze / Höchstpreis (z.B. Mietpreisbremse)",
+      "Mengensteuer (z.B. Mehrwertsteuer)",
+      "Subvention (staatliche Zahlung an Produzenten)"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Preisuntergrenze (über Gleichgewichtspreis): schützt Anbieter, kann zu Überangebot führen (z.B. EU-Agrarpreisstützen). Preisuntergrenze unter Gleichgewichtspreis: wirkungslos. Preisobergrenze (unter Gleichgewichtspreis): schützt Nachfrager, kann zu Nachfrageüberschuss/Mangel führen (z.B. Mietpreisbremse, Energiepreisdeckel).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-mp-015",
+    "bereich": "wiso",
+    "kategorie": "Markt und Preisbildung",
+    "typ": "wahrfalsch",
+    "frage": "In einem vollkommenen Markt sind alle Marktteilnehmer vollständig informiert, alle Güter sind homogen und es gibt keine Transaktionskosten – in der Realität sind diese Bedingungen nie vollständig erfüllt.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! Der vollkommene Markt ist ein theoretisches Idealmodell (Polypol, vollständige Transparenz, Homogenität, keine Mobilitätshindernisse, keine persönlichen Präferenzen). In der Realität: Informationsasymmetrien (z.B. Gebrauchtwagenmarkt), Produktdifferenzierung, Transaktionskosten, räumliche Distanzen → Marktunvollkommenheiten begründen staatliche Eingriffe.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  }
+]

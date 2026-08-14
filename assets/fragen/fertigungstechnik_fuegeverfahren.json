@@ -1,0 +1,239 @@
+[
+  {
+    "id": "ft-fv-001",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "zuordnung",
+    "frage": "Ordne die Fügeverfahren ihrer DIN 8580-Hauptgruppe zu.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "paare": [
+      {"links": "MIG/MAG-Schweißen", "rechts": "Schweißen (Zusammenfügen durch Stoffschluss mit Wärme)"},
+      {"links": "Schraubenverbindung", "rechts": "Fügen durch Kraftschluss (lösbare Verbindung)"},
+      {"links": "Kleben", "rechts": "Fügen durch Stoffschluss ohne Wärme"},
+      {"links": "Pressverband", "rechts": "Fügen durch Formschluss und Kraftschluss"}
+    ],
+    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "DIN 8580: Fertigungshauptgruppe 4 = Fügen. Verbindungsarten: Stoffschluss (Schweißen, Löten, Kleben – unlösbar oder schwer lösbar), Kraftschluss (Pressverbände, Schrauben – durch Reibkraft), Formschluss (Verzahnungen, Nieten – durch Geometrie). Schrauben kombinieren Kraft- und Formschluss.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-002",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "lueckentext",
+    "frage": "Beim MAG-Schweißen (Metall-Aktivgas) wird ein {{1}} Schutzgas (z.B. CO₂ oder Gemisch) verwendet, das mit dem Lichtbogen reagiert. Beim MIG-Schweißen (Metall-Inertgas) wird ein {{2}} Gas (z.B. Argon) genutzt, das nicht {{3}} reagiert.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["aktives", "reaktionsfähiges"],
+      ["inertes", "inaktives", "reaktionsträges"],
+      ["mit dem Lichtbogen", "chemisch"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "MIG (Metall-Inertgas): Argon oder Helium – kein Einfluss auf Metallurgie. Einsatz: NE-Metalle (Alu, Kupfer). MAG (Metall-Aktivgas): CO₂ oder Ar/CO₂-Gemisch – CO₂ ist Oxidationsmittel, verbessert Einbrand. Einsatz: unlegierte und legierte Stähle. MAG ist das häufigste Industrieschweißverfahren.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-003",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "wahrfalsch",
+    "frage": "Das WIG-Schweißen (Wolfram-Inertgas) verwendet eine nicht abschmelzende Wolframelektrode und wird bevorzugt für hochwertige Schweißnähte an Edelstahl, Aluminium und Titanwerkstoffen eingesetzt.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! WIG (TIG = Tungsten Inert Gas): nicht abschmelzende Elektrode aus Wolfram (Schmelzpunkt 3422°C). Zusatzwerkstoff wird getrennt zugeführt. Vorteile: hochreine Nähte, schmale Wärmeeinflusszone, saubere Optik. Ideal für Titan (Medizintechnik), CrNi-Stahl (Chemie) und Aluminium.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-004",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "multi",
+    "frage": "Welche Aussagen zu Schweißnahtvorbereitung und -qualität sind richtig?",
+    "optionen": [
+      "V-Naht wird bei Blechdicken > 3 mm eingesetzt, um vollständige Durchschweißung zu ermöglichen",
+      "Verunreinigungen (Öl, Rost, Feuchtigkeit) können Poren und Risse verursachen",
+      "Die Wärmeeinflusszone (WEZ) ist immer maßlos und hat keinen Einfluss auf die Bauteilfestigkeit",
+      "Ein Vorwärmen reduziert Härterspitzen und Kaltrissrisiko bei unlegierten Stählen",
+      "Schweißpositionen (PA, PB...) beschreiben die Lage der Naht beim Schweißen"
+    ],
+    "richtigeIndizes": [0, 1, 3, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "WEZ (Wärmeeinflusszone): Durch Wärme veränderte Zone NEBEN der Naht. Bei härtbaren Stählen: höhere Härtewerte in der WEZ → Sprödbruchgefahr. Vorwärmen (Tp = 100-300°C) verlangsamt Abkühlung → reduziert Härteanstieg. Schweißpositionen nach ISO 6947: PA = Wannenlage, PB = Horizontalkehlnaht, PC = Querposition, PD = Überkopf.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "ft-fv-005",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "single",
+    "frage": "Welches Lötverfahren ermöglicht das Löten von Leiterplatten durch Überfluten mit flüssigem Lot in einem kontinuierlichen Prozess?",
+    "optionen": [
+      "Wellenlöten",
+      "Weichlöten mit Lötkolben",
+      "Hartlöten (Flamme)",
+      "Reflow-Löten (Infrarot/Heißluft)"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Wellenlöten: Leiterplatte wird über eine Lotwelle geführt → THT-Bauteile werden benetzt. Reflow-Löten: SMD-Bauteile mit Lotpaste bestückt, dann in Ofen erhitzt → Lot schmilzt und erstarrt. Wellenlöten für THT, Reflow für SMD. Hartlöten: T > 450°C, Flammenlöten für mechanisch hochbelastete Verbindungen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-006",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "kurzantwort",
+    "frage": "Welche Mindestüberlappungslänge l_Ü wird beim Kleben mit Strukturklebstoffen generell empfohlen, um Schälfestigkeit zu minimieren und hohe Schubkräfte zu übertragen?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["l/d ≥ 5-10", "5-10 fache Fügeteildicke", "mindestens 10 mm", "10-20 mm"],
+    "wahr": null,
+    "erklaerung": "Klebverbindungen: Die Überlappungslänge sollte ca. 5–10-fache Fügeteildicke betragen (Faustformel). Zu kurze Überlappung → Schälbeanspruchung an den Rändern dominiert (Klebstoffe sind schälanfällig!). Optimale Fugendicke: 0,1–0,3 mm. Klebflächen müssen gereinigt, entfettet und ggf. vorbehandelt (sandgestrahlt, primert) sein.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "ft-fv-007",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "reihenfolge",
+    "frage": "Bringe die Schritte einer korrekten Klebeverbindung (2K-Epoxidkleber) in die richtige Reihenfolge.",
+    "optionen": ["Fügeteile zusammensetzen und fixieren bis zur Aushärtung", "Klebefilm auf Fügeteil auftragen", "Fügeflächen reinigen, entfetten und aufrauhen", "Kleber A und B im Mischungsverhältnis mischen"],
+    "richtigeIndizes": [], "reihenfolge": [2, 3, 1, 0], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Klebeprozess: 1) Vorbereitung (Reinigen, Aufrauhen erhöht Oberfläche), 2) Mischen (falsches Verhältnis → schlechte Härtung), 3) Auftragen (Offenzeit beachten: Kleber muss noch fließfähig sein), 4) Fügen und Fixieren (Klemmen, Lehren) bis zur vollständigen Aushärtung (kein vorzeitiges Bewegen!).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "ft-fv-008",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "wahrfalsch",
+    "frage": "Das Reibschweißen (Rotationsreibschweißen) verbindet Werkstoffe durch Wärme, die durch Reibung der gegeneinander rotierenden Fügepartner entsteht, ohne zusätzliches Schutzgas oder Zusatzmaterial.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! Reibschweißen (DIN 1910): Ein Fügepartner rotiert, der andere wird axial angedrückt. Reibungswärme plastifiziert die Fügezone → axialer Stauchdruck verschweißt beide Teile. Vorteile: keine Schutzgas-, kein Zusatzmaterial, oxide-freie Naht, gut für unähnliche Werkstoffe (z.B. Alu + Stahl). Einsatz: Antriebswellen, Schrauben.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-009",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "lueckentext",
+    "frage": "Die zerstörungsfreie Schweißnahtprüfung kann durch {{1}} (Ultraschall), {{2}} (Röntgen) oder {{3}} (Magnetpulver bei ferromagnetischen Werkstoffen) erfolgen.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["UT", "Ultraschallprüfung", "US-Prüfung"],
+      ["RT", "Röntgenprüfung", "Durchstrahlungsprüfung"],
+      ["MT", "Magnetpulverprüfung", "Magnetpulver"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "ZfP-Verfahren: UT (Ultraschall) – Innenfehler, gute Automatisierbarkeit. RT (Radiographie/Röntgen) – Innenfehler, zweidimensionales Bild (Fehlerfoto). MT (Magnetpulver) – Oberflächenfehler, nur ferromagnetisch. PT (Farbeindringprüfung) – Oberflächenrisse, alle Metalle. VT (Sichtprüfung) – immer zuerst.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-010",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "rechnung",
+    "frage": "Eine Schweißnaht (Kehlnaht) hat eine Länge l = 120 mm und eine Nahtdicke a = 5 mm. Die zulässige Schubspannung des Grundwerkstoffs beträgt τ_zul = 100 N/mm². Berechne die maximal zulässige Querkraft F in kN.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 60.0,
+    "einheit": "kN",
+    "toleranz": 1.0,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Kehlnaht: Nahtfläche A_w = a · l = 5 · 120 = 600 mm². Zulässige Kraft: F = τ_zul · A_w = 100 · 600 = 60 000 N = 60 kN. Nahtdicke a = 0,7 × Schenkellänge (Kehlnaht-Geometrie). Doppelnaht verdoppelt die Tragfähigkeit. Längsnaht überträgt Schubkräfte, Quernaht überträgt Zugkräfte.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "A_w = a · l = 5 mm · 120 mm = 600 mm²\nF = τ_zul · A_w = 100 N/mm² · 600 mm² = 60 000 N = 60 kN",
+    "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-011",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "multi",
+    "frage": "Welche Schutzmaßnahmen sind beim Lichtbogenschweißen zwingend einzuhalten?",
+    "optionen": [
+      "Schweißschutzschild/Helm mit passender Schutzstufe (DIN EN 169)",
+      "Schutzkleidung (Leder/Baumwolle, flammhemmend) – kein Kunstfaser",
+      "Schweißen in ungelüfteten Räumen ist unbedenklich bei Kleinmengen",
+      "Feuerlöscher und Brandwache bei Brand gefährdeten Bereichen",
+      "Schutz vor UV-Strahlung für alle Personen in der Nähe"
+    ],
+    "richtigeIndizes": [0, 1, 3, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Schweißschutz: Helm mit Schutzstufe 9-13 (abhängig vom Schweißstrom), Lederhandschuhe, flammhemmende Kleidung (Kunstfaser schmilzt!), Absaugung von Schweißrauch (toxisch!), UV-Schutzvorhänge. In engen Räumen: Belüftung / Absaugung Pflicht. Brandwache nach DIN VDE 0105 bei feuergefährdeten Bereichen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-012",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt das Schweißfehlerphänomen, bei dem die Schweißnaht aufgrund zu schneller Abkühlung Risse im Grundwerkstoff parallel zur Naht ausbildet?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Kaltriss", "Kaltrisse", "Kaltrissgefahr", "wasserstoffinduzierter Riss"],
+    "wahr": null,
+    "erklaerung": "Kaltrisse entstehen durch: 1) Härtegefüge in der WEZ (Martensit), 2) Wasserstoffdiffusion ins Gefüge (aus Feuchtigkeit, Grundierungen), 3) Eigenspannungen. Gegenmaßnahmen: Vorwärmen, wasserfreie Elektroden, langsame Abkühlung, Wärmenachbehandlung. Kaltrisse entstehen oft Stunden nach dem Schweißen!",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "ft-fv-013",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "single",
+    "frage": "Welches Fügeverfahren nutzt elektrischen Strom und Druck, um thermoplastische Kunststoffteile zu verbinden?",
+    "optionen": [
+      "Ultraschallschweißen",
+      "Lösungsmittelkleben",
+      "WIG-Schweißen",
+      "Induktionslöten"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Ultraschallschweißen: Mechanische Ultraschallschwingungen (15-40 kHz) erzeugen Reibungswärme an der Fügeebene → Thermoplast schmilzt lokal → Druckbeaufschlagung → Verbindung. Sekunden-schneller Prozess, gut automatisierbar. Einsatz: Automotive, Medizintechnik, Verpackungen. Kein Zusatzmaterial, saubere Verbindung.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-014",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "wahrfalsch",
+    "frage": "Das Weichlöten (T < 450°C) schafft Verbindungen mit höherer Festigkeit als das Hartlöten (T > 450°C) und wird daher für mechanisch hochbeanspruchte Verbindungen bevorzugt.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": false,
+    "erklaerung": "Falsch! Hartlöten (> 450°C, Silberlotzusatz, Cu-Zn-Lote) ergibt deutlich höhere Festigkeiten als Weichlöten (Sn-Pb oder Sn-Ag-Lote, <450°C). Weichlöten: Elektronik, elektrische Verbindungen. Hartlöten: Kupferrohre, Hartmetallbestückung, Kühlaggregate. Schweißen übertrifft beide an Festigkeit.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "ft-fv-015",
+    "bereich": "fertigungstechnik",
+    "kategorie": "Fügeverfahren",
+    "typ": "rechnung",
+    "frage": "Ein Querpreßverband hat Nenndurchmesser D = 50 mm, Übermaß U = 0,05 mm, E-Modul E = 210 000 N/mm², Reibzahl µ = 0,12 und Fugenlänge l = 40 mm. Berechne den Fugendruck p näherungsweise in N/mm² (Formel für dünnwandige Hohlwelle: p ≈ E · U / D).",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 210.0,
+    "einheit": "N/mm²",
+    "toleranz": 5.0,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "p ≈ E · U / D = 210 000 · 0,05 / 50 = 210 N/mm². Dies ist eine Näherung für gleiche Werkstoffe von Welle und Nabe. Übertragbares Drehmoment: M_t = µ · p · π · D² · l / 2 = 0,12 · 210 · π · 50² · 40 / 2 ≈ 39,6 kNm. Pressverband ist eine unlösbare, hochfeste Verbindung.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "p ≈ E · U / D = 210 000 N/mm² · 0,05 mm / 50 mm = 210 N/mm²",
+    "schwierigkeit": 3
+  }
+]

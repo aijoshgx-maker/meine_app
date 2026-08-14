@@ -1,0 +1,236 @@
+[
+  {
+    "id": "wi-wk-001",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt das volkswirtschaftliche Modell, das den Geld- und Güterfluss zwischen Haushalten und Unternehmen als geschlossenen Kreislauf darstellt?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Wirtschaftskreislauf", "einfacher Wirtschaftskreislauf", "Güter- und Geldkreislauf"],
+    "wahr": null,
+    "erklaerung": "Einfacher Wirtschaftskreislauf: Haushalte bieten Produktionsfaktoren (Arbeit, Kapital, Boden) an → Unternehmen zahlen Einkommen (Löhne, Zinsen, Renten) → Haushalte kaufen Güter → Unternehmen erhalten Erlöse. Güterfluss und Geldfluss laufen gegenläufig. Erweiterungen: Staat, Banken, Ausland.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-wk-002",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "lueckentext",
+    "frage": "Das Bruttoinlandsprodukt (BIP) misst den {{1}} aller in einem Land in einem Jahr produzierten Güter und Dienstleistungen. Es kann nach der {{2}}, der {{3}} oder der Verwendungsmethode berechnet werden.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["Gesamtwert", "Marktwert"],
+      ["Entstehungsrechnung", "Produktionsmethode"],
+      ["Verteilungsrechnung", "Einkommensmethode"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "BIP = Gesamtwert aller in einer Volkswirtschaft in einem Jahr produzierten Güter/DL. Drei Berechnungsmethoden: 1) Entstehungsrechnung (Wertschöpfung je Branche), 2) Verteilungsrechnung (Einkommen: Löhne + Gewinne + Abschreibungen), 3) Verwendungsrechnung (Konsum + Investition + Staatsausgaben + Exporte - Importe). Alle liefern dasselbe Ergebnis.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-wk-003",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "zuordnung",
+    "frage": "Ordne die wirtschaftspolitischen Ziele dem Magischen Viereck zu.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
+    "paare": [
+      {"links": "Preisniveaustabilität", "rechts": "Inflationsrate unter 2% (EZB-Ziel für Eurozone)"},
+      {"links": "Vollbeschäftigung", "rechts": "Arbeitslosenquote unter 4-5%"},
+      {"links": "Außenwirtschaftliches Gleichgewicht", "rechts": "Ausgewogene Handelsbilanz mit dem Ausland"},
+      {"links": "Stetiges Wirtschaftswachstum", "rechts": "Jährliches BIP-Wachstum von ca. 2%"}
+    ],
+    "luecken": [], "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Magisches Viereck (§ 1 StWG 1967): 4 gesamtwirtschaftliche Ziele: Preisstabilität, Vollbeschäftigung, außenwirtschaftliches Gleichgewicht, stetiges Wirtschaftswachstum. 'Magisch' weil sie sich z.T. widersprechen (z.B. Wachstum ↑ → Inflation ↑). Heute oft zum 'Magischen Sechseck' erweitert (+ Umweltschutz + Verteilungsgerechtigkeit).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-wk-004",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "wahrfalsch",
+    "frage": "Inflation bedeutet, dass das allgemeine Preisniveau steigt und damit die Kaufkraft des Geldes sinkt – d.h. man kann für denselben Geldbetrag weniger kaufen als zuvor.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! Inflation: allgemeiner, anhaltender Preisanstieg → Geldwertverlust → Kaufkraftminderung. Gemessen: Verbraucherpreisindex (VPI, Statistisches Bundesamt). Ursachen: Nachfrageinflation (zu hohe Kaufkraft), Angebotsinflation (steigende Kosten), Geldmengeninflation. Gegenteil: Deflation (fallende Preise → ebenfalls problematisch).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-wk-005",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "reihenfolge",
+    "frage": "Bringe die Phasen des Konjunkturzyklus in die typische Reihenfolge.",
+    "optionen": ["Depression/Talsohle (niedriges BIP, hohe AL)", "Aufschwung (steigende Produktion, sinkende AL)", "Boom/Hochkonjunktur (Vollbeschäftigung, hohe Auslastung)", "Abschwung/Rezession (BIP-Rückgang mind. 2 Quartale)"],
+    "richtigeIndizes": [], "reihenfolge": [1, 2, 3, 0], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Konjunkturzyklus: Aufschwung → Boom → Abschwung (Rezession) → Depression (Talsohle) → wieder Aufschwung. Rezession: mind. 2 aufeinanderfolgende Quartale mit negativem BIP-Wachstum. Wirtschaftspolitik: antizyklisch (in Rezession: Konjunkturprogramme; in Boom: Haushaltsdisziplin). Dauer eines Zyklus: i.d.R. 4-8 Jahre (Kitchin-Zyklus).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-wk-006",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "multi",
+    "frage": "Welche Aussagen zum erweiterten Wirtschaftskreislauf (mit Staat) sind richtig?",
+    "optionen": [
+      "Der Staat entnimmt dem Kreislauf Geld durch Steuern und Abgaben",
+      "Der Staat speist Geld durch Staatsausgaben (Renten, Subventionen, Investitionen) in den Kreislauf",
+      "Staatseinnahmen erhöhen immer das BIP direkt",
+      "Staatliche Transfers (z.B. Kindergeld) sind keine Gegenleistung für eine Produktion",
+      "Staatsschulden entstehen, wenn Staatsausgaben die Einnahmen übersteigen (Budgetdefizit)"
+    ],
+    "richtigeIndizes": [0, 1, 3, 4],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Staatlicher Sektor im Kreislauf: Steuern/Abgaben = Entnahmen aus dem Kreislauf. Staatsausgaben (Investitionen, Transfers, Gehälter) = Einspeisung. Transfers (Kindergeld, Renten): zählen nicht als BIP-Beitrag (keine Produktion dahinter). BIP-Komponente: Staatsnachfrage (staatliche Käufe von Gütern/Diensten, z.B. Bau von Straßen). Defizit = Staatsausgaben > Einnahmen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-wk-007",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "kurzantwort",
+    "frage": "Wie nennt man die Summe aller von Inländern innerhalb und außerhalb des Landes erzielten Einkommen (im Gegensatz zum BIP, das geographisch abgrenzt)?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Bruttonationaleinkommen", "BNE", "Bruttosozialprodukt", "BSP"],
+    "wahr": null,
+    "erklaerung": "BNE (Bruttonationaleinkommen, früher BSP): Einkommen aller Inländer, unabhängig vom Ort der Leistungserbringung. BIP: Wertschöpfung im Inland, unabhängig ob von Inländern oder Ausländern. BNE = BIP + Primäreinkommen von Inländern aus dem Ausland – Primäreinkommen von Ausländern aus dem Inland. In offenen Volkswirtschaften liegt BIP und BNE meist nah beieinander.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-wk-008",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "single",
+    "frage": "Was versteht man unter dem Multiplikatoreffekt in der Volkswirtschaft?",
+    "optionen": [
+      "Eine staatliche Ausgabe löst eine Kette von Folgeausgaben aus, die das BIP stärker steigen lassen als die ursprüngliche Ausgabe",
+      "Wenn Zinsen steigen, multipliziert sich die Inflation",
+      "Mehrere kleine Unternehmen können gemeinsam einen Großauftrag realisieren",
+      "Technologischer Fortschritt vervielfacht die Produktivität"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Multiplikatoreffekt (Keynes): Staatliche Investition von 1 Mrd. € → Einnahmen der Unternehmen steigen → Beschäftigte verdienen mehr → Konsum steigt → weitere Unternehmen profitieren → BIP steigt um mehr als 1 Mrd. €. Multiplikator k = 1 / (1 – marginale Konsumquote). Je höher die Konsumquote, desto stärker der Effekt.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-wk-009",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "wahrfalsch",
+    "frage": "Die Europäische Zentralbank (EZB) ist für die Geldpolitik im Euroraum zuständig und hat als primäres Ziel die Preisstabilität (Inflation nahe aber unter 2%).",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! EZB (Europäische Zentralbank, Sitz Frankfurt): Primat Preisstabilität (Inflation ~2%). Instrumente: Leitzinssatz (beeinflusst Kreditkosten), Anleihekaufprogramme (QE), Mindestreservepflicht. EZB ist unabhängig von nationalen Regierungen und EU-Organen. Bundesbank ist Teil des Europäischen Zentralbanksystems (ESZB).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-wk-010",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "lueckentext",
+    "frage": "Die drei Wirtschaftssektoren sind: Primärsektor ({{1}}), Sekundärsektor ({{2}}) und Tertiärsektor ({{3}}). Deutschland ist stark im Sekundärsektor (Industrie) und wächst im Tertiärsektor.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [],
+    "luecken": [
+      ["Land- und Forstwirtschaft, Fischerei", "Landwirtschaft"],
+      ["Industrie, produzierendes Gewerbe", "Industrie, Handwerk"],
+      ["Dienstleistungen", "Dienstleistungssektor"]
+    ],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Wirtschaftssektoren: Primär (Urproduktion: Landwirtschaft, Bergbau, Fischerei), Sekundär (Verarbeitung: Industrie, Handwerk, Bau), Tertiär (Dienstleistungen: Handel, Bildung, Finanzwesen, IT). Entwicklung: Industrieländer verschieben von Primär→Sekundär→Tertiär (Tertiärisierung). Heute: Quartärsektor (Wissen, Forschung) wird diskutiert.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+  },
+  {
+    "id": "wi-wk-011",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "rechnung",
+    "frage": "Das BIP eines Landes betrug im Vorjahr 3 000 Mrd. €. In diesem Jahr beträgt es 3 090 Mrd. €. Berechne das nominale Wirtschaftswachstum in %.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": 3.0,
+    "einheit": "%",
+    "toleranz": 0.1,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Wachstumsrate = (BIPt - BIPt-1) / BIPt-1 × 100 = (3090 - 3000) / 3000 × 100 = 90/3000 × 100 = 3%. Nominales Wachstum: enthält Preissteigerungen. Reales Wachstum: inflationsbereinigt (deflationiert mit BIP-Deflator). Wenn Inflation 2%, dann reales Wachstum ≈ 3% - 2% = 1%.",
+    "selfExplanationPrompt": null, "bildAsset": null,
+    "workedExample": "Wachstum = (3090 - 3000) / 3000 × 100 = 90 / 3000 × 100 = 3%",
+    "schwierigkeit": 2
+  },
+  {
+    "id": "wi-wk-012",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "multi",
+    "frage": "Was bewirkt eine Erhöhung des Leitzinses durch die EZB?",
+    "optionen": [
+      "Kreditaufnahme wird teurer → Investitionen sinken tendenziell",
+      "Sparen wird attraktiver → Konsum sinkt tendenziell",
+      "Inflation wird tendenziell gebremst (geldpolitisches Ziel)",
+      "Exporte werden sofort günstiger für das Ausland",
+      "Arbeitslosigkeit sinkt sofort"
+    ],
+    "richtigeIndizes": [0, 1, 2],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Leitzinserhöhung (restriktive Geldpolitik): teurere Kredite → Investitionen sinken, Konsum sinkt → Wirtschaft kühlt ab → Inflation sinkt (verzögert, ca. 1-2 Jahre). Wechselkurseffekt: höhere Zinsen → Kapitalzuflüsse → Euro aufwertet → Exporte teurer (nicht billiger!). Arbeitslosigkeit steigt eher (Wirtschaft kühlt ab).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
+  },
+  {
+    "id": "wi-wk-013",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "kurzantwort",
+    "frage": "Wie heißt die staatliche Wirtschaftspolitik, die in einer Rezession durch höhere Staatsausgaben und Steuersenkungen die Nachfrage stärkt (Gegenteil der Austeritätspolitik)?",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": ["Expansive Fiskalpolitik", "antizyklische Fiskalpolitik", "Konjunkturpolitik", "keynesianische Politik"],
+    "wahr": null,
+    "erklaerung": "Expansive Fiskalpolitik (Keynesianismus): Staat als 'Letzter Garant' in Rezessionen. Erhöhung der Staatsausgaben (Konjunkturprogramme) und/oder Steuersenkungen → Nachfrageerhöhung → Multiplikatoreffekt. Kritik: Staatsverschuldung, Crowding-out (verdrängt private Investitionen). Gegenmodell: Angebotspolitik (Steuersenkungen für Unternehmen statt Nachfrageförderung).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-wk-014",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "single",
+    "frage": "Was beschreibt die Handelsbilanz als Teil der Leistungsbilanz?",
+    "optionen": [
+      "Differenz zwischen Güterexporten und Güterimporten eines Landes",
+      "Übersicht aller Staatsausgaben für Handelspolitik",
+      "Vergleich der Währungen zweier Handelspartner",
+      "Aufstellung aller Unternehmensgewinne im internationalen Handel"
+    ],
+    "richtigeIndizes": [0],
+    "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": null,
+    "erklaerung": "Handelsbilanz = Export - Import von Waren. Deutschland: traditioneller Exportüberschuss (Handelsüberschuss). Teil der Leistungsbilanz (Waren + Dienstleistungen + Primäreinkommen + Sekundäreinkommen). Leistungsbilanz + Kapitalbilanz + Devisenbilanz = Zahlungsbilanz. Dauerhafter Überschuss: Kritik aus dem Ausland (Ungleichgewicht).",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  },
+  {
+    "id": "wi-wk-015",
+    "bereich": "wiso",
+    "kategorie": "Wirtschaftskreislauf",
+    "typ": "wahrfalsch",
+    "frage": "Ein Haushaltsdefizit des Staates (Staatsausgaben > Steuereinnahmen) wird durch Aufnahme von Staatsanleihen (Krediten) finanziert und erhöht die gesamte Staatsverschuldung.",
+    "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
+    "loesungswert": null, "einheit": null, "toleranz": null,
+    "akzeptierteKurzantworten": [], "wahr": true,
+    "erklaerung": "Korrekt! Staatsverschuldung entsteht durch Defizite: Bund, Länder, Kommunen nehmen Kredite auf (Staatsanleihen) wenn Ausgaben > Einnahmen. Schuldenbremse (GG Art. 109a): strukturelles Defizit des Bundes max. 0,35% des BIP. EU-Maastricht-Kriterien: max. 3% Neuverschuldung, max. 60% Gesamtschuld/BIP. Staatsverschuldung wird durch die Nachfolgegeneration mitgetragen.",
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+  }
+]
