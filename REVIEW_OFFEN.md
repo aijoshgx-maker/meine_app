@@ -117,3 +117,38 @@ P8, wo die S18-Prüfungssimulation ohnehin geprüft wird) gegen die reale
 Prüfung abgleichen.
 
 ---
+
+## P6d — `multi` mit 4-von-5 richtig: nur 3 von 37 bearbeitet
+
+3 Beispiele exemplarisch entschärft (Strategie: einen zusätzlichen,
+plausiblen aber nachweisbar falschen Distraktor ergänzt, statt eine der
+bestehenden richtigen Aussagen fachlich zu verfälschen - das Risiko einer
+falschen Umformulierung schien höher als der Nutzen):
+
+- `au-et-013` (Reihenschaltung Widerstände): + "Der Gesamtwiderstand hängt
+  von der Reihenfolge der Widerstände ab" (falsch, Addition ist kommutativ)
+- `wi-kv-004` (§ 437 BGB Käuferrechte): + "Sofortiger Rücktritt bei jedem
+  noch so kleinen Mangel ohne Fristsetzung" (falsch, Vorrang der
+  Nacherfüllung nach § 323 BGB)
+- `wi-vs-004` (DSGVO-Rechte): + "Recht auf Datenminimierung durch den
+  Verantwortlichen" (falsch als Betroffenenrecht - das ist ein Grundsatz
+  für den Verantwortlichen, Art. 5 DSGVO, kein Art.-12-22-Recht)
+
+Alle drei jetzt 4-von-6 statt 4-von-5 (Validator-Warnung verschwunden).
+
+**Nicht bearbeitet** (P6d-Vorgabe „lieber weniger, dafür gute
+Distraktoren"), verbleibende 34 Kandidaten aus dem Validator-Report:
+`au-fl-009`, `au-fl-013`, `au-fa-004`, `au-fa-011`, `au-hy-013`,
+`au-ih-004`, `au-ih-011`, `au-tz-004`, `au-tz-014`, `au-tp-014`,
+`ft-cnc-013`, `ft-ap-006`, `ft-ap-013`, `ft-fv-004`, `ft-fv-011`,
+`ft-qs-006`, `ft-sd-011`, `ft-ww-007`, `ft-ww-013`, `ft-ws-006`,
+`ft-wf-013`, `wiso-av-003`, `wiso-av-010`, `wiso-ba-003`, `wiso-ba-014`,
+`wi-bo-011`, `wi-ent-007`, `wi-ent-015`, `wi-kv-013`, `wi-mp-012`,
+`wi-sv-005`, `wi-tr-011`, `wi-vs-010`, `wi-vs-014`, `wi-wk-006`.
+Für jede dieser Fragen müsste geprüft werden, ob sich - wie in den drei
+Beispielen oben - ein zusätzlicher, fachlich einwandfreier Distraktor
+ergänzen lässt, ohne die Aufgabe zu verfälschen. `dart run
+tool/validate_fragen.dart` findet diese Liste jederzeit wieder
+(`multi: 4 von 5 Optionen richtig`).
+
+---

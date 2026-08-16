@@ -343,7 +343,8 @@
       "Durch alle Widerstände fließt derselbe Strom.",
       "Die Spannung teilt sich proportional zu den Widerstandswerten auf.",
       "Der Gesamtwiderstand ist kleiner als der kleinste Einzelwiderstand.",
-      "Bei Unterbrechung eines Widerstands fließt in der Gesamtschaltung kein Strom mehr."
+      "Bei Unterbrechung eines Widerstands fließt in der Gesamtschaltung kein Strom mehr.",
+      "Der Gesamtwiderstand hängt von der Reihenfolge der Widerstände in der Schaltung ab."
     ],
     "richtigeIndizes": [
       0,
@@ -359,7 +360,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Reihenschaltung: R_ges = R1+R2+..., gleicher Strom überall, Spannung teilt sich auf (U=R·I), Unterbrechung eines Widerstands unterbricht den gesamten Stromkreis. Der kleinere Gesamtwiderstand gilt für Parallelschaltung.",
+    "erklaerung": "Reihenschaltung: R_ges = R1+R2+..., gleicher Strom überall, Spannung teilt sich auf (U=R·I), Unterbrechung eines Widerstands unterbricht den gesamten Stromkreis. Der kleinere Gesamtwiderstand gilt für Parallelschaltung. Da Addition kommutativ ist, spielt die Reihenfolge der Widerstände in der Kette keine Rolle für den Gesamtwiderstand.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,

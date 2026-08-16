@@ -53,13 +53,14 @@
       "Recht auf Löschung ('Recht auf Vergessenwerden')",
       "Recht auf vollständige Anonymität im Internet",
       "Recht auf Datenübertragbarkeit (Portabilität zu anderem Anbieter)",
-      "Recht auf Berichtigung unrichtiger Daten"
+      "Recht auf Berichtigung unrichtiger Daten",
+      "Recht auf Datenminimierung durch den Verantwortlichen"
     ],
     "richtigeIndizes": [0, 1, 3, 4],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
-    "erklaerung": "DSGVO-Rechte (Art. 12-22): Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Portabilität (Art. 20), Widerspruch (Art. 21). Kein absolutes Recht auf Anonymität – im Strafrecht kann Identität aufgedeckt werden. Beschwerderecht bei Datenschutzbehörde. Bußgelder bis 4% des weltweiten Jahresumsatzes.",
+    "erklaerung": "DSGVO-Rechte (Art. 12-22): Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Portabilität (Art. 20), Widerspruch (Art. 21). Kein absolutes Recht auf Anonymität – im Strafrecht kann Identität aufgedeckt werden. Beschwerderecht bei Datenschutzbehörde. Bußgelder bis 4% des weltweiten Jahresumsatzes. Datenminimierung (Art. 5 DSGVO) ist ein Grundsatz, den der Verantwortliche bei der Datenverarbeitung beachten muss - kein eigenständiges, vom Betroffenen aktiv geltend zu machendes Recht wie die anderen genannten.",
     "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
   },
   {

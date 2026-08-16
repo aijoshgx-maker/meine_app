@@ -90,7 +90,8 @@
       "Rücktritt vom Kaufvertrag",
       "Minderung des Kaufpreises",
       "Sofortige Strafverfolgung des Verkäufers",
-      "Schadensersatz (wenn Verkäufer Verschulden trifft)"
+      "Schadensersatz (wenn Verkäufer Verschulden trifft)",
+      "Sofortiger Rücktritt bei jedem noch so kleinen Mangel, ohne dem Verkäufer zuvor eine Frist zur Nacherfüllung zu setzen"
     ],
     "richtigeIndizes": [
       0,
@@ -106,7 +107,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Mängelrechte § 437 BGB: 1. Nacherfüllung (Vorrang! Reparatur oder Ersatzlieferung – Käufer muss Chance geben). 2. Rücktritt (Vertrag rückgängig). 3. Minderung (Preis reduzieren). 4. Schadensersatz (nur bei Verschulden des Verkäufers). 5. Aufwendungsersatz. Strafverfolgung ist Strafrecht, kein Mängelrecht.",
+    "erklaerung": "Mängelrechte § 437 BGB: 1. Nacherfüllung (Vorrang! Reparatur oder Ersatzlieferung – Käufer muss Chance geben). 2. Rücktritt (Vertrag rückgängig). 3. Minderung (Preis reduzieren). 4. Schadensersatz (nur bei Verschulden des Verkäufers). 5. Aufwendungsersatz. Strafverfolgung ist Strafrecht, kein Mängelrecht. Der Rücktritt setzt grundsätzlich voraus, dass der Käufer dem Verkäufer zuvor erfolglos eine angemessene Frist zur Nacherfüllung gesetzt hat (Vorrang der Nacherfüllung, § 323 BGB) - ein sofortiger Rücktritt ohne Fristsetzung ist nur in Ausnahmefällen möglich (z.B. ernsthafte/endgültige Erfüllungsverweigerung).",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
