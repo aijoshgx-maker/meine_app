@@ -193,3 +193,15 @@ Entscheidung nachgeholt werden - am saubersten mit `rename` oder
 `change_app_package_name`, danach `flutter clean` und Vollbuild.
 
 ---
+
+## P9 — automatischer wöchentlicher Export nicht umgesetzt
+
+P9 markiert diesen Punkt selbst als "Optional, aber sinnvoll". Aus
+Zeitgründen zurückgestellt: automatischer Export in den
+App-Dokumentenordner einmal pro Woche, Rotation der letzten 4 Dateien.
+Die Grundlage (`BackupStore.erstellen()`/`alsDateiSchreiben()`) ist
+vorhanden - fehlt nur die Scheduling-Logik (z. B. beim App-Start prüfen,
+ob der letzte Auto-Export > 7 Tage her ist, Zeitstempel in
+`SettingsStore` ablegen) und das Aufräumen alter Dateien.
+
+---
