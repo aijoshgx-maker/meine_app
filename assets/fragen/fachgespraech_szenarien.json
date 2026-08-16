@@ -25,8 +25,8 @@
       },
       {
         "id": "fg-001-f03",
-        "pruefer": "Warum haben Sie beim Einpressen des neuen Rillenkugellagers eine Einpresshülse verwendet, die nur den Außenring berührt?",
-        "musterloesung": "Der Außenring hat in der Lagerbohrung eine Presspassung (Umfangslast), muss also mit Kraft eingepresst werden. Die Montagekraft muss direkt auf den zu pressenden Laufring – hier den Außenring – übertragen werden. Würde man die Kraft über die Wälzkörper auf den Innenring leiten, entstehen Brinellmarken (Eindrücke) an den Laufbahnen, die das Lager sofort schädigen. Deshalb Einpresshülse, die ausschließlich auf dem Außenring aufliegt.",
+        "pruefer": "Warum haben Sie beim Einpressen des neuen Rillenkugellagers eine Einpresshülse verwendet, die nur den Innenring berührt?",
+        "musterloesung": "Der Innenring hat auf der Welle eine Presspassung (Umfangslast), muss also mit Kraft eingepresst werden. Die Montagekraft muss direkt auf den zu pressenden Laufring – hier den Innenring – übertragen werden. Würde man die Kraft über die Wälzkörper auf den Außenring leiten, entstehen Brinellmarken (Eindrücke) an den Laufbahnen, die das Lager sofort schädigen. Deshalb Einpresshülse, die ausschließlich auf dem Innenring aufliegt.",
         "schluesselwoerter": ["Presspassung", "Umfangslast", "Brinellmarken", "Einpresshülse"],
         "erklaerung": "Dieser Punkt wird in IHK-Prüfungen häufig abgefragt. Kernaussage: Kraft IMMER auf den zu pressenden Laufring, NIEMALS durch die Wälzkörper. Brinellmarken sind die typische Folge falscher Montage.",
         "schwierigkeit": 3

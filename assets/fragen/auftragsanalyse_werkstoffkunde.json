@@ -723,13 +723,13 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Werkstoffkunde",
     "typ": "single",
-    "frage": "Der Schaltkolben (Pos. 16) der Schaltvorrichtung (S18) ist aus CuSnB gefertigt. Warum wird für einen Hydraulikkolben eine Kupfer-Zinn-Legierung (Zinnbronze) statt Stahl gewählt?",
+    "frage": "Der Schaltkolben (Pos. 16) der Schaltvorrichtung (S18) ist aus CuSn8 gefertigt. Warum wird für einen Hydraulikkolben eine Kupfer-Zinn-Legierung (Zinnbronze) statt Stahl gewählt?",
     "optionen": [
-      "Weil CuSnB eine höhere Zugfestigkeit als Stahl hat.",
-      "Weil CuSnB gute Gleiteigenschaften, Notlaufeigenschaften und Korrosionsbeständigkeit gegenüber Hydrauliköl besitzt und die Zylinderbohrung schont.",
-      "Weil CuSnB leichter schweißbar als Stahl ist.",
-      "Weil CuSnB magnetisch ist und so von Sensoren erkannt werden kann.",
-      "Weil CuSnB billiger als Stahl herzustellen ist."
+      "Weil CuSn8 eine höhere Zugfestigkeit als Stahl hat.",
+      "Weil CuSn8 gute Gleiteigenschaften, Notlaufeigenschaften und Korrosionsbeständigkeit gegenüber Hydrauliköl besitzt und die Zylinderbohrung schont.",
+      "Weil CuSn8 leichter schweißbar als Stahl ist.",
+      "Weil CuSn8 magnetisch ist und so von Sensoren erkannt werden kann.",
+      "Weil CuSn8 billiger als Stahl herzustellen ist."
     ],
     "richtigeIndizes": [
       1
@@ -742,7 +742,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Zinnbronzen (CuSn) haben hervorragende Gleiteigenschaften (niedriger Reibungskoeffizient), gute Notlaufeigenschaften und hohe Korrosionsbeständigkeit gegenüber Hydrauliköl. Sie schonen die Gegenfläche (Zylinderbohrung aus Stahl). Der Zusatz B (Blei) verbessert Gleiteigenschaften und Zerspanbarkeit. Stahl auf Stahl würde zu Kaltverschweißen (Fressen) führen, da beide Werkstoffe identisch sind und ohne ausreichende Schmierung haften.",
+    "erklaerung": "Zinnbronzen (CuSn) haben hervorragende Gleiteigenschaften (niedriger Reibungskoeffizient), gute Notlaufeigenschaften und hohe Korrosionsbeständigkeit gegenüber Hydrauliköl. Sie schonen die Gegenfläche (Zylinderbohrung aus Stahl). Stahl auf Stahl würde zu Kaltverschweißen (Fressen) führen, da beide Werkstoffe identisch sind und ohne ausreichende Schmierung haften.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,

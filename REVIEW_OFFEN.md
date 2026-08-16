@@ -28,3 +28,65 @@ ursprüngliche Quelle der Frage nicht rekonstruieren. Fachliche Prüfung
 erwünscht, falls die Konstante an anderer Stelle noch referenziert wird.
 
 ---
+
+## P5c — `au-wk-025`: `CuSnB` durch `CuSn8` ersetzt, Blei-Aussage entfernt
+
+**Datei:** `assets/fragen/auftragsanalyse_werkstoffkunde.json`
+
+`CuSnB` ist keine genormte Werkstoffbezeichnung. Zwei plausible Lesarten:
+
+1. Tippfehler für `CuSn8` (passt zu `au-wk-018`, das korrekt `CuSn8P`
+   verwendet) - **so umgesetzt**, wie in P5 vorgegeben.
+2. Absichtlich gemeinte verbleite Zinnbronze (Rotguss-Lagerwerkstoff, z. B.
+   `CuSn7ZnPb`/Rg7 oder `CuSn5Pb5Zn5`/Rg5), worauf der ursprüngliche Satz
+   „Der Zusatz B (Blei) verbessert Gleiteigenschaften und Zerspanbarkeit"
+   in der `erklaerung` hindeutete - typisch für Hydraulikkolben-Lager­buchsen.
+
+**Entscheidung für diesen Commit:** Lesart 1 umgesetzt (Konsistenz mit
+`au-wk-018`, wie im Prompt vorgegeben). Der Blei-Satz wurde aus der
+`erklaerung` entfernt, da `CuSn8`/`CuSn8P` bleifrei sind und der Satz sonst
+sachlich falsch wäre.
+
+**Offen:** Falls tatsächlich ein verbleiter Lagerbronze-Werkstoff (Lesart 2)
+gemeint war, wäre die fachlich korrekte Bezeichnung eine andere (z. B.
+`CuSn7ZnPb`) und die Blei-Begründung sollte wieder rein. Bitte von
+Fachseite gegenprüfen, welche Legierung im realen Bauteil (Schaltkolben,
+Pos. 16, S18) tatsächlich verbaut ist.
+
+---
+
+## P5d — Werkstoffbezeichnungen-Sammelprüfung: keine Fehler gefunden
+
+Alle in P5d genannten Kürzel gegen die einschlägigen Normen geprüft:
+`17Cr3`, `16MnCr5`, `20MnCr5`, `11SMn30+C` (EN 10084/10087 Einsatzstähle
+bzw. Automatenstahl), `CuSn8P`, `CuSn12`, `CuZn31Si1` (EN 1982/12163
+Kupferlegierungen), `42CrMo4` (EN 10083 Vergütungsstahl), `S235JR`
+(EN 10025 Baustahl), `DC01` (EN 10130 Kaltband), `GJL-200` (EN 1561
+Grauguss), `AlMgSi1` (Aluminiumknetlegierung, DIN-1725-Bezeichnung für
+EN AW-6082), `PE-HD` (Hochdichtes Polyethylen). Alle sind gültige,
+korrekt geschriebene Bezeichnungen. Keine Änderung nötig.
+
+---
+
+## P5e — `ft-cnc-025`: unrealistischer Kegeldurchmesser nicht geändert
+
+**Datei:** `assets/fragen/fertigungstechnik_cnc_grundlagen.json`
+
+Rechnerisch ist die Frage stimmig (D = d + C·L = 128 + 1 = 129 mm), aber
+128 mm kleiner Kegeldurchmesser für eine "Schaltstange" (Pos. 2) ist für
+ein Bauteil dieses Namens ungewöhnlich groß - Schaltstangen sind typisch
+schlanke Rundstäbe im Bereich von wenigen Zentimetern, nicht 128 mm.
+Naheliegende Vermutung: gemeint war `d = 28 mm` (→ `loesungswert` müsste
+dann auf `29.0` mitgezogen werden), ein Tippfehler durch die verlorene
+führende Ziffer wäre auch plausibel (28 → 128 als Zahlendreher/Zusatzziffer
+ist allerdings ungewöhnlich; wahrscheinlicher ein einfacher Tippfehler
+"1" + "28").
+
+**Nicht geändert**, weil ohne die (in `assets/zeichnungen/S18/` fehlende,
+siehe P8) Originalzeichnung nicht sicher rekonstruierbar ist, welcher Wert
+tatsächlich korrekt ist - reine Vermutung wäre hier ein Raten i. S. der
+Regel „Fachliche Änderungen nie raten". Bitte von Fachseite mit der
+Originalzeichnung S18 gegenprüfen; danach `d`, die Fragestellung und
+`loesungswert` (aktuell `129.0`, bei d=28 → `29.0`) konsistent anpassen.
+
+---
