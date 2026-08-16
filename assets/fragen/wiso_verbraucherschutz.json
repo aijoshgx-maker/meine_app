@@ -84,13 +84,8 @@
     "kategorie": "Verbraucherschutz",
     "typ": "single",
     "frage": "Was schützt das Gesetz gegen den unlauteren Wettbewerb (UWG) außer Verbrauchern?",
-    "optionen": [
-      "Auch Mitbewerber und die Allgemeinheit vor unfairen Geschäftspraktiken",
-      "Nur Verbraucher, nicht Unternehmen",
-      "Staatliche Monopole vor privatem Wettbewerb",
-      "Nur ausländische Unternehmen gegen inländische Konkurrenz"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Nur ausländische Unternehmen gegen inländische Konkurrenz","Auch Mitbewerber und die Allgemeinheit vor unfairen Geschäftspraktiken","Nur Verbraucher, nicht Unternehmen","Staatliche Monopole vor privatem Wettbewerb"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
@@ -173,13 +168,8 @@
     "kategorie": "Verbraucherschutz",
     "typ": "single",
     "frage": "Was ist eine unzulässige 'Cold-Call'-Werbung und welches Gesetz schützt davor?",
-    "optionen": [
-      "Unerwünschte Werbeanrufe ohne vorherige Einwilligung; verboten durch UWG § 7",
-      "Werbung in Kaltenbach-Regionen Deutschlands; verboten durch regionale Gesetze",
-      "Werbung außerhalb der Hauptsendezeit; durch Rundfunkstaatsvertrag geregelt",
-      "Werbung für gekühlte Produkte; durch Lebensmittelrecht geregelt"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Werbung außerhalb der Hauptsendezeit; durch Rundfunkstaatsvertrag geregelt","Werbung für gekühlte Produkte; durch Lebensmittelrecht geregelt","Unerwünschte Werbeanrufe ohne vorherige Einwilligung; verboten durch UWG § 7","Werbung in Kaltenbach-Regionen Deutschlands; verboten durch regionale Gesetze"],
+    "richtigeIndizes": [2],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,

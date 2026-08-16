@@ -5,13 +5,8 @@
     "kategorie": "Technisches Zeichnen",
     "typ": "single",
     "frage": "Welche Projektionsmethode ist in Europa nach ISO 128 für technische Zeichnungen genormt?",
-    "optionen": [
-      "Erstwinkelprojektion (Europäische Projektion)",
-      "Drittwinkelprojektion (Amerikanische Projektion)",
-      "Zweitwinkelprojektion",
-      "Axonometrische Projektion"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Drittwinkelprojektion (Amerikanische Projektion)","Zweitwinkelprojektion","Axonometrische Projektion","Erstwinkelprojektion (Europäische Projektion)"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -377,13 +372,8 @@
     "kategorie": "Technisches Zeichnen",
     "typ": "single",
     "frage": "Was kennzeichnet die Drittwinkelprojektion gegenüber der Erstwinkelprojektion?",
-    "optionen": [
-      "Die Projektionsebene liegt zwischen Betrachter und Objekt",
-      "Das Objekt liegt zwischen Betrachter und Projektionsebene",
-      "Es werden nur drei Ansichten verwendet",
-      "Sie ist in Deutschland die Normprojektion"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Sie ist in Deutschland die Normprojektion","Die Projektionsebene liegt zwischen Betrachter und Objekt","Das Objekt liegt zwischen Betrachter und Projektionsebene","Es werden nur drei Ansichten verwendet"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

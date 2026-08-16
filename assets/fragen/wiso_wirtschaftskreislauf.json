@@ -208,13 +208,8 @@
     "kategorie": "Wirtschaftskreislauf",
     "typ": "single",
     "frage": "Was beschreibt die Handelsbilanz als Teil der Leistungsbilanz?",
-    "optionen": [
-      "Differenz zwischen Güterexporten und Güterimporten eines Landes",
-      "Übersicht aller Staatsausgaben für Handelspolitik",
-      "Vergleich der Währungen zweier Handelspartner",
-      "Aufstellung aller Unternehmensgewinne im internationalen Handel"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Aufstellung aller Unternehmensgewinne im internationalen Handel","Differenz zwischen Güterexporten und Güterimporten eines Landes","Übersicht aller Staatsausgaben für Handelspolitik","Vergleich der Währungen zweier Handelspartner"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,

@@ -381,15 +381,8 @@
     "kategorie": "Qualitätssicherung",
     "typ": "single",
     "frage": "Was ist der Unterschied zwischen einem internen und einem externen Audit im Qualitätswesen?",
-    "optionen": [
-      "Intern: vom eigenen Betrieb durchgeführt; Extern: von Kunden oder Zertifizierungsstellen",
-      "Intern: teurer; Extern: günstiger",
-      "Intern: ohne Dokumentation; Extern: mit Zertifikat",
-      "Intern: nur für ISO-zertifizierte Betriebe; Extern: für alle"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Intern: nur für ISO-zertifizierte Betriebe; Extern: für alle","Intern: vom eigenen Betrieb durchgeführt; Extern: von Kunden oder Zertifizierungsstellen","Intern: teurer; Extern: günstiger","Intern: ohne Dokumentation; Extern: mit Zertifikat"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -437,16 +430,8 @@
     "kategorie": "Qualitätssicherung",
     "typ": "single",
     "frage": "An einer Stichprobe von 200 Teilen werden Fehler bei der Zinkbeschichtung festgestellt. 4 Teile weisen eine zu dünne Zinkschichtdicke auf. Wie hoch ist der prozentuale Anteil dieser Fehlerart?",
-    "optionen": [
-      "0,5 %",
-      "1,0 %",
-      "1,5 %",
-      "2,0 %",
-      "4,0 %"
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["2,0 %","4,0 %","0,5 %","1,0 %","1,5 %"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -493,16 +478,8 @@
     "kategorie": "Qualitätssicherung",
     "typ": "single",
     "frage": "Im Rahmen der SPC (Statistische Prozessregelung) soll die Oberflächengüte der Antriebswelle nach der spanenden Fertigung variabel geprüft werden. Welches Prüfmittel ist dafür auszuwählen?",
-    "optionen": [
-      "Sichtprüfung mit Lupe",
-      "Messuhr",
-      "Tastschnittgerät (Profilometer)",
-      "Feinzeiger",
-      "Vergleichsnormale für Oberflächenrauheit"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Messuhr","Tastschnittgerät (Profilometer)","Feinzeiger","Vergleichsnormale für Oberflächenrauheit","Sichtprüfung mit Lupe"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -555,16 +532,8 @@
     "kategorie": "Qualitätssicherung",
     "typ": "single",
     "frage": "Was ist laut DIN EN ISO 9000 ein 'Fehler' in der Qualitätssicherung?",
-    "optionen": [
-      "Jede Abweichung vom Nennmaß",
-      "Nichterfüllung einer festgelegten Forderung (Anforderung)",
-      "Ein defektes Bauteil in der Fertigung",
-      "Überschreitung des Toleranzfeldes um mehr als 10 %",
-      "Eine Abweichung, die zur Kundenreklamation führt"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Überschreitung des Toleranzfeldes um mehr als 10 %","Eine Abweichung, die zur Kundenreklamation führt","Jede Abweichung vom Nennmaß","Nichterfüllung einer festgelegten Forderung (Anforderung)","Ein defektes Bauteil in der Fertigung"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -607,16 +576,8 @@
     "kategorie": "Qualitätssicherung",
     "typ": "single",
     "frage": "Die Bohrstation (S19) hat hohe Stillstandszeiten. Um die Hauptursachen zu identifizieren, sollen die Störungsmeldungen nach Häufigkeit geordnet und die wichtigsten Ursachen priorisiert werden. Welche Qualitätsmethode ist hierfür geeignet?",
-    "optionen": [
-      "Ishikawa-Diagramm (Ursache-Wirkungs-Diagramm)",
-      "Paretoanalyse (ABC-Analyse nach Häufigkeit)",
-      "FMEA (Fehlermöglichkeits- und Einflussanalyse)",
-      "Stichprobenkontrolle nach AQL",
-      "Gage R&R (Messsystemanalyse)"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Paretoanalyse (ABC-Analyse nach Häufigkeit)","FMEA (Fehlermöglichkeits- und Einflussanalyse)","Stichprobenkontrolle nach AQL","Gage R&R (Messsystemanalyse)","Ishikawa-Diagramm (Ursache-Wirkungs-Diagramm)"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -671,16 +632,8 @@
     "kategorie": "Qualitätssicherung",
     "typ": "single",
     "frage": "Der Kopfkreisdurchmesser des Primärrads (Pos. 6, Da = 177 mm) der Schaltvorrichtung (S18) soll nach der Fertigung auf Maßhaltigkeit geprüft werden. Welches Messmittel ist für dieses Außenmaß geeignet?",
-    "optionen": [
-      "Rachenlehre (für Go/No-Go-Prüfung) – prüft nur, ob das Maß im Toleranzband liegt.",
-      "Innenmessgerät (Drei-Punkt-Innenmesstaster) – geeignet für Bohrungen, nicht für Außendurchmesser.",
-      "Außenmikrometer (Bügelmessschraube) im Bereich 175–200 mm oder Messschieber für grobe Kontrolle.",
-      "Tastschnittgerät (Rauheitsmessgerät) – misst die Oberflächenrauheit, nicht das Maß.",
-      "Koordinatenmessmaschine (KMM) ist das einzige mögliche Messmittel."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Koordinatenmessmaschine (KMM) ist das einzige mögliche Messmittel.","Rachenlehre (für Go/No-Go-Prüfung) – prüft nur, ob das Maß im Toleranzband liegt.","Innenmessgerät (Drei-Punkt-Innenmesstaster) – geeignet für Bohrungen, nicht für Außendurchmesser.","Außenmikrometer (Bügelmessschraube) im Bereich 175–200 mm oder Messschieber für grobe Kontrolle.","Tastschnittgerät (Rauheitsmessgerät) – misst die Oberflächenrauheit, nicht das Maß."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

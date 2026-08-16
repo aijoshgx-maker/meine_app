@@ -117,13 +117,8 @@
     "kategorie": "Entgelt",
     "typ": "single",
     "frage": "Was ist der Unterschied zwischen einem Tarifentgelt und einem außertariflichen (AT) Gehalt?",
-    "optionen": [
-      "AT-Gehalt liegt oberhalb der höchsten Tarifgruppe und ist einzelvertraglich vereinbart",
-      "AT-Gehalt ist niedriger als das Tarifgehalt und kompensiert andere Vorteile",
-      "AT-Gehalt ist ausschließlich für Beamte gedacht",
-      "Zwischen Tarif und AT gibt es keinen Unterschied – beide folgen Tarifregeln"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Zwischen Tarif und AT gibt es keinen Unterschied – beide folgen Tarifregeln","AT-Gehalt liegt oberhalb der höchsten Tarifgruppe und ist einzelvertraglich vereinbart","AT-Gehalt ist niedriger als das Tarifgehalt und kompensiert andere Vorteile","AT-Gehalt ist ausschließlich für Beamte gedacht"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
@@ -191,13 +186,8 @@
     "kategorie": "Entgelt",
     "typ": "single",
     "frage": "Was versteht man unter 'vermögenswirksamen Leistungen' (VL)?",
-    "optionen": [
-      "Zahlungen des Arbeitgebers zum Vermögensaufbau des Arbeitnehmers (z.B. Bausparvertrag)",
-      "Bonuszahlungen für besondere Leistungen im Betrieb",
-      "Staatliche Förderung für Hauskäufe",
-      "Lohnerhöhungen aufgrund tariflicher Vereinbarungen"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Lohnerhöhungen aufgrund tariflicher Vereinbarungen","Zahlungen des Arbeitgebers zum Vermögensaufbau des Arbeitnehmers (z.B. Bausparvertrag)","Bonuszahlungen für besondere Leistungen im Betrieb","Staatliche Förderung für Hauskäufe"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,

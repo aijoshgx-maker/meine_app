@@ -154,15 +154,8 @@
     "kategorie": "Kaufvertrag",
     "typ": "single",
     "frage": "Was unterscheidet eine Garantie von der gesetzlichen Gewährleistung (Mängelhaftung)?",
-    "optionen": [
-      "Garantie ist eine freiwillige Herstellerzusage; Gewährleistung ist gesetzlich zwingend",
-      "Gewährleistung ist freiwillig; Garantie ist gesetzlich vorgeschrieben",
-      "Garantie und Gewährleistung sind identisch",
-      "Garantie gilt 10 Jahre; Gewährleistung nur 1 Jahr"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Garantie gilt 10 Jahre; Gewährleistung nur 1 Jahr","Garantie ist eine freiwillige Herstellerzusage; Gewährleistung ist gesetzlich zwingend","Gewährleistung ist freiwillig; Garantie ist gesetzlich vorgeschrieben","Garantie und Gewährleistung sind identisch"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -302,15 +295,8 @@
     "kategorie": "Kaufvertrag",
     "typ": "single",
     "frage": "Was ist der Unterschied zwischen Anfechtung und Widerruf eines Kaufvertrags?",
-    "optionen": [
-      "Anfechtung beseitigt den Vertrag wegen Willensmangel (Irrtum, Täuschung) rückwirkend; Widerruf ist ein besonderes Lösungsrecht bei Fernabsatz/Haustürgeschäften",
-      "Anfechtung und Widerruf sind identisch",
-      "Widerruf beseitigt den Vertrag rückwirkend; Anfechtung gilt nur für die Zukunft",
-      "Anfechtung kann nur bei schriftlichen Verträgen eingesetzt werden"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Anfechtung kann nur bei schriftlichen Verträgen eingesetzt werden","Anfechtung beseitigt den Vertrag wegen Willensmangel (Irrtum, Täuschung) rückwirkend; Widerruf ist ein besonderes Lösungsrecht bei Fernabsatz/Haustürgeschäften","Anfechtung und Widerruf sind identisch","Widerruf beseitigt den Vertrag rückwirkend; Anfechtung gilt nur für die Zukunft"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -412,15 +398,8 @@
     "kategorie": "Kaufvertrag",
     "typ": "single",
     "frage": "Welche besondere Schutznorm gilt bei der Anlieferung von Waren im B2B-Bereich (Handelsgewerbe) und verpflichtet den Käufer, die Ware unverzüglich zu prüfen und Mängel sofort zu rügen?",
-    "optionen": [
-      "§ 377 HGB (Untersuchungs- und Rügepflicht im Handelsrecht)",
-      "§ 437 BGB (Mängelrechte des Verbraucherkaufs)",
-      "§ 242 BGB (Treu und Glauben)",
-      "UWG (Gesetz gegen unlauteren Wettbewerb)"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["UWG (Gesetz gegen unlauteren Wettbewerb)","§ 377 HGB (Untersuchungs- und Rügepflicht im Handelsrecht)","§ 437 BGB (Mängelrechte des Verbraucherkaufs)","§ 242 BGB (Treu und Glauben)"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -471,16 +450,8 @@
     "kategorie": "Kaufvertragsrecht",
     "typ": "single",
     "frage": "Ein Lieferant übergibt 500 Dichtungen, von denen 50 Stück fehlerhaft sind. Der Käufer rügt den Mangel. Welches Recht hat der Käufer als primären Rechtsbehelf?",
-    "optionen": [
-      "Sofortiger Rücktritt vom Kaufvertrag",
-      "Sofortiger Anspruch auf Schadensersatz",
-      "Nacherfüllung (Nachbesserung oder Ersatzlieferung)",
-      "Minderung des Kaufpreises",
-      "Rücktritt und gleichzeitig Schadensersatz"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Rücktritt und gleichzeitig Schadensersatz","Sofortiger Rücktritt vom Kaufvertrag","Sofortiger Anspruch auf Schadensersatz","Nacherfüllung (Nachbesserung oder Ersatzlieferung)","Minderung des Kaufpreises"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -501,16 +472,8 @@
     "kategorie": "Kaufvertragsrecht",
     "typ": "single",
     "frage": "Die Firma AllPrint ist eine Gesellschaft mit beschränkter Haftung (GmbH). Zu welcher Unternehmensform gehört die AllPrint GmbH?",
-    "optionen": [
-      "Stille Gesellschaft",
-      "Einzelunternehmung",
-      "Personengesellschaft",
-      "Genossenschaft",
-      "Kapitalgesellschaft"
-    ],
-    "richtigeIndizes": [
-      4
-    ],
+    "optionen": ["Genossenschaft","Kapitalgesellschaft","Stille Gesellschaft","Einzelunternehmung","Personengesellschaft"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -605,16 +568,8 @@
     "kategorie": "Kaufvertragsrecht",
     "typ": "single",
     "frage": "Ein Privatmann finanziert ein Maschinen-Werkzeug über einen Verbraucherkreditvertrag mit einer Bank. Wie lange beträgt die Widerrufsfrist nach § 495 BGB?",
-    "optionen": [
-      "7 Tage ab Vertragsunterzeichnung",
-      "10 Tage ab Geldauszahlung",
-      "14 Tage ab Vertragsschluss",
-      "30 Tage ab Vertragsschluss",
-      "Kein Widerrufsrecht bei Kreditverträgen"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["30 Tage ab Vertragsschluss","Kein Widerrufsrecht bei Kreditverträgen","7 Tage ab Vertragsunterzeichnung","10 Tage ab Geldauszahlung","14 Tage ab Vertragsschluss"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -635,16 +590,8 @@
     "kategorie": "Kaufvertragsrecht",
     "typ": "single",
     "frage": "Die Metall AG (eingetragener Vollkaufmann) bestellt Hydraulikzylinder für die Schaltvorrichtung (S18). Bei der Wareneingangskontrolle 3 Wochen nach Lieferung entdeckt der Lagerleiter einen versteckten Mangel. Welche gesetzliche Pflicht muss die Metall AG jetzt unverzüglich erfüllen?",
-    "optionen": [
-      "Die Metall AG kann Mängelansprüche innerhalb von 2 Jahren geltend machen – keine Eile.",
-      "Die Metall AG muss den Mangel nach § 377 HGB unverzüglich nach Entdeckung schriftlich beim Lieferanten rügen. Ohne rechtzeitige Mängelrüge gilt die Ware als genehmigt.",
-      "Die Metall AG muss zunächst ein Gutachten einholen, bevor sie den Mangel melden kann.",
-      "Die Metall AG muss den Mangel dem Betriebsrat melden.",
-      "Die Metall AG braucht den Mangel nicht zu rügen, da er erst nach 3 Wochen entdeckt wurde."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Die Metall AG muss zunächst ein Gutachten einholen, bevor sie den Mangel melden kann.","Die Metall AG muss den Mangel dem Betriebsrat melden.","Die Metall AG braucht den Mangel nicht zu rügen, da er erst nach 3 Wochen entdeckt wurde.","Die Metall AG kann Mängelansprüche innerhalb von 2 Jahren geltend machen – keine Eile.","Die Metall AG muss den Mangel nach § 377 HGB unverzüglich nach Entdeckung schriftlich beim Lieferanten rügen. Ohne rechtzeitige Mängelrüge gilt die Ware als genehmigt."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -667,16 +614,8 @@
     "kategorie": "Kaufvertragsrecht",
     "typ": "single",
     "frage": "Der Lieferant der Hydraulikzylinder für die Schaltvorrichtung (S18) liefert 4 Wochen zu spät. Die Metall AG erleidet dadurch einen Produktionsausfall (Schaden: 8.000 €). Welchen rechtlichen Anspruch hat die Metall AG gegen den Lieferanten?",
-    "optionen": [
-      "Rücktritt vom Kaufvertrag nach § 323 BGB – sofortige Lieferungsverweigerung.",
-      "Schadensersatz neben der Leistung nach § 280 Abs. 1 i.V.m. § 286 BGB (Schuldnerverzug) – Ersatz des Verzögerungsschadens.",
-      "Minderung des Kaufpreises nach § 441 BGB – Preisreduzierung wegen Verzug.",
-      "Strafanzeige wegen Vertragsverletzung.",
-      "Kündigung des Rahmenvertrags nach § 314 BGB."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Schadensersatz neben der Leistung nach § 280 Abs. 1 i.V.m. § 286 BGB (Schuldnerverzug) – Ersatz des Verzögerungsschadens.","Minderung des Kaufpreises nach § 441 BGB – Preisreduzierung wegen Verzug.","Strafanzeige wegen Vertragsverletzung.","Kündigung des Rahmenvertrags nach § 314 BGB.","Rücktritt vom Kaufvertrag nach § 323 BGB – sofortige Lieferungsverweigerung."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

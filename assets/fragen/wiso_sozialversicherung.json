@@ -156,15 +156,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Welches Prinzip liegt der gesetzlichen Sozialversicherung in Deutschland zugrunde?",
-    "optionen": [
-      "Solidaritätsprinzip: Starke tragen mehr bei als Schwache; Leistung erfolgt nach Bedarf",
-      "Versicherungsprinzip: Nur wer Beiträge zahlt, erhält im gleichen Maß Leistungen",
-      "Kapitaldeckungsverfahren: Jeder spart für sich selbst an",
-      "Privatisierungsprinzip: Versicherung ist freiwillig"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Privatisierungsprinzip: Versicherung ist freiwillig","Solidaritätsprinzip: Starke tragen mehr bei als Schwache; Leistung erfolgt nach Bedarf","Versicherungsprinzip: Nur wer Beiträge zahlt, erhält im gleichen Maß Leistungen","Kapitaldeckungsverfahren: Jeder spart für sich selbst an"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -410,15 +403,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Ein Arbeitnehmer war in den letzten 30 Monaten 18 Monate sozialversicherungspflichtig beschäftigt und meldet sich nun arbeitslos. Hat er Anspruch auf ALG I und für wie lange? (Regelfall unter 50 J.)",
-    "optionen": [
-      "Ja, für 9 Monate",
-      "Nein, Anspruch nicht erfüllt (weniger als 12 Monate)",
-      "Ja, für 12 Monate",
-      "Ja, für 18 Monate"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Ja, für 18 Monate","Ja, für 9 Monate","Nein, Anspruch nicht erfüllt (weniger als 12 Monate)","Ja, für 12 Monate"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -439,16 +425,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Welcher Versicherungsträger ist in Deutschland für die Leistungen der Arbeitslosenversicherung zuständig?",
-    "optionen": [
-      "Die gesetzliche Krankenkasse (GKV)",
-      "Die Deutsche Rentenversicherung",
-      "Die Bundesagentur für Arbeit",
-      "Das zuständige Finanzamt",
-      "Die Berufsgenossenschaft"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Die Bundesagentur für Arbeit","Das zuständige Finanzamt","Die Berufsgenossenschaft","Die gesetzliche Krankenkasse (GKV)","Die Deutsche Rentenversicherung"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -469,16 +447,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Laura Schneider arbeitet als Facharbeiterin in einem Industriebetrieb und verdient 3 200 Euro brutto pro Monat. Wer trägt in der deutschen Sozialversicherung in der Regel die Beiträge?",
-    "optionen": [
-      "Arbeitnehmer und Arbeitgeber je zur Hälfte",
-      "Allein der Arbeitgeber",
-      "Allein der Arbeitnehmer",
-      "Der Staat aus Steuermitteln",
-      "Die Berufsgenossenschaft"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Allein der Arbeitgeber","Allein der Arbeitnehmer","Der Staat aus Steuermitteln","Die Berufsgenossenschaft","Arbeitnehmer und Arbeitgeber je zur Hälfte"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -529,16 +499,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Eine Auszubildende wird nach ihrer Ausbildung nicht übernommen und wird arbeitslos. Welche Aussage über ihre Krankenversicherung ist richtig?",
-    "optionen": [
-      "Mit Beginn der Arbeitslosigkeit erlischt ihre Krankenversicherung sofort.",
-      "Der Ausbildungsbetrieb muss die KV-Beiträge noch 2 Monate weiterzahlen.",
-      "Sie bleibt Mitglied ihrer Krankenkasse; die Bundesagentur für Arbeit zahlt die Beiträge.",
-      "Sie muss als Arbeitslose einer Betriebskrankenkasse beitreten.",
-      "Sie ist für die Dauer der Arbeitslosigkeit nur freiwillig versicherbar."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Sie ist für die Dauer der Arbeitslosigkeit nur freiwillig versicherbar.","Mit Beginn der Arbeitslosigkeit erlischt ihre Krankenversicherung sofort.","Der Ausbildungsbetrieb muss die KV-Beiträge noch 2 Monate weiterzahlen.","Sie bleibt Mitglied ihrer Krankenkasse; die Bundesagentur für Arbeit zahlt die Beiträge.","Sie muss als Arbeitslose einer Betriebskrankenkasse beitreten."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -559,16 +521,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Wie wird die gesetzliche Krankenversicherung (GKV) in Deutschland hauptsächlich finanziert?",
-    "optionen": [
-      "Ausschließlich durch staatliche Zuschüsse",
-      "Durch einkommensabhängige Beiträge von Arbeitgebern und Arbeitnehmern",
-      "Durch einkommensunabhängige Kopfbeiträge (Pauschalprämien)",
-      "Durch Beiträge der Rentner, nicht der Erwerbstätigen",
-      "Durch Mehrwertsteuereinnahmen des Bundes"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Durch einkommensunabhängige Kopfbeiträge (Pauschalprämien)","Durch Beiträge der Rentner, nicht der Erwerbstätigen","Durch Mehrwertsteuereinnahmen des Bundes","Ausschließlich durch staatliche Zuschüsse","Durch einkommensabhängige Beiträge von Arbeitgebern und Arbeitnehmern"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -641,16 +595,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Paul Fleissig hat einen bis 30.06.2018 befristeten Arbeitsvertrag bei der Metall AG. Nach Vertragsende findet er keine neue Stelle. Bei welcher Behörde muss er sich melden, und welche Sozialversicherungsleistung kann er in Anspruch nehmen?",
-    "optionen": [
-      "Bei der gesetzlichen Krankenversicherung (GKV) für Krankengeld.",
-      "Bei der Agentur für Arbeit für Arbeitslosengeld I (ALG I) nach SGB III.",
-      "Beim Jobcenter für Bürgergeld (früher: Hartz IV) sofort ab dem ersten Tag.",
-      "Beim Rentenversicherungsträger für vorzeitige Rente.",
-      "Beim Gewerbeaufsichtsamt für Überbrückungshilfe."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Beim Gewerbeaufsichtsamt für Überbrückungshilfe.","Bei der gesetzlichen Krankenversicherung (GKV) für Krankengeld.","Bei der Agentur für Arbeit für Arbeitslosengeld I (ALG I) nach SGB III.","Beim Jobcenter für Bürgergeld (früher: Hartz IV) sofort ab dem ersten Tag.","Beim Rentenversicherungsträger für vorzeitige Rente."],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

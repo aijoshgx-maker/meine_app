@@ -135,15 +135,8 @@
         "kategorie":  "Zerspanung Grundlagen",
         "typ":  "single",
         "frage":  "Welche Spanart entsteht bei der Bearbeitung von zähen, duktilen Werkstoffen wie Stahl mit hoher Schnittgeschwindigkeit?",
-        "optionen":  [
-                         "Reißspan",
-                         "Scherspan",
-                         "Fließspan",
-                         "Lamellenspan"
-                     ],
-        "richtigeIndizes":  [
-                                2
-                            ],
+        "optionen":  ["Lamellenspan","Reißspan","Scherspan","Fließspan"],
+        "richtigeIndizes":  [3],
         "reihenfolge":  [
 
                         ],
@@ -562,15 +555,8 @@
         "kategorie":  "Zerspanung Grundlagen",
         "typ":  "single",
         "frage":  "Welches Verfahren nach DIN 8580 wird zur Herstellung von Bohrungen mit hoher Maß- und Formgenauigkeit nach dem Bohren eingesetzt, um z. B. H7-Passungen herzustellen?",
-        "optionen":  [
-                         "Senken",
-                         "Reiben",
-                         "Gewindeschneiden",
-                         "Honen"
-                     ],
-        "richtigeIndizes":  [
-                                1
-                            ],
+        "optionen":  ["Reiben","Gewindeschneiden","Honen","Senken"],
+        "richtigeIndizes":  [0],
         "reihenfolge":  [
 
                         ],

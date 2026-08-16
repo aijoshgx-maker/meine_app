@@ -260,15 +260,8 @@
     "kategorie": "CNC-Grundlagen",
     "typ": "single",
     "frage": "Welcher M-Code schaltet die Spindel bei CNC-Dreh- und Fräsmaschinen in der Regel ein (rechtsdrehend)?",
-    "optionen": [
-      "M03",
-      "M00",
-      "M30",
-      "M06"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["M06","M03","M00","M30"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -409,15 +402,8 @@
     "kategorie": "CNC-Grundlagen",
     "typ": "single",
     "frage": "Was bewirkt der DNC-Betrieb (Direct Numerical Control) in der Fertigungsumgebung?",
-    "optionen": [
-      "Programme werden direkt vom Rechner (Server) zur CNC-Steuerung übertragen, ohne lokale Speicherung",
-      "Die CNC-Maschine steuert sich vollständig autonom ohne Programm",
-      "DNC ist ein älteres Wort für CAM-Software",
-      "DNC ermöglicht das gleichzeitige Fahren von mehr als 5 Achsen"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["DNC ist ein älteres Wort für CAM-Software","DNC ermöglicht das gleichzeitige Fahren von mehr als 5 Achsen","Programme werden direkt vom Rechner (Server) zur CNC-Steuerung übertragen, ohne lokale Speicherung","Die CNC-Maschine steuert sich vollständig autonom ohne Programm"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -438,16 +424,8 @@
     "kategorie": "CNC-Grundlagen",
     "typ": "single",
     "frage": "Auf einer CNC-Fräsmaschine sollen 3 Bohrungen gleichmäßig auf einem Teilkreis (Radius R = 65 mm) verteilt gefräst werden. Die erste Bohrung P1 liegt bei φ = 270°, P2 bei φ = 30°, P3 bei φ = 150°. Welches Koordinatensystem wird zur Programmierung dieser Bohrpositionen direkt verwendet?",
-    "optionen": [
-      "Kartesische Koordinaten (X, Y)",
-      "Polarkoordinaten (R, φ)",
-      "Zylinderkoordinaten (R, φ, Z)",
-      "Werkzeugkoordinaten (u, v, w)",
-      "Maschinenkoordinaten (MCS)"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Werkzeugkoordinaten (u, v, w)","Maschinenkoordinaten (MCS)","Kartesische Koordinaten (X, Y)","Polarkoordinaten (R, φ)","Zylinderkoordinaten (R, φ, Z)"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -494,16 +472,8 @@
     "kategorie": "CNC-Grundlagen",
     "typ": "single",
     "frage": "Die Aufnahmebohrung der Synchronriemenscheibe (AlMgSi1) soll mit der Passung Ø 55 H7/h5 gebohrt werden. Welche Durchmesserkoordinate X wird im CNC-Programm für die Aufnahmebohrung angegeben? (H7 bei Ø 55: ES = +0,030 mm, EI = 0)",
-    "optionen": [
-      "X = 54,987",
-      "X = 54,993",
-      "X = 55,000",
-      "X = 55,015",
-      "X = 55,030"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["X = 54,993","X = 55,000","X = 55,015","X = 55,030","X = 54,987"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -550,16 +520,8 @@
     "kategorie": "CNC-Grundlagen",
     "typ": "single",
     "frage": "Beim Einrichten der Bohrstation (S19) wird der Maschinennullpunkt (M) benötigt. Wer legt den Maschinennullpunkt fest?",
-    "optionen": [
-      "Der Bediener bei der Einrichtung der Maschine",
-      "Der Werkzeugmacher beim Werkzeugwechsel",
-      "Der Maschinenhersteller (fest im System eingestellt)",
-      "Der NC-Programmierer im CNC-Programm",
-      "Der Messtechniker bei der Erstabnahme"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Der NC-Programmierer im CNC-Programm","Der Messtechniker bei der Erstabnahme","Der Bediener bei der Einrichtung der Maschine","Der Werkzeugmacher beim Werkzeugwechsel","Der Maschinenhersteller (fest im System eingestellt)"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -615,16 +577,8 @@
     "kategorie": "CNC-Grundlagen",
     "typ": "single",
     "frage": "Für die Vorschubachse der Bohrstation (S19) wird eine Kugelgewindespindel eingesetzt statt einer Trapezgewindespindel. Welchen Hauptvorteil hat die Kugelgewindespindel?",
-    "optionen": [
-      "Sie ist kostengünstiger in der Herstellung.",
-      "Sie ist selbsthemmend und sicherer beim Lasthalten.",
-      "Sie hat durch Wälzreibung einen hohen Wirkungsgrad und kein Umkehrspiel.",
-      "Sie kann höhere Kräfte bei kleinerer Bauform übertragen.",
-      "Sie benötigt keine Schmierung."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Sie ist selbsthemmend und sicherer beim Lasthalten.","Sie hat durch Wälzreibung einen hohen Wirkungsgrad und kein Umkehrspiel.","Sie kann höhere Kräfte bei kleinerer Bauform übertragen.","Sie benötigt keine Schmierung.","Sie ist kostengünstiger in der Herstellung."],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

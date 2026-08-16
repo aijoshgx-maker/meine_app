@@ -260,15 +260,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "Welche Hydraulikflüssigkeit wird bevorzugt eingesetzt, wenn Brandgefahr besteht (z.B. Gießereien, Bergbau)?",
-    "optionen": [
-      "HFA (wasserlöslich, >80% Wasser)",
-      "HLP-Mineralöl",
-      "Getriebeöl",
-      "Bremsflüssigkeit DOT 4"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Getriebeöl","Bremsflüssigkeit DOT 4","HFA (wasserlöslich, >80% Wasser)","HLP-Mineralöl"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -460,16 +453,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "Beim Betrieb einer Hydraulikanlage treten Temperaturen von 40 bis 95 °C auf. Welches ISO-VG-Hydrauliköl ist dafür am besten geeignet?",
-    "optionen": [
-      "ISO VG 22",
-      "ISO VG 32",
-      "ISO VG 46",
-      "ISO VG 68",
-      "ISO VG 100"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["ISO VG 100","ISO VG 22","ISO VG 32","ISO VG 46","ISO VG 68"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -490,16 +475,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "Bei einem hydraulischen Zuführzylinder sind die Kolbengeschwindigkeiten gleichförmiger und mit weniger Stick-Slip-Effekt belastet als bei einer pneumatischen Lösung. Was ist dafür die Ursache?",
-    "optionen": [
-      "Die Temperaturunabhängigkeit der Hydraulikflüssigkeit",
-      "Die geringe Kompressibilität der Hydraulikflüssigkeit",
-      "Die Rückführleitungen zum Tank",
-      "Die niedrigeren Kolbengeschwindigkeiten",
-      "Die Bereitschaft des Öls zur Schaumbildung"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Die niedrigeren Kolbengeschwindigkeiten","Die Bereitschaft des Öls zur Schaumbildung","Die Temperaturunabhängigkeit der Hydraulikflüssigkeit","Die geringe Kompressibilität der Hydraulikflüssigkeit","Die Rückführleitungen zum Tank"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -520,16 +497,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "Durch welches Bauteil im hydraulischen Schaltplan wird verhindert, dass sich der Materialkorb bei Druckverlust der Anlage schlagartig absenkt?",
-    "optionen": [
-      "-QM2",
-      "-RM3",
-      "-RM1",
-      "-PG1",
-      "-QN1"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["-RM1","-PG1","-QN1","-QM2","-RM3"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -608,16 +577,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "Im hydraulischen Schaltplan der Anlage ist eine Pumpe eingezeichnet. Das Symbol zeigt ein Dreieck (Förderrichtung) und einen Pfeil, der diagonal durch den Kreis verläuft. Welche Pumpe wird dargestellt?",
-    "optionen": [
-      "Hydropumpe mit zwei Förderrichtungen, konstantem Fördervolumen",
-      "Hydraulikmotor mit einer Drehrichtung, verstellbarem Schluckvolumen",
-      "Hydropumpe mit einer Förderrichtung, konstantem Fördervolumen",
-      "Hydropumpe mit einer Förderrichtung, verstellbarem Fördervolumen",
-      "Hydraulikmotor mit zwei Drehrichtungen, verstellbarem Schluckvolumen"
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["Hydropumpe mit einer Förderrichtung, verstellbarem Fördervolumen","Hydraulikmotor mit zwei Drehrichtungen, verstellbarem Schluckvolumen","Hydropumpe mit zwei Förderrichtungen, konstantem Fördervolumen","Hydraulikmotor mit einer Drehrichtung, verstellbarem Schluckvolumen","Hydropumpe mit einer Förderrichtung, konstantem Fördervolumen"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -638,16 +599,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "Die Belüftungsöffnung des Hydrauliktanks hat sich durch mangelnde Wartung zugesetzt. Welche Auswirkung hat dies auf die Hydraulikanlage?",
-    "optionen": [
-      "Die Pumpe kann sofort kein Öl mehr fördern.",
-      "Der Druck in der Saugleitung steigt (Unterdruck an der Pumpe nimmt zu).",
-      "Der Druck in der Arbeitsleitung steigt stark an.",
-      "Die Öltemperatur sinkt, da kein Außenluftaustausch stattfindet.",
-      "Das Öl im Tank schäumt, da Luft aus der Belüftungsöffnung eingezogen wird."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Der Druck in der Arbeitsleitung steigt stark an.","Die Öltemperatur sinkt, da kein Außenluftaustausch stattfindet.","Das Öl im Tank schäumt, da Luft aus der Belüftungsöffnung eingezogen wird.","Die Pumpe kann sofort kein Öl mehr fördern.","Der Druck in der Saugleitung steigt (Unterdruck an der Pumpe nimmt zu)."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -724,16 +677,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "In der Bohrstation (S19) dürfen die Bohrspindeln erst anlaufen, wenn die Werkstückspannung vollständig erreicht ist. Welche hydraulischen Bauelemente übernehmen diese Verriegelungsfunktion?",
-    "optionen": [
-      "Druckbegrenzungsventile QN1/QN2",
-      "Druckschalter BP1/BP2",
-      "Wegeventile QM2/QM3",
-      "Rückschlagventile in der Speiseleitung",
-      "Drosselrückschlagventile an den Spannzylindern"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Drosselrückschlagventile an den Spannzylindern","Druckbegrenzungsventile QN1/QN2","Druckschalter BP1/BP2","Wegeventile QM2/QM3","Rückschlagventile in der Speiseleitung"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -780,16 +725,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "Das Druckbegrenzungsventil QN1 (DBV) in der Spannanlage der Bohrstation (S19) ist auf p = 100 bar eingestellt. Was passiert, wenn der Systemdruck diesen Wert überschreitet?",
-    "optionen": [
-      "QN1 sperrt die Leitung vollständig ab.",
-      "QN1 öffnet und leitet Öl zum Tank zurück, begrenzt so den Druck auf 100 bar.",
-      "QN1 schaltet die Pumpe GP1 ab.",
-      "QN1 öffnet und leitet Öl zur zweiten Pumpe GP2.",
-      "QN1 schließt das Wegeventil QM2."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["QN1 schaltet die Pumpe GP1 ab.","QN1 öffnet und leitet Öl zur zweiten Pumpe GP2.","QN1 schließt das Wegeventil QM2.","QN1 sperrt die Leitung vollständig ab.","QN1 öffnet und leitet Öl zum Tank zurück, begrenzt so den Druck auf 100 bar."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -836,16 +773,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "In der Hydraulikanlage (S18) wird für den Hubtisch ein 5/3-Wegeventil (QM1, elektrisch betätigt) eingesetzt, für den Richtzylinder ein 5/2-Wegeventil (QM2, manuell betätigt). Was ist der wesentliche Unterschied zwischen diesen Ventiltypen?",
-    "optionen": [
-      "Das 5/3-Wegeventil hat 5 Anschlüsse und 3 Schaltstellungen; die Mittelstellung sperrt oder entlastet den Zylinder (Sicherheitsfunktion bei Stromausfall). Das 5/2-Ventil hat nur 2 Schaltstellungen ohne definierte Mittelstellung.",
-      "Das 5/3-Wegeventil steuert nur doppeltwirkende Zylinder, das 5/2-Ventil nur einfachwirkende.",
-      "Der Unterschied liegt ausschließlich in der Betätigungsart (elektrisch vs. manuell).",
-      "Das 5/2-Wegeventil hat mehr Anschlüsse als das 5/3-Wegeventil.",
-      "Das 5/3-Wegeventil kann höhere Drücke schalten als das 5/2-Ventil."
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Das 5/3-Wegeventil kann höhere Drücke schalten als das 5/2-Ventil.","Das 5/3-Wegeventil hat 5 Anschlüsse und 3 Schaltstellungen; die Mittelstellung sperrt oder entlastet den Zylinder (Sicherheitsfunktion bei Stromausfall). Das 5/2-Ventil hat nur 2 Schaltstellungen ohne definierte Mittelstellung.","Das 5/3-Wegeventil steuert nur doppeltwirkende Zylinder, das 5/2-Ventil nur einfachwirkende.","Der Unterschied liegt ausschließlich in der Betätigungsart (elektrisch vs. manuell).","Das 5/2-Wegeventil hat mehr Anschlüsse als das 5/3-Wegeventil."],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -868,16 +797,8 @@
     "kategorie": "Hydraulik",
     "typ": "single",
     "frage": "Die Hydraulikanlage (S18) enthält Rückschlagventile RM1 und RM2. Was ist die grundlegende Funktion eines Rückschlagventils?",
-    "optionen": [
-      "Es begrenzt den maximalen Systemdruck auf einen einstellbaren Wert.",
-      "Es lässt Öl nur in eine Richtung fließen und sperrt in der Gegenrichtung selbsttätig.",
-      "Es regelt den Volumenstrom stufenlos.",
-      "Es wandelt Druckenergie in Strömungsenergie um.",
-      "Es verteilt den Volumenstrom auf mehrere parallele Verbraucher."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Es wandelt Druckenergie in Strömungsenergie um.","Es verteilt den Volumenstrom auf mehrere parallele Verbraucher.","Es begrenzt den maximalen Systemdruck auf einen einstellbaren Wert.","Es lässt Öl nur in eine Richtung fließen und sperrt in der Gegenrichtung selbsttätig.","Es regelt den Volumenstrom stufenlos."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

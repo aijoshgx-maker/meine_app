@@ -264,13 +264,8 @@
     "kategorie": "Mess- & Prüftechnik",
     "typ": "single",
     "frage": "Ein Nonius-Messschieber hat eine Hauptskala mit 1-mm-Teilung und einen 50-teiligen Nonius. Die Hauptskala zeigt 23 mm, der 30. Noniusstrich fluchtet mit der Hauptskala. Welcher Messwert ergibt sich?",
-    "optionen": [
-      "23,30 mm",
-      "23,60 mm",
-      "23,03 mm",
-      "23,06 mm"
-    ],
-    "richtigeIndizes": [1],
+    "optionen": ["23,60 mm","23,03 mm","23,06 mm","23,30 mm"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

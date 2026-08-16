@@ -302,15 +302,8 @@
     "kategorie": "Steuerung & Regelung",
     "typ": "single",
     "frage": "Was ist das Hauptmerkmal einer Zwei-Hand-Sicherheitssteuerung?",
-    "optionen": [
-      "Sie benötigt nur eine Hand zur Bedienung.",
-      "Beide Hände müssen gleichzeitig betätigt werden, damit die Maschine startet.",
-      "Sie ersetzt den NOT-AUS-Schalter.",
-      "Sie ist nur bei hydraulischen Pressen zulässig."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Beide Hände müssen gleichzeitig betätigt werden, damit die Maschine startet.","Sie ersetzt den NOT-AUS-Schalter.","Sie ist nur bei hydraulischen Pressen zulässig.","Sie benötigt nur eine Hand zur Bedienung."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -577,15 +570,8 @@
     "kategorie": "Steuerung & Regelung",
     "typ": "single",
     "frage": "Welche Programmiersprache für SPS ist in der IEC 61131-3 genormt und verwendet grafische Netzwerke ähnlich einem Stromlaufplan?",
-    "optionen": [
-      "AWL (Anweisungsliste)",
-      "ST (Strukturierter Text)",
-      "KOP (Kontaktplan / Ladder Diagram)",
-      "AS (Ablaufsprache)"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["ST (Strukturierter Text)","KOP (Kontaktplan / Ladder Diagram)","AS (Ablaufsprache)","AWL (Anweisungsliste)"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -650,16 +636,8 @@
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
     "frage": "Welches Sensorelement wird in der Steuerung der Verzinkungsanlage verwendet, um die Temperatur des Zinkbades zu messen (Bezeichnung BT1)?",
-    "optionen": [
-      "Reedkontakt",
-      "Induktiver Näherungsschalter",
-      "Kapazitiver Näherungsschalter",
-      "Temperatursensor (Thermoelement / PT100)",
-      "Lichtschranke"
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["Temperatursensor (Thermoelement / PT100)","Lichtschranke","Reedkontakt","Induktiver Näherungsschalter","Kapazitiver Näherungsschalter"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -682,16 +660,8 @@
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
     "frage": "In einem GRAFCET-Netz (SFC) soll ein Heizstab EH1 nach Erreichen der Solltemperatur abgeschaltet werden. Welche GRAFCET-Element-Kombination beschreibt diesen Ablauf korrekt?",
-    "optionen": [
-      "Transition → Aktion → Schritt",
-      "Schritt (Aktion: EH1 ein) → Transition (BT1 ≥ ϑ_soll) → Schritt (Aktion: EH1 aus)",
-      "Transition (BT1 ≥ ϑ_soll) → Schritt (Aktion: EH1 ein) → Schritt",
-      "Schritt → Schritt → Transition",
-      "Aktion (EH1 ein) → Schritt → Aktion (EH1 aus)"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Transition (BT1 ≥ ϑ_soll) → Schritt (Aktion: EH1 ein) → Schritt","Schritt → Schritt → Transition","Aktion (EH1 ein) → Schritt → Aktion (EH1 aus)","Transition → Aktion → Schritt","Schritt (Aktion: EH1 ein) → Transition (BT1 ≥ ϑ_soll) → Schritt (Aktion: EH1 aus)"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -783,16 +753,8 @@
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
     "frage": "Im GRAFCET der Bohrstation (S19) soll erst dann in Schritt 3 (Bohren) übergegangen werden, wenn BEIDE Druckschalter BP1 UND BP2 geschlossen haben. Welcher logische Operator verknüpft die beiden Signale in der Transitionsbedingung?",
-    "optionen": [
-      "ODER (OR)",
-      "UND (AND)",
-      "NICHT (NOT)",
-      "EXOR (XOR)",
-      "NAND"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["NAND","ODER (OR)","UND (AND)","NICHT (NOT)","EXOR (XOR)"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -815,16 +777,8 @@
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
     "frage": "Der Reed-Kontakt BG1 an der Bohrstation (S19) erkennt die Endlage des Längenanschlags (MM1). Worauf reagiert ein Reed-Kontakt?",
-    "optionen": [
-      "Auf elektrischen Strom im Leiter (induktiv)",
-      "Auf Licht (optisch)",
-      "Auf einen Permanentmagneten in der Nähe (magnetisch)",
-      "Auf Temperaturänderungen (thermisch)",
-      "Auf Metallannäherung durch Wirbelstrom (induktiv)"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Auf Temperaturänderungen (thermisch)","Auf Metallannäherung durch Wirbelstrom (induktiv)","Auf elektrischen Strom im Leiter (induktiv)","Auf Licht (optisch)","Auf einen Permanentmagneten in der Nähe (magnetisch)"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -847,16 +801,8 @@
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
     "frage": "Die GRAFCET-Transitionsbedingung 'BP1 · BP2' (Punkt = UND) soll in die Funktionsbausteinsprache (FBS/FBD, IEC 61131-3) der SPS übertragen werden. Welcher Funktionsbaustein wird verwendet?",
-    "optionen": [
-      "OR-Baustein (Disjunktion)",
-      "AND-Baustein (Konjunktion)",
-      "NOT-Baustein (Negation)",
-      "XOR-Baustein (Antivalenz)",
-      "RS-Flipflop (Speicher)"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["NOT-Baustein (Negation)","XOR-Baustein (Antivalenz)","RS-Flipflop (Speicher)","OR-Baustein (Disjunktion)","AND-Baustein (Konjunktion)"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -952,16 +898,8 @@
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
     "frage": "Die GRAFCET-Steuerung der Palettenzuführung (S18) hat 6 Schritte (S0–S5). Der erste Schritt S0 ist immer aktiv, wenn die Anlage in Ruhe ist. Wie nennt man diesen Ausgangszustand, und wie wird er im GRAFCET-Diagramm gekennzeichnet?",
-    "optionen": [
-      "Notaus-Schritt; gekennzeichnet durch einen roten Rahmen.",
-      "Initialschritt (Grundstellung); gekennzeichnet durch eine doppelte Umrahmung des Schrittsymbols.",
-      "Fehlerzustand; gekennzeichnet durch einen blinkenden Rahmen.",
-      "Synchronisationsschritt; gekennzeichnet durch eine horizontale Linie über dem Schrittsymbol.",
-      "Ablaufschritt; keine besondere Kennzeichnung."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Synchronisationsschritt; gekennzeichnet durch eine horizontale Linie über dem Schrittsymbol.","Ablaufschritt; keine besondere Kennzeichnung.","Notaus-Schritt; gekennzeichnet durch einen roten Rahmen.","Initialschritt (Grundstellung); gekennzeichnet durch eine doppelte Umrahmung des Schrittsymbols.","Fehlerzustand; gekennzeichnet durch einen blinkenden Rahmen."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

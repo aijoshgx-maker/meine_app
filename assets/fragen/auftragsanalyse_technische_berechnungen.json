@@ -194,15 +194,8 @@
     "kategorie": "Technische Berechnungen",
     "typ": "single",
     "frage": "Welche physikalische Größe beschreibt den Widerstand eines Körpers gegen Verdrehung und ist proportional zur dritten Potenz des Radius?",
-    "optionen": [
-      "Polares Widerstandsmoment Wp",
-      "Flächenträgheitsmoment I",
-      "Massenträgheitsmoment J",
-      "Widerstandsmoment W gegen Biegung"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Massenträgheitsmoment J","Widerstandsmoment W gegen Biegung","Polares Widerstandsmoment Wp","Flächenträgheitsmoment I"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

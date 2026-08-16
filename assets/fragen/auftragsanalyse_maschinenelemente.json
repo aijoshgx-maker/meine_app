@@ -180,15 +180,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Welcher Lagertyp eignet sich am besten zur Aufnahme hoher axialer Kräfte bei geringen Drehzahlen?",
-    "optionen": [
-      "Rillenkugellager",
-      "Zylinderrollenlager",
-      "Axial-Pendelrollenlager",
-      "Nadellager"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Nadellager","Rillenkugellager","Zylinderrollenlager","Axial-Pendelrollenlager"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -498,16 +491,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Nach der Instandsetzung der Axialkolbenpumpe wird die elastische Klauenkupplung wieder eingebaut. Welche Eigenschaft ist für eine elastische Klauenkupplung korrekt?",
-    "optionen": [
-      "Sie kann einen Winkelversatz ausgleichen.",
-      "Sie überträgt das Drehmoment kraftschlüssig.",
-      "Sie überträgt das Drehmoment stoffschlüssig.",
-      "Sie kann Stöße dämpfen.",
-      "Sie ist bei hohen Drehzahlen schaltbar."
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["Sie kann Stöße dämpfen.","Sie ist bei hohen Drehzahlen schaltbar.","Sie kann einen Winkelversatz ausgleichen.","Sie überträgt das Drehmoment kraftschlüssig.","Sie überträgt das Drehmoment stoffschlüssig."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -530,16 +515,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Welche Aussage über den Wirkungsgrad von Trapezgewinde- und Kugelgewindetrieben ist korrekt?",
-    "optionen": [
-      "Der Wirkungsgrad des Kugelgewindetriebs ist vom Steigungswinkel unabhängig.",
-      "Der Wirkungsgrad des Trapezgewindetriebs ist vom Steigungswinkel unabhängig.",
-      "Je größer der Reibwert µ, desto kleiner ist der Wirkungsgrad der Antriebe.",
-      "Mit abnehmendem Steigungswinkel nimmt der Wirkungsgrad beider Antriebe zu.",
-      "Der Wirkungsgrad des Trapezgewindetriebs steigt mit dem Steigungswinkel exakt linear an."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Je größer der Reibwert µ, desto kleiner ist der Wirkungsgrad der Antriebe.","Mit abnehmendem Steigungswinkel nimmt der Wirkungsgrad beider Antriebe zu.","Der Wirkungsgrad des Trapezgewindetriebs steigt mit dem Steigungswinkel exakt linear an.","Der Wirkungsgrad des Kugelgewindetriebs ist vom Steigungswinkel unabhängig.","Der Wirkungsgrad des Trapezgewindetriebs ist vom Steigungswinkel unabhängig."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -590,16 +567,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Das Nadellager der Axialkolbenpumpe ist ein teilbares Lager. Welcher Vorteil ergibt sich daraus?",
-    "optionen": [
-      "Verschlissene Bauteile können ausgewechselt werden.",
-      "Leichte Schmierung des Lagers.",
-      "Es kann für angestellte Lagerungen verwendet werden.",
-      "Es gleicht axiale Längenausdehnungen im Lager selbst aus.",
-      "Es ist wirtschaftlicher als nicht teilbare Lager."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Es ist wirtschaftlicher als nicht teilbare Lager.","Verschlissene Bauteile können ausgewechselt werden.","Leichte Schmierung des Lagers.","Es kann für angestellte Lagerungen verwendet werden.","Es gleicht axiale Längenausdehnungen im Lager selbst aus."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -622,16 +591,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Am Rotor der Axialkolbenpumpe wird antriebsseitig eine Welle-Naben-Verbindung eingesetzt, die Drehmomente durch form- und kraftschlüssige Verzahnung überträgt. Wie wird diese Verbindung bezeichnet?",
-    "optionen": [
-      "Passfederverbindung",
-      "Kegelverbindung mit Scheibenfeder",
-      "Keilwellenverbindung",
-      "Kegelverbindung mit Passfeder",
-      "Keilverbindung"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Kegelverbindung mit Passfeder","Keilverbindung","Passfederverbindung","Kegelverbindung mit Scheibenfeder","Keilwellenverbindung"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -654,16 +615,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Die Bogenzahnkupplung des Einstellantriebs überträgt das Drehmoment vom Motor auf die Gelenkwelle. Welche Eigenschaft zeichnet die Bogenzahnkupplung aus?",
-    "optionen": [
-      "Sie ist eine reibschlüssige Sicherheitskupplung.",
-      "Sie überträgt Drehmoment formschlüssig und toleriert Winkel- und Axialversatz der Wellen.",
-      "Sie ist nur für radiale Kräfte geeignet.",
-      "Sie trennt automatisch bei Überlastung.",
-      "Sie ist ausschließlich für gleichachsige Verbindungen ohne Versatz geeignet."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Sie ist nur für radiale Kräfte geeignet.","Sie trennt automatisch bei Überlastung.","Sie ist ausschließlich für gleichachsige Verbindungen ohne Versatz geeignet.","Sie ist eine reibschlüssige Sicherheitskupplung.","Sie überträgt Drehmoment formschlüssig und toleriert Winkel- und Axialversatz der Wellen."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -686,16 +639,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Der Radialwellendichtring AS 25×35×7 (Pos. 16) ist im Einstellantrieb eingebaut. Welche Aufgabe hat dieser RWDR?",
-    "optionen": [
-      "Er verhindert ausschließlich das Eindringen von Schmutz von außen.",
-      "Er verhindert das Austreten von Schmierstoff und das Eindringen von Schmutz.",
-      "Er überträgt axiale Kräfte zwischen Welle und Gehäuse.",
-      "Er verhindert das axiale Verschieben der Welle im Betrieb.",
-      "Er sichert die Welle gegen unbeabsichtigtes Verdrehen."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Er verhindert das Austreten von Schmierstoff und das Eindringen von Schmutz.","Er überträgt axiale Kräfte zwischen Welle und Gehäuse.","Er verhindert das axiale Verschieben der Welle im Betrieb.","Er sichert die Welle gegen unbeabsichtigtes Verdrehen.","Er verhindert ausschließlich das Eindringen von Schmutz von außen."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -750,16 +695,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Das Kegelrad (Pos. 7) ist über eine Passfeder A 6×6×22 (Pos. 13) auf der Antriebswelle (Pos. 3) befestigt. Welche Aussage zur Passfederverbindung ist richtig?",
-    "optionen": [
-      "Die Passfeder überträgt das Drehmoment kraftschlüssig durch Flächenpressung auf ihrer Oberseite.",
-      "Die Passfeder überträgt das Drehmoment formschlüssig über ihre Seitenflächen (Flanken).",
-      "Die Passfeder verhindert das axiale Verschieben der Nabe auf der Welle.",
-      "Die Passfeder ist selbstsichernd und benötigt keine zusätzliche axiale Sicherung.",
-      "Die Passfeder überträgt das Drehmoment reibschlüssig über die Bodenfläche der Nut."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Die Passfeder überträgt das Drehmoment reibschlüssig über die Bodenfläche der Nut.","Die Passfeder überträgt das Drehmoment kraftschlüssig durch Flächenpressung auf ihrer Oberseite.","Die Passfeder überträgt das Drehmoment formschlüssig über ihre Seitenflächen (Flanken).","Die Passfeder verhindert das axiale Verschieben der Nabe auf der Welle.","Die Passfeder ist selbstsichernd und benötigt keine zusätzliche axiale Sicherung."],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -782,16 +719,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Die Sicherheitskupplung ECA 16 (Pos. 10.0) im Einstellantrieb soll durch eine andere Kupplung mit gleichem Überlastschutz ersetzt werden. Welche Kupplung ist als Alternative geeignet?",
-    "optionen": [
-      "Klauenkupplung",
-      "Zahnkupplung",
-      "Rutschkupplung",
-      "Bogenzahnkupplung",
-      "Schalenkupplung"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Bogenzahnkupplung","Schalenkupplung","Klauenkupplung","Zahnkupplung","Rutschkupplung"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -814,16 +743,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Im Werkzeugspindelkasten (S19) sind die Kegelrollenlager in O-Anordnung eingebaut. Welche Funktion übernimmt die Passscheibe (Einstellscheibe, Pos. 34) zwischen Lageraußenring und Gehäusedeckel?",
-    "optionen": [
-      "Sie dient als Dichtung gegen Schmierstoffaustritt.",
-      "Sie fixiert die axiale Lage des Lagers und ermöglicht die Einstellung des Lagerspiels.",
-      "Sie überträgt das Drehmoment zwischen Spindel und Gehäuse.",
-      "Sie verhindert das radiale Verrutschen des Außenrings.",
-      "Sie erhöht die Tragfähigkeit des Lagers durch Lastverteilung."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Sie überträgt das Drehmoment zwischen Spindel und Gehäuse.","Sie verhindert das radiale Verrutschen des Außenrings.","Sie erhöht die Tragfähigkeit des Lagers durch Lastverteilung.","Sie dient als Dichtung gegen Schmierstoffaustritt.","Sie fixiert die axiale Lage des Lagers und ermöglicht die Einstellung des Lagerspiels."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -846,16 +767,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Das Schieberadgetriebe im Werkzeugspindelkasten (S19) ermöglicht zwei Drehzahlstufen der Spindel. Welche Verbindungsart zwischen Schieberad und Spindel wird eingesetzt, damit das Rad axial verschoben werden kann und gleichzeitig Drehmoment überträgt?",
-    "optionen": [
-      "Presspassung (kraftschlüssig, nicht verschiebbar)",
-      "Keilwellenverbindung / Nutwelle (formschlüssig, axial verschiebbar)",
-      "Klebeverbindung (stoffschlüssig)",
-      "Passfederverbindung (formschlüssig, nicht verschiebbar)",
-      "Stiftverbindung (formschlüssig, axial gesperrt)"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Keilwellenverbindung / Nutwelle (formschlüssig, axial verschiebbar)","Klebeverbindung (stoffschlüssig)","Passfederverbindung (formschlüssig, nicht verschiebbar)","Stiftverbindung (formschlüssig, axial gesperrt)","Presspassung (kraftschlüssig, nicht verschiebbar)"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -902,16 +815,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Welche Aussage beschreibt den Vorteil eines Zahnriemenantriebs gegenüber einem Keilriemenantrieb beim Antrieb der Bohrstation (S19)?",
-    "optionen": [
-      "Zahnriemen können größere Abstände zwischen Wellen überbrücken.",
-      "Zahnriemen ermöglichen höhere Antriebsleistungen als Keilriemen.",
-      "Zahnriemen übertragen das Drehmoment schlupffrei und synchron.",
-      "Zahnriemen benötigen keine Vorspannung.",
-      "Zahnriemen sind kostengünstiger als Keilriemen."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Zahnriemen benötigen keine Vorspannung.","Zahnriemen sind kostengünstiger als Keilriemen.","Zahnriemen können größere Abstände zwischen Wellen überbrücken.","Zahnriemen ermöglichen höhere Antriebsleistungen als Keilriemen.","Zahnriemen übertragen das Drehmoment schlupffrei und synchron."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -934,16 +839,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Das Zylinderrollenlager NU2206 der Zwischenwelle (Pos. 6) im Werkzeugspindelkasten (S19) ist als Loslager ausgeführt. Welche Eigenschaft macht Zylinderrollenlager (Bauform NU) besonders geeignet für die Loslager-Funktion?",
-    "optionen": [
-      "Sie können keine axialen Kräfte aufnehmen und erlauben daher axiale Verschiebung des Innenrings.",
-      "Sie haben den niedrigsten Reibungskoeffizienten aller Wälzlager.",
-      "Sie sind am kostengünstigsten herzustellen.",
-      "Sie können sowohl radiale als auch starke axiale Kräfte aufnehmen.",
-      "Sie eignen sich nur für sehr niedrige Drehzahlen."
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Sie sind am kostengünstigsten herzustellen.","Sie können sowohl radiale als auch starke axiale Kräfte aufnehmen.","Sie eignen sich nur für sehr niedrige Drehzahlen.","Sie können keine axialen Kräfte aufnehmen und erlauben daher axiale Verschiebung des Innenrings.","Sie haben den niedrigsten Reibungskoeffizienten aller Wälzlager."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -966,16 +863,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Die Spindel des Werkzeugspindelkastens (S19) verwendet Kegelrollenlager 30210 (d=50mm) in O-Anordnung. Welche Lastrichtungen nimmt diese Anordnung auf?",
-    "optionen": [
-      "Nur radiale Kräfte in beide Richtungen",
-      "Nur axiale Kräfte in eine Richtung",
-      "Radiale Kräfte und axiale Kräfte in beide Richtungen",
-      "Nur axiale Kräfte in beide Richtungen",
-      "Radiale Kräfte und axiale Kräfte nur in eine Richtung"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Nur axiale Kräfte in eine Richtung","Radiale Kräfte und axiale Kräfte in beide Richtungen","Nur axiale Kräfte in beide Richtungen","Radiale Kräfte und axiale Kräfte nur in eine Richtung","Nur radiale Kräfte in beide Richtungen"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -1059,16 +948,8 @@
     "kategorie": "Maschinenelemente",
     "typ": "single",
     "frage": "Die Hauptwelle der Schaltvorrichtung (S18) ist mit Zylinderrollenlagern NJ1021/NU1021 und einem Rillenkugellager 6021 (Pos. 30) gelagert. Welche Lageranordnung liegt vor, und welches Lager übernimmt die Festlager-Funktion?",
-    "optionen": [
-      "Schwimmende Lagerung; kein Lager ist axial fest.",
-      "Stützlagerung; beide Lager sind axial fest.",
-      "Fest-Los-Lagerung; das Rillenkugellager 6021 ist das Festlager, die Zylinderrollenlager sind Loslager.",
-      "Fest-Los-Lagerung; das Zylinderrollenlager NJ1021 ist das Festlager.",
-      "Pendellagerung; die Lager gleichen Winkelversatz aus."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Fest-Los-Lagerung; das Zylinderrollenlager NJ1021 ist das Festlager.","Pendellagerung; die Lager gleichen Winkelversatz aus.","Schwimmende Lagerung; kein Lager ist axial fest.","Stützlagerung; beide Lager sind axial fest.","Fest-Los-Lagerung; das Rillenkugellager 6021 ist das Festlager, die Zylinderrollenlager sind Loslager."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

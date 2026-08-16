@@ -217,15 +217,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Welches Prüfverfahren misst die Härte eines Werkstoffs anhand der Eindringtiefe einer Kugel oder eines Kegels?",
-    "optionen": [
-      "Rockwell-Härteprüfung (HRC/HRB)",
-      "Zugversuch nach DIN EN ISO 6892",
-      "Kerbschlagbiegeversuch (Charpy)",
-      "Schwingfestigkeitsprüfung"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Kerbschlagbiegeversuch (Charpy)","Schwingfestigkeitsprüfung","Rockwell-Härteprüfung (HRC/HRB)","Zugversuch nach DIN EN ISO 6892"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -381,15 +374,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Welches Korrosionsschutzverfahren schützt Stahl elektrochemisch durch ein unedleres Metall als Opferanode?",
-    "optionen": [
-      "Kathodischer Korrosionsschutz durch Zink",
-      "Lackieren mit Epoxidharzlack",
-      "Nitrieren",
-      "Eloxieren"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Lackieren mit Epoxidharzlack","Nitrieren","Eloxieren","Kathodischer Korrosionsschutz durch Zink"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -436,16 +422,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Der Rotor der Axialkolbenpumpe ist aus dem Stahl 17Cr3 gefertigt. Um welchen Werkstoff handelt es sich?",
-    "optionen": [
-      "Unlegierter Baustahl",
-      "Vergütungsstahl",
-      "Automatenstahl",
-      "Einsatzstahl",
-      "Federstahl"
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["Federstahl","Unlegierter Baustahl","Vergütungsstahl","Automatenstahl","Einsatzstahl"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -468,16 +446,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "In einem Zinkbad werden Kleinteile feuerverzinkt. Welche Auswahlantwort gibt Dichte ρ (in g/cm³) und Schmelztemperatur ϑ (in °C) von reinem Zink korrekt an?",
-    "optionen": [
-      "ρ = 7,2 g/cm³, ϑ = 231 °C",
-      "ρ = 7,1 g/cm³, ϑ = 231 °C",
-      "ρ = 8,4 g/cm³, ϑ = 659 °C",
-      "ρ = 7,1 g/cm³, ϑ = 419 °C",
-      "ρ = 7,2 g/cm³, ϑ = 101 °C"
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["ρ = 7,1 g/cm³, ϑ = 419 °C","ρ = 7,2 g/cm³, ϑ = 101 °C","ρ = 7,2 g/cm³, ϑ = 231 °C","ρ = 7,1 g/cm³, ϑ = 231 °C","ρ = 8,4 g/cm³, ϑ = 659 °C"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -500,16 +470,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Die Flanschbuchse (Pos. 5) des Einstellantriebs besteht aus CuSn8P. Welche Aussage beschreibt diesen Werkstoff korrekt?",
-    "optionen": [
-      "Kupfer-Zink-Legierung mit 8 % Zink und Phosphorzusatz (Messing)",
-      "Kupfer-Zinn-Legierung mit 8 % Zinn und Phosphorzusatz (Phosphorbronze)",
-      "Kupfer-Zinn-Legierung mit 8 % Kupfer und Bleizusatz",
-      "Kupfer-Aluminium-Legierung mit 8 % Aluminium und Phosphorzusatz",
-      "Kupfer-Zink-Legierung mit 8 % Zink und Zinnzusatz"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Kupfer-Zinn-Legierung mit 8 % Kupfer und Bleizusatz","Kupfer-Aluminium-Legierung mit 8 % Aluminium und Phosphorzusatz","Kupfer-Zink-Legierung mit 8 % Zink und Zinnzusatz","Kupfer-Zink-Legierung mit 8 % Zink und Phosphorzusatz (Messing)","Kupfer-Zinn-Legierung mit 8 % Zinn und Phosphorzusatz (Phosphorbronze)"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -532,16 +494,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Welche der folgenden Werkstoffkombinationen enthält ausschließlich Nicht-Eisen-Metalle (NE-Metalle)?",
-    "optionen": [
-      "20MnCr5 und CuSn8P",
-      "DC01 und AlMgSi1",
-      "GJL-200 und AlMgSi1",
-      "AlMgSi1 und CuSn8P",
-      "S235JR und DC01"
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["DC01 und AlMgSi1","GJL-200 und AlMgSi1","AlMgSi1 und CuSn8P","S235JR und DC01","20MnCr5 und CuSn8P"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -564,16 +518,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Konsole und Schwenklager des Einstellantriebs sind Schweißkonstruktionen aus S235JR. Welche Werkstoffeigenschaft macht S235JR besonders geeignet für Schweißkonstruktionen?",
-    "optionen": [
-      "Sehr hohe Festigkeit durch viele Legierungselemente",
-      "Gute Schweißbarkeit durch niedrigen Kohlenstoffgehalt",
-      "Hohe Härtbarkeit durch Martensitbildung",
-      "Beste Korrosionsbeständigkeit unter allen Baustählen",
-      "Sehr geringes spezifisches Gewicht"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Sehr geringes spezifisches Gewicht","Sehr hohe Festigkeit durch viele Legierungselemente","Gute Schweißbarkeit durch niedrigen Kohlenstoffgehalt","Hohe Härtbarkeit durch Martensitbildung","Beste Korrosionsbeständigkeit unter allen Baustählen"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -596,16 +542,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Die Zahnräder im Werkzeugspindelkasten (S19) bestehen aus 16MnCr5. Welche Wärmebehandlung ist für diese Räder vorgesehen, um eine harte verschleißfeste Oberfläche bei zähem Kern zu erzielen?",
-    "optionen": [
-      "Vergüten (Härten + Anlassen)",
-      "Einsatzhärten (Aufkohlen + Härten)",
-      "Normalglühen",
-      "Nitrieren",
-      "Weichglühen"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Nitrieren","Weichglühen","Vergüten (Härten + Anlassen)","Einsatzhärten (Aufkohlen + Härten)","Normalglühen"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -628,16 +566,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Die Schaltgabel des Schieberadgetriebes (S19) hat Gleiteinsätze aus CuSn12. Welche Eigenschaft macht diesen Werkstoff für Gleiteinsätze besonders geeignet?",
-    "optionen": [
-      "Sehr hohe Zugfestigkeit und Oberflächenhärte",
-      "Gute Gleiteigenschaften und Verschleißbeständigkeit durch den Zinngehalt",
-      "Hohe magnetische Permeabilität",
-      "Sehr geringes Gewicht durch niedrige Dichte",
-      "Hohe elektrische Leitfähigkeit"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Hohe magnetische Permeabilität","Sehr geringes Gewicht durch niedrige Dichte","Hohe elektrische Leitfähigkeit","Sehr hohe Zugfestigkeit und Oberflächenhärte","Gute Gleiteigenschaften und Verschleißbeständigkeit durch den Zinngehalt"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -660,16 +590,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Der Spindelkopf der Bohrstation (S19) enthält Führungsleisten aus PE-HD. Welcher Werkstoffgruppe gehört PE-HD an?",
-    "optionen": [
-      "Duroplast",
-      "Elastomer",
-      "Thermoplast",
-      "Keramik",
-      "Verbundwerkstoff"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Elastomer","Thermoplast","Keramik","Verbundwerkstoff","Duroplast"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -724,16 +646,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Der Schaltkolben (Pos. 16) der Schaltvorrichtung (S18) ist aus CuSn8 gefertigt. Warum wird für einen Hydraulikkolben eine Kupfer-Zinn-Legierung (Zinnbronze) statt Stahl gewählt?",
-    "optionen": [
-      "Weil CuSn8 eine höhere Zugfestigkeit als Stahl hat.",
-      "Weil CuSn8 gute Gleiteigenschaften, Notlaufeigenschaften und Korrosionsbeständigkeit gegenüber Hydrauliköl besitzt und die Zylinderbohrung schont.",
-      "Weil CuSn8 leichter schweißbar als Stahl ist.",
-      "Weil CuSn8 magnetisch ist und so von Sensoren erkannt werden kann.",
-      "Weil CuSn8 billiger als Stahl herzustellen ist."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Weil CuSn8 billiger als Stahl herzustellen ist.","Weil CuSn8 eine höhere Zugfestigkeit als Stahl hat.","Weil CuSn8 gute Gleiteigenschaften, Notlaufeigenschaften und Korrosionsbeständigkeit gegenüber Hydrauliköl besitzt und die Zylinderbohrung schont.","Weil CuSn8 leichter schweißbar als Stahl ist.","Weil CuSn8 magnetisch ist und so von Sensoren erkannt werden kann."],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -756,16 +670,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "Die Buchse (Pos. 13) der Schaltvorrichtung (S18) ist aus CuZn31Si1 (Siliziummessing). Welcher Werkstoffgruppe gehört CuZn31Si1 an, und was ist das Hauptlegierungselement neben Kupfer?",
-    "optionen": [
-      "Aluminiumbronze; Hauptlegierungselement ist Aluminium.",
-      "Zinnbronze; Hauptlegierungselement ist Zinn.",
-      "Messing (Sondermessing); Hauptlegierungselement ist Zink, mit Silizium als Zusatz.",
-      "Rotguss; Hauptlegierungselemente sind Zinn, Blei und Zink.",
-      "Neusilber; Hauptlegierungselemente sind Nickel und Zink."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Rotguss; Hauptlegierungselemente sind Zinn, Blei und Zink.","Neusilber; Hauptlegierungselemente sind Nickel und Zink.","Aluminiumbronze; Hauptlegierungselement ist Aluminium.","Zinnbronze; Hauptlegierungselement ist Zinn.","Messing (Sondermessing); Hauptlegierungselement ist Zink, mit Silizium als Zusatz."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -788,16 +694,8 @@
     "kategorie": "Werkstoffkunde",
     "typ": "single",
     "frage": "An der Verladeanlage (S18) kommen Aluminiumprofile und Stahlkonstruktionen in direkten Kontakt. Im Außenbereich tritt nach kurzer Zeit Korrosion an den Aluminiumteilen auf. Welche Korrosionsart ist das, und welches Metall wird vorzugsweise abgebaut?",
-    "optionen": [
-      "Gleichmäßige Flächenkorrosion; Stahl wird abgebaut.",
-      "Spaltkorrosion; beide Metalle korrodieren gleichmäßig im Spalt.",
-      "Kontaktkorrosion (galvanische Korrosion); Aluminium als unedleres Metall wird elektrochemisch abgebaut.",
-      "Spannungsrisskorrosion; das Aluminium reißt unter Last auf.",
-      "Lochfraßkorrosion; das Aluminium bildet tiefe Gruben durch Chloridangriff."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Kontaktkorrosion (galvanische Korrosion); Aluminium als unedleres Metall wird elektrochemisch abgebaut.","Spannungsrisskorrosion; das Aluminium reißt unter Last auf.","Lochfraßkorrosion; das Aluminium bildet tiefe Gruben durch Chloridangriff.","Gleichmäßige Flächenkorrosion; Stahl wird abgebaut.","Spaltkorrosion; beide Metalle korrodieren gleichmäßig im Spalt."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

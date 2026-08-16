@@ -72,13 +72,8 @@
     "kategorie": "Fügeverfahren",
     "typ": "single",
     "frage": "Welches Lötverfahren ermöglicht das Löten von Leiterplatten durch Überfluten mit flüssigem Lot in einem kontinuierlichen Prozess?",
-    "optionen": [
-      "Wellenlöten",
-      "Weichlöten mit Lötkolben",
-      "Hartlöten (Flamme)",
-      "Reflow-Löten (Infrarot/Heißluft)"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Reflow-Löten (Infrarot/Heißluft)","Wellenlöten","Weichlöten mit Lötkolben","Hartlöten (Flamme)"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,

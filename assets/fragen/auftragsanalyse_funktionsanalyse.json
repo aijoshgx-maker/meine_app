@@ -189,15 +189,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Welches Diagramm zeigt grafisch den Kraft- und Momentenfluss durch eine Baugruppe?",
-    "optionen": [
-      "Wirkliniendiagramm",
-      "Flussdiagramm",
-      "Schaltplan",
-      "Gantt-Diagramm"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Schaltplan","Gantt-Diagramm","Wirkliniendiagramm","Flussdiagramm"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -370,15 +363,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Was versteht man unter dem Begriff 'Wirkprinzip' in der Funktionsanalyse?",
-    "optionen": [
-      "Den physikalischen Effekt, der die Funktion eines Bauteils ermöglicht",
-      "Die Reihenfolge der Montageschritte",
-      "Die gesetzlichen Vorschriften für den Betrieb",
-      "Die Materialauswahl für das Bauteil"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Die Reihenfolge der Montageschritte","Die gesetzlichen Vorschriften für den Betrieb","Die Materialauswahl für das Bauteil","Den physikalischen Effekt, der die Funktion eines Bauteils ermöglicht"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -449,16 +435,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Die Axialkolbenpumpe erzeugt durch die Bewegung der Kolben einen Druckfluss. Welche kinematische Anordnung erzeugt die Hubbewegung der Kolben in einer Schrägscheiben-Axialkolbenpumpe?",
-    "optionen": [
-      "Ein Exzenter auf der Antriebswelle",
-      "Ein Kurbelgetriebe",
-      "Die schräg gestellte Schrägscheibe, gegen die die Kolben laufen",
-      "Ein Nockenprofil im Zylinderblock",
-      "Eine Taumelscheibe am Zylinderblock"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Ein Kurbelgetriebe","Die schräg gestellte Schrägscheibe, gegen die die Kolben laufen","Ein Nockenprofil im Zylinderblock","Eine Taumelscheibe am Zylinderblock","Ein Exzenter auf der Antriebswelle"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -513,16 +491,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Das Kegelradgetriebe des Einstellantriebs besitzt zwei gleich große Kegelräder (m = 2, z = 26). Welche Aufgabe erfüllt dieses Getriebe?",
-    "optionen": [
-      "Es übersetzt die Eingangsdrehzahl ins Schnelle (Drehzahl steigt).",
-      "Es übersetzt die Eingangsdrehzahl ins Langsame (Drehzahl sinkt).",
-      "Es überträgt das Drehmoment zwischen zwei parallelen Wellen.",
-      "Es überträgt das Drehmoment zwischen zwei sich unter 90° schneidenden Wellen bei gleichbleibender Drehzahl.",
-      "Es erhöht das Drehmoment und senkt die Drehzahl durch das Übersetzungsverhältnis."
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["Es erhöht das Drehmoment und senkt die Drehzahl durch das Übersetzungsverhältnis.","Es übersetzt die Eingangsdrehzahl ins Schnelle (Drehzahl steigt).","Es übersetzt die Eingangsdrehzahl ins Langsame (Drehzahl sinkt).","Es überträgt das Drehmoment zwischen zwei parallelen Wellen.","Es überträgt das Drehmoment zwischen zwei sich unter 90° schneidenden Wellen bei gleichbleibender Drehzahl."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -545,16 +515,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Welche Aussage beschreibt den Unterschied zwischen Wellen und Achsen korrekt?",
-    "optionen": [
-      "Wellen und Achsen sind identisch, nur die Länge unterscheidet sich.",
-      "Wellen übertragen nur axiale Kräfte, Achsen übertragen nur radiale Kräfte.",
-      "Wellen werden ausschließlich auf Biegung beansprucht, Achsen auf Torsion.",
-      "Wellen sind ortsfeste Bauteile, Achsen drehen sich.",
-      "Wellen drehen sich und übertragen Drehmoment (Torsion); Achsen sind ortsfest oder leer mitlaufend ohne Drehmomentübertragung."
-    ],
-    "richtigeIndizes": [
-      4
-    ],
+    "optionen": ["Wellen sind ortsfeste Bauteile, Achsen drehen sich.","Wellen drehen sich und übertragen Drehmoment (Torsion); Achsen sind ortsfest oder leer mitlaufend ohne Drehmomentübertragung.","Wellen und Achsen sind identisch, nur die Länge unterscheidet sich.","Wellen übertragen nur axiale Kräfte, Achsen übertragen nur radiale Kräfte.","Wellen werden ausschließlich auf Biegung beansprucht, Achsen auf Torsion."],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -575,16 +537,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Im Werkzeugspindelkasten (S19) sind die Kegelrollenlager der Spindel in O-Anordnung eingebaut. Die Passscheibe (Pos. 34) befindet sich zwischen Lageraußenring und Gehäusedeckel. Welche Funktion hat diese Passscheibe?",
-    "optionen": [
-      "Sie dichtet das Gehäuse gegen Ölverlust ab.",
-      "Sie überträgt das Antriebsmoment vom Gehäuse auf den Lageraußenring.",
-      "Sie ermöglicht die axiale Einstellung des Lagerspiels und der Lagervorspannung.",
-      "Sie verhindert das Rotieren des Lageraußenrings im Gehäuse.",
-      "Sie kompensiert den Unterschied in der Wärmedehnung zwischen Spindel und Gehäuse."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Sie überträgt das Antriebsmoment vom Gehäuse auf den Lageraußenring.","Sie ermöglicht die axiale Einstellung des Lagerspiels und der Lagervorspannung.","Sie verhindert das Rotieren des Lageraußenrings im Gehäuse.","Sie kompensiert den Unterschied in der Wärmedehnung zwischen Spindel und Gehäuse.","Sie dichtet das Gehäuse gegen Ölverlust ab."],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -639,16 +593,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Die hydraulische Schaltvorrichtung (S18) wechselt zwischen zwei Übersetzungsstufen. Welches Bauteil wird durch den Hydraulikkolben (Pos. 16) axial verschoben, um den Gangwechsel auszulösen?",
-    "optionen": [
-      "Das Sekundärrad (Pos. 8) wird axial verschoben.",
-      "Das Primärrad (Pos. 6) wird über die Schaltstange (Pos. 2) axial verschoben und kuppelt wahlweise mit dem Sekundärrad oder dem Sekundärradträger.",
-      "Die Schiebewelle (Pos. 4) dreht sich, um die Übersetzung zu ändern.",
-      "Das Rillenkugellager 6021 (Pos. 30) verändert seine axiale Position.",
-      "Der Sekundärradträger (Pos. 7) wird durch einen Elektromotor verschwenkt."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Der Sekundärradträger (Pos. 7) wird durch einen Elektromotor verschwenkt.","Das Sekundärrad (Pos. 8) wird axial verschoben.","Das Primärrad (Pos. 6) wird über die Schaltstange (Pos. 2) axial verschoben und kuppelt wahlweise mit dem Sekundärrad oder dem Sekundärradträger.","Die Schiebewelle (Pos. 4) dreht sich, um die Übersetzung zu ändern.","Das Rillenkugellager 6021 (Pos. 30) verändert seine axiale Position."],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -671,16 +617,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Der Richtzylinder der Verladeanlage (S18) ist mit einem eigenen Druckbegrenzungsventil QN2 (60 bar) abgesichert, obwohl das Hauptsystem-DBV QN1 auf 130 bar eingestellt ist. Warum ist ein separates DBV für den Richtzylinder notwendig?",
-    "optionen": [
-      "Weil QN2 den Volumenstrom am Richtzylinder reguliert.",
-      "Weil der Richtzylinder nur geringe Ausrichtkräfte benötigt und zu hoher Druck die Betonteile oder die Führungskonstruktion beschädigen würde.",
-      "Weil QN1 zu weit vom Richtzylinder entfernt ist.",
-      "Weil QN2 den Richtzylinder nach dem Ausrichten arretiert.",
-      "Weil 130 bar für den Richtzylinder nicht ausreichend wären."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Weil QN2 den Richtzylinder nach dem Ausrichten arretiert.","Weil 130 bar für den Richtzylinder nicht ausreichend wären.","Weil QN2 den Volumenstrom am Richtzylinder reguliert.","Weil der Richtzylinder nur geringe Ausrichtkräfte benötigt und zu hoher Druck die Betonteile oder die Führungskonstruktion beschädigen würde.","Weil QN1 zu weit vom Richtzylinder entfernt ist."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -703,16 +641,8 @@
     "kategorie": "Funktionsanalyse",
     "typ": "single",
     "frage": "Die Verladeanlage (S18) besteht aus einer Stahlrahmenkonstruktion; als Abdeckungen werden Aluminiumbleche direkt auf den Stahlträgern befestigt. Im Außenbereich tritt Korrosion an den Aluminiumblechen auf. Wie lässt sich diese Kontaktkorrosion gezielt verhindern?",
-    "optionen": [
-      "Durch regelmäßiges Reinigen der Stahlträger mit Säure.",
-      "Durch elektrische Heizungen, die Feuchtigkeit fernhalten.",
-      "Durch eine elektrisch isolierende Trennschicht (Kunststoffdichtband, Isolierbuchsen) zwischen Aluminium und Stahl, um den galvanischen Kontakt zu unterbrechen.",
-      "Durch Verwendung von feuerverzinktem Stahl statt normalem Baustahl.",
-      "Durch Lackierung nur der Aluminiumbleche."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Durch eine elektrisch isolierende Trennschicht (Kunststoffdichtband, Isolierbuchsen) zwischen Aluminium und Stahl, um den galvanischen Kontakt zu unterbrechen.","Durch Verwendung von feuerverzinktem Stahl statt normalem Baustahl.","Durch Lackierung nur der Aluminiumbleche.","Durch regelmäßiges Reinigen der Stahlträger mit Säure.","Durch elektrische Heizungen, die Feuchtigkeit fernhalten."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

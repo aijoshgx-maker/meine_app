@@ -464,15 +464,8 @@
     "kategorie": "Elektrotechnik & Sensorik",
     "typ": "single",
     "frage": "Welche Schutzmaßnahme verhindert, dass bei einem Gehäuseschluss gefährliche Spannungen am Gehäuse anliegen (Schutzklasse I)?",
-    "optionen": [
-      "Doppelte Isolierung",
-      "Schutzleiter (PE) mit Erdung",
-      "Betrieb mit Schutzkleinspannung (SELV)",
-      "Nullung (veraltetes Verfahren ohne PE)"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Nullung (veraltetes Verfahren ohne PE)","Doppelte Isolierung","Schutzleiter (PE) mit Erdung","Betrieb mit Schutzkleinspannung (SELV)"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

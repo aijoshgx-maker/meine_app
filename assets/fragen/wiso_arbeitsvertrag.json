@@ -127,13 +127,8 @@
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "single",
     "frage": "Was versteht man unter dem Direktionsrecht (Weisungsrecht) des Arbeitgebers?",
-    "optionen": [
-      "Das Recht des Arbeitgebers, den Arbeitnehmer in Inhalt, Ort und Zeit der Arbeit zu bestimmen, soweit diese nicht durch Arbeitsvertrag oder Tarifvertrag festgelegt sind",
-      "Das Recht des Arbeitgebers, den Arbeitnehmer jederzeit zu versetzen, unabhängig vom Arbeitsvertrag",
-      "Das Recht des Arbeitgebers, Lohn und Gehalt einseitig festzusetzen",
-      "Das Recht des Arbeitgebers, Überstunden unbegrenzt anzuordnen"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Das Recht des Arbeitgebers, Überstunden unbegrenzt anzuordnen","Das Recht des Arbeitgebers, den Arbeitnehmer in Inhalt, Ort und Zeit der Arbeit zu bestimmen, soweit diese nicht durch Arbeitsvertrag oder Tarifvertrag festgelegt sind","Das Recht des Arbeitgebers, den Arbeitnehmer jederzeit zu versetzen, unabhängig vom Arbeitsvertrag","Das Recht des Arbeitgebers, Lohn und Gehalt einseitig festzusetzen"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -249,13 +244,8 @@
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "single",
     "frage": "Welches Gesetz regelt den Anspruch auf Teilzeitarbeit für Arbeitnehmer in Betrieben mit mehr als 15 Beschäftigten?",
-    "optionen": [
-      "Arbeitszeitgesetz (ArbZG)",
-      "Bundesurlaubsgesetz (BUrlG)",
-      "Teilzeit- und Befristungsgesetz (TzBfG)",
-      "Sozialgesetzbuch IX (SGB IX)"
-    ],
-    "richtigeIndizes": [2],
+    "optionen": ["Sozialgesetzbuch IX (SGB IX)","Arbeitszeitgesetz (ArbZG)","Bundesurlaubsgesetz (BUrlG)","Teilzeit- und Befristungsgesetz (TzBfG)"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

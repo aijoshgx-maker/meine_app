@@ -120,15 +120,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Ein Bauteil soll auf 60 HRC vergütet werden. Im ZTU-Diagramm ist abzulesen, dass die kritische Abkühlrate bei 100 K/s liegt. Die Abkühlung in Öl erreicht 80 K/s. Wird die erforderliche Härte erreicht?",
-    "optionen": [
-      "Ja, weil v_Öl > v_krit",
-      "Nein, weil v_Öl < v_krit",
-      "Ja, wenn das Bauteil dünn genug ist",
-      "Die Abkühlrate spielt keine Rolle"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Nein, weil v_Öl < v_krit","Ja, wenn das Bauteil dünn genug ist","Die Abkühlrate spielt keine Rolle","Ja, weil v_Öl > v_krit"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -259,15 +252,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Welches Verfahren ermöglicht es, großflächige Bauteile (z.B. Karosserieteile) bei niedrigen Temperaturen zu beschichten und Korrosionsschutz durch eine Zinkschicht zu erzeugen?",
-    "optionen": [
-      "Elektrolytische Verzinkung (Galvanisch)",
-      "Feuerverzinkung (Schmelztauchverfahren)",
-      "Thermisches Spritzen",
-      "Eloxieren"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Feuerverzinkung (Schmelztauchverfahren)","Thermisches Spritzen","Eloxieren","Elektrolytische Verzinkung (Galvanisch)"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -391,15 +377,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Welche Eigenschaft unterscheidet einen austenitischen Edelstahl (z.B. 1.4301 / AISI 304) von ferritischem Stahl beim Schweißen besonders?",
-    "optionen": [
-      "Austenitische Stähle neigen zur Sensibilisierung (Korngrenzenkorrosion) durch Chromkarbidausscheidung bei 400-900°C",
-      "Austenitische Stähle können nicht geschweißt werden",
-      "Austenitische Stähle reagieren magnetisch und müssen daher separat geerdet werden",
-      "Austenitische Stähle müssen immer vorgewärmt werden wie Kohlenstoffstähle"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Austenitische Stähle können nicht geschweißt werden","Austenitische Stähle reagieren magnetisch und müssen daher separat geerdet werden","Austenitische Stähle müssen immer vorgewärmt werden wie Kohlenstoffstähle","Austenitische Stähle neigen zur Sensibilisierung (Korngrenzenkorrosion) durch Chromkarbidausscheidung bei 400-900°C"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -459,16 +438,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Welches Wärmebehandlungsverfahren wird für den Stahl 17Cr3 (Einsatzstahl) angewendet, um eine harte Oberfläche bei zähem Kern zu erzielen?",
-    "optionen": [
-      "Vergüten",
-      "Normalglühen",
-      "Spannungsarmglühen",
-      "Einsatzhärten (Aufkohlen und Härten)",
-      "Nitrieren"
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["Einsatzhärten (Aufkohlen und Härten)","Nitrieren","Vergüten","Normalglühen","Spannungsarmglühen"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -491,16 +462,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Der Gehäusedeckel der Axialkolbenpumpe ist aus Grauguss EN-GJL-250 gefertigt. Welche Eigenschaft zeichnet diesen Werkstoff besonders aus?",
-    "optionen": [
-      "Sehr hohe Bruchdehnung (über 20%)",
-      "Gute Schweißbarkeit",
-      "Hohe Schwingungsdämpfung",
-      "Sehr geringe Dichte (leichter als Aluminium)",
-      "Hohe elektrische Leitfähigkeit"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Hohe Schwingungsdämpfung","Sehr geringe Dichte (leichter als Aluminium)","Hohe elektrische Leitfähigkeit","Sehr hohe Bruchdehnung (über 20%)","Gute Schweißbarkeit"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -523,16 +486,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Konsole und Schwenklager des Einstellantriebs sind Schweißkonstruktionen. Welches Wärmebehandlungsverfahren ist nach dem Schweißen vor der weiteren mechanischen Bearbeitung durchzuführen?",
-    "optionen": [
-      "Weichglühen",
-      "Spannungsarmglühen",
-      "Grobkornglühen",
-      "Rekristallisationsglühen",
-      "Diffusionsglühen"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Spannungsarmglühen","Grobkornglühen","Rekristallisationsglühen","Diffusionsglühen","Weichglühen"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -587,16 +542,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Das Stirnrad (Pos. 8, 16MnCr5) im Werkzeugspindelkasten (S19) wird einsatzgehärtet. Welche Randschichthärte (HRC) wird an der Oberfläche typischerweise erreicht?",
-    "optionen": [
-      "20–30 HRC",
-      "35–45 HRC",
-      "58–63 HRC",
-      "65–70 HRC",
-      "75–80 HRC"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["65–70 HRC","75–80 HRC","20–30 HRC","35–45 HRC","58–63 HRC"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -619,16 +566,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Die Ritzelwelle (16MnCr5, einsatzgehärtet HRC 58–62) der Bohrstation (S19) muss an den Lagersitzen auf Endmaß geschliffen werden. Welches Schleifmittel ist geeignet?",
-    "optionen": [
-      "Siliciumcarbid (SiC) – für NE-Metalle und Grauguss",
-      "Normalkorund (A) – für gehärtete Stähle und einsatzgehärtete Oberflächen",
-      "Zirkonkorund (ZA) – für grobes Abschruppen von Stahl",
-      "Diamant (D) – für Hartmetall und Keramik",
-      "Bornitrid (CBN) – ausschließlich für Hochleistungsbearbeitung"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Zirkonkorund (ZA) – für grobes Abschruppen von Stahl","Diamant (D) – für Hartmetall und Keramik","Bornitrid (CBN) – ausschließlich für Hochleistungsbearbeitung","Siliciumcarbid (SiC) – für NE-Metalle und Grauguss","Normalkorund (A) – für gehärtete Stähle und einsatzgehärtete Oberflächen"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -651,16 +590,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Nach dem Einsatzhärten der Zahnräder (S19) ist die aufgekohlte Randschicht zu dünn. Was ist die wahrscheinlichste Ursache?",
-    "optionen": [
-      "Die Aufkohlungstemperatur war zu hoch (Kornwachstum).",
-      "Die Aufkohlungsdauer (Einwirkzeit im Ofen) war zu kurz.",
-      "Das Abschrecken erfolgte in Wasser statt Öl.",
-      "Der Anlassvorgang entfiel.",
-      "Das Bauteil wurde zu langsam auf Austenitisierungstemperatur erwärmt."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Die Aufkohlungsdauer (Einwirkzeit im Ofen) war zu kurz.","Das Abschrecken erfolgte in Wasser statt Öl.","Der Anlassvorgang entfiel.","Das Bauteil wurde zu langsam auf Austenitisierungstemperatur erwärmt.","Die Aufkohlungstemperatur war zu hoch (Kornwachstum)."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -715,16 +646,8 @@
     "kategorie": "Werkstoffe und Wärmebehandlung",
     "typ": "single",
     "frage": "Das Einsatzhärten der Zahnräder (16MnCr5) der Schaltvorrichtung (S18) besteht aus mehreren Wärmebehandlungsschritten. Welcher Schritt wird als letzter durchgeführt?",
-    "optionen": [
-      "Aufkohlen (Zementieren) in kohlenstoffhaltiger Atmosphäre bei ca. 920 °C.",
-      "Abschrecken (schnelles Abkühlen in Öl) zur Martensitbildung.",
-      "Anlassen bei ca. 150–200 °C zum Abbau von Eigenspannungen und Erhöhung der Zähigkeit.",
-      "Normalisieren zur Gefügeverbesserung.",
-      "Nitrieren zur Verbesserung der Randschichthärte."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Nitrieren zur Verbesserung der Randschichthärte.","Aufkohlen (Zementieren) in kohlenstoffhaltiger Atmosphäre bei ca. 920 °C.","Abschrecken (schnelles Abkühlen in Öl) zur Martensitbildung.","Anlassen bei ca. 150–200 °C zum Abbau von Eigenspannungen und Erhöhung der Zähigkeit.","Normalisieren zur Gefügeverbesserung."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
