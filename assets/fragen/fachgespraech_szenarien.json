@@ -102,7 +102,7 @@
         "id": "fg-002-f05",
         "pruefer": "Welche elektrische Leistung setzt ein Heizwiderstand R = 1500 Ohm bei einer Stromstärke I = 57,7 mA um? Rechnen Sie kurz nach.",
         "musterloesung": "P = I² × R = (0,0577 A)² × 1500 Ohm = 0,003329 × 1500 = 4,99 W, also rund 5 W. Alternativ über die Spannung: U = I × R = 0,0577 × 1500 = 86,6 V; dann P = U × I = 86,6 × 0,0577 ≈ 5 W.",
-        "schluesselwoerter": ["P = I² × R", "Leistung", "5 W", "Ohmsches Gesetz"],
+        "schluesselwoerter": ["Leistung", "Strom", "Widerstand", "5 W", "Ohmsches Gesetz"],
         "erklaerung": "Grundformeln Elektrotechnik: P = U × I = I² × R = U²/R. Umformung je nach gegebenen Größen. Hier gegeben: I und R. Also P = I² × R. Einheiten: A² × Ohm = W.",
         "schwierigkeit": 2
       },
@@ -136,7 +136,7 @@
         "id": "fg-003-f02",
         "pruefer": "Welche kartesischen Koordinaten hat Bohrung P2 bei R = 65 mm und φ = 30°? Rechnen Sie bitte vor.",
         "musterloesung": "X = R × cos(φ) = 65 mm × cos(30°) = 65 × 0,866 = 56,3 mm, gerundet 56 mm. Y = R × sin(φ) = 65 mm × sin(30°) = 65 × 0,5 = 32,5 mm, gerundet 33 mm. P2 liegt also bei X56, Y33.",
-        "schluesselwoerter": ["X = R × cos(φ)", "Y = R × sin(φ)", "56 mm", "33 mm"],
+        "schluesselwoerter": ["Kosinus", "Sinus", "Radius", "56 mm", "33 mm"],
         "erklaerung": "cos(30°) = Wurzel(3)/2 ≈ 0,866; sin(30°) = 0,5. Diese Werte sollten auswendig bekannt sein. P2(56, 33) in kartesischen Koordinaten. Probe: Abstand vom Ursprung = Wurzel(56² + 33²) = Wurzel(3136 + 1089) = Wurzel(4225) = 65 mm – korrekt.",
         "schwierigkeit": 2
       },
@@ -210,7 +210,7 @@
         "id": "fg-004-f05",
         "pruefer": "Berechnen Sie die maximale Zugkraft F auf den Zahnriemen. Grenzdrehmoment der Sicherheitskupplung: M = 16 N·m, Wirkdurchmesser der Riemenscheibe: d_w = 76,5 mm.",
         "musterloesung": "Die maximale Zugkraft entspricht der Umfangskraft an der Riemenscheibe beim Grenzdrehmoment: F = M / r, wobei r der Wirkradius ist. r = d_w / 2 = 76,5 mm / 2 = 38,25 mm = 0,03825 m. F = M / r = 16 N·m / 0,03825 m = 418,3 N. Der Zahnriemen muss diese Zugkraft dauerhaft aufnehmen können.",
-        "schluesselwoerter": ["F = M / r", "418", "Wirkradius", "Umfangskraft"],
+        "schluesselwoerter": ["Kraft", "Drehmoment", "418", "Wirkradius", "Umfangskraft"],
         "erklaerung": "F = M/r = 16000 N·mm / 38,25 mm = 418,3 N. r = d_w/2 (nicht d_w!). Wirkdurchmesser = der Durchmesser, auf dem die Zahnriemenzähne die Kraft übertragen (liegt zwischen Kopf- und Fußkreis).",
         "schwierigkeit": 3
       }

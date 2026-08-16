@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/matching/antwort_matcher.dart';
 import '../../../models/fachgespraech_szenario.dart';
 import '../../quiz/widgets/illustrationen/technische_illustration.dart';
 import '../providers/fachgespraech_provider.dart';
@@ -32,16 +33,21 @@ class _FachgespraechSessionScreenState
 
   void _antwortBestaetigen(FachgespraechFrage frage) {
     final antwort = _antwortCtrl.text.trim();
-    final antwortLower = antwort.toLowerCase();
+    // Tokenweises Matching statt reinem Teilstring-Vergleich: bei
+    // Mehrwort-Schlüsselwörtern ("Stöße dämpfen") müssen alle Wörter
+    // vorkommen, Reihenfolge egal - und über denselben Normalisierer wie
+    // Kurzantwort/Lückentext (Umlaute, Bindestriche, o.ä.), siehe P7a/P7b.
     final gefundeneSchluesselbegriffe = frage.schluesselwoerter
-        .where((k) => antwortLower.contains(k.toLowerCase()))
+        .where((k) => AntwortMatcher.keywordGefunden(antwort, k))
         .toList();
 
-    _ergebnisse.add(_FrageErgebnis(
-      frage: frage,
-      nutzerAntwort: antwort,
-      gefundeneSchluesselbegriffe: gefundeneSchluesselbegriffe,
-    ));
+    _ergebnisse.add(
+      _FrageErgebnis(
+        frage: frage,
+        nutzerAntwort: antwort,
+        gefundeneSchluesselbegriffe: gefundeneSchluesselbegriffe,
+      ),
+    );
 
     setState(() => _antwortetGegeben = true);
   }
@@ -64,8 +70,9 @@ class _FachgespraechSessionScreenState
 
     return szenarien.when(
       data: (list) {
-        final szenario =
-            list.where((s) => s.id == widget.szenarioId).firstOrNull;
+        final szenario = list
+            .where((s) => s.id == widget.szenarioId)
+            .firstOrNull;
         if (szenario == null) {
           return Scaffold(
             appBar: AppBar(
@@ -109,8 +116,7 @@ class _FachgespraechSessionScreenState
               _AuftragskarteMini(szenario: szenario),
               if (TechnischeIllustration.istDiagramm(frage.bildAsset))
                 TechnischeIllustration(
-                  diagrammKey:
-                      TechnischeIllustration.keyAus(frage.bildAsset!),
+                  diagrammKey: TechnischeIllustration.keyAus(frage.bildAsset!),
                 ),
               const SizedBox(height: 16),
               _PrueferBubble(text: frage.pruefer),
@@ -133,17 +139,13 @@ class _FachgespraechSessionScreenState
           ),
         );
       },
-      loading: () => const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      ),
-      error: (e, _) => Scaffold(
-        body: Center(child: Text('Fehler: $e')),
-      ),
+      loading: () =>
+          const Scaffold(body: Center(child: CircularProgressIndicator())),
+      error: (e, _) => Scaffold(body: Center(child: Text('Fehler: $e'))),
     );
   }
 
-  Widget _buildAbschluss(
-      BuildContext context, FachgespraechSzenario szenario) {
+  Widget _buildAbschluss(BuildContext context, FachgespraechSzenario szenario) {
     final treffer = _ergebnisse
         .where((e) => e.gefundeneSchluesselbegriffe.isNotEmpty)
         .length;
@@ -205,14 +207,20 @@ class _FachgespraechSessionScreenState
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Ihre Antwort:',
-                            style: Theme.of(context).textTheme.labelMedium),
-                        Text(e.nutzerAntwort.isEmpty
-                            ? '(keine Antwort)'
-                            : e.nutzerAntwort),
+                        Text(
+                          'Ihre Antwort:',
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
+                        Text(
+                          e.nutzerAntwort.isEmpty
+                              ? '(keine Antwort)'
+                              : e.nutzerAntwort,
+                        ),
                         const Divider(),
-                        Text('Musterlösung:',
-                            style: Theme.of(context).textTheme.labelMedium),
+                        Text(
+                          'Musterlösung:',
+                          style: Theme.of(context).textTheme.labelMedium,
+                        ),
                         Text(e.frage.musterloesung),
                         const SizedBox(height: 8),
                         Wrap(
@@ -289,14 +297,16 @@ class _AuftragskarteMini extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(szenario.kontext,
-                  style: Theme.of(context).textTheme.bodySmall),
+              Text(
+                szenario.kontext,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
               const SizedBox(height: 8),
               Text(
                 szenario.fertigungsauftrag,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      fontFamily: 'monospace',
-                    ),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodySmall?.copyWith(fontFamily: 'monospace'),
               ),
             ],
           ),
@@ -340,12 +350,11 @@ class _PrueferBubble extends StatelessWidget {
                 Text(
                   'Prüfer',
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: cs.onSecondaryContainer.withAlpha(180),
-                      ),
+                    color: cs.onSecondaryContainer.withAlpha(180),
+                  ),
                 ),
                 const SizedBox(height: 4),
-                Text(text,
-                    style: TextStyle(color: cs.onSecondaryContainer)),
+                Text(text, style: TextStyle(color: cs.onSecondaryContainer)),
               ],
             ),
           ),
@@ -384,8 +393,8 @@ class _NutzerAntwortBubble extends StatelessWidget {
                 Text(
                   'Ihre Antwort',
                   style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: cs.onPrimaryContainer.withAlpha(180),
-                      ),
+                    color: cs.onPrimaryContainer.withAlpha(180),
+                  ),
                 ),
                 const SizedBox(height: 4),
                 Text(
@@ -467,13 +476,14 @@ class _MusterloesungKarte extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Musterlösung',
-                style: Theme.of(context).textTheme.titleSmall),
+            Text('Musterlösung', style: Theme.of(context).textTheme.titleSmall),
             const SizedBox(height: 8),
             Text(ergebnis.frage.musterloesung),
             const Divider(height: 24),
-            Text('Schlüsselbegriffe',
-                style: Theme.of(context).textTheme.labelMedium),
+            Text(
+              'Schlüsselbegriffe',
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
             const SizedBox(height: 6),
             Wrap(
               spacing: 6,
@@ -495,11 +505,12 @@ class _MusterloesungKarte extends StatelessWidget {
             ),
             if (ergebnis.frage.erklaerung.isNotEmpty) ...[
               const Divider(height: 24),
-              Text('Erklärung',
-                  style: Theme.of(context).textTheme.labelMedium),
+              Text('Erklärung', style: Theme.of(context).textTheme.labelMedium),
               const SizedBox(height: 4),
-              Text(ergebnis.frage.erklaerung,
-                  style: Theme.of(context).textTheme.bodySmall),
+              Text(
+                ergebnis.frage.erklaerung,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
             ],
             const SizedBox(height: 16),
             SizedBox(
@@ -508,7 +519,8 @@ class _MusterloesungKarte extends StatelessWidget {
                 onPressed: onWeiter,
                 icon: Icon(istLetztes ? Icons.flag : Icons.arrow_forward),
                 label: Text(
-                    istLetztes ? 'Fachgespräch beenden' : 'Nächste Frage'),
+                  istLetztes ? 'Fachgespräch beenden' : 'Nächste Frage',
+                ),
               ),
             ),
           ],

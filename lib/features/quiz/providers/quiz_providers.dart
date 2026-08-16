@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart' show setEquals;
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/matching/antwort_matcher.dart';
 import '../../../core/quiz/options_shuffle.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart';
 import '../../../data/attempt_history_store.dart';
@@ -513,14 +514,14 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
         final toleranz = frage.toleranz ?? 0;
         return (wert - frage.loesungswert!).abs() <= toleranz;
       case FrageTyp.kurzantwort:
-        final eingabe = _normalisieren(antwort.freitext);
-        return frage.akzeptierteKurzantworten.any(
-          (a) => _normalisieren(a) == eingabe,
+        return AntwortMatcher.passtGegenListe(
+          antwort.freitext,
+          frage.akzeptierteKurzantworten,
         );
       case FrageTyp.lueckentext:
         for (var i = 0; i < frage.luecken.length; i++) {
-          final eingabe = _normalisieren(antwort.lueckenAntworten[i] ?? '');
-          if (!frage.luecken[i].any((a) => _normalisieren(a) == eingabe)) {
+          final eingabe = antwort.lueckenAntworten[i] ?? '';
+          if (!AntwortMatcher.passtGegenListe(eingabe, frage.luecken[i])) {
             return false;
           }
         }
@@ -534,6 +535,4 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
         return true;
     }
   }
-
-  String _normalisieren(String text) => text.trim().toLowerCase();
 }

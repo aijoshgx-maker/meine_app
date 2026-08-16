@@ -152,3 +152,28 @@ tool/validate_fragen.dart` findet diese Liste jederzeit wieder
 (`multi: 4 von 5 Optionen richtig`).
 
 ---
+
+## P7a — Tippfehlertoleranz (Levenshtein) bewusst NICHT aktiviert
+
+`AntwortMatcher.passtMitTippfehlertoleranz()` ist implementiert, aber
+nirgends im Bewertungspfad verdrahtet - genau wie in P7a gefordert, wurde
+das vorher gegen den gesamten Pool getestet (alle `akzeptierteKurzantworten`,
+`luecken` und Fachgespräch-`schluesselwoerter`, >6 Zeichen normalisiert,
+667 einzigartige Einträge, alle Paare mit Distanz <= 1 geprüft).
+
+Ergebnis: 16 Kollisionen gefunden, die meisten harmlos (Wortzusammen-
+setzungsvarianten wie "Datum System"/"Datumsystem" oder Synonyme wie
+"Differenzialregler"/"Differentialregler" - für die wäre Toleranz sogar
+nützlich). **Eine Kollision ist aber ein echtes Risiko:**
+„24 Tage" ↔ „14 Tage" liegen bei Distanz 1 (eine Ziffer). Zwei
+verschiedene Fragen mit unterschiedlichen Zahlenantworten würden bei
+aktivierter Tippfehlertoleranz gegenseitig als „nur vertippt" durchgehen -
+falsche Zahl würde als richtig gewertet. Damit bestätigt sich exakt die
+im Prompt genannte Sorge (analog „Festlager"/„Loslager").
+
+**Empfehlung:** Tippfehlertoleranz nicht global aktivieren. Falls
+gewünscht, müsste sie pro Feld/Fragetyp opt-in sein und rein numerische
+Werte (Ziffernfolgen) grundsätzlich ausschließen, da dort jede
+Abweichung inhaltlich relevant ist, nie ein „Tippfehler".
+
+---
