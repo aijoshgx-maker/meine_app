@@ -26,11 +26,11 @@
     "wi-vs-015",
     "wi-bo-013",
     "wi-kv-008",
-    "wiso-av-004"
+    "wi-av-004"
   ],
   "hinweise": [
     "Werte sind Text-inline in die erklaerung/frage-Felder der betroffenen_fragen eingearbeitet (keine {{platzhalter}}-Auflösung zur Laufzeit implementiert), weil eine Platzhalter-Ersetzung die betroffenen Sätze unleserlich gemacht hätte (siehe P4b in CLAUDE_CODE_PROMPTS.md). Bei künftigen Änderungen: betroffene_fragen-Liste als Trefferliste nutzen statt Volltextsuche.",
-    "§ 14 Abs. 2 TzBfG (wiso-av-004, sachgrundlose Befristung, aktuell 2 Jahre): Eine Ausweitung auf 4 Jahre wurde am 2.7.2026 politisch im Koalitionsausschuss beschlossen, lag zum RechercheStand (2026-08-16) aber noch nicht als Gesetzentwurf vor. Vor Gesetzeskraft nicht ändern, aber bei der nächsten Aktualisierung dieser Datei zuerst prüfen.",
+    "§ 14 Abs. 2 TzBfG (wi-av-004, sachgrundlose Befristung, aktuell 2 Jahre): Eine Ausweitung auf 4 Jahre wurde am 2.7.2026 politisch im Koalitionsausschuss beschlossen, lag zum RechercheStand (2026-08-16) aber noch nicht als Gesetzentwurf vor. Vor Gesetzeskraft nicht ändern, aber bei der nächsten Aktualisierung dieser Datei zuerst prüfen.",
     "RV-Satz (rv_satz): für 2027 wird ein Anstieg auf 18,8 % erwartet (Stand 2026-08-16 noch nicht amtlich final)."
   ]
 }

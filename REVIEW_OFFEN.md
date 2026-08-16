@@ -177,3 +177,19 @@ Werte (Ziffernfolgen) grundsätzlich ausschließen, da dort jede
 Abweichung inhaltlich relevant ist, nie ein „Tippfehler".
 
 ---
+
+## P10a — Package-Name: bewusst zurückgestellt (Nutzerentscheidung)
+
+`android/app/build.gradle` (`namespace`/`applicationId`), der Kotlin-Package-
+Pfad, `ios/Runner.xcodeproj` (`PRODUCT_BUNDLE_IDENTIFIER`) und `pubspec.yaml`
+(`name:`) sind **weiterhin** `joshai.meine_app` / `meine_app`. Auf Nachfrage
+hat der Nutzer entschieden, nur das App-Label (P10b) jetzt zu ändern und die
+Package-Name-Entscheidung (Reverse-Domain, z. B. `de.joshai.ap2trainer`) zu
+vertagen.
+
+**Wichtig, unverändert gültig:** Der Package-Name ist nach dem ersten
+Play-Store-Upload unwiderruflich. Vor jeder Veröffentlichung muss diese
+Entscheidung nachgeholt werden - am saubersten mit `rename` oder
+`change_app_package_name`, danach `flutter clean` und Vollbuild.
+
+---
