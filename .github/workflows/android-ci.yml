@@ -28,6 +28,9 @@ jobs:
       - name: Analyze
         run: flutter analyze
 
+      - name: Validate Fragen-Datensatz
+        run: dart run tool/validate_fragen.dart
+
       - name: Run tests
         run: flutter test
 

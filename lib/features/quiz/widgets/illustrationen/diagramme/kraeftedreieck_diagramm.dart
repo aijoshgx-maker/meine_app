@@ -33,18 +33,30 @@ class KraefteDreieckPainter extends CustomPainter {
 
     // Fc (Schnittkraft — primär)
     _pfeil(canvas, Offset(ox, oy), fcEnd, cs.primary, 2.0, paint);
-    _label(canvas, 'Fc\n(Schnittkraft)', Offset(ox - 62, oy - h * 0.38),
-        TextStyle(color: cs.primary, fontSize: 9, fontWeight: FontWeight.w700));
+    _label(
+      canvas,
+      'Fc\n(Schnittkraft)',
+      Offset(ox - 62, oy - h * 0.38),
+      TextStyle(color: cs.primary, fontSize: 9, fontWeight: FontWeight.w700),
+    );
 
     // Ff (Vorschubkraft)
     _pfeil(canvas, Offset(ox, oy), ffEnd, cs.secondary, 2.0, paint);
-    _label(canvas, 'Ff (Vorschubkraft)', Offset(ox + w * 0.18, oy + 8),
-        TextStyle(color: cs.secondary, fontSize: 9, fontWeight: FontWeight.w700));
+    _label(
+      canvas,
+      'Ff (Vorschubkraft)',
+      Offset(ox + w * 0.18, oy + 8),
+      TextStyle(color: cs.secondary, fontSize: 9, fontWeight: FontWeight.w700),
+    );
 
     // Resultierende F
     _pfeil(canvas, Offset(ox, oy), fEnd, cs.tertiary, 2.5, paint);
-    _label(canvas, 'F (Resultierende)', Offset(ox + w * 0.20, oy - h * 0.34),
-        TextStyle(color: cs.tertiary, fontSize: 9, fontWeight: FontWeight.w700));
+    _label(
+      canvas,
+      'F (Resultierende)',
+      Offset(ox + w * 0.20, oy - h * 0.34),
+      TextStyle(color: cs.tertiary, fontSize: 9, fontWeight: FontWeight.w700),
+    );
 
     // Winkel φ zwischen Fc und F
     final angle = atan2(w * 0.55, h * 0.55);
@@ -54,14 +66,25 @@ class KraefteDreieckPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
     canvas.drawArc(
       Rect.fromCircle(center: Offset(ox, oy), radius: 28),
-      -pi / 2, angle, false, arc,
+      -pi / 2,
+      angle,
+      false,
+      arc,
     );
-    _label(canvas, 'φ', Offset(ox + 10, oy - 30),
-        TextStyle(color: cs.outline, fontSize: 9));
+    _label(
+      canvas,
+      'φ',
+      Offset(ox + 10, oy - 30),
+      TextStyle(color: cs.outline, fontSize: 9),
+    );
 
     // Maßstab-Hinweis
-    _label(canvas, 'Kräfteparallelogramm', Offset(w * 0.28, h * 0.89),
-        TextStyle(color: cs.outline, fontSize: 8));
+    _label(
+      canvas,
+      'Kräfteparallelogramm',
+      Offset(w * 0.28, h * 0.89),
+      TextStyle(color: cs.outline, fontSize: 8),
+    );
 
     // Koordinatenachsen (klein, Ursprung)
     paint
@@ -70,8 +93,18 @@ class KraefteDreieckPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
     canvas.drawLine(Offset(ox, oy), Offset(ox + 20, oy), paint);
     canvas.drawLine(Offset(ox, oy), Offset(ox, oy - 20), paint);
-    _label(canvas, 'x', Offset(ox + 22, oy - 6), TextStyle(color: cs.outline, fontSize: 8));
-    _label(canvas, 'y', Offset(ox + 3, oy - 24), TextStyle(color: cs.outline, fontSize: 8));
+    _label(
+      canvas,
+      'x',
+      Offset(ox + 22, oy - 6),
+      TextStyle(color: cs.outline, fontSize: 8),
+    );
+    _label(
+      canvas,
+      'y',
+      Offset(ox + 3, oy - 24),
+      TextStyle(color: cs.outline, fontSize: 8),
+    );
   }
 
   void _strichlinie(Canvas canvas, Offset from, Offset to, Paint p) {
@@ -90,7 +123,14 @@ class KraefteDreieckPainter extends CustomPainter {
     }
   }
 
-  void _pfeil(Canvas canvas, Offset from, Offset to, Color color, double width, Paint p) {
+  void _pfeil(
+    Canvas canvas,
+    Offset from,
+    Offset to,
+    Color color,
+    double width,
+    Paint p,
+  ) {
     p
       ..color = color
       ..strokeWidth = width

@@ -31,10 +31,13 @@ class ZahnradGeometriePainter extends CustomPainter {
 
     // Fill between Kopf- und Fußkreis
     canvas.drawCircle(Offset(cx, cy), rA, fillGear);
-    canvas.drawCircle(Offset(cx, cy), rF,
-        Paint()
-          ..color = cs.surface
-          ..style = PaintingStyle.fill);
+    canvas.drawCircle(
+      Offset(cx, cy),
+      rF,
+      Paint()
+        ..color = cs.surface
+        ..style = PaintingStyle.fill,
+    );
 
     // Simplified teeth (7 visible teeth as arcs from rF to rA)
     final z = 82;
@@ -44,11 +47,13 @@ class ZahnradGeometriePainter extends CustomPainter {
     for (int i = 0; i < 7; i++) {
       final ang = i * toothAngle * (82 / 7);
       toothPath.moveTo(
-          cx + rF * math.cos(ang - halfTooth),
-          cy + rF * math.sin(ang - halfTooth));
+        cx + rF * math.cos(ang - halfTooth),
+        cy + rF * math.sin(ang - halfTooth),
+      );
       toothPath.lineTo(
-          cx + rA * math.cos(ang - halfTooth * 0.5),
-          cy + rA * math.sin(ang - halfTooth * 0.5));
+        cx + rA * math.cos(ang - halfTooth * 0.5),
+        cy + rA * math.sin(ang - halfTooth * 0.5),
+      );
       toothPath.arcTo(
         Rect.fromCircle(center: Offset(cx, cy), radius: rA),
         ang - halfTooth * 0.5,
@@ -56,8 +61,9 @@ class ZahnradGeometriePainter extends CustomPainter {
         false,
       );
       toothPath.lineTo(
-          cx + rF * math.cos(ang + halfTooth),
-          cy + rF * math.sin(ang + halfTooth));
+        cx + rF * math.cos(ang + halfTooth),
+        cy + rF * math.sin(ang + halfTooth),
+      );
     }
     canvas.drawPath(toothPath, thin);
 
@@ -65,11 +71,15 @@ class ZahnradGeometriePainter extends CustomPainter {
     canvas.drawCircle(Offset(cx, cy), rA, solid);
 
     // Teilkreis d (dashed blue)
-    _dashedCircle(canvas, Offset(cx, cy), rT,
-        Paint()
-          ..color = Colors.blue.shade600
-          ..strokeWidth = 1.5
-          ..style = PaintingStyle.stroke);
+    _dashedCircle(
+      canvas,
+      Offset(cx, cy),
+      rT,
+      Paint()
+        ..color = Colors.blue.shade600
+        ..strokeWidth = 1.5
+        ..style = PaintingStyle.stroke,
+    );
 
     // Fußkreis Df (thin)
     canvas.drawCircle(Offset(cx, cy), rF, thin);
@@ -85,19 +95,71 @@ class ZahnradGeometriePainter extends CustomPainter {
     // Da label (at top-right of Kopfkreis)
     final daAng = -math.pi / 6;
     _leaderLine(canvas, cx, cy, rA, daAng, labelX, cy - rA * 0.55, thin);
-    _label(canvas, 'Da = (z+2)·m', Offset(labelX + 4, cy - rA * 0.55), on, 8.5, left: true);
-    _label(canvas, '= 252 mm', Offset(labelX + 4, cy - rA * 0.55 + 11), on, 8.5, left: true);
+    _label(
+      canvas,
+      'Da = (z+2)·m',
+      Offset(labelX + 4, cy - rA * 0.55),
+      on,
+      8.5,
+      left: true,
+    );
+    _label(
+      canvas,
+      '= 252 mm',
+      Offset(labelX + 4, cy - rA * 0.55 + 11),
+      on,
+      8.5,
+      left: true,
+    );
 
     // d (Teilkreis) label (mid-right)
-    _leaderLine(canvas, cx, cy, rT, 0, labelX, cy, thin..color = Colors.blue.shade600);
-    _label(canvas, 'd = z · m', Offset(labelX + 4, cy - 5), Colors.blue.shade600, 8.5, left: true);
-    _label(canvas, '= 246 mm', Offset(labelX + 4, cy + 6), Colors.blue.shade600, 8.5, left: true);
+    _leaderLine(
+      canvas,
+      cx,
+      cy,
+      rT,
+      0,
+      labelX,
+      cy,
+      thin..color = Colors.blue.shade600,
+    );
+    _label(
+      canvas,
+      'd = z · m',
+      Offset(labelX + 4, cy - 5),
+      Colors.blue.shade600,
+      8.5,
+      left: true,
+    );
+    _label(
+      canvas,
+      '= 246 mm',
+      Offset(labelX + 4, cy + 6),
+      Colors.blue.shade600,
+      8.5,
+      left: true,
+    );
 
     // Df label (bottom-right)
     final dfAng = math.pi / 5;
-    _leaderLine(canvas, cx, cy, rF, dfAng, labelX, cy + rA * 0.55, thin..color = on.withAlpha(140));
-    _label(canvas, 'Df = (z−2,5)·m', Offset(labelX + 4, cy + rA * 0.55),
-        on.withAlpha(160), 8.5, left: true);
+    _leaderLine(
+      canvas,
+      cx,
+      cy,
+      rF,
+      dfAng,
+      labelX,
+      cy + rA * 0.55,
+      thin..color = on.withAlpha(140),
+    );
+    _label(
+      canvas,
+      'Df = (z−2,5)·m',
+      Offset(labelX + 4, cy + rA * 0.55),
+      on.withAlpha(160),
+      8.5,
+      left: true,
+    );
 
     // m and z annotation bottom-left
     _label(canvas, 'm = 3', Offset(cx - rA - 4, cy + rA * 0.3), on, 9);
@@ -111,23 +173,44 @@ class ZahnradGeometriePainter extends CustomPainter {
     var a = 0.0;
     while (a < 2 * math.pi) {
       canvas.drawArc(
-          Rect.fromCircle(center: center, radius: radius), a, dash, false, paint);
+        Rect.fromCircle(center: center, radius: radius),
+        a,
+        dash,
+        false,
+        paint,
+      );
       a += dash + gap;
     }
   }
 
-  void _leaderLine(Canvas canvas, double cx, double cy, double r, double ang,
-      double toX, double toY, Paint paint) {
+  void _leaderLine(
+    Canvas canvas,
+    double cx,
+    double cy,
+    double r,
+    double ang,
+    double toX,
+    double toY,
+    Paint paint,
+  ) {
     final fromX = cx + r * math.cos(ang);
     final fromY = cy + r * math.sin(ang);
     canvas.drawLine(Offset(fromX, fromY), Offset(toX, toY), paint);
   }
 
-  void _label(Canvas canvas, String text, Offset pos, Color color,
-      double fontSize, {bool left = false}) {
+  void _label(
+    Canvas canvas,
+    String text,
+    Offset pos,
+    Color color,
+    double fontSize, {
+    bool left = false,
+  }) {
     final tp = TextPainter(
       text: TextSpan(
-          text: text, style: TextStyle(color: color, fontSize: fontSize)),
+        text: text,
+        style: TextStyle(color: color, fontSize: fontSize),
+      ),
       textDirection: TextDirection.ltr,
     )..layout();
     final dx = left ? 0.0 : tp.width / 2;

@@ -5,9 +5,10 @@ enum QuizArt { freiUebung, heuteFaellig, themenVertiefung, pruefungssimulation }
 
 class QuizModus {
   final QuizArt art;
-  final String? kategorie;       // nur bei themenVertiefung
-  final String? pruefungsId;     // nur bei pruefungssimulation ("W22","S17","S19","S18")
-  final int? zeitlimitMinuten;   // nur bei pruefungssimulation
+  final String? kategorie; // nur bei themenVertiefung
+  final String?
+  pruefungsId; // nur bei pruefungssimulation ("W22","S17","S19","S18")
+  final int? zeitlimitMinuten; // nur bei pruefungssimulation
 
   const QuizModus.freiUebung()
     : art = QuizArt.freiUebung,
@@ -41,5 +42,6 @@ class QuizModus {
       zeitlimitMinuten == other.zeitlimitMinuten;
 
   @override
-  int get hashCode => Object.hash(art, kategorie, pruefungsId, zeitlimitMinuten);
+  int get hashCode =>
+      Object.hash(art, kategorie, pruefungsId, zeitlimitMinuten);
 }

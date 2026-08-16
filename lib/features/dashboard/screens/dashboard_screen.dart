@@ -33,9 +33,7 @@ class DashboardScreen extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('AP2 Industriemechaniker'),
-      ),
+      appBar: AppBar(title: const Text('AP2 Industriemechaniker')),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [

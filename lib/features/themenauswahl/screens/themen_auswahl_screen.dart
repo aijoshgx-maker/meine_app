@@ -120,10 +120,10 @@ class _BereichHeader extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             bereich.titel,
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall
-                ?.copyWith(color: cs.primary, fontWeight: FontWeight.bold),
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(
+              color: cs.primary,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),

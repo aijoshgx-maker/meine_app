@@ -22,11 +22,11 @@ Erzeugt von `tool/report_fragen.dart`.
 | fertigungstechnik_cnc_grundlagen.json | 25 | 6 | 3 | 7 | 2 | 3 | 2 | 1 | 1 |
 | fertigungstechnik_fertigungs_arbeitsplanung.json | 15 | 1 | 2 | 2 | 3 | 3 | 2 | 1 | 1 |
 | fertigungstechnik_fuegeverfahren.json | 15 | 2 | 2 | 2 | 3 | 2 | 2 | 1 | 1 |
-| fertigungstechnik_mess_prueftechnik.json | 15 | 1 | 2 | 1 | 2 | 4 | 3 | 1 | 1 |
+| fertigungstechnik_mess_prueftechnik.json | 16 | 1 | 2 | 1 | 3 | 4 | 3 | 1 | 1 |
 | fertigungstechnik_qualitaetssicherung.json | 24 | 9 | 2 | 4 | 2 | 3 | 2 | 1 | 1 |
 | fertigungstechnik_schnittdaten.json | 16 | 2 | 1 | 6 | 2 | 2 | 2 | 1 | 0 |
 | fertigungstechnik_umformen_trennen.json | 16 | 0 | 2 | 2 | 2 | 4 | 3 | 2 | 1 |
-| fertigungstechnik_werkstoffe_waermebehandlung.json | 24 | 11 | 2 | 2 | 2 | 2 | 2 | 2 | 1 |
+| fertigungstechnik_werkstoffe_waermebehandlung.json | 24 | 12 | 2 | 1 | 2 | 2 | 2 | 2 | 1 |
 | fertigungstechnik_werkzeuge_schneidstoffe.json | 15 | 2 | 2 | 1 | 2 | 4 | 2 | 1 | 1 |
 | fertigungstechnik_wirtschaftliche_fertigung.json | 15 | 1 | 2 | 3 | 3 | 2 | 2 | 1 | 1 |
 | fertigungstechnik_zerspanung_grundlagen.json | 16 | 2 | 2 | 2 | 2 | 3 | 2 | 2 | 1 |
@@ -35,29 +35,29 @@ Erzeugt von `tool/report_fragen.dart`.
 | wiso_betriebsorganisation.json | 15 | 2 | 2 | 1 | 3 | 3 | 2 | 1 | 1 |
 | wiso_entgelt.json | 15 | 2 | 2 | 3 | 2 | 2 | 2 | 1 | 1 |
 | wiso_kaufvertrag.json | 24 | 10 | 2 | 3 | 3 | 2 | 2 | 1 | 1 |
-| wiso_markt_preisbildung.json | 15 | 2 | 2 | 2 | 3 | 2 | 2 | 1 | 1 |
-| wiso_sozialversicherung.json | 24 | 9 | 2 | 4 | 3 | 2 | 2 | 1 | 1 |
+| wiso_markt_preisbildung.json | 15 | 3 | 2 | 1 | 3 | 2 | 2 | 1 | 1 |
+| wiso_sozialversicherung.json | 24 | 10 | 2 | 3 | 3 | 2 | 2 | 1 | 1 |
 | wiso_tarifrecht.json | 24 | 11 | 2 | 0 | 3 | 3 | 3 | 1 | 1 |
 | wiso_verbraucherschutz.json | 15 | 2 | 3 | 0 | 3 | 3 | 2 | 1 | 1 |
 | wiso_wirtschaftskreislauf.json | 15 | 2 | 2 | 1 | 3 | 3 | 2 | 1 | 1 |
 
 ## Gesamt
 
-- Fragen gesamt: 680
+- Fragen gesamt: 681
 - Dateien: 34
 
 ### Bereiche
 
 - auftragsanalyse: 307
-- fertigungstechnik: 196
+- fertigungstechnik: 197
 - wiso: 177
 
 ### Typverteilung
 
-- single: 168
-- rechnung: 100
+- single: 171
 - kurzantwort: 100
-- wahrfalsch: 86
+- rechnung: 97
+- wahrfalsch: 87
 - multi: 76
 - lueckentext: 72
 - zuordnung: 43
@@ -66,16 +66,16 @@ Erzeugt von `tool/report_fragen.dart`.
 ### Schwierigkeitsverteilung
 
 - 1: 173
-- 2: 416
+- 2: 417
 - 3: 91
 
-### Positionsverteilung der richtigen Antwort (single, gesamt 168)
+### Positionsverteilung der richtigen Antwort (single, gesamt 171)
 
-- Position 0: 50
-- Position 1: 57
-- Position 2: 40
-- Position 3: 17
-- Position 4: 4
+- Position 0: 37
+- Position 1: 43
+- Position 2: 30
+- Position 3: 32
+- Position 4: 29
 
 ## Warnungen / Fehler
 

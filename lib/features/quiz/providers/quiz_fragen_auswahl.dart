@@ -34,18 +34,20 @@ class QuizFragenAuswahl {
         // nicht doppelt – wir servieren einfach nur die ersten N.
         return faellige.take(_tageslimit).toList();
       case QuizArt.themenVertiefung:
-        final auswahl =
-            alle.where((f) => f.kategorie == modus.kategorie).toList();
+        final auswahl = alle
+            .where((f) => f.kategorie == modus.kategorie)
+            .toList();
         auswahl.shuffle(zufall);
         return auswahl;
       case QuizArt.pruefungssimulation:
         // Nur die Fragen der gewählten Prüfung, in der originalen Reihenfolge.
         final pruefungsId = modus.pruefungsId!;
-        final pruefungsFragen = alle
-            .where((f) => f.pruefung == pruefungsId)
-            .toList()
-          ..sort((a, b) =>
-              (a.pruefungReihenfolge ?? 0).compareTo(b.pruefungReihenfolge ?? 0));
+        final pruefungsFragen =
+            alle.where((f) => f.pruefung == pruefungsId).toList()..sort(
+              (a, b) => (a.pruefungReihenfolge ?? 0).compareTo(
+                b.pruefungReihenfolge ?? 0,
+              ),
+            );
         return pruefungsFragen;
     }
   }

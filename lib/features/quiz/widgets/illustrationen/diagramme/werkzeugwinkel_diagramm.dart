@@ -21,7 +21,7 @@ class WerkzeugwinkelPainter extends CustomPainter {
 
     // Werkzeug-Körper (Dreieck)
     const gammaRad = 10 * pi / 180; // Spanwinkel γ = 10°
-    const alphaRad = 8 * pi / 180;  // Freiwinkel α = 8°
+    const alphaRad = 8 * pi / 180; // Freiwinkel α = 8°
     final tipX = cx;
     final tipY = cy;
     final spanFaceLen = size.height * 0.55;
@@ -54,26 +54,78 @@ class WerkzeugwinkelPainter extends CustomPainter {
       ..color = cs.outline.withAlpha(120)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
-    canvas.drawLine(Offset(tipX, tipY - size.height * 0.65), Offset(tipX, tipY + 10), paint);
+    canvas.drawLine(
+      Offset(tipX, tipY - size.height * 0.65),
+      Offset(tipX, tipY + 10),
+      paint,
+    );
 
-    final textStyle = TextStyle(color: cs.onSurface, fontSize: 11, fontWeight: FontWeight.w600);
+    final textStyle = TextStyle(
+      color: cs.onSurface,
+      fontSize: 11,
+      fontWeight: FontWeight.w600,
+    );
 
     // Beschriftungen
-    _text(canvas, 'α (Freiwinkel)', Offset(cx + 18, cy - 14), textStyle, cs.secondary);
-    _text(canvas, 'β (Keilwinkel)', Offset(cx - 12, cy - 52), textStyle, cs.primary);
-    _text(canvas, 'γ (Spanwinkel)', Offset(cx - 90, cy - 70), textStyle, cs.tertiary);
+    _text(
+      canvas,
+      'α (Freiwinkel)',
+      Offset(cx + 18, cy - 14),
+      textStyle,
+      cs.secondary,
+    );
+    _text(
+      canvas,
+      'β (Keilwinkel)',
+      Offset(cx - 12, cy - 52),
+      textStyle,
+      cs.primary,
+    );
+    _text(
+      canvas,
+      'γ (Spanwinkel)',
+      Offset(cx - 90, cy - 70),
+      textStyle,
+      cs.tertiary,
+    );
 
     // Winkelbögen
-    _bogen(canvas, Offset(tipX, tipY), 24, -pi / 2, -pi / 2 + gammaRad, cs.tertiary);   // γ
-    _bogen(canvas, Offset(tipX, tipY), 38, 0, alphaRad, cs.secondary);                    // α
-    _bogen(canvas, Offset(tipX, tipY), 28, alphaRad, pi / 2 - gammaRad, cs.primary);     // β
+    _bogen(
+      canvas,
+      Offset(tipX, tipY),
+      24,
+      -pi / 2,
+      -pi / 2 + gammaRad,
+      cs.tertiary,
+    ); // γ
+    _bogen(canvas, Offset(tipX, tipY), 38, 0, alphaRad, cs.secondary); // α
+    _bogen(
+      canvas,
+      Offset(tipX, tipY),
+      28,
+      alphaRad,
+      pi / 2 - gammaRad,
+      cs.primary,
+    ); // β
 
     // Beschriftung Werkstück
-    _text(canvas, 'Werkstückoberfläche', Offset(size.width - 105, cy + 8),
-          TextStyle(color: cs.outline, fontSize: 9), cs.outline);
+    _text(
+      canvas,
+      'Werkstückoberfläche',
+      Offset(size.width - 105, cy + 8),
+      TextStyle(color: cs.outline, fontSize: 9),
+      cs.outline,
+    );
   }
 
-  void _bogen(Canvas canvas, Offset center, double r, double start, double end, Color color) {
+  void _bogen(
+    Canvas canvas,
+    Offset center,
+    double r,
+    double start,
+    double end,
+    Color color,
+  ) {
     final paint = Paint()
       ..color = color
       ..strokeWidth = 1.5
@@ -82,9 +134,18 @@ class WerkzeugwinkelPainter extends CustomPainter {
     canvas.drawArc(rect, start, end - start, false, paint);
   }
 
-  void _text(Canvas canvas, String text, Offset pos, TextStyle style, Color color) {
+  void _text(
+    Canvas canvas,
+    String text,
+    Offset pos,
+    TextStyle style,
+    Color color,
+  ) {
     final tp = TextPainter(
-      text: TextSpan(text: text, style: style.copyWith(color: color)),
+      text: TextSpan(
+        text: text,
+        style: style.copyWith(color: color),
+      ),
       textDirection: TextDirection.ltr,
     )..layout();
     tp.paint(canvas, pos);

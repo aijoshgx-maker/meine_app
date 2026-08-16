@@ -66,7 +66,8 @@ final _testFragen = [
     paare: [],
     luecken: [],
     akzeptierteKurzantworten: [],
-    erklaerung: 'vc ist die Relativgeschwindigkeit zwischen Schneide und Werkstück.',
+    erklaerung:
+        'vc ist die Relativgeschwindigkeit zwischen Schneide und Werkstück.',
     schwierigkeit: 1,
   ),
 ];

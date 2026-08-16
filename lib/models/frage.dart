@@ -94,9 +94,7 @@ class Frage {
       paare: (json['paare'] as List? ?? [])
           .map((p) => Paar.fromJson(p as Map<String, dynamic>))
           .toList(),
-      luecken: (json['luecken'] as List? ?? [])
-          .map((l) => strList(l))
-          .toList(),
+      luecken: (json['luecken'] as List? ?? []).map((l) => strList(l)).toList(),
       loesungswert: (json['loesungswert'] as num?)?.toDouble(),
       einheit: json['einheit'] as String?,
       toleranz: (json['toleranz'] as num?)?.toDouble(),

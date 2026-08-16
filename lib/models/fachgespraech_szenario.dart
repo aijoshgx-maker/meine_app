@@ -25,8 +25,9 @@ class FachgespraechFrage {
         id: j['id'] as String,
         pruefer: j['pruefer'] as String,
         musterloesung: j['musterloesung'] as String,
-        schluesselwoerter:
-            (j['schluesselwoerter'] as List).map((e) => e as String).toList(),
+        schluesselwoerter: (j['schluesselwoerter'] as List)
+            .map((e) => e as String)
+            .toList(),
         erklaerung: j['erklaerung'] as String,
         schwierigkeit: j['schwierigkeit'] as int,
         bildAsset: j['bildAsset'] as String?,
@@ -59,20 +60,19 @@ class FachgespraechSzenario {
         kontext: j['kontext'] as String,
         fertigungsauftrag: j['fertigungsauftrag'] as String,
         zeichnungsKey: j['zeichnungsKey'] as String?,
-        kategorien:
-            (j['kategorien'] as List).map((e) => e as String).toList(),
+        kategorien: (j['kategorien'] as List).map((e) => e as String).toList(),
         fragen: (j['fragen'] as List)
             .map((e) => FachgespraechFrage.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
 
   static Future<List<FachgespraechSzenario>> ladeAlle() async {
-    final raw = await rootBundle
-        .loadString('assets/fragen/fachgespraech_szenarien.json');
+    final raw = await rootBundle.loadString(
+      'assets/fragen/fachgespraech_szenarien.json',
+    );
     final list = jsonDecode(raw) as List;
     return list
-        .map((e) =>
-            FachgespraechSzenario.fromJson(e as Map<String, dynamic>))
+        .map((e) => FachgespraechSzenario.fromJson(e as Map<String, dynamic>))
         .toList();
   }
 }

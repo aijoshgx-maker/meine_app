@@ -10,7 +10,8 @@ class TimerZustand {
 
   const TimerZustand({required this.verbleibend, this.pausiert = false});
 
-  TimerZustand copyWith({Duration? verbleibend, bool? pausiert}) => TimerZustand(
+  TimerZustand copyWith({Duration? verbleibend, bool? pausiert}) =>
+      TimerZustand(
         verbleibend: verbleibend ?? this.verbleibend,
         pausiert: pausiert ?? this.pausiert,
       );

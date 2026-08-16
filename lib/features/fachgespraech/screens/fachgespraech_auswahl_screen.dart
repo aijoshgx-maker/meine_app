@@ -61,11 +61,13 @@ class FachgespraechAuswahlScreen extends ConsumerWidget {
                         spacing: 4,
                         runSpacing: 4,
                         children: s.kategorien
-                            .map((k) => Chip(
-                                  label: Text(k),
-                                  visualDensity: VisualDensity.compact,
-                                  padding: EdgeInsets.zero,
-                                ))
+                            .map(
+                              (k) => Chip(
+                                label: Text(k),
+                                visualDensity: VisualDensity.compact,
+                                padding: EdgeInsets.zero,
+                              ),
+                            )
                             .toList(),
                       ),
                     ],
@@ -75,8 +77,7 @@ class FachgespraechAuswahlScreen extends ConsumerWidget {
             );
           },
         ),
-        loading: () =>
-            const Center(child: CircularProgressIndicator()),
+        loading: () => const Center(child: CircularProgressIndicator()),
         error: (e, _) => Center(child: Text('Fehler: $e')),
       ),
     );
