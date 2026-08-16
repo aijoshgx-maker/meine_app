@@ -408,13 +408,13 @@
     "id": "wi-sv-015",
     "bereich": "wiso",
     "kategorie": "Sozialversicherung",
-    "typ": "rechnung",
-    "frage": "Ein Arbeitnehmer war 24 Monate arbeitslos und bezog in den letzten 30 Monaten 18 Monate Beiträge zur Arbeitslosenversicherung. Hat er Anspruch auf ALG I und für wie lange? (Regelfall unter 50 J.)",
+    "typ": "single",
+    "frage": "Ein Arbeitnehmer war in den letzten 30 Monaten 18 Monate sozialversicherungspflichtig beschäftigt und meldet sich nun arbeitslos. Hat er Anspruch auf ALG I und für wie lange? (Regelfall unter 50 J.)",
     "optionen": [
-      "Ja, für 12 Monate",
+      "Ja, für 9 Monate",
       "Nein, Anspruch nicht erfüllt (weniger als 12 Monate)",
-      "Ja, für 18 Monate",
-      "Ja, für 24 Monate"
+      "Ja, für 12 Monate",
+      "Ja, für 18 Monate"
     ],
     "richtigeIndizes": [
       0
@@ -427,10 +427,10 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Anspruchsvoraussetzung: Mind. 12 Monate Beiträge in 30-Monats-Rahmenfrist. Mit 18 Monaten ist diese Bedingung erfüllt → Anspruch besteht. Anspruchsdauer für Versicherte unter 50 Jahren mit 18 Beitragsmonaten: 9 Monate ALG I (Faustformel: ½ der Versicherungszeit, max. 12 Monate unter 50 J. mit mind. 24 Monaten).",
+    "erklaerung": "Anspruchsvoraussetzung (§ 142 SGB III): Mind. 12 Monate Versicherungspflichtverhältnis in der 30-Monats-Rahmenfrist. Mit 18 Beitragsmonaten ist diese Bedingung erfüllt → Anspruch besteht. Anspruchsdauer für Versicherte unter 50 Jahren mit 18 Versicherungsmonaten: 9 Monate ALG I (Faustformel: ½ der Versicherungszeit; die genaue Staffelung steht in § 147 Abs. 2 SGB III).",
     "selfExplanationPrompt": null,
     "bildAsset": null,
-    "workedExample": "Beitragsmonate: 18 ≥ 12 → Anspruch erfüllt\nDauer: 18 Monate Versicherungszeit → 9 Monate ALG I (unter 50 J.)\nBei mind. 24 Monaten: 12 Monate Bezugsdauer",
+    "workedExample": null,
     "schwierigkeit": 3
   },
   {

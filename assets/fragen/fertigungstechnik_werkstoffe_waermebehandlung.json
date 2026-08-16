@@ -118,7 +118,7 @@
     "id": "ft-ww-005",
     "bereich": "fertigungstechnik",
     "kategorie": "Werkstoffe und Wärmebehandlung",
-    "typ": "rechnung",
+    "typ": "single",
     "frage": "Ein Bauteil soll auf 60 HRC vergütet werden. Im ZTU-Diagramm ist abzulesen, dass die kritische Abkühlrate bei 100 K/s liegt. Die Abkühlung in Öl erreicht 80 K/s. Wird die erforderliche Härte erreicht?",
     "optionen": [
       "Ja, weil v_Öl > v_krit",
@@ -140,7 +140,7 @@
     "erklaerung": "v_Öl = 80 K/s < v_krit = 100 K/s → Abkühlrate im Öl reicht nicht aus → kein vollständiger Martensit → Härte < 60 HRC. Lösung: Abschrecken in Wasser (schneller) oder Legierungsanpassung (Cr, Ni, Mo vergrößern Martensitbereich, senken kritische Abkühlrate = bessere Einhärtbarkeit).",
     "selfExplanationPrompt": null,
     "bildAsset": null,
-    "workedExample": "v_Öl = 80 K/s < v_krit = 100 K/s → Abkühlrate unzureichend → Zieldichte nicht erreichbar",
+    "workedExample": null,
     "schwierigkeit": 3
   },
   {

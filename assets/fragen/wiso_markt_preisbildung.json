@@ -192,7 +192,7 @@
     "id": "wi-mp-013",
     "bereich": "wiso",
     "kategorie": "Markt und Preisbildung",
-    "typ": "rechnung",
+    "typ": "single",
     "frage": "Ein Unternehmen verkauft 500 Einheiten zum Preis von 40 €. Umsatz = 20 000 €. Durch eine Preissenkung auf 35 € steigt der Absatz auf 650 Einheiten. Hat sich der Umsatz erhöht?",
     "optionen": ["Ja, Umsatz steigt auf 22 750 €", "Nein, Umsatz sinkt auf 17 500 €", "Umsatz bleibt gleich", "Kann nicht berechnet werden"],
     "richtigeIndizes": [0],
@@ -201,7 +201,7 @@
     "akzeptierteKurzantworten": [], "wahr": null,
     "erklaerung": "Neuer Umsatz = 35 € × 650 = 22 750 € > 20 000 €. Umsatz steigt um 2750 €. Mengeneffekt (650-500=150 × 35 = +5250 €) überwiegt den Preiseffekt (−5 × 500 = −2500 €). Dies ist typisch bei elastischer Nachfrage (|ε| > 1): Preissenkung → Umsatzsteigerung. Bei unelastischer Nachfrage: Preissenkung → Umsatzsenkung.",
     "selfExplanationPrompt": null, "bildAsset": null,
-    "workedExample": "Alter Umsatz: 500 × 40 = 20 000 €\nNeuer Umsatz: 650 × 35 = 22 750 €\nΔ Umsatz: +2750 € → Umsatz gestiegen",
+    "workedExample": null,
     "schwierigkeit": 2
   },
   {
