@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart' show setEquals;
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/quiz/options_shuffle.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart';
 import '../../../data/attempt_history_store.dart';
 import '../../../data/frage_repository.dart';
@@ -47,11 +48,18 @@ enum FragePhase { antworten, konfidenz, aufgedeckt }
 
 class AntwortZustand {
   final FragePhase phase;
-  final Set<int> ausgewaehlteIndizes; // single/multi/wahrfalsch (0=Falsch,1=Wahr)
-  final Map<int, int> zuordnungsAuswahl; // zuordnung: linkerIdx → rechtsIdx (sortiert)
+  final Set<int>
+  ausgewaehlteIndizes; // single/multi/wahrfalsch (0=Falsch,1=Wahr)
+  final Map<int, int>
+  zuordnungsAuswahl; // zuordnung: linkerIdx → Original-Index von paare[].rechts
   final String freitext; // rechnung/kurzantwort
   final Map<int, String> lueckenAntworten; // lueckentext: Lückenindex → Eingabe
-  final List<int> reihenfolgeAuswahl; // reihenfolge: aktuelle Sortierung als Optionsindizes
+  final List<int>
+  reihenfolgeAuswahl; // reihenfolge: aktuelle Sortierung als Optionsindizes
+  // Anzeigereihenfolge (Original-Indizes), pro Frage-Anzeige neu gemischt.
+  // An Position i steht der Original-Index des dort angezeigten Elements.
+  final List<int> optionenReihenfolge; // single/multi: für frage.optionen
+  final List<int> zuordnungRechteReihenfolge; // zuordnung: für paare[].rechts
   final Konfidenz? konfidenz;
   final bool? korrekt;
   final String selbsterklaerung;
@@ -63,10 +71,37 @@ class AntwortZustand {
     this.freitext = '',
     this.lueckenAntworten = const {},
     this.reihenfolgeAuswahl = const [],
+    this.optionenReihenfolge = const [],
+    this.zuordnungRechteReihenfolge = const [],
     this.konfidenz,
     this.korrekt,
     this.selbsterklaerung = '',
   });
+
+  // Neuer Zustand für den ersten Aufruf einer Frage: mischt die
+  // Anzeigereihenfolgen frisch (neuer Seed pro Anzeige, nicht pro Session)
+  // und initialisiert bei "reihenfolge"-Fragen die Startanordnung ebenfalls
+  // gemischt statt in Original-Reihenfolge.
+  factory AntwortZustand.fuerFrage(Frage frage, math.Random zufall) {
+    final optionenReihenfolge = berechneAnzeigeReihenfolge(
+      frage.optionen.length,
+      zufall,
+      istAnker: (i) => istAnkerOptionstext(frage.optionen[i]),
+    );
+    final zuordnungRechteReihenfolge = berechneAnzeigeReihenfolge(
+      frage.paare.length,
+      zufall,
+      istAnker: (i) => istAnkerOptionstext(frage.paare[i].rechts),
+    );
+    final reihenfolgeStart = frageTypVon(frage.typ) == FrageTyp.reihenfolge
+        ? berechneAnzeigeReihenfolge(frage.optionen.length, zufall)
+        : const <int>[];
+    return AntwortZustand(
+      optionenReihenfolge: optionenReihenfolge,
+      zuordnungRechteReihenfolge: zuordnungRechteReihenfolge,
+      reihenfolgeAuswahl: reihenfolgeStart,
+    );
+  }
 
   AntwortZustand copyWith({
     FragePhase? phase,
@@ -86,6 +121,8 @@ class AntwortZustand {
       freitext: freitext ?? this.freitext,
       lueckenAntworten: lueckenAntworten ?? this.lueckenAntworten,
       reihenfolgeAuswahl: reihenfolgeAuswahl ?? this.reihenfolgeAuswahl,
+      optionenReihenfolge: optionenReihenfolge,
+      zuordnungRechteReihenfolge: zuordnungRechteReihenfolge,
       konfidenz: konfidenz ?? this.konfidenz,
       korrekt: korrekt ?? this.korrekt,
       selbsterklaerung: selbsterklaerung ?? this.selbsterklaerung,
@@ -99,8 +136,9 @@ class QuizSessionState {
   final int index;
   final AntwortZustand antwort;
   final int richtigBeantwortet;
-  final int gesamtFragen;           // Ursprüngliche Fragenzahl (für Endanzeige)
-  final Set<String> uebersprungeneIds; // IDs bereits einmal übersprungener Fragen
+  final int gesamtFragen; // Ursprüngliche Fragenzahl (für Endanzeige)
+  final Set<String>
+  uebersprungeneIds; // IDs bereits einmal übersprungener Fragen
   final bool fertig;
 
   QuizSessionState({
@@ -164,7 +202,10 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
           kartenstaende: kartenstaende,
           zufall: math.Random(),
         );
-    return QuizSessionState(modus: modus, fragen: fragen);
+    final antwort = fragen.isEmpty
+        ? const AntwortZustand()
+        : AntwortZustand.fuerFrage(fragen.first, math.Random());
+    return QuizSessionState(modus: modus, fragen: fragen, antwort: antwort);
   }
 
   // Beendet die Session sofort (z.B. wenn das Zeitlimit einer
@@ -234,11 +275,13 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
       if (frage == null) return;
       final korrekt = _pruefeKorrektheit(frage, aktuell.antwort);
       korrekt ? HapticFeedback.lightImpact() : HapticFeedback.mediumImpact();
-      _aktualisiereAntwort(aktuell.antwort.copyWith(
-        phase: FragePhase.aufgedeckt,
-        korrekt: korrekt,
-        konfidenz: Konfidenz.geraten,
-      ));
+      _aktualisiereAntwort(
+        aktuell.antwort.copyWith(
+          phase: FragePhase.aufgedeckt,
+          korrekt: korrekt,
+          konfidenz: Konfidenz.geraten,
+        ),
+      );
       return;
     }
     _aktualisiereAntwort(aktuell.antwort.copyWith(phase: FragePhase.konfidenz));
@@ -257,11 +300,13 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     if (aktuell == null || frage == null) return;
     final korrekt = _pruefeKorrektheit(frage, aktuell.antwort);
     korrekt ? HapticFeedback.lightImpact() : HapticFeedback.mediumImpact();
-    _aktualisiereAntwort(aktuell.antwort.copyWith(
-      konfidenz: konfidenz,
-      phase: FragePhase.aufgedeckt,
-      korrekt: korrekt,
-    ));
+    _aktualisiereAntwort(
+      aktuell.antwort.copyWith(
+        konfidenz: konfidenz,
+        phase: FragePhase.aufgedeckt,
+        korrekt: korrekt,
+      ),
+    );
   }
 
   void aufdecken() {
@@ -283,8 +328,9 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     final frage = aktuell?.aktuelleFrage;
     if (aktuell == null || frage == null) return;
 
-    final bereitsMalUebersprungen =
-        aktuell.uebersprungeneIds.contains(frage.id);
+    final bereitsMalUebersprungen = aktuell.uebersprungeneIds.contains(
+      frage.id,
+    );
     final neueFragen = List<Frage>.of(aktuell.fragen);
     neueFragen.removeAt(aktuell.index);
 
@@ -294,8 +340,8 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     }
     // Zweiter Übersprung: endgültig entfernen.
 
-    final neueUebersprungene =
-        Set<String>.of(aktuell.uebersprungeneIds)..add(frage.id);
+    final neueUebersprungene = Set<String>.of(aktuell.uebersprungeneIds)
+      ..add(frage.id);
 
     if (neueFragen.isEmpty) {
       state = AsyncData(aktuell.copyWith(fertig: true));
@@ -303,12 +349,17 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     }
 
     final neuerIndex = aktuell.index.clamp(0, neueFragen.length - 1);
-    state = AsyncData(aktuell.copyWith(
-      fragen: neueFragen,
-      index: neuerIndex,
-      antwort: const AntwortZustand(),
-      uebersprungeneIds: neueUebersprungene,
-    ));
+    state = AsyncData(
+      aktuell.copyWith(
+        fragen: neueFragen,
+        index: neuerIndex,
+        antwort: AntwortZustand.fuerFrage(
+          neueFragen[neuerIndex],
+          math.Random(),
+        ),
+        uebersprungeneIds: neueUebersprungene,
+      ),
+    );
   }
 
   void selbsterklaerungSetzen(String text) {
@@ -327,14 +378,18 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
 
     if (modus.art == QuizArt.pruefungssimulation) {
       final neuerZaehler =
-          aktuell.richtigBeantwortet + (aktuell.antwort.korrekt == true ? 1 : 0);
+          aktuell.richtigBeantwortet +
+          (aktuell.antwort.korrekt == true ? 1 : 0);
       final naechsterIndex = aktuell.index + 1;
       state = AsyncData(
         naechsterIndex >= aktuell.fragen.length
             ? aktuell.copyWith(fertig: true, richtigBeantwortet: neuerZaehler)
             : aktuell.copyWith(
                 index: naechsterIndex,
-                antwort: const AntwortZustand(),
+                antwort: AntwortZustand.fuerFrage(
+                  aktuell.fragen[naechsterIndex],
+                  math.Random(),
+                ),
                 richtigBeantwortet: neuerZaehler,
               ),
       );
@@ -395,7 +450,10 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
           ? aktuell.copyWith(fertig: true, richtigBeantwortet: neuerZaehler)
           : aktuell.copyWith(
               index: naechsterIndex,
-              antwort: const AntwortZustand(),
+              antwort: AntwortZustand.fuerFrage(
+                aktuell.fragen[naechsterIndex],
+                math.Random(),
+              ),
               richtigBeantwortet: neuerZaehler,
             ),
     );
@@ -428,13 +486,13 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
         );
       case FrageTyp.zuordnung:
         if (frage.paare.isNotEmpty) {
-          // Neues Format: rechte Seite alphabetisch sortiert, Nutzer ordnet zu
-          final rechtsOptionen =
-              frage.paare.map((p) => p.rechts).toList()..sort();
+          // Neues Format: zuordnungsAuswahl[i] ist der Original-Index von
+          // paare[].rechts, den der Nutzer für den linken Eintrag i gewählt
+          // hat (unabhängig von der - ggf. gemischten - Anzeigereihenfolge).
           for (var i = 0; i < frage.paare.length; i++) {
             final ausgewaehlt = antwort.zuordnungsAuswahl[i];
             if (ausgewaehlt == null) return false;
-            if (rechtsOptionen[ausgewaehlt] != frage.paare[i].rechts) {
+            if (frage.paare[ausgewaehlt].rechts != frage.paare[i].rechts) {
               return false;
             }
           }

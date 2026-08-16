@@ -90,3 +90,30 @@ Originalzeichnung S18 gegenprüfen; danach `d`, die Fragestellung und
 `loesungswert` (aktuell `129.0`, bei d=28 → `29.0`) konsistent anpassen.
 
 ---
+
+## P6a — `au-tb-030` (vormals Duplikat von `au-ih-025`): `pruefung`-Tag entfernt statt geraten
+
+**Datei:** `assets/fragen/auftragsanalyse_technische_berechnungen.json`
+
+Beide Duplikate (`au-ih-025` und `au-tb-030`) trugen `"pruefung": "S18"` mit
+**unterschiedlichem** `pruefungReihenfolge` (13 bzw. 24) - beide behaupteten
+also, an zwei verschiedenen Positionen derselben echten IHK-Prüfung S18
+vorzukommen, mit praktisch identischem Rechenweg. Das ist für eine reale,
+einmalige Prüfung unplausibel; mindestens einer der beiden `pruefung`-Tags
+war vermutlich von Anfang an falsch gesetzt (evtl. beim Duplizieren
+mitkopiert).
+
+**Entscheidung für diesen Commit:** `au-ih-025` unverändert gelassen
+(existierender Zustand, keine neue Behauptung). `au-tb-030` wurde durch
+eine neue, andere Kapazitätsrechnung ersetzt (P6a-Vorgabe) - die
+`pruefung`/`pruefungReihenfolge`-Felder wurden dabei entfernt (`null`),
+weil für eine neu erstellte Frage keine Grundlage besteht, sie als Teil der
+echten S18-Prüfung auszugeben.
+
+**Offen:** Ob `au-ih-025` tatsächlich Position 13 der echten S18-Prüfung
+ist, oder ob der Tag ebenfalls fehlerhaft war, lässt sich ohne die
+Originalprüfung nicht verifizieren. Bei Gelegenheit (z. B. im Rahmen von
+P8, wo die S18-Prüfungssimulation ohnehin geprüft wird) gegen die reale
+Prüfung abgleichen.
+
+---

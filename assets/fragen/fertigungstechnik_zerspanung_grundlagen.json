@@ -452,21 +452,21 @@
         "typ":  "reihenfolge",
         "frage":  "Bringe die spanenden Verfahren in die Reihenfolge von der geringsten zur höchsten erreichbaren Oberflächengüte (Ra-Wert abnehmend).",
         "optionen":  [
-                         "Bohren",
                          "Drehen (Schruppen)",
-                         "Drehen (Schlichten)",
                          "Feinschleifen",
-                         "Honen"
+                         "Honen",
+                         "Bohren",
+                         "Drehen (Schlichten)"
                      ],
         "richtigeIndizes":  [
 
                             ],
         "reihenfolge":  [
-                            0,
-                            1,
-                            2,
                             3,
-                            4
+                            0,
+                            4,
+                            1,
+                            2
                         ],
         "paare":  [
 

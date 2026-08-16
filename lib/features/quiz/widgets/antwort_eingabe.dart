@@ -24,8 +24,14 @@ class AntwortEingabe extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         switch (frageTypVon(frage.typ)) {
-          FrageTyp.single => _auswahlListe(mehrfach: false, controller: controller),
-          FrageTyp.multi => _auswahlListe(mehrfach: true, controller: controller),
+          FrageTyp.single => _auswahlListe(
+            mehrfach: false,
+            controller: controller,
+          ),
+          FrageTyp.multi => _auswahlListe(
+            mehrfach: true,
+            controller: controller,
+          ),
           FrageTyp.wahrfalsch => _wahrFalschButtons(context, controller),
           FrageTyp.zuordnung => _zuordnungListe(controller),
           FrageTyp.rechnung => _texteingabe(
@@ -67,34 +73,48 @@ class AntwortEingabe extends ConsumerWidget {
       case FrageTyp.kurzantwort:
         return antwort.freitext.trim().isNotEmpty;
       case FrageTyp.lueckentext:
-        if (antwort.lueckenAntworten.length < frage.luecken.length) return false;
-        return antwort.lueckenAntworten.values.every((v) => v.trim().isNotEmpty);
+        if (antwort.lueckenAntworten.length < frage.luecken.length) {
+          return false;
+        }
+        return antwort.lueckenAntworten.values.every(
+          (v) => v.trim().isNotEmpty,
+        );
       case FrageTyp.reihenfolge:
         return true;
     }
   }
 
+  // Anzeigereihenfolge (Original-Indizes von frage.optionen), pro
+  // Frage-Anzeige neu gemischt (siehe AntwortZustand.fuerFrage). An
+  // Position i steht der Original-Index des dort gezeigten Elements.
+  // Fallback auf Original-Reihenfolge, falls (noch) nicht gesetzt.
+  List<int> get _optionenAnzeige =>
+      antwort.optionenReihenfolge.length == frage.optionen.length
+      ? antwort.optionenReihenfolge
+      : List.generate(frage.optionen.length, (i) => i);
+
   Widget _auswahlListe({
     required bool mehrfach,
     required QuizSessionController controller,
   }) {
+    final anzeige = _optionenAnzeige;
     return Column(
       children: [
-        for (var i = 0; i < frage.optionen.length; i++)
+        for (final originalIndex in anzeige)
           mehrfach
               ? CheckboxListTile(
-                  title: Text(frage.optionen[i]),
-                  value: antwort.ausgewaehlteIndizes.contains(i),
-                  onChanged: (_) => controller.auswahlUmschalten(i),
+                  title: Text(frage.optionen[originalIndex]),
+                  value: antwort.ausgewaehlteIndizes.contains(originalIndex),
+                  onChanged: (_) => controller.auswahlUmschalten(originalIndex),
                 )
               : ListTile(
                   leading: Icon(
-                    antwort.ausgewaehlteIndizes.contains(i)
+                    antwort.ausgewaehlteIndizes.contains(originalIndex)
                         ? Icons.radio_button_checked
                         : Icons.radio_button_unchecked,
                   ),
-                  title: Text(frage.optionen[i]),
-                  onTap: () => controller.auswahlUmschalten(i),
+                  title: Text(frage.optionen[originalIndex]),
+                  onTap: () => controller.auswahlUmschalten(originalIndex),
                 ),
       ],
     );
@@ -129,8 +149,14 @@ class AntwortEingabe extends ConsumerWidget {
 
   Widget _zuordnungListe(QuizSessionController controller) {
     if (frage.paare.isNotEmpty) {
-      // Neues Format: rechte Optionen alphabetisch sortiert anzeigen
-      final rechtsOptionen = frage.paare.map((p) => p.rechts).toList()..sort();
+      // Rechte Spalte in der (pro Anzeige neu gemischten) Anzeigereihenfolge
+      // zeigen. Der Dropdown-Wert ist immer der Original-Index von
+      // paare[].rechts, unabhängig von der Anzeigeposition - so bleibt die
+      // Bewertungslogik unabhängig vom Shuffle.
+      final rechteAnzeige =
+          antwort.zuordnungRechteReihenfolge.length == frage.paare.length
+          ? antwort.zuordnungRechteReihenfolge
+          : List.generate(frage.paare.length, (i) => i);
       return Column(
         children: [
           for (var i = 0; i < frage.paare.length; i++)
@@ -151,17 +177,19 @@ class AntwortEingabe extends ConsumerWidget {
                       value: antwort.zuordnungsAuswahl[i],
                       hint: const Text('Zuordnen…'),
                       items: [
-                        for (var j = 0; j < rechtsOptionen.length; j++)
+                        for (final originalIndex in rechteAnzeige)
                           DropdownMenuItem(
-                            value: j,
+                            value: originalIndex,
                             child: Text(
-                              rechtsOptionen[j],
+                              frage.paare[originalIndex].rechts,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
                       ],
                       onChanged: (wert) {
-                        if (wert != null) controller.zuordnungAuswaehlen(i, wert);
+                        if (wert != null) {
+                          controller.zuordnungAuswaehlen(i, wert);
+                        }
                       },
                     ),
                   ),

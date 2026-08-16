@@ -156,19 +156,19 @@
     "typ": "reihenfolge",
     "frage": "Bringe die Schritte einer systematischen Funktionsanalyse in die richtige Reihenfolge.",
     "optionen": [
-      "Systemgrenzen festlegen",
       "Ein-/Ausgangsgrößen bestimmen",
-      "Teilfunktionen identifizieren",
       "Wirkprinzipien analysieren",
-      "Fehlerfolgen bewerten"
+      "Fehlerfolgen bewerten",
+      "Systemgrenzen festlegen",
+      "Teilfunktionen identifizieren"
     ],
     "richtigeIndizes": [],
     "reihenfolge": [
-      0,
-      1,
-      2,
       3,
-      4
+      0,
+      4,
+      1,
+      2
     ],
     "paare": [],
     "luecken": [],

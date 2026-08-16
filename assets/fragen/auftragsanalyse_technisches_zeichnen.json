@@ -253,13 +253,13 @@
     "typ": "reihenfolge",
     "frage": "Bringen Sie die Ansichten einer Erstwinkelprojektion in die korrekte räumliche Anordnung auf dem Zeichenblatt (von links nach rechts, dann oben nach unten).",
     "optionen": [
-      "Ansicht von rechts",
-      "Vorderansicht (Hauptansicht)",
+      "Draufsicht",
       "Ansicht von links",
-      "Draufsicht"
+      "Ansicht von rechts",
+      "Vorderansicht (Hauptansicht)"
     ],
     "richtigeIndizes": [],
-    "reihenfolge": [0, 1, 2, 3],
+    "reihenfolge": [2, 3, 1, 0],
     "paare": [],
     "luecken": [],
     "loesungswert": null,
