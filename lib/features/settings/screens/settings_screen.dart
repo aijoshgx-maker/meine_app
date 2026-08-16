@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../app/settings_providers.dart';
 
@@ -62,6 +63,20 @@ class SettingsScreen extends ConsumerWidget {
             ),
             value: remindersEnabled,
             onChanged: remindersController.setzen,
+          ),
+          const SizedBox(height: 24),
+          Text('Daten', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.backup_outlined),
+              title: const Text('Backup'),
+              subtitle: const Text(
+                'Lernstand exportieren oder wiederherstellen',
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => context.push('/settings/backup'),
+            ),
           ),
           const SizedBox(height: 24),
           Text('Über', style: Theme.of(context).textTheme.titleMedium),

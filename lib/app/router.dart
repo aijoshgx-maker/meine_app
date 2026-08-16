@@ -6,6 +6,7 @@ import '../features/fachgespraech/screens/fachgespraech_session_screen.dart';
 import '../features/pruefungssimulation/screens/pruefungs_auswahl_screen.dart';
 import '../features/quiz/providers/quiz_modus.dart';
 import '../features/quiz/screens/quiz_screen.dart';
+import '../features/settings/screens/backup_screen.dart';
 import '../features/settings/screens/settings_screen.dart';
 import '../features/themenauswahl/screens/themen_auswahl_screen.dart';
 import 'shell_scaffold.dart';
@@ -22,6 +23,10 @@ final router = GoRouter(
         GoRoute(
           path: '/settings',
           builder: (context, state) => const SettingsScreen(),
+        ),
+        GoRoute(
+          path: '/settings/backup',
+          builder: (context, state) => const BackupScreen(),
         ),
       ],
     ),
@@ -40,8 +45,9 @@ final router = GoRouter(
     GoRoute(
       path: '/fachgespraech/:szenarioId',
       builder: (context, state) => FachgespraechSessionScreen(
-        szenarioId:
-            Uri.decodeComponent(state.pathParameters['szenarioId'] ?? ''),
+        szenarioId: Uri.decodeComponent(
+          state.pathParameters['szenarioId'] ?? '',
+        ),
       ),
     ),
     GoRoute(
