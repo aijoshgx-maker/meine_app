@@ -228,12 +228,12 @@
     "bereich": "wiso",
     "kategorie": "Verbraucherschutz",
     "typ": "kurzantwort",
-    "frage": "Welches Recht ermöglicht Verbraucherverbänden, im Namen vieler betroffener Verbraucher eine gemeinsame Klage gegen ein Unternehmen einzureichen (seit 2018 in Deutschland und EU)?",
+    "frage": "Welches Recht ermöglicht Verbraucherverbänden, im Namen vieler betroffener Verbraucher eine gemeinsame Klage gegen ein Unternehmen einzureichen (seit Oktober 2023 im Verbraucherrechtedurchsetzungsgesetz/VDuG geregelt)?",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": ["Musterfeststellungsklage", "Verbandsklage", "Kollektivklage", "class action"],
+    "akzeptierteKurzantworten": ["Musterfeststellungsklage", "Abhilfeklage", "Verbandsklage", "Kollektivklage", "class action"],
     "wahr": null,
-    "erklaerung": "Musterfeststellungsklage (§ 606 ZPO, seit Nov. 2018): Verbraucherverbände (z.B. vzbv) können für mind. 10 betroffene Verbraucher klagen. Gericht stellt Tatsachen und Rechtsfragen fest. Bekanntes Beispiel: VW-Dieselskandal (Klage des vzbv). Vorteil: Verbraucher ohne Prozesskostenrisiko. EU: Verbandsklagerichtlinie (2023 umgesetzt) stärkt kollektiven Rechtsschutz.",
+    "erklaerung": "Seit 13.10.2023 im Verbraucherrechtedurchsetzungsgesetz (VDuG) geregelt - löste die bisherige Musterfeststellungsklage nach § 606 ZPO a.F. (seit Nov. 2018) ab. Verbraucherverbände (z.B. vzbv) können als Verbandsklage für eine Vielzahl betroffener Verbraucher klagen, Mindestquorum: 50 Verbraucher im Klageregister beim Bundesamt für Justiz. Neu hinzugekommen ist die Abhilfeklage, die direkt auf eine konkrete Leistung (z.B. Schadensersatz) zielt statt nur auf Feststellung. Bekanntes Beispiel (noch unter altem Recht): VW-Dieselskandal (Musterfeststellungsklage des vzbv). Vorteil: Verbraucher ohne Prozesskostenrisiko.",
     "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
   }
 ]

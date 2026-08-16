@@ -62,6 +62,7 @@ void main(List<String> args) {
   final diagKeys = _ladeDiagKeys(root);
   final assetPfade = _ladePubspecAssetOrdner(root);
   final manifestListe = _ladeManifest(fragenDir);
+  _pruefeRechtsstand(fragenDir);
 
   final alleDateien =
       fragenDir
@@ -619,6 +620,50 @@ List<String> _ladePubspecAssetOrdner(String root) {
     }
   }
   return pfade;
+}
+
+void _pruefeRechtsstand(Directory fragenDir) {
+  final file = File('${fragenDir.path}/_rechtsstand.json');
+  if (!file.existsSync()) {
+    warnung(
+      '_rechtsstand.json',
+      null,
+      'Datei fehlt - WISO-Rechtsstand ist nicht zentral gepflegt (siehe P4).',
+    );
+    return;
+  }
+  dynamic geparst;
+  try {
+    geparst = jsonDecode(file.readAsStringSync());
+  } catch (e) {
+    fehler('_rechtsstand.json', null, 'JSON nicht parsebar: $e');
+    return;
+  }
+  final stand = geparst is Map ? geparst['stand'] as String? : null;
+  if (stand == null) {
+    fehler('_rechtsstand.json', null, "Feld 'stand' fehlt oder ist null.");
+    return;
+  }
+  final standDatum = DateTime.tryParse(stand);
+  if (standDatum == null) {
+    fehler(
+      '_rechtsstand.json',
+      null,
+      "Feld 'stand' ist kein gültiges Datum: $stand",
+    );
+    return;
+  }
+  final altersInMonaten =
+      (DateTime.now().difference(standDatum).inDays) / 30.44;
+  if (altersInMonaten > 14) {
+    warnung(
+      '_rechtsstand.json',
+      null,
+      "WISO-Rechtsstand ('$stand') ist älter als 14 Monate "
+          '(${altersInMonaten.toStringAsFixed(1)} Monate) - Beitragssätze und '
+          'Rechengrößen prüfen und aktualisieren.',
+    );
+  }
 }
 
 Set<String> _ladeManifest(Directory fragenDir) {

@@ -152,11 +152,11 @@
     "bereich": "wiso",
     "kategorie": "Entgelt",
     "typ": "wahrfalsch",
-    "frage": "Sachbezüge (z.B. Jobticket, Essensgutscheine bis 6,90 €/Tag) können bis zu einem Freibetrag von 50 €/Monat steuer- und sozialversicherungsfrei an Arbeitnehmer gewährt werden.",
+    "frage": "Sachbezüge (z.B. Jobticket, Essensgutscheine bis 7,67 €/Tag) können bis zu einem Freibetrag von 50 €/Monat steuer- und sozialversicherungsfrei an Arbeitnehmer gewährt werden.",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": true,
-    "erklaerung": "Korrekt! § 8 Abs. 2 EStG: Sachbezüge bis 50 €/Monat sind steuer- und SV-frei (sog. Sachbezugsfreigrenze, bis 2021: 44 €). Beispiele: Benzingutschein, Einkaufsgutschein, Jobticket-Zuschuss. Wichtig: muss tatsächlich Sachleistung sein, kein Bargeld. Überschreitung des Freibetrags → gesamter Betrag wird steuer-/SV-pflichtig.",
+    "erklaerung": "Korrekt! § 8 Abs. 2 EStG: Sachbezüge bis 50 €/Monat sind steuer- und SV-frei (sog. Sachbezugsfreigrenze, bis 2021: 44 €). Beispiele: Benzingutschein, Einkaufsgutschein, Jobticket-Zuschuss. Essensgutscheine sind ein Sonderfall mit eigener Grenze: amtlicher Sachbezugswert 2026 für Mittag-/Abendessen 4,57 €, plus Zuschlag von max. 3,10 € steuerfrei möglich = bis 7,67 €/Tag. Wichtig: muss tatsächlich Sachleistung sein, kein Bargeld. Überschreitung des Freibetrags → gesamter Betrag wird steuer-/SV-pflichtig.",
     "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
   },
   {
