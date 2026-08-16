@@ -77,6 +77,7 @@ flutter:
     - assets/zeichnungen/S17/
     - assets/zeichnungen/S19/
     - assets/zeichnungen/S18/
+    - assets/kurse/ap2-industriemechaniker/kurs.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

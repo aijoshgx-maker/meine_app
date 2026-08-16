@@ -1,0 +1,72 @@
+{
+  "id": "ap2-industriemechaniker",
+  "titel": "AP2 Industriemechaniker",
+  "kurzbeschreibung": "Offline-Lern-App für die Abschlussprüfung Teil 2 Industriemechaniker (IHK): Auftrags- und Funktionsanalyse, Fertigungstechnik, Wirtschafts- und Sozialkunde, Fachgespräch und Prüfungssimulation.",
+  "sprache": "de",
+  "bereiche": [
+    {
+      "id": "auftragsanalyse",
+      "titel": "Auftrags- und Funktionsanalyse",
+      "farbe": "#3F6FBF"
+    },
+    {
+      "id": "fertigungstechnik",
+      "titel": "Fertigungstechnik",
+      "farbe": "#C4622D"
+    },
+    {
+      "id": "wiso",
+      "titel": "Wirtschafts- und Sozialkunde",
+      "farbe": "#3F8F5F"
+    }
+  ],
+  "pruefungen": [
+    { "code": "S17", "titel": "AP2 Sommer 2017", "zeichnungen": 3 },
+    { "code": "S18", "titel": "AP2 Sommer 2018", "zeichnungen": 3 },
+    { "code": "S19", "titel": "AP2 Sommer 2019", "zeichnungen": 4 },
+    { "code": "W22", "titel": "AP2 Winter 2022/23", "zeichnungen": 4 }
+  ],
+  "features": {
+    "fachgespraech": true,
+    "pruefungssimulation": true,
+    "zeichnungen": true
+  },
+  "fragenDateien": [
+    "auftragsanalyse_antriebstechnik.json",
+    "auftragsanalyse_elektrotechnik.json",
+    "auftragsanalyse_form_lagetoleranzen.json",
+    "auftragsanalyse_funktionsanalyse.json",
+    "auftragsanalyse_hydraulik.json",
+    "auftragsanalyse_instandhaltung.json",
+    "auftragsanalyse_maschinenelemente.json",
+    "auftragsanalyse_pneumatik.json",
+    "auftragsanalyse_steuerung_regelung.json",
+    "auftragsanalyse_technische_berechnungen.json",
+    "auftragsanalyse_technisches_zeichnen.json",
+    "auftragsanalyse_toleranzen_passungen.json",
+    "auftragsanalyse_werkstoffkunde.json",
+    "fertigungstechnik_zerspanung_grundlagen.json",
+    "fertigungstechnik_schnittdaten.json",
+    "fertigungstechnik_werkzeuge_schneidstoffe.json",
+    "fertigungstechnik_cnc_grundlagen.json",
+    "fertigungstechnik_fertigungs_arbeitsplanung.json",
+    "fertigungstechnik_fuegeverfahren.json",
+    "fertigungstechnik_umformen_trennen.json",
+    "fertigungstechnik_mess_prueftechnik.json",
+    "fertigungstechnik_qualitaetssicherung.json",
+    "fertigungstechnik_werkstoffe_waermebehandlung.json",
+    "fertigungstechnik_wirtschaftliche_fertigung.json",
+    "wiso_berufsausbildung.json",
+    "wiso_arbeitsvertrag.json",
+    "wiso_tarifrecht.json",
+    "wiso_sozialversicherung.json",
+    "wiso_entgelt.json",
+    "wiso_betriebsorganisation.json",
+    "wiso_markt_preisbildung.json",
+    "wiso_kaufvertrag.json",
+    "wiso_wirtschaftskreislauf.json",
+    "wiso_verbraucherschutz.json"
+  ],
+  "fachgespraechDatei": "fachgespraech_szenarien.json",
+  "rechtsstand": "_rechtsstand.json"
+}

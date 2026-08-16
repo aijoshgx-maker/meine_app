@@ -224,6 +224,30 @@ S17 und W22 gibt (dann ist alles korrekt so).
 
 ---
 
+## P11 — Umfang bewusst reduziert (Nutzerentscheidung)
+
+Auf Nachfrage wurde P11 auf 11a (Fundament) und 11c (Autorenformat)
+begrenzt. **Nicht umgesetzt:**
+
+- **11a, zweiter Teil:** Die Screens (Themenauswahl, Dashboard,
+  Prüfungssimulation, Shell-Scaffold-Kurswechsler) lesen ihre Struktur
+  weiterhin aus Konstanten/`_manifest.json`, NICHT aus `kurs.json`. Die
+  Datei existiert als Fundament/Zielformat, ist aber noch nicht verdrahtet.
+  FSRS-Karten sind noch nicht pro Kurs getrennt (kein Hive-Box-Name mit
+  Kurs-ID).
+- **11b:** Kein Import externer Fragensätze aus `.zip`. Keine
+  Validator-Integration beim Import.
+
+**Begründung:** Die App ist nach P0-P10 durchgehend validator-grün und
+getestet; eine echte Architekturänderung (jeder Screen liest jetzt aus
+einer Datei statt aus Code) hätte dieses Fundament in der verbleibenden
+Zeit unnötig riskiert. `kurs.json` beschreibt bereits korrekt den
+aktuellen Stand (Bereiche, Prüfungen, Features, Fragendateien) und kann
+als Ausgangspunkt für eine spätere Umsetzung dienen, ohne dass die Datei
+selbst nochmal geändert werden müsste.
+
+---
+
 ## P9 — automatischer wöchentlicher Export nicht umgesetzt
 
 P9 markiert diesen Punkt selbst als "Optional, aber sinnvoll". Aus
