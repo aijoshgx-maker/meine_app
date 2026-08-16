@@ -41,7 +41,7 @@
     "einheit": null,
     "toleranz": null,
     "akzeptierteKurzantworten": [],
-    "wahr": true,
+    "wahr": false,
     "erklaerung": "Bei der Erstwinkelprojektion (europäische Methode) wird das Objekt zwischen Betrachter und Zeichenebene gedacht. Die Ansicht von rechts erscheint daher links von der Vorderansicht – umgekehrt zur Drittwinkelprojektion.",
     "selfExplanationPrompt": null,
     "bildAsset": null,

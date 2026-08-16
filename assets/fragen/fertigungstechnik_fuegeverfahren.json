@@ -231,7 +231,7 @@
     "einheit": "N/mm²",
     "toleranz": 5.0,
     "akzeptierteKurzantworten": [], "wahr": null,
-    "erklaerung": "p ≈ E · U / D = 210 000 · 0,05 / 50 = 210 N/mm². Dies ist eine Näherung für gleiche Werkstoffe von Welle und Nabe. Übertragbares Drehmoment: M_t = µ · p · π · D² · l / 2 = 0,12 · 210 · π · 50² · 40 / 2 ≈ 39,6 kNm. Pressverband ist eine unlösbare, hochfeste Verbindung.",
+    "erklaerung": "p ≈ E · U / D = 210 000 · 0,05 / 50 = 210 N/mm². Dies ist eine Näherung für gleiche Werkstoffe von Welle und Nabe. Übertragbares Drehmoment: M_t = µ · p · π · D² · l / 2 = 0,12 · 210 · π · 50² · 40 / 2 ≈ 3,96 kNm. Pressverband ist eine unlösbare, hochfeste Verbindung.",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "p ≈ E · U / D = 210 000 N/mm² · 0,05 mm / 50 mm = 210 N/mm²",
     "schwierigkeit": 3

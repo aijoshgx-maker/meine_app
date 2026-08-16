@@ -78,7 +78,7 @@
     "typ": "rechnung",
     "frage": "Das Zeitspanvolumen beim Drehen wird berechnet. Gegeben: ap = 2 mm, f = 0,2 mm/U, vc = 150 m/min. Berechne Q in cm³/min.",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
-    "loesungswert": 6.0,
+    "loesungswert": 60.0,
     "einheit": "cm³/min",
     "toleranz": 0.2,
     "akzeptierteKurzantworten": [],
