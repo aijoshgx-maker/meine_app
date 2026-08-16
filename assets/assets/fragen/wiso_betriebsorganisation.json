@@ -81,13 +81,8 @@
     "kategorie": "Betriebsorganisation",
     "typ": "single",
     "frage": "Was ist eine Betriebsvereinbarung und welchen Rang hat sie gegenüber dem Arbeitsvertrag?",
-    "optionen": [
-      "Schriftliche Vereinbarung zwischen AG und BR; gilt wie ein Tarifvertrag direkt und unmittelbar und geht günstigeren Regelungen im Arbeitsvertrag vor",
-      "Mündliche Absprache zwischen AG und einzelnem AN",
-      "Vereinbarung, die nur dann gilt, wenn sie im Tarifvertrag vorgesehen ist",
-      "Interne Richtlinie des Arbeitgebers ohne Mitbestimmungspflicht"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Interne Richtlinie des Arbeitgebers ohne Mitbestimmungspflicht","Schriftliche Vereinbarung zwischen AG und BR; gilt wie ein Tarifvertrag direkt und unmittelbar und geht günstigeren Regelungen im Arbeitsvertrag vor","Mündliche Absprache zwischen AG und einzelnem AN","Vereinbarung, die nur dann gilt, wenn sie im Tarifvertrag vorgesehen ist"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
@@ -174,13 +169,8 @@
     "kategorie": "Betriebsorganisation",
     "typ": "single",
     "frage": "Welche Institution überwacht bei einer AG (Aktiengesellschaft) den Vorstand und wird von den Aktionären auf der Hauptversammlung gewählt?",
-    "optionen": [
-      "Aufsichtsrat",
-      "Betriebsrat",
-      "Wirtschaftsprüfer",
-      "Handelsregister"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Wirtschaftsprüfer","Handelsregister","Aufsichtsrat","Betriebsrat"],
+    "richtigeIndizes": [2],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,

@@ -54,7 +54,7 @@
     "toleranz": 5.0,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "GSVB = 40% × 3200 = 1280 €. Davon trägt der AN die Hälfte: 1280 / 2 = 640 €. Der AG zahlt ebenfalls 640 €. Tatsächlicher Satz 2025: KV ~14,6%, PV ~3,4%, RV 18,6%, AV 2,6% = gesamt ~39,2% (je hälftig, außer UV = nur AG). Exakte Werte können variieren.",
+    "erklaerung": "GSVB = 40% × 3200 = 1280 €. Davon trägt der AN die Hälfte: 1280 / 2 = 640 €. Der AG zahlt ebenfalls 640 €. Tatsächlicher Satz 2026: KV ~14,6%, PV ~3,6%, RV 18,6%, AV 2,6% = gesamt ~39,4% (je hälftig, außer UV = nur AG). Exakte Werte können variieren.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "GSVB = 40% · 3200 € = 1280 €\nAN-Anteil = 1280 € / 2 = 640 €",
@@ -111,7 +111,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": false,
-    "erklaerung": "Falsch! Die Beitragsbemessungsgrenze (BBG) begrenzt das beitragspflichtige Einkommen. Über der BBG fallen KEINE weiteren Sozialversicherungsbeiträge an. KV-BBG 2025: ca. 5175 €/Monat. RV/AV-BBG: ca. 8050 €/Monat (West). Oberhalb der KV-BBG können Arbeitnehmer in die private Krankenversicherung wechseln.",
+    "erklaerung": "Falsch! Die Beitragsbemessungsgrenze (BBG) begrenzt das beitragspflichtige Einkommen. Über der BBG fallen KEINE weiteren Sozialversicherungsbeiträge an. KV/PV-BBG 2026: 5 812,50 €/Monat. RV/AV-BBG 2026: 8 450 €/Monat (seit 2025 bundeseinheitlich, keine Ost/West-Unterscheidung mehr). Oberhalb der KV-BBG können Arbeitnehmer in die private Krankenversicherung wechseln.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -156,15 +156,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Welches Prinzip liegt der gesetzlichen Sozialversicherung in Deutschland zugrunde?",
-    "optionen": [
-      "Solidaritätsprinzip: Starke tragen mehr bei als Schwache; Leistung erfolgt nach Bedarf",
-      "Versicherungsprinzip: Nur wer Beiträge zahlt, erhält im gleichen Maß Leistungen",
-      "Kapitaldeckungsverfahren: Jeder spart für sich selbst an",
-      "Privatisierungsprinzip: Versicherung ist freiwillig"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Privatisierungsprinzip: Versicherung ist freiwillig","Solidaritätsprinzip: Starke tragen mehr bei als Schwache; Leistung erfolgt nach Bedarf","Versicherungsprinzip: Nur wer Beiträge zahlt, erhält im gleichen Maß Leistungen","Kapitaldeckungsverfahren: Jeder spart für sich selbst an"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -210,7 +203,7 @@
     "bereich": "wiso",
     "kategorie": "Sozialversicherung",
     "typ": "wahrfalsch",
-    "frage": "Minijobber (450-Euro-Job, jetzt 538-Euro-Job) sind vollständig von der Sozialversicherungspflicht befreit und erhalten damit keine Sozialversicherungsleistungen.",
+    "frage": "Minijobber (früher 450-Euro-Job, seit 2025 dynamisch an den Mindestlohn gekoppelt, 2026: 603-Euro-Job) sind vollständig von der Sozialversicherungspflicht befreit und erhalten damit keine Sozialversicherungsleistungen.",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
@@ -408,17 +401,10 @@
     "id": "wi-sv-015",
     "bereich": "wiso",
     "kategorie": "Sozialversicherung",
-    "typ": "rechnung",
-    "frage": "Ein Arbeitnehmer war 24 Monate arbeitslos und bezog in den letzten 30 Monaten 18 Monate Beiträge zur Arbeitslosenversicherung. Hat er Anspruch auf ALG I und für wie lange? (Regelfall unter 50 J.)",
-    "optionen": [
-      "Ja, für 12 Monate",
-      "Nein, Anspruch nicht erfüllt (weniger als 12 Monate)",
-      "Ja, für 18 Monate",
-      "Ja, für 24 Monate"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "typ": "single",
+    "frage": "Ein Arbeitnehmer war in den letzten 30 Monaten 18 Monate sozialversicherungspflichtig beschäftigt und meldet sich nun arbeitslos. Hat er Anspruch auf ALG I und für wie lange? (Regelfall unter 50 J.)",
+    "optionen": ["Ja, für 18 Monate","Ja, für 9 Monate","Nein, Anspruch nicht erfüllt (weniger als 12 Monate)","Ja, für 12 Monate"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -427,10 +413,10 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Anspruchsvoraussetzung: Mind. 12 Monate Beiträge in 30-Monats-Rahmenfrist. Mit 18 Monaten ist diese Bedingung erfüllt → Anspruch besteht. Anspruchsdauer für Versicherte unter 50 Jahren mit 18 Beitragsmonaten: 9 Monate ALG I (Faustformel: ½ der Versicherungszeit, max. 12 Monate unter 50 J. mit mind. 24 Monaten).",
+    "erklaerung": "Anspruchsvoraussetzung (§ 142 SGB III): Mind. 12 Monate Versicherungspflichtverhältnis in der 30-Monats-Rahmenfrist. Mit 18 Beitragsmonaten ist diese Bedingung erfüllt → Anspruch besteht. Anspruchsdauer für Versicherte unter 50 Jahren mit 18 Versicherungsmonaten: 9 Monate ALG I (Faustformel: ½ der Versicherungszeit; die genaue Staffelung steht in § 147 Abs. 2 SGB III).",
     "selfExplanationPrompt": null,
     "bildAsset": null,
-    "workedExample": "Beitragsmonate: 18 ≥ 12 → Anspruch erfüllt\nDauer: 18 Monate Versicherungszeit → 9 Monate ALG I (unter 50 J.)\nBei mind. 24 Monaten: 12 Monate Bezugsdauer",
+    "workedExample": null,
     "schwierigkeit": 3
   },
   {
@@ -439,16 +425,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Welcher Versicherungsträger ist in Deutschland für die Leistungen der Arbeitslosenversicherung zuständig?",
-    "optionen": [
-      "Die gesetzliche Krankenkasse (GKV)",
-      "Die Deutsche Rentenversicherung",
-      "Die Bundesagentur für Arbeit",
-      "Das zuständige Finanzamt",
-      "Die Berufsgenossenschaft"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Die Bundesagentur für Arbeit","Das zuständige Finanzamt","Die Berufsgenossenschaft","Die gesetzliche Krankenkasse (GKV)","Die Deutsche Rentenversicherung"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -469,16 +447,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Laura Schneider arbeitet als Facharbeiterin in einem Industriebetrieb und verdient 3 200 Euro brutto pro Monat. Wer trägt in der deutschen Sozialversicherung in der Regel die Beiträge?",
-    "optionen": [
-      "Arbeitnehmer und Arbeitgeber je zur Hälfte",
-      "Allein der Arbeitgeber",
-      "Allein der Arbeitnehmer",
-      "Der Staat aus Steuermitteln",
-      "Die Berufsgenossenschaft"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Allein der Arbeitgeber","Allein der Arbeitnehmer","Der Staat aus Steuermitteln","Die Berufsgenossenschaft","Arbeitnehmer und Arbeitgeber je zur Hälfte"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -529,16 +499,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Eine Auszubildende wird nach ihrer Ausbildung nicht übernommen und wird arbeitslos. Welche Aussage über ihre Krankenversicherung ist richtig?",
-    "optionen": [
-      "Mit Beginn der Arbeitslosigkeit erlischt ihre Krankenversicherung sofort.",
-      "Der Ausbildungsbetrieb muss die KV-Beiträge noch 2 Monate weiterzahlen.",
-      "Sie bleibt Mitglied ihrer Krankenkasse; die Bundesagentur für Arbeit zahlt die Beiträge.",
-      "Sie muss als Arbeitslose einer Betriebskrankenkasse beitreten.",
-      "Sie ist für die Dauer der Arbeitslosigkeit nur freiwillig versicherbar."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Sie ist für die Dauer der Arbeitslosigkeit nur freiwillig versicherbar.","Mit Beginn der Arbeitslosigkeit erlischt ihre Krankenversicherung sofort.","Der Ausbildungsbetrieb muss die KV-Beiträge noch 2 Monate weiterzahlen.","Sie bleibt Mitglied ihrer Krankenkasse; die Bundesagentur für Arbeit zahlt die Beiträge.","Sie muss als Arbeitslose einer Betriebskrankenkasse beitreten."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -559,16 +521,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Wie wird die gesetzliche Krankenversicherung (GKV) in Deutschland hauptsächlich finanziert?",
-    "optionen": [
-      "Ausschließlich durch staatliche Zuschüsse",
-      "Durch einkommensabhängige Beiträge von Arbeitgebern und Arbeitnehmern",
-      "Durch einkommensunabhängige Kopfbeiträge (Pauschalprämien)",
-      "Durch Beiträge der Rentner, nicht der Erwerbstätigen",
-      "Durch Mehrwertsteuereinnahmen des Bundes"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Durch einkommensunabhängige Kopfbeiträge (Pauschalprämien)","Durch Beiträge der Rentner, nicht der Erwerbstätigen","Durch Mehrwertsteuereinnahmen des Bundes","Ausschließlich durch staatliche Zuschüsse","Durch einkommensabhängige Beiträge von Arbeitgebern und Arbeitnehmern"],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -588,21 +542,21 @@
     "bereich": "wiso",
     "kategorie": "Sozialversicherung",
     "typ": "rechnung",
-    "frage": "Ein Auszubildender verdient monatlich 900 € brutto. Der GKV-Beitragssatz beträgt insgesamt 16,3 % (14,6 % + 1,7 % Zusatzbeitrag). AG und AN tragen je 50 %. Wie hoch ist der monatliche GKV-Anteil des Arbeitnehmers (in €)?",
+    "frage": "Ein Auszubildender verdient monatlich 900 € brutto. Der GKV-Beitragssatz beträgt insgesamt 17,5 % (14,6 % allgemeiner Satz + 2,9 % durchschnittlicher Zusatzbeitrag 2026). AG und AN tragen je 50 %. Wie hoch ist der monatliche GKV-Anteil des Arbeitnehmers (in €)?",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
-    "loesungswert": 73.35,
+    "loesungswert": 78.75,
     "einheit": "€",
     "toleranz": 0.1,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Gesamtbeitrag = 900 € · 16,3 % = 146,70 €. AN-Anteil = 146,70 / 2 = 73,35 €.",
+    "erklaerung": "Gesamtbeitrag = 900 € · 17,5 % = 157,50 €. AN-Anteil = 157,50 / 2 = 78,75 €.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
-    "workedExample": "Gesamtbeitrag = 900 · 0,163 = 146,70 €\nAN-Anteil = 146,70 / 2 = 73,35 €",
+    "workedExample": "Gesamtbeitrag = 900 · 0,175 = 157,50 €\nAN-Anteil = 157,50 / 2 = 78,75 €",
     "schwierigkeit": 2
   },
   {
@@ -641,16 +595,8 @@
     "kategorie": "Sozialversicherung",
     "typ": "single",
     "frage": "Paul Fleissig hat einen bis 30.06.2018 befristeten Arbeitsvertrag bei der Metall AG. Nach Vertragsende findet er keine neue Stelle. Bei welcher Behörde muss er sich melden, und welche Sozialversicherungsleistung kann er in Anspruch nehmen?",
-    "optionen": [
-      "Bei der gesetzlichen Krankenversicherung (GKV) für Krankengeld.",
-      "Bei der Agentur für Arbeit für Arbeitslosengeld I (ALG I) nach SGB III.",
-      "Beim Jobcenter für Bürgergeld (früher: Hartz IV) sofort ab dem ersten Tag.",
-      "Beim Rentenversicherungsträger für vorzeitige Rente.",
-      "Beim Gewerbeaufsichtsamt für Überbrückungshilfe."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Beim Gewerbeaufsichtsamt für Überbrückungshilfe.","Bei der gesetzlichen Krankenversicherung (GKV) für Krankengeld.","Bei der Agentur für Arbeit für Arbeitslosengeld I (ALG I) nach SGB III.","Beim Jobcenter für Bürgergeld (früher: Hartz IV) sofort ab dem ersten Tag.","Beim Rentenversicherungsträger für vorzeitige Rente."],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

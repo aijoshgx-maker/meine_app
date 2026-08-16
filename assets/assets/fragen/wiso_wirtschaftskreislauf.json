@@ -129,11 +129,11 @@
     "bereich": "wiso",
     "kategorie": "Wirtschaftskreislauf",
     "typ": "wahrfalsch",
-    "frage": "Die Europäische Zentralbank (EZB) ist für die Geldpolitik im Euroraum zuständig und hat als primäres Ziel die Preisstabilität (Inflation nahe aber unter 2%).",
+    "frage": "Die Europäische Zentralbank (EZB) ist für die Geldpolitik im Euroraum zuständig und hat als primäres Ziel die Preisstabilität (symmetrisches Inflationsziel von 2 %).",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": true,
-    "erklaerung": "Korrekt! EZB (Europäische Zentralbank, Sitz Frankfurt): Primat Preisstabilität (Inflation ~2%). Instrumente: Leitzinssatz (beeinflusst Kreditkosten), Anleihekaufprogramme (QE), Mindestreservepflicht. EZB ist unabhängig von nationalen Regierungen und EU-Organen. Bundesbank ist Teil des Europäischen Zentralbanksystems (ESZB).",
+    "erklaerung": "Korrekt! EZB (Europäische Zentralbank, Sitz Frankfurt): Primat Preisstabilität - seit der Strategieüberprüfung im Juli 2021 ein symmetrisches 2%-Ziel (nicht mehr 'nahe, aber unter 2%' wie zuvor; Abweichungen nach oben und unten gelten gleichermaßen als unerwünscht). Instrumente: Leitzinssatz (beeinflusst Kreditkosten), Anleihekaufprogramme (QE), Mindestreservepflicht. EZB ist unabhängig von nationalen Regierungen und EU-Organen. Bundesbank ist Teil des Europäischen Zentralbanksystems (ESZB).",
     "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
   },
   {
@@ -208,13 +208,8 @@
     "kategorie": "Wirtschaftskreislauf",
     "typ": "single",
     "frage": "Was beschreibt die Handelsbilanz als Teil der Leistungsbilanz?",
-    "optionen": [
-      "Differenz zwischen Güterexporten und Güterimporten eines Landes",
-      "Übersicht aller Staatsausgaben für Handelspolitik",
-      "Vergleich der Währungen zweier Handelspartner",
-      "Aufstellung aller Unternehmensgewinne im internationalen Handel"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Aufstellung aller Unternehmensgewinne im internationalen Handel","Differenz zwischen Güterexporten und Güterimporten eines Landes","Übersicht aller Staatsausgaben für Handelspolitik","Vergleich der Währungen zweier Handelspartner"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,

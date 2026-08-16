@@ -199,15 +199,15 @@
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
-    "loesungswert": 87.5,
+    "loesungswert": 86.96,
     "einheit": "%",
     "toleranz": 0.5,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Verfügbarkeit V = (Betriebszeit / Planzeit) × 100. Planzeit = 480 - 20 = 460 Min (geplante Wartung zählt nicht als Ausfall). Betriebszeit = 460 - 60 = 400 Min. V = 400/460 × 100 = 86,96% ≈ 87,5% oder alternativ V = (480-60-20)/460... (je nach Methode). Alternative Berechnung: V = (480-60-20)/(480-20) = 400/460 ≈ 87%.",
+    "erklaerung": "Verfügbarkeit V = (Betriebszeit / Planzeit) × 100. Planzeit = 480 - 20 (geplante Wartung zählt nicht als Ausfall) = 460 Min. Betriebszeit = 460 - 60 (Störung) = 400 Min. V = 400/460 × 100 ≈ 86,96 %.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
-    "workedExample": "1) Planzeit = 480 - 20 (Wartung) = 460 Min\n2) Betriebszeit = 460 - 60 (Störung) = 400 Min\n3) V = 400/460 × 100 ≈ 87%",
+    "workedExample": "1) Planzeit = 480 - 20 (Wartung) = 460 Min\n2) Betriebszeit = 460 - 60 (Störung) = 400 Min\n3) V = 400/460 × 100 ≈ 86,96 %",
     "schwierigkeit": 2
   },
   {
@@ -216,15 +216,8 @@
     "kategorie": "Instandhaltung",
     "typ": "single",
     "frage": "Was ist der Unterschied zwischen MTBF und MTTR in der Zuverlässigkeitstechnik?",
-    "optionen": [
-      "MTBF = mittlere Betriebsdauer bis zum Ausfall; MTTR = mittlere Reparaturdauer",
-      "MTBF = maximale Betriebstemperatur; MTTR = maximale Toleranz",
-      "MTBF misst Qualität; MTTR misst Produktivität",
-      "MTBF und MTTR sind synonyme Begriffe"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["MTBF und MTTR sind synonyme Begriffe","MTBF = mittlere Betriebsdauer bis zum Ausfall; MTTR = mittlere Reparaturdauer","MTBF = maximale Betriebstemperatur; MTTR = maximale Toleranz","MTBF misst Qualität; MTTR misst Produktivität"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -370,10 +363,10 @@
     "luecken": [],
     "loesungswert": 196.0,
     "einheit": "h",
-    "toleranz": 4.0,
+    "toleranz": 5.0,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "MTBF = Betriebszeit / Anzahl Ausfälle. Betriebszeit = 1000 h - 20 h (Reparatur) = 980 h. MTBF = 980 h / 5 = 196 h. Alternativ auch 1000/5 = 200 h (wenn Reparaturzeit nicht abgezogen wird — beide Methoden kommen vor, 196 h ist die exaktere). Beide Werte werden als korrekt gewertet.",
+    "erklaerung": "MTBF = Betriebszeit / Anzahl Ausfälle. Zieht man die Reparaturzeit von der Betriebszeit ab: Betriebszeit = 1000 h - 20 h = 980 h, MTBF = 980 h / 5 = 196 h. Ohne Abzug der Reparaturzeit (reine Kalenderzeit-Methode): MTBF = 1000 h / 5 = 200 h. Beide Rechenwege sind gebräuchlich und liegen innerhalb der Toleranz.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "1) Betriebszeit (ohne Stillstand) = 1000 h - 20 h = 980 h\n2) MTBF = 980 h / 5 Ausfälle = 196 h",
@@ -385,15 +378,8 @@
     "kategorie": "Instandhaltung",
     "typ": "single",
     "frage": "Bei welcher Instandhaltungsstrategie werden Teile erst bei Ausfall ausgetauscht, da der Austausch im laufenden Betrieb einfacher als eine Reparatur ist?",
-    "optionen": [
-      "Korrektive (reaktive) Instandhaltung / Run-to-Failure",
-      "Präventive Instandhaltung",
-      "Prädiktive Instandhaltung",
-      "Proaktive Instandhaltung"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Prädiktive Instandhaltung","Proaktive Instandhaltung","Korrektive (reaktive) Instandhaltung / Run-to-Failure","Präventive Instandhaltung"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -440,16 +426,8 @@
     "kategorie": "Instandhaltung",
     "typ": "single",
     "frage": "Beim Austausch des Rillenkugellagers der Axialkolbenpumpe wird das neue Lager in den Lagerblock eingepresst (Außenring fester Sitz). Welches Montageverfahren ist bei kleinen Lagern bevorzugt einzusetzen, um den Laufring nicht zu beschädigen?",
-    "optionen": [
-      "Aufpressen mit einer Presse, Kraft auf den Innenring",
-      "Aufwärmen des Außenrings auf 80–100 °C im Ölbad, dann in die Bohrung einsetzen",
-      "Aufpressen über eine Aufnahme, die nur den Außenring (zu pressendem Laufring) berührt",
-      "Einfrieren des Außenrings in Trockeneis, dann einschieben",
-      "Aufpressen mit dem Kunststoffhammer direkt auf den Laufring"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Aufwärmen des Außenrings auf 80–100 °C im Ölbad, dann in die Bohrung einsetzen","Aufpressen über eine Aufnahme, die nur den Außenring (zu pressendem Laufring) berührt","Einfrieren des Außenrings in Trockeneis, dann einschieben","Aufpressen mit dem Kunststoffhammer direkt auf den Laufring","Aufpressen mit einer Presse, Kraft auf den Innenring"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -504,16 +482,8 @@
     "kategorie": "Instandhaltung",
     "typ": "single",
     "frage": "Im Rahmen einer planmäßigen Inspektion am Einstellantrieb werden verschiedene Tätigkeiten durchgeführt. Welche Tätigkeitskombination gehört zur Inspektion nach DIN 31051?",
-    "optionen": [
-      "Zahnriemen austauschen, Lager ersetzen, Gehäuse reinigen",
-      "Zahnflanken optisch prüfen, Lager auf Leichtgängigkeit prüfen, Erwärmung nach Probelauf messen",
-      "Antriebswelle neu anfertigen, Kegelräder ersetzen, RWDR wechseln",
-      "Anlage neu lackieren, Schrauben austauschen, Passfeder ersetzen",
-      "Schmierstoffdepot auffüllen, Leckagen abdichten, Riemenspannung einstellen"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Schmierstoffdepot auffüllen, Leckagen abdichten, Riemenspannung einstellen","Zahnriemen austauschen, Lager ersetzen, Gehäuse reinigen","Zahnflanken optisch prüfen, Lager auf Leichtgängigkeit prüfen, Erwärmung nach Probelauf messen","Antriebswelle neu anfertigen, Kegelräder ersetzen, RWDR wechseln","Anlage neu lackieren, Schrauben austauschen, Passfeder ersetzen"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -572,16 +542,8 @@
     "kategorie": "Instandhaltung",
     "typ": "single",
     "frage": "An der Bohrstation (S19) wird ein Keilriemenantrieb nach Ablauf von 8 000 Betriebsstunden laut Wartungsplan ausgetauscht – unabhängig vom sichtbaren Zustand des Riemens. Welcher Instandhaltungsstrategie entspricht das?",
-    "optionen": [
-      "Korrektive Instandhaltung (Reparatur nach Ausfall)",
-      "Vorausschauende Instandhaltung (Predictive Maintenance)",
-      "Zustandsorientierte Instandhaltung",
-      "Vorbeugende Instandhaltung (präventiv, zeitgesteuert)",
-      "Inspektion"
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["Vorausschauende Instandhaltung (Predictive Maintenance)","Zustandsorientierte Instandhaltung","Vorbeugende Instandhaltung (präventiv, zeitgesteuert)","Inspektion","Korrektive Instandhaltung (Reparatur nach Ausfall)"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -672,16 +634,8 @@
     "kategorie": "Instandhaltung",
     "typ": "single",
     "frage": "Das Zylinderrollenlager NJ1021 (d = 105 mm, Presspassung auf Welle) der Schaltvorrichtung (S18) soll durch Erwärmen montiert werden. Warum, und welche Maximaltemperatur darf dabei nicht überschritten werden?",
-    "optionen": [
-      "Erwärmen, damit Schmierfett verteilt wird; max. 200 °C.",
-      "Erwärmen, damit der Innenring sich ausdehnt und spielfrei über die Welle gleitet; max. 80–100 °C (Schutz der Härtung und des Schmierstoffs).",
-      "Erwärmen, damit der Außenring eingepresst werden kann; max. 150 °C.",
-      "Erwärmen, um Feuchtigkeit auszutreiben; max. 120 °C.",
-      "Erwärmen, damit der Werkstoff plastisch verformbar wird; keine Temperaturgrenze."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Erwärmen, um Feuchtigkeit auszutreiben; max. 120 °C.","Erwärmen, damit der Werkstoff plastisch verformbar wird; keine Temperaturgrenze.","Erwärmen, damit Schmierfett verteilt wird; max. 200 °C.","Erwärmen, damit der Innenring sich ausdehnt und spielfrei über die Welle gleitet; max. 80–100 °C (Schutz der Härtung und des Schmierstoffs).","Erwärmen, damit der Außenring eingepresst werden kann; max. 150 °C."],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -704,16 +658,8 @@
     "kategorie": "Instandhaltung",
     "typ": "single",
     "frage": "Die Buchse (Pos. 13, CuZn31Si1) der Schaltvorrichtung (S18) soll auf Verschleiß geprüft werden. Mit welchen Messmitteln wird das Laufspiel zwischen Buchse (Innenmaß) und Gegenwelle (Außenmaß) bestimmt?",
-    "optionen": [
-      "Mit einer Schieblehre für Innen- und Außenmaß.",
-      "Mit einem Innenmessgerät (Drei-Punkt-Innenmesstaster oder Innen-Messschraube) für das Buchseninnenmaß und einer Bügelmessschraube für den Wellendurchmesser; Spiel = Innenmaß − Außenmaß.",
-      "Mit einem Tastschnittgerät (Rauheitsmessgerät).",
-      "Mit einem Drehmomentschlüssel (Reibkraft beim Drehen).",
-      "Mit einem Ultraschallgerät für die Wandstärke."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Mit einem Tastschnittgerät (Rauheitsmessgerät).","Mit einem Drehmomentschlüssel (Reibkraft beim Drehen).","Mit einem Ultraschallgerät für die Wandstärke.","Mit einer Schieblehre für Innen- und Außenmaß.","Mit einem Innenmessgerät (Drei-Punkt-Innenmesstaster oder Innen-Messschraube) für das Buchseninnenmaß und einer Bügelmessschraube für den Wellendurchmesser; Spiel = Innenmaß − Außenmaß."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

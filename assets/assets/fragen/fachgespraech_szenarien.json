@@ -25,8 +25,8 @@
       },
       {
         "id": "fg-001-f03",
-        "pruefer": "Warum haben Sie beim Einpressen des neuen Rillenkugellagers eine Einpresshülse verwendet, die nur den Außenring berührt?",
-        "musterloesung": "Der Außenring hat in der Lagerbohrung eine Presspassung (Umfangslast), muss also mit Kraft eingepresst werden. Die Montagekraft muss direkt auf den zu pressenden Laufring – hier den Außenring – übertragen werden. Würde man die Kraft über die Wälzkörper auf den Innenring leiten, entstehen Brinellmarken (Eindrücke) an den Laufbahnen, die das Lager sofort schädigen. Deshalb Einpresshülse, die ausschließlich auf dem Außenring aufliegt.",
+        "pruefer": "Warum haben Sie beim Einpressen des neuen Rillenkugellagers eine Einpresshülse verwendet, die nur den Innenring berührt?",
+        "musterloesung": "Der Innenring hat auf der Welle eine Presspassung (Umfangslast), muss also mit Kraft eingepresst werden. Die Montagekraft muss direkt auf den zu pressenden Laufring – hier den Innenring – übertragen werden. Würde man die Kraft über die Wälzkörper auf den Außenring leiten, entstehen Brinellmarken (Eindrücke) an den Laufbahnen, die das Lager sofort schädigen. Deshalb Einpresshülse, die ausschließlich auf dem Innenring aufliegt.",
         "schluesselwoerter": ["Presspassung", "Umfangslast", "Brinellmarken", "Einpresshülse"],
         "erklaerung": "Dieser Punkt wird in IHK-Prüfungen häufig abgefragt. Kernaussage: Kraft IMMER auf den zu pressenden Laufring, NIEMALS durch die Wälzkörper. Brinellmarken sind die typische Folge falscher Montage.",
         "schwierigkeit": 3
@@ -102,7 +102,7 @@
         "id": "fg-002-f05",
         "pruefer": "Welche elektrische Leistung setzt ein Heizwiderstand R = 1500 Ohm bei einer Stromstärke I = 57,7 mA um? Rechnen Sie kurz nach.",
         "musterloesung": "P = I² × R = (0,0577 A)² × 1500 Ohm = 0,003329 × 1500 = 4,99 W, also rund 5 W. Alternativ über die Spannung: U = I × R = 0,0577 × 1500 = 86,6 V; dann P = U × I = 86,6 × 0,0577 ≈ 5 W.",
-        "schluesselwoerter": ["P = I² × R", "Leistung", "5 W", "Ohmsches Gesetz"],
+        "schluesselwoerter": ["Leistung", "Strom", "Widerstand", "5 W", "Ohmsches Gesetz"],
         "erklaerung": "Grundformeln Elektrotechnik: P = U × I = I² × R = U²/R. Umformung je nach gegebenen Größen. Hier gegeben: I und R. Also P = I² × R. Einheiten: A² × Ohm = W.",
         "schwierigkeit": 2
       },
@@ -136,7 +136,7 @@
         "id": "fg-003-f02",
         "pruefer": "Welche kartesischen Koordinaten hat Bohrung P2 bei R = 65 mm und φ = 30°? Rechnen Sie bitte vor.",
         "musterloesung": "X = R × cos(φ) = 65 mm × cos(30°) = 65 × 0,866 = 56,3 mm, gerundet 56 mm. Y = R × sin(φ) = 65 mm × sin(30°) = 65 × 0,5 = 32,5 mm, gerundet 33 mm. P2 liegt also bei X56, Y33.",
-        "schluesselwoerter": ["X = R × cos(φ)", "Y = R × sin(φ)", "56 mm", "33 mm"],
+        "schluesselwoerter": ["Kosinus", "Sinus", "Radius", "56 mm", "33 mm"],
         "erklaerung": "cos(30°) = Wurzel(3)/2 ≈ 0,866; sin(30°) = 0,5. Diese Werte sollten auswendig bekannt sein. P2(56, 33) in kartesischen Koordinaten. Probe: Abstand vom Ursprung = Wurzel(56² + 33²) = Wurzel(3136 + 1089) = Wurzel(4225) = 65 mm – korrekt.",
         "schwierigkeit": 2
       },
@@ -171,7 +171,7 @@
     "titel": "Inspektion Einstellantrieb Stanzanlage",
     "kontext": "Sie haben die planmäßige Inspektion am Einstellantrieb einer Stanzanlage (Coilhaspel-Antrieb) durchgeführt. Der Einstellantrieb ermöglicht die stufenlose Verstellung des Stanzwerkzeug-Abstands über ein Kegelradgetriebe (i=1) und eine Gelenkwelle. Der Prüfer befragt Sie zu Baugruppen, Vorgehensweise und Berechnungen.",
     "fertigungsauftrag": "FA-S17-012: Planmäßige Inspektion Einstellantrieb Stanzanlage. Bauteile: Bogenzahnkupplung, Kegelradgetriebe (m=2, z=26, beide gleich), Sicherheitskupplung ECA 16, RWDR AS 25×35×7, Nadel-Axial-Zylinderrollenlager NKXR20Z (4×), Gelenkwelle Ø32 mm. Motor: P₁=9,24 kW, n=300 min⁻¹. Grenzdrehmoment: M=16 N·m, d_w=76,5 mm.",
-    "zeichnungsKey": null,
+    "zeichnungsKey": "S17",
     "kategorien": ["Maschinenelemente", "Technische Berechnungen", "Instandhaltung"],
     "fragen": [
       {
@@ -210,7 +210,7 @@
         "id": "fg-004-f05",
         "pruefer": "Berechnen Sie die maximale Zugkraft F auf den Zahnriemen. Grenzdrehmoment der Sicherheitskupplung: M = 16 N·m, Wirkdurchmesser der Riemenscheibe: d_w = 76,5 mm.",
         "musterloesung": "Die maximale Zugkraft entspricht der Umfangskraft an der Riemenscheibe beim Grenzdrehmoment: F = M / r, wobei r der Wirkradius ist. r = d_w / 2 = 76,5 mm / 2 = 38,25 mm = 0,03825 m. F = M / r = 16 N·m / 0,03825 m = 418,3 N. Der Zahnriemen muss diese Zugkraft dauerhaft aufnehmen können.",
-        "schluesselwoerter": ["F = M / r", "418", "Wirkradius", "Umfangskraft"],
+        "schluesselwoerter": ["Kraft", "Drehmoment", "418", "Wirkradius", "Umfangskraft"],
         "erklaerung": "F = M/r = 16000 N·mm / 38,25 mm = 418,3 N. r = d_w/2 (nicht d_w!). Wirkdurchmesser = der Durchmesser, auf dem die Zahnriemenzähne die Kraft übertragen (liegt zwischen Kopf- und Fußkreis).",
         "schwierigkeit": 3
       }
@@ -220,6 +220,9 @@
     "id": "fg-005",
     "titel": "Instandhaltung Werkzeugspindelkasten – Bohrstation (S19)",
     "kontext": "Sie erhalten den Auftrag, den Werkzeugspindelkasten einer Mehrspindel-Bohrstation (IHK S19) zu überholen. Der Spindelkasten enthält ein 2-stufiges Schieberadgetriebe (z=66/18 und z=33/33), Kegelrollenlager 30210 in O-Anordnung für die Spindel, ein Zylinderrollenlager NU2206 als Loslager der Zwischenwelle sowie hydraulische Spannzylinder (Ø 80×40 mm). Die Zahnräder sind aus 16MnCr5 einsatzgehärtet. Begleitend lesen Sie den GRAFCET-Steuerungsplan der Anlage.",
+    "fertigungsauftrag": "FA-S19: Instandhaltung Werkzeugspindelkasten Mehrspindel-Bohrstation. 2-stufiges Schieberadgetriebe (z=66/18 und z=33/33), Kegelrollenlager 30210 (O-Anordnung, Spindel), Zylinderrollenlager NU2206 (Loslager Zwischenwelle), hydraulische Spannzylinder Ø 80×40 mm mit Druckschalter BP1/BP2. Zahnräder aus 16MnCr5 einsatzgehärtet.",
+    "zeichnungsKey": "S19",
+    "kategorien": ["Maschinenelemente", "Werkstoffkunde", "Hydraulik"],
     "fragen": [
       {
         "id": "fg-005-f01",
@@ -269,15 +272,15 @@
     "id": "fg-006",
     "titel": "Hydraulische Schaltvorrichtung Verladeanlage (S18)",
     "kontext": "Sie haben die hydraulisch betätigte Schaltvorrichtung einer Verladeanlage für Betonteile (Windkraftanlagen) instandgesetzt. Der Prüfer befragt Sie zu Funktion, Berechnungen und Werkstoffwahl der Schaltvorrichtung sowie zur Kontaktkorrosion an der Anlage.",
-    "fertigungsauftrag": "FA-S18: Instandsetzung Schaltvorrichtung Verladeanlage. Primärrad (Pos. 6, 16MnCr5, m=3 z=57 / m=1.5 z=50), Sekundärrad (Pos. 8, 16MnCr5, m=3 z=82), Kolben (Pos. 16, CuSnB, Ø80mm), Buchse (Pos. 13, CuZn31Si1). Lagerung: NJ1021/NU1021 + 6021. Schaltdruck p=6bar.",
-    "zeichnungsKey": null,
+    "fertigungsauftrag": "FA-S18: Instandsetzung Schaltvorrichtung Verladeanlage. Primärrad (Pos. 6, 16MnCr5, m=3 z=57 / m=1.5 z=50), Sekundärrad (Pos. 8, 16MnCr5, m=3 z=82), Kolben (Pos. 16, CuSn8, Ø80mm), Buchse (Pos. 13, CuZn31Si1). Lagerung: NJ1021/NU1021 + 6021. Schaltdruck p=6bar.",
+    "zeichnungsKey": "S18",
     "kategorien": ["Auftrags- und Funktionsanalyse", "Hydraulik", "Werkstoffkunde"],
     "fragen": [
       {
         "id": "fg-006-f01",
         "bildAsset": "diag:hydraulik_kolben",
         "pruefer": "Erklären Sie das Schaltprinzip der hydraulischen Schaltvorrichtung: Wie wird der Gangwechsel zwischen den zwei Übersetzungsstufen ausgelöst?",
-        "musterloesung": "Der Hydraulikkolben (Pos. 16, CuSnB, Ø80mm) wird durch den Öldruck (p = 6 bar) betätigt und schiebt über die Schaltstange (Pos. 2, 42CrMo4) das Primärrad (Pos. 6) axial entlang der Schiebewelle (Pos. 4, 15CrNi6). In Stellung A kämmt der m=3-Verzahnungsabschnitt des Primärrads mit dem Sekundärrad (Pos. 8, m=3, z=82) – erste Übersetzungsstufe (i₁ = 82/57 ≈ 1,44). In Stellung B kämmt der m=1,5-Abschnitt mit dem Sekundärradträger (Pos. 7, m=1,5, z=50) – Direktgang (i₂ = 1). Die Schaltkraft beträgt F ≈ 3 kN bei 6 bar.",
+        "musterloesung": "Der Hydraulikkolben (Pos. 16, CuSn8, Ø80mm) wird durch den Öldruck (p = 6 bar) betätigt und schiebt über die Schaltstange (Pos. 2, 42CrMo4) das Primärrad (Pos. 6) axial entlang der Schiebewelle (Pos. 4, 15CrNi6). In Stellung A kämmt der m=3-Verzahnungsabschnitt des Primärrads mit dem Sekundärrad (Pos. 8, m=3, z=82) – erste Übersetzungsstufe (i₁ = 82/57 ≈ 1,44). In Stellung B kämmt der m=1,5-Abschnitt mit dem Sekundärradträger (Pos. 7, m=1,5, z=50) – Direktgang (i₂ = 1). Die Schaltkraft beträgt F ≈ 3 kN bei 6 bar.",
         "schluesselwoerter": ["Kolben axial", "Schaltstange", "Primärrad verschiebt sich", "m=3 kämmt Sekundärrad", "m=1,5 kämmt Träger", "Schiebewelle"],
         "erklaerung": "Das Schaltprinzip ist eine hydraulisch betätigte Schieberadschaltung: Das Primärrad wird axial verschoben, um zwischen zwei Zahnradpaaren mit unterschiedlichem Modul umzuschalten. Entscheidend: Die Schaltstange überträgt die Axialkraft des Kolbens auf das Primärrad.",
         "schwierigkeit": 3
@@ -302,8 +305,8 @@
       },
       {
         "id": "fg-006-f04",
-        "pruefer": "Der Kolben (Pos. 16) ist aus CuSnB, die Buchse (Pos. 13) aus CuZn31Si1. Warum werden für diese Gleitelemente Kupferlegierungen statt Stahl eingesetzt?",
-        "musterloesung": "CuSnB (Zinnbronze mit Blei): Hervorragende Gleiteigenschaften (niedriger Reibungskoeffizient), Notlaufeigenschaften, hohe Korrosionsbeständigkeit gegenüber Hydrauliköl. Schont die Stahlbohrung (verhindert Fressen). CuZn31Si1 (Siliziummessing): Ähnliche Vorteile – gute Gleit- und Verschleißeigenschaften, Korrosionsbeständigkeit, gute Zerspanbarkeit. Grundregel: Werkstoffpaarung Kupferlegierung/Stahl verhindert Kaltverschweißen (Fressen) – die Bronzebauteile verschleißen, nicht die teure Zylinderbohrung.",
+        "pruefer": "Der Kolben (Pos. 16) ist aus CuSn8, die Buchse (Pos. 13) aus CuZn31Si1. Warum werden für diese Gleitelemente Kupferlegierungen statt Stahl eingesetzt?",
+        "musterloesung": "CuSn8 (Zinnbronze): Hervorragende Gleiteigenschaften (niedriger Reibungskoeffizient), Notlaufeigenschaften, hohe Korrosionsbeständigkeit gegenüber Hydrauliköl. Schont die Stahlbohrung (verhindert Fressen). CuZn31Si1 (Siliziummessing): Ähnliche Vorteile – gute Gleit- und Verschleißeigenschaften, Korrosionsbeständigkeit, gute Zerspanbarkeit. Grundregel: Werkstoffpaarung Kupferlegierung/Stahl verhindert Kaltverschweißen (Fressen) – die Bronzebauteile verschleißen, nicht die teure Zylinderbohrung.",
         "schluesselwoerter": ["Gleiteigenschaften", "Korrosionsbeständigkeit Hydrauliköl", "kein Fressen", "Werkstoffpaarung", "Opferwerkstoff"],
         "erklaerung": "Grundprinzip: Gleitpartner nie aus gleichem Werkstoff. Kupferlegierungen sind weicher als Stahl und 'opfern' sich bevorzugt. Das ist konstruktiv gewollt: Die günstige Buchse/Kolben verschleißt, nicht die teure Zylinderbohrung.",
         "schwierigkeit": 2

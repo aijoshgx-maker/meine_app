@@ -343,7 +343,8 @@
       "Durch alle Widerstände fließt derselbe Strom.",
       "Die Spannung teilt sich proportional zu den Widerstandswerten auf.",
       "Der Gesamtwiderstand ist kleiner als der kleinste Einzelwiderstand.",
-      "Bei Unterbrechung eines Widerstands fließt in der Gesamtschaltung kein Strom mehr."
+      "Bei Unterbrechung eines Widerstands fließt in der Gesamtschaltung kein Strom mehr.",
+      "Der Gesamtwiderstand hängt von der Reihenfolge der Widerstände in der Schaltung ab."
     ],
     "richtigeIndizes": [
       0,
@@ -359,7 +360,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Reihenschaltung: R_ges = R1+R2+..., gleicher Strom überall, Spannung teilt sich auf (U=R·I), Unterbrechung eines Widerstands unterbricht den gesamten Stromkreis. Der kleinere Gesamtwiderstand gilt für Parallelschaltung.",
+    "erklaerung": "Reihenschaltung: R_ges = R1+R2+..., gleicher Strom überall, Spannung teilt sich auf (U=R·I), Unterbrechung eines Widerstands unterbricht den gesamten Stromkreis. Der kleinere Gesamtwiderstand gilt für Parallelschaltung. Da Addition kommutativ ist, spielt die Reihenfolge der Widerstände in der Kette keine Rolle für den Gesamtwiderstand.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -464,15 +465,8 @@
     "kategorie": "Elektrotechnik & Sensorik",
     "typ": "single",
     "frage": "Welche Schutzmaßnahme verhindert, dass bei einem Gehäuseschluss gefährliche Spannungen am Gehäuse anliegen (Schutzklasse I)?",
-    "optionen": [
-      "Doppelte Isolierung",
-      "Schutzleiter (PE) mit Erdung",
-      "Betrieb mit Schutzkleinspannung (SELV)",
-      "Nullung (veraltetes Verfahren ohne PE)"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Nullung (veraltetes Verfahren ohne PE)","Doppelte Isolierung","Schutzleiter (PE) mit Erdung","Betrieb mit Schutzkleinspannung (SELV)"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

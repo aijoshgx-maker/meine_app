@@ -5,13 +5,8 @@
     "kategorie": "Technisches Zeichnen",
     "typ": "single",
     "frage": "Welche Projektionsmethode ist in Europa nach ISO 128 für technische Zeichnungen genormt?",
-    "optionen": [
-      "Erstwinkelprojektion (Europäische Projektion)",
-      "Drittwinkelprojektion (Amerikanische Projektion)",
-      "Zweitwinkelprojektion",
-      "Axonometrische Projektion"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Drittwinkelprojektion (Amerikanische Projektion)","Zweitwinkelprojektion","Axonometrische Projektion","Erstwinkelprojektion (Europäische Projektion)"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -41,7 +36,7 @@
     "einheit": null,
     "toleranz": null,
     "akzeptierteKurzantworten": [],
-    "wahr": true,
+    "wahr": false,
     "erklaerung": "Bei der Erstwinkelprojektion (europäische Methode) wird das Objekt zwischen Betrachter und Zeichenebene gedacht. Die Ansicht von rechts erscheint daher links von der Vorderansicht – umgekehrt zur Drittwinkelprojektion.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
@@ -253,13 +248,13 @@
     "typ": "reihenfolge",
     "frage": "Bringen Sie die Ansichten einer Erstwinkelprojektion in die korrekte räumliche Anordnung auf dem Zeichenblatt (von links nach rechts, dann oben nach unten).",
     "optionen": [
-      "Ansicht von rechts",
-      "Vorderansicht (Hauptansicht)",
+      "Draufsicht",
       "Ansicht von links",
-      "Draufsicht"
+      "Ansicht von rechts",
+      "Vorderansicht (Hauptansicht)"
     ],
     "richtigeIndizes": [],
-    "reihenfolge": [0, 1, 2, 3],
+    "reihenfolge": [2, 3, 1, 0],
     "paare": [],
     "luecken": [],
     "loesungswert": null,
@@ -377,13 +372,8 @@
     "kategorie": "Technisches Zeichnen",
     "typ": "single",
     "frage": "Was kennzeichnet die Drittwinkelprojektion gegenüber der Erstwinkelprojektion?",
-    "optionen": [
-      "Die Projektionsebene liegt zwischen Betrachter und Objekt",
-      "Das Objekt liegt zwischen Betrachter und Projektionsebene",
-      "Es werden nur drei Ansichten verwendet",
-      "Sie ist in Deutschland die Normprojektion"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Sie ist in Deutschland die Normprojektion","Die Projektionsebene liegt zwischen Betrachter und Objekt","Das Objekt liegt zwischen Betrachter und Projektionsebene","Es werden nur drei Ansichten verwendet"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

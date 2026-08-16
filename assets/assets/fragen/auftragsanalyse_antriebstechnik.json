@@ -291,13 +291,8 @@
     "kategorie": "Antriebstechnik (mechanisch)",
     "typ": "single",
     "frage": "Welche Kennzahl beschreibt das Verhältnis von Nutzleistung zu zugeführter Leistung bei einem Getriebe?",
-    "optionen": [
-      "Übersetzungsverhältnis i",
-      "Wirkungsgrad η",
-      "Schlupf s",
-      "Drehmomentverhältnis"
-    ],
-    "richtigeIndizes": [1],
+    "optionen": ["Drehmomentverhältnis","Übersetzungsverhältnis i","Wirkungsgrad η","Schlupf s"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

@@ -1,0 +1,36 @@
+{
+  "stand": "2026-01-01",
+  "quelle": "Bundesgesundheitsministerium (bundesgesundheitsministerium.de/beitraege), vdek (vdek.com), Bekanntmachung RVBeitrSBek 2026 (gesetze-im-internet.de), Deutsche Rentenversicherung Knappschaft-Bahn-See (Sozialversicherungsrechengrößen 2026), Bundesregierung (bundesregierung.de/breg-de/aktuelles/beitragsgemessungsgrenzen-2386514), Minijob-Zentrale, BMAS (Mindestlohn ab 1.1.2026, Pressemitteilung), lohnsteuer-kompakt.de (Sachbezugswerte 2026), Deutsche Bundesbank (EZB-Strategieüberprüfung 2021), gesetze-im-internet.de (VDuG, § 9 BetrVG, § 477 BGB). Recherchiert am 2026-08-16, siehe REVIEW_OFFEN.md für Details und Einzelquellen je Wert.",
+  "werte": {
+    "gkv_allgemein": { "wert": 14.6, "einheit": "%" },
+    "gkv_zusatzbeitrag_durchschnitt": { "wert": 2.9, "einheit": "%" },
+    "rv_satz": { "wert": 18.6, "einheit": "%" },
+    "av_satz": { "wert": 2.6, "einheit": "%" },
+    "pv_satz": { "wert": 3.6, "einheit": "%" },
+    "pv_zuschlag_kinderlos": { "wert": 0.6, "einheit": "%" },
+    "bbg_kv_pv_monat": { "wert": 5812.50, "einheit": "EUR" },
+    "bbg_rv_av_monat": { "wert": 8450, "einheit": "EUR" },
+    "minijob_grenze": { "wert": 603, "einheit": "EUR" },
+    "sachbezug_frei_monat": { "wert": 50, "einheit": "EUR" },
+    "sachbezugswert_essen_tag": { "wert": 7.67, "einheit": "EUR" },
+    "mindestlohn": { "wert": 13.90, "einheit": "EUR/h" }
+  },
+  "betroffene_fragen": [
+    "wi-sv-021",
+    "wi-sv-004",
+    "wi-sv-002",
+    "wi-sv-024",
+    "wi-sv-008",
+    "wi-ent-010",
+    "wi-wk-009",
+    "wi-vs-015",
+    "wi-bo-013",
+    "wi-kv-008",
+    "wi-av-004"
+  ],
+  "hinweise": [
+    "Werte sind Text-inline in die erklaerung/frage-Felder der betroffenen_fragen eingearbeitet (keine {{platzhalter}}-Auflösung zur Laufzeit implementiert), weil eine Platzhalter-Ersetzung die betroffenen Sätze unleserlich gemacht hätte (siehe P4b in CLAUDE_CODE_PROMPTS.md). Bei künftigen Änderungen: betroffene_fragen-Liste als Trefferliste nutzen statt Volltextsuche.",
+    "§ 14 Abs. 2 TzBfG (wi-av-004, sachgrundlose Befristung, aktuell 2 Jahre): Eine Ausweitung auf 4 Jahre wurde am 2.7.2026 politisch im Koalitionsausschuss beschlossen, lag zum RechercheStand (2026-08-16) aber noch nicht als Gesetzentwurf vor. Vor Gesetzeskraft nicht ändern, aber bei der nächsten Aktualisierung dieser Datei zuerst prüfen.",
+    "RV-Satz (rv_satz): für 2027 wird ein Anstieg auf 18,8 % erwartet (Stand 2026-08-16 noch nicht amtlich final)."
+  ]
+}

@@ -117,13 +117,8 @@
     "kategorie": "Wirtschaftliche Fertigung",
     "typ": "single",
     "frage": "Was ist der Deckungsbeitrag in der Kostenrechnung?",
-    "optionen": [
-      "Erlös minus variable Kosten – Beitrag zur Deckung der Fixkosten",
-      "Erlös minus alle Kosten (Nettoprofit pro Stück)",
-      "Differenz zwischen Angebotspreis und Materialkosten",
-      "Gesamtumsatz minus Gesamtausgaben"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Gesamtumsatz minus Gesamtausgaben","Erlös minus variable Kosten – Beitrag zur Deckung der Fixkosten","Erlös minus alle Kosten (Nettoprofit pro Stück)","Differenz zwischen Angebotspreis und Materialkosten"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,

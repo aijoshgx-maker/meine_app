@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "id":  "au-pn-001",
         "bereich":  "auftragsanalyse",
@@ -604,10 +604,10 @@
 
                                      ],
         "wahr":  null,
-        "erklaerung":  "Wirksame Fläche (Ringfläche): A_ring = π/4 · (d_K² - d_St²) = π/4 · (63² - 20²) = π/4 · (3969 - 400) = π/4 · 3569 ≈ 2808 mm² = 0,002808 m². F = p · A = 5 · 10⁵ Pa · 0,002808 m² ≈ 1404 N.",
+        "erklaerung":  "Wirksame Fläche (Ringfläche): A_ring = π/4 · (d_K² - d_St²) = π/4 · (63² - 20²) = π/4 · (3969 - 400) = π/4 · 3569 ≈ 2803,1 mm² = 0,0028031 m². F = p · A = 5 · 10⁵ Pa · 0,0028031 m² ≈ 1402 N.",
         "selfExplanationPrompt":  "Erkläre, warum beim Einfahren eines doppeltwirkenden Zylinders eine geringere Kraft erzeugt wird als beim Ausfahren, obwohl derselbe Druck anliegt.",
         "bildAsset":  null,
-        "workedExample":  "Gegeben: d_K = 63 mm, d_St = 20 mm, p = 5 bar = 5 · 10⁵ Pa\nSchritt 1: A_ring = π/4 · (63² - 20²) = π/4 · 3569 ≈ 2808 mm² = 0,002808 m²\nSchritt 2: F = p · A = 5 · 10⁵ · 0,002808 ≈ 1404 N",
+        "workedExample":  "Gegeben: d_K = 63 mm, d_St = 20 mm, p = 5 bar = 5 · 10⁵ Pa\nSchritt 1: A_ring = π/4 · (63² - 20²) = π/4 · 3569 ≈ 2803,1 mm² = 0,0028031 m²\nSchritt 2: F = p · A = 5 · 10⁵ · 0,0028031 ≈ 1402 N",
         "schwierigkeit":  3
     }
 ]

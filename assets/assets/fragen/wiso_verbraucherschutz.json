@@ -53,13 +53,14 @@
       "Recht auf Löschung ('Recht auf Vergessenwerden')",
       "Recht auf vollständige Anonymität im Internet",
       "Recht auf Datenübertragbarkeit (Portabilität zu anderem Anbieter)",
-      "Recht auf Berichtigung unrichtiger Daten"
+      "Recht auf Berichtigung unrichtiger Daten",
+      "Recht auf Datenminimierung durch den Verantwortlichen"
     ],
     "richtigeIndizes": [0, 1, 3, 4],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
-    "erklaerung": "DSGVO-Rechte (Art. 12-22): Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Portabilität (Art. 20), Widerspruch (Art. 21). Kein absolutes Recht auf Anonymität – im Strafrecht kann Identität aufgedeckt werden. Beschwerderecht bei Datenschutzbehörde. Bußgelder bis 4% des weltweiten Jahresumsatzes.",
+    "erklaerung": "DSGVO-Rechte (Art. 12-22): Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Portabilität (Art. 20), Widerspruch (Art. 21). Kein absolutes Recht auf Anonymität – im Strafrecht kann Identität aufgedeckt werden. Beschwerderecht bei Datenschutzbehörde. Bußgelder bis 4% des weltweiten Jahresumsatzes. Datenminimierung (Art. 5 DSGVO) ist ein Grundsatz, den der Verantwortliche bei der Datenverarbeitung beachten muss - kein eigenständiges, vom Betroffenen aktiv geltend zu machendes Recht wie die anderen genannten.",
     "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
   },
   {
@@ -84,13 +85,8 @@
     "kategorie": "Verbraucherschutz",
     "typ": "single",
     "frage": "Was schützt das Gesetz gegen den unlauteren Wettbewerb (UWG) außer Verbrauchern?",
-    "optionen": [
-      "Auch Mitbewerber und die Allgemeinheit vor unfairen Geschäftspraktiken",
-      "Nur Verbraucher, nicht Unternehmen",
-      "Staatliche Monopole vor privatem Wettbewerb",
-      "Nur ausländische Unternehmen gegen inländische Konkurrenz"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Nur ausländische Unternehmen gegen inländische Konkurrenz","Auch Mitbewerber und die Allgemeinheit vor unfairen Geschäftspraktiken","Nur Verbraucher, nicht Unternehmen","Staatliche Monopole vor privatem Wettbewerb"],
+    "richtigeIndizes": [1],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
@@ -173,13 +169,8 @@
     "kategorie": "Verbraucherschutz",
     "typ": "single",
     "frage": "Was ist eine unzulässige 'Cold-Call'-Werbung und welches Gesetz schützt davor?",
-    "optionen": [
-      "Unerwünschte Werbeanrufe ohne vorherige Einwilligung; verboten durch UWG § 7",
-      "Werbung in Kaltenbach-Regionen Deutschlands; verboten durch regionale Gesetze",
-      "Werbung außerhalb der Hauptsendezeit; durch Rundfunkstaatsvertrag geregelt",
-      "Werbung für gekühlte Produkte; durch Lebensmittelrecht geregelt"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Werbung außerhalb der Hauptsendezeit; durch Rundfunkstaatsvertrag geregelt","Werbung für gekühlte Produkte; durch Lebensmittelrecht geregelt","Unerwünschte Werbeanrufe ohne vorherige Einwilligung; verboten durch UWG § 7","Werbung in Kaltenbach-Regionen Deutschlands; verboten durch regionale Gesetze"],
+    "richtigeIndizes": [2],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
@@ -228,12 +219,12 @@
     "bereich": "wiso",
     "kategorie": "Verbraucherschutz",
     "typ": "kurzantwort",
-    "frage": "Welches Recht ermöglicht Verbraucherverbänden, im Namen vieler betroffener Verbraucher eine gemeinsame Klage gegen ein Unternehmen einzureichen (seit 2018 in Deutschland und EU)?",
+    "frage": "Welches Recht ermöglicht Verbraucherverbänden, im Namen vieler betroffener Verbraucher eine gemeinsame Klage gegen ein Unternehmen einzureichen (seit Oktober 2023 im Verbraucherrechtedurchsetzungsgesetz/VDuG geregelt)?",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": ["Musterfeststellungsklage", "Verbandsklage", "Kollektivklage", "class action"],
+    "akzeptierteKurzantworten": ["Musterfeststellungsklage", "Abhilfeklage", "Verbandsklage", "Kollektivklage", "class action"],
     "wahr": null,
-    "erklaerung": "Musterfeststellungsklage (§ 606 ZPO, seit Nov. 2018): Verbraucherverbände (z.B. vzbv) können für mind. 10 betroffene Verbraucher klagen. Gericht stellt Tatsachen und Rechtsfragen fest. Bekanntes Beispiel: VW-Dieselskandal (Klage des vzbv). Vorteil: Verbraucher ohne Prozesskostenrisiko. EU: Verbandsklagerichtlinie (2023 umgesetzt) stärkt kollektiven Rechtsschutz.",
+    "erklaerung": "Seit 13.10.2023 im Verbraucherrechtedurchsetzungsgesetz (VDuG) geregelt - löste die bisherige Musterfeststellungsklage nach § 606 ZPO a.F. (seit Nov. 2018) ab. Verbraucherverbände (z.B. vzbv) können als Verbandsklage für eine Vielzahl betroffener Verbraucher klagen, Mindestquorum: 50 Verbraucher im Klageregister beim Bundesamt für Justiz. Neu hinzugekommen ist die Abhilfeklage, die direkt auf eine konkrete Leistung (z.B. Schadensersatz) zielt statt nur auf Feststellung. Bekanntes Beispiel (noch unter altem Recht): VW-Dieselskandal (Musterfeststellungsklage des vzbv). Vorteil: Verbraucher ohne Prozesskostenrisiko.",
     "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3
   }
 ]

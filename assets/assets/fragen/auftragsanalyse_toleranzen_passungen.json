@@ -1,4 +1,4 @@
-﻿[
+[
     {
         "id":  "au-tp-001",
         "bereich":  "auftragsanalyse",
@@ -208,15 +208,8 @@
         "kategorie":  "Toleranzen \u0026 Passungen",
         "typ":  "single",
         "frage":  "Was bedeutet der Großbuchstabe H in der Toleranzfeldbezeichnung 50 H7?",
-        "optionen":  [
-                         "Das untere Abmaß EI = 0 (Grundabmaß liegt am Nennmaß)",
-                         "Das obere Abmaß ES = 0",
-                         "Die Toleranz beträgt 7 µm",
-                         "Es handelt sich um eine Wellentoleranz"
-                     ],
-        "richtigeIndizes":  [
-                                0
-                            ],
+        "optionen":  ["Die Toleranz beträgt 7 µm","Es handelt sich um eine Wellentoleranz","Das untere Abmaß EI = 0 (Grundabmaß liegt am Nennmaß)","Das obere Abmaß ES = 0"],
+        "richtigeIndizes":  [2],
         "reihenfolge":  [
 
                         ],
@@ -553,15 +546,8 @@
         "kategorie":  "Toleranzen \u0026 Passungen",
         "typ":  "single",
         "frage":  "Ein Nennmaß beträgt 80 mm, das Höchstmaß 80,030 mm und das Mindestmaß 80,010 mm. Wie groß ist das obere Abmaß?",
-        "optionen":  [
-                         "+0,030 mm",
-                         "+0,010 mm",
-                         "–0,030 mm",
-                         "0,020 mm"
-                     ],
-        "richtigeIndizes":  [
-                                0
-                            ],
+        "optionen":  ["–0,030 mm","0,020 mm","+0,030 mm","+0,010 mm"],
+        "richtigeIndizes":  [2],
         "reihenfolge":  [
 
                         ],

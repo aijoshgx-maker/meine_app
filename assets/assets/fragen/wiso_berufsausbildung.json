@@ -1,6 +1,6 @@
 [
   {
-    "id": "wiso-ba-001",
+    "id": "wi-ba-001",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "lueckentext",
@@ -22,13 +22,13 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-ba-002",
+    "id": "wi-ba-002",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "single",
     "frage": "Welche Stelle ist für die Überwachung der Berufsausbildung im Bereich Industrie und Handel zuständig?",
-    "optionen": ["Handelskammer (HWK)", "Industrie- und Handelskammer (IHK)", "Bundesagentur für Arbeit", "Berufsschule"],
-    "richtigeIndizes": [1],
+    "optionen": ["Berufsschule","Handelskammer (HWK)","Industrie- und Handelskammer (IHK)","Bundesagentur für Arbeit"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -44,7 +44,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-ba-003",
+    "id": "wi-ba-003",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "multi",
@@ -72,7 +72,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-ba-004",
+    "id": "wi-ba-004",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "wahrfalsch",
@@ -94,7 +94,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-ba-005",
+    "id": "wi-ba-005",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "kurzantwort",
@@ -116,7 +116,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-ba-006",
+    "id": "wi-ba-006",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "zuordnung",
@@ -144,7 +144,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-ba-007",
+    "id": "wi-ba-007",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "wahrfalsch",
@@ -166,18 +166,13 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-ba-008",
+    "id": "wi-ba-008",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "single",
     "frage": "Nach der Probezeit kann der Ausbildende das Ausbildungsverhältnis außerordentlich kündigen. Welche Voraussetzung muss dafür erfüllt sein?",
-    "optionen": [
-      "Eine Kündigungsfrist von 4 Wochen muss eingehalten werden",
-      "Es muss ein wichtiger Grund vorliegen",
-      "Die IHK muss zustimmen",
-      "Der Betriebsrat muss angehört werden"
-    ],
-    "richtigeIndizes": [1],
+    "optionen": ["Es muss ein wichtiger Grund vorliegen","Die IHK muss zustimmen","Der Betriebsrat muss angehört werden","Eine Kündigungsfrist von 4 Wochen muss eingehalten werden"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -193,7 +188,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-ba-009",
+    "id": "wi-ba-009",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "lueckentext",
@@ -215,7 +210,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-ba-010",
+    "id": "wi-ba-010",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "multi",
@@ -243,7 +238,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-ba-011",
+    "id": "wi-ba-011",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "kurzantwort",
@@ -265,7 +260,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-ba-012",
+    "id": "wi-ba-012",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "reihenfolge",
@@ -293,7 +288,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-ba-013",
+    "id": "wi-ba-013",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "wahrfalsch",
@@ -315,7 +310,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-ba-014",
+    "id": "wi-ba-014",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "multi",
@@ -343,18 +338,13 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-ba-015",
+    "id": "wi-ba-015",
     "bereich": "wiso",
     "kategorie": "Berufsausbildung & BBiG",
     "typ": "single",
     "frage": "Welchen Unterschied gibt es zwischen dem Ausbildungsrahmenplan und dem betrieblichen Ausbildungsplan?",
-    "optionen": [
-      "Der Ausbildungsrahmenplan ist bundesweit verbindlich, der betriebliche Ausbildungsplan ist die betriebsspezifische Umsetzung",
-      "Der betriebliche Ausbildungsplan ist bundesweit verbindlich, der Ausbildungsrahmenplan ist betriebsspezifisch",
-      "Beide Dokumente sind identisch und dienen dem gleichen Zweck",
-      "Der Ausbildungsrahmenplan wird von der IHK erstellt, der betriebliche Ausbildungsplan von der Gewerkschaft"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Der Ausbildungsrahmenplan wird von der IHK erstellt, der betriebliche Ausbildungsplan von der Gewerkschaft","Der Ausbildungsrahmenplan ist bundesweit verbindlich, der betriebliche Ausbildungsplan ist die betriebsspezifische Umsetzung","Der betriebliche Ausbildungsplan ist bundesweit verbindlich, der Ausbildungsrahmenplan ist betriebsspezifisch","Beide Dokumente sind identisch und dienen dem gleichen Zweck"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

@@ -410,15 +410,8 @@
     "kategorie": "Tarifrecht",
     "typ": "single",
     "frage": "Was ist ein Flächentarifvertrag (Verbandstarifvertrag) im Unterschied zu einem Firmen-/Haustarifvertrag?",
-    "optionen": [
-      "Gilt für alle Mitgliedsunternehmen eines Arbeitgeberverbands in einer Region/Branche",
-      "Gilt nur für Mitarbeiter einer bestimmten Abteilung (Fläche) im Betrieb",
-      "Wird direkt zwischen einem einzelnen Unternehmen und der Gewerkschaft abgeschlossen",
-      "Ist ein TV, der in mehreren EU-Ländern gleichzeitig gilt"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Wird direkt zwischen einem einzelnen Unternehmen und der Gewerkschaft abgeschlossen","Ist ein TV, der in mehreren EU-Ländern gleichzeitig gilt","Gilt für alle Mitgliedsunternehmen eines Arbeitgeberverbands in einer Region/Branche","Gilt nur für Mitarbeiter einer bestimmten Abteilung (Fläche) im Betrieb"],
+    "richtigeIndizes": [2],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -469,16 +462,8 @@
     "kategorie": "Tarifrecht",
     "typ": "single",
     "frage": "Ein Tarifvertrag legt einen Mindestlohn von 16 Euro pro Stunde fest. Der Arbeitgeber bietet im Einzelarbeitsvertrag 15 Euro pro Stunde. Was gilt?",
-    "optionen": [
-      "Der Einzelarbeitsvertrag gilt, weil er jünger ist.",
-      "Der Tarifvertrag gilt, weil er für alle Betriebe verbindlich ist.",
-      "Der Einzelarbeitsvertrag gilt, weil er individuell ausgehandelt ist.",
-      "Der Tarifvertrag gilt – die ungünstigere Abweichung nach unten ist unwirksam (Günstigkeitsprinzip).",
-      "Beide Verträge sind ungültig."
-    ],
-    "richtigeIndizes": [
-      3
-    ],
+    "optionen": ["Beide Verträge sind ungültig.","Der Einzelarbeitsvertrag gilt, weil er jünger ist.","Der Tarifvertrag gilt, weil er für alle Betriebe verbindlich ist.","Der Einzelarbeitsvertrag gilt, weil er individuell ausgehandelt ist.","Der Tarifvertrag gilt – die ungünstigere Abweichung nach unten ist unwirksam (Günstigkeitsprinzip)."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -499,16 +484,8 @@
     "kategorie": "Tarifrecht",
     "typ": "single",
     "frage": "Welche Aussage über schwerbehinderte Arbeitnehmer (GdB ≥ 50) ist richtig?",
-    "optionen": [
-      "Sie haben automatisch eine kürzere wöchentliche Arbeitszeit.",
-      "Sie haben Anspruch auf zusätzliche bezahlte Pausen.",
-      "Sie haben Anspruch auf mindestens 5 zusätzliche Urlaubstage pro Jahr.",
-      "Sie sind unkündbar.",
-      "Sie haben Anspruch auf ein höheres Entgelt."
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Sie sind unkündbar.","Sie haben Anspruch auf ein höheres Entgelt.","Sie haben automatisch eine kürzere wöchentliche Arbeitszeit.","Sie haben Anspruch auf zusätzliche bezahlte Pausen.","Sie haben Anspruch auf mindestens 5 zusätzliche Urlaubstage pro Jahr."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -529,16 +506,8 @@
     "kategorie": "Tarifrecht",
     "typ": "single",
     "frage": "Ab welcher Betriebsgröße sind Arbeitgeber nach dem SGB IX verpflichtet, einen Anteil von 5 % der Arbeitsplätze mit schwerbehinderten Menschen zu besetzen?",
-    "optionen": [
-      "Ab 5 Beschäftigten",
-      "Ab 10 Beschäftigten",
-      "Ab 20 Beschäftigten",
-      "Ab 50 Beschäftigten",
-      "Ab 100 Beschäftigten"
-    ],
-    "richtigeIndizes": [
-      2
-    ],
+    "optionen": ["Ab 20 Beschäftigten","Ab 50 Beschäftigten","Ab 100 Beschäftigten","Ab 5 Beschäftigten","Ab 10 Beschäftigten"],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -589,16 +558,8 @@
     "kategorie": "Tarifrecht",
     "typ": "single",
     "frage": "Ein Arbeitnehmer möchte seine eigene Personalakte einsehen. Welches Gesetz regelt dieses Einsichtsrecht?",
-    "optionen": [
-      "Betriebsverfassungsgesetz (BetrVG) § 83 – Arbeitnehmer hat Einsichtsrecht in eigene Personalakte",
-      "Tarifvertragsgesetz (TVG) – Tarifvertrag regelt Akteneinsicht",
-      "Bürgerliches Gesetzbuch (BGB) – allgemeines Dateneigentumsrecht",
-      "Arbeitsschutzgesetz (ArbSchG) – Sicherheit der Personaldaten",
-      "Sozialgesetzbuch IV (SGB IV) – Sozialversicherungsdaten"
-    ],
-    "richtigeIndizes": [
-      0
-    ],
+    "optionen": ["Sozialgesetzbuch IV (SGB IV) – Sozialversicherungsdaten","Betriebsverfassungsgesetz (BetrVG) § 83 – Arbeitnehmer hat Einsichtsrecht in eigene Personalakte","Tarifvertragsgesetz (TVG) – Tarifvertrag regelt Akteneinsicht","Bürgerliches Gesetzbuch (BGB) – allgemeines Dateneigentumsrecht","Arbeitsschutzgesetz (ArbSchG) – Sicherheit der Personaldaten"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -619,16 +580,8 @@
     "kategorie": "Tarifrecht",
     "typ": "single",
     "frage": "Welches ist ein echtes Mitbestimmungsrecht des Betriebsrats nach § 87 BetrVG, das eine zwingend zustimmungspflichtige Regelung darstellt?",
-    "optionen": [
-      "Die Wahl des Betriebsratsvorsitzenden",
-      "Regelungen zu Beginn und Ende der täglichen Arbeitszeit (§ 87 Abs. 1 Nr. 2 BetrVG)",
-      "Die Anzahl der Urlaubstage über den gesetzlichen Mindesturlaub hinaus",
-      "Die Auswahl des Betriebsrats für Schulungsmaßnahmen",
-      "Die Einberufung von Betriebsversammlungen"
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Die Auswahl des Betriebsrats für Schulungsmaßnahmen","Die Einberufung von Betriebsversammlungen","Die Wahl des Betriebsratsvorsitzenden","Regelungen zu Beginn und Ende der täglichen Arbeitszeit (§ 87 Abs. 1 Nr. 2 BetrVG)","Die Anzahl der Urlaubstage über den gesetzlichen Mindesturlaub hinaus"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -649,16 +602,8 @@
     "kategorie": "Tarifrecht",
     "typ": "single",
     "frage": "Die Metall AG (250 Beschäftigte) ist keinem Arbeitgeberverband angeschlossen. Paul Fleissig ist Mitglied der IG Metall. Gilt der Metalltarifvertrag automatisch für sein Arbeitsverhältnis bei der Metall AG?",
-    "optionen": [
-      "Ja, weil Paul IG-Metall-Mitglied ist, gilt der Tarifvertrag für ihn.",
-      "Nein, ein Tarifvertrag gilt nach § 3 Abs. 1 TVG nur, wenn beide Tarifparteien Mitglied in der tarifschließenden Organisation sind. Da die Metall AG keinem Arbeitgeberverband angehört, besteht keine Tarifbindung.",
-      "Ja, ab 200 Beschäftigten gilt grundsätzlich der Tarifvertrag der Branche.",
-      "Nein, Tarifverträge gelten generell nicht für befristete Arbeitsverhältnisse.",
-      "Ja, wenn der Betriebsrat eine entsprechende Betriebsvereinbarung abgeschlossen hat."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Ja, ab 200 Beschäftigten gilt grundsätzlich der Tarifvertrag der Branche.","Nein, Tarifverträge gelten generell nicht für befristete Arbeitsverhältnisse.","Ja, wenn der Betriebsrat eine entsprechende Betriebsvereinbarung abgeschlossen hat.","Ja, weil Paul IG-Metall-Mitglied ist, gilt der Tarifvertrag für ihn.","Nein, ein Tarifvertrag gilt nach § 3 Abs. 1 TVG nur, wenn beide Tarifparteien Mitglied in der tarifschließenden Organisation sind. Da die Metall AG keinem Arbeitgeberverband angehört, besteht keine Tarifbindung."],
+    "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -681,16 +626,8 @@
     "kategorie": "Tarifrecht",
     "typ": "single",
     "frage": "Pauls Arbeitsvertrag bei der Metall AG ist ohne Sachgrund befristet (§ 14 Abs. 2 TzBfG). Was sind die gesetzlichen Höchstgrenzen für eine sachgrundlose Befristung?",
-    "optionen": [
-      "Max. 5 Jahre Gesamtdauer, max. 5 Verlängerungen.",
-      "Max. 2 Jahre Gesamtdauer, max. 3 Verlängerungen innerhalb dieser 2 Jahre; nur wenn zuvor kein Arbeitsverhältnis mit demselben Arbeitgeber bestanden hat.",
-      "Max. 1 Jahr Gesamtdauer, keine Verlängerung möglich.",
-      "Max. 3 Jahre Gesamtdauer, einmalige Verlängerung.",
-      "Keine zeitliche Begrenzung, Sachgrund entscheidet allein."
-    ],
-    "richtigeIndizes": [
-      1
-    ],
+    "optionen": ["Max. 2 Jahre Gesamtdauer, max. 3 Verlängerungen innerhalb dieser 2 Jahre; nur wenn zuvor kein Arbeitsverhältnis mit demselben Arbeitgeber bestanden hat.","Max. 1 Jahr Gesamtdauer, keine Verlängerung möglich.","Max. 3 Jahre Gesamtdauer, einmalige Verlängerung.","Keine zeitliche Begrenzung, Sachgrund entscheidet allein.","Max. 5 Jahre Gesamtdauer, max. 5 Verlängerungen."],
+    "richtigeIndizes": [0],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],

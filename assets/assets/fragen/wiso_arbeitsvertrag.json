@@ -1,6 +1,6 @@
 [
   {
-    "id": "wiso-av-001",
+    "id": "wi-av-001",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "kurzantwort",
@@ -22,7 +22,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-av-002",
+    "id": "wi-av-002",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "lueckentext",
@@ -44,7 +44,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-av-003",
+    "id": "wi-av-003",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "multi",
@@ -72,7 +72,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-av-004",
+    "id": "wi-av-004",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "wahrfalsch",
@@ -94,7 +94,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-av-005",
+    "id": "wi-av-005",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "zuordnung",
@@ -122,18 +122,13 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-av-006",
+    "id": "wi-av-006",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "single",
     "frage": "Was versteht man unter dem Direktionsrecht (Weisungsrecht) des Arbeitgebers?",
-    "optionen": [
-      "Das Recht des Arbeitgebers, den Arbeitnehmer in Inhalt, Ort und Zeit der Arbeit zu bestimmen, soweit diese nicht durch Arbeitsvertrag oder Tarifvertrag festgelegt sind",
-      "Das Recht des Arbeitgebers, den Arbeitnehmer jederzeit zu versetzen, unabhängig vom Arbeitsvertrag",
-      "Das Recht des Arbeitgebers, Lohn und Gehalt einseitig festzusetzen",
-      "Das Recht des Arbeitgebers, Überstunden unbegrenzt anzuordnen"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Das Recht des Arbeitgebers, Überstunden unbegrenzt anzuordnen","Das Recht des Arbeitgebers, den Arbeitnehmer in Inhalt, Ort und Zeit der Arbeit zu bestimmen, soweit diese nicht durch Arbeitsvertrag oder Tarifvertrag festgelegt sind","Das Recht des Arbeitgebers, den Arbeitnehmer jederzeit zu versetzen, unabhängig vom Arbeitsvertrag","Das Recht des Arbeitgebers, Lohn und Gehalt einseitig festzusetzen"],
+    "richtigeIndizes": [1],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -149,7 +144,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-av-007",
+    "id": "wi-av-007",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "lueckentext",
@@ -171,7 +166,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-av-008",
+    "id": "wi-av-008",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "wahrfalsch",
@@ -193,7 +188,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-av-009",
+    "id": "wi-av-009",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "kurzantwort",
@@ -215,7 +210,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-av-010",
+    "id": "wi-av-010",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "multi",
@@ -244,18 +239,13 @@
     "selfExplanationPrompt": "Erkläre den Unterschied zwischen einer Befristung mit und ohne Sachgrund. Welche Konsequenz hat es für den Arbeitgeber, wenn ein Sachgrund fehlt und die 2-Jahres-Grenze überschritten wird?"
   },
   {
-    "id": "wiso-av-011",
+    "id": "wi-av-011",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "single",
     "frage": "Welches Gesetz regelt den Anspruch auf Teilzeitarbeit für Arbeitnehmer in Betrieben mit mehr als 15 Beschäftigten?",
-    "optionen": [
-      "Arbeitszeitgesetz (ArbZG)",
-      "Bundesurlaubsgesetz (BUrlG)",
-      "Teilzeit- und Befristungsgesetz (TzBfG)",
-      "Sozialgesetzbuch IX (SGB IX)"
-    ],
-    "richtigeIndizes": [2],
+    "optionen": ["Sozialgesetzbuch IX (SGB IX)","Arbeitszeitgesetz (ArbZG)","Bundesurlaubsgesetz (BUrlG)","Teilzeit- und Befristungsgesetz (TzBfG)"],
+    "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
@@ -271,7 +261,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-av-012",
+    "id": "wi-av-012",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "wahrfalsch",
@@ -293,7 +283,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-av-013",
+    "id": "wi-av-013",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "reihenfolge",
@@ -321,7 +311,7 @@
     "schwierigkeit": 2
   },
   {
-    "id": "wiso-av-014",
+    "id": "wi-av-014",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "kurzantwort",
@@ -343,7 +333,7 @@
     "schwierigkeit": 1
   },
   {
-    "id": "wiso-av-015",
+    "id": "wi-av-015",
     "bereich": "wiso",
     "kategorie": "Arbeitsvertrag, Rechte & Pflichten",
     "typ": "multi",

@@ -156,13 +156,8 @@
     "kategorie": "Fertigungs- und Arbeitsplanung",
     "typ": "single",
     "frage": "Welcher Begriff beschreibt die Produktionsmenge, bei der die Kosten für die Herstellung eines Produkts minimiert werden (optimale Kombination aus Rüst- und Lagerkosten)?",
-    "optionen": [
-      "Optimale Losgröße",
-      "Mindeststückzahl",
-      "Break-Even-Menge",
-      "Taktzeit"
-    ],
-    "richtigeIndizes": [0],
+    "optionen": ["Mindeststückzahl","Break-Even-Menge","Taktzeit","Optimale Losgröße"],
+    "richtigeIndizes": [3],
     "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
