@@ -171,7 +171,7 @@
     "titel": "Inspektion Einstellantrieb Stanzanlage",
     "kontext": "Sie haben die planmäßige Inspektion am Einstellantrieb einer Stanzanlage (Coilhaspel-Antrieb) durchgeführt. Der Einstellantrieb ermöglicht die stufenlose Verstellung des Stanzwerkzeug-Abstands über ein Kegelradgetriebe (i=1) und eine Gelenkwelle. Der Prüfer befragt Sie zu Baugruppen, Vorgehensweise und Berechnungen.",
     "fertigungsauftrag": "FA-S17-012: Planmäßige Inspektion Einstellantrieb Stanzanlage. Bauteile: Bogenzahnkupplung, Kegelradgetriebe (m=2, z=26, beide gleich), Sicherheitskupplung ECA 16, RWDR AS 25×35×7, Nadel-Axial-Zylinderrollenlager NKXR20Z (4×), Gelenkwelle Ø32 mm. Motor: P₁=9,24 kW, n=300 min⁻¹. Grenzdrehmoment: M=16 N·m, d_w=76,5 mm.",
-    "zeichnungsKey": null,
+    "zeichnungsKey": "S17",
     "kategorien": ["Maschinenelemente", "Technische Berechnungen", "Instandhaltung"],
     "fragen": [
       {
@@ -220,6 +220,9 @@
     "id": "fg-005",
     "titel": "Instandhaltung Werkzeugspindelkasten – Bohrstation (S19)",
     "kontext": "Sie erhalten den Auftrag, den Werkzeugspindelkasten einer Mehrspindel-Bohrstation (IHK S19) zu überholen. Der Spindelkasten enthält ein 2-stufiges Schieberadgetriebe (z=66/18 und z=33/33), Kegelrollenlager 30210 in O-Anordnung für die Spindel, ein Zylinderrollenlager NU2206 als Loslager der Zwischenwelle sowie hydraulische Spannzylinder (Ø 80×40 mm). Die Zahnräder sind aus 16MnCr5 einsatzgehärtet. Begleitend lesen Sie den GRAFCET-Steuerungsplan der Anlage.",
+    "fertigungsauftrag": "FA-S19: Instandhaltung Werkzeugspindelkasten Mehrspindel-Bohrstation. 2-stufiges Schieberadgetriebe (z=66/18 und z=33/33), Kegelrollenlager 30210 (O-Anordnung, Spindel), Zylinderrollenlager NU2206 (Loslager Zwischenwelle), hydraulische Spannzylinder Ø 80×40 mm mit Druckschalter BP1/BP2. Zahnräder aus 16MnCr5 einsatzgehärtet.",
+    "zeichnungsKey": "S19",
+    "kategorien": ["Maschinenelemente", "Werkstoffkunde", "Hydraulik"],
     "fragen": [
       {
         "id": "fg-005-f01",
@@ -269,15 +272,15 @@
     "id": "fg-006",
     "titel": "Hydraulische Schaltvorrichtung Verladeanlage (S18)",
     "kontext": "Sie haben die hydraulisch betätigte Schaltvorrichtung einer Verladeanlage für Betonteile (Windkraftanlagen) instandgesetzt. Der Prüfer befragt Sie zu Funktion, Berechnungen und Werkstoffwahl der Schaltvorrichtung sowie zur Kontaktkorrosion an der Anlage.",
-    "fertigungsauftrag": "FA-S18: Instandsetzung Schaltvorrichtung Verladeanlage. Primärrad (Pos. 6, 16MnCr5, m=3 z=57 / m=1.5 z=50), Sekundärrad (Pos. 8, 16MnCr5, m=3 z=82), Kolben (Pos. 16, CuSnB, Ø80mm), Buchse (Pos. 13, CuZn31Si1). Lagerung: NJ1021/NU1021 + 6021. Schaltdruck p=6bar.",
-    "zeichnungsKey": null,
+    "fertigungsauftrag": "FA-S18: Instandsetzung Schaltvorrichtung Verladeanlage. Primärrad (Pos. 6, 16MnCr5, m=3 z=57 / m=1.5 z=50), Sekundärrad (Pos. 8, 16MnCr5, m=3 z=82), Kolben (Pos. 16, CuSn8, Ø80mm), Buchse (Pos. 13, CuZn31Si1). Lagerung: NJ1021/NU1021 + 6021. Schaltdruck p=6bar.",
+    "zeichnungsKey": "S18",
     "kategorien": ["Auftrags- und Funktionsanalyse", "Hydraulik", "Werkstoffkunde"],
     "fragen": [
       {
         "id": "fg-006-f01",
         "bildAsset": "diag:hydraulik_kolben",
         "pruefer": "Erklären Sie das Schaltprinzip der hydraulischen Schaltvorrichtung: Wie wird der Gangwechsel zwischen den zwei Übersetzungsstufen ausgelöst?",
-        "musterloesung": "Der Hydraulikkolben (Pos. 16, CuSnB, Ø80mm) wird durch den Öldruck (p = 6 bar) betätigt und schiebt über die Schaltstange (Pos. 2, 42CrMo4) das Primärrad (Pos. 6) axial entlang der Schiebewelle (Pos. 4, 15CrNi6). In Stellung A kämmt der m=3-Verzahnungsabschnitt des Primärrads mit dem Sekundärrad (Pos. 8, m=3, z=82) – erste Übersetzungsstufe (i₁ = 82/57 ≈ 1,44). In Stellung B kämmt der m=1,5-Abschnitt mit dem Sekundärradträger (Pos. 7, m=1,5, z=50) – Direktgang (i₂ = 1). Die Schaltkraft beträgt F ≈ 3 kN bei 6 bar.",
+        "musterloesung": "Der Hydraulikkolben (Pos. 16, CuSn8, Ø80mm) wird durch den Öldruck (p = 6 bar) betätigt und schiebt über die Schaltstange (Pos. 2, 42CrMo4) das Primärrad (Pos. 6) axial entlang der Schiebewelle (Pos. 4, 15CrNi6). In Stellung A kämmt der m=3-Verzahnungsabschnitt des Primärrads mit dem Sekundärrad (Pos. 8, m=3, z=82) – erste Übersetzungsstufe (i₁ = 82/57 ≈ 1,44). In Stellung B kämmt der m=1,5-Abschnitt mit dem Sekundärradträger (Pos. 7, m=1,5, z=50) – Direktgang (i₂ = 1). Die Schaltkraft beträgt F ≈ 3 kN bei 6 bar.",
         "schluesselwoerter": ["Kolben axial", "Schaltstange", "Primärrad verschiebt sich", "m=3 kämmt Sekundärrad", "m=1,5 kämmt Träger", "Schiebewelle"],
         "erklaerung": "Das Schaltprinzip ist eine hydraulisch betätigte Schieberadschaltung: Das Primärrad wird axial verschoben, um zwischen zwei Zahnradpaaren mit unterschiedlichem Modul umzuschalten. Entscheidend: Die Schaltstange überträgt die Axialkraft des Kolbens auf das Primärrad.",
         "schwierigkeit": 3
@@ -302,8 +305,8 @@
       },
       {
         "id": "fg-006-f04",
-        "pruefer": "Der Kolben (Pos. 16) ist aus CuSnB, die Buchse (Pos. 13) aus CuZn31Si1. Warum werden für diese Gleitelemente Kupferlegierungen statt Stahl eingesetzt?",
-        "musterloesung": "CuSnB (Zinnbronze mit Blei): Hervorragende Gleiteigenschaften (niedriger Reibungskoeffizient), Notlaufeigenschaften, hohe Korrosionsbeständigkeit gegenüber Hydrauliköl. Schont die Stahlbohrung (verhindert Fressen). CuZn31Si1 (Siliziummessing): Ähnliche Vorteile – gute Gleit- und Verschleißeigenschaften, Korrosionsbeständigkeit, gute Zerspanbarkeit. Grundregel: Werkstoffpaarung Kupferlegierung/Stahl verhindert Kaltverschweißen (Fressen) – die Bronzebauteile verschleißen, nicht die teure Zylinderbohrung.",
+        "pruefer": "Der Kolben (Pos. 16) ist aus CuSn8, die Buchse (Pos. 13) aus CuZn31Si1. Warum werden für diese Gleitelemente Kupferlegierungen statt Stahl eingesetzt?",
+        "musterloesung": "CuSn8 (Zinnbronze): Hervorragende Gleiteigenschaften (niedriger Reibungskoeffizient), Notlaufeigenschaften, hohe Korrosionsbeständigkeit gegenüber Hydrauliköl. Schont die Stahlbohrung (verhindert Fressen). CuZn31Si1 (Siliziummessing): Ähnliche Vorteile – gute Gleit- und Verschleißeigenschaften, Korrosionsbeständigkeit, gute Zerspanbarkeit. Grundregel: Werkstoffpaarung Kupferlegierung/Stahl verhindert Kaltverschweißen (Fressen) – die Bronzebauteile verschleißen, nicht die teure Zylinderbohrung.",
         "schluesselwoerter": ["Gleiteigenschaften", "Korrosionsbeständigkeit Hydrauliköl", "kein Fressen", "Werkstoffpaarung", "Opferwerkstoff"],
         "erklaerung": "Grundprinzip: Gleitpartner nie aus gleichem Werkstoff. Kupferlegierungen sind weicher als Stahl und 'opfern' sich bevorzugt. Das ist konstruktiv gewollt: Die günstige Buchse/Kolben verschleißt, nicht die teure Zylinderbohrung.",
         "schwierigkeit": 2

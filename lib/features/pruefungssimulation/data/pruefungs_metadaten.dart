@@ -4,6 +4,11 @@
 // Zeichnungsbeilagen der Prüfungen (PNG/JPG, in assets/zeichnungen/<id>/).
 // Solange eine Datei noch nicht hinterlegt ist, zeigt der Viewer einen
 // Platzhalter. DiagrammKeys (CustomPainter) dienen als Ergänzung/Fallback.
+//
+// stueckliste: Positionsnummer -> Bauteilbezeichnung, aus den Fragetexten
+// verifiziert (siehe P8b in CLAUDE_CODE_PROMPTS.md). Macht Fragen, die sich
+// auf "Pos. X" beziehen, auch ohne die (noch fehlende) Originalzeichnung
+// lösbar - der Platzhalter zeigt sie als Textliste.
 class PruefungsInfo {
   final String id;
   final String bezeichnung;
@@ -13,6 +18,7 @@ class PruefungsInfo {
   final List<String> zeichnungsLabels;
   final List<String> diagrammKeys;
   final String beschreibung;
+  final Map<String, String> stueckliste;
 
   const PruefungsInfo({
     required this.id,
@@ -23,6 +29,7 @@ class PruefungsInfo {
     required this.zeichnungsLabels,
     required this.diagrammKeys,
     required this.beschreibung,
+    this.stueckliste = const {},
   });
 }
 
@@ -82,6 +89,7 @@ class PruefungsMetadaten {
           'Einstellantrieb Stanzanlage, Kegelradgetriebe (m=2, z=26), '
           'Bogenzahnkupplung, Gelenkwelle. Themen: Maschinenelemente, '
           'Berechnung, Instandhaltung, WiSo.',
+      stueckliste: {'5': 'Flanschbuchse (CuSn8P)', '9': 'Gelenkwelle (Ø32 mm)'},
     ),
     PruefungsInfo(
       id: 'S19',
@@ -123,7 +131,7 @@ class PruefungsMetadaten {
         'assets/zeichnungen/S18/zeichnung_3.png',
       ],
       zeichnungsLabels: [
-        'Schaltvorrichtung – Schnittdarstellung (Kolben CuSnB, Ø80mm)',
+        'Schaltvorrichtung – Schnittdarstellung (Kolben CuSn8, Ø80mm)',
         'Verladeanlage – Übersichtsschema mit Bauteilbeschriftung',
         'Schaltvorrichtung – Zahnräder (Primär m=3/z=57, Sekundär m=3/z=82)',
       ],
@@ -136,11 +144,17 @@ class PruefungsMetadaten {
       ],
       beschreibung:
           'Hydraulische Schaltvorrichtung, Verladeanlage für Betonteile. '
-          'Primärrad (m=3, z=57), Sekundärrad (m=3, z=82), Kolben (CuSnB, '
+          'Primärrad (m=3, z=57), Sekundärrad (m=3, z=82), Kolben (CuSn8, '
           'Ø80mm, p=6bar). Themen: Hydraulik, Zahnräder, Werkstoff, WiSo.',
+      stueckliste: {
+        '2': 'Schaltstange',
+        '6': 'Primärrad (16MnCr5, m=3, z=57)',
+        '8': 'Sekundärrad (16MnCr5, m=3, z=82)',
+        '13': 'Buchse (CuZn31Si1)',
+        '16': 'Schaltkolben (CuSn8, Ø80 mm)',
+      },
     ),
   ];
 
-  static PruefungsInfo fuerId(String id) =>
-      alle.firstWhere((p) => p.id == id);
+  static PruefungsInfo fuerId(String id) => alle.firstWhere((p) => p.id == id);
 }

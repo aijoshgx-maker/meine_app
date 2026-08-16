@@ -6,11 +6,30 @@ import '../../quiz/providers/quiz_providers.dart';
 import '../../quiz/providers/session_timer_provider.dart';
 import '../data/pruefungs_metadaten.dart';
 
+// Anzahl der tatsächlich verfügbaren Aufgaben je Prüfung (frage.pruefung ==
+// id). Manche Jahrgänge haben lückenhafte pruefungReihenfolge-Sets (siehe
+// P8c) - die Auswahl-Karte zeigt das transparent an, statt still eine
+// unvollständige Prüfung zu simulieren.
+final pruefungsAufgabenAnzahlProvider = FutureProvider<Map<String, int>>((
+  ref,
+) async {
+  final alle = await ref.watch(fragenProvider.future);
+  final zaehler = <String, int>{};
+  for (final f in alle) {
+    final id = f.pruefung;
+    if (id == null) continue;
+    zaehler[id] = (zaehler[id] ?? 0) + 1;
+  }
+  return zaehler;
+});
+
 class PruefungsAuswahlScreen extends ConsumerWidget {
   const PruefungsAuswahlScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final anzahlAsync = ref.watch(pruefungsAufgabenAnzahlProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Prüfungssimulation'),
@@ -34,6 +53,10 @@ class PruefungsAuswahlScreen extends ConsumerWidget {
           for (final info in PruefungsMetadaten.alle)
             _PruefungsKarte(
               info: info,
+              anzahlVerfuegbar: anzahlAsync.value?[info.id],
+              anzahlMaximal: (anzahlAsync.value?.values.isEmpty ?? true)
+                  ? null
+                  : anzahlAsync.value!.values.reduce((a, b) => a > b ? a : b),
               onStart: () => _starteSimulation(context, ref, info),
             ),
         ],
@@ -42,7 +65,10 @@ class PruefungsAuswahlScreen extends ConsumerWidget {
   }
 
   void _starteSimulation(
-      BuildContext context, WidgetRef ref, PruefungsInfo info) {
+    BuildContext context,
+    WidgetRef ref,
+    PruefungsInfo info,
+  ) {
     final modus = QuizModus.pruefungssimulation(
       pruefungsId: info.id,
       zeitlimitMinuten: info.zeitlimitMinuten,
@@ -56,13 +82,24 @@ class PruefungsAuswahlScreen extends ConsumerWidget {
 
 class _PruefungsKarte extends StatelessWidget {
   final PruefungsInfo info;
+  final int? anzahlVerfuegbar;
+  final int? anzahlMaximal;
   final VoidCallback onStart;
 
-  const _PruefungsKarte({required this.info, required this.onStart});
+  const _PruefungsKarte({
+    required this.info,
+    required this.anzahlVerfuegbar,
+    required this.anzahlMaximal,
+    required this.onStart,
+  });
 
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
+    final unvollstaendig =
+        anzahlVerfuegbar != null &&
+        anzahlMaximal != null &&
+        anzahlVerfuegbar! < anzahlMaximal!;
     return Card(
       margin: const EdgeInsets.only(bottom: 14),
       child: Padding(
@@ -83,6 +120,17 @@ class _PruefungsKarte extends StatelessWidget {
                 _ZeitChip(minuten: info.zeitlimitMinuten),
               ],
             ),
+            if (anzahlVerfuegbar != null) ...[
+              const SizedBox(height: 4),
+              Text(
+                unvollstaendig
+                    ? '$anzahlVerfuegbar von bis zu $anzahlMaximal Aufgaben verfügbar (unvollständiger Datensatz)'
+                    : '$anzahlVerfuegbar Aufgaben verfügbar',
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                  color: unvollstaendig ? cs.error : cs.onSurfaceVariant,
+                ),
+              ),
+            ],
             const SizedBox(height: 10),
             Text(
               info.beschreibung,

@@ -47,11 +47,22 @@ erwünscht, falls die Konstante an anderer Stelle noch referenziert wird.
 `erklaerung` entfernt, da `CuSn8`/`CuSn8P` bleifrei sind und der Satz sonst
 sachlich falsch wäre.
 
-**Offen:** Falls tatsächlich ein verbleiter Lagerbronze-Werkstoff (Lesart 2)
-gemeint war, wäre die fachlich korrekte Bezeichnung eine andere (z. B.
-`CuSn7ZnPb`) und die Blei-Begründung sollte wieder rein. Bitte von
-Fachseite gegenprüfen, welche Legierung im realen Bauteil (Schaltkolben,
-Pos. 16, S18) tatsächlich verbaut ist.
+**Offen, jetzt mit stärkerem Hinweis auf Lesart 2:** Bei der Bereinigung
+von P8 wurde eine weitere Stelle gefunden (`fg-006-f...` in
+`fachgespraech_szenarien.json`), deren `musterloesung` "CuSnB (Zinnbronze
+**mit Blei**)" explizit als verbleite Bronze beschrieb - das war dort
+NICHT nur ein Tippfehler-Artefakt wie der in `au-wk-025` entfernte Satz,
+sondern die Kernaussage der Musterlösung. Für diesen Commit trotzdem
+einheitlich zu `CuSn8` (Lesart 1, wie in P5c vorgegeben) korrigiert und
+den jetzt widersprüchlichen Blei-Zusatz entfernt ("CuSn8 (Zinnbronze)").
+
+Falls tatsächlich ein verbleiter Lagerbronze-Werkstoff (Lesart 2) gemeint
+war, wäre die fachlich korrekte Bezeichnung eine andere (z. B.
+`CuSn7ZnPb`/Rg7) und die Blei-Begründung müsste wieder rein - dann an
+**allen** Stellen (au-wk-025, fg-006, `hydraulik_kolben_diagramm.dart`,
+`pruefungs_metadaten.dart`). Bitte von Fachseite gegenprüfen, welche
+Legierung im realen Bauteil (Schaltkolben, Pos. 16, S18) tatsächlich
+verbaut ist - diese Frage ist jetzt dringlicher als zunächst angenommen.
 
 ---
 
@@ -191,6 +202,25 @@ vertagen.
 Play-Store-Upload unwiderruflich. Vor jeder Veröffentlichung muss diese
 Entscheidung nachgeholt werden - am saubersten mit `rename` oder
 `change_app_package_name`, danach `flutter clean` und Vollbuild.
+
+---
+
+## P8 — Stückliste: Widerspruch bei "Einstellantrieb" S17 vs. W22
+
+Beim Aufbau der Stückliste (P8b, `pruefungs_metadaten.dart`) fiel auf:
+`au-tb-020` (Pos. 9, Gelenkwelle, Einstellantrieb) trägt `pruefung: "S17"`,
+aber `au-wk-018` (Pos. 5, Flanschbuchse, **derselbe** Einstellantrieb)
+trägt `pruefung: "W22"`. Beide beschreiben dasselbe Bauteil
+("Einstellantrieb"), das laut `fachgespraech_szenarien.json` (fg-004,
+Fertigungsauftrag "FA-S17-012") zu S17 gehört.
+
+**Entscheidung:** Stückliste unter S17 einsortiert (gestützt durch den
+expliziten FA-S17-012-Code in fg-004). `au-wk-018`s `pruefung: "W22"`-Tag
+NICHT geändert, da nicht sicher rekonstruierbar, welcher der beiden Tags
+der fehlerhafte ist - reine Vermutung wäre hier Raten. Bitte von
+Fachseite gegenprüfen, ob `au-wk-018` tatsächlich zu S17 gehört (dann Tag
+korrigieren) oder ob es zwei unabhängige "Einstellantrieb"-Aufgaben in
+S17 und W22 gibt (dann ist alles korrekt so).
 
 ---
 

@@ -43,8 +43,7 @@ class QuizScreen extends ConsumerWidget {
       }
     });
 
-    final inSession =
-        sessionAsync.value != null && !sessionAsync.value!.fertig;
+    final inSession = sessionAsync.value != null && !sessionAsync.value!.fertig;
 
     return Scaffold(
       appBar: AppBar(
@@ -80,11 +79,16 @@ class QuizScreen extends ConsumerWidget {
                   value: _SimAktion.beenden,
                   child: Row(
                     children: [
-                      Icon(Icons.stop_circle_outlined,
-                          size: 20, color: Colors.red),
+                      Icon(
+                        Icons.stop_circle_outlined,
+                        size: 20,
+                        color: Colors.red,
+                      ),
                       SizedBox(width: 12),
-                      Text('Prüfung beenden',
-                          style: TextStyle(color: Colors.red)),
+                      Text(
+                        'Prüfung beenden',
+                        style: TextStyle(color: Colors.red),
+                      ),
                     ],
                   ),
                 ),
@@ -126,7 +130,10 @@ class QuizScreen extends ConsumerWidget {
   }
 
   void _handleSimAktion(
-      BuildContext context, WidgetRef ref, _SimAktion aktion) {
+    BuildContext context,
+    WidgetRef ref,
+    _SimAktion aktion,
+  ) {
     switch (aktion) {
       case _SimAktion.pausieren:
         ref.read(sessionTimerProvider(modus).notifier).pausieren();
@@ -203,7 +210,7 @@ class _QuizBody extends ConsumerWidget {
                   session.gesamtFragen == 0
                       ? 'Keine Fragen in diesem Modus.'
                       : '${session.richtigBeantwortet} von '
-                          '${session.gesamtFragen} richtig',
+                            '${session.gesamtFragen} richtig',
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 24),
@@ -222,9 +229,11 @@ class _QuizBody extends ConsumerWidget {
 
         final frage = session.aktuelleFrage!;
         final controller = ref.read(quizSessionProvider(modus).notifier);
-        final bereitsUebersprungen =
-            session.uebersprungeneIds.contains(frage.id);
-        final zeigeSkip = session.antwort.phase == FragePhase.antworten &&
+        final bereitsUebersprungen = session.uebersprungeneIds.contains(
+          frage.id,
+        );
+        final zeigeSkip =
+            session.antwort.phase == FragePhase.antworten &&
             session.fragen.length > 1;
 
         return Padding(
@@ -253,11 +262,11 @@ class _QuizBody extends ConsumerWidget {
                           style: const TextStyle(fontSize: 12),
                         ),
                         style: TextButton.styleFrom(
-                          foregroundColor:
-                              Theme.of(context).colorScheme.outline,
+                          foregroundColor: Theme.of(
+                            context,
+                          ).colorScheme.outline,
                           visualDensity: VisualDensity.compact,
-                          padding:
-                              const EdgeInsets.symmetric(horizontal: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
                         ),
                       ),
                   ],
@@ -267,32 +276,33 @@ class _QuizBody extends ConsumerWidget {
                   Container(
                     margin: const EdgeInsets.only(bottom: 8),
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 10, vertical: 4),
+                      horizontal: 10,
+                      vertical: 4,
+                    ),
                     decoration: BoxDecoration(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .tertiaryContainer
-                          .withAlpha(160),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.tertiaryContainer.withAlpha(160),
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.replay,
-                            size: 14,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onTertiaryContainer),
+                        Icon(
+                          Icons.replay,
+                          size: 14,
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onTertiaryContainer,
+                        ),
                         const SizedBox(width: 4),
                         Text(
                           'Übersprungene Frage – jetzt beantworten',
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall
+                          style: Theme.of(context).textTheme.labelSmall
                               ?.copyWith(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onTertiaryContainer,
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.onTertiaryContainer,
                               ),
                         ),
                       ],
@@ -300,15 +310,18 @@ class _QuizBody extends ConsumerWidget {
                   ),
                 Text(
                   frage.frage.replaceAllMapped(
-                      RegExp(r'\{\{\d+\}\}'), (_) => '___'),
+                    RegExp(r'\{\{\d+\}\}'),
+                    (_) => '___',
+                  ),
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 if (frage.bildAsset != null) ...[
                   const SizedBox(height: 12),
                   if (TechnischeIllustration.istDiagramm(frage.bildAsset))
                     TechnischeIllustration(
-                      diagrammKey:
-                          TechnischeIllustration.keyAus(frage.bildAsset!),
+                      diagrammKey: TechnischeIllustration.keyAus(
+                        frage.bildAsset!,
+                      ),
                     )
                   else
                     Image.asset(frage.bildAsset!),
@@ -320,16 +333,16 @@ class _QuizBody extends ConsumerWidget {
                     key: ValueKey('${frage.id}-${session.antwort.phase}'),
                     child: switch (session.antwort.phase) {
                       FragePhase.antworten => AntwortEingabe(
-                          frage: frage,
-                          antwort: session.antwort,
-                          modus: modus,
-                        ),
+                        frage: frage,
+                        antwort: session.antwort,
+                        modus: modus,
+                      ),
                       FragePhase.konfidenz => KonfidenzAuswahl(modus: modus),
                       FragePhase.aufgedeckt => _AufdeckungsAnsicht(
-                          frage: frage,
-                          session: session,
-                          modus: modus,
-                        ),
+                        frage: frage,
+                        session: session,
+                        modus: modus,
+                      ),
                     },
                   ),
                 ),
@@ -349,11 +362,8 @@ class _TimerAnzeige extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final pausiert = timerZustand.pausiert;
-    final kritisch =
-        !pausiert && timerZustand.verbleibend.inMinutes < 5;
-    final farbe = pausiert
-        ? Colors.orange
-        : (kritisch ? Colors.red : null);
+    final kritisch = !pausiert && timerZustand.verbleibend.inMinutes < 5;
+    final farbe = pausiert ? Colors.orange : (kritisch ? Colors.red : null);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -362,21 +372,14 @@ class _TimerAnzeige extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
-              pausiert
-                  ? Icons.pause_circle_outline
-                  : Icons.timer_outlined,
+              pausiert ? Icons.pause_circle_outline : Icons.timer_outlined,
               size: 16,
               color: farbe,
             ),
             const SizedBox(width: 4),
             Text(
-              pausiert
-                  ? 'PAUSE'
-                  : formatiereDauer(timerZustand.verbleibend),
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: farbe,
-              ),
+              pausiert ? 'PAUSE' : formatiereDauer(timerZustand.verbleibend),
+              style: TextStyle(fontWeight: FontWeight.w600, color: farbe),
             ),
           ],
         ),
@@ -409,18 +412,17 @@ class _PauseOverlay extends StatelessWidget {
               Text(
                 'PAUSIERT',
                 style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 4,
-                    ),
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 4,
+                ),
               ),
               const SizedBox(height: 10),
               Text(
                 'Tippen zum Fortsetzen',
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyMedium
-                    ?.copyWith(color: Colors.white70),
+                style: Theme.of(
+                  context,
+                ).textTheme.bodyMedium?.copyWith(color: Colors.white70),
               ),
             ],
           ),
@@ -542,10 +544,14 @@ class _ZeichnungsViewer extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text('Zeichnungen',
-                          style: Theme.of(context).textTheme.titleMedium),
-                      Text(info.bezeichnung,
-                          style: Theme.of(context).textTheme.bodySmall),
+                      Text(
+                        'Zeichnungen',
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                      Text(
+                        info.bezeichnung,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                     ],
                   ),
                 ),
@@ -565,11 +571,9 @@ class _ZeichnungsViewer extends StatelessWidget {
               itemBuilder: (context, i) {
                 final label = zeigeEchteZeichnungen
                     ? (i < info.zeichnungsLabels.length
-                        ? info.zeichnungsLabels[i]
-                        : 'Zeichnung ${i + 1}')
-                    : info.diagrammKeys[i]
-                        .replaceAll('_', ' ')
-                        .toUpperCase();
+                          ? info.zeichnungsLabels[i]
+                          : 'Zeichnung ${i + 1}')
+                    : info.diagrammKeys[i].replaceAll('_', ' ').toUpperCase();
 
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 20),
@@ -580,9 +584,7 @@ class _ZeichnungsViewer extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 6),
                         child: Text(
                           label,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium
+                          style: Theme.of(context).textTheme.labelMedium
                               ?.copyWith(
                                 color: Theme.of(context).colorScheme.primary,
                                 fontWeight: FontWeight.w600,
@@ -590,10 +592,14 @@ class _ZeichnungsViewer extends StatelessWidget {
                         ),
                       ),
                       if (zeigeEchteZeichnungen)
-                        _EchtesZeichnungsBild(pfad: info.zeichnungsPfade[i])
+                        _EchtesZeichnungsBild(
+                          pfad: info.zeichnungsPfade[i],
+                          stueckliste: info.stueckliste,
+                        )
                       else
                         TechnischeIllustration(
-                            diagrammKey: info.diagrammKeys[i]),
+                          diagrammKey: info.diagrammKeys[i],
+                        ),
                     ],
                   ),
                 );
@@ -608,7 +614,11 @@ class _ZeichnungsViewer extends StatelessWidget {
 
 class _EchtesZeichnungsBild extends StatelessWidget {
   final String pfad;
-  const _EchtesZeichnungsBild({required this.pfad});
+  final Map<String, String> stueckliste;
+  const _EchtesZeichnungsBild({
+    required this.pfad,
+    this.stueckliste = const {},
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -621,22 +631,32 @@ class _EchtesZeichnungsBild extends StatelessWidget {
         child: Image.asset(
           pfad,
           fit: BoxFit.contain,
-          errorBuilder: (_, _, _) => _Platzhalter(pfad: pfad),
+          errorBuilder: (_, _, _) =>
+              _Platzhalter(pfad: pfad, stueckliste: stueckliste),
         ),
       ),
     );
   }
 }
 
+// Fallback, solange die echte Zeichnungsdatei fehlt (siehe P8b): zeigt die
+// Positionsnummern der Stückliste als Textliste, damit Fragen, die sich auf
+// "Pos. X" beziehen, trotzdem lösbar sind.
 class _Platzhalter extends StatelessWidget {
   final String pfad;
-  const _Platzhalter({required this.pfad});
+  final Map<String, String> stueckliste;
+  const _Platzhalter({required this.pfad, this.stueckliste = const {}});
 
   @override
   Widget build(BuildContext context) {
     final dateiname = pfad.split('/').last;
+    final positionen = stueckliste.entries.toList()
+      ..sort(
+        (a, b) =>
+            (int.tryParse(a.key) ?? 0).compareTo(int.tryParse(b.key) ?? 0),
+      );
     return Container(
-      height: 180,
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surfaceContainerHigh,
         borderRadius: BorderRadius.circular(8),
@@ -644,25 +664,51 @@ class _Platzhalter extends StatelessWidget {
           color: Theme.of(context).colorScheme.outline.withAlpha(80),
         ),
       ),
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(Icons.image_outlined,
-                size: 48, color: Theme.of(context).colorScheme.outline),
-            const SizedBox(height: 8),
-            Text('Zeichnung noch nicht hinterlegt',
-                style: Theme.of(context).textTheme.bodySmall),
-            const SizedBox(height: 4),
-            Text(
-              dateiname,
-              style: Theme.of(context).textTheme.labelSmall?.copyWith(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.image_outlined,
+                  size: 48,
+                  color: Theme.of(context).colorScheme.outline,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Zeichnung noch nicht hinterlegt',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  dateiname,
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
                     fontFamily: 'monospace',
                     color: Theme.of(context).colorScheme.outline,
                   ),
+                ),
+              ],
             ),
+          ),
+          if (positionen.isNotEmpty) ...[
+            const SizedBox(height: 12),
+            const Divider(),
+            const SizedBox(height: 4),
+            Text(
+              'Stückliste (aus den Fragetexten):',
+              style: Theme.of(context).textTheme.labelMedium,
+            ),
+            const SizedBox(height: 4),
+            for (final eintrag in positionen)
+              Text(
+                'Pos. ${eintrag.key} = ${eintrag.value}',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
           ],
-        ),
+        ],
       ),
     );
   }
