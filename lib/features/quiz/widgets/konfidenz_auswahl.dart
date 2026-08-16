@@ -3,16 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/quiz_providers.dart';
 
-// Konfidenz-Abfrage vor dem Aufdecken (Metakognition & Kalibrierung).
+// Konfidenz-Abfrage: 3 Buttons, die Konfidenz setzen UND sofort aufdecken
+// (ein einziger Tap statt Chip + separatem Aufdecken-Button).
 class KonfidenzAuswahl extends ConsumerWidget {
-  final Konfidenz? ausgewaehlt;
   final QuizModus modus;
 
-  const KonfidenzAuswahl({
-    super.key,
-    required this.ausgewaehlt,
-    required this.modus,
-  });
+  const KonfidenzAuswahl({super.key, required this.modus});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,31 +17,80 @@ class KonfidenzAuswahl extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Text('Wie sicher bist du dir?'),
-        const SizedBox(height: 8),
-        Wrap(
-          spacing: 8,
-          children: [
-            for (final konfidenz in Konfidenz.values)
-              ChoiceChip(
-                label: Text(_label(konfidenz)),
-                selected: ausgewaehlt == konfidenz,
-                onSelected: (_) => controller.konfidenzSetzen(konfidenz),
-              ),
-          ],
+        Text(
+          'Wie sicher warst du?',
+          style: Theme.of(context).textTheme.titleSmall,
+          textAlign: TextAlign.center,
         ),
-        const SizedBox(height: 16),
-        ElevatedButton(
-          onPressed: ausgewaehlt == null ? null : controller.aufdecken,
-          child: const Text('Aufdecken'),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            Expanded(
+              child: _KonfidenzButton(
+                label: 'Sicher',
+                icon: Icons.check_circle_outline,
+                farbe: Colors.green.shade600,
+                onTap: () => controller.konfidenzUndAufdecken(Konfidenz.sicher),
+              ),
+            ),
+            const SizedBox(width: 6),
+            Expanded(
+              child: _KonfidenzButton(
+                label: 'Unsicher',
+                icon: Icons.help_outline,
+                farbe: Colors.orange.shade600,
+                onTap: () =>
+                    controller.konfidenzUndAufdecken(Konfidenz.unsicher),
+              ),
+            ),
+            const SizedBox(width: 6),
+            Expanded(
+              child: _KonfidenzButton(
+                label: 'Geraten',
+                icon: Icons.casino_outlined,
+                farbe: Colors.red.shade400,
+                onTap: () =>
+                    controller.konfidenzUndAufdecken(Konfidenz.geraten),
+              ),
+            ),
+          ],
         ),
       ],
     );
   }
+}
 
-  String _label(Konfidenz k) => switch (k) {
-    Konfidenz.sicher => 'Sicher',
-    Konfidenz.unsicher => 'Unsicher',
-    Konfidenz.geraten => 'Geraten',
-  };
+class _KonfidenzButton extends StatelessWidget {
+  final String label;
+  final IconData icon;
+  final Color farbe;
+  final VoidCallback onTap;
+
+  const _KonfidenzButton({
+    required this.label,
+    required this.icon,
+    required this.farbe,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onTap,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: farbe,
+        foregroundColor: Colors.white,
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 20),
+          const SizedBox(height: 4),
+          Text(label, style: const TextStyle(fontWeight: FontWeight.w600)),
+        ],
+      ),
+    );
+  }
 }

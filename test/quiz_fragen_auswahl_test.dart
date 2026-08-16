@@ -10,23 +10,26 @@ import 'package:meine_app/models/frage.dart';
 void main() {
   final auswahl = QuizFragenAuswahl();
 
-  Frage frage(String id, String bereich) => Frage(
+  Frage frage(String id, String bereich, {String kategorie = 'Test'}) => Frage(
     id: id,
     bereich: bereich,
-    kategorie: 'Test',
+    kategorie: kategorie,
     typ: 'single',
     frage: 'Frage $id?',
     optionen: const ['a', 'b'],
     richtigeIndizes: const [0],
+    reihenfolge: const [],
+    paare: const [],
+    luecken: const [],
     akzeptierteKurzantworten: const [],
     erklaerung: '...',
     schwierigkeit: 1,
   );
 
   final fragen = [
-    frage('a1', 'auftragsanalyse'),
-    frage('ft1', 'fertigungstechnik'),
-    frage('w1', 'wiso'),
+    frage('a1', 'auftragsanalyse', kategorie: 'Zerspanung'),
+    frage('ft1', 'fertigungstechnik', kategorie: 'CNC'),
+    frage('w1', 'wiso', kategorie: 'Tarifrecht'),
   ];
 
   test('freiUebung gibt alle Fragen unverändert zurück', () {
@@ -75,14 +78,25 @@ void main() {
       // a1 ist fällig, ft1 noch nicht, w1 hat keinen Stand -> sofort fällig.
       expect(ergebnis.map((f) => f.id).toSet(), {'a1', 'w1'});
     });
+
+    test('Tageslimit: maximal 30 Karten werden zurückgegeben', () {
+      final vieleFragen = List.generate(
+        50,
+        (i) => frage('f$i', 'wiso', kategorie: 'Test'),
+      );
+      final ergebnis = auswahl.waehleFragen(
+        const QuizModus.heuteFaellig(),
+        vieleFragen,
+        kartenstaende: {},
+        zufall: Random(1),
+      );
+      expect(ergebnis.length, lessThanOrEqualTo(30));
+    });
   });
 
-  test('pruefungssimulation filtert nur den gewählten Bereich', () {
+  test('themenVertiefung filtert nur die gewählte Kategorie', () {
     final ergebnis = auswahl.waehleFragen(
-      const QuizModus.pruefungssimulation(
-        bereich: 'fertigungstechnik',
-        zeitlimit: Duration(minutes: 120),
-      ),
+      const QuizModus.themenVertiefung(kategorie: 'CNC'),
       fragen,
       kartenstaende: {},
       zufall: Random(1),

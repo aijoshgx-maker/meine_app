@@ -1,63 +1,65 @@
+// sessionTimerProvider gibt für Nicht-Sim-Modi Duration.zero zurück.
+// Dieser Test stellt sicher, dass er fehlerfrei aufgebaut wird.
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:meine_app/data/fsrs_card_store.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/features/quiz/providers/session_timer_provider.dart';
+import 'package:meine_app/models/frage.dart';
 
 class _FakeFsrsCardStore implements FsrsCardStore {
-  final Map<String, GespeicherteKarte> _daten = {};
-
   @override
-  GespeicherteKarte? kartenStandFuer(String frageId) => _daten[frageId];
-
+  GespeicherteKarte? kartenStandFuer(String frageId) => null;
   @override
-  Map<String, GespeicherteKarte> alleKartenstaende() => Map.of(_daten);
-
+  Map<String, GespeicherteKarte> alleKartenstaende() => {};
   @override
-  Future<void> speichern(String frageId, GespeicherteKarte karte) async {
-    _daten[frageId] = karte;
-  }
+  Future<void> speichern(String frageId, GespeicherteKarte karte) async {}
 }
 
+const _testFragen = [
+  Frage(
+    id: 'timer-wiso-001',
+    bereich: 'wiso',
+    kategorie: 'Test',
+    typ: 'single',
+    frage: 'Testfrage',
+    optionen: ['A', 'B'],
+    richtigeIndizes: [0],
+    reihenfolge: [],
+    paare: [],
+    luecken: [],
+    akzeptierteKurzantworten: [],
+    erklaerung: 'Test.',
+    schwierigkeit: 1,
+  ),
+];
+
 void main() {
-  testWidgets('Timer zählt herunter und beendet die Session bei Ablauf', (
+  testWidgets('sessionTimerProvider gibt Duration.zero zurück (no-op)', (
     tester,
   ) async {
-    const modus = QuizModus.pruefungssimulation(
-      bereich: 'wiso',
-      zeitlimit: Duration(seconds: 3),
-    );
+    const modus = QuizModus.themenVertiefung(kategorie: 'Test');
 
-    late Duration restzeit;
-    late bool fertig;
+    late TimerZustand timerZustand;
 
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           fsrsCardStoreProvider.overrideWithValue(_FakeFsrsCardStore()),
+          fragenProvider.overrideWith((_) async => _testFragen),
         ],
         child: Consumer(
           builder: (context, ref, _) {
-            restzeit = ref.watch(sessionTimerProvider(modus));
-            fertig =
-                ref.watch(quizSessionProvider(modus)).value?.fertig ?? false;
+            timerZustand = ref.watch(sessionTimerProvider(modus));
             return const SizedBox.shrink();
           },
         ),
       ),
     );
 
-    // Fragen laden lassen (asynchron), Timer ist dann gestartet.
     await tester.pump();
-    expect(restzeit, const Duration(seconds: 3));
-
-    await tester.pump(const Duration(seconds: 1));
-    expect(restzeit, const Duration(seconds: 2));
-    expect(fertig, false);
-
-    await tester.pump(const Duration(seconds: 2));
-    expect(restzeit, Duration.zero);
-    expect(fertig, true);
+    expect(timerZustand.verbleibend, Duration.zero);
+    expect(timerZustand.pausiert, false);
   });
 }

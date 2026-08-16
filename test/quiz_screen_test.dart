@@ -5,9 +5,8 @@ import 'package:meine_app/data/attempt_history_store.dart';
 import 'package:meine_app/data/fsrs_card_store.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/features/quiz/screens/quiz_screen.dart';
+import 'package:meine_app/models/frage.dart';
 
-// Einfacher In-Memory-Fake statt echter Hive-Dateioperationen, damit der
-// Widget-Test schnell und ohne Datei-I/O läuft.
 class _FakeFsrsCardStore implements FsrsCardStore {
   final Map<String, GespeicherteKarte> _daten = {};
 
@@ -33,11 +32,50 @@ class _FakeAttemptHistoryStore implements AttemptHistoryStore {
   List<Attempt> alle() => List.of(_eintraege);
 }
 
+// Zwei Testfragen – kein Asset-I/O nötig.
+final _testFragen = [
+  const Frage(
+    id: 'test-001',
+    bereich: 'fertigungstechnik',
+    kategorie: 'Zerspanung',
+    typ: 'single',
+    frage: 'Welches Verfahren gehört zur Zerspanung?',
+    optionen: ['Drehen', 'Gießen', 'Schweißen', 'Schmieden'],
+    richtigeIndizes: [0],
+    reihenfolge: [],
+    paare: [],
+    luecken: [],
+    akzeptierteKurzantworten: [],
+    erklaerung: 'Drehen ist ein spanendes Verfahren.',
+    schwierigkeit: 1,
+  ),
+  const Frage(
+    id: 'test-002',
+    bereich: 'fertigungstechnik',
+    kategorie: 'Zerspanung',
+    typ: 'single',
+    frage: 'Was beschreibt die Schnittgeschwindigkeit?',
+    optionen: [
+      'Geschwindigkeit der Werkzeugschneide',
+      'Vorschub pro Umdrehung',
+      'Spantiefe',
+      'Drehzahl der Spindel',
+    ],
+    richtigeIndizes: [0],
+    reihenfolge: [],
+    paare: [],
+    luecken: [],
+    akzeptierteKurzantworten: [],
+    erklaerung: 'vc ist die Relativgeschwindigkeit zwischen Schneide und Werkstück.',
+    schwierigkeit: 1,
+  ),
+];
+
 void main() {
   const modus = QuizModus.freiUebung();
 
   testWidgets(
-    'Quiz-Screen: Single-Choice-Frage -> Konfidenz -> Aufdecken -> Bewertung',
+    'Quiz-Screen: Single-Choice → Konfidenz → Aufdecken → Bewertung',
     (tester) async {
       await tester.pumpWidget(
         ProviderScope(
@@ -46,36 +84,32 @@ void main() {
             attemptHistoryStoreProvider.overrideWithValue(
               _FakeAttemptHistoryStore(),
             ),
+            fragenProvider.overrideWith((_) async => _testFragen),
           ],
           child: const MaterialApp(home: QuizScreen(modus: modus)),
         ),
       );
 
-      // Fragen werden asynchron aus dem Asset geladen.
       await tester.pumpAndSettle();
 
-      // Erste Frage ist die single-choice Frage "ft-101" (Zerspanung).
       expect(find.textContaining('Frage 1 von'), findsOneWidget);
       expect(find.text('Drehen'), findsOneWidget);
 
-      // Antwort auswählen und weiter zur Konfidenz-Abfrage.
       await tester.tap(find.text('Drehen'));
       await tester.pump();
       await tester.tap(find.text('Weiter'));
       await tester.pump();
 
-      expect(find.text('Wie sicher bist du dir?'), findsOneWidget);
+      // Neue UX: 3 Buttons statt Chip + separater Aufdecken-Button.
+      expect(find.text('Wie sicher warst du?'), findsOneWidget);
 
-      // Konfidenz wählen und aufdecken.
+      // Ein Tap auf 'Sicher' setzt Konfidenz UND deckt sofort auf.
       await tester.tap(find.text('Sicher'));
-      await tester.pump();
-      await tester.tap(find.text('Aufdecken'));
       await tester.pump();
 
       expect(find.text('Richtig'), findsOneWidget);
       expect(find.text('Gut'), findsOneWidget);
 
-      // FSRS-Bewertung abgeben -> nächste Frage erscheint.
       await tester.tap(find.text('Gut'));
       await tester.pumpAndSettle();
 

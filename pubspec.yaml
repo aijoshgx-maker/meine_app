@@ -69,7 +69,11 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
-    - assets/fragen.json
+    - assets/fragen/
+    - assets/zeichnungen/W22/
+    - assets/zeichnungen/S17/
+    - assets/zeichnungen/S19/
+    - assets/zeichnungen/S18/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

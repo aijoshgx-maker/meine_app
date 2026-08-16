@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/settings_providers.dart';
-import '../../arbeitsauftrag/providers/arbeitsauftrag_providers.dart';
 import '../../quiz/providers/quiz_modus.dart';
 import '../providers/dashboard_providers.dart';
 import '../widgets/behaltensquote_chart.dart';
@@ -20,7 +19,6 @@ class DashboardScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final faelligeAnzahl = ref.watch(faelligeAnzahlProvider);
-    final arbeitsauftragFortschritt = ref.watch(checklistFortschrittProvider);
 
     // Erinnerung bei jedem Dashboard-Aufbau opportunistisch neu planen (nur
     // wenn der Nutzer Erinnerungen aktiviert hat). Bewusst direkt im Build
@@ -37,12 +35,6 @@ class DashboardScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('AP2 Industriemechaniker'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () => context.go('/settings'),
-          ),
-        ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
@@ -78,45 +70,20 @@ class DashboardScreen extends ConsumerWidget {
                 child: const Text('Heute fällig'),
               ),
               ElevatedButton(
-                onPressed: () => context.go('/pruefungssimulation'),
-                child: const Text('Prüfungssimulation'),
+                onPressed: () => context.go('/themenauswahl'),
+                child: const Text('Thema vertiefen'),
               ),
-              ElevatedButton(
-                onPressed: () => context.go('/arbeitsauftrag'),
-                child: const Text('Arbeitsauftrag'),
+              ElevatedButton.icon(
+                onPressed: () => context.go('/fachgespraech'),
+                icon: const Icon(Icons.record_voice_over, size: 16),
+                label: const Text('Fachgespräch'),
+              ),
+              ElevatedButton.icon(
+                onPressed: () => context.go('/pruefungssimulation'),
+                icon: const Icon(Icons.assignment_outlined, size: 16),
+                label: const Text('Prüfung simulieren'),
               ),
             ],
-          ),
-          const SizedBox(height: 16),
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Arbeitsauftrag-Fortschritt',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(4),
-                          child: LinearProgressIndicator(
-                            value: arbeitsauftragFortschritt,
-                            minHeight: 8,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Text('${(arbeitsauftragFortschritt * 100).round()}%'),
-                    ],
-                  ),
-                ],
-              ),
-            ),
           ),
           const SizedBox(height: 12),
           const BehaltensquoteChart(),

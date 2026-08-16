@@ -28,15 +28,18 @@ final fragenProvider = FutureProvider<List<Frage>>(
 
 // Anzahl der heute fälligen Karten über den gesamten Fragenkatalog hinweg.
 // Wird vom Dashboard (Phase 6) und vom Home-Screen als Badge genutzt.
+// Zeigt max. _tageslimit fällige Karten an — verhindert visuellen
+// Overflow-Effekt wenn mehrere Tage ausgelassen wurden.
 final faelligeAnzahlProvider = FutureProvider<int>((ref) async {
   final alle = await ref.watch(fragenProvider.future);
   final kartenstaende = ref.read(fsrsCardStoreProvider).alleKartenstaende();
   final jetzt = DateTime.now();
-  return alle.where((f) {
+  final anzahl = alle.where((f) {
     final stand = kartenstaende[f.id];
     if (stand == null) return true;
     return !stand.card.due.isAfter(jetzt);
   }).length;
+  return anzahl.clamp(0, 30);
 });
 
 // Ablaufphase der aktuell angezeigten Frage, steuert was der QuizScreen zeigt.
@@ -44,12 +47,13 @@ enum FragePhase { antworten, konfidenz, aufgedeckt }
 
 class AntwortZustand {
   final FragePhase phase;
-  final Set<int> ausgewaehlteIndizes; // single/multi/wahrfalsch
-  final Map<int, int>
-  zuordnungsAuswahl; // zuordnung: linker Index -> Options-Index
+  final Set<int> ausgewaehlteIndizes; // single/multi/wahrfalsch (0=Falsch,1=Wahr)
+  final Map<int, int> zuordnungsAuswahl; // zuordnung: linkerIdx → rechtsIdx (sortiert)
   final String freitext; // rechnung/kurzantwort
+  final Map<int, String> lueckenAntworten; // lueckentext: Lückenindex → Eingabe
+  final List<int> reihenfolgeAuswahl; // reihenfolge: aktuelle Sortierung als Optionsindizes
   final Konfidenz? konfidenz;
-  final bool? korrekt; // erst nach aufdecken() gesetzt
+  final bool? korrekt;
   final String selbsterklaerung;
 
   const AntwortZustand({
@@ -57,6 +61,8 @@ class AntwortZustand {
     this.ausgewaehlteIndizes = const {},
     this.zuordnungsAuswahl = const {},
     this.freitext = '',
+    this.lueckenAntworten = const {},
+    this.reihenfolgeAuswahl = const [],
     this.konfidenz,
     this.korrekt,
     this.selbsterklaerung = '',
@@ -67,6 +73,8 @@ class AntwortZustand {
     Set<int>? ausgewaehlteIndizes,
     Map<int, int>? zuordnungsAuswahl,
     String? freitext,
+    Map<int, String>? lueckenAntworten,
+    List<int>? reihenfolgeAuswahl,
     Konfidenz? konfidenz,
     bool? korrekt,
     String? selbsterklaerung,
@@ -76,6 +84,8 @@ class AntwortZustand {
       ausgewaehlteIndizes: ausgewaehlteIndizes ?? this.ausgewaehlteIndizes,
       zuordnungsAuswahl: zuordnungsAuswahl ?? this.zuordnungsAuswahl,
       freitext: freitext ?? this.freitext,
+      lueckenAntworten: lueckenAntworten ?? this.lueckenAntworten,
+      reihenfolgeAuswahl: reihenfolgeAuswahl ?? this.reihenfolgeAuswahl,
       konfidenz: konfidenz ?? this.konfidenz,
       korrekt: korrekt ?? this.korrekt,
       selbsterklaerung: selbsterklaerung ?? this.selbsterklaerung,
@@ -89,32 +99,42 @@ class QuizSessionState {
   final int index;
   final AntwortZustand antwort;
   final int richtigBeantwortet;
+  final int gesamtFragen;           // Ursprüngliche Fragenzahl (für Endanzeige)
+  final Set<String> uebersprungeneIds; // IDs bereits einmal übersprungener Fragen
   final bool fertig;
 
-  const QuizSessionState({
+  QuizSessionState({
     required this.modus,
     required this.fragen,
     this.index = 0,
     this.antwort = const AntwortZustand(),
     this.richtigBeantwortet = 0,
+    int? gesamtFragen,
+    Set<String>? uebersprungeneIds,
     this.fertig = false,
-  });
+  }) : gesamtFragen = gesamtFragen ?? fragen.length,
+       uebersprungeneIds = uebersprungeneIds ?? const {};
 
   Frage? get aktuelleFrage =>
       (fertig || index >= fragen.length) ? null : fragen[index];
 
   QuizSessionState copyWith({
+    List<Frage>? fragen,
     int? index,
     AntwortZustand? antwort,
     int? richtigBeantwortet,
+    int? gesamtFragen,
+    Set<String>? uebersprungeneIds,
     bool? fertig,
   }) {
     return QuizSessionState(
       modus: modus,
-      fragen: fragen,
+      fragen: fragen ?? this.fragen,
       index: index ?? this.index,
       antwort: antwort ?? this.antwort,
       richtigBeantwortet: richtigBeantwortet ?? this.richtigBeantwortet,
+      gesamtFragen: gesamtFragen ?? this.gesamtFragen,
+      uebersprungeneIds: uebersprungeneIds ?? this.uebersprungeneIds,
       fertig: fertig ?? this.fertig,
     );
   }
@@ -188,10 +208,39 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     _aktualisiereAntwort(aktuell.antwort.copyWith(freitext: text));
   }
 
+  void lueckeSetzen(int index, String text) {
+    final aktuell = state.value;
+    if (aktuell == null) return;
+    final neue = Map<int, String>.of(aktuell.antwort.lueckenAntworten);
+    neue[index] = text;
+    _aktualisiereAntwort(aktuell.antwort.copyWith(lueckenAntworten: neue));
+  }
+
+  void reihenfolgeAktualisieren(List<int> neueReihenfolge) {
+    final aktuell = state.value;
+    if (aktuell == null) return;
+    _aktualisiereAntwort(
+      aktuell.antwort.copyWith(reihenfolgeAuswahl: neueReihenfolge),
+    );
+  }
+
   // Schließt den Recall-/Auswahlversuch ab und schaltet zur Konfidenz-Abfrage.
+  // Im Prüfungssimulations-Modus wird die Konfidenz-Phase übersprungen.
   void weiterZuKonfidenz() {
     final aktuell = state.value;
     if (aktuell == null) return;
+    if (modus.art == QuizArt.pruefungssimulation) {
+      final frage = aktuell.aktuelleFrage;
+      if (frage == null) return;
+      final korrekt = _pruefeKorrektheit(frage, aktuell.antwort);
+      korrekt ? HapticFeedback.lightImpact() : HapticFeedback.mediumImpact();
+      _aktualisiereAntwort(aktuell.antwort.copyWith(
+        phase: FragePhase.aufgedeckt,
+        korrekt: korrekt,
+        konfidenz: Konfidenz.geraten,
+      ));
+      return;
+    }
     _aktualisiereAntwort(aktuell.antwort.copyWith(phase: FragePhase.konfidenz));
   }
 
@@ -199,6 +248,20 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     final aktuell = state.value;
     if (aktuell == null) return;
     _aktualisiereAntwort(aktuell.antwort.copyWith(konfidenz: konfidenz));
+  }
+
+  // Setzt Konfidenz und deckt sofort auf (Single-Tap aus KonfidenzAuswahl).
+  void konfidenzUndAufdecken(Konfidenz konfidenz) {
+    final aktuell = state.value;
+    final frage = aktuell?.aktuelleFrage;
+    if (aktuell == null || frage == null) return;
+    final korrekt = _pruefeKorrektheit(frage, aktuell.antwort);
+    korrekt ? HapticFeedback.lightImpact() : HapticFeedback.mediumImpact();
+    _aktualisiereAntwort(aktuell.antwort.copyWith(
+      konfidenz: konfidenz,
+      phase: FragePhase.aufgedeckt,
+      korrekt: korrekt,
+    ));
   }
 
   void aufdecken() {
@@ -213,6 +276,41 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     );
   }
 
+  // Verschiebt die aktuelle Frage ans Ende der Queue (erster Übersprung) oder
+  // entfernt sie endgültig (zweiter Übersprung). Kein FSRS, kein Bewertungslog.
+  void ueberspringen() {
+    final aktuell = state.value;
+    final frage = aktuell?.aktuelleFrage;
+    if (aktuell == null || frage == null) return;
+
+    final bereitsMalUebersprungen =
+        aktuell.uebersprungeneIds.contains(frage.id);
+    final neueFragen = List<Frage>.of(aktuell.fragen);
+    neueFragen.removeAt(aktuell.index);
+
+    if (!bereitsMalUebersprungen) {
+      // Erster Übersprung: Frage ans Ende der Warteschlange anhängen.
+      neueFragen.add(frage);
+    }
+    // Zweiter Übersprung: endgültig entfernen.
+
+    final neueUebersprungene =
+        Set<String>.of(aktuell.uebersprungeneIds)..add(frage.id);
+
+    if (neueFragen.isEmpty) {
+      state = AsyncData(aktuell.copyWith(fertig: true));
+      return;
+    }
+
+    final neuerIndex = aktuell.index.clamp(0, neueFragen.length - 1);
+    state = AsyncData(aktuell.copyWith(
+      fragen: neueFragen,
+      index: neuerIndex,
+      antwort: const AntwortZustand(),
+      uebersprungeneIds: neueUebersprungene,
+    ));
+  }
+
   void selbsterklaerungSetzen(String text) {
     final aktuell = state.value;
     if (aktuell == null) return;
@@ -221,10 +319,27 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
 
   // FSRS-Bewertung (Nochmal/Schwer/Gut/Leicht), persistiert den neuen
   // Kartenstand und springt zur nächsten Frage.
+  // Im Prüfungssimulations-Modus: kein FSRS, kein Attempt-Log – nur zählen.
   Future<void> bewerten(Rating rating) async {
     final aktuell = state.value;
     final frage = aktuell?.aktuelleFrage;
     if (aktuell == null || frage == null) return;
+
+    if (modus.art == QuizArt.pruefungssimulation) {
+      final neuerZaehler =
+          aktuell.richtigBeantwortet + (aktuell.antwort.korrekt == true ? 1 : 0);
+      final naechsterIndex = aktuell.index + 1;
+      state = AsyncData(
+        naechsterIndex >= aktuell.fragen.length
+            ? aktuell.copyWith(fertig: true, richtigBeantwortet: neuerZaehler)
+            : aktuell.copyWith(
+                index: naechsterIndex,
+                antwort: const AntwortZustand(),
+                richtigBeantwortet: neuerZaehler,
+              ),
+      );
+      return;
+    }
 
     final scheduler = ref.read(fsrsSchedulerProvider);
     final store = ref.read(fsrsCardStoreProvider);
@@ -295,7 +410,15 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
   bool _pruefeKorrektheit(Frage frage, AntwortZustand antwort) {
     switch (frageTypVon(frage.typ)) {
       case FrageTyp.single:
+        return antwort.ausgewaehlteIndizes.length == 1 &&
+            frage.richtigeIndizes.contains(antwort.ausgewaehlteIndizes.first);
       case FrageTyp.wahrfalsch:
+        if (frage.wahr != null) {
+          // Neues Format: 1=Wahr-Button gedrückt, 0=Falsch-Button gedrückt
+          final wahrGewaehlt = antwort.ausgewaehlteIndizes.contains(1);
+          return wahrGewaehlt == frage.wahr;
+        }
+        // Altes Fallback: richtigeIndizes mit optionen ["Wahr","Falsch"]
         return antwort.ausgewaehlteIndizes.length == 1 &&
             frage.richtigeIndizes.contains(antwort.ausgewaehlteIndizes.first);
       case FrageTyp.multi:
@@ -304,6 +427,20 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
           frage.richtigeIndizes.toSet(),
         );
       case FrageTyp.zuordnung:
+        if (frage.paare.isNotEmpty) {
+          // Neues Format: rechte Seite alphabetisch sortiert, Nutzer ordnet zu
+          final rechtsOptionen =
+              frage.paare.map((p) => p.rechts).toList()..sort();
+          for (var i = 0; i < frage.paare.length; i++) {
+            final ausgewaehlt = antwort.zuordnungsAuswahl[i];
+            if (ausgewaehlt == null) return false;
+            if (rechtsOptionen[ausgewaehlt] != frage.paare[i].rechts) {
+              return false;
+            }
+          }
+          return true;
+        }
+        // Altes Fallback: richtigeIndizes
         for (var i = 0; i < frage.richtigeIndizes.length; i++) {
           if (antwort.zuordnungsAuswahl[i] != frage.richtigeIndizes[i]) {
             return false;
@@ -322,6 +459,21 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
         return frage.akzeptierteKurzantworten.any(
           (a) => _normalisieren(a) == eingabe,
         );
+      case FrageTyp.lueckentext:
+        for (var i = 0; i < frage.luecken.length; i++) {
+          final eingabe = _normalisieren(antwort.lueckenAntworten[i] ?? '');
+          if (!frage.luecken[i].any((a) => _normalisieren(a) == eingabe)) {
+            return false;
+          }
+        }
+        return true;
+      case FrageTyp.reihenfolge:
+        final auswahl = antwort.reihenfolgeAuswahl;
+        if (auswahl.length != frage.reihenfolge.length) return false;
+        for (var i = 0; i < frage.reihenfolge.length; i++) {
+          if (auswahl[i] != frage.reihenfolge[i]) return false;
+        }
+        return true;
     }
   }
 

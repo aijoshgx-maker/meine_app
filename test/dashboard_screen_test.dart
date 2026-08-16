@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:meine_app/app/settings_providers.dart';
-import 'package:meine_app/data/arbeitsauftrag_store.dart';
 import 'package:meine_app/data/attempt_history_store.dart';
 import 'package:meine_app/data/fsrs_card_store.dart';
 import 'package:meine_app/data/settings_store.dart';
-import 'package:meine_app/features/arbeitsauftrag/providers/arbeitsauftrag_providers.dart';
 import 'package:meine_app/features/dashboard/screens/dashboard_screen.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 
@@ -27,26 +25,6 @@ class _FakeAttemptHistoryStore implements AttemptHistoryStore {
 
   @override
   List<Attempt> alle() => [];
-}
-
-class _FakeArbeitsauftragStore implements ArbeitsauftragStore {
-  @override
-  Map<String, bool> checklistStatus() => {};
-
-  @override
-  Future<void> checklistSetzen(String itemId, bool erledigt) async {}
-
-  @override
-  Map<String, String> dokumentationLaden() => {};
-
-  @override
-  Future<void> dokumentationSpeichern(Map<String, String> felder) async {}
-
-  @override
-  Map<String, String> fachgespraechAntworten() => {};
-
-  @override
-  Future<void> fachgespraechAntwortSetzen(String fragId, String text) async {}
 }
 
 class _FakeSettingsStore implements SettingsStore {
@@ -74,9 +52,6 @@ void main() {
           attemptHistoryStoreProvider.overrideWithValue(
             _FakeAttemptHistoryStore(),
           ),
-          arbeitsauftragStoreProvider.overrideWithValue(
-            _FakeArbeitsauftragStore(),
-          ),
           settingsStoreProvider.overrideWithValue(_FakeSettingsStore()),
         ],
         child: const MaterialApp(home: DashboardScreen()),
@@ -87,12 +62,8 @@ void main() {
 
     expect(find.text('Frei üben'), findsOneWidget);
     expect(find.text('Heute fällig'), findsOneWidget);
-    expect(find.text('Prüfungssimulation'), findsOneWidget);
-    expect(find.text('Arbeitsauftrag'), findsOneWidget);
-    expect(find.text('Arbeitsauftrag-Fortschritt'), findsOneWidget);
+    expect(find.text('Thema vertiefen'), findsOneWidget);
 
-    // Die Karten liegen weiter unten als der sichtbare Testviewport, daher
-    // einzeln (in Reihenfolge) hin-scrollen statt alle gleichzeitig zu prüfen.
     for (final text in [
       'Behaltensquote',
       'Prüfungsreife (schriftlich)',

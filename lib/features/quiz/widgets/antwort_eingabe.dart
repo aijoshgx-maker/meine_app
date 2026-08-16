@@ -4,9 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../models/frage.dart';
 import '../providers/quiz_providers.dart';
 
-// Die Eingabe-UI für den Recall-/Auswahlversuch, abhängig vom Fragetyp.
-// kurzantwort/rechnung verlangen zuerst freien Abruf (Recall-first), bevor
-// es weitergeht; bei den Auswahltypen ist die Auswahl selbst der Abrufversuch.
 class AntwortEingabe extends ConsumerWidget {
   final Frage frage;
   final AntwortZustand antwort;
@@ -27,18 +24,15 @@ class AntwortEingabe extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         switch (frageTypVon(frage.typ)) {
-          FrageTyp.single || FrageTyp.wahrfalsch => _auswahlListe(
-            mehrfach: false,
-            controller: controller,
-          ),
-          FrageTyp.multi => _auswahlListe(
-            mehrfach: true,
-            controller: controller,
-          ),
+          FrageTyp.single => _auswahlListe(mehrfach: false, controller: controller),
+          FrageTyp.multi => _auswahlListe(mehrfach: true, controller: controller),
+          FrageTyp.wahrfalsch => _wahrFalschButtons(context, controller),
           FrageTyp.zuordnung => _zuordnungListe(controller),
           FrageTyp.rechnung => _texteingabe(
             controller: controller,
-            hinweis: 'Zahlenwert eingeben',
+            hinweis: frage.einheit != null
+                ? 'Zahlenwert in ${frage.einheit}'
+                : 'Zahlenwert eingeben',
             tastatur: TextInputType.number,
           ),
           FrageTyp.kurzantwort => _texteingabe(
@@ -46,6 +40,8 @@ class AntwortEingabe extends ConsumerWidget {
             hinweis: 'Antwort eingeben',
             tastatur: TextInputType.text,
           ),
+          FrageTyp.lueckentext => _lueckentextFelder(controller),
+          FrageTyp.reihenfolge => _reihenfolgeWidget(controller),
         },
         const SizedBox(height: 16),
         ElevatedButton(
@@ -63,10 +59,18 @@ class AntwortEingabe extends ConsumerWidget {
       case FrageTyp.multi:
         return antwort.ausgewaehlteIndizes.isNotEmpty;
       case FrageTyp.zuordnung:
-        return antwort.zuordnungsAuswahl.length == frage.richtigeIndizes.length;
+        final anzahl = frage.paare.isNotEmpty
+            ? frage.paare.length
+            : frage.richtigeIndizes.length;
+        return antwort.zuordnungsAuswahl.length == anzahl;
       case FrageTyp.rechnung:
       case FrageTyp.kurzantwort:
         return antwort.freitext.trim().isNotEmpty;
+      case FrageTyp.lueckentext:
+        if (antwort.lueckenAntworten.length < frage.luecken.length) return false;
+        return antwort.lueckenAntworten.values.every((v) => v.trim().isNotEmpty);
+      case FrageTyp.reihenfolge:
+        return true;
     }
   }
 
@@ -96,41 +100,162 @@ class AntwortEingabe extends ConsumerWidget {
     );
   }
 
+  Widget _wahrFalschButtons(
+    BuildContext context,
+    QuizSessionController controller,
+  ) {
+    final scheme = Theme.of(context).colorScheme;
+    return Row(
+      children: [
+        for (final (label, idx) in [('Falsch', 0), ('Wahr', 1)])
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: OutlinedButton(
+                style: antwort.ausgewaehlteIndizes.contains(idx)
+                    ? OutlinedButton.styleFrom(
+                        backgroundColor: scheme.primaryContainer,
+                        side: BorderSide(color: scheme.primary, width: 2),
+                      )
+                    : null,
+                onPressed: () => controller.auswahlUmschalten(idx),
+                child: Text(label),
+              ),
+            ),
+          ),
+      ],
+    );
+  }
+
   Widget _zuordnungListe(QuizSessionController controller) {
+    if (frage.paare.isNotEmpty) {
+      // Neues Format: rechte Optionen alphabetisch sortiert anzeigen
+      final rechtsOptionen = frage.paare.map((p) => p.rechts).toList()..sort();
+      return Column(
+        children: [
+          for (var i = 0; i < frage.paare.length; i++)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 4),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      frage.paare[i].links,
+                      style: const TextStyle(fontWeight: FontWeight.w500),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: DropdownButton<int>(
+                      isExpanded: true,
+                      value: antwort.zuordnungsAuswahl[i],
+                      hint: const Text('Zuordnen…'),
+                      items: [
+                        for (var j = 0; j < rechtsOptionen.length; j++)
+                          DropdownMenuItem(
+                            value: j,
+                            child: Text(
+                              rechtsOptionen[j],
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                      ],
+                      onChanged: (wert) {
+                        if (wert != null) controller.zuordnungAuswaehlen(i, wert);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+        ],
+      );
+    }
+
+    // Altes Format (Fallback): optionen + richtigeIndizes
     return Column(
       children: [
-        for (
-          var linkerIndex = 0;
-          linkerIndex < frage.richtigeIndizes.length;
-          linkerIndex++
-        )
+        for (var i = 0; i < frage.richtigeIndizes.length; i++)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 4),
             child: Row(
               children: [
-                SizedBox(width: 32, child: Text('${linkerIndex + 1}.')),
+                SizedBox(width: 32, child: Text('${i + 1}.')),
                 Expanded(
                   child: DropdownButton<int>(
                     isExpanded: true,
-                    value: antwort.zuordnungsAuswahl[linkerIndex],
-                    hint: const Text('Zuordnen...'),
+                    value: antwort.zuordnungsAuswahl[i],
+                    hint: const Text('Zuordnen…'),
                     items: [
-                      for (var i = 0; i < frage.optionen.length; i++)
+                      for (var j = 0; j < frage.optionen.length; j++)
                         DropdownMenuItem(
-                          value: i,
-                          child: Text(frage.optionen[i]),
+                          value: j,
+                          child: Text(frage.optionen[j]),
                         ),
                     ],
                     onChanged: (wert) {
-                      if (wert != null) {
-                        controller.zuordnungAuswaehlen(linkerIndex, wert);
-                      }
+                      if (wert != null) controller.zuordnungAuswaehlen(i, wert);
                     },
                   ),
                 ),
               ],
             ),
           ),
+      ],
+    );
+  }
+
+  Widget _lueckentextFelder(QuizSessionController controller) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        for (var i = 0; i < frage.luecken.length; i++)
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: TextField(
+              decoration: InputDecoration(
+                labelText: 'Lücke ${i + 1}',
+                border: const OutlineInputBorder(),
+              ),
+              onChanged: (text) => controller.lueckeSetzen(i, text),
+            ),
+          ),
+      ],
+    );
+  }
+
+  Widget _reihenfolgeWidget(QuizSessionController controller) {
+    final reihenfolge = antwort.reihenfolgeAuswahl.isNotEmpty
+        ? antwort.reihenfolgeAuswahl
+        : List.generate(frage.optionen.length, (i) => i);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const Text(
+          'Ziehe die Elemente in die richtige Reihenfolge:',
+          style: TextStyle(fontSize: 13),
+        ),
+        const SizedBox(height: 8),
+        ReorderableListView(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          onReorderItem: (oldIndex, newIndex) {
+            final neu = List<int>.of(reihenfolge);
+            final item = neu.removeAt(oldIndex);
+            neu.insert(newIndex, item);
+            controller.reihenfolgeAktualisieren(neu);
+          },
+          children: [
+            for (final optIdx in reihenfolge)
+              ListTile(
+                key: ValueKey(optIdx),
+                title: Text(frage.optionen[optIdx]),
+                trailing: const Icon(Icons.drag_handle),
+                dense: true,
+              ),
+          ],
+        ),
       ],
     );
   }
