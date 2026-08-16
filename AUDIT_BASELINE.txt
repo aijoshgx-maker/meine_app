@@ -1,0 +1,119 @@
+=== Validierung assets/fragen/ ===
+Dateien geprüft: 36
+Fragen gesamt (ohne Fachgespräch): 680
+
+--- FEHLER (27) ---
+FEHLER  auftragsanalyse_pneumatik.json: Datei beginnt mit UTF-8-BOM (EF BB BF).
+FEHLER  auftragsanalyse_toleranzen_passungen.json: Datei beginnt mit UTF-8-BOM (EF BB BF).
+FEHLER  fachgespraech_szenarien.json [fg-005]: Szenario-Feld 'fertigungsauftrag' ist leer oder fehlt.
+FEHLER  fachgespraech_szenarien.json [fg-005]: Szenario-Feld 'kategorien' ist leer oder fehlt.
+FEHLER  fertigungstechnik_mess_prueftechnik.json [ft-mp-003]: rechnung: loesungswert ist null.
+FEHLER  fertigungstechnik_mess_prueftechnik.json [ft-mp-003]: rechnung: einheit ist null.
+FEHLER  fertigungstechnik_mess_prueftechnik.json [ft-mp-003]: rechnung: toleranz ist null.
+FEHLER  fertigungstechnik_werkstoffe_waermebehandlung.json [ft-ww-005]: rechnung: loesungswert ist null.
+FEHLER  fertigungstechnik_werkstoffe_waermebehandlung.json [ft-ww-005]: rechnung: einheit ist null.
+FEHLER  fertigungstechnik_werkstoffe_waermebehandlung.json [ft-ww-005]: rechnung: toleranz ist null.
+FEHLER  fertigungstechnik_werkstoffe_waermebehandlung.json [ft-ww-005]: rechnung: optionen ist nicht leer (falsch typisiert).
+FEHLER  fertigungstechnik_werkstoffe_waermebehandlung.json [ft-ww-005]: rechnung: richtigeIndizes ist nicht leer (falsch typisiert).
+FEHLER  fertigungstechnik_werkstoffe_waermebehandlung.json [ft-ww-005]: Typfremde Felder befüllt für typ=rechnung: optionen, richtigeIndizes
+FEHLER  fertigungstechnik_werkzeuge_schneidstoffe.json: Datei beginnt mit UTF-8-BOM (EF BB BF).
+FEHLER  fertigungstechnik_zerspanung_grundlagen.json: Datei beginnt mit UTF-8-BOM (EF BB BF).
+FEHLER  wiso_markt_preisbildung.json [wi-mp-013]: rechnung: loesungswert ist null.
+FEHLER  wiso_markt_preisbildung.json [wi-mp-013]: rechnung: einheit ist null.
+FEHLER  wiso_markt_preisbildung.json [wi-mp-013]: rechnung: toleranz ist null.
+FEHLER  wiso_markt_preisbildung.json [wi-mp-013]: rechnung: optionen ist nicht leer (falsch typisiert).
+FEHLER  wiso_markt_preisbildung.json [wi-mp-013]: rechnung: richtigeIndizes ist nicht leer (falsch typisiert).
+FEHLER  wiso_markt_preisbildung.json [wi-mp-013]: Typfremde Felder befüllt für typ=rechnung: optionen, richtigeIndizes
+FEHLER  wiso_sozialversicherung.json [wi-sv-015]: rechnung: loesungswert ist null.
+FEHLER  wiso_sozialversicherung.json [wi-sv-015]: rechnung: einheit ist null.
+FEHLER  wiso_sozialversicherung.json [wi-sv-015]: rechnung: toleranz ist null.
+FEHLER  wiso_sozialversicherung.json [wi-sv-015]: rechnung: optionen ist nicht leer (falsch typisiert).
+FEHLER  wiso_sozialversicherung.json [wi-sv-015]: rechnung: richtigeIndizes ist nicht leer (falsch typisiert).
+FEHLER  wiso_sozialversicherung.json [wi-sv-015]: Typfremde Felder befüllt für typ=rechnung: optionen, richtigeIndizes
+
+--- WARNUNGEN (83) ---
+WARNUNG  auftragsanalyse_elektrotechnik.json [au-et-002]: 'erklaerung' kürzer als 90 Zeichen (64).
+WARNUNG  auftragsanalyse_elektrotechnik.json [au-et-004]: 'erklaerung' kürzer als 90 Zeichen (78).
+WARNUNG  auftragsanalyse_elektrotechnik.json [au-et-013]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_elektrotechnik.json [au-et-022]: 'erklaerung' kürzer als 90 Zeichen (78).
+WARNUNG  auftragsanalyse_form_lagetoleranzen.json [au-fl-009]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_form_lagetoleranzen.json [au-fl-010]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (0,02).
+WARNUNG  auftragsanalyse_form_lagetoleranzen.json [au-fl-013]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_funktionsanalyse.json [au-fa-004]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_funktionsanalyse.json [au-fa-006]: reihenfolge: Identitätspermutation [0,1,2,...] – Lösung = Anzeigereihenfolge.
+WARNUNG  auftragsanalyse_funktionsanalyse.json [au-fa-011]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_hydraulik.json [au-hy-013]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_instandhaltung.json [au-ih-004]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_instandhaltung.json [au-ih-011]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_instandhaltung.json [au-ih-012]: lueckentext: Lücke 1 akzeptiert nur eine Schreibweise (Lockout Tagout).
+WARNUNG  auftragsanalyse_maschinenelemente.json [au-me-009]: 'erklaerung' kürzer als 90 Zeichen (71).
+WARNUNG  auftragsanalyse_steuerung_regelung.json [au-sr-022]: 'erklaerung' kürzer als 90 Zeichen (71).
+WARNUNG  auftragsanalyse_steuerung_regelung.json: Positionsverteilung der richtigen Antwort bei single stark unausgewogen: {1: 6, 2: 2, 3: 2} (von 10 Fragen).
+WARNUNG  auftragsanalyse_technische_berechnungen.json [au-tb-017]: 'erklaerung' kürzer als 90 Zeichen (66).
+WARNUNG  auftragsanalyse_technisches_zeichnen.json [au-tz-004]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_technisches_zeichnen.json [au-tz-005]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (Schraffur).
+WARNUNG  auftragsanalyse_technisches_zeichnen.json [au-tz-011]: reihenfolge: Identitätspermutation [0,1,2,...] – Lösung = Anzeigereihenfolge.
+WARNUNG  auftragsanalyse_technisches_zeichnen.json [au-tz-014]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_toleranzen_passungen.json [au-tp-002]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (Höchstmaß).
+WARNUNG  auftragsanalyse_toleranzen_passungen.json [au-tp-002]: lueckentext: Lücke 4 akzeptiert nur eine Schreibweise (Mindestmaß).
+WARNUNG  auftragsanalyse_toleranzen_passungen.json [au-tp-010]: lueckentext: Lücke 1 akzeptiert nur eine Schreibweise (40).
+WARNUNG  auftragsanalyse_toleranzen_passungen.json [au-tp-010]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (Bohrung).
+WARNUNG  auftragsanalyse_toleranzen_passungen.json [au-tp-010]: lueckentext: Lücke 3 akzeptiert nur eine Schreibweise (Welle).
+WARNUNG  auftragsanalyse_toleranzen_passungen.json [au-tp-010]: lueckentext: Lücke 4 akzeptiert nur eine Schreibweise (Übergangspassung).
+WARNUNG  auftragsanalyse_toleranzen_passungen.json [au-tp-014]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_cnc_grundlagen.json [ft-cnc-013]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_fertigungs_arbeitsplanung.json [ft-ap-006]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_fertigungs_arbeitsplanung.json [ft-ap-013]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_fuegeverfahren.json [ft-fv-004]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_fuegeverfahren.json [ft-fv-011]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_mess_prueftechnik.json [ft-mp-015]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (Messunsicherheit).
+WARNUNG  fertigungstechnik_qualitaetssicherung.json [ft-qs-006]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-001]: 'erklaerung' kürzer als 90 Zeichen (59).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-002]: 'erklaerung' kürzer als 90 Zeichen (79).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-003]: 'erklaerung' kürzer als 90 Zeichen (47).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-004]: 'erklaerung' kürzer als 90 Zeichen (60).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-006]: 'erklaerung' kürzer als 90 Zeichen (72).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-007]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (m/min).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-011]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-015]: lueckentext: Lücke 1 akzeptiert nur eine Schreibweise (L).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-015]: lueckentext: Lücke 3 akzeptiert nur eine Schreibweise (Vorschub).
+WARNUNG  fertigungstechnik_schnittdaten.json [ft-sd-015]: lueckentext: Lücke 4 akzeptiert nur eine Schreibweise (Drehzahl).
+WARNUNG  fertigungstechnik_werkstoffe_waermebehandlung.json [ft-ww-007]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_werkstoffe_waermebehandlung.json [ft-ww-013]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_werkzeuge_schneidstoffe.json: Keine Umlaute in 15 Fragen gefunden (Encoding-Verdacht).
+WARNUNG  fertigungstechnik_werkzeuge_schneidstoffe.json [ft-ws-002]: lueckentext: Lücke 1 akzeptiert nur eine Schreibweise (Spanwinkel).
+WARNUNG  fertigungstechnik_werkzeuge_schneidstoffe.json [ft-ws-002]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (Freiwinkel).
+WARNUNG  fertigungstechnik_werkzeuge_schneidstoffe.json [ft-ws-002]: lueckentext: Lücke 3 akzeptiert nur eine Schreibweise (Keilwinkel).
+WARNUNG  fertigungstechnik_werkzeuge_schneidstoffe.json [ft-ws-002]: lueckentext: Lücke 4 akzeptiert nur eine Schreibweise (90).
+WARNUNG  fertigungstechnik_werkzeuge_schneidstoffe.json [ft-ws-006]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_werkzeuge_schneidstoffe.json [ft-ws-007]: 'erklaerung' kürzer als 90 Zeichen (89).
+WARNUNG  fertigungstechnik_werkzeuge_schneidstoffe.json [ft-ws-012]: 'erklaerung' kürzer als 90 Zeichen (60).
+WARNUNG  fertigungstechnik_wirtschaftliche_fertigung.json [ft-wf-013]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  fertigungstechnik_zerspanung_grundlagen.json [ft-zg-007]: 'erklaerung' kürzer als 90 Zeichen (66).
+WARNUNG  fertigungstechnik_zerspanung_grundlagen.json [ft-zg-012]: reihenfolge: Identitätspermutation [0,1,2,...] – Lösung = Anzeigereihenfolge.
+WARNUNG  wiso_arbeitsvertrag.json [wiso-av-003]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_arbeitsvertrag.json [wiso-av-005]: zuordnung: doppelte rechts-Werte.
+WARNUNG  wiso_arbeitsvertrag.json [wiso-av-010]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_berufsausbildung.json [wiso-ba-001]: 'erklaerung' kürzer als 90 Zeichen (86).
+WARNUNG  wiso_berufsausbildung.json [wiso-ba-003]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_berufsausbildung.json [wiso-ba-014]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_betriebsorganisation.json [wi-bo-010]: lueckentext: Lücke 1 akzeptiert nur eine Schreibweise (Interessenausgleich).
+WARNUNG  wiso_betriebsorganisation.json [wi-bo-010]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (Sozialplan).
+WARNUNG  wiso_betriebsorganisation.json [wi-bo-011]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_entgelt.json [wi-ent-007]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_entgelt.json [wi-ent-015]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_kaufvertrag.json [wi-kv-004]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_kaufvertrag.json [wi-kv-013]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_markt_preisbildung.json [wi-mp-012]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_sozialversicherung.json [wi-sv-005]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_sozialversicherung.json [wi-sv-009]: lueckentext: Lücke 2 akzeptiert nur eine Schreibweise (Generationenvertrag).
+WARNUNG  wiso_sozialversicherung.json [wi-sv-021]: 'erklaerung' kürzer als 90 Zeichen (76).
+WARNUNG  wiso_tarifrecht.json [wi-tr-006]: lueckentext: Lücke 1 akzeptiert nur eine Schreibweise (Friedenspflicht).
+WARNUNG  wiso_tarifrecht.json [wi-tr-011]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_verbraucherschutz.json [wi-vs-004]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_verbraucherschutz.json [wi-vs-010]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_verbraucherschutz.json [wi-vs-014]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  wiso_wirtschaftskreislauf.json [wi-wk-006]: multi: 4 von 5 Optionen richtig (zu leicht erratbar).
+WARNUNG  auftragsanalyse_pneumatik.json [au-pn-002]: Ähnlichkeit 100% zu au-sr-021 (auftragsanalyse_steuerung_regelung.json).
+
+ERGEBNIS: FEHLGESCHLAGEN (27 Fehler, 83 Warnungen)
