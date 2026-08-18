@@ -2,11 +2,13 @@ import 'package:hive/hive.dart';
 
 import '../models/konfidenz.dart';
 
-// Ein einzelner Beantwortungsversuch, append-only protokolliert. bereich und
-// kategorie werden zum Zeitpunkt des Schreibens denormalisiert (aus der
-// jeweiligen Frage kopiert), damit das Dashboard später ohne Rückgriff auf
-// den (möglicherweise inzwischen geänderten) Fragenkatalog auswerten kann.
+// Ein einzelner Beantwortungsversuch, append-only protokolliert. kursId,
+// bereich und kategorie werden zum Zeitpunkt des Schreibens denormalisiert
+// (aus dem aktiven Kurs bzw. der jeweiligen Frage kopiert), damit das
+// Dashboard später ohne Rückgriff auf den (möglicherweise inzwischen
+// geänderten oder deinstallierten) Fragenkatalog auswerten kann.
 class Attempt {
+  final String kursId;
   final String frageId;
   final DateTime zeitpunkt;
   final Konfidenz konfidenz;
@@ -16,6 +18,7 @@ class Attempt {
   final String? selbsterklaerung;
 
   const Attempt({
+    required this.kursId,
     required this.frageId,
     required this.zeitpunkt,
     required this.konfidenz,
@@ -26,6 +29,7 @@ class Attempt {
   });
 
   Map<String, dynamic> toMap() => {
+    'kursId': kursId,
     'frageId': frageId,
     'zeitpunkt': zeitpunkt.toIso8601String(),
     'konfidenz': konfidenz.name,
@@ -35,7 +39,14 @@ class Attempt {
     'selbsterklaerung': selbsterklaerung,
   };
 
-  factory Attempt.fromMap(Map<String, dynamic> map) => Attempt(
+  // kursId fehlt in Einträgen aus der Zeit vor der Mehrkurs-Fähigkeit.
+  // Migrationen.ausfuehren() schreibt sie nach, dieser Fallback fängt nur
+  // noch Backups aus alten App-Versionen ab.
+  factory Attempt.fromMap(
+    Map<String, dynamic> map, {
+    String standardKursId = '',
+  }) => Attempt(
+    kursId: map['kursId'] as String? ?? standardKursId,
     frageId: map['frageId'] as String,
     zeitpunkt: DateTime.parse(map['zeitpunkt'] as String),
     konfidenz: Konfidenz.values.byName(map['konfidenz'] as String),
@@ -57,9 +68,26 @@ class AttemptHistoryStore {
     await _box.add(attempt.toMap());
   }
 
+  /// Alle Versuche über alle Kurse hinweg - für Backup und Migration.
   List<Attempt> alle() {
     return _box.values
         .map((roh) => Attempt.fromMap(Map<String, dynamic>.from(roh as Map)))
         .toList();
+  }
+
+  /// Nur die Versuche eines Kurses. Das Dashboard wertet immer genau einen
+  /// Kurs aus, damit sich Fortschritte verschiedener Themen nicht vermischen.
+  List<Attempt> fuerKurs(String kursId) =>
+      alle().where((a) => a.kursId == kursId).toList();
+
+  /// Entfernt die Historie eines Kurses (beim Deinstallieren).
+  Future<int> kursLoeschen(String kursId) async {
+    final zuLoeschen = <dynamic>[];
+    for (final key in _box.keys) {
+      final roh = Map<String, dynamic>.from(_box.get(key) as Map);
+      if (roh['kursId'] == kursId) zuLoeschen.add(key);
+    }
+    await _box.deleteAll(zuLoeschen);
+    return zuLoeschen.length;
   }
 }

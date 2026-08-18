@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../app/settings_providers.dart';
+import '../../../core/notifications/notification_service.dart';
 
 // Lädt nur das "stand"-Datum aus _rechtsstand.json - der Rest der Datei
 // (Beitragssätze etc.) wird direkt in den Fragetexten verwendet, siehe
@@ -55,24 +56,40 @@ class SettingsScreen extends ConsumerWidget {
             onSelectionChanged: (auswahl) =>
                 themeController.setzen(auswahl.first),
           ),
-          const SizedBox(height: 24),
-          SwitchListTile(
-            title: const Text('Erinnerung an fällige Karten'),
-            subtitle: const Text(
-              'Tägliche Erinnerung um 18 Uhr, wenn Karten fällig sind.',
+          // Erinnerungen gibt es nur auf Android - auf Web und Desktop wäre
+          // der Schalter ein Versprechen, das die Plattform nicht hält.
+          if (NotificationService.unterstuetzt) ...[
+            const SizedBox(height: 24),
+            SwitchListTile(
+              title: const Text('Erinnerung an fällige Karten'),
+              subtitle: const Text(
+                'Tägliche Erinnerung um 18 Uhr, wenn Karten fällig sind.',
+              ),
+              value: remindersEnabled,
+              onChanged: remindersController.setzen,
             ),
-            value: remindersEnabled,
-            onChanged: remindersController.setzen,
-          ),
+          ],
           const SizedBox(height: 24),
           Text('Daten', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.library_books_outlined),
+              title: const Text('Kurse'),
+              subtitle: const Text(
+                'Lernpakete importieren, wechseln oder entfernen',
+              ),
+              trailing: const Icon(Icons.chevron_right),
+              onTap: () => context.go('/kurse'),
+            ),
+          ),
           const SizedBox(height: 8),
           Card(
             child: ListTile(
               leading: const Icon(Icons.backup_outlined),
               title: const Text('Backup'),
               subtitle: const Text(
-                'Lernstand exportieren oder wiederherstellen',
+                'Lernstand aller Kurse sichern oder wiederherstellen',
               ),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => context.push('/settings/backup'),

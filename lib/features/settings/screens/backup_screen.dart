@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
@@ -7,12 +6,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../data/backup_store.dart';
-import '../../quiz/providers/quiz_providers.dart' show fragenProvider;
+import '../../../data/fsrs_card_store.dart';
+import '../../kurse/providers/kurs_providers.dart'
+    show alleKurseProvider, kursRepositoryProvider;
 
 // Aktuelle App-Version für den Backup-Header. Kein package_info_plus als
 // zusätzliche Abhängigkeit nötig - einfacher String, der mit
 // pubspec.yaml/version synchron gehalten wird.
-const _appVersionFuerBackup = '1.1.0';
+const _appVersionFuerBackup = '1.2.0';
 
 class BackupScreen extends ConsumerStatefulWidget {
   const BackupScreen({super.key});
@@ -35,12 +36,22 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
     });
     try {
       final daten = _backupStore.erstellen(appVersion: _appVersionFuerBackup);
-      final datei = await _backupStore.alsDateiSchreiben(daten);
+      final name = _backupStore.dateinameFuer(daten.exportiertAm);
+
+      // Über die Bytes statt über einen Dateipfad: funktioniert so auf
+      // Android genauso wie auf Web, wo es kein Dateisystem gibt.
+      final datei = XFile.fromData(
+        _backupStore.alsBytes(daten),
+        name: name,
+        mimeType: 'application/json',
+      );
+
       if (!mounted) return;
       await SharePlus.instance.share(
         ShareParams(
-          files: [XFile(datei.path)],
-          subject: 'AP2 Trainer – Lernstand-Backup',
+          files: [datei],
+          fileNameOverrides: [name],
+          subject: 'Lernstand-Backup',
           text:
               'Lernstand-Export vom '
               '${daten.exportiertAm.toLocal().toString().split('.').first} '
@@ -71,7 +82,9 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
     });
 
     try {
-      final text = await File(datei.path).readAsString();
+      // readAsString() vom XFile statt über dart:io - auf Web liefert der
+      // Dateiauswahl-Dialog nur Bytes, keinen benutzbaren Pfad.
+      final text = await datei.readAsString();
       final json = jsonDecode(text) as Map<String, dynamic>;
       final daten = BackupDaten.fromJson(json);
 
@@ -82,13 +95,23 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
         return;
       }
 
-      final alleFragen = await ref.read(fragenProvider.future);
-      final bekannteIds = alleFragen.map((f) => f.id).toSet();
+      // Ein Backup enthält den Lernstand aller Kurse. Bekannt ist eine Karte
+      // nur, wenn ihr Kurs installiert ist UND die Frage darin noch existiert
+      // - alles andere wird übersprungen und im Ergebnis ausgewiesen.
+      final kurse = await ref.read(alleKurseProvider.future);
+      final repository = ref.read(kursRepositoryProvider);
+      final bekannteSchluessel = <String>{};
+      for (final kurs in kurse) {
+        final paket = await repository.paketFuer(kurs.id);
+        for (final frage in paket.fragen) {
+          bekannteSchluessel.add(FsrsCardStore.schluessel(kurs.id, frage.id));
+        }
+      }
 
       final ergebnis = await _backupStore.importieren(
         daten,
         modus: modus,
-        bekannteFrageIds: bekannteIds,
+        bekannteSchluessel: bekannteSchluessel,
       );
 
       if (!mounted) return;

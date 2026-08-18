@@ -18,8 +18,9 @@ class KalibrierungChart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final kalibrierung = ref.watch(kalibrierungProvider);
-    final hochkonfidentFalsch = ref.watch(hochkonfidentFalschAnzahlProvider);
+    final kalibrierung = ref.watch(kalibrierungProvider).value ?? const {};
+    final hochkonfidentFalsch =
+        ref.watch(hochkonfidentFalschAnzahlProvider).value ?? 0;
 
     return Card(
       child: Padding(

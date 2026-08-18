@@ -4,30 +4,11 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:meine_app/data/attempt_history_store.dart';
-import 'package:meine_app/data/fsrs_card_store.dart';
+import 'package:meine_app/features/kurse/providers/kurs_providers.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/models/frage.dart';
 
-class _FakeFsrsCardStore implements FsrsCardStore {
-  final Map<String, GespeicherteKarte> _daten = {};
-  @override
-  GespeicherteKarte? kartenStandFuer(String frageId) => _daten[frageId];
-  @override
-  Map<String, GespeicherteKarte> alleKartenstaende() => Map.of(_daten);
-  @override
-  Future<void> speichern(String frageId, GespeicherteKarte karte) async {
-    _daten[frageId] = karte;
-  }
-}
-
-class _FakeAttemptHistoryStore implements AttemptHistoryStore {
-  final List<Attempt> _eintraege = [];
-  @override
-  Future<void> anhaengen(Attempt attempt) async => _eintraege.add(attempt);
-  @override
-  List<Attempt> alle() => List.of(_eintraege);
-}
+import 'hilfen/test_kurs.dart';
 
 const _modus = QuizModus.freiUebung();
 
@@ -37,9 +18,9 @@ const _modus = QuizModus.freiUebung();
 Future<(ProviderContainer, QuizSessionController)> _session(Frage frage) async {
   final container = ProviderContainer(
     overrides: [
-      fsrsCardStoreProvider.overrideWithValue(_FakeFsrsCardStore()),
-      attemptHistoryStoreProvider.overrideWithValue(_FakeAttemptHistoryStore()),
-      fragenProvider.overrideWith((_) async => [frage]),
+      fsrsCardStoreProvider.overrideWithValue(FakeFsrsCardStore()),
+      attemptHistoryStoreProvider.overrideWithValue(FakeAttemptHistoryStore()),
+      aktivesPaketProvider.overrideWith((_) async => testPaket([frage])),
     ],
   );
   addTearDown(container.dispose);
@@ -65,7 +46,7 @@ Frage _basis({
   bool? wahr,
 }) => Frage(
   id: 'test-$typ',
-  bereich: 'test',
+  bereich: 'allgemein',
   kategorie: 'Test',
   typ: typ,
   frage: 'Testfrage ($typ)',

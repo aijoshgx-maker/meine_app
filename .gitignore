@@ -52,3 +52,10 @@ keystore_base64.txt
 
 # Local environment
 .env
+
+# Build-Artefakte, die nicht ins Repo gehoeren (>200 MB)
+*.apk
+*.aab
+
+# Firebase-Konfiguration mit projektspezifischen Schluesseln
+android/app/google-services.json

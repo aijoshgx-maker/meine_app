@@ -1,25 +1,34 @@
 import 'dart:convert';
-import 'dart:io';
+import 'dart:typed_data';
 
 import 'package:hive/hive.dart';
-import 'package:path_provider/path_provider.dart';
 
+import '../core/plattform/datei_ablage.dart';
 import 'attempt_history_store.dart';
 import 'fsrs_card_store.dart';
+import 'migrationen.dart';
 import 'settings_store.dart';
 
 // Export/Import des kompletten Lernstands (P9): FSRS-Kartenstände,
 // Beantwortungsverlauf und Einstellungen als eine JSON-Datei. Schema von
 // Anfang an versioniert, damit spätere Formatänderungen migrierbar bleiben.
+//
+// Version 2 sichert den Lernstand aller Kurse: Kartenschlüssel tragen seither
+// die Kurs-id ("kursId::frageId"), Verlaufseinträge ein Feld kursId. Backups
+// der Version 1 stammen aus der Zeit mit nur einem Kurs und werden beim
+// Einlesen auf den Bestandskurs umgeschrieben.
+//
+// Das Backup enthält bewusst KEINE Kursinhalte - nur den Fortschritt. Ein
+// importiertes Lernpaket exportiert man als Paketdatei, nicht als Backup.
 
-const backupSchemaVersion = 1;
+const backupSchemaVersion = 2;
 
 class BackupDaten {
   final int schemaVersion;
   final DateTime exportiertAm;
   final String appVersion;
   final Map<String, Map<String, dynamic>>
-  karten; // frageId -> GespeicherteKarte.toMap()
+  karten; // "kursId::frageId" -> GespeicherteKarte.toMap()
   final List<Map<String, dynamic>> verlauf; // Attempt.toMap()
   final Map<String, dynamic> einstellungen;
 
@@ -76,16 +85,32 @@ class BackupDaten {
       throw const FormatException("Feld 'verlauf' fehlt oder ist ungültig.");
     }
 
+    // Version 1 kannte nur einen Kurs: Kartenschlüssel waren nackte
+    // Frage-ids, Verlaufseinträge trugen keine kursId. Beides hier
+    // nachziehen, damit der alte Lernstand im Mehrkurs-Schema ankommt.
+    final altesFormat = schemaVersion < 2;
+
+    final karten = kartenRoh.map(
+      (k, v) => MapEntry(
+        altesFormat
+            ? FsrsCardStore.schluessel(Migrationen.bestandsKursId, k as String)
+            : k as String,
+        Map<String, dynamic>.from(v as Map),
+      ),
+    );
+
+    final verlauf = verlaufRoh.map((e) {
+      final eintrag = Map<String, dynamic>.from(e as Map);
+      eintrag['kursId'] ??= Migrationen.bestandsKursId;
+      return eintrag;
+    }).toList();
+
     return BackupDaten(
       schemaVersion: schemaVersion,
       exportiertAm: exportiertAm,
       appVersion: json['appVersion'] as String? ?? 'unbekannt',
-      karten: kartenRoh.map(
-        (k, v) => MapEntry(k as String, Map<String, dynamic>.from(v as Map)),
-      ),
-      verlauf: verlaufRoh
-          .map((e) => Map<String, dynamic>.from(e as Map))
-          .toList(),
+      karten: karten,
+      verlauf: verlauf,
       einstellungen: Map<String, dynamic>.from(
         (json['einstellungen'] as Map?) ?? {},
       ),
@@ -123,8 +148,10 @@ class BackupStore {
        _einstellungenStore = einstellungenStore ?? SettingsStore();
 
   BackupDaten erstellen({required String appVersion}) {
-    final karten = _kartenStore.alleKartenstaende().map(
-      (id, karte) => MapEntry(id, karte.toMap()),
+    // Bewusst über alle Kurse hinweg: ein Backup soll den kompletten
+    // Lernstand sichern, nicht nur den gerade aktiven Kurs.
+    final karten = _kartenStore.alleKartenstaendeRoh().map(
+      (schluessel, karte) => MapEntry(schluessel, karte.toMap()),
     );
     final verlauf = _verlaufStore.alle().map((a) => a.toMap()).toList();
     final einstellungen = {
@@ -142,21 +169,26 @@ class BackupStore {
     );
   }
 
-  /// Schreibt [daten] als JSON-Datei ins Zielverzeichnis (Standard: das
-  /// temporäre Verzeichnis, zum direkten Teilen über share_plus) und gibt
-  /// den Pfad zurück.
-  Future<File> alsDateiSchreiben(
-    BackupDaten daten, {
-    Directory? zielOrdner,
-    String? dateiname,
-  }) async {
-    final ordner = zielOrdner ?? await getTemporaryDirectory();
-    final name = dateiname ?? _dateinameFuer(daten.exportiertAm);
-    final datei = File('${ordner.path}/$name');
+  /// Serialisiert [daten] zu den Bytes der Backup-Datei.
+  ///
+  /// Bewusst plattformfrei: Was danach damit passiert - teilen, speichern
+  /// oder herunterladen - entscheidet der Aufrufer. Auf Web gibt es kein
+  /// Dateisystem, in das hier geschrieben werden könnte.
+  Uint8List alsBytes(BackupDaten daten) {
     const encoder = JsonEncoder.withIndent('  ');
-    await datei.writeAsString(encoder.convert(daten.toJson()));
-    return datei;
+    return Uint8List.fromList(utf8.encode(encoder.convert(daten.toJson())));
   }
+
+  /// Vorgeschlagener Dateiname für einen Export.
+  String dateinameFuer(DateTime zeitpunkt) => _dateinameFuer(zeitpunkt);
+
+  /// Schreibt das Backup zusätzlich als echte Datei und gibt den Pfad zurück.
+  /// Auf Web null - dort wird nur über die Bytes exportiert.
+  Future<String?> alsTemporaereDatei(BackupDaten daten) =>
+      DateiAblage.temporaerSchreiben(
+        _dateinameFuer(daten.exportiertAm),
+        alsBytes(daten),
+      );
 
   String _dateinameFuer(DateTime zeitpunkt) {
     final iso = zeitpunkt
@@ -164,17 +196,18 @@ class BackupStore {
         .replaceAll(':', '-')
         .split('.')
         .first;
-    return 'ap2trainer-backup-$iso.json';
+    return 'lernstand-backup-$iso.json';
   }
 
-  /// Importiert [daten]. [bekannteFrageIds] filtert unbekannte Frage-IDs
-  /// heraus (überspringen + zählen, statt abzubrechen) - so bricht ein
-  /// Import nicht, wenn sich der Fragenbestand zwischen Export und Import
-  /// geändert hat.
+  /// Importiert [daten]. [bekannteSchluessel] enthält alle bekannten
+  /// Kartenschlüssel ("kursId::frageId") über alle installierten Kurse;
+  /// alles andere wird übersprungen und gezählt statt abzubrechen - so
+  /// bricht ein Import nicht, wenn sich der Fragenbestand zwischen Export
+  /// und Import geändert hat oder ein Kurs nicht installiert ist.
   Future<ImportErgebnis> importieren(
     BackupDaten daten, {
     required ImportModus modus,
-    required Set<String> bekannteFrageIds,
+    required Set<String> bekannteSchluessel,
   }) async {
     var importiert = 0;
     var aktualisiert = 0;
@@ -184,16 +217,18 @@ class BackupStore {
       await _kartenBoxLeeren();
     }
 
+    final vorhandeneKarten = _kartenStore.alleKartenstaendeRoh();
+
     for (final entry in daten.karten.entries) {
-      final frageId = entry.key;
-      if (!bekannteFrageIds.contains(frageId)) {
+      final schluessel = entry.key;
+      if (!bekannteSchluessel.contains(schluessel)) {
         uebersprungenUnbekannt++;
         continue;
       }
       final importierteKarte = GespeicherteKarte.fromMap(entry.value);
 
       if (modus == ImportModus.zusammenfuehren) {
-        final vorhandene = _kartenStore.kartenStandFuer(frageId);
+        final vorhandene = vorhandeneKarten[schluessel];
         if (vorhandene != null) {
           // Jüngeres "due" gewinnt (siehe P9-Vorgabe).
           if (!importierteKarte.card.due.isAfter(vorhandene.card.due)) {
@@ -206,7 +241,7 @@ class BackupStore {
       } else {
         importiert++;
       }
-      await _kartenStore.speichern(frageId, importierteKarte);
+      await _kartenStore.speichernRoh(schluessel, importierteKarte);
     }
 
     var verlaufHinzugefuegt = 0;
@@ -231,12 +266,15 @@ class BackupStore {
       // bleiben, importierte werden ergänzt, exakte Duplikate übersprungen.
       final vorhandeneSchluessel = _verlaufStore
           .alle()
-          .map((a) => '${a.frageId}|${a.zeitpunkt.toIso8601String()}')
+          .map(
+            (a) => '${a.kursId}|${a.frageId}|${a.zeitpunkt.toIso8601String()}',
+          )
           .toSet();
       for (final roh in daten.verlauf) {
         final attempt = Attempt.fromMap(roh);
         final schluessel =
-            '${attempt.frageId}|${attempt.zeitpunkt.toIso8601String()}';
+            '${attempt.kursId}|${attempt.frageId}|'
+            '${attempt.zeitpunkt.toIso8601String()}';
         if (vorhandeneSchluessel.contains(schluessel)) continue;
         await _verlaufStore.anhaengen(attempt);
         verlaufHinzugefuegt++;

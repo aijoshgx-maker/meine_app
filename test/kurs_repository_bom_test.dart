@@ -1,6 +1,6 @@
-// P1a/P12b: Eine Datei mit BOM (bzw. generell eine kaputte Themendatei)
-// darf die übrigen Themen nicht mitreißen - frage_repository.dart fängt
-// Ladefehler pro Datei ab statt die gesamte Liste abzubrechen.
+// P1a/P12b: Eine Datei mit BOM (bzw. generell eine kaputte Themendatei) darf
+// die übrigen Themen nicht mitreißen - kurs_repository.dart fängt Ladefehler
+// pro Datei ab statt die gesamte Liste abzubrechen.
 //
 // rootBundle wird über den 'flutter/assets'-Kanal gemockt, damit der Test
 // unabhängig von den echten Projekt-Assets ist.
@@ -9,19 +9,20 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:meine_app/data/frage_repository.dart';
+import 'package:meine_app/data/kurs_repository.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
+
+  const kursPfad = 'assets/kurse/ap2-industriemechaniker/kurs.json';
 
   Future<void> mitGemocktenAssets(
     Map<String, String> assets,
     Future<void> Function() run,
   ) async {
     // rootBundle cached Strings über Testgrenzen hinweg (dieselben Asset-
-    // Keys wie '_manifest.json' werden in mehreren Tests wiederverwendet) -
-    // ohne clear() würde ein Test den gemockten Inhalt eines vorherigen
-    // Tests sehen statt seines eigenen.
+    // Keys werden in mehreren Tests wiederverwendet) - ohne clear() würde ein
+    // Test den gemockten Inhalt eines vorherigen Tests sehen.
     rootBundle.clear();
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
         .setMockMessageHandler('flutter/assets', (ByteData? message) async {
@@ -35,9 +36,21 @@ void main() {
     addTearDown(() {
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMessageHandler('flutter/assets', null);
+      rootBundle.clear();
     });
     await run();
   }
+
+  String kursMit(List<String> dateien) => jsonEncode({
+    'schemaVersion': 1,
+    'id': 'ap2-industriemechaniker',
+    'titel': 'Testkurs',
+    'assetOrdner': 'assets/fragen/',
+    'bereiche': [
+      {'id': 'test', 'titel': 'Test'},
+    ],
+    'fragenDateien': dateien,
+  });
 
   const gueltigeFrage = '''
 [
@@ -71,33 +84,47 @@ void main() {
     () async {
       await mitGemocktenAssets(
         {
-          'assets/fragen/_manifest.json': jsonEncode([
-            'gut.json',
-            'kaputt.json',
-          ]),
+          kursPfad: kursMit(['gut.json', 'kaputt.json']),
           'assets/fragen/gut.json': gueltigeFrage,
           'assets/fragen/kaputt.json': '{ das ist kein gueltiges JSON [[[',
         },
         () async {
-          final fragen = await FrageRepository().laden();
-          expect(fragen, hasLength(1));
-          expect(fragen.first.id, 'test-ok-001');
+          final paket = await KursRepository().paketFuer(
+            KursRepository.standardKursId,
+          );
+          expect(paket.fragen, hasLength(1));
+          expect(paket.fragen.first.id, 'test-ok-001');
         },
       );
     },
   );
 
   test('eine Datei mit UTF-8-BOM wird trotzdem korrekt geladen', () async {
-    final mitBom = '﻿$gueltigeFrage';
     await mitGemocktenAssets(
       {
-        'assets/fragen/_manifest.json': jsonEncode(['mit_bom.json']),
-        'assets/fragen/mit_bom.json': mitBom,
+        kursPfad: kursMit(['mit_bom.json']),
+        'assets/fragen/mit_bom.json': '﻿$gueltigeFrage',
       },
       () async {
-        final fragen = await FrageRepository().laden();
-        expect(fragen, hasLength(1));
-        expect(fragen.first.id, 'test-ok-001');
+        final paket = await KursRepository().paketFuer(
+          KursRepository.standardKursId,
+        );
+        expect(paket.fragen, hasLength(1));
+        expect(paket.fragen.first.id, 'test-ok-001');
+      },
+    );
+  });
+
+  test('eine kurs.json mit BOM wird ebenfalls gelesen', () async {
+    await mitGemocktenAssets(
+      {
+        kursPfad: '﻿${kursMit(['gut.json'])}',
+        'assets/fragen/gut.json': gueltigeFrage,
+      },
+      () async {
+        final kurse = await KursRepository().alleKurse();
+        expect(kurse, hasLength(1));
+        expect(kurse.first.titel, 'Testkurs');
       },
     );
   });
@@ -107,21 +134,19 @@ void main() {
     () async {
       await mitGemocktenAssets(
         {
-          'assets/fragen/_manifest.json': jsonEncode([
-            'mit_bom.json',
-            'kaputt.json',
-            'gut.json',
-          ]),
+          kursPfad: kursMit(['mit_bom.json', 'kaputt.json', 'gut.json']),
           'assets/fragen/mit_bom.json': '﻿$gueltigeFrage',
           'assets/fragen/kaputt.json': 'nicht mal json',
           'assets/fragen/gut.json': gueltigeFrage,
         },
         () async {
-          final fragen = await FrageRepository().laden();
+          final paket = await KursRepository().paketFuer(
+            KursRepository.standardKursId,
+          );
           // 2 gültige Dateien liefern je 1 Frage mit derselben id (Testdaten) -
-          // FrageRepository dedupliziert IDs nicht (das macht der Validator),
+          // das Repository dedupliziert IDs nicht (das macht der Validator),
           // hier zählt nur: keine Exception, kaputt.json wird übersprungen.
-          expect(fragen, hasLength(2));
+          expect(paket.fragen, hasLength(2));
         },
       );
     },

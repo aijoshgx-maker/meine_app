@@ -149,3 +149,13 @@ enum FrageTyp {
 
 FrageTyp frageTypVon(String typ) =>
     FrageTyp.values.firstWhere((t) => t.name == typ);
+
+/// Wie [frageTypVon], aber null statt einer Exception bei unbekanntem Typ.
+/// Wird beim Import genutzt, um eine einzelne kaputte Frage zu überspringen,
+/// statt das ganze Paket abzulehnen.
+FrageTyp? frageTypOderNull(String typ) {
+  for (final t in FrageTyp.values) {
+    if (t.name == typ) return t;
+  }
+  return null;
+}

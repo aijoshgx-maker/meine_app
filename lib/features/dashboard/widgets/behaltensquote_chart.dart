@@ -12,7 +12,7 @@ class BehaltensquoteChart extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final behaltensquote = ref.watch(behaltensquoteProvider);
-    final verlauf = ref.watch(behaltensquoteVerlaufProvider);
+    final verlauf = ref.watch(behaltensquoteVerlaufProvider).value ?? const [];
 
     return Card(
       child: Padding(

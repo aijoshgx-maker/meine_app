@@ -2,64 +2,82 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../models/kurs.dart';
+import '../../kurse/providers/kurs_providers.dart';
 import '../../quiz/providers/quiz_providers.dart';
 import '../../quiz/providers/session_timer_provider.dart';
-import '../data/pruefungs_metadaten.dart';
 
-// Anzahl der tatsächlich verfügbaren Aufgaben je Prüfung (frage.pruefung ==
-// id). Manche Jahrgänge haben lückenhafte pruefungReihenfolge-Sets (siehe
-// P8c) - die Auswahl-Karte zeigt das transparent an, statt still eine
+// Testläufe auf Zeit. Welche es gibt, steht im aktiven Kurs - früher war das
+// eine feste Liste der vier IHK-Prüfungen im Dart-Code.
+//
+// Ein Testlauf zieht seine Aufgaben über frage.pruefung == code. Ist ein
+// Datensatz lückenhaft, zeigt die Karte das transparent an, statt still eine
 // unvollständige Prüfung zu simulieren.
-final pruefungsAufgabenAnzahlProvider = FutureProvider<Map<String, int>>((
-  ref,
-) async {
-  final alle = await ref.watch(fragenProvider.future);
-  final zaehler = <String, int>{};
-  for (final f in alle) {
-    final id = f.pruefung;
-    if (id == null) continue;
-    zaehler[id] = (zaehler[id] ?? 0) + 1;
-  }
-  return zaehler;
-});
-
 class PruefungsAuswahlScreen extends ConsumerWidget {
   const PruefungsAuswahlScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final anzahlAsync = ref.watch(pruefungsAufgabenAnzahlProvider);
+    final paketAsync = ref.watch(aktivesPaketProvider);
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Prüfungssimulation'),
+        title: Text(paketAsync.value?.kurs.begriffe.testlauf ?? 'Testlauf'),
         leading: BackButton(onPressed: () => context.go('/')),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Text(
-            'Schriftliche Theorieprüfung simulieren',
-            style: Theme.of(context).textTheme.titleMedium,
+      body: paketAsync.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, _) => Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24),
+            child: Text('Nicht ladbar: $e', textAlign: TextAlign.center),
           ),
-          const SizedBox(height: 4),
-          Text(
-            'Wähle eine Prüfung. Der Timer läuft mit dem realen Zeitlimit. '
-            'Über den Zeichnungs-Button (unten rechts) kannst du alle '
-            'Prüfungszeichnungen einsehen.',
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-          const SizedBox(height: 20),
-          for (final info in PruefungsMetadaten.alle)
-            _PruefungsKarte(
-              info: info,
-              anzahlVerfuegbar: anzahlAsync.value?[info.id],
-              anzahlMaximal: (anzahlAsync.value?.values.isEmpty ?? true)
-                  ? null
-                  : anzahlAsync.value!.values.reduce((a, b) => a > b ? a : b),
-              onStart: () => _starteSimulation(context, ref, info),
-            ),
-        ],
+        ),
+        data: (paket) {
+          final anzahl = paket.fragenProPruefung;
+          // Nur Testläufe zeigen, für die es auch Aufgaben gibt.
+          final verfuegbar = paket.kurs.pruefungen
+              .where((p) => (anzahl[p.code] ?? 0) > 0)
+              .toList();
+
+          if (verfuegbar.isEmpty) {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(24),
+                child: Text(
+                  'Dieser Kurs enthält keine Testläufe.',
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            );
+          }
+
+          final maximal = anzahl.values.reduce((a, b) => a > b ? a : b);
+
+          return ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              Text(
+                '${paket.kurs.begriffe.testlauf} starten',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              const SizedBox(height: 4),
+              Text(
+                'Der Timer läuft mit dem hinterlegten Zeitlimit. '
+                'Bewertung und Wiederholungsplanung bleiben dabei außen vor.',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              const SizedBox(height: 20),
+              for (final pruefung in verfuegbar)
+                _PruefungsKarte(
+                  info: pruefung,
+                  anzahlVerfuegbar: anzahl[pruefung.code],
+                  anzahlMaximal: maximal,
+                  onStart: () => _starteSimulation(context, ref, pruefung),
+                ),
+            ],
+          );
+        },
       ),
     );
   }
@@ -67,10 +85,10 @@ class PruefungsAuswahlScreen extends ConsumerWidget {
   void _starteSimulation(
     BuildContext context,
     WidgetRef ref,
-    PruefungsInfo info,
+    PruefungsDefinition info,
   ) {
     final modus = QuizModus.pruefungssimulation(
-      pruefungsId: info.id,
+      pruefungsId: info.code,
       zeitlimitMinuten: info.zeitlimitMinuten,
     );
     // Alten Stand verwerfen → nächster Start beginnt immer von vorne.
@@ -81,7 +99,7 @@ class PruefungsAuswahlScreen extends ConsumerWidget {
 }
 
 class _PruefungsKarte extends StatelessWidget {
-  final PruefungsInfo info;
+  final PruefungsDefinition info;
   final int? anzahlVerfuegbar;
   final int? anzahlMaximal;
   final VoidCallback onStart;
@@ -113,7 +131,7 @@ class _PruefungsKarte extends StatelessWidget {
                 const SizedBox(width: 10),
                 Expanded(
                   child: Text(
-                    info.bezeichnung,
+                    info.titel,
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),

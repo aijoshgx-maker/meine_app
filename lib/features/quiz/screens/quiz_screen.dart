@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../core/kurse/kurs_bilder.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart' show Rating;
 import '../../../models/frage.dart';
-import '../../pruefungssimulation/data/pruefungs_metadaten.dart';
+import '../../../models/kurs.dart';
+import '../../kurse/providers/kurs_providers.dart';
 import '../providers/quiz_providers.dart';
 import '../providers/session_break_provider.dart';
 import '../providers/session_timer_provider.dart';
@@ -109,7 +111,8 @@ class QuizScreen extends ConsumerWidget {
       ),
       floatingActionButton: (istSim && inSession && modus.pruefungsId != null)
           ? FloatingActionButton.small(
-              onPressed: () => _zeigeZeichnungen(context, modus.pruefungsId!),
+              onPressed: () =>
+                  _zeigeZeichnungen(context, ref, modus.pruefungsId!),
               tooltip: 'Zeichnungen anzeigen',
               child: const Icon(Icons.map_outlined),
             )
@@ -177,13 +180,20 @@ class QuizScreen extends ConsumerWidget {
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
-void _zeigeZeichnungen(BuildContext context, String pruefungsId) {
-  final info = PruefungsMetadaten.fuerId(pruefungsId);
+void _zeigeZeichnungen(
+  BuildContext context,
+  WidgetRef ref,
+  String pruefungsId,
+) {
+  final paket = ref.read(aktivesPaketProvider).value;
+  final info = paket?.kurs.pruefungFuer(pruefungsId);
+  if (paket == null || info == null) return;
+
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     useSafeArea: true,
-    builder: (_) => _ZeichnungsViewer(info: info),
+    builder: (_) => _ZeichnungsViewer(info: info, kurs: paket.kurs),
   );
 }
 
@@ -508,14 +518,15 @@ class _AufdeckungsAnsicht extends ConsumerWidget {
 }
 
 class _ZeichnungsViewer extends StatelessWidget {
-  final PruefungsInfo info;
-  const _ZeichnungsViewer({required this.info});
+  final PruefungsDefinition info;
+  final Kurs kurs;
+  const _ZeichnungsViewer({required this.info, required this.kurs});
 
   @override
   Widget build(BuildContext context) {
-    final zeigeEchteZeichnungen = info.zeichnungsPfade.isNotEmpty;
+    final zeigeEchteZeichnungen = info.zeichnungen.isNotEmpty;
     final anzahl = zeigeEchteZeichnungen
-        ? info.zeichnungsPfade.length
+        ? info.zeichnungen.length
         : info.diagrammKeys.length;
 
     return DraggableScrollableSheet(
@@ -549,7 +560,7 @@ class _ZeichnungsViewer extends StatelessWidget {
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       Text(
-                        info.bezeichnung,
+                        info.titel,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],
@@ -570,8 +581,8 @@ class _ZeichnungsViewer extends StatelessWidget {
               itemCount: anzahl,
               itemBuilder: (context, i) {
                 final label = zeigeEchteZeichnungen
-                    ? (i < info.zeichnungsLabels.length
-                          ? info.zeichnungsLabels[i]
+                    ? (info.zeichnungen[i].label.isNotEmpty
+                          ? info.zeichnungen[i].label
                           : 'Zeichnung ${i + 1}')
                     : info.diagrammKeys[i].replaceAll('_', ' ').toUpperCase();
 
@@ -593,7 +604,8 @@ class _ZeichnungsViewer extends StatelessWidget {
                       ),
                       if (zeigeEchteZeichnungen)
                         _EchtesZeichnungsBild(
-                          pfad: info.zeichnungsPfade[i],
+                          pfad: info.zeichnungen[i].pfad,
+                          kurs: kurs,
                           stueckliste: info.stueckliste,
                         )
                       else
@@ -614,22 +626,30 @@ class _ZeichnungsViewer extends StatelessWidget {
 
 class _EchtesZeichnungsBild extends StatelessWidget {
   final String pfad;
+  final Kurs kurs;
   final Map<String, String> stueckliste;
   const _EchtesZeichnungsBild({
     required this.pfad,
+    required this.kurs,
     this.stueckliste = const {},
   });
 
   @override
   Widget build(BuildContext context) {
+    // Gebündelte Kurse liefern Assets, importierte echte Dateien.
+    final quelle = KursBilder.fuer(kurs, pfad);
+    if (quelle == null) {
+      return _Platzhalter(pfad: pfad, stueckliste: stueckliste);
+    }
+
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: InteractiveViewer(
         boundaryMargin: const EdgeInsets.all(20),
         minScale: 0.5,
         maxScale: 6.0,
-        child: Image.asset(
-          pfad,
+        child: Image(
+          image: quelle,
           fit: BoxFit.contain,
           errorBuilder: (_, _, _) =>
               _Platzhalter(pfad: pfad, stueckliste: stueckliste),

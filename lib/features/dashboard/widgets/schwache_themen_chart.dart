@@ -10,7 +10,9 @@ class SchwacheThemenChart extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themen = ref.watch(schwacheThemenProvider);
+    // Die Daten kommen aus Hive und sind praktisch sofort da; solange sie
+    // laden, zeigt die leere Liste den "noch keine Daten"-Hinweis.
+    final themen = ref.watch(schwacheThemenProvider).value ?? const [];
 
     return Card(
       child: Padding(

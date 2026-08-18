@@ -1,128 +1,112 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../models/kurs.dart';
+import '../../kurse/providers/kurs_providers.dart';
 import '../../quiz/providers/quiz_modus.dart';
 
-// Auswahlscreen: alle 34 Lernfeld-Kategorien, gruppiert nach Bereich.
+// Auswahlscreen: alle Kategorien des aktiven Kurses, gruppiert nach Bereich.
 // Antippen startet eine Quiz-Session nur mit Fragen dieses Themas.
-class ThemenAuswahlScreen extends StatelessWidget {
+//
+// Die Kategorien werden aus den geladenen Fragen abgeleitet, nicht gepflegt.
+// Vorher stand hier eine feste Liste, die stillschweigend von den Daten
+// abwich - Kategorien mit abweichender Schreibweise waren dadurch gar nicht
+// erreichbar.
+class ThemenAuswahlScreen extends ConsumerWidget {
   const ThemenAuswahlScreen({super.key});
 
-  static const _bereiche = [
-    _Bereich(
-      id: 'auftragsanalyse',
-      titel: 'Auftrags- & Funktionsanalyse',
-      icon: Icons.engineering,
-      kategorien: [
-        'Technisches Zeichnen',
-        'Toleranzen & Passungen',
-        'Form- & Lagetoleranzen',
-        'Funktionsanalyse',
-        'Maschinenelemente',
-        'Antriebstechnik (mechanisch)',
-        'Pneumatik',
-        'Hydraulik',
-        'Steuerung & Regelung',
-        'Elektrotechnik & Sensorik',
-        'Werkstoffkunde',
-        'Instandhaltung',
-        'Technische Berechnungen',
-      ],
-    ),
-    _Bereich(
-      id: 'fertigungstechnik',
-      titel: 'Fertigungstechnik',
-      icon: Icons.precision_manufacturing,
-      kategorien: [
-        'Zerspanung Grundlagen',
-        'Schnittdaten',
-        'Werkzeuge & Schneidstoffe',
-        'CNC-Grundlagen',
-        'Fertigungs- und Arbeitsplanung',
-        'Fügeverfahren',
-        'Umformen & Trennen',
-        'Mess- & Prüftechnik',
-        'Qualitätssicherung',
-        'Werkstoffe und Wärmebehandlung',
-        'Wirtschaftliche Fertigung',
-      ],
-    ),
-    _Bereich(
-      id: 'wiso',
-      titel: 'Wirtschafts- & Sozialkunde',
-      icon: Icons.account_balance,
-      kategorien: [
-        'Berufsausbildung & BBiG',
-        'Arbeitsvertrag, Rechte & Pflichten',
-        'Tarifrecht',
-        'Sozialversicherung',
-        'Entgelt',
-        'Betriebsorganisation',
-        'Markt und Preisbildung',
-        'Kaufvertrag',
-        'Wirtschaftskreislauf',
-        'Verbraucherschutz',
-      ],
-    ),
-  ];
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final paket = ref.watch(aktivesPaketProvider);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Thema vertiefen'),
         leading: BackButton(onPressed: () => context.go('/')),
       ),
-      body: ListView(
-        padding: const EdgeInsets.all(12),
-        children: [
-          for (final bereich in _bereiche) ...[
-            _BereichHeader(bereich: bereich),
-            const SizedBox(height: 4),
-            for (final kategorie in bereich.kategorien)
-              _KategorieKarte(
-                kategorie: kategorie,
-                bereichTitel: bereich.titel,
-              ),
-            const SizedBox(height: 12),
-          ],
-        ],
+      body: paket.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (e, _) => _Hinweis(text: 'Themen nicht ladbar: $e'),
+        data: (paket) {
+          final gruppen = paket.kategorienProBereich;
+          if (gruppen.isEmpty) {
+            return const _Hinweis(
+              text: 'Dieser Kurs enthält noch keine Themen.',
+            );
+          }
+
+          // Anzahl Fragen je Kategorie, damit sichtbar ist, was einen erwartet.
+          final anzahl = <String, int>{};
+          for (final frage in paket.fragen) {
+            anzahl[frage.kategorie] = (anzahl[frage.kategorie] ?? 0) + 1;
+          }
+
+          return ListView(
+            padding: const EdgeInsets.all(12),
+            children: [
+              for (final eintrag in gruppen.entries) ...[
+                _BereichHeader(
+                  bereich: paket.kurs.bereichFuer(eintrag.key),
+                  ersatzTitel: eintrag.key,
+                ),
+                const SizedBox(height: 4),
+                for (final kategorie in eintrag.value)
+                  _KategorieKarte(
+                    kategorie: kategorie,
+                    anzahl: anzahl[kategorie] ?? 0,
+                  ),
+                const SizedBox(height: 12),
+              ],
+            ],
+          );
+        },
       ),
     );
   }
 }
 
-class _Bereich {
-  final String id;
-  final String titel;
-  final IconData icon;
-  final List<String> kategorien;
-  const _Bereich({
-    required this.id,
-    required this.titel,
-    required this.icon,
-    required this.kategorien,
-  });
+class _Hinweis extends StatelessWidget {
+  final String text;
+  const _Hinweis({required this.text});
+
+  @override
+  Widget build(BuildContext context) => Center(
+    child: Padding(
+      padding: const EdgeInsets.all(24),
+      child: Text(text, textAlign: TextAlign.center),
+    ),
+  );
 }
 
 class _BereichHeader extends StatelessWidget {
-  final _Bereich bereich;
-  const _BereichHeader({required this.bereich});
+  final Bereich? bereich;
+  final String ersatzTitel;
+
+  const _BereichHeader({required this.bereich, required this.ersatzTitel});
 
   @override
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
+    final farbe = bereich?.farbeAlsColor ?? cs.primary;
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6),
       child: Row(
         children: [
-          Icon(bereich.icon, size: 18, color: cs.primary),
+          Icon(
+            bereich?.iconData ?? Icons.folder_outlined,
+            size: 18,
+            color: farbe,
+          ),
           const SizedBox(width: 8),
-          Text(
-            bereich.titel,
-            style: Theme.of(context).textTheme.titleSmall?.copyWith(
-              color: cs.primary,
-              fontWeight: FontWeight.bold,
+          Expanded(
+            child: Text(
+              bereich?.titel ?? ersatzTitel,
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                color: farbe,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ],
@@ -133,8 +117,9 @@ class _BereichHeader extends StatelessWidget {
 
 class _KategorieKarte extends StatelessWidget {
   final String kategorie;
-  final String bereichTitel;
-  const _KategorieKarte({required this.kategorie, required this.bereichTitel});
+  final int anzahl;
+
+  const _KategorieKarte({required this.kategorie, required this.anzahl});
 
   @override
   Widget build(BuildContext context) {
@@ -143,6 +128,7 @@ class _KategorieKarte extends StatelessWidget {
       child: ListTile(
         dense: true,
         title: Text(kategorie),
+        subtitle: Text('$anzahl ${anzahl == 1 ? 'Frage' : 'Fragen'}'),
         trailing: const Icon(Icons.play_arrow_rounded, size: 20),
         onTap: () => context.go(
           '/quiz',

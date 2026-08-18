@@ -8,35 +8,37 @@ import '../../../core/matching/antwort_matcher.dart';
 import '../../../core/quiz/options_shuffle.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart';
 import '../../../data/attempt_history_store.dart';
-import '../../../data/frage_repository.dart';
 import '../../../data/fsrs_card_store.dart';
+import '../../../data/store_providers.dart';
 import '../../../models/frage.dart';
 import '../../../models/konfidenz.dart';
+import '../../kurse/providers/kurs_providers.dart';
 import 'quiz_fragen_auswahl.dart';
 import 'quiz_modus.dart';
 
+export '../../../data/store_providers.dart';
 export '../../../models/konfidenz.dart';
 export 'quiz_modus.dart';
 
-final frageRepositoryProvider = Provider((ref) => FrageRepository());
-final fsrsSchedulerProvider = Provider((ref) => FsrsScheduler());
-final fsrsCardStoreProvider = Provider((ref) => FsrsCardStore());
 final quizFragenAuswahlProvider = Provider((ref) => QuizFragenAuswahl());
-final attemptHistoryStoreProvider = Provider((ref) => AttemptHistoryStore());
 
+// Fragen des aktiven Kurses. Wechselt der Kurs, lädt hier alles neu -
+// inklusive aller abgeleiteten Provider (Session, Dashboard, Themen).
 final fragenProvider = FutureProvider<List<Frage>>(
-  (ref) => ref.read(frageRepositoryProvider).laden(),
+  (ref) async => (await ref.watch(aktivesPaketProvider.future)).fragen,
 );
 
-// Anzahl der heute fälligen Karten über den gesamten Fragenkatalog hinweg.
-// Wird vom Dashboard (Phase 6) und vom Home-Screen als Badge genutzt.
-// Zeigt max. _tageslimit fällige Karten an — verhindert visuellen
-// Overflow-Effekt wenn mehrere Tage ausgelassen wurden.
+// Anzahl der heute fälligen Karten im aktiven Kurs. Wird vom Dashboard als
+// Badge genutzt. Zeigt max. _tageslimit fällige Karten an — verhindert den
+// visuellen Overflow-Effekt, wenn mehrere Tage ausgelassen wurden.
 final faelligeAnzahlProvider = FutureProvider<int>((ref) async {
-  final alle = await ref.watch(fragenProvider.future);
-  final kartenstaende = ref.read(fsrsCardStoreProvider).alleKartenstaende();
+  ref.watch(lernfortschrittVersionProvider);
+  final paket = await ref.watch(aktivesPaketProvider.future);
+  final kartenstaende = ref
+      .read(fsrsCardStoreProvider)
+      .alleKartenstaende(paket.kurs.id);
   final jetzt = DateTime.now();
-  final anzahl = alle.where((f) {
+  final anzahl = paket.fragen.where((f) {
     final stand = kartenstaende[f.id];
     if (stand == null) return true;
     return !stand.card.due.isAfter(jetzt);
@@ -189,17 +191,24 @@ final quizSessionProvider =
 class QuizSessionController extends AsyncNotifier<QuizSessionState> {
   final QuizModus modus;
 
+  // Kurs, zu dem diese Session gehört. In build() gesetzt und beim Speichern
+  // gebraucht, damit der Lernfortschritt beim richtigen Kurs landet.
+  late String _kursId;
+
   QuizSessionController(this.modus);
 
   @override
   Future<QuizSessionState> build() async {
-    final alle = await ref.watch(fragenProvider.future);
-    final kartenstaende = ref.read(fsrsCardStoreProvider).alleKartenstaende();
+    final paket = await ref.watch(aktivesPaketProvider.future);
+    _kursId = paket.kurs.id;
+    final kartenstaende = ref
+        .read(fsrsCardStoreProvider)
+        .alleKartenstaende(_kursId);
     final fragen = ref
         .read(quizFragenAuswahlProvider)
         .waehleFragen(
           modus,
-          alle,
+          paket.fragen,
           kartenstaende: kartenstaende,
           zufall: math.Random(),
         );
@@ -401,7 +410,7 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     final store = ref.read(fsrsCardStoreProvider);
     final jetzt = DateTime.now();
 
-    final bisherigerStand = store.kartenStandFuer(frage.id);
+    final bisherigerStand = store.kartenStandFuer(_kursId, frage.id);
     final karte = bisherigerStand?.card ?? FsrsCard.newCard(now: jetzt);
 
     var neueKarte = scheduler.review(karte, rating, jetzt);
@@ -420,6 +429,7 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     }
 
     await store.speichern(
+      _kursId,
       frage.id,
       GespeicherteKarte(
         card: neueKarte,
@@ -431,6 +441,7 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
         .read(attemptHistoryStoreProvider)
         .anhaengen(
           Attempt(
+            kursId: _kursId,
             frageId: frage.id,
             zeitpunkt: jetzt,
             konfidenz: aktuell.antwort.konfidenz ?? Konfidenz.geraten,
@@ -442,6 +453,10 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
                 : aktuell.antwort.selbsterklaerung.trim(),
           ),
         );
+
+    // Dashboard-Auswertungen lesen direkt aus Hive und würden sonst erst
+    // nach einem Neustart aktualisieren.
+    ref.read(lernfortschrittVersionProvider.notifier).melden();
 
     final neuerZaehler =
         aktuell.richtigBeantwortet + (aktuell.antwort.korrekt == true ? 1 : 0);

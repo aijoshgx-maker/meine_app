@@ -2,18 +2,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:meine_app/data/attempt_history_store.dart';
 import 'package:meine_app/features/dashboard/providers/dashboard_providers.dart';
+import 'package:meine_app/features/kurse/providers/kurs_providers.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 
-class _FakeAttemptHistoryStore implements AttemptHistoryStore {
-  final List<Attempt> _eintraege;
-  _FakeAttemptHistoryStore(this._eintraege);
-
-  @override
-  Future<void> anhaengen(Attempt attempt) async => _eintraege.add(attempt);
-
-  @override
-  List<Attempt> alle() => List.of(_eintraege);
-}
+import 'hilfen/test_kurs.dart';
 
 void main() {
   Attempt versuch({
@@ -21,102 +13,89 @@ void main() {
     required Konfidenz konfidenz,
     required bool korrekt,
     DateTime? zeitpunkt,
+    String kursId = testKursId,
   }) => Attempt(
+    kursId: kursId,
     frageId: 'x',
     zeitpunkt: zeitpunkt ?? DateTime.now(),
     konfidenz: konfidenz,
     korrekt: korrekt,
-    bereich: 'fertigungstechnik',
+    bereich: 'allgemein',
     kategorie: kategorie,
   );
 
-  test('kalibrierungProvider berechnet Trefferquote je Konfidenz', () {
-    final container = ProviderContainer(
+  /// Container mit genau [versuche] im Verlauf und einem Testkurs als
+  /// aktivem Kurs.
+  ProviderContainer container(List<Attempt> versuche) {
+    final verlauf = FakeAttemptHistoryStore()..eintraege.addAll(versuche);
+    final c = ProviderContainer(
       overrides: [
-        attemptHistoryStoreProvider.overrideWithValue(
-          _FakeAttemptHistoryStore([
-            versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: true),
-            versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: true),
-            versuch(
-              kategorie: 'a',
-              konfidenz: Konfidenz.sicher,
-              korrekt: false,
-            ),
-            versuch(
-              kategorie: 'a',
-              konfidenz: Konfidenz.geraten,
-              korrekt: false,
-            ),
-          ]),
-        ),
+        attemptHistoryStoreProvider.overrideWithValue(verlauf),
+        aktivesPaketProvider.overrideWith((_) async => testPaket(const [])),
       ],
     );
-    addTearDown(container.dispose);
+    addTearDown(c.dispose);
+    return c;
+  }
 
-    final ergebnis = container.read(kalibrierungProvider);
+  test('kalibrierungProvider berechnet Trefferquote je Konfidenz', () async {
+    final c = container([
+      versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: true),
+      versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: true),
+      versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: false),
+      versuch(kategorie: 'a', konfidenz: Konfidenz.geraten, korrekt: false),
+    ]);
+
+    final ergebnis = await c.read(kalibrierungProvider.future);
 
     expect(ergebnis[Konfidenz.sicher], closeTo(2 / 3, 0.001));
     expect(ergebnis[Konfidenz.geraten], 0.0);
     expect(ergebnis[Konfidenz.unsicher], 0.0);
   });
 
-  test('hochkonfidentFalschAnzahlProvider zählt nur sicher+falsch', () {
-    final container = ProviderContainer(
-      overrides: [
-        attemptHistoryStoreProvider.overrideWithValue(
-          _FakeAttemptHistoryStore([
-            versuch(
-              kategorie: 'a',
-              konfidenz: Konfidenz.sicher,
-              korrekt: false,
-            ),
-            versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: true),
-            versuch(
-              kategorie: 'a',
-              konfidenz: Konfidenz.geraten,
-              korrekt: false,
-            ),
-          ]),
-        ),
-      ],
-    );
-    addTearDown(container.dispose);
+  test('hochkonfidentFalschAnzahlProvider zählt nur sicher+falsch', () async {
+    final c = container([
+      versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: false),
+      versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: true),
+      versuch(kategorie: 'a', konfidenz: Konfidenz.geraten, korrekt: false),
+    ]);
 
-    expect(container.read(hochkonfidentFalschAnzahlProvider), 1);
+    expect(await c.read(hochkonfidentFalschAnzahlProvider.future), 1);
   });
 
-  test('schwacheThemenProvider sortiert nach Fehlerquote absteigend', () {
-    final container = ProviderContainer(
-      overrides: [
-        attemptHistoryStoreProvider.overrideWithValue(
-          _FakeAttemptHistoryStore([
-            versuch(
-              kategorie: 'gut',
-              konfidenz: Konfidenz.sicher,
-              korrekt: true,
-            ),
-            versuch(
-              kategorie: 'gut',
-              konfidenz: Konfidenz.sicher,
-              korrekt: true,
-            ),
-            versuch(
-              kategorie: 'schlecht',
-              konfidenz: Konfidenz.geraten,
-              korrekt: false,
-            ),
-            versuch(
-              kategorie: 'schlecht',
-              konfidenz: Konfidenz.geraten,
-              korrekt: true,
-            ),
-          ]),
-        ),
-      ],
-    );
-    addTearDown(container.dispose);
+  // Kernzusage der Mehrkurs-Fähigkeit: Auswertungen dürfen sich nicht über
+  // Kurse hinweg vermischen.
+  test('Auswertungen zählen nur Versuche des aktiven Kurses', () async {
+    final c = container([
+      versuch(kategorie: 'a', konfidenz: Konfidenz.sicher, korrekt: false),
+      versuch(
+        kategorie: 'a',
+        konfidenz: Konfidenz.sicher,
+        korrekt: false,
+        kursId: 'ein-anderer-kurs',
+      ),
+    ]);
 
-    final ergebnis = container.read(schwacheThemenProvider);
+    expect(await c.read(hochkonfidentFalschAnzahlProvider.future), 1);
+  });
+
+  test('schwacheThemenProvider sortiert nach Fehlerquote absteigend', () async {
+    final c = container([
+      versuch(kategorie: 'gut', konfidenz: Konfidenz.sicher, korrekt: true),
+      versuch(kategorie: 'gut', konfidenz: Konfidenz.sicher, korrekt: true),
+      versuch(
+        kategorie: 'schlecht',
+        konfidenz: Konfidenz.geraten,
+        korrekt: false,
+      ),
+      versuch(
+        kategorie: 'schlecht',
+        konfidenz: Konfidenz.geraten,
+        korrekt: true,
+      ),
+    ]);
+
+    final ergebnis = await c.read(schwacheThemenProvider.future);
 
     expect(ergebnis.first.kategorie, 'schlecht');
     expect(ergebnis.first.fehlerquote, closeTo(0.5, 0.001));
@@ -126,31 +105,24 @@ void main() {
 
   test(
     'behaltensquoteVerlaufProvider liefert 30 Tage, heute mit korrekter Quote',
-    () {
+    () async {
       final heute = DateTime.now();
-      final container = ProviderContainer(
-        overrides: [
-          attemptHistoryStoreProvider.overrideWithValue(
-            _FakeAttemptHistoryStore([
-              versuch(
-                kategorie: 'a',
-                konfidenz: Konfidenz.sicher,
-                korrekt: true,
-                zeitpunkt: heute,
-              ),
-              versuch(
-                kategorie: 'a',
-                konfidenz: Konfidenz.sicher,
-                korrekt: false,
-                zeitpunkt: heute,
-              ),
-            ]),
-          ),
-        ],
-      );
-      addTearDown(container.dispose);
+      final c = container([
+        versuch(
+          kategorie: 'a',
+          konfidenz: Konfidenz.sicher,
+          korrekt: true,
+          zeitpunkt: heute,
+        ),
+        versuch(
+          kategorie: 'a',
+          konfidenz: Konfidenz.sicher,
+          korrekt: false,
+          zeitpunkt: heute,
+        ),
+      ]);
 
-      final verlauf = container.read(behaltensquoteVerlaufProvider);
+      final verlauf = await c.read(behaltensquoteVerlaufProvider.future);
 
       expect(verlauf, hasLength(30));
       expect(verlauf.last.quote, closeTo(0.5, 0.001));

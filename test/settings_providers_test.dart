@@ -23,6 +23,25 @@ class _FakeSettingsStore implements SettingsStore {
   Future<void> remindersAktiviertSpeichern(bool aktiviert) async {
     _remindersEnabled = aktiviert;
   }
+
+  String? _aktiverKurs;
+  int _datenVersion = 0;
+
+  @override
+  String? aktiverKursLaden() => _aktiverKurs;
+
+  @override
+  Future<void> aktiverKursSpeichern(String kursId) async {
+    _aktiverKurs = kursId;
+  }
+
+  @override
+  int datenVersionLaden() => _datenVersion;
+
+  @override
+  Future<void> datenVersionSpeichern(int version) async {
+    _datenVersion = version;
+  }
 }
 
 void main() {

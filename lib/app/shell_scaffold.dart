@@ -9,7 +9,11 @@ class ShellScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final location = GoRouterState.of(context).uri.toString();
 
-    final int currentIndex = location.startsWith('/settings') ? 1 : 0;
+    final int currentIndex = switch (location) {
+      _ when location.startsWith('/kurse') => 1,
+      _ when location.startsWith('/settings') => 2,
+      _ => 0,
+    };
 
     return Scaffold(
       body: child,
@@ -20,6 +24,8 @@ class ShellScaffold extends StatelessWidget {
             case 0:
               context.go('/');
             case 1:
+              context.go('/kurse');
+            case 2:
               context.go('/settings');
           }
         },
@@ -28,6 +34,11 @@ class ShellScaffold extends StatelessWidget {
             icon: Icon(Icons.home_outlined),
             selectedIcon: Icon(Icons.home),
             label: 'Dashboard',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.library_books_outlined),
+            selectedIcon: Icon(Icons.library_books),
+            label: 'Kurse',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),

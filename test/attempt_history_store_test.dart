@@ -27,6 +27,7 @@ void main() {
 
       await store.anhaengen(
         Attempt(
+          kursId: 'ap2-industriemechaniker',
           frageId: 'ft-101',
           zeitpunkt: jetzt,
           konfidenz: Konfidenz.sicher,
@@ -37,6 +38,7 @@ void main() {
       );
       await store.anhaengen(
         Attempt(
+          kursId: 'ap2-industriemechaniker',
           frageId: 'wiso-101',
           zeitpunkt: jetzt.add(const Duration(minutes: 1)),
           konfidenz: Konfidenz.geraten,
@@ -58,4 +60,29 @@ void main() {
       expect(alle[1].selbsterklaerung, 'War mir nicht sicher.');
     },
   );
+
+  test('fuerKurs() filtert auf genau einen Kurs', () async {
+    final store = AttemptHistoryStore();
+    final jetzt = DateTime.now();
+
+    Attempt fuer(String kursId, String frageId) => Attempt(
+      kursId: kursId,
+      frageId: frageId,
+      zeitpunkt: jetzt,
+      konfidenz: Konfidenz.sicher,
+      korrekt: true,
+      bereich: 'b',
+      kategorie: 'k',
+    );
+
+    await store.anhaengen(fuer('kurs-a', 'f1'));
+    await store.anhaengen(fuer('kurs-b', 'f2'));
+    await store.anhaengen(fuer('kurs-a', 'f3'));
+
+    expect(store.fuerKurs('kurs-a').map((a) => a.frageId), ['f1', 'f3']);
+    expect(store.fuerKurs('kurs-b'), hasLength(1));
+
+    expect(await store.kursLoeschen('kurs-a'), 2);
+    expect(store.alle(), hasLength(1));
+  });
 }

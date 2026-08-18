@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart'
+    show TargetPlatform, defaultTargetPlatform, kIsWeb;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest.dart' as tz_data;
 import 'package:timezone/timezone.dart' as tz;
@@ -18,9 +20,21 @@ class NotificationService {
   final FlutterLocalNotificationsPlugin _plugin =
       FlutterLocalNotificationsPlugin();
 
+  /// Ob lokale Benachrichtigungen auf dieser Plattform überhaupt existieren.
+  ///
+  /// flutter_local_notifications hat keine Web-Implementierung: Jeder
+  /// Plugin-Aufruf würde dort mit einer MissingPluginException abbrechen -
+  /// beim Start also die ganze App. Der Service steigt deshalb selbst früh
+  /// aus, statt sich darauf zu verlassen, dass jeder Aufrufer daran denkt.
+  static bool get unterstuetzt =>
+      !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
+
   Future<void> init() async {
+    // Zeitzonen sind reine Dart-Logik und schaden nirgends.
     tz_data.initializeTimeZones();
     tz.setLocalLocation(tz.getLocation('Europe/Berlin'));
+
+    if (!unterstuetzt) return;
 
     const androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
     await _plugin.initialize(
@@ -29,6 +43,7 @@ class NotificationService {
   }
 
   Future<bool> berechtigungAnfragen() async {
+    if (!unterstuetzt) return false;
     final androidPlugin = _plugin
         .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin
@@ -38,6 +53,7 @@ class NotificationService {
   }
 
   Future<void> faelligeErinnerungPlanen(int anzahlFaellig) async {
+    if (!unterstuetzt) return;
     if (anzahlFaellig <= 0) {
       await erinnerungAbbrechen();
       return;
@@ -67,6 +83,7 @@ class NotificationService {
   }
 
   Future<void> erinnerungAbbrechen() async {
+    if (!unterstuetzt) return;
     await _plugin.cancel(id: _dueReminderId);
   }
 }

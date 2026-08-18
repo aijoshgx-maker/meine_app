@@ -1,22 +1,36 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../data/attempt_history_store.dart';
+import '../../kurse/providers/kurs_providers.dart';
 import '../../quiz/providers/quiz_providers.dart';
 
+export '../../kurse/providers/kurs_providers.dart'
+    show aktiverKursProvider, lernfortschrittVersionProvider;
 export '../../quiz/providers/quiz_providers.dart'
     show attemptHistoryStoreProvider, faelligeAnzahlProvider;
+
+// Alle Auswertungen beziehen sich immer auf genau den aktiven Kurs - sonst
+// würden sich Fortschritte verschiedener Lernthemen zu einer nichtssagenden
+// Mischzahl vermengen.
+//
+// Sie beobachten außerdem lernfortschrittVersionProvider: die Daten kommen
+// direkt aus Hive, das Riverpod nicht beobachten kann, und würden sich sonst
+// innerhalb einer Session nie aktualisieren.
 
 // Aktuelle Behaltensquote: Ø currentRetrievability() über alle Karten, die
 // schon mindestens einmal gelernt wurden (nie gelernte Karten fließen nicht
 // ein, da sie noch keine Aussage über Behalten zulassen).
 final behaltensquoteProvider = FutureProvider<double>((ref) async {
-  final alle = await ref.watch(fragenProvider.future);
-  final kartenstaende = ref.read(fsrsCardStoreProvider).alleKartenstaende();
+  ref.watch(lernfortschrittVersionProvider);
+  final paket = await ref.watch(aktivesPaketProvider.future);
+  final kartenstaende = ref
+      .read(fsrsCardStoreProvider)
+      .alleKartenstaende(paket.kurs.id);
   final scheduler = ref.read(fsrsSchedulerProvider);
   final jetzt = DateTime.now();
 
   final werte = <double>[];
-  for (final frage in alle) {
+  for (final frage in paket.fragen) {
     final stand = kartenstaende[frage.id];
     if (stand == null) continue;
     werte.add(scheduler.currentRetrievability(stand.card, jetzt));
@@ -36,8 +50,10 @@ class TagesQuote {
   const TagesQuote({required this.tag, required this.quote});
 }
 
-final behaltensquoteVerlaufProvider = Provider<List<TagesQuote>>((ref) {
-  final versuche = ref.read(attemptHistoryStoreProvider).alle();
+final behaltensquoteVerlaufProvider = FutureProvider<List<TagesQuote>>((
+  ref,
+) async {
+  final versuche = await _versucheDesKurses(ref);
   final jetzt = DateTime.now();
   final heute = DateTime(jetzt.year, jetzt.month, jetzt.day);
 
@@ -46,6 +62,14 @@ final behaltensquoteVerlaufProvider = Provider<List<TagesQuote>>((ref) {
       _tagesQuoteFuer(versuche, heute.subtract(Duration(days: i))),
   ];
 });
+
+/// Beantwortungsversuche des aktiven Kurses. Gemeinsame Basis aller
+/// verlaufsbasierten Auswertungen.
+Future<List<Attempt>> _versucheDesKurses(Ref ref) async {
+  ref.watch(lernfortschrittVersionProvider);
+  final kurs = await ref.watch(aktiverKursProvider.future);
+  return ref.read(attemptHistoryStoreProvider).fuerKurs(kurs.id);
+}
 
 TagesQuote _tagesQuoteFuer(List<Attempt> versuche, DateTime tag) {
   final naechsterTag = tag.add(const Duration(days: 1));
@@ -70,24 +94,25 @@ class PruefungsreifeErgebnis {
   });
 }
 
-const pruefungsGewichte = {
-  'auftragsanalyse': 0.4,
-  'fertigungstechnik': 0.4,
-  'wiso': 0.2,
-};
-
 final pruefungsreifeProvider = FutureProvider<PruefungsreifeErgebnis>((
   ref,
 ) async {
-  final alle = await ref.watch(fragenProvider.future);
-  final kartenstaende = ref.read(fsrsCardStoreProvider).alleKartenstaende();
+  ref.watch(lernfortschrittVersionProvider);
+  final paket = await ref.watch(aktivesPaketProvider.future);
+  final kartenstaende = ref
+      .read(fsrsCardStoreProvider)
+      .alleKartenstaende(paket.kurs.id);
   final scheduler = ref.read(fsrsSchedulerProvider);
   final jetzt = DateTime.now();
 
+  // Gewichte kommen aus dem Kurs. Ohne eigene Angabe zählen alle Bereiche
+  // gleich viel.
+  final gewichte = paket.kurs.normalisierteGewichte;
+
   final proBereich = <String, double>{};
-  for (final bereich in pruefungsGewichte.keys) {
+  for (final bereich in gewichte.keys) {
     final werte = <double>[];
-    for (final frage in alle.where((f) => f.bereich == bereich)) {
+    for (final frage in paket.fragen.where((f) => f.bereich == bereich)) {
       final stand = kartenstaende[frage.id];
       if (stand == null) continue;
       werte.add(scheduler.currentRetrievability(stand.card, jetzt));
@@ -97,7 +122,7 @@ final pruefungsreifeProvider = FutureProvider<PruefungsreifeErgebnis>((
         : werte.reduce((a, b) => a + b) / werte.length;
   }
 
-  final gewichtet = pruefungsGewichte.entries.fold<double>(
+  final gewichtet = gewichte.entries.fold<double>(
     0,
     (summe, eintrag) => summe + (proBereich[eintrag.key] ?? 0) * eintrag.value,
   );
@@ -107,8 +132,10 @@ final pruefungsreifeProvider = FutureProvider<PruefungsreifeErgebnis>((
 
 // Konfidenz-Kalibrierung: tatsächliche Trefferquote je Selbsteinschätzung.
 // "sicher" sollte hoch liegen, "geraten" nahe Zufallsniveau.
-final kalibrierungProvider = Provider<Map<Konfidenz, double>>((ref) {
-  final versuche = ref.read(attemptHistoryStoreProvider).alle();
+final kalibrierungProvider = FutureProvider<Map<Konfidenz, double>>((
+  ref,
+) async {
+  final versuche = await _versucheDesKurses(ref);
   return {for (final k in Konfidenz.values) k: _trefferquoteFuer(versuche, k)};
 });
 
@@ -120,8 +147,8 @@ double _trefferquoteFuer(List<Attempt> versuche, Konfidenz konfidenz) {
 
 // Anzahl hochkonfident-falscher Antworten ("sicher", aber falsch) – die
 // Fälle, die laut Hypercorrection-Effekt am wirksamsten korrigierbar sind.
-final hochkonfidentFalschAnzahlProvider = Provider<int>((ref) {
-  final versuche = ref.read(attemptHistoryStoreProvider).alle();
+final hochkonfidentFalschAnzahlProvider = FutureProvider<int>((ref) async {
+  final versuche = await _versucheDesKurses(ref);
   return versuche
       .where((a) => a.konfidenz == Konfidenz.sicher && !a.korrekt)
       .length;
@@ -141,8 +168,10 @@ class SchwachesThema {
   });
 }
 
-final schwacheThemenProvider = Provider<List<SchwachesThema>>((ref) {
-  final versuche = ref.read(attemptHistoryStoreProvider).alle();
+final schwacheThemenProvider = FutureProvider<List<SchwachesThema>>((
+  ref,
+) async {
+  final versuche = await _versucheDesKurses(ref);
   final proKategorie = <String, List<Attempt>>{};
   for (final versuch in versuche) {
     proKategorie.putIfAbsent(versuch.kategorie, () => []).add(versuch);

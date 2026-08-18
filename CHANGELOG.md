@@ -4,6 +4,73 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 `CLAUDE_CODE_PROMPTS.md` (P0–P12). Format lose an
 [Keep a Changelog](https://keepachangelog.com) angelehnt.
 
+## [1.2.0] – 2026-08-17
+
+Die App wird vom AP2-Trainer zum **allgemeinen Lernwerkzeug**: Lernthemen
+kommen jetzt als importierbare Pakete, statt fest im Code zu stehen.
+
+### Hinzugefügt
+
+- **Lernpakete importieren** (`.json` oder `.zip`) über den neuen Reiter
+  *Kurse*. Vor dem Installieren zeigt eine Vorschau Umfang und alle beim
+  Einlesen aufgefallenen Auffälligkeiten. Format: [docs/PAKETFORMAT.md](docs/PAKETFORMAT.md).
+- **Kursverwaltung**: zwischen Kursen wechseln, importierte Kurse samt
+  Lernfortschritt entfernen. Der mitgelieferte AP2-Kurs bleibt erhalten.
+- ZIP-Pakete können eigene **Bilder** mitbringen; sie landen im
+  App-Verzeichnis und werden in Fragen und Testläufen angezeigt.
+- Themenauswahl zeigt jetzt die **Fragenzahl je Kategorie**.
+
+### Geändert
+
+- **Lernfortschritt wird je Kurs getrennt geführt.** FSRS-Karten liegen unter
+  `kursId::frageId`, Verlaufseinträge tragen eine `kursId`. Bestandsdaten
+  werden beim ersten Start automatisch migriert - der bisherige Fortschritt
+  bleibt vollständig erhalten.
+- **Alles Kursspezifische kommt aus `kurs.json`** statt aus dem Dart-Code:
+  Bereiche samt Farben, Icons und Gewichten, Testläufe samt Zeitlimit,
+  Zeichnungen und Stücklisten sowie die Beschriftungen für Lernstand,
+  Testlauf und Dialog.
+- **Prüfungsreife → Lernstand**: Bereiche, Beschriftungen und Gewichte
+  richten sich nach dem Kurs. Ohne Angabe zählen alle Bereiche gleich.
+- Testlauf und Dialog erscheinen nur, wenn der Kurs sie mitbringt **und**
+  Inhalt dafür hat.
+- Backups sichern den Lernstand **aller** Kurse (Schema 2). Backups im alten
+  Format lassen sich weiterhin einlesen und werden dem AP2-Kurs zugeordnet.
+  Dateiname jetzt `lernstand-backup-<datum>.json`.
+- Alle Dashboard-Auswertungen beziehen sich auf den aktiven Kurs.
+
+### Behoben
+
+- **21 Fragen waren über "Thema vertiefen" nicht erreichbar.** Die Kategorien
+  standen fest im Screen und wichen von den Daten ab (`Steuerung & Regelung`
+  vs. `Steuerung und Regelung`, `Kaufvertrag` vs. `Kaufvertragsrecht`,
+  `Elektrotechnik` vs. `Elektrotechnik & Sensorik`). Die Liste wird jetzt
+  aus den Fragen abgeleitet.
+- **Dashboard aktualisierte sich innerhalb einer Session nicht.** Nach
+  beantworteten Fragen zeigten die Auswertungen alte Werte bis zum Neustart.
+- **`/quiz` stürzte ohne Modus ab** (Deep-Link, Web-Reload, Browser-Zurück) -
+  ungeprüfter Cast, jetzt mit Hinweisseite.
+- Einen Kurs zu entfernen scheiterte nicht mehr, wenn seine Bilddateien
+  nicht löschbar waren.
+
+### Technisch
+
+- Tests von 76 auf **130** erhöht; neu abgedeckt: Paket-Parser (26),
+  Migration (6), Kursspeicher (6), der bisher ungetestete
+  **Testlauf-Countdown** inklusive Pause und Zeitablauf, sowie das Dashboard
+  mit echten Daten statt nur im Leerzustand.
+- `flutter analyze`: 0 Fehler, 0 Warnungen, 0 Infos.
+- `FrageRepository` und `PruefungsMetadaten` entfallen; ersetzt durch
+  `KursRepository`, `KursStore` und `kurs.json`.
+- Neue Abhängigkeit: `archive` (entpackt ZIP-Pakete).
+
+### Nicht umgesetzt
+
+- Ein Editor zum Anlegen von Fragen in der App.
+- Export eines installierten Kurses als Paketdatei.
+- Die Zeichnungen der vier IHK-Prüfungen fehlen weiterhin; W22 und S19 haben
+  auch keine Stückliste als Textersatz.
+
 ## [1.1.0] – 2026-08-16
 
 ### ⚠️ Wichtig für bestehende Nutzer: korrigierte Lösungswerte

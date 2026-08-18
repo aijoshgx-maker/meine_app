@@ -32,6 +32,16 @@ class FachgespraechFrage {
         schwierigkeit: j['schwierigkeit'] as int,
         bildAsset: j['bildAsset'] as String?,
       );
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'pruefer': pruefer,
+    'musterloesung': musterloesung,
+    'schluesselwoerter': schluesselwoerter,
+    'erklaerung': erklaerung,
+    'schwierigkeit': schwierigkeit,
+    'bildAsset': bildAsset,
+  };
 }
 
 class FachgespraechSzenario {
@@ -66,10 +76,24 @@ class FachgespraechSzenario {
             .toList(),
       );
 
-  static Future<List<FachgespraechSzenario>> ladeAlle() async {
-    final raw = await rootBundle.loadString(
-      'assets/fragen/fachgespraech_szenarien.json',
-    );
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'titel': titel,
+    'kontext': kontext,
+    'fertigungsauftrag': fertigungsauftrag,
+    'zeichnungsKey': zeichnungsKey,
+    'kategorien': kategorien,
+    'fragen': fragen.map((f) => f.toJson()).toList(),
+  };
+
+  /// Lädt die Szenarien eines gebündelten Kurses aus assets/.
+  ///
+  /// Für importierte Kurse liegt der Inhalt im Kursstore - dort geht der Weg
+  /// über KursRepository statt über rootBundle.
+  static Future<List<FachgespraechSzenario>> ladeAlle([
+    String pfad = 'assets/fragen/fachgespraech_szenarien.json',
+  ]) async {
+    final raw = await rootBundle.loadString(pfad);
     final list = jsonDecode(raw) as List;
     return list
         .map((e) => FachgespraechSzenario.fromJson(e as Map<String, dynamic>))
