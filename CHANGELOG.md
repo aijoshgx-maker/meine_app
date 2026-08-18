@@ -41,6 +41,13 @@ kommen jetzt als importierbare Pakete, statt fest im Code zu stehen.
 
 ### Behoben
 
+- **Der Web-Build war seit dem 16.07.2026 kaputt.** Das Backup-Feature (P9)
+  brachte `import 'dart:io'` mit — im Web-Build ein *Compile*-Fehler, kein
+  Laufzeitproblem. `flutter build web` brach ab, deshalb wurde `gh-pages`
+  nach Einführung des Deploy-Workflows nie beschrieben. Der Fehler fiel
+  weder beim Testen noch beim Analysieren auf, sondern nur im CI-Log.
+  Datei-Zugriffe laufen jetzt über `lib/core/plattform/datei_ablage.dart`
+  mit bedingtem Import; ein Test verhindert einen Rückfall.
 - **21 Fragen waren über "Thema vertiefen" nicht erreichbar.** Die Kategorien
   standen fest im Screen und wichen von den Daten ab (`Steuerung & Regelung`
   vs. `Steuerung und Regelung`, `Kaufvertrag` vs. `Kaufvertragsrecht`,
@@ -53,12 +60,25 @@ kommen jetzt als importierbare Pakete, statt fest im Code zu stehen.
 - Einen Kurs zu entfernen scheiterte nicht mehr, wenn seine Bilddateien
   nicht löschbar waren.
 
+### Plattformen
+
+Die Web-Version kann jetzt fast alles. Was dort fehlt, fehlt aus
+Plattformgründen und wird gar nicht erst angeboten:
+
+| Funktion | Web |
+|---|---|
+| Lernen, alle 8 Fragetypen, FSRS, Dashboard | vollständig |
+| Kurse wechseln, JSON-Paket importieren | vollständig |
+| Backup exportieren und importieren | über den Browser-Dialog |
+| ZIP-Paket importieren | Fragen ja, Bilder zeigen einen Platzhalter |
+| Erinnerungen | ausgeblendet (kein Web-Support im Plugin) |
+
 ### Technisch
 
-- Tests von 76 auf **130** erhöht; neu abgedeckt: Paket-Parser (26),
-  Migration (6), Kursspeicher (6), der bisher ungetestete
-  **Testlauf-Countdown** inklusive Pause und Zeitablauf, sowie das Dashboard
-  mit echten Daten statt nur im Leerzustand.
+- Tests von 76 auf **134** erhöht; neu abgedeckt: Paket-Parser (26),
+  Migration (6), Kursspeicher (6), Web-Tauglichkeit (4), der bisher
+  ungetestete **Testlauf-Countdown** inklusive Pause und Zeitablauf, sowie
+  das Dashboard mit echten Daten statt nur im Leerzustand.
 - `flutter analyze`: 0 Fehler, 0 Warnungen, 0 Infos.
 - `FrageRepository` und `PruefungsMetadaten` entfallen; ersetzt durch
   `KursRepository`, `KursStore` und `kurs.json`.
