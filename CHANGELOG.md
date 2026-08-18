@@ -41,13 +41,15 @@ kommen jetzt als importierbare Pakete, statt fest im Code zu stehen.
 
 ### Behoben
 
-- **Der Web-Build war seit dem 16.07.2026 kaputt.** Das Backup-Feature (P9)
-  brachte `import 'dart:io'` mit — im Web-Build ein *Compile*-Fehler, kein
-  Laufzeitproblem. `flutter build web` brach ab, deshalb wurde `gh-pages`
-  nach Einführung des Deploy-Workflows nie beschrieben. Der Fehler fiel
-  weder beim Testen noch beim Analysieren auf, sondern nur im CI-Log.
-  Datei-Zugriffe laufen jetzt über `lib/core/plattform/datei_ablage.dart`
-  mit bedingtem Import; ein Test verhindert einen Rückfall.
+- **Web-Version blieb lauffähig.** Der Umbau hätte sie sonst beim Start
+  zerlegt: `getApplicationDocumentsDirectory()` läuft vor `runApp` und wirft
+  auf Web, und `flutter_local_notifications` hat dort gar keine
+  Implementierung. Datei-Zugriffe laufen jetzt über
+  `lib/core/plattform/datei_ablage.dart` mit bedingtem Import (io/web),
+  Benachrichtigungen steigen auf nicht unterstützten Plattformen selbst früh
+  aus. Vier Tests wachen darüber, dass beide Varianten der Naht synchron
+  bleiben — dieser Fehlertyp fällt weder beim Testen noch beim Analysieren
+  auf, sondern erst im Browser.
 - **21 Fragen waren über "Thema vertiefen" nicht erreichbar.** Die Kategorien
   standen fest im Screen und wichen von den Daten ab (`Steuerung & Regelung`
   vs. `Steuerung und Regelung`, `Kaufvertrag` vs. `Kaufvertragsrecht`,
