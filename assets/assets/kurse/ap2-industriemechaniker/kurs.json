@@ -1,36 +1,175 @@
 {
+  "schemaVersion": 1,
   "id": "ap2-industriemechaniker",
   "titel": "AP2 Industriemechaniker",
-  "kurzbeschreibung": "Offline-Lern-App für die Abschlussprüfung Teil 2 Industriemechaniker (IHK): Auftrags- und Funktionsanalyse, Fertigungstechnik, Wirtschafts- und Sozialkunde, Fachgespräch und Prüfungssimulation.",
+  "kurzbeschreibung": "Abschlussprüfung Teil 2 Industriemechaniker (IHK): Auftrags- und Funktionsanalyse, Fertigungstechnik, Wirtschafts- und Sozialkunde, Fachgespräch und Prüfungssimulation.",
   "sprache": "de",
+  "version": "1.1.0",
+  "assetOrdner": "assets/fragen/",
+  "begriffe": {
+    "lernstand": "Prüfungsreife",
+    "testlauf": "Prüfungssimulation",
+    "dialog": "Fachgespräch"
+  },
   "bereiche": [
     {
       "id": "auftragsanalyse",
-      "titel": "Auftrags- und Funktionsanalyse",
-      "farbe": "#3F6FBF"
+      "titel": "Auftrags- & Funktionsanalyse",
+      "farbe": "#3F6FBF",
+      "gewicht": 0.4,
+      "icon": "engineering"
     },
     {
       "id": "fertigungstechnik",
       "titel": "Fertigungstechnik",
-      "farbe": "#C4622D"
+      "farbe": "#C4622D",
+      "gewicht": 0.4,
+      "icon": "manufacturing"
     },
     {
       "id": "wiso",
-      "titel": "Wirtschafts- und Sozialkunde",
-      "farbe": "#3F8F5F"
+      "titel": "Wirtschafts- & Sozialkunde",
+      "farbe": "#3F8F5F",
+      "gewicht": 0.2,
+      "icon": "business"
     }
-  ],
-  "pruefungen": [
-    { "code": "S17", "titel": "AP2 Sommer 2017", "zeichnungen": 3 },
-    { "code": "S18", "titel": "AP2 Sommer 2018", "zeichnungen": 3 },
-    { "code": "S19", "titel": "AP2 Sommer 2019", "zeichnungen": 4 },
-    { "code": "W22", "titel": "AP2 Winter 2022/23", "zeichnungen": 4 }
   ],
   "features": {
     "fachgespraech": true,
     "pruefungssimulation": true,
     "zeichnungen": true
   },
+  "pruefungen": [
+    {
+      "code": "W22",
+      "titel": "AP2 Winter 2022/23",
+      "zeitlimitMinuten": 120,
+      "beschreibung": "Axialkolbenpumpe (AKP-250), automatische Verzinkungsanlage. Themen: Hydraulik, GRAFCET, Lagerung, Fertigungstechnik, WiSo.",
+      "zeichnungen": [
+        {
+          "pfad": "assets/zeichnungen/W22/zeichnung_1.png",
+          "label": "AKP-250 – Längsschnitt Axialkolbenpumpe"
+        },
+        {
+          "pfad": "assets/zeichnungen/W22/zeichnung_2.png",
+          "label": "Steuerblock – Hydraulikplan"
+        },
+        {
+          "pfad": "assets/zeichnungen/W22/zeichnung_3.png",
+          "label": "Verzinkungsanlage – GRAFCET-Steuerung"
+        },
+        {
+          "pfad": "assets/zeichnungen/W22/zeichnung_4.png",
+          "label": "Maßzeichnung / Toleranzangaben"
+        }
+      ],
+      "diagrammKeys": [
+        "hydraulik_kolben",
+        "grafcet_basis",
+        "pneumatik_52_ventil",
+        "passungsdiagramm",
+        "schnittdaten"
+      ],
+      "stueckliste": {}
+    },
+    {
+      "code": "S17",
+      "titel": "AP2 Sommer 2017",
+      "zeitlimitMinuten": 120,
+      "beschreibung": "Einstellantrieb Stanzanlage, Kegelradgetriebe (m=2, z=26), Bogenzahnkupplung, Gelenkwelle. Themen: Maschinenelemente, Berechnung, Instandhaltung, WiSo.",
+      "zeichnungen": [
+        {
+          "pfad": "assets/zeichnungen/S17/zeichnung_1.png",
+          "label": "Einstellantrieb Stanzanlage – Schnittdarstellung"
+        },
+        {
+          "pfad": "assets/zeichnungen/S17/zeichnung_2.png",
+          "label": "Kegelradgetriebe – Bemaßung (m=2, z=26)"
+        },
+        {
+          "pfad": "assets/zeichnungen/S17/zeichnung_3.png",
+          "label": "Bogenzahnkupplung / Gelenkwelle"
+        }
+      ],
+      "diagrammKeys": [
+        "zahnrad_geometrie",
+        "werkzeugwinkel",
+        "toleranzfeld",
+        "kraeftedreieck",
+        "passungsdiagramm"
+      ],
+      "stueckliste": {
+        "5": "Flanschbuchse (CuSn8P)",
+        "9": "Gelenkwelle (Ø32 mm)"
+      }
+    },
+    {
+      "code": "S18",
+      "titel": "AP2 Sommer 2018",
+      "zeitlimitMinuten": 120,
+      "beschreibung": "Hydraulische Schaltvorrichtung, Verladeanlage für Betonteile. Primärrad (m=3, z=57), Sekundärrad (m=3, z=82), Kolben (CuSn8, Ø80mm, p=6bar). Themen: Hydraulik, Zahnräder, Werkstoff, WiSo.",
+      "zeichnungen": [
+        {
+          "pfad": "assets/zeichnungen/S18/zeichnung_1.png",
+          "label": "Schaltvorrichtung – Schnittdarstellung (Kolben CuSn8, Ø80mm)"
+        },
+        {
+          "pfad": "assets/zeichnungen/S18/zeichnung_2.png",
+          "label": "Verladeanlage – Übersichtsschema mit Bauteilbeschriftung"
+        },
+        {
+          "pfad": "assets/zeichnungen/S18/zeichnung_3.png",
+          "label": "Schaltvorrichtung – Zahnräder (Primär m=3/z=57, Sekundär m=3/z=82)"
+        }
+      ],
+      "diagrammKeys": [
+        "hydraulik_kolben",
+        "zahnrad_geometrie",
+        "grafcet_basis",
+        "toleranzfeld",
+        "werkzeugwinkel"
+      ],
+      "stueckliste": {
+        "2": "Schaltstange",
+        "6": "Primärrad (16MnCr5, m=3, z=57)",
+        "8": "Sekundärrad (16MnCr5, m=3, z=82)",
+        "13": "Buchse (CuZn31Si1)",
+        "16": "Schaltkolben (CuSn8, Ø80 mm)"
+      }
+    },
+    {
+      "code": "S19",
+      "titel": "AP2 Sommer 2019",
+      "zeitlimitMinuten": 120,
+      "beschreibung": "Mehrspindel-Bohrstation, 2-stufiges Schieberadgetriebe (z=66/18, z=33/33), Kegelrollenlager O-Anordnung, Spannzylinder (Ø80mm). Themen: Getriebe, Lagerung, Hydraulik, WiSo.",
+      "zeichnungen": [
+        {
+          "pfad": "assets/zeichnungen/S19/zeichnung_1.png",
+          "label": "Mehrspindel-Bohrstation – Gesamtansicht"
+        },
+        {
+          "pfad": "assets/zeichnungen/S19/zeichnung_2.png",
+          "label": "Schieberadgetriebe – Schnittbild (Stufe 1: z=66/18, Stufe 2: z=33/33)"
+        },
+        {
+          "pfad": "assets/zeichnungen/S19/zeichnung_3.png",
+          "label": "Kegelrollenlager – O-Anordnung Spindellagerung"
+        },
+        {
+          "pfad": "assets/zeichnungen/S19/zeichnung_4.png",
+          "label": "Spannzylinder (Ø80mm) – Hydraulikschaltplan"
+        }
+      ],
+      "diagrammKeys": [
+        "zahnrad_geometrie",
+        "hydraulik_kolben",
+        "passungsdiagramm",
+        "schnittdaten",
+        "toleranzfeld"
+      ],
+      "stueckliste": {}
+    }
+  ],
   "fragenDateien": [
     "auftragsanalyse_antriebstechnik.json",
     "auftragsanalyse_elektrotechnik.json",
