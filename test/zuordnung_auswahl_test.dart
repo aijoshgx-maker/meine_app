@@ -92,7 +92,8 @@ void main() {
     _handyBildschirm(tester);
     await _pumpeQuiz(tester);
 
-    final breite = tester.view.physicalSize.width / tester.view.devicePixelRatio;
+    final breite =
+        tester.view.physicalSize.width / tester.view.devicePixelRatio;
     final feld = tester.getRect(find.byType(InputDecorator).first);
 
     // Vorher lag das Feld in einer Row neben dem Begriff und war damit rund
@@ -114,7 +115,8 @@ void main() {
     await tester.tap(find.text('Zuordnen…').first);
     await tester.pumpAndSettle();
 
-    final breite = tester.view.physicalSize.width / tester.view.devicePixelRatio;
+    final breite =
+        tester.view.physicalSize.width / tester.view.devicePixelRatio;
 
     for (final option in _rechts) {
       final treffer = find.text(option);

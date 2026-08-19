@@ -363,8 +363,11 @@ class _KursKarte extends StatelessWidget {
                       kurs.pruefungen.isNotEmpty)
                     _Marke(
                       icon: Icons.timer_outlined,
+                      // "2x Testlauf" statt "2 Testlauf": Der Begriff kommt
+                      // aus dem Kurs, eine Pluralform laesst sich daraus
+                      // nicht zuverlaessig bilden.
                       text:
-                          '${kurs.pruefungen.length} ${kurs.begriffe.testlauf}',
+                          '${kurs.pruefungen.length}× ${kurs.begriffe.testlauf}',
                     ),
                   if (kurs.version != null)
                     _Marke(icon: Icons.tag, text: kurs.version!),
