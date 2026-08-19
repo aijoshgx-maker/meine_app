@@ -18,6 +18,10 @@ abstract final class DateiAblage {
 
   static Future<void> loescheOrdner(String pfad) async {}
 
+  static Future<List<String>> dateienIn(String ordner) async => const [];
+
+  static Future<void> loescheDatei(String pfad) async {}
+
   /// Auf Web gibt es keine lokal abgelegten Kursbilder - der Aufrufer zeigt
   /// dann seinen Platzhalter.
   static ImageProvider? bild(String pfad) => null;

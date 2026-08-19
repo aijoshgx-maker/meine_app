@@ -38,6 +38,16 @@ class _FakeSettingsStore implements SettingsStore {
 
   @override
   Future<void> datenVersionSpeichern(int version) async {}
+
+  DateTime? _letztesAutoBackup;
+
+  @override
+  DateTime? letztesAutoBackupLaden() => _letztesAutoBackup;
+
+  @override
+  Future<void> letztesAutoBackupSpeichern(DateTime zeitpunkt) async {
+    _letztesAutoBackup = zeitpunkt;
+  }
 }
 
 Frage _frage(String id, String kategorie) => Frage(

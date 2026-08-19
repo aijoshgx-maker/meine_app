@@ -8,6 +8,7 @@ class SettingsStore {
   static const remindersEnabledKey = 'remindersEnabled';
   static const aktiverKursKey = 'aktiverKurs';
   static const datenVersionKey = 'datenVersion';
+  static const letztesAutoBackupKey = 'letztesAutoBackup';
 
   Box get _box => Hive.box(boxName);
 
@@ -39,5 +40,16 @@ class SettingsStore {
 
   Future<void> datenVersionSpeichern(int version) async {
     await _box.put(datenVersionKey, version);
+  }
+
+  /// Zeitpunkt der letzten automatischen Sicherung. null, wenn noch nie
+  /// eine lief.
+  DateTime? letztesAutoBackupLaden() {
+    final roh = _box.get(letztesAutoBackupKey);
+    return roh is String ? DateTime.tryParse(roh) : null;
+  }
+
+  Future<void> letztesAutoBackupSpeichern(DateTime zeitpunkt) async {
+    await _box.put(letztesAutoBackupKey, zeitpunkt.toIso8601String());
   }
 }

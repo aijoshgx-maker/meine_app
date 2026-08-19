@@ -4,6 +4,48 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 `CLAUDE_CODE_PROMPTS.md` (P0–P12). Format lose an
 [Keep a Changelog](https://keepachangelog.com) angelehnt.
 
+## [Unveröffentlicht]
+
+### Hinzugefügt
+
+- **Modus „Fehlerquellen"** — übt gezielt die Karten, bei denen man sich
+  sicher war und trotzdem falsch lag. Genau diese Irrtümer sitzen laut
+  Hypercorrection-Effekt am hartnäckigsten; bisher wurden sie nur gezählt.
+  Die Menge leert sich von selbst: Das Flag wird bei jeder Bewertung neu
+  gesetzt, eine richtig beantwortete Frage fällt also wieder heraus. Der
+  Knopf erscheint nur, wenn es etwas zu korrigieren gibt.
+- **Automatische Wochensicherung** — legt still eine Kopie des Lernstands im
+  App-Verzeichnis an und behält die letzten vier. Läuft nach `runApp` und
+  ohne `await`, schluckt Fehler selbst: Der App-Start darf daran nie
+  scheitern. Auf Web passiert nichts, dort gibt es kein Dateisystem.
+
+### Geändert
+
+- **Play-Store-Vorbereitung**: Release-Signatur verdrahtet (der Build war
+  mit dem Debug-Key signiert), R8 samt Proguard-Regeln aktiviert, eigenes
+  Launcher- und adaptives Icon statt des Flutter-Standardlogos.
+- Datenschutzerklärung, Store-Texte und eine Release-Checkliste mit den
+  Play-Anforderungen unter `docs/`.
+- README und `docs/product-spec.md` geschrieben — beides war seit dem ersten
+  Commit unverändertes Gerüst.
+- App-Version steht jetzt an einer Stelle (`main.dart`) statt zweimal.
+
+### Behoben
+
+- **Zuordnungsaufgaben waren auf dem Handy abgeschnitten.** Begriff und
+  Auswahl lagen nebeneinander in einer Row, dem Dropdown blieb die halbe
+  Breite und sein Popup wurde am Bildschirmrand beschnitten. Jetzt volle
+  Breite mit Auswahlblatt, in dem langer Text umbricht.
+- Bei Lückentexten mit mehreren Lücken verdeckte die Tastatur das letzte
+  Feld und den Weiter-Knopf.
+- Die Kurskarte zeigte „2 Testlauf" statt „2× Testlauf".
+
+### Technisch
+
+- Tests von 134 auf **164**: Fachgespräch-Session (bis dahin 543 Zeilen ohne
+  jeden Test), Kursverwaltung, Zuordnung auf kleinen Bildschirmen,
+  automatische Sicherung.
+
 ## [1.2.0] – 2026-08-17
 
 Die App wird vom AP2-Trainer zum **allgemeinen Lernwerkzeug**: Lernthemen

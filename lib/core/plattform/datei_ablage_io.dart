@@ -23,6 +23,19 @@ abstract final class DateiAblage {
     await datei.writeAsBytes(bytes);
   }
 
+  /// Pfade aller Dateien direkt in [ordner]. Leer, wenn es ihn nicht gibt.
+  static Future<List<String>> dateienIn(String ordner) async {
+    final verzeichnis = Directory(ordner);
+    if (!await verzeichnis.exists()) return const [];
+    return verzeichnis.listSync().whereType<File>().map((f) => f.path).toList();
+  }
+
+  /// Löscht eine einzelne Datei, falls vorhanden.
+  static Future<void> loescheDatei(String pfad) async {
+    final datei = File(pfad);
+    if (await datei.exists()) await datei.delete();
+  }
+
   /// Löscht [pfad] samt Inhalt, falls vorhanden.
   static Future<void> loescheOrdner(String pfad) async {
     final ordner = Directory(pfad);

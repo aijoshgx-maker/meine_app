@@ -86,6 +86,8 @@ void main() {
       'loescheOrdner',
       'bild',
       'temporaerSchreiben',
+      'dateienIn',
+      'loescheDatei',
     ]) {
       expect(io, contains(member), reason: 'IO-Variante kennt $member nicht.');
       expect(

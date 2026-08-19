@@ -5,15 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:share_plus/share_plus.dart';
 
+import '../../../main.dart' show appVersion;
 import '../../../data/backup_store.dart';
 import '../../../data/fsrs_card_store.dart';
 import '../../kurse/providers/kurs_providers.dart'
     show alleKurseProvider, kursRepositoryProvider;
 
-// Aktuelle App-Version für den Backup-Header. Kein package_info_plus als
-// zusätzliche Abhängigkeit nötig - einfacher String, der mit
-// pubspec.yaml/version synchron gehalten wird.
-const _appVersionFuerBackup = '1.2.0';
+// Version kommt aus main.dart - dort wird sie auch für die automatische
+// Sicherung gebraucht, und zwei Stellen liefen sonst auseinander.
 
 class BackupScreen extends ConsumerStatefulWidget {
   const BackupScreen({super.key});
@@ -35,7 +34,7 @@ class _BackupScreenState extends ConsumerState<BackupScreen> {
       _statusText = null;
     });
     try {
-      final daten = _backupStore.erstellen(appVersion: _appVersionFuerBackup);
+      final daten = _backupStore.erstellen(appVersion: appVersion);
       final name = _backupStore.dateinameFuer(daten.exportiertAm);
 
       // Über die Bytes statt über einen Dateipfad: funktioniert so auf
