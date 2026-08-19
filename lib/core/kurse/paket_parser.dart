@@ -5,6 +5,7 @@ import 'package:archive/archive.dart';
 
 import '../../models/fachgespraech_szenario.dart';
 import '../../models/frage.dart';
+import '../../models/glossar.dart';
 import '../../models/kurs.dart';
 import '../../models/lernpaket.dart';
 
@@ -61,7 +62,8 @@ class PaketParser {
       );
     }
     final szenarienRoh = wurzel['fachgespraech'] as List? ?? const [];
-    return _bauen(wurzel, fragenRoh, szenarienRoh, const {});
+    final glossarRoh = wurzel['glossar'] as List? ?? const [];
+    return _bauen(wurzel, fragenRoh, szenarienRoh, glossarRoh, const {});
   }
 
   /// Liest ein Paket aus einem ZIP-Archiv.
@@ -153,6 +155,25 @@ class PaketParser {
       }
     }
 
+    // Glossar: inline oder als eigene Datei.
+    var glossarRoh = wurzel['glossar'] as List? ?? const [];
+    final glossarDatei = wurzel['glossarDatei'] as String?;
+    if (glossarDatei != null) {
+      final roh = inhalt[_normalisiere(glossarDatei)];
+      if (roh == null) {
+        warnungen.add("Glossar-Datei '$glossarDatei' fehlt im Archiv.");
+      } else {
+        try {
+          final liste = jsonDecode(
+            _ohneBom(utf8.decode(roh, allowMalformed: true)),
+          );
+          if (liste is List) glossarRoh = liste;
+        } catch (e) {
+          warnungen.add("Glossar-Datei '$glossarDatei' ist ungültig: $e");
+        }
+      }
+    }
+
     // Bilder: alles was keine .json ist, bleibt als Datei erhalten.
     final bilder = <String, Uint8List>{
       for (final e in inhalt.entries)
@@ -163,6 +184,7 @@ class PaketParser {
       wurzel,
       fragenRoh,
       szenarienRoh,
+      glossarRoh,
       bilder,
       vorhandeneWarnungen: warnungen,
     );
@@ -174,6 +196,7 @@ class PaketParser {
     Map<String, dynamic> wurzel,
     List<dynamic> fragenRoh,
     List<dynamic> szenarienRoh,
+    List<dynamic> glossarRoh,
     Map<String, Uint8List> bilder, {
     List<String> vorhandeneWarnungen = const [],
   }) {
@@ -267,11 +290,25 @@ class PaketParser {
       );
     }
 
+    // Ein kaputter Glossareintrag darf das Paket nicht kippen - ohne
+    // Glossar erscheint im Quiz nur kein Tipp-Knopf.
+    final glossarEintraege = <GlossarEintrag>[];
+    for (final roh in glossarRoh) {
+      try {
+        glossarEintraege.add(
+          GlossarEintrag.fromJson(Map<String, dynamic>.from(roh as Map)),
+        );
+      } catch (e) {
+        warnungen.add('Ein Glossareintrag ist unvollständig: $e');
+      }
+    }
+
     return PaketErgebnis(
       paket: Lernpaket(
         kurs: kurs,
         fragen: fragen,
         szenarien: szenarien,
+        glossar: Glossar(glossarEintraege),
         bilder: bilder,
       ),
       warnungen: warnungen,

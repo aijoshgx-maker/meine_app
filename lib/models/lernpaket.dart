@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'fachgespraech_szenario.dart';
 import 'frage.dart';
+import 'glossar.dart';
 import 'kurs.dart';
 
 /// Ein vollständig eingelesenes Lernpaket: Kursbeschreibung plus Inhalt.
@@ -14,6 +15,10 @@ class Lernpaket {
   final List<Frage> fragen;
   final List<FachgespraechSzenario> szenarien;
 
+  /// Erklärungen zu Formelzeichen und Begriffen. Leer, wenn das Paket keine
+  /// mitbringt - dann erscheint im Quiz kein Tipp-Knopf.
+  final Glossar glossar;
+
   /// Mitgelieferte Bilder: relativer Pfad im Paket -> Dateiinhalt.
   /// Nur bei ZIP-Paketen gefüllt.
   final Map<String, Uint8List> bilder;
@@ -22,6 +27,7 @@ class Lernpaket {
     required this.kurs,
     required this.fragen,
     this.szenarien = const [],
+    this.glossar = Glossar.leer,
     this.bilder = const {},
   });
 

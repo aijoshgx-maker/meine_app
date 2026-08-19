@@ -78,4 +78,68 @@ void main() {
       throwsA(isA<StateError>()),
     );
   });
+
+  _glossarTests();
+}
+
+// Das Glossar entscheidet sich am echten Bestand: Ein Nachschlagewerk, das
+// bei kaum einer Frage anschlaegt, ist wirkungslos - eines, das bei jeder
+// anschlaegt, ist Laerm.
+void _glossarTests() {
+  test('das Glossar des gebündelten Kurses wird geladen', () async {
+    final paket = await KursRepository().paketFuer(
+      KursRepository.standardKursId,
+    );
+
+    expect(paket.glossar.istLeer, isFalse);
+    expect(paket.glossar.eintraege.length, greaterThan(10));
+
+    for (final e in paket.glossar.eintraege) {
+      expect(e.begriff.trim(), isNotEmpty);
+      expect(e.kurz.trim(), isNotEmpty, reason: '${e.begriff} ohne Kurztext');
+    }
+  });
+
+  test('kein Begriff kommt doppelt vor', () async {
+    final paket = await KursRepository().paketFuer(
+      KursRepository.standardKursId,
+    );
+
+    final begriffe = paket.glossar.eintraege.map((e) => e.begriff).toList();
+    expect(begriffe.toSet().length, begriffe.length);
+  });
+
+  test('das Glossar greift bei einem sinnvollen Anteil der Fragen', () async {
+    final paket = await KursRepository().paketFuer(
+      KursRepository.standardKursId,
+    );
+
+    var mitTipp = 0;
+    var maxProFrage = 0;
+    for (final frage in paket.fragen) {
+      final treffer = paket.glossar.findeIn(
+        frage.frage,
+        ausnahmen: frage.tippsAus.toSet(),
+      );
+      if (treffer.isNotEmpty) mitTipp++;
+      if (treffer.length > maxProFrage) maxProFrage = treffer.length;
+    }
+
+    final anteil = mitTipp / paket.fragen.length;
+
+    // Untergrenze: sonst waere die Funktion Zierde.
+    expect(
+      anteil,
+      greaterThan(0.05),
+      reason: 'Nur ${(anteil * 100).round()}% der Fragen bekommen einen Tipp.',
+    );
+    // Obergrenze: schlaegt es ueberall an, wird der Knopf ignoriert.
+    expect(
+      anteil,
+      lessThan(0.75),
+      reason: '${(anteil * 100).round()}% der Fragen - das ist Laerm.',
+    );
+    // Und keine Frage darf mit Begriffen zugeschuettet werden.
+    expect(maxProFrage, lessThanOrEqualTo(8));
+  });
 }

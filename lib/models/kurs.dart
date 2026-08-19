@@ -222,6 +222,11 @@ class Kurs {
   final List<String> fragenDateien;
   final String? fachgespraechDatei;
 
+  /// Nachschlagewerk des Kurses (Formelzeichen, schwierige Begriffe).
+  /// Gehört zum Paket, nicht in die App - ein Sprachkurs hätte sonst die
+  /// Formelzeichen der Zerspanung.
+  final String? glossarDatei;
+
   /// Wann der Kurs installiert wurde - nur bei importierten Kursen gesetzt.
   final DateTime? installiertAm;
 
@@ -240,6 +245,7 @@ class Kurs {
     this.assetOrdner,
     this.fragenDateien = const [],
     this.fachgespraechDatei,
+    this.glossarDatei,
     this.installiertAm,
   });
 
@@ -275,6 +281,7 @@ class Kurs {
         .map((e) => e as String)
         .toList(),
     fachgespraechDatei: json['fachgespraechDatei'] as String?,
+    glossarDatei: json['glossarDatei'] as String?,
     installiertAm: json['installiertAm'] is String
         ? DateTime.tryParse(json['installiertAm'] as String)
         : null,
@@ -295,6 +302,7 @@ class Kurs {
     if (assetOrdner != null) 'assetOrdner': assetOrdner,
     'fragenDateien': fragenDateien,
     if (fachgespraechDatei != null) 'fachgespraechDatei': fachgespraechDatei,
+    if (glossarDatei != null) 'glossarDatei': glossarDatei,
     if (installiertAm != null)
       'installiertAm': installiertAm!.toIso8601String(),
   };
@@ -314,6 +322,7 @@ class Kurs {
     assetOrdner: assetOrdner,
     fragenDateien: fragenDateien,
     fachgespraechDatei: fachgespraechDatei,
+    glossarDatei: glossarDatei,
     installiertAm: installiertAm ?? this.installiertAm,
   );
 

@@ -8,6 +8,23 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Hinzugefügt
 
+- **Tipp-Funktion für Formelzeichen und Begriffe.** Unter dem Fragetext
+  erscheint ein Knopf, wenn im Text erklärbare Begriffe vorkommen — `ω`,
+  `Ø`, `vc`, Passung, GRAFCET. Ein Tippen öffnet kurze Erklärungen, bei
+  Bedarf mit Vertiefung (Formel, Einheit, Abgrenzung).
+
+  Der Gedanke dahinter: Wer an einer Aufgabe hängt, weil ihm `ω` nichts
+  sagt, hat keine Wissenslücke im Thema — er kann die Frage nur nicht
+  lesen. Das eine löst Üben, das andere ein Nachschlagewerk.
+
+  Das Glossar gehört zum Lernpaket (`glossarDatei` bzw. `glossar` inline),
+  nicht zur App. Wo ein Tipp die Antwort verriete, blendet `tippsAus` ihn
+  aus. Auch im Testlauf verfügbar — in der echten AP2 ist ein Tabellenbuch
+  zugelassen.
+
+  Im AP2-Kurs greift er bei 80 von 681 Fragen, höchstens 3 Begriffe je
+  Frage.
+
 - **Modus „Fehlerquellen"** — übt gezielt die Karten, bei denen man sich
   sicher war und trotzdem falsch lag. Genau diese Irrtümer sitzen laut
   Hypercorrection-Effekt am hartnäckigsten; bisher wurden sie nur gezählt.

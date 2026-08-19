@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import '../models/fachgespraech_szenario.dart';
 import '../models/frage.dart';
+import '../models/glossar.dart';
 import '../models/kurs.dart';
 import '../models/lernpaket.dart';
 import 'kurs_store.dart';
@@ -121,6 +122,26 @@ class KursRepository {
       }
     }
 
-    return Lernpaket(kurs: kurs, fragen: fragen, szenarien: szenarien);
+    // Ein fehlendes oder kaputtes Glossar darf den Kurs nicht kippen -
+    // ohne Glossar erscheint im Quiz einfach kein Tipp-Knopf.
+    var glossar = Glossar.leer;
+    final glossarDatei = kurs.glossarDatei;
+    if (glossarDatei != null) {
+      try {
+        final text = _ohneBom(
+          await rootBundle.loadString('$ordner$glossarDatei'),
+        );
+        glossar = Glossar.fromJson(jsonDecode(text) as List);
+      } catch (e) {
+        debugPrint('KursRepository: Glossar nicht ladbar: $e');
+      }
+    }
+
+    return Lernpaket(
+      kurs: kurs,
+      fragen: fragen,
+      szenarien: szenarien,
+      glossar: glossar,
+    );
   }
 }

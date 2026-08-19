@@ -4,6 +4,7 @@ import 'package:hive/hive.dart';
 import '../core/plattform/datei_ablage.dart';
 import '../models/fachgespraech_szenario.dart';
 import '../models/frage.dart';
+import '../models/glossar.dart';
 import '../models/kurs.dart';
 import '../models/lernpaket.dart';
 
@@ -83,7 +84,14 @@ class KursStore {
         )
         .toList();
 
-    return Lernpaket(kurs: kurs, fragen: fragen, szenarien: szenarien);
+    final glossar = Glossar.fromJson((eintrag['glossar'] as List?) ?? const []);
+
+    return Lernpaket(
+      kurs: kurs,
+      fragen: fragen,
+      szenarien: szenarien,
+      glossar: glossar,
+    );
   }
 
   /// Schreibt ein geprüftes Paket in den Store und legt seine Bilder ab.
@@ -101,6 +109,7 @@ class KursStore {
       'kurs': kurs.toJson(),
       'fragen': paket.fragen.map((f) => f.toJson()).toList(),
       'szenarien': paket.szenarien.map((s) => s.toJson()).toList(),
+      'glossar': paket.glossar.toJson(),
     });
 
     // Auf Web gibt es kein Dateisystem: Der Kurs wird trotzdem installiert,

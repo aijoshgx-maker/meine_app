@@ -59,6 +59,12 @@ class Frage {
   // Reihenfolge innerhalb der Prüfung für die Prüfungssimulation.
   final int? pruefungReihenfolge;
 
+  // Glossarbegriffe, die bei dieser Frage NICHT als Tipp erscheinen sollen.
+  //
+  // Nötig, wo der Tipp die Antwort verriete: Bei "Welche Einheit hat die
+  // Winkelgeschwindigkeit?" wäre der Eintrag dazu die Lösung.
+  final List<String> tippsAus;
+
   // Prüfungen des Validators, die für diese Frage bewusst abgeschaltet sind.
   //
   // Manche Warnungen sind Heuristiken, die legitime Fragen mittreffen: Bei
@@ -91,6 +97,7 @@ class Frage {
     required this.schwierigkeit,
     this.pruefung,
     this.pruefungReihenfolge,
+    this.tippsAus = const [],
     this.bewusstSo = const [],
   });
 
@@ -126,6 +133,7 @@ class Frage {
       schwierigkeit: json['schwierigkeit'] as int,
       pruefung: json['pruefung'] as String?,
       pruefungReihenfolge: json['pruefungReihenfolge'] as int?,
+      tippsAus: strList(json['tippsAus']),
       bewusstSo: strList(json['bewusstSo']),
     );
   }
@@ -154,6 +162,7 @@ class Frage {
     'schwierigkeit': schwierigkeit,
     'pruefung': pruefung,
     'pruefungReihenfolge': pruefungReihenfolge,
+    if (tippsAus.isNotEmpty) 'tippsAus': tippsAus,
     if (bewusstSo.isNotEmpty) 'bewusstSo': bewusstSo,
   };
 }

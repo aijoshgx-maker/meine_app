@@ -101,6 +101,7 @@ void main(List<String> args) {
   final assetPfade = _ladePubspecAssetOrdner(root);
   final manifestListe = _ladeManifest(fragenDir);
   _pruefeRechtsstand(fragenDir);
+  _pruefeGlossar(fragenDir);
 
   final alleDateien =
       fragenDir
@@ -117,7 +118,10 @@ void main(List<String> args) {
 
   for (final file in alleDateien) {
     final name = file.uri.pathSegments.last;
-    if (name == '_manifest.json' || name == '_rechtsstand.json') continue;
+    // Dateien mit fuehrendem Unterstrich sind Metadaten, keine Fragen -
+    // _manifest, _rechtsstand, _glossar. Als Konvention statt Aufzaehlung,
+    // damit die naechste solche Datei nicht wieder 26 Fehler ausloest.
+    if (name.startsWith('_')) continue;
 
     if (name != 'fachgespraech_szenarien.json' &&
         !manifestListe.contains(name)) {
@@ -784,6 +788,60 @@ void _pruefeVeralteteAusnahmen(List<_FrageMitDatei> alle) {
           'hier ohnehin nicht anschlagen. Marker entfernen.',
         );
       }
+    }
+  }
+}
+
+/// Prueft das Glossar: gueltiges JSON, Pflichtfelder, keine Doppelungen.
+///
+/// Ohne das faellt ein kaputtes Glossar erst zur Laufzeit auf - und dort
+/// still, weil ein Ladefehler bewusst geschluckt wird, damit der Kurs nicht
+/// mitkippt.
+void _pruefeGlossar(Directory fragenDir) {
+  final file = File('${fragenDir.path}/_glossar.json');
+  if (!file.existsSync()) return;
+
+  final List<dynamic> liste;
+  try {
+    final roh = jsonDecode(file.readAsStringSync());
+    if (roh is! List) {
+      fehler('_glossar.json', null, 'Erwartet ein JSON-Array.');
+      return;
+    }
+    liste = roh;
+  } catch (e) {
+    fehler('_glossar.json', null, 'JSON nicht parsebar: $e');
+    return;
+  }
+
+  final gesehen = <String>{};
+  for (var i = 0; i < liste.length; i++) {
+    final eintrag = liste[i];
+    if (eintrag is! Map) {
+      fehler('_glossar.json', null, 'Eintrag ${i + 1} ist kein Objekt.');
+      continue;
+    }
+
+    final begriff = eintrag['begriff'];
+    if (begriff is! String || begriff.trim().isEmpty) {
+      fehler('_glossar.json', null, "Eintrag ${i + 1}: 'begriff' fehlt.");
+      continue;
+    }
+    if (!gesehen.add(begriff)) {
+      fehler('_glossar.json', begriff, 'Begriff kommt mehrfach vor.');
+    }
+
+    final kurz = eintrag['kurz'];
+    if (kurz is! String || kurz.trim().isEmpty) {
+      fehler('_glossar.json', begriff, "'kurz' fehlt oder ist leer.");
+    } else if (kurz.length > 160) {
+      // Die Kurzfassung soll auf einen Blick lesbar sein - laengeres
+      // gehoert nach "mehr".
+      warnung(
+        '_glossar.json',
+        begriff,
+        "'kurz' ist ${kurz.length} Zeichen lang - gehoert das nach 'mehr'?",
+      );
     }
   }
 }

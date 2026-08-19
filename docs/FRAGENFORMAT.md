@@ -413,3 +413,68 @@ python tool/bild_zuweisen.py --entfernen ft-zg-004
 
 Ein unbekannter Diagrammname wird abgewiesen — die App würde ihn sonst
 kommentarlos ignorieren.
+
+## Tipps zu Begriffen und Formelzeichen (`_glossar.json`)
+
+Wer an einer Aufgabe hängt, weil ihm `ω` nichts sagt, hat keine Wissenslücke
+im Thema — er kann die Frage nur nicht lesen. Dafür gibt es den Tipp-Knopf
+unter dem Fragetext.
+
+Das Glossar gehört zum **Kurs**, nicht zur App — ein Sprachkurs hätte sonst
+die Formelzeichen der Zerspanung. In `kurs.json`:
+
+```json
+"glossarDatei": "_glossar.json"
+```
+
+Aufbau der Datei — ein Array:
+
+```json
+[
+  {
+    "begriff": "ω (Winkelgeschwindigkeit)",
+    "alias": ["ω", "omega", "Winkelgeschwindigkeit"],
+    "kurz": "Wie schnell sich etwas dreht — im Bogenmaß, Einheit rad/s.",
+    "mehr": "ω = 2 · π · n, wobei n in 1/s einzusetzen ist."
+  }
+]
+```
+
+| Feld | Pflicht | Bedeutung |
+|---|---|---|
+| `begriff` | ja | Anzeigename, dient zugleich als Kennung |
+| `kurz` | ja | ein Satz, höchstens rund 160 Zeichen |
+| `alias` | nein | weitere Schreibweisen für die Suche im Fragetext |
+| `mehr` | nein | Vertiefung hinter „Mehr": Formel, Einheit, Abgrenzung |
+
+`alias` ist wichtiger als es aussieht: Angezeigt wird
+„ω (Winkelgeschwindigkeit)", im Fragetext steht aber mal `ω`, mal
+„Winkelgeschwindigkeit". Ohne Alias findet die Suche nichts.
+
+**Wie erkannt wird:** Symbole wie `ω` oder `Ø` werden überall gefunden, auch
+direkt an Zahlen („Ø32"). Wörter dagegen nur an Wortgrenzen — sonst würde
+„Kraft" auch in „Kraftstoffpumpe" anschlagen und die Tippliste unbrauchbar
+machen.
+
+### Wenn der Tipp die Antwort verrät
+
+Bei „Welche Einheit hat die Winkelgeschwindigkeit?" wäre der Eintrag die
+Lösung. An der Frage:
+
+```json
+"tippsAus": ["ω (Winkelgeschwindigkeit)"]
+```
+
+Der Wert ist der `begriff`, nicht das Alias.
+
+### Was ein guter Eintrag leistet
+
+- **Er erklärt, was gemeint ist — nicht, wie man rechnet.** Die Herleitung
+  gehört in die `erklaerung` der Frage.
+- **Er grenzt gegen Nachbarbegriffe ab.** „Nicht mit der Drehzahl
+  verwechseln" hilft mehr als eine Definition.
+- **Er nennt die Einheit.** Die Hälfte der Verwirrung kommt daher.
+
+Im mitgelieferten AP2-Kurs greift das Glossar bei **80 von 681 Fragen**
+(rund 12 %), höchstens 3 Begriffe je Frage. Deutlich mehr wäre Lärm — der
+Knopf würde dann überall stehen und niemand drückt ihn noch.

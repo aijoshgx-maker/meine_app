@@ -6,6 +6,7 @@ import '../../../core/kurse/kurs_bilder.dart';
 import '../../../core/quiz/erklaerung_teilen.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart' show Rating;
 import '../../../models/frage.dart';
+import '../../../models/glossar.dart';
 import '../../../models/kurs.dart';
 import '../../kurse/providers/kurs_providers.dart';
 import '../providers/quiz_providers.dart';
@@ -15,6 +16,7 @@ import '../widgets/antwort_eingabe.dart';
 import '../widgets/bewertungs_buttons.dart';
 import '../widgets/illustrationen/technische_illustration.dart';
 import '../widgets/loesungs_ansicht.dart';
+import '../widgets/tipp_knopf.dart';
 import '../widgets/konfidenz_auswahl.dart';
 
 enum _SimAktion { pausieren, fortsetzen, beenden }
@@ -241,6 +243,15 @@ class _QuizBody extends ConsumerWidget {
 
         final frage = session.aktuelleFrage!;
         final controller = ref.read(quizSessionProvider(modus).notifier);
+
+        // Glossar des aktiven Kurses. Bringt ein Paket keines mit, bleibt
+        // die Trefferliste leer und der Tipp-Knopf erscheint gar nicht.
+        final glossar =
+            ref.watch(aktivesPaketProvider).value?.glossar ?? Glossar.leer;
+        final tipps = glossar.findeIn(
+          frage.frage,
+          ausnahmen: frage.tippsAus.toSet(),
+        );
         final bereitsUebersprungen = session.uebersprungeneIds.contains(
           frage.id,
         );
@@ -330,6 +341,10 @@ class _QuizBody extends ConsumerWidget {
                 ),
                 style: Theme.of(context).textTheme.titleLarge,
               ),
+              // Erklaert Formelzeichen aus dem Fragetext. Steht direkt
+              // unter der Frage, weil er dort gebraucht wird - beim Lesen,
+              // nicht nach dem Antworten.
+              TippKnopf(eintraege: tipps),
               if (frage.bildAsset != null) ...[
                 const SizedBox(height: 12),
                 if (TechnischeIllustration.istDiagramm(frage.bildAsset))
