@@ -33,6 +33,15 @@ class QuizFragenAuswahl {
         // Tageslimit: Karten, die gestern oder früher fällig wurden, zählen
         // nicht doppelt – wir servieren einfach nur die ersten N.
         return faellige.take(_tageslimit).toList();
+      case QuizArt.fehlerquellen:
+        // Karten, die beim letzten Mal "sicher, aber falsch" waren. Das Flag
+        // wird bei jeder Bewertung neu gesetzt - eine richtig beantwortete
+        // Frage faellt also von selbst wieder heraus, die Menge leert sich.
+        final schwachstellen = alle
+            .where((f) => kartenstaende[f.id]?.hochkonfidentFalsch == true)
+            .toList();
+        schwachstellen.shuffle(zufall);
+        return schwachstellen;
       case QuizArt.themenVertiefung:
         final auswahl = alle
             .where((f) => f.kategorie == modus.kategorie)

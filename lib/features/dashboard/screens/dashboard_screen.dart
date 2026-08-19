@@ -23,6 +23,7 @@ class DashboardScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final faelligeAnzahl = ref.watch(faelligeAnzahlProvider);
     final paketAsync = ref.watch(aktivesPaketProvider);
+    final fehlerquellen = ref.watch(fehlerquellenAnzahlProvider).value ?? 0;
 
     // Erinnerung bei jedem Dashboard-Aufbau opportunistisch neu planen (nur
     // wenn der Nutzer Erinnerungen aktiviert hat). Bewusst direkt im Build
@@ -102,6 +103,18 @@ class DashboardScreen extends ConsumerWidget {
                       onPressed: () => context.go('/themenauswahl'),
                       child: const Text('Thema vertiefen'),
                     ),
+                    // Erscheint nur, wenn es wirklich etwas zu korrigieren
+                    // gibt - ein Knopf, der in eine leere Session fuehrt,
+                    // waere ein leeres Versprechen.
+                    if (fehlerquellen > 0)
+                      FilledButton.tonalIcon(
+                        onPressed: () => context.go(
+                          '/quiz',
+                          extra: const QuizModus.fehlerquellen(),
+                        ),
+                        icon: const Icon(Icons.error_outline, size: 16),
+                        label: Text('Fehlerquellen ($fehlerquellen)'),
+                      ),
                     if (zeigeDialog)
                       ElevatedButton.icon(
                         onPressed: () => context.go('/fachgespraech'),

@@ -103,4 +103,62 @@ void main() {
     );
     expect(ergebnis.map((f) => f.id).toList(), ['ft1']);
   });
+
+  _fehlerquellenTests();
+}
+
+// Fehlerquellen-Modus: nur Karten, die beim letzten Mal "sicher, aber
+// falsch" waren. Der Modus lebt davon, dass sich die Menge von selbst
+// leert - deshalb wird hier auch geprüft, dass nicht markierte Karten
+// draußen bleiben.
+void _fehlerquellenTests() {
+  final auswahl = QuizFragenAuswahl();
+  const modus = QuizModus.fehlerquellen();
+
+  Frage frage(String id) => Frage(
+    id: id,
+    bereich: 'allgemein',
+    kategorie: 'Test',
+    typ: 'single',
+    frage: 'F $id',
+    optionen: const ['A', 'B'],
+    richtigeIndizes: const [0],
+    reihenfolge: const [],
+    paare: const [],
+    luecken: const [],
+    akzeptierteKurzantworten: const [],
+    erklaerung: 'E',
+    schwierigkeit: 1,
+  );
+
+  GespeicherteKarte karte({required bool markiert}) => GespeicherteKarte(
+    card: FsrsCard.newCard(now: DateTime(2026)),
+    hochkonfidentFalsch: markiert,
+  );
+
+  test('nimmt nur hochkonfident-falsche Karten', () {
+    final ergebnis = auswahl.waehleFragen(
+      modus,
+      [frage('a'), frage('b'), frage('c')],
+      kartenstaende: {
+        'a': karte(markiert: true),
+        'b': karte(markiert: false),
+        // 'c' hat gar keinen Kartenstand - nie gelernt
+      },
+      zufall: Random(1),
+    );
+
+    expect(ergebnis.map((f) => f.id), ['a']);
+  });
+
+  test('ohne markierte Karten bleibt die Auswahl leer', () {
+    final ergebnis = auswahl.waehleFragen(
+      modus,
+      [frage('a'), frage('b')],
+      kartenstaende: {'a': karte(markiert: false)},
+      zufall: Random(1),
+    );
+
+    expect(ergebnis, isEmpty);
+  });
 }

@@ -1,7 +1,20 @@
 // Wie eine Quiz-Session zusammengestellt wird. Wird als Family-Argument an
 // quizSessionProvider übergeben, daher MUSS diese Klasse ==/hashCode
 // überschreiben (Riverpod cacht Family-Provider-Instanzen anhand davon).
-enum QuizArt { freiUebung, heuteFaellig, themenVertiefung, pruefungssimulation }
+enum QuizArt {
+  freiUebung,
+  heuteFaellig,
+  themenVertiefung,
+  pruefungssimulation,
+
+  /// Nur Fragen, bei denen man sich sicher war und trotzdem falsch lag.
+  ///
+  /// Laut Hypercorrection-Effekt sitzen genau diese Irrtuemer am
+  /// hartnaeckigsten - und lassen sich am wirksamsten korrigieren, wenn man
+  /// sie gezielt angeht statt darauf zu warten, dass die
+  /// Wiederholungsplanung sie irgendwann von selbst hochspuelt.
+  fehlerquellen,
+}
 
 class QuizModus {
   final QuizArt art;
@@ -18,6 +31,12 @@ class QuizModus {
 
   const QuizModus.heuteFaellig()
     : art = QuizArt.heuteFaellig,
+      kategorie = null,
+      pruefungsId = null,
+      zeitlimitMinuten = null;
+
+  const QuizModus.fehlerquellen()
+    : art = QuizArt.fehlerquellen,
       kategorie = null,
       pruefungsId = null,
       zeitlimitMinuten = null;

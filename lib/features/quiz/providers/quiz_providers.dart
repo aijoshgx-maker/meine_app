@@ -46,6 +46,23 @@ final faelligeAnzahlProvider = FutureProvider<int>((ref) async {
   return anzahl.clamp(0, 30);
 });
 
+// Anzahl der Karten, die beim letzten Mal "sicher, aber falsch" waren.
+//
+// Bewusst die Karten gezaehlt, nicht die Versuche: Das Dashboard zeigt
+// daneben die Gesamtzahl solcher Antworten ueber die Zeit - hier geht es
+// darum, wie viele Fragen JETZT noch offen sind.
+final fehlerquellenAnzahlProvider = FutureProvider<int>((ref) async {
+  ref.watch(lernfortschrittVersionProvider);
+  final paket = await ref.watch(aktivesPaketProvider.future);
+  final kartenstaende = ref
+      .read(fsrsCardStoreProvider)
+      .alleKartenstaende(paket.kurs.id);
+
+  return paket.fragen
+      .where((f) => kartenstaende[f.id]?.hochkonfidentFalsch == true)
+      .length;
+});
+
 // Ablaufphase der aktuell angezeigten Frage, steuert was der QuizScreen zeigt.
 enum FragePhase { antworten, konfidenz, aufgedeckt }
 

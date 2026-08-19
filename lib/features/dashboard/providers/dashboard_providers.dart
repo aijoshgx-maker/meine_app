@@ -7,7 +7,10 @@ import '../../quiz/providers/quiz_providers.dart';
 export '../../kurse/providers/kurs_providers.dart'
     show aktiverKursProvider, lernfortschrittVersionProvider;
 export '../../quiz/providers/quiz_providers.dart'
-    show attemptHistoryStoreProvider, faelligeAnzahlProvider;
+    show
+        attemptHistoryStoreProvider,
+        faelligeAnzahlProvider,
+        fehlerquellenAnzahlProvider;
 
 // Alle Auswertungen beziehen sich immer auf genau den aktiven Kurs - sonst
 // würden sich Fortschritte verschiedener Lernthemen zu einer nichtssagenden
