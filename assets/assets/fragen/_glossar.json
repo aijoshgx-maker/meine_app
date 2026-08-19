@@ -1,0 +1,152 @@
+[
+  {
+    "begriff": "ω (Winkelgeschwindigkeit)",
+    "alias": ["ω", "omega", "Winkelgeschwindigkeit"],
+    "kurz": "Wie schnell sich etwas dreht — im Bogenmaß, Einheit rad/s.",
+    "mehr": "Nicht mit der Drehzahl n verwechseln: n zählt Umdrehungen, ω misst den überstrichenen Winkel.\n\nω = 2 · π · n, wobei n in 1/s einzusetzen ist.\nAus min⁻¹: ω = 2 · π · n / 60.\n\nBeispiel: n = 1500 min⁻¹ → ω = 2 · π · 1500 / 60 = 157,1 rad/s"
+  },
+  {
+    "begriff": "n (Drehzahl)",
+    "alias": ["Drehzahl"],
+    "kurz": "Umdrehungen pro Zeit, meist in min⁻¹ (Umdrehungen je Minute).",
+    "mehr": "Achtung bei Einheiten: In Formeln steht n oft in 1/s, auf Maschinenschildern dagegen in min⁻¹. Umrechnung: n[1/s] = n[min⁻¹] / 60.\n\nIn der Schnittgeschwindigkeit vc = π · d · n / 1000 wird n in min⁻¹ eingesetzt, d in mm — das Ergebnis kommt in m/min heraus."
+  },
+  {
+    "begriff": "vc (Schnittgeschwindigkeit)",
+    "alias": ["vc", "Schnittgeschwindigkeit"],
+    "kurz": "Geschwindigkeit der Schneide gegenüber dem Werkstück, in m/min.",
+    "mehr": "vc = π · d · n / 1000\n\nd in mm, n in min⁻¹, Ergebnis in m/min. Die 1000 rechnet mm in m um.\n\nvc hängt vom Werkstoff und vom Schneidstoff ab — zu hohe Werte kosten Standzeit."
+  },
+  {
+    "begriff": "f (Vorschub)",
+    "alias": ["Vorschub"],
+    "kurz": "Weg des Werkzeugs je Umdrehung, in mm/U.",
+    "mehr": "Zu unterscheiden:\n• f — Vorschub je Umdrehung (mm/U)\n• fz — Vorschub je Schneide (mm/Zahn), beim Fräsen\n• vf — Vorschubgeschwindigkeit (mm/min), vf = f · n"
+  },
+  {
+    "begriff": "ap (Schnitttiefe)",
+    "alias": ["ap", "Schnitttiefe", "Zustellung"],
+    "kurz": "Wie tief das Werkzeug ins Material greift, in mm.",
+    "mehr": "Beim Drehen ist ap die Zustellung senkrecht zur Vorschubrichtung. Zusammen mit dem Vorschub ergibt sie den Spanungsquerschnitt A = ap · f."
+  },
+  {
+    "begriff": "Ø (Durchmesser)",
+    "alias": ["Ø", "Durchmesser"],
+    "kurz": "Breite eines Kreises durch den Mittelpunkt.",
+    "mehr": "In Zeichnungen steht Ø vor dem Maß, z.B. „Ø32 h7\". Der Buchstabe dahinter ist die Toleranzklasse."
+  },
+  {
+    "begriff": "Ra / Rz (Rauheit)",
+    "alias": ["Ra", "Rz", "Rauheit", "Rauheitswert"],
+    "kurz": "Maß für die Oberflächenrauheit, in µm — kleiner bedeutet glatter.",
+    "mehr": "Ra ist der arithmetische Mittenrauwert, Rz die gemittelte Rautiefe.\n\nBeide messen dieselbe Oberfläche unterschiedlich: Rz reagiert stärker auf einzelne tiefe Riefen, Ra glättet sie heraus. Rz ist deshalb meist deutlich größer als Ra."
+  },
+  {
+    "begriff": "Toleranzklasse (z.B. H7, h6)",
+    "alias": ["Toleranzklasse", "ISO-Toleranz"],
+    "kurz": "Buchstabe und Zahl hinter einem Maß: Lage und Größe des Toleranzfelds.",
+    "mehr": "Der Buchstabe gibt die Lage des Toleranzfelds an, die Zahl den Grad (kleiner = enger).\n\nGROSSBUCHSTABE = Bohrung (Innenmaß), kleinbuchstabe = Welle (Außenmaß).\n\nH7/h6 ist die klassische Übergangspassung."
+  },
+  {
+    "begriff": "Passung",
+    "alias": ["Passung", "Spielpassung", "Übergangspassung", "Presspassung"],
+    "kurz": "Wie Welle und Bohrung zusammenpassen — mit Spiel, stramm oder fest.",
+    "mehr": "• Spielpassung: Es bleibt immer Luft, das Teil lässt sich verschieben.\n• Übergangspassung: Je nach Istmaß Spiel oder leichtes Übermaß.\n• Presspassung: Immer Übermaß, muss gefügt werden (Presse, Erwärmen)."
+  },
+  {
+    "begriff": "Form- und Lagetoleranz",
+    "alias": ["Formtoleranz", "Lagetoleranz", "Lauftoleranz"],
+    "kurz": "Grenzen für Gestalt und Ausrichtung — zusätzlich zum reinen Maß.",
+    "mehr": "Ein Teil kann maßhaltig und trotzdem unbrauchbar sein: krumm, schief oder unrund.\n\n• Formtoleranzen betreffen ein Element allein (Geradheit, Ebenheit, Rundheit).\n• Lagetoleranzen brauchen ein Bezugselement (Parallelität, Rechtwinkligkeit, Position).\n• Lauftoleranzen beziehen sich auf eine Drehachse (Rundlauf, Planlauf)."
+  },
+  {
+    "begriff": "Bezug (Zeichnung)",
+    "alias": ["Bezugselement"],
+    "kurz": "Die Fläche oder Achse, auf die sich eine Lagetoleranz bezieht.",
+    "mehr": "In der Zeichnung als Großbuchstabe im Rahmen mit Dreieck markiert, z.B. „A\". Ohne Bezug wäre eine Angabe wie Rechtwinkligkeit sinnlos — rechtwinklig wozu?"
+  },
+  {
+    "begriff": "p (Druck)",
+    "alias": ["Druck"],
+    "kurz": "Kraft je Fläche, in bar oder N/mm² (1 N/mm² = 10 bar).",
+    "mehr": "p = F / A\n\nIn der Hydraulik meist in bar, in Festigkeitsrechnungen in N/mm². Für die Kolbenkraft: F = p · A, mit p in N/mm² und A in mm² → F in N."
+  },
+  {
+    "begriff": "Q (Volumenstrom)",
+    "alias": ["Volumenstrom", "Förderstrom"],
+    "kurz": "Wie viel Flüssigkeit je Zeit fließt, in l/min.",
+    "mehr": "Q = A · v — Fläche mal Strömungsgeschwindigkeit.\n\nBeim Hydraulikzylinder bestimmt Q die Geschwindigkeit, p die Kraft. Das ist die zentrale Trennung: Druck macht Kraft, Volumenstrom macht Tempo."
+  },
+  {
+    "begriff": "M (Drehmoment)",
+    "alias": ["Drehmoment"],
+    "kurz": "Drehwirkung einer Kraft, in Nm — Kraft mal Hebelarm.",
+    "mehr": "M = F · r\n\nZusammenhang mit der Leistung: P = M · ω, mit ω in rad/s und M in Nm → P in Watt.\n\nIm Getriebe: Was an Drehzahl verloren geht, kommt als Drehmoment dazu (abzüglich Verluste)."
+  },
+  {
+    "begriff": "i (Übersetzung)",
+    "alias": ["Übersetzung", "Übersetzungsverhältnis"],
+    "kurz": "Verhältnis von An- zu Abtriebsdrehzahl im Getriebe.",
+    "mehr": "i = n_an / n_ab = z_ab / z_an\n\nAchtung auf die Richtung: Die Zähnezahlen stehen umgekehrt zu den Drehzahlen. i > 1 heißt Untersetzung — langsamer, dafür mehr Drehmoment."
+  },
+  {
+    "begriff": "m (Modul)",
+    "alias": ["Modul"],
+    "kurz": "Größenmaß der Zähne eines Zahnrads, in mm.",
+    "mehr": "m = d / z — Teilkreisdurchmesser durch Zähnezahl.\n\nZwei Zahnräder können nur kämmen, wenn sie denselben Modul haben. Der Modul ist genormt (1; 1,25; 1,5; 2; 2,5; 3; …)."
+  },
+  {
+    "begriff": "Rm / Re (Festigkeit)",
+    "alias": ["Rm", "Re", "Zugfestigkeit", "Streckgrenze"],
+    "kurz": "Rm ist die Bruchgrenze, Re die Grenze der bleibenden Verformung.",
+    "mehr": "Bis Re federt der Werkstoff zurück, darüber bleibt er verformt. Bei Rm reißt er.\n\nBauteile werden gegen Re ausgelegt, nicht gegen Rm — verbogen ist so schlimm wie gebrochen."
+  },
+  {
+    "begriff": "ν (Sicherheitsbeiwert)",
+    "alias": ["Sicherheitsbeiwert", "Sicherheitsfaktor"],
+    "kurz": "Abstand zwischen zulässiger Spannung und Werkstoffgrenze.",
+    "mehr": "σ_zul = Re / ν\n\nDeckt ab, was die Rechnung nicht erfasst: Werkstoffstreuung, Lastspitzen, Kerbwirkung."
+  },
+  {
+    "begriff": "GRAFCET",
+    "alias": ["GRAFCET", "Ablaufkette"],
+    "kurz": "Ablaufplan einer Steuerung: Schritte, Aktionen und Weiterschaltbedingungen.",
+    "mehr": "Ein Schritt ist aktiv oder nicht. Weitergeschaltet wird erst, wenn die Transition darunter erfüllt ist — der Querstrich zwischen zwei Schritten.\n\nDoppelter Rahmen kennzeichnet den Startschritt."
+  },
+  {
+    "begriff": "5/2-Wegeventil",
+    "alias": ["5/2-Wegeventil", "Wegeventil"],
+    "kurz": "Ventil mit 5 Anschlüssen und 2 Schaltstellungen.",
+    "mehr": "Die erste Zahl zählt die Anschlüsse, die zweite die Schaltstellungen.\n\nEin 5/2-Ventil steuert einen doppeltwirkenden Zylinder: je ein Anschluss pro Zylinderseite, einer für Druckluft, zwei für die Entlüftung."
+  },
+  {
+    "begriff": "Kerbwirkung",
+    "alias": ["Kerbwirkung", "Kerbe"],
+    "kurz": "Querschnittssprünge stauen die Spannung örtlich auf.",
+    "mehr": "Absätze, Nuten und Bohrungen sind Kerben. Die Spannung dort ist deutlich höher als die Rechnung über den Querschnitt ergibt — deshalb Übergänge runden statt scharf absetzen.\n\nBei Dauerbelastung ist Kerbwirkung die häufigste Bruchursache."
+  },
+  {
+    "begriff": "TPM / Instandhaltungsstrategie",
+    "alias": ["TPM", "vorbeugende Instandhaltung", "zustandsorientiert"],
+    "kurz": "Wann gewartet wird: nach Ausfall, nach Plan oder nach Zustand.",
+    "mehr": "• Ausfallbedingt: reparieren, wenn es kaputt ist. Günstig, bis es teuer wird.\n• Vorbeugend: nach festen Intervallen. Planbar, tauscht aber auch Gutes aus.\n• Zustandsorientiert: nach Messung (Schwingung, Temperatur). Aufwendiger, aber am wirtschaftlichsten."
+  },
+  {
+    "begriff": "OEE / Verfügbarkeit",
+    "alias": ["OEE", "Verfügbarkeit", "Gesamtanlageneffektivität"],
+    "kurz": "Wie viel eine Anlage von ihrer möglichen Leistung tatsächlich bringt.",
+    "mehr": "OEE = Verfügbarkeit × Leistungsgrad × Qualitätsrate\n\nVerfügbarkeit = tatsächliche Laufzeit / geplante Laufzeit.\n\nWeil multipliziert wird, schlagen schon drei mäßige Werte hart durch: 0,9 × 0,9 × 0,9 ≈ 0,73."
+  },
+  {
+    "begriff": "Brutto / Netto (Entgelt)",
+    "alias": ["Bruttoentgelt", "Nettoentgelt"],
+    "kurz": "Brutto ist vor Abzügen, netto das, was ankommt.",
+    "mehr": "Vom Brutto gehen ab: Lohnsteuer, Solidaritätszuschlag, ggf. Kirchensteuer und die Sozialversicherungsbeiträge des Arbeitnehmers.\n\nDer Arbeitgeber zahlt seinen SV-Anteil zusätzlich — der taucht auf der Abrechnung nicht als Abzug auf."
+  },
+  {
+    "begriff": "Beitragsbemessungsgrenze",
+    "alias": ["Beitragsbemessungsgrenze", "BBG"],
+    "kurz": "Bis zu diesem Einkommen werden Sozialbeiträge berechnet — darüber nicht mehr.",
+    "mehr": "Wer mehr verdient, zahlt auf den übersteigenden Teil keine Beiträge. Der Beitrag steigt also nicht unbegrenzt mit dem Einkommen.\n\nDie Grenzen unterscheiden sich zwischen Kranken-/Pflege- und Renten-/Arbeitslosenversicherung und werden jährlich angepasst."
+  }
+]
