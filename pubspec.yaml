@@ -49,6 +49,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # Erzeugt Launcher-Icons fuer alle Dichten inklusive adaptivem Icon.
+  # Quellgrafiken liegen in assets/branding/, erzeugt von tool/icons.py.
+  flutter_launcher_icons: ^0.14.4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -106,3 +109,20 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# Launcher-Icons: neu erzeugen mit
+#   dart run flutter_launcher_icons
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/branding/app_icon.png
+  # Adaptives Icon (Android 8+): Der Launcher schneidet die Form selbst zu,
+  # deshalb liegt das Motiv im Vordergrund kleiner in der Sicherheitszone.
+  adaptive_icon_background: "#3F51B5"
+  adaptive_icon_foreground: assets/branding/app_icon_foreground.png
+  remove_alpha_ios: true
+  web:
+    generate: true
+    image_path: assets/branding/app_icon.png
+    background_color: "#3F51B5"
+    theme_color: "#3F51B5"
