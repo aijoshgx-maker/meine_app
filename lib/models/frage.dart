@@ -40,6 +40,14 @@ class Frage {
   final bool? wahr; // wahrfalsch
 
   final String erklaerung;
+
+  // Optionale Kurzfassung der Erklärung, direkt nach dem Aufdecken gezeigt.
+  //
+  // Ohne Angabe wird sie aus erklaerung abgeleitet (siehe
+  // core/quiz/erklaerung_teilen.dart) - deshalb optional: Ein Pflichtfeld
+  // müsste für alle 681 Bestandsfragen von Hand geschrieben werden.
+  final String? kurzerklaerung;
+
   final String? selfExplanationPrompt;
   final String? bildAsset;
   final String? workedExample;
@@ -76,6 +84,7 @@ class Frage {
     required this.akzeptierteKurzantworten,
     this.wahr,
     required this.erklaerung,
+    this.kurzerklaerung,
     this.selfExplanationPrompt,
     this.bildAsset,
     this.workedExample,
@@ -110,6 +119,7 @@ class Frage {
       akzeptierteKurzantworten: strList(json['akzeptierteKurzantworten']),
       wahr: json['wahr'] as bool?,
       erklaerung: json['erklaerung'] as String,
+      kurzerklaerung: json['kurzerklaerung'] as String?,
       selfExplanationPrompt: json['selfExplanationPrompt'] as String?,
       bildAsset: json['bildAsset'] as String?,
       workedExample: json['workedExample'] as String?,
@@ -137,6 +147,7 @@ class Frage {
     'akzeptierteKurzantworten': akzeptierteKurzantworten,
     'wahr': wahr,
     'erklaerung': erklaerung,
+    if (kurzerklaerung != null) 'kurzerklaerung': kurzerklaerung,
     'selfExplanationPrompt': selfExplanationPrompt,
     'bildAsset': bildAsset,
     'workedExample': workedExample,

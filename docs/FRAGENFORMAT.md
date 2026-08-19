@@ -360,3 +360,56 @@ python tool/bewusst_markieren.py --entfernen multi-anteil au-fl-013
 
 Das Werkzeug fügt genau eine Zeile je Frage ein und lässt die übrige
 Formatierung in Ruhe.
+
+## Kurzfassung der Erklärung (`kurzerklaerung`)
+
+Nach dem Aufdecken zeigt die App zuerst die **Lösung**, dann einen knappen
+Satz zum Warum. Wer mehr will, klappt „Ausführlich" auf — dort stehen die
+vollständige Erklärung, der Lösungsweg und ein etwaiges Bild.
+
+Die Kurzfassung wird **automatisch abgeleitet**: Es werden so viele ganze
+Sätze genommen, wie in rund 180 Zeichen passen. Für die 681 Bestandsfragen
+funktioniert das ohne Zutun.
+
+Wenn die Ableitung im Einzelfall unglücklich trennt oder du es genauer
+willst:
+
+```json
+"kurzerklaerung": "Neigung ist eine Richtungstoleranz, keine Lauftoleranz."
+```
+
+Dann bildet dieser Text die Kurzfassung, und die vollständige `erklaerung`
+wandert in den Aufklapper.
+
+**Faustregel:** ein Satz, der die Frage beantwortet — nicht der Anfang einer
+Herleitung.
+
+## Bilder (`bildAsset`)
+
+Zwei Formen:
+
+| Wert | Bedeutung |
+|---|---|
+| `"diag:schnittdaten"` | eines der 9 fest eingebauten Diagramme |
+| `"bilder/skizze.png"` | Datei aus einem ZIP-Paket |
+
+Verfügbare Diagramme: `grafcet_basis` · `hydraulik_kolben` ·
+`kraeftedreieck` · `passungsdiagramm` · `pneumatik_52_ventil` ·
+`schnittdaten` · `toleranzfeld` · `werkzeugwinkel` · `zahnrad_geometrie`
+
+Das Bild erscheint bei der Frage **und** im Aufklapper der Aufdeckung.
+
+> **Ein Diagramm soll die Antwort stützen, nicht die Seite füllen.** Eine
+> Hydraulik-Frage nach Ölviskosität neben einem Kolbenschnitt ist
+> bestenfalls Dekoration, schlimmstenfalls irreführend. Im Zweifel weglassen.
+
+Kandidaten finden und zuweisen:
+
+```bash
+python tool/bild_kandidaten.py                       # schreibt REVIEW_BILDER.md
+python tool/bild_zuweisen.py schnittdaten ft-zg-004
+python tool/bild_zuweisen.py --entfernen ft-zg-004
+```
+
+Ein unbekannter Diagrammname wird abgewiesen — die App würde ihn sonst
+kommentarlos ignorieren.

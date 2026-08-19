@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/kurse/kurs_bilder.dart';
+import '../../../core/quiz/erklaerung_teilen.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart' show Rating;
 import '../../../models/frage.dart';
 import '../../../models/kurs.dart';
@@ -13,6 +14,7 @@ import '../providers/session_timer_provider.dart';
 import '../widgets/antwort_eingabe.dart';
 import '../widgets/bewertungs_buttons.dart';
 import '../widgets/illustrationen/technische_illustration.dart';
+import '../widgets/loesungs_ansicht.dart';
 import '../widgets/konfidenz_auswahl.dart';
 
 enum _SimAktion { pausieren, fortsetzen, beenden }
@@ -478,19 +480,12 @@ class _AufdeckungsAnsicht extends ConsumerWidget {
           ],
         ),
         const SizedBox(height: 12),
-        Text(frage.erklaerung),
-        if (frage.workedExample != null) ...[
-          const SizedBox(height: 12),
-          ExpansionTile(
-            title: const Text('Lösungsweg'),
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Text(frage.workedExample!),
-              ),
-            ],
-          ),
-        ],
+
+        // Zuerst die Lösung, dann erst das Warum: Nach dem Aufdecken will
+        // man wissen, was richtig gewesen wäre - nicht einen Absatz lesen.
+        LoesungsAnsicht(frage: frage, antwort: session.antwort),
+
+        _ErklaerungsAnsicht(frage: frage),
         if (!istSim && frage.schwierigkeit == 3) ...[
           const SizedBox(height: 12),
           TextField(
@@ -731,6 +726,102 @@ class _Platzhalter extends StatelessWidget {
               ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+/// Erklärung in zwei Stufen: knapper Kern, Rest auf Wunsch.
+///
+/// Die Erklärungen sind im Median 280 Zeichen lang - direkt nach dem
+/// Aufdecken ist das mehr, als man in dem Moment lesen will. Der Aufklapper
+/// erscheint nur, wenn es wirklich etwas zu vertiefen gibt: bei kurzer
+/// Erklärung ohne Lösungsweg und ohne Bild bliebe er leer.
+class _ErklaerungsAnsicht extends StatelessWidget {
+  final Frage frage;
+
+  const _ErklaerungsAnsicht({required this.frage});
+
+  @override
+  Widget build(BuildContext context) {
+    final geteilt = teileErklaerung(
+      frage.erklaerung,
+      kurzerklaerung: frage.kurzerklaerung,
+    );
+    final hatBild = frage.bildAsset != null;
+    final hatWeg = frage.workedExample != null;
+    final zeigeAufklapper = geteilt.hatMehr || hatWeg || hatBild;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (geteilt.kurz.isNotEmpty) Text(geteilt.kurz),
+        if (zeigeAufklapper) ...[
+          const SizedBox(height: 4),
+          Theme(
+            // Ohne das zieht ExpansionTile eigene Trennlinien ein, die hier
+            // mitten im Fließtext stören.
+            data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+            child: ExpansionTile(
+              title: Text(
+                'Ausführlich',
+                style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              tilePadding: EdgeInsets.zero,
+              childrenPadding: const EdgeInsets.only(bottom: 8),
+              expandedCrossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (geteilt.hatMehr) Text(geteilt.rest),
+                if (hatWeg) ...[
+                  const SizedBox(height: 12),
+                  Text(
+                    'Lösungsweg',
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                  const SizedBox(height: 4),
+                  Text(frage.workedExample!),
+                ],
+                if (hatBild) ...[
+                  const SizedBox(height: 12),
+                  _FrageBild(bildAsset: frage.bildAsset!),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+/// Bild oder Diagramm zu einer Frage, in beiden Phasen gleich dargestellt.
+class _FrageBild extends ConsumerWidget {
+  final String bildAsset;
+
+  const _FrageBild({required this.bildAsset});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    if (TechnischeIllustration.istDiagramm(bildAsset)) {
+      return TechnischeIllustration(
+        diagrammKey: TechnischeIllustration.keyAus(bildAsset),
+      );
+    }
+
+    // Importierte Kurse legen ihre Bilder als Dateien ab, gebündelte als
+    // Assets - KursBilder kennt den Unterschied.
+    final kurs = ref.watch(aktivesPaketProvider).value?.kurs;
+    final quelle = kurs == null ? null : KursBilder.fuer(kurs, bildAsset);
+    if (quelle == null) return const SizedBox.shrink();
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: Image(
+        image: quelle,
+        fit: BoxFit.contain,
+        errorBuilder: (_, _, _) => const SizedBox.shrink(),
       ),
     );
   }

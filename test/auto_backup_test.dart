@@ -122,10 +122,7 @@ void main() {
     var tag = DateTime(2026, 8, 1);
 
     for (var i = 0; i < 7; i++) {
-      await AutoBackup().ausfuehrenWennFaellig(
-        appVersion: '1.2.0',
-        jetzt: tag,
-      );
+      await AutoBackup().ausfuehrenWennFaellig(appVersion: '1.2.0', jetzt: tag);
       tag = tag.add(const Duration(days: 7));
     }
 
