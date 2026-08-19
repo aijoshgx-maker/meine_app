@@ -12,6 +12,8 @@ Der Import prüft die Datei vollständig, **bevor** etwas installiert wird.
 Ein kaputtes Paket hinterlässt also keinen halbfertigen Kurs.
 
 > Für das Format einer einzelnen Frage siehe [FRAGENFORMAT.md](FRAGENFORMAT.md).
+> Dort steht auch, wie sich einzelne Validator-Warnungen per `bewusstSo`
+> gezielt abschalten lassen — das Feld übersteht Import und Export.
 > Dieses Dokument beschreibt nur die Hülle drumherum.
 
 ---

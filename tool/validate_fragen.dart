@@ -49,6 +49,44 @@ void fehler(String datei, String? id, String text) =>
 void warnung(String datei, String? id, String text) =>
     funde.add(Fund('WARNUNG', datei, id, text));
 
+// Prüfungen, die eine Frage per "bewusstSo" abschalten darf.
+//
+// Manche Warnungen sind Heuristiken, die eine ganze Klasse legitimer Fragen
+// mittreffen. Beispiel multi-anteil: "Welche gehören zu X?" hat oft aus der
+// Sache heraus fast nur richtige Optionen - dort IST die Abgrenzung der
+// Lernstoff. Eine solche Frage umzuschreiben, nur damit die Metrik ruhig
+// ist, macht sie fachlich schlechter.
+//
+// Die Ausnahme ist bewusst je Prüfung anzugeben und nicht pauschal: Wer
+// "bewusstSo" setzt, schaltet genau eine Prüfung ab, nicht alle.
+const bekanntePruefIds = {
+  'multi-anteil': 'multi: fast alle Optionen richtig',
+};
+
+// Welche Ausnahmen tatsächlich gegriffen haben - alles andere ist veraltet
+// und wird am Ende gemeldet, damit sich keine toten Marker ansammeln.
+final benutzteAusnahmen = <String>{};
+
+/// Warnung, sofern die Frage diese Prüfung nicht per "bewusstSo" abschaltet.
+void warnungFallsNichtBewusst(
+  String datei,
+  String id,
+  Map<String, dynamic> f,
+  String pruefId,
+  String text,
+) {
+  if (bewusstSoListe(f).contains(pruefId)) {
+    benutzteAusnahmen.add('$datei|$id|$pruefId');
+    return;
+  }
+  warnung(datei, id, text);
+}
+
+List<String> bewusstSoListe(Map<String, dynamic> f) =>
+    ((f['bewusstSo'] as List?) ?? const [])
+        .whereType<String>()
+        .toList();
+
 void main(List<String> args) {
   final root = Directory.current.path;
   final fragenDir = Directory('$root/assets/fragen');
@@ -183,6 +221,7 @@ void main(List<String> args) {
 
   // Ähnlichkeit über alle Fragen hinweg (Token-Jaccard, > 0.85).
   _pruefeAehnlichkeit(alleFragenObjekte);
+  _pruefeVeralteteAusnahmen(alleFragenObjekte);
 
   // Ausgabe
   final fehlerListe = funde.where((f) => f.schwere == 'FEHLER').toList();
@@ -246,6 +285,19 @@ void _validiereFrage(
   final wahr = f['wahr'];
   final workedExample = f['workedExample'];
 
+  // Ein Tippfehler in "bewusstSo" wuerde sonst still gar nichts abschalten -
+  // die Warnung bliebe stehen und niemand wuesste warum.
+  for (final pruefId in bewusstSoListe(f)) {
+    if (!bekanntePruefIds.containsKey(pruefId)) {
+      fehler(
+        datei,
+        id,
+        "'bewusstSo' nennt die unbekannte Pruefung '$pruefId'. "
+        'Bekannt: ${bekanntePruefIds.keys.join(", ")}.',
+      );
+    }
+  }
+
   if (frage.trim().isEmpty) fehler(datei, id, "'frage' ist leer.");
   if (erklaerung.trim().isEmpty) {
     fehler(datei, id, "'erklaerung' ist leer.");
@@ -287,11 +339,16 @@ void _validiereFrage(
           '(muss >=2 und < optionen.length=${optionen.length} sein).',
         );
       }
-      if (optionen.length == 5 && richtigeIndizes.length == 4) {
-        warnung(
+      if (optionen.length >= 4 &&
+          richtigeIndizes.length == optionen.length - 1) {
+        warnungFallsNichtBewusst(
           datei,
           id,
-          'multi: 4 von 5 Optionen richtig (zu leicht erratbar).',
+          f,
+          'multi-anteil',
+          'multi: ${richtigeIndizes.length} von ${optionen.length} Optionen '
+              'richtig (zu leicht erratbar). Ist die Abgrenzung selbst der '
+              'Lernstoff, mit "bewusstSo": ["multi-anteil"] kennzeichnen.',
         );
       }
       _pruefeOptionenBlock(datei, id, optionen, richtigeIndizes);
@@ -704,6 +761,28 @@ void _pruefeAehnlichkeit(List<_FrageMitDatei> fragen) {
             '${fragen[j].id} (${fragen[j].datei}).',
           );
         }
+      }
+    }
+  }
+}
+
+/// Meldet "bewusstSo"-Marker, die gar nichts mehr abschalten.
+///
+/// Ohne das sammeln sich tote Ausnahmen an: Wird eine Frage spaeter
+/// umgebaut, bleibt der Marker stehen und deckt kuenftig womoeglich ein
+/// echtes Problem zu.
+void _pruefeVeralteteAusnahmen(List<_FrageMitDatei> alle) {
+  for (final eintrag in alle) {
+    for (final pruefId in bewusstSoListe(eintrag.f)) {
+      if (!bekanntePruefIds.containsKey(pruefId)) continue;
+      final schluessel = '${eintrag.datei}|${eintrag.id}|$pruefId';
+      if (!benutzteAusnahmen.contains(schluessel)) {
+        warnung(
+          eintrag.datei,
+          eintrag.id,
+          "'bewusstSo: $pruefId' greift nicht mehr - die Pruefung wuerde "
+          'hier ohnehin nicht anschlagen. Marker entfernen.',
+        );
       }
     }
   }

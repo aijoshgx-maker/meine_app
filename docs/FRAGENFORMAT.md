@@ -315,3 +315,48 @@ das auf das Vollformat oben (füllt `reihenfolge`, `paare`, `luecken`,
 `selfExplanationPrompt`, `bildAsset`, `workedExample`, `pruefung`,
 `pruefungReihenfolge` mit `[]`/`null` auf). Anschließend
 `dart run tool/validate_fragen.dart` laufen lassen.
+
+## Bewusst abgeschaltete Prüfungen (`bewusstSo`)
+
+`tool/validate_fragen.dart` meldet unter anderem, wenn bei einer
+`multi`-Frage fast alle Optionen richtig sind — dann lässt sie sich leicht
+erraten.
+
+Das ist eine Heuristik, und sie trifft eine ganze Klasse **legitimer** Fragen
+mit. Beispiel:
+
+> Welche der folgenden Toleranzarten gehören zu den Lauftoleranzen nach
+> DIN ISO 1101?
+> Rundlauf ✓ · Planlauf ✓ · Gesamtrundlauf ✓ · **Neigung ✗** · Gesamtplanlauf ✓
+
+Es *gibt* genau vier Lauftoleranzen. Hier ist die Abgrenzung selbst der
+Lernstoff — eine richtige Option umzuformulieren, nur damit die Warnung
+verstummt, würde die Frage fachlich schlechter machen.
+
+Für solche Fälle:
+
+```json
+"bewusstSo": ["multi-anteil"]
+```
+
+| Prüfungs-ID | Schaltet ab |
+|---|---|
+| `multi-anteil` | „multi: n von m Optionen richtig (zu leicht erratbar)" |
+
+**Zwei Sicherungen verhindern, dass sich der Marker verselbstständigt:**
+
+- Eine **unbekannte Prüfungs-ID** ist ein *Fehler*, kein stiller No-op — ein
+  Tippfehler würde sonst nichts abschalten und niemand wüsste warum.
+- Ein Marker, der **nichts mehr abschaltet**, wird gemeldet. Wird eine Frage
+  später umgebaut, verdeckt der alte Marker sonst irgendwann ein echtes
+  Problem.
+
+Mehrere Fragen auf einmal markieren:
+
+```bash
+python tool/bewusst_markieren.py multi-anteil au-fl-013 au-fl-009
+python tool/bewusst_markieren.py --entfernen multi-anteil au-fl-013
+```
+
+Das Werkzeug fügt genau eine Zeile je Frage ein und lässt die übrige
+Formatierung in Ruhe.

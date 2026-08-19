@@ -51,6 +51,14 @@ class Frage {
   // Reihenfolge innerhalb der Prüfung für die Prüfungssimulation.
   final int? pruefungReihenfolge;
 
+  // Prüfungen des Validators, die für diese Frage bewusst abgeschaltet sind.
+  //
+  // Manche Warnungen sind Heuristiken, die legitime Fragen mittreffen: Bei
+  // "Welche gehören zu X?" sind aus der Sache heraus oft fast alle Optionen
+  // richtig - dort IST die Abgrenzung der Lernstoff. Für die App ohne
+  // Bedeutung; steht hier, damit das Feld einen Import/Export übersteht.
+  final List<String> bewusstSo;
+
   const Frage({
     required this.id,
     required this.bereich,
@@ -74,6 +82,7 @@ class Frage {
     required this.schwierigkeit,
     this.pruefung,
     this.pruefungReihenfolge,
+    this.bewusstSo = const [],
   });
 
   factory Frage.fromJson(Map<String, dynamic> json) {
@@ -107,6 +116,7 @@ class Frage {
       schwierigkeit: json['schwierigkeit'] as int,
       pruefung: json['pruefung'] as String?,
       pruefungReihenfolge: json['pruefungReihenfolge'] as int?,
+      bewusstSo: strList(json['bewusstSo']),
     );
   }
 
@@ -133,6 +143,7 @@ class Frage {
     'schwierigkeit': schwierigkeit,
     'pruefung': pruefung,
     'pruefungReihenfolge': pruefungReihenfolge,
+    if (bewusstSo.isNotEmpty) 'bewusstSo': bewusstSo,
   };
 }
 
