@@ -109671,7 +109671,7 @@ g=g?"Mitgeliefert":"Importiert"
 r=i.r.length
 q=r===1?"Bereich":"Bereiche"
 h=A.b([new A.wJ(s,g,o),new A.wJ(B.KL,""+r+" "+q,o)],h)
-if(i.x.b&&i.w.length!==0)h.push(new A.wJ(B.m2,""+i.w.length+" "+i.y.b,o))
+if(i.x.b&&i.w.length!==0)h.push(new A.wJ(B.m2,""+i.w.length+"\xd7 "+i.y.b,o))
 i=i.e
 if(i!=null)h.push(new A.wJ(B.KH,i,o))
 m.push(A.Bz(h,4,6))
