@@ -246,118 +246,120 @@ class _QuizBody extends ConsumerWidget {
             session.antwort.phase == FragePhase.antworten &&
             session.fragen.length > 1;
 
-        return Padding(
-          padding: const EdgeInsets.all(16),
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        'Frage ${session.index + 1} von ${session.gesamtFragen}'
-                        ' · ${frage.kategorie}',
-                        style: Theme.of(context).textTheme.bodySmall,
+        // Die Tastatur verdeckt sonst die unteren Eingabefelder und den
+        // "Weiter"-Knopf: Bei Lückentexten mit mehreren Lücken war das letzte
+        // Feld auf kleinen Bildschirmen nicht mehr erreichbar. Die
+        // Tastaturhöhe kommt deshalb als zusätzliches Polster unten dazu -
+        // innerhalb des Scrollbereichs, damit man wirklich hinscrollen kann.
+        final tastaturHoehe = MediaQuery.viewInsetsOf(context).bottom;
+
+        return SingleChildScrollView(
+          padding: EdgeInsets.fromLTRB(16, 16, 16, 16 + tastaturHoehe),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'Frage ${session.index + 1} von ${session.gesamtFragen}'
+                      ' · ${frage.kategorie}',
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                  ),
+                  if (zeigeSkip)
+                    TextButton.icon(
+                      onPressed: controller.ueberspringen,
+                      icon: const Icon(Icons.skip_next, size: 16),
+                      label: Text(
+                        bereitsUebersprungen
+                            ? 'Endgültig überspringen'
+                            : 'Überspringen',
+                        style: const TextStyle(fontSize: 12),
+                      ),
+                      style: TextButton.styleFrom(
+                        foregroundColor: Theme.of(context).colorScheme.outline,
+                        visualDensity: VisualDensity.compact,
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                       ),
                     ),
-                    if (zeigeSkip)
-                      TextButton.icon(
-                        onPressed: controller.ueberspringen,
-                        icon: const Icon(Icons.skip_next, size: 16),
-                        label: Text(
-                          bereitsUebersprungen
-                              ? 'Endgültig überspringen'
-                              : 'Überspringen',
-                          style: const TextStyle(fontSize: 12),
-                        ),
-                        style: TextButton.styleFrom(
-                          foregroundColor: Theme.of(
-                            context,
-                          ).colorScheme.outline,
-                          visualDensity: VisualDensity.compact,
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                        ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              if (bereitsUebersprungen)
+                Container(
+                  margin: const EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.tertiaryContainer.withAlpha(160),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.replay,
+                        size: 14,
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onTertiaryContainer,
                       ),
-                  ],
-                ),
-                const SizedBox(height: 8),
-                if (bereitsUebersprungen)
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 8),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 4,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Theme.of(
-                        context,
-                      ).colorScheme.tertiaryContainer.withAlpha(160),
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          Icons.replay,
-                          size: 14,
+                      const SizedBox(width: 4),
+                      Text(
+                        'Übersprungene Frage – jetzt beantworten',
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           color: Theme.of(
                             context,
                           ).colorScheme.onTertiaryContainer,
                         ),
-                        const SizedBox(width: 4),
-                        Text(
-                          'Übersprungene Frage – jetzt beantworten',
-                          style: Theme.of(context).textTheme.labelSmall
-                              ?.copyWith(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.onTertiaryContainer,
-                              ),
-                        ),
-                      ],
+                      ),
+                    ],
+                  ),
+                ),
+              Text(
+                frage.frage.replaceAllMapped(
+                  RegExp(r'\{\{\d+\}\}'),
+                  (_) => '___',
+                ),
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
+              if (frage.bildAsset != null) ...[
+                const SizedBox(height: 12),
+                if (TechnischeIllustration.istDiagramm(frage.bildAsset))
+                  TechnischeIllustration(
+                    diagrammKey: TechnischeIllustration.keyAus(
+                      frage.bildAsset!,
                     ),
-                  ),
-                Text(
-                  frage.frage.replaceAllMapped(
-                    RegExp(r'\{\{\d+\}\}'),
-                    (_) => '___',
-                  ),
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                if (frage.bildAsset != null) ...[
-                  const SizedBox(height: 12),
-                  if (TechnischeIllustration.istDiagramm(frage.bildAsset))
-                    TechnischeIllustration(
-                      diagrammKey: TechnischeIllustration.keyAus(
-                        frage.bildAsset!,
-                      ),
-                    )
-                  else
-                    Image.asset(frage.bildAsset!),
-                ],
-                const SizedBox(height: 24),
-                AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 250),
-                  child: KeyedSubtree(
-                    key: ValueKey('${frage.id}-${session.antwort.phase}'),
-                    child: switch (session.antwort.phase) {
-                      FragePhase.antworten => AntwortEingabe(
-                        frage: frage,
-                        antwort: session.antwort,
-                        modus: modus,
-                      ),
-                      FragePhase.konfidenz => KonfidenzAuswahl(modus: modus),
-                      FragePhase.aufgedeckt => _AufdeckungsAnsicht(
-                        frage: frage,
-                        session: session,
-                        modus: modus,
-                      ),
-                    },
-                  ),
-                ),
+                  )
+                else
+                  Image.asset(frage.bildAsset!),
               ],
-            ),
+              const SizedBox(height: 24),
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 250),
+                child: KeyedSubtree(
+                  key: ValueKey('${frage.id}-${session.antwort.phase}'),
+                  child: switch (session.antwort.phase) {
+                    FragePhase.antworten => AntwortEingabe(
+                      frage: frage,
+                      antwort: session.antwort,
+                      modus: modus,
+                    ),
+                    FragePhase.konfidenz => KonfidenzAuswahl(modus: modus),
+                    FragePhase.aufgedeckt => _AufdeckungsAnsicht(
+                      frage: frage,
+                      session: session,
+                      modus: modus,
+                    ),
+                  },
+                ),
+              ),
+            ],
           ),
         );
       },

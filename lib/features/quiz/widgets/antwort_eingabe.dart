@@ -33,7 +33,7 @@ class AntwortEingabe extends ConsumerWidget {
             controller: controller,
           ),
           FrageTyp.wahrfalsch => _wahrFalschButtons(context, controller),
-          FrageTyp.zuordnung => _zuordnungListe(controller),
+          FrageTyp.zuordnung => _zuordnungListe(context, controller),
           FrageTyp.rechnung => _texteingabe(
             controller: controller,
             hinweis: frage.einheit != null
@@ -147,54 +147,40 @@ class AntwortEingabe extends ConsumerWidget {
     );
   }
 
-  Widget _zuordnungListe(QuizSessionController controller) {
+  // Zuordnung: pro Begriff eine Auswahl über die volle Breite.
+  //
+  // Früher standen hier zwei DropdownButtons nebeneinander in einer Row. Auf
+  // dem Handy blieb damit nur die halbe Bildschirmbreite für das Auswahlmenü,
+  // dessen Popup an der Bildschirmkante abgeschnitten wurde - lange Begriffe
+  // wie "Zugdruckumformen" waren nicht lesbar. Jetzt liegt der Begriff über
+  // seiner Auswahl, und die Optionen erscheinen in einem Blatt über die
+  // gesamte Breite, in dem langer Text umbricht statt zu verschwinden.
+  Widget _zuordnungListe(
+    BuildContext context,
+    QuizSessionController controller,
+  ) {
     if (frage.paare.isNotEmpty) {
       // Rechte Spalte in der (pro Anzeige neu gemischten) Anzeigereihenfolge
-      // zeigen. Der Dropdown-Wert ist immer der Original-Index von
+      // zeigen. Der gespeicherte Wert ist immer der Original-Index von
       // paare[].rechts, unabhängig von der Anzeigeposition - so bleibt die
       // Bewertungslogik unabhängig vom Shuffle.
       final rechteAnzeige =
           antwort.zuordnungRechteReihenfolge.length == frage.paare.length
           ? antwort.zuordnungRechteReihenfolge
           : List.generate(frage.paare.length, (i) => i);
+
       return Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           for (var i = 0; i < frage.paare.length; i++)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 4),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      frage.paare[i].links,
-                      style: const TextStyle(fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: DropdownButton<int>(
-                      isExpanded: true,
-                      value: antwort.zuordnungsAuswahl[i],
-                      hint: const Text('Zuordnen…'),
-                      items: [
-                        for (final originalIndex in rechteAnzeige)
-                          DropdownMenuItem(
-                            value: originalIndex,
-                            child: Text(
-                              frage.paare[originalIndex].rechts,
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                      ],
-                      onChanged: (wert) {
-                        if (wert != null) {
-                          controller.zuordnungAuswaehlen(i, wert);
-                        }
-                      },
-                    ),
-                  ),
-                ],
-              ),
+            _ZuordnungsZeile(
+              begriff: frage.paare[i].links,
+              auswahl: antwort.zuordnungsAuswahl[i],
+              optionen: {
+                for (final originalIndex in rechteAnzeige)
+                  originalIndex: frage.paare[originalIndex].rechts,
+              },
+              onGewaehlt: (wert) => controller.zuordnungAuswaehlen(i, wert),
             ),
         ],
       );
@@ -202,32 +188,17 @@ class AntwortEingabe extends ConsumerWidget {
 
     // Altes Format (Fallback): optionen + richtigeIndizes
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         for (var i = 0; i < frage.richtigeIndizes.length; i++)
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            child: Row(
-              children: [
-                SizedBox(width: 32, child: Text('${i + 1}.')),
-                Expanded(
-                  child: DropdownButton<int>(
-                    isExpanded: true,
-                    value: antwort.zuordnungsAuswahl[i],
-                    hint: const Text('Zuordnen…'),
-                    items: [
-                      for (var j = 0; j < frage.optionen.length; j++)
-                        DropdownMenuItem(
-                          value: j,
-                          child: Text(frage.optionen[j]),
-                        ),
-                    ],
-                    onChanged: (wert) {
-                      if (wert != null) controller.zuordnungAuswaehlen(i, wert);
-                    },
-                  ),
-                ),
-              ],
-            ),
+          _ZuordnungsZeile(
+            begriff: '${i + 1}.',
+            auswahl: antwort.zuordnungsAuswahl[i],
+            optionen: {
+              for (var j = 0; j < frage.optionen.length; j++)
+                j: frage.optionen[j],
+            },
+            onGewaehlt: (wert) => controller.zuordnungAuswaehlen(i, wert),
           ),
       ],
     );
@@ -301,5 +272,110 @@ class AntwortEingabe extends ConsumerWidget {
       keyboardType: tastatur,
       onChanged: controller.freitextSetzen,
     );
+  }
+}
+
+/// Ein Begriff mit seiner Zuordnung, über die volle Breite.
+///
+/// Statt eines Dropdowns, dessen Popup am Bildschirmrand abgeschnitten wird,
+/// öffnet ein Tippen ein Auswahlblatt von unten. Dort steht jede Option über
+/// die gesamte Breite und bricht bei Bedarf um - damit bleibt sie auf jedem
+/// Bildschirm vollständig lesbar.
+class _ZuordnungsZeile extends StatelessWidget {
+  final String begriff;
+  final int? auswahl;
+
+  /// Original-Index -> anzuzeigender Text, in Anzeigereihenfolge.
+  final Map<int, String> optionen;
+  final ValueChanged<int> onGewaehlt;
+
+  const _ZuordnungsZeile({
+    required this.begriff,
+    required this.auswahl,
+    required this.optionen,
+    required this.onGewaehlt,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final gewaehlt = auswahl != null ? optionen[auswahl] : null;
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Text(begriff, style: const TextStyle(fontWeight: FontWeight.w500)),
+          const SizedBox(height: 4),
+          InkWell(
+            onTap: () => _auswahlOeffnen(context),
+            borderRadius: BorderRadius.circular(8),
+            child: InputDecorator(
+              decoration: InputDecoration(
+                border: const OutlineInputBorder(),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 12,
+                  vertical: 10,
+                ),
+                suffixIcon: const Icon(Icons.arrow_drop_down),
+              ),
+              child: Text(
+                gewaehlt ?? 'Zuordnen…',
+                // Kein Ellipsis: Lieber zwei Zeilen als ein halber Begriff.
+                style: TextStyle(
+                  color: gewaehlt == null ? cs.onSurfaceVariant : cs.onSurface,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Future<void> _auswahlOeffnen(BuildContext context) async {
+    final gewaehlt = await showModalBottomSheet<int>(
+      context: context,
+      isScrollControlled: true,
+      useSafeArea: true,
+      showDragHandle: true,
+      builder: (blattContext) => SafeArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 8),
+              child: Text(
+                begriff,
+                style: Theme.of(blattContext).textTheme.titleMedium,
+              ),
+            ),
+            const Divider(height: 1),
+            // Flexible statt fester Höhe: Bei wenigen Optionen bleibt das
+            // Blatt niedrig, bei vielen wird es scrollbar statt überzulaufen.
+            Flexible(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  for (final eintrag in optionen.entries)
+                    ListTile(
+                      title: Text(eintrag.value),
+                      trailing: eintrag.key == auswahl
+                          ? const Icon(Icons.check)
+                          : null,
+                      selected: eintrag.key == auswahl,
+                      onTap: () => Navigator.of(blattContext).pop(eintrag.key),
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+
+    if (gewaehlt != null) onGewaehlt(gewaehlt);
   }
 }
