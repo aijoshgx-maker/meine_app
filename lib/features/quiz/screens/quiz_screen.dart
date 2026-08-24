@@ -498,7 +498,11 @@ class _AufdeckungsAnsicht extends ConsumerWidget {
           const SizedBox(height: 12),
           TextField(
             decoration: const InputDecoration(
-              labelText: 'Erkläre kurz, WARUM (optional, wird nicht bewertet)',
+              // labelText ist in Material immer einzeilig und wird auf
+              // schmalen Geräten abgeschnitten - der Hinweis, dass es
+              // freiwillig ist, ging dabei verloren.
+              labelText: 'Erkläre kurz, warum',
+              helperText: 'freiwillig, wird nicht bewertet',
               border: OutlineInputBorder(),
             ),
             maxLines: 2,
@@ -749,13 +753,21 @@ class _Platzhalter extends StatelessWidget {
 /// Aufdecken ist das mehr, als man in dem Moment lesen will. Der Aufklapper
 /// erscheint nur, wenn es wirklich etwas zu vertiefen gibt: bei kurzer
 /// Erklärung ohne Lösungsweg und ohne Bild bliebe er leer.
-class _ErklaerungsAnsicht extends StatelessWidget {
+class _ErklaerungsAnsicht extends StatefulWidget {
   final Frage frage;
 
   const _ErklaerungsAnsicht({required this.frage});
 
   @override
+  State<_ErklaerungsAnsicht> createState() => _ErklaerungsAnsichtState();
+}
+
+class _ErklaerungsAnsichtState extends State<_ErklaerungsAnsicht> {
+  bool _offen = false;
+
+  @override
   Widget build(BuildContext context) {
+    final frage = widget.frage;
     final geteilt = teileErklaerung(
       frage.erklaerung,
       kurzerklaerung: frage.kurzerklaerung,
@@ -764,10 +776,16 @@ class _ErklaerungsAnsicht extends StatelessWidget {
     final hatWeg = frage.workedExample != null;
     final zeigeAufklapper = geteilt.hatMehr || hatWeg || hatBild;
 
+    // Aufgeklappt wird der Kurztext ersetzt, nicht ergänzt. Vorher stand die
+    // Kurzfassung oben und der Rest darunter - bei jeder Erklärung ohne
+    // Satzgrenze (78 im Bestand) war dieser "Rest" der vollständige Text,
+    // sodass man denselben Absatz zweimal untereinander las.
+    final text = _offen && geteilt.hatMehr ? geteilt.vollstaendig : geteilt.kurz;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        if (geteilt.kurz.isNotEmpty) Text(geteilt.kurz),
+        if (text.isNotEmpty) Text(text),
         if (zeigeAufklapper) ...[
           const SizedBox(height: 4),
           Theme(
@@ -775,8 +793,9 @@ class _ErklaerungsAnsicht extends StatelessWidget {
             // mitten im Fließtext stören.
             data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
             child: ExpansionTile(
+              onExpansionChanged: (offen) => setState(() => _offen = offen),
               title: Text(
-                'Ausführlich',
+                _offen ? 'Weniger' : 'Ausführlich',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
                   color: Theme.of(context).colorScheme.primary,
                 ),
@@ -785,7 +804,6 @@ class _ErklaerungsAnsicht extends StatelessWidget {
               childrenPadding: const EdgeInsets.only(bottom: 8),
               expandedCrossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (geteilt.hatMehr) Text(geteilt.rest),
                 if (hatWeg) ...[
                   const SizedBox(height: 12),
                   Text(

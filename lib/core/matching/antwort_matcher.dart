@@ -2,8 +2,82 @@
 // Fachgespräch-Schlüsselwörter. Ziel: Der Nutzer weiß es richtig, tippt es
 // richtig, und die App sagt trotzdem falsch - siehe P7 in
 // CLAUDE_CODE_PROMPTS.md.
+//
+// Der Vergleich läuft in drei Stufen, von streng nach nachsichtig. Jede
+// Stufe greift erst, wenn die vorige nicht gepasst hat:
+//
+//   1. normalisierte Zeichenkette   "Höchstmaß" == "hoechstmass"
+//   2. Menge der Teilantworten      "A, B" == "B und A"
+//   3. dieselbe Menge, gestammt     "Gewerkschaften" == "Gewerkschaft"
+//
+// Stufe 3 ist bewusst eng gefasst (siehe [_wortStamm]): In einer Lern-App ist
+// ein zu Unrecht anerkanntes "richtig" schädlicher als ein zu strenges
+// "falsch", weil es einen Irrtum bestätigt.
 class AntwortMatcher {
   const AntwortMatcher._();
+
+  /// Ausgeschriebene Zahlen. Ohne sie müsste jede Frage ihre Zahlwort-
+  /// Variante von Hand mitführen - im Bestand geschieht das 17-mal, und
+  /// überall dort, wo es jemand vergessen hat, gilt eine richtige Antwort
+  /// als falsch.
+  ///
+  /// "ein"/"eine" fehlen absichtlich: Das sind weit häufiger Artikel als
+  /// Zahlwörter ("ein Festlager"), und aus ihnen eine 1 zu machen würde
+  /// Antworten verstümmeln statt vereinheitlichen.
+  static const _zahlwoerter = <String, String>{
+    'null': '0',
+    'eins': '1',
+    'zwei': '2',
+    'drei': '3',
+    'vier': '4',
+    'fuenf': '5',
+    'sechs': '6',
+    'sieben': '7',
+    'acht': '8',
+    'neun': '9',
+    'zehn': '10',
+    'elf': '11',
+    'zwoelf': '12',
+    'dreizehn': '13',
+    'vierzehn': '14',
+    'fuenfzehn': '15',
+    'sechzehn': '16',
+    'siebzehn': '17',
+    'achtzehn': '18',
+    'neunzehn': '19',
+    'zwanzig': '20',
+    'dreissig': '30',
+    'vierzig': '40',
+    'fuenfzig': '50',
+    'sechzig': '60',
+    'siebzig': '70',
+    'achtzig': '80',
+    'neunzig': '90',
+    'hundert': '100',
+  };
+
+  /// Römische Ziffern - "Arbeitslosengeld II" und "Arbeitslosengeld 2"
+  /// meinen dasselbe.
+  ///
+  /// Nur I bis IV. V, X, L, C, D und M sind im Fachbestand Einheiten und
+  /// Kurzzeichen (230 V, °C, M8, 5 m) - sie in Zahlen zu verwandeln würde
+  /// Antworten zerstören, statt sie zu vereinheitlichen.
+  static const _roemisch = <String, String>{
+    'i': '1',
+    'ii': '2',
+    'iii': '3',
+    'iv': '4',
+  };
+
+  /// Trennt Aufzählungen in einer Antwort.
+  ///
+  /// Zwei Feinheiten, die beide aus dem Bestand stammen:
+  /// - Das Komma trennt nur ohne folgende Ziffer, sonst zerfiele "38,0".
+  /// - Das Plus braucht Leerzeichen ringsum, sonst zerfiele der
+  ///   Wärmebehandlungs-Zusatz "+A" in ft-ww-011.
+  static final _trenner = RegExp(
+    r'\s+und\s+|\s+sowie\s+|\s*&\s*|\s+\+\s+|,(?!\d)',
+  );
 
   /// Normalisiert einen Text für den Vergleich:
   /// - Groß-/Kleinschreibung ignorieren
@@ -13,6 +87,7 @@ class AntwortMatcher {
   /// - Bindestriche und Schrägstriche als Leerzeichen behandeln
   ///   ("Lockout Tagout" == "Lockout-Tagout" == "Lockout/Tagout")
   /// - Dezimaltrennzeichen , und . zwischen Ziffern vereinheitlicht
+  /// - ausgeschriebene und römische Zahlen als Ziffern
   static String normalisieren(String text) {
     var t = text.trim().toLowerCase();
     t = t
@@ -23,12 +98,61 @@ class AntwortMatcher {
     t = t.replaceAll(RegExp(r'[-/]'), ' ');
     t = t.replaceAll(RegExp(r'\s+'), ' ').trim();
     t = t.replaceAllMapped(RegExp(r'(\d)[.,](\d)'), (m) => '${m[1]},${m[2]}');
+    // Wortweise, damit nur ganze Tokens ersetzt werden: "sieben" wird zur 7,
+    // "siebenmal" bleibt unangetastet.
+    t = t.replaceAllMapped(RegExp(r'[a-z]+'), (m) {
+      final wort = m[0]!;
+      return _zahlwoerter[wort] ?? _roemisch[wort] ?? wort;
+    });
     return t;
   }
 
-  /// Exakter Vergleich nach Normalisierung.
-  static bool passtGenau(String eingabe, String akzeptiert) =>
-      normalisieren(eingabe) == normalisieren(akzeptiert);
+  /// Vergleich nach Normalisierung, Mengenvergleich und Wortstamm.
+  ///
+  /// Der Mengenvergleich macht Reihenfolge und Bindewort belanglos:
+  /// "Gewerkschaften, Arbeitgeber" trifft "Gewerkschaft und Arbeitgeber".
+  static bool passtGenau(String eingabe, String akzeptiert) {
+    if (normalisieren(eingabe) == normalisieren(akzeptiert)) return true;
+
+    final e = teileAntwort(eingabe);
+    final a = teileAntwort(akzeptiert);
+    if (e.isEmpty || a.isEmpty) return false;
+    if (_mengeGleich(e, a)) return true;
+    return _mengeGleich(e.map(_teilStamm).toSet(), a.map(_teilStamm).toSet());
+  }
+
+  /// Zerlegt eine Antwort in ihre Teilantworten (siehe [_trenner]).
+  static Set<String> teileAntwort(String text) => normalisieren(text)
+      .split(_trenner)
+      .map((t) => t.trim())
+      .where((t) => t.isNotEmpty)
+      .toSet();
+
+  static bool _mengeGleich(Set<String> a, Set<String> b) =>
+      a.length == b.length && a.every(b.contains);
+
+  static String _teilStamm(String teil) =>
+      teil.split(' ').map(_wortStamm).join(' ');
+
+  /// Streicht deutsche Pluralendungen - aber nur bei langen Wörtern.
+  ///
+  /// Die Längenschwelle ist der eigentliche Schutz: "gewerkschaften" (14)
+  /// wird auf "gewerkschaft" zurückgeführt, "haerten" (7) dagegen gar nicht.
+  /// Damit bleiben Härte (Eigenschaft) und Härten (Verfahren) zwei
+  /// verschiedene Antworten - eine Verwechslung, die eine Lern-App nicht
+  /// durchgehen lassen darf.
+  ///
+  /// Immer die längste passende Endung, sonst würde "schleifen" über den
+  /// Umweg -n zu "schleife" und fiele mit dem Bauteil zusammen.
+  static String _wortStamm(String wort) {
+    if (wort.length < 9) return wort;
+    for (final endung in const ['en', 'n', 'e', 's']) {
+      if (wort.endsWith(endung)) {
+        return wort.substring(0, wort.length - endung.length);
+      }
+    }
+    return wort;
+  }
 
   /// Prüft [eingabe] gegen eine Liste akzeptierter Varianten.
   static bool passtGegenListe(String eingabe, List<String> akzeptiert) =>

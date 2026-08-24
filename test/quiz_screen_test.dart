@@ -189,6 +189,33 @@ void _aufdeckungsTests() {
     expect(find.textContaining('vorzeitigem Verschleiss'), findsOneWidget);
   });
 
+  // Aus der App gemeldet: Aufgeklappt stand derselbe Absatz zweimal
+  // untereinander. Der Aufklapper ersetzt die Kurzfassung jetzt, statt sie
+  // zu ergänzen.
+  testWidgets('aufgeklappt steht kein Satz zweimal da', (tester) async {
+    await pumpe(tester, langeFrage);
+
+    await tester.tap(find.text('Relativgeschwindigkeit'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Weiter'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Sicher'));
+    await tester.pumpAndSettle();
+
+    await tester.ensureVisible(find.text('Ausführlich'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Ausführlich'));
+    await tester.pumpAndSettle();
+
+    // Der erste Satz gehört nur zur Kurzfassung - taucht er nach dem
+    // Aufklappen ein zweites Mal auf, steht die Erklärung doppelt da.
+    expect(
+      find.textContaining('Relativgeschwindigkeit zwischen'),
+      findsOneWidget,
+    );
+    expect(find.text('Weniger'), findsOneWidget);
+  });
+
   testWidgets('bei kurzer Erklärung gibt es nichts aufzuklappen', (
     tester,
   ) async {

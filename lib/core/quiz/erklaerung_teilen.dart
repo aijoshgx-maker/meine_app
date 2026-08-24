@@ -23,6 +23,15 @@ const _maxLaenge = 180;
 /// mindestens gegangen, bevor am Wort getrennt wird.
 const _mindestLaenge = 80;
 
+/// Ab wie vielen Zeichen sich das Aufklappen überhaupt lohnt.
+///
+/// Liefert "Ausführlich" nur noch einen halben Satz nach, ist der Knopf
+/// Beschäftigung ohne Ertrag. Und wo gar keine Satzgrenze gefunden wird,
+/// verdoppelt ein Schnitt kurz vor Schluss den Text praktisch - genau das
+/// war in der App zu sehen: Der Aufklapper lieferte 40 Zeichen nach und
+/// wiederholte dafür 177.
+const _mindestGewinn = 60;
+
 /// Ergebnis der Aufteilung.
 class GeteilteErklaerung {
   /// Immer gefüllt (sofern der Text nicht leer ist).
@@ -31,7 +40,18 @@ class GeteilteErklaerung {
   /// Der Rest, oder leer wenn die Erklärung ohnehin knapp war.
   final String rest;
 
-  const GeteilteErklaerung({required this.kurz, required this.rest});
+  /// Der ungeteilte Text - das, was beim Aufklappen zu lesen ist.
+  ///
+  /// Bewusst ein eigenes Feld und nicht "kurz + rest": Wo am Wort getrennt
+  /// wurde, endet [kurz] mit einem Auslassungszeichen und [rest] trägt
+  /// bereits den ganzen Text.
+  final String vollstaendig;
+
+  const GeteilteErklaerung({
+    required this.kurz,
+    required this.rest,
+    required this.vollstaendig,
+  });
 
   /// Ob es überhaupt etwas aufzuklappen gibt.
   bool get hatMehr => rest.isNotEmpty;
@@ -50,38 +70,62 @@ GeteilteErklaerung teileErklaerung(
   final vorgabe = kurzerklaerung?.trim();
   if (vorgabe != null && vorgabe.isNotEmpty) {
     // Der Rest entfällt, wenn die Vorgabe ohnehin schon alles sagt.
-    return GeteilteErklaerung(kurz: vorgabe, rest: voll == vorgabe ? '' : voll);
-  }
-
-  if (voll.length <= _maxLaenge) {
-    return GeteilteErklaerung(kurz: voll, rest: '');
-  }
-
-  final schnitt = _satzGrenze(voll);
-  if (schnitt == null) {
-    // Kein brauchbarer Satzabschluss in Reichweite: Lieber am Wort trennen
-    // als mitten hinein.
-    final wortSchnitt = _wortGrenze(voll, _maxLaenge);
     return GeteilteErklaerung(
-      kurz: '${voll.substring(0, wortSchnitt).trimRight()}…',
-      rest: voll,
+      kurz: vorgabe,
+      rest: voll == vorgabe ? '' : voll,
+      vollstaendig: voll,
     );
   }
 
+  if (voll.length <= _maxLaenge) {
+    return GeteilteErklaerung(kurz: voll, rest: '', vollstaendig: voll);
+  }
+
+  // Erst der echte Satzabschluss, dann Doppelpunkt und Semikolon. Der
+  // Bestand ist voller Aufzählungen der Form "FMEA: Fehler, Ursache,
+  // Wirkung." - ohne die zweite Stufe fänden die gar keine Grenze.
+  final schnitt =
+      _grenze(voll, '.!?', verlangeGrossbuchstabe: true) ??
+      _grenze(voll, ':;', verlangeGrossbuchstabe: false, mindestens: _mindestLaenge);
+
+  if (schnitt != null) {
+    if (voll.length - schnitt < _mindestGewinn) {
+      return GeteilteErklaerung(kurz: voll, rest: '', vollstaendig: voll);
+    }
+    return GeteilteErklaerung(
+      kurz: voll.substring(0, schnitt).trim(),
+      rest: voll.substring(schnitt).trim(),
+      vollstaendig: voll,
+    );
+  }
+
+  // Kein brauchbarer Satzabschluss in Reichweite: Lieber am Wort trennen
+  // als mitten hinein.
+  final wortSchnitt = _wortGrenze(voll, _maxLaenge);
+  if (voll.length - wortSchnitt < _mindestGewinn) {
+    return GeteilteErklaerung(kurz: voll, rest: '', vollstaendig: voll);
+  }
   return GeteilteErklaerung(
-    kurz: voll.substring(0, schnitt).trim(),
-    rest: voll.substring(schnitt).trim(),
+    kurz: '${voll.substring(0, wortSchnitt).trimRight()}…',
+    rest: voll,
+    vollstaendig: voll,
   );
 }
 
-/// Position hinter dem letzten Satzzeichen, das noch ins Fenster passt -
-/// also so viele ganze Sätze wie möglich. Null, wenn es keines gibt.
-int? _satzGrenze(String text) {
+/// Position hinter dem letzten Trennzeichen aus [zeichen], das noch ins
+/// Fenster passt - also so viel ganzer Text wie möglich. Null, wenn es
+/// keines gibt.
+int? _grenze(
+  String text,
+  String zeichen, {
+  required bool verlangeGrossbuchstabe,
+  int mindestens = 0,
+}) {
   final grenze = text.length < _maxLaenge ? text.length : _maxLaenge;
   int? letzte;
 
-  for (var i = 0; i < grenze; i++) {
-    if (!'.!?'.contains(text[i])) continue;
+  for (var i = mindestens; i < grenze; i++) {
+    if (!zeichen.contains(text[i])) continue;
 
     // Auf ein Satzzeichen muss ein Leerzeichen folgen - sonst trifft es
     // Dezimalzahlen ("1,6 mm" ist kein Problem, aber "z.B." und "Ø32.5"
@@ -89,8 +133,9 @@ int? _satzGrenze(String text) {
     if (i + 1 < text.length && text[i + 1] != ' ') continue;
 
     // Abkürzungen wie "z.B." oder "ca." enden nicht den Satz: Nach dem
-    // Leerzeichen müsste ein Großbuchstabe folgen.
-    if (i + 2 < text.length) {
+    // Leerzeichen müsste ein Großbuchstabe folgen. Nach einem Doppelpunkt
+    // gilt das nicht - dort geht es im Deutschen klein weiter.
+    if (verlangeGrossbuchstabe && i + 2 < text.length) {
       final naechstes = text[i + 2];
       if (naechstes != naechstes.toUpperCase()) continue;
     }

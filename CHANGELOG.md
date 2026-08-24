@@ -6,6 +6,47 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ## [Unveröffentlicht]
 
+### Behoben
+
+- **Richtig gewusst, trotzdem „Falsch".** Die Freitextbewertung verglich
+  Zeichenketten, wo sie Bedeutung vergleichen musste. Vier gemeldete Fälle,
+  eine Ursache — behoben für alle 172 Freitextfragen:
+
+  - `Arbeitslosengeld 2` galt nicht für `Arbeitslosengeld II`
+  - `Gewerkschaften, Arbeitgeber` galt nicht für `Gewerkschaft und
+    Arbeitgeber` — Komma statt „und", Plural statt Singular
+  - ausgeschriebene Zahlen (`vierzehn Tage`) mussten je Frage von Hand
+    hinterlegt werden und fehlten oft
+  - `2 Wochen` fehlte bei der Widerrufsfrist (`wi-vs-001`)
+
+  Der Vergleich läuft jetzt in drei Stufen: normalisierte Zeichenkette,
+  dann die Aufzählung als ungeordnete Menge, zuletzt mit gestrichenen
+  Pluralendungen. Die Grenzen sind eng gezogen — die Pluralregel greift
+  erst ab neun Zeichen, damit Härte (Eigenschaft) und Härten (Verfahren)
+  zwei Antworten bleiben, und nur I bis IV zählen als römische Ziffern,
+  weil V, C und M im Bestand Einheiten sind.
+
+  Abgesichert durch `test/antwort_kollisionen_test.dart`: Der Test prüft
+  den gesamten Bestand gegen den früheren, strengen Vergleich und schlägt
+  an, sobald die Lockerung zwei Fragen derselben Kategorie dieselbe Antwort
+  gelten lässt. Derzeit: keine einzige neue Verwechslung.
+
+- **„Ausführlich" zeigte denselben Absatz ein zweites Mal.** Bei 78 der 603
+  langen Erklärungen fand die Aufteilung keine Satzgrenze und legte
+  deshalb den vollständigen Text unter die Kurzfassung. Aufgeklappt ersetzt
+  der volle Text die Kurzfassung jetzt, statt sie zu ergänzen; der Knopf
+  heißt dann „Weniger".
+
+  Dazu zwei Änderungen an der Aufteilung selbst: Doppelpunkt und Semikolon
+  gelten als Ersatz-Satzgrenze (greift bei 14 Erklärungen), und wo das
+  Aufklappen weniger als 60 Zeichen nachliefert, entfällt es ganz — das
+  betrifft 34 Fragen, darunter genau den gemeldeten Fall, bei dem 40
+  Zeichen Gewinn 177 Zeichen Wiederholung gegenüberstanden.
+
+- **Abgeschnittene Beschriftung** am Selbsterklärungs-Feld: `labelText` ist
+  in Material einzeilig, „(optional, wird nicht bewertet)" fiel auf dem
+  Handy weg. Der Hinweis steht jetzt als `helperText` darunter.
+
 ### Hinzugefügt
 
 - **Tipp-Funktion für Formelzeichen und Begriffe.** Unter dem Fragetext

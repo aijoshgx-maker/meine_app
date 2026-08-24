@@ -136,6 +136,90 @@ void main() {
     });
   });
 
+  // Jeder Fall hier stammt aus einem Screenshot: richtig gewusst, richtig
+  // getippt - und die App sagte trotzdem "Falsch".
+  group('gemeldete Fehlbewertungen', () {
+    test('römische und arabische Ziffer meinen dasselbe', () {
+      expect(
+        AntwortMatcher.passtGenau('Arbeitslosengeld 2', 'Arbeitslosengeld II'),
+        isTrue,
+      );
+      expect(AntwortMatcher.passtGenau('ALG 2', 'ALG II'), isTrue);
+    });
+
+    test('Komma statt "und", und Plural statt Singular', () {
+      expect(
+        AntwortMatcher.passtGenau(
+          'Gewerkschaften, Arbeitgeber',
+          'Gewerkschaft und Arbeitgeber',
+        ),
+        isTrue,
+      );
+    });
+
+    test('die Reihenfolge einer Aufzählung ist gleichgültig', () {
+      expect(
+        AntwortMatcher.passtGenau(
+          'Berufsschule und Betrieb',
+          'Betrieb und Berufsschule',
+        ),
+        isTrue,
+      );
+    });
+
+    test('ausgeschriebene Zahlen zählen wie Ziffern', () {
+      expect(AntwortMatcher.passtGenau('vierzehn Tage', '14 Tage'), isTrue);
+      expect(AntwortMatcher.passtGenau('sechs Stunden', '6 Stunden'), isTrue);
+    });
+  });
+
+  // Die Gegenprobe. Ohne sie wäre die Lockerung oben nicht zu verantworten:
+  // Eine Lern-App, die Falsches durchgehen lässt, bestätigt einen Irrtum.
+  group('Grenzen der Nachsicht', () {
+    test('fachlich entgegengesetzte Begriffe bleiben getrennt', () {
+      expect(AntwortMatcher.passtGenau('Festlager', 'Loslager'), isFalse);
+    });
+
+    test('Härte und Härten bleiben zwei verschiedene Antworten', () {
+      // Eigenschaft gegen Verfahren - das darf die Pluralregel nicht
+      // einebnen. Sie greift deshalb erst ab neun Zeichen.
+      expect(AntwortMatcher.passtGenau('Härte', 'Härten'), isFalse);
+      expect(AntwortMatcher.passtGenau('Schleife', 'Schleifen'), isFalse);
+    });
+
+    test('eine abweichende Zahl bleibt falsch', () {
+      expect(AntwortMatcher.passtGenau('24 Tage', '14 Tage'), isFalse);
+      expect(AntwortMatcher.passtGenau('zwölf Monate', '12 Wochen'), isFalse);
+    });
+
+    test('das V in einer Spannungsangabe wird nicht zur Zahl', () {
+      // Nur I bis IV gelten als römische Ziffern - V, X, C und M sind im
+      // Fachbestand Einheiten und Kurzzeichen.
+      expect(AntwortMatcher.normalisieren('230 V'), '230 v');
+      expect(AntwortMatcher.normalisieren('M8'), 'm8');
+    });
+
+    test('ein Dezimalkomma trennt keine Aufzählung', () {
+      expect(AntwortMatcher.teileAntwort('38,0'), {'38,0'});
+      expect(AntwortMatcher.passtGenau('38,0', '38.0'), isTrue);
+    });
+
+    test('ein Plus ohne Leerzeichen bleibt Teil der Antwort', () {
+      // "+A" ist der Kurzbezeichner für weichgeglüht (ft-ww-011).
+      expect(AntwortMatcher.teileAntwort('Weichglühen (+A)'), hasLength(1));
+    });
+
+    test('eine Teilantwort allein genügt nicht', () {
+      expect(
+        AntwortMatcher.passtGenau(
+          'Gewerkschaften',
+          'Gewerkschaften und Arbeitgeberverbände',
+        ),
+        isFalse,
+      );
+    });
+  });
+
   group('AntwortMatcher.levenshtein', () {
     test('identische Strings haben Distanz 0', () {
       expect(AntwortMatcher.levenshtein('abc', 'abc'), 0);

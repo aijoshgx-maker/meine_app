@@ -118,7 +118,8 @@ void main() {
         'Die Schnittgeschwindigkeit ist die Relativgeschwindigkeit zwischen '
         'Schneide und Werkstück. Sie wird in m/min angegeben und hängt vom '
         'Werkstoff sowie vom Schneidstoff ab. Zu hohe Werte führen zu '
-        'vorzeitigem Verschleiß.';
+        'vorzeitigem Verschleiß der Schneide und damit zu häufigeren '
+        'Werkzeugwechseln.';
 
     final geteilt = teileErklaerung(text);
 
@@ -140,5 +141,65 @@ void main() {
     // allein die bessere Kurzfassung als ein Schnitt mittendrin.
     expect(geteilt.kurz, 'Nein.');
     expect(geteilt.rest, startsWith('Der Grund'));
+  });
+
+  // Aus der App gemeldet: "Ausführlich" zeigte denselben Absatz ein zweites
+  // Mal. Ursache war ein Schnitt kurz vor Textende - der Rest bestand aus
+  // fünf Wörtern, während der Aufklapper den ganzen Text nachlieferte.
+  group('Aufklappen muss sich lohnen', () {
+    test('ein Schnitt kurz vor Schluss unterbleibt', () {
+      const text =
+          'Zuerst Antriebsleistung aus Motordaten entnehmen, dann '
+          'Übersetzungsverhältnisse je Stufe bestimmen, anschließend '
+          'Gesamtwirkungsgrad als Produkt der Einzelwirkungsgrade berechnen '
+          'und zuletzt die Nutzleistung ermitteln.';
+
+      final geteilt = teileErklaerung(text);
+
+      expect(geteilt.hatMehr, isFalse, reason: 'sonst steht alles doppelt da');
+      expect(geteilt.kurz, text);
+    });
+
+    test('ein Satzschnitt mit winzigem Rest unterbleibt ebenfalls', () {
+      const text =
+          'Die Schnittgeschwindigkeit ist die Relativgeschwindigkeit '
+          'zwischen der Schneide und dem Werkstück und wird stets in Metern '
+          'je Minute angegeben. Mehr nicht.';
+
+      expect(teileErklaerung(text).hatMehr, isFalse);
+    });
+  });
+
+  // Der Bestand ist voller Aufzählungen nach einem Doppelpunkt. Ohne diese
+  // Grenze fanden 78 Erklärungen gar keinen Trennpunkt und wurden mitten im
+  // Wort abgeschnitten.
+  test('nach einem Doppelpunkt darf getrennt werden', () {
+    const text =
+        'Die Fehlermöglichkeits- und Einflussanalyse betrachtet drei Größen '
+        'und bewertet jede davon einzeln auf einer Skala von eins bis zehn: '
+        'die Auftretenswahrscheinlichkeit des Fehlers, seine Bedeutung für '
+        'den Kunden und die Wahrscheinlichkeit, ihn rechtzeitig zu entdecken.';
+
+    final geteilt = teileErklaerung(text);
+
+    expect(geteilt.hatMehr, isTrue);
+    expect(geteilt.kurz, endsWith(':'));
+    expect(geteilt.kurz, isNot(contains('…')));
+  });
+
+  test('vollstaendig trägt immer den ganzen Text', () {
+    const kurzerText = 'Ein Satz.';
+    const langerText =
+        'Erstens die Grundlage schaffen, zweitens die Werte messen, drittens '
+        'die Abweichung bewerten und viertens die Korrektur einleiten, damit '
+        'am Ende ein prüffähiges Ergebnis vorliegt und der Vorgang '
+        'nachvollziehbar dokumentiert ist.';
+
+    expect(teileErklaerung(kurzerText).vollstaendig, kurzerText);
+    expect(teileErklaerung(langerText).vollstaendig, langerText);
+    expect(
+      teileErklaerung(langerText, kurzerklaerung: 'Vier Schritte.').vollstaendig,
+      langerText,
+    );
   });
 }

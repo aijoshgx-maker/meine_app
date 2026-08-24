@@ -7,7 +7,7 @@
     "frage": "Wie viele Tage hat ein Verbraucher laut EU-Richtlinie und deutschem Recht (§ 355 BGB) grundsätzlich Zeit, um einen im Fernabsatz (z.B. Online-Shop) geschlossenen Vertrag zu widerrufen?",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": ["14 Tage", "14", "vierzehn Tage"],
+    "akzeptierteKurzantworten": ["14 Tage", "14", "2 Wochen"],
     "wahr": null,
     "erklaerung": "Widerrufsrecht (§§ 355, 312g BGB): 14 Tage ab Erhalt der Ware (Fernabsatz, Haustürgeschäft). Pflicht: Verkäufer muss über das Widerrufsrecht belehren. Ohne Belehrung: Widerrufsfrist verlängert sich auf 12 Monate und 14 Tage. Ausnahmen: maßgeschneiderte Waren, Hygieneartikel nach Versiegelungsöffnung, digitale Inhalte nach Download.",
     "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 1
