@@ -201,7 +201,7 @@
     "loesungswert": null,
     "einheit": null,
     "toleranz": null,
-    "akzeptierteKurzantworten": ["2 wochen", "zwei wochen", "14 tage", "14 Tage"],
+    "akzeptierteKurzantworten": ["2 Wochen", "14 Tage"],
     "wahr": null,
     "erklaerung": "§ 622 Abs. 3 BGB: Während einer vereinbarten Probezeit (max. 6 Monate) kann das Arbeitsverhältnis mit einer Frist von 2 Wochen gekündigt werden – von beiden Seiten.",
     "selfExplanationPrompt": null,
