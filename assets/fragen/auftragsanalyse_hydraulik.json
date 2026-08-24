@@ -761,7 +761,7 @@
     "wahr": null,
     "erklaerung": "F = p · A = p · (π/4 · d²). Umrechnung: 6 bar = 0,6 N/mm². Kolbenfläche: A = π/4 · 80² = 5 026,5 mm². Schaltkraft: F = 0,6 · 5 026,5 = 3 015,9 N ≈ 3,0 kN. Trotz geringen Schaltdrucks von 6 bar erzeugt der Kolben rund 3 kN – ausreichend, um das Primärrad axial zu verschieben.",
     "selfExplanationPrompt": null,
-    "bildAsset": null,
+    "bildAsset": "assets/zeichnungen/S18/blatt_1_schaltvorrichtung.png",
     "workedExample": "p = 6 bar = 0,6 N/mm²\nA = π/4 · 80² = 5 026,5 mm²\nF = 0,6 · 5 026,5 = 3 015,9 N ≈ 3,0 kN",
     "schwierigkeit": 2,
     "pruefung": "S18",

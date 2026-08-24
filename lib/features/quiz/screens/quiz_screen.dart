@@ -347,14 +347,7 @@ class _QuizBody extends ConsumerWidget {
               TippKnopf(eintraege: tipps),
               if (frage.bildAsset != null) ...[
                 const SizedBox(height: 12),
-                if (TechnischeIllustration.istDiagramm(frage.bildAsset))
-                  TechnischeIllustration(
-                    diagrammKey: TechnischeIllustration.keyAus(
-                      frage.bildAsset!,
-                    ),
-                  )
-                else
-                  Image.asset(frage.bildAsset!),
+                _FrageBild(bildAsset: frage.bildAsset!),
               ],
               const SizedBox(height: 24),
               AnimatedSwitcher(
@@ -590,8 +583,12 @@ class _ZeichnungsViewer extends StatelessWidget {
             child: ListView.builder(
               controller: controller,
               padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
-              itemCount: anzahl,
+              // Ein Eintrag mehr fuer die Stueckliste, sofern vorhanden.
+              itemCount: anzahl + (info.stueckliste.isEmpty ? 0 : 1),
               itemBuilder: (context, i) {
+                if (i == anzahl) {
+                  return _StuecklistenAbschnitt(stueckliste: info.stueckliste);
+                }
                 final label = zeigeEchteZeichnungen
                     ? (info.zeichnungen[i].label.isNotEmpty
                           ? info.zeichnungen[i].label
@@ -831,12 +828,131 @@ class _FrageBild extends ConsumerWidget {
     final quelle = kurs == null ? null : KursBilder.fuer(kurs, bildAsset);
     if (quelle == null) return const SizedBox.shrink();
 
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image(
-        image: quelle,
-        fit: BoxFit.contain,
-        errorBuilder: (_, _, _) => const SizedBox.shrink(),
+    // Antippbar: Eine A3-Prüfungszeichnung ist in Fragengröße unlesbar,
+    // die Positionsnummern erkennt man erst im Zoom.
+    return Stack(
+      alignment: Alignment.bottomRight,
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: InkWell(
+            onTap: () => _vollbildOeffnen(context, quelle),
+            child: Image(
+              image: quelle,
+              fit: BoxFit.contain,
+              errorBuilder: (_, _, _) => const SizedBox.shrink(),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(6),
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface.withAlpha(220),
+              borderRadius: BorderRadius.circular(6),
+            ),
+            child: const Padding(
+              padding: EdgeInsets.all(4),
+              child: Icon(Icons.zoom_in, size: 18),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _vollbildOeffnen(BuildContext context, ImageProvider quelle) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(
+        fullscreenDialog: true,
+        builder: (_) => _BildVollbild(quelle: quelle),
+      ),
+    );
+  }
+}
+
+/// Formatfüllende Zoomansicht einer Zeichnung.
+///
+/// Bewusst eine eigene Seite statt eines Dialogs: Auf dem Handy zählt jeder
+/// Pixel, und der Zurück-Knopf des Systems soll sie schließen.
+class _BildVollbild extends StatelessWidget {
+  final ImageProvider quelle;
+
+  const _BildVollbild({required this.quelle});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        foregroundColor: Colors.white,
+        title: const Text('Zeichnung'),
+      ),
+      body: InteractiveViewer(
+        // Großzügig: Bei einer A3-Zeichnung braucht man echten Zoom, um
+        // Positionsnummern und Maße zu lesen.
+        maxScale: 8,
+        boundaryMargin: const EdgeInsets.all(40),
+        child: Center(
+          child: Image(image: quelle, fit: BoxFit.contain),
+        ),
+      ),
+    );
+  }
+}
+
+/// Stückliste als aufklappbare Textliste.
+///
+/// Positionsnummern werden numerisch sortiert, nicht alphabetisch - sonst
+/// stünde "10" vor "2". Untergliederungen wie "10.0" bleiben dabei an der
+/// richtigen Stelle.
+class _StuecklistenAbschnitt extends StatelessWidget {
+  final Map<String, String> stueckliste;
+
+  const _StuecklistenAbschnitt({required this.stueckliste});
+
+  @override
+  Widget build(BuildContext context) {
+    final positionen = stueckliste.keys.toList()
+      ..sort((a, b) {
+        final za = double.tryParse(a.replaceAll(',', '.')) ?? double.infinity;
+        final zb = double.tryParse(b.replaceAll(',', '.')) ?? double.infinity;
+        return za.compareTo(zb);
+      });
+
+    return Card(
+      margin: const EdgeInsets.only(bottom: 20),
+      child: ExpansionTile(
+        leading: const Icon(Icons.list_alt, size: 20),
+        title: Text(
+          'Stückliste',
+          style: Theme.of(context).textTheme.labelLarge,
+        ),
+        subtitle: Text('${positionen.length} Positionen'),
+        childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
+        children: [
+          for (final nummer in positionen)
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 3),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 44,
+                    child: Text(
+                      nummer,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                  ),
+                  Expanded(child: Text(stueckliste[nummer]!)),
+                ],
+              ),
+            ),
+        ],
       ),
     );
   }
