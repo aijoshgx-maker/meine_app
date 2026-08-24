@@ -47,20 +47,20 @@
       "beschreibung": "Axialkolbenpumpe (AKP-250), automatische Verzinkungsanlage. Themen: Hydraulik, GRAFCET, Lagerung, Fertigungstechnik, WiSo.",
       "zeichnungen": [
         {
-          "pfad": "assets/zeichnungen/W22/zeichnung_1.png",
-          "label": "AKP-250 – Längsschnitt Axialkolbenpumpe"
+          "pfad": "assets/zeichnungen/W22/blatt_1.png",
+          "label": "Blatt 1(4) – Axialkolbenpumpe, Schnittdarstellung und Stückliste"
         },
         {
-          "pfad": "assets/zeichnungen/W22/zeichnung_2.png",
-          "label": "Steuerblock – Hydraulikplan"
+          "pfad": "assets/zeichnungen/W22/blatt_2.png",
+          "label": "Blatt 2(4) – Axialkolbenpumpe, räumliche Schnittdarstellung"
         },
         {
-          "pfad": "assets/zeichnungen/W22/zeichnung_3.png",
-          "label": "Verzinkungsanlage – GRAFCET-Steuerung"
+          "pfad": "assets/zeichnungen/W22/blatt_3.png",
+          "label": "Blatt 3(4) – Steuerscheibe (Pos. 3) und Rotor (Pos. 5), Einzelteilzeichnungen"
         },
         {
-          "pfad": "assets/zeichnungen/W22/zeichnung_4.png",
-          "label": "Maßzeichnung / Toleranzangaben"
+          "pfad": "assets/zeichnungen/W22/blatt_4.png",
+          "label": "Blatt 4(4) – Hydraulik-, Stromlauf- und Funktionsplan (GRAFCET), Verzinkungsanlage"
         }
       ],
       "diagrammKeys": [
@@ -70,7 +70,27 @@
         "passungsdiagramm",
         "schnittdaten"
       ],
-      "stueckliste": {}
+      "stueckliste": {
+        "1": "Gehäusenabe (17Cr3)",
+        "2": "Gehäuselagerteil (C60)",
+        "3": "Steuerscheibe (17Cr3)",
+        "4": "Abdeckplatte (S355JR+C)",
+        "5": "Rotor (17Cr3)",
+        "6": "Kolben (C60), 7 Stück",
+        "7": "Druckfeder 2,5×15×40 (DIN EN 10270-1), 7 Stück",
+        "8": "Scheibe (S235JR+C), 7 Stück",
+        "9": "Sicherungsring (DIN 472)",
+        "10": "Axial-Rillenkugellager 51208",
+        "11": "Rillenkugellager 6205 (DIN 625)",
+        "12": "Sicherungsring 52×2 (DIN 472)",
+        "13": "Radialwellendichtring A25×52×7 (DIN 3760, NBR)",
+        "14": "O-Ring 80×5,3 (DIN 3771, NBR 90)",
+        "15": "O-Ring 106×3,55 (DIN 3771, NBR 90)",
+        "16": "Zylinderschraube M10×70 (ISO 4762)",
+        "17": "Zylinderschraube M6×12 (DIN 7984)",
+        "18": "Nadellager NA 4914 (DIN 617)",
+        "19": "Spannstift 6×25 (ISO 8752)"
+      }
     },
     {
       "code": "S17",
@@ -79,16 +99,20 @@
       "beschreibung": "Einstellantrieb Stanzanlage, Kegelradgetriebe (m=2, z=26), Bogenzahnkupplung, Gelenkwelle. Themen: Maschinenelemente, Berechnung, Instandhaltung, WiSo.",
       "zeichnungen": [
         {
-          "pfad": "assets/zeichnungen/S17/zeichnung_1.png",
-          "label": "Einstellantrieb Stanzanlage – Schnittdarstellung"
+          "pfad": "assets/zeichnungen/S17/blatt_1_einstellantrieb.png",
+          "label": "Blatt 1(4) – Einstellantrieb, Gesamtschnitt A-A"
         },
         {
-          "pfad": "assets/zeichnungen/S17/zeichnung_2.png",
-          "label": "Kegelradgetriebe – Bemaßung (m=2, z=26)"
+          "pfad": "assets/zeichnungen/S17/blatt_2_sicherheitskupplung.png",
+          "label": "Blatt 2(4) – Sicherheitskupplung ECA 16 und Stückliste"
         },
         {
-          "pfad": "assets/zeichnungen/S17/zeichnung_3.png",
-          "label": "Bogenzahnkupplung / Gelenkwelle"
+          "pfad": "assets/zeichnungen/S17/blatt_3_antriebswelle.png",
+          "label": "Blatt 3(4) – Antriebswelle (Pos. 3), Einzelteilzeichnung"
+        },
+        {
+          "pfad": "assets/zeichnungen/S17/blatt_4_hydraulikplan.png",
+          "label": "Blatt 4(4) – Hydraulikschaltplan und GRAFCET"
         }
       ],
       "diagrammKeys": [
@@ -99,8 +123,41 @@
         "passungsdiagramm"
       ],
       "stueckliste": {
+        "1.0": "Konsole (Schweißgruppe)",
+        "1.1": "Platte (S235JR)",
+        "1.2": "Lasche (S235JR)",
+        "2.0": "Schwenklager (Schweißgruppe)",
+        "2.1": "Bügel (S235JR)",
+        "2.2": "Auge (S235JR)",
+        "3": "Antriebswelle (20MnCr5)",
+        "4": "Abtriebswelle (20MnCr5)",
         "5": "Flanschbuchse (CuSn8P)",
-        "9": "Gelenkwelle (Ø32 mm)"
+        "6": "Flanschdeckel (CuSn8P)",
+        "7": "Kegelrad (16MnCr5, m=2, z=26)",
+        "8": "Haube (DC01)",
+        "9": "Gelenkwelle E2Z/20 (Kaufteil)",
+        "9.1": "Halbschalen",
+        "10.0": "Sicherheitskupplung ECA 16 (Kaufteil)",
+        "10.1": "Nabe",
+        "10.2": "Schaltscheibe",
+        "10.3": "Flanschring",
+        "10.4": "Einstellmutter",
+        "10.5": "Tellerfeder",
+        "10.6": "Kugel Ø5,5",
+        "10.7": "Gewindestift",
+        "10.8": "Rillenkugellager 6006 (DIN 625)",
+        "11": "Synchronriemenscheibe 20 T5×48N (AlMgSi1)",
+        "12": "Passscheibe 20×28×2 (DIN 988)",
+        "13": "Passfeder A6×6×22 (DIN 6885)",
+        "14": "Passfeder A6×6×32 (DIN 6885)",
+        "15": "Nadel-Axial-Zylinderrollenlager NKXR20Z (DIN 5429)",
+        "16": "Radialwellendichtring AS25×35×7 (DIN 3760, NBR)",
+        "17": "Sicherungsring 20×1,2 (DIN 471)",
+        "18": "Scheibe 8 (ISO 7091)",
+        "19": "Sechskantschraube M8×25 (ISO 4017)",
+        "20": "Sechskantschraube M4×12 (ISO 4017)",
+        "21": "Zylinderschraube M4×8 (DIN 7984)",
+        "22": "Zylinderschraube M4×18 (DIN 7984)"
       }
     },
     {
@@ -110,16 +167,20 @@
       "beschreibung": "Hydraulische Schaltvorrichtung, Verladeanlage für Betonteile. Primärrad (m=3, z=57), Sekundärrad (m=3, z=82), Kolben (CuSn8, Ø80mm, p=6bar). Themen: Hydraulik, Zahnräder, Werkstoff, WiSo.",
       "zeichnungen": [
         {
-          "pfad": "assets/zeichnungen/S18/zeichnung_1.png",
-          "label": "Schaltvorrichtung – Schnittdarstellung (Kolben CuSn8, Ø80mm)"
+          "pfad": "assets/zeichnungen/S18/blatt_1_schaltvorrichtung.png",
+          "label": "Blatt 1(4) – Schaltvorrichtung, Schnittdarstellung"
         },
         {
-          "pfad": "assets/zeichnungen/S18/zeichnung_2.png",
-          "label": "Verladeanlage – Übersichtsschema mit Bauteilbeschriftung"
+          "pfad": "assets/zeichnungen/S18/blatt_2_stueckliste.png",
+          "label": "Blatt 2(4) – Schaltvorrichtung, Ansicht und Stückliste"
         },
         {
-          "pfad": "assets/zeichnungen/S18/zeichnung_3.png",
-          "label": "Schaltvorrichtung – Zahnräder (Primär m=3/z=57, Sekundär m=3/z=82)"
+          "pfad": "assets/zeichnungen/S18/blatt_3_hydraulikplan.png",
+          "label": "Blatt 3(4) – Hydraulikschaltplan und GRAFCET"
+        },
+        {
+          "pfad": "assets/zeichnungen/S18/blatt_4_verladeanlage.png",
+          "label": "Blatt 4(4) – Verladeanlage für Betonteile"
         }
       ],
       "diagrammKeys": [
@@ -130,11 +191,47 @@
         "werkzeugwinkel"
       ],
       "stueckliste": {
-        "2": "Schaltstange",
-        "6": "Primärrad (16MnCr5, m=3, z=57)",
+        "1": "Gehäuse (EN-GJL-250)",
+        "2": "Schaltstange (42CrMo4)",
+        "3": "Lagerhalter (S235JR)",
+        "4": "Schiebewelle (15CrNi6, m=1,5, z=50)",
+        "5": "Spannring (S235JR)",
+        "6": "Primärrad (16MnCr5, m=3 z=57 / m=1,5 z=50)",
+        "7": "Sekundärradträger (16MnCr5, m=1,5, z=50)",
         "8": "Sekundärrad (16MnCr5, m=3, z=82)",
+        "9": "Deckel (S235JR)",
+        "10": "Lagerhalter (EN-GJL-250)",
+        "11": "Flansch (S235JR)",
+        "12": "Scheibe (S235JR)",
         "13": "Buchse (CuZn31Si1)",
-        "16": "Schaltkolben (CuSn8, Ø80 mm)"
+        "14": "Federhalter (S235JR)",
+        "15": "Halbscheibe (S355JR)",
+        "16": "Kolben (CuSn8)",
+        "17": "Stützscheibe (16MnCr5)",
+        "18": "Deckel (EN-GJL-250)",
+        "19": "Distanzring (S355JR)",
+        "20": "Sensor (Kaufteil)",
+        "21": "Kolbendichtung NA300 80-60-12 (NBR 90)",
+        "22": "Distanzscheibe (S355JR)",
+        "23": "Distanzscheibe (S355JR)",
+        "24": "Druckfeder 4×42×110 (DIN 2098)",
+        "25": "Druckfeder 5×32×110 (DIN 2098)",
+        "26": "O-Ring 25×3,55-N (DIN 3771, NBR 70)",
+        "27": "O-Ring 85×3,55-N (DIN 3771, NBR 70)",
+        "28": "Sicherungsring 105×4 (DIN 471)",
+        "29": "Sicherungsring 22×1,2 (DIN 471)",
+        "30": "Rillenkugellager 6021 (DIN 625)",
+        "31": "Zylinderrollenlager NU1021 (DIN 5412)",
+        "32": "Zylinderrollenlager NJ1021 (DIN 5412)",
+        "33": "Wälzlager d=25, D=52, B=18",
+        "34": "Sechskantschraube M12×30 (ISO 4017)",
+        "35": "Zylinderschraube M10×25 (ISO 4762)",
+        "36": "Zylinderschraube M6×40 (DIN 7984)",
+        "37": "Zylinderschraube M6×20 (DIN 7984)",
+        "38": "Zylinderschraube M6×20 (ISO 4762)",
+        "39": "Sechskantschraube M8×40 (ISO 4014)",
+        "40": "Zylinderschraube M5×16 (ISO 4762)",
+        "41": "Sechskantschraube M8×30 (ISO 4017)"
       }
     },
     {
@@ -144,20 +241,16 @@
       "beschreibung": "Mehrspindel-Bohrstation, 2-stufiges Schieberadgetriebe (z=66/18, z=33/33), Kegelrollenlager O-Anordnung, Spannzylinder (Ø80mm). Themen: Getriebe, Lagerung, Hydraulik, WiSo.",
       "zeichnungen": [
         {
-          "pfad": "assets/zeichnungen/S19/zeichnung_1.png",
-          "label": "Mehrspindel-Bohrstation – Gesamtansicht"
+          "pfad": "assets/zeichnungen/S19/blatt_1_werkzeugspindelkasten.png",
+          "label": "Blatt 1(3) – Werkzeugspindelkasten, Schnittdarstellung"
         },
         {
-          "pfad": "assets/zeichnungen/S19/zeichnung_2.png",
-          "label": "Schieberadgetriebe – Schnittbild (Stufe 1: z=66/18, Stufe 2: z=33/33)"
+          "pfad": "assets/zeichnungen/S19/blatt_2_stueckliste.png",
+          "label": "Blatt 2(3) – Werkzeugspindelkasten, Stückliste"
         },
         {
-          "pfad": "assets/zeichnungen/S19/zeichnung_3.png",
-          "label": "Kegelrollenlager – O-Anordnung Spindellagerung"
-        },
-        {
-          "pfad": "assets/zeichnungen/S19/zeichnung_4.png",
-          "label": "Spannzylinder (Ø80mm) – Hydraulikschaltplan"
+          "pfad": "assets/zeichnungen/S19/blatt_3_hydraulikplan.png",
+          "label": "Blatt 3(3) – Hydraulikschaltplan und GRAFCET"
         }
       ],
       "diagrammKeys": [
@@ -167,7 +260,45 @@
         "schnittdaten",
         "toleranzfeld"
       ],
-      "stueckliste": {}
+      "stueckliste": {
+        "1": "Spindelkasten (EN-GJL-200)",
+        "2": "Lagerdeckel (EN-GJL-200)",
+        "3": "Lagerdeckel (EN-AlMgSiPb)",
+        "4": "Lagerdeckel (C15)",
+        "5": "Spindellagerdeckel (11SMn30+C)",
+        "6": "Zwischenwelle (16MnCr5, z=18, m=2,5)",
+        "7": "Stirnrad (16MnCr5, z=72, m=2)",
+        "8": "Schieberad (16MnCr5, z=66 m=2,5 / z=33 m=2)",
+        "9": "Spindel SK 40 (16MnCr5)",
+        "10": "Anzugstange (34CrMo4)",
+        "11": "Riemenscheibe (AlMgSiPb)",
+        "12": "Ritzelwelle (16MnCr5, z=33, m=2)",
+        "13": "Rillenkugellager 6206 (DIN 625)",
+        "14": "Rillenkugellager 6011 2RS (DIN 625)",
+        "15": "Rillenkugellager 6011 (DIN 625)",
+        "16": "Kegelrollenlager 30210 (DIN 720)",
+        "17": "Zylinderrollenlager NU 2206 (DIN 5412)",
+        "18": "Sicherungsring 30×1,2 (DIN 471)",
+        "19": "Sicherungsring 62×2 (DIN 472)",
+        "20": "Sicherungsring 90×3 (DIN 472)",
+        "21": "Sicherungsring 48×7 (DIN 471)",
+        "22": "O-Ring 12,4×2,62 (DIN ISO 3601-1)",
+        "23": "O-Ring 53,4×3,53 (DIN ISO 3601)",
+        "24": "Dichtring Form A14×18 (DIN 7603)",
+        "25": "Passscheibe 55×68×1 (DIN 988)",
+        "26": "Passfeder A10×8×40 (DIN 6885)",
+        "27": "Passfeder A10×8×36 (DIN 6885)",
+        "28": "Nutmutter (DIN 70852)",
+        "29": "Nutmutter KM10 (DIN 981)",
+        "30": "Mutter",
+        "31": "Mitnehmerstein (DIN 2079)",
+        "32": "Zylinderschraube M6×25 (ISO 4762)",
+        "33": "Zylinderschraube M6×20 (ISO 4762)",
+        "34": "Senkschraube M6×20 (DIN 10642)",
+        "35": "Ablass-/Verschlussschraube M14×1,5 (DIN 908)",
+        "36": "Schraubstopfen M14×1,5 (PE-HD, GPN 700)",
+        "37": "Zylinderschraube M8×25 (ISO 4762)"
+      }
     }
   ],
   "fragenDateien": [

@@ -741,7 +741,7 @@
     "wahr": null,
     "erklaerung": "Der Reed-Kontakt ist ein magnetisch betätigter Schalter. Ein Permanentmagnet am beweglichen Bauteil der Sicherheitskupplung aktiviert den Reed-Kontakt, wenn die Kupplung auslöst und sich der Magnet in Nähe des Kontakts bewegt. Reed-Kontakte sind robust, wartungsfrei, verschleißfrei und reagieren zuverlässig auf kleine Schaltwege. Lichtschranken erfordern freie Sicht; induktive Sensoren reagieren nur auf Metall, nicht auf Magnete.",
     "selfExplanationPrompt": null,
-    "bildAsset": null,
+    "bildAsset": "assets/zeichnungen/S17/blatt_2_sicherheitskupplung.png",
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "S17",
