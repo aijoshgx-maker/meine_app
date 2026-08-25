@@ -288,7 +288,37 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "ΔHV = 639 - 580 = 59 HV\nΔHRC = 59 / 9 ≈ 6,6 HRC → Welle erreicht nur ~51 HRC statt 58 HRC",
-    "schwierigkeit": 3
+    "schwierigkeit": 3,
+    "varianten": {
+      "variablen": {
+        "soll_hrc": {
+          "werte": [58]
+        },
+        "soll_hv": {
+          "werte": [639]
+        },
+        "fehlt": {
+          "von": 20.0,
+          "bis": 120.0,
+          "schritt": 5.0
+        }
+      },
+      "original": {
+        "soll_hrc": 58,
+        "soll_hv": 639,
+        "fehlt": 59
+      },
+      "zwischen": {
+        "gemessen": "soll_hv - fehlt",
+        "erreicht": "round((soll_hrc - fehlt / 9) * 10) / 10"
+      },
+      "frage": "Eine Stahlwelle soll auf {soll_hrc} HRC gehärtet werden. Laut Umrechnungstabelle entspricht {soll_hrc} HRC ≈ {soll_hv} HV. Die gemessene Vickershärte nach dem Härten beträgt {gemessen} HV. Um wie viel HRC fehlt die Welle ungefähr? (1 HRC ≈ 9 HV im Bereich 55-65 HRC)",
+      "loesung": "fehlt / 9",
+      "rundung": 1,
+      "toleranzProzent": 2.0,
+      "erklaerung": "ΔHV = {soll_hv} - {gemessen} = {fehlt} HV. ΔHRc = {fehlt} HV / 9 HV/HRC ≈ {loesung} HRC. Erreichter Wert ≈ {soll_hrc} - {loesung} ≈ {erreicht} HRC. Ursache: unzureichende Abkühlrate, zu kurze Haltezeit, zu niedriger C-Gehalt oder falsche Austenitisiertemperatur.",
+      "workedExample": "ΔHV = {soll_hv} - {gemessen} = {fehlt} HV\nΔHRC = {fehlt} / 9 ≈ {loesung} HRC → Welle erreicht nur ~{erreicht} HRC statt {soll_hrc} HRC"
+    }
   },
   {
     "id": "ft-ww-011",

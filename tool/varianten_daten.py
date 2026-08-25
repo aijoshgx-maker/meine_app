@@ -9,10 +9,11 @@ Aufgetragen werden sie mit  python tool/varianten_setzen.py
 """
 
 import varianten_au
+import varianten_ft
 import varianten_hy
 import varianten_tb
 
-MODULE = [varianten_au, varianten_hy, varianten_tb]
+MODULE = [varianten_au, varianten_ft, varianten_hy, varianten_tb]
 
 VARIANTEN = {}
 KORREKTUREN = []

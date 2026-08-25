@@ -34,7 +34,7 @@
     "bereich": "fertigungstechnik",
     "kategorie": "Wirtschaftliche Fertigung",
     "typ": "rechnung",
-    "frage": "Fixkosten je Periode: 80 000 €. Variable Kosten je Stück: 15 €. Verkaufspreis je Stück: 35 €. Berechne den Break-Even-Point (Mindestmenge) in Stück.",
+    "frage": "Fixkosten je Periode: 80000 €. Variable Kosten je Stück: 15 €. Verkaufspreis je Stück: 35 €. Berechne den Break-Even-Point (Mindestmenge) in Stück.",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": 4000.0,
     "einheit": "Stück",
@@ -43,7 +43,34 @@
     "erklaerung": "BEP = Fixkosten / (Preis - variable Stückkosten) = 80 000 / (35 - 15) = 80 000 / 20 = 4000 Stück. Deckungsbeitrag je Stück = 35 - 15 = 20 €. Ab der 4001. Einheit wird Gewinn erzielt. Gewinn = (Stückzahl - BEP) × Deckungsbeitrag = (4001 - 4000) × 20 = 20 €.",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "Deckungsbeitrag = Preis - variable Stückkosten = 35 - 15 = 20 €/St.\nBEP = Fixkosten / Deckungsbeitrag = 80000 € / 20 €/St. = 4000 Stück",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "fix": {
+          "werte": [40000, 50000, 60000, 80000, 100000, 120000, 150000]
+        },
+        "kv": {
+          "werte": [8, 10, 12, 15, 18, 20, 25]
+        },
+        "spanne": {
+          "werte": [10, 15, 20, 25, 30, 40]
+        }
+      },
+      "original": {
+        "fix": 80000,
+        "kv": 15,
+        "spanne": 20
+      },
+      "zwischen": {
+        "preis": "kv + spanne"
+      },
+      "frage": "Fixkosten je Periode: {fix} €. Variable Kosten je Stück: {kv} €. Verkaufspreis je Stück: {preis} €. Berechne den Break-Even-Point (Mindestmenge) in Stück.",
+      "loesung": "fix / spanne",
+      "rundung": 1,
+      "toleranzProzent": 0.5,
+      "erklaerung": "BEP = Fixkosten / (Preis - variable Stückkosten) = {fix} / ({preis} - {kv}) = {fix} / {spanne} = {loesung} Stück. Deckungsbeitrag je Stück = {spanne} €. Ab dieser Menge wird Gewinn erzielt.",
+      "workedExample": "Deckungsbeitrag = Preis - variable Stückkosten = {preis} - {kv} = {spanne} €/St.\nBEP = Fixkosten / Deckungsbeitrag = {fix} € / {spanne} €/St. = {loesung} Stück"
+    }
   },
   {
     "id": "ft-wf-004",
@@ -62,7 +89,7 @@
     "bereich": "fertigungstechnik",
     "kategorie": "Wirtschaftliche Fertigung",
     "typ": "rechnung",
-    "frage": "Eine Maschine kostet 120 000 €, hat eine Nutzungsdauer von 10 Jahren und einen Restwert von 20 000 €. Berechne die jährliche lineare Abschreibung in €.",
+    "frage": "Eine Maschine kostet 120000 €, hat eine Nutzungsdauer von 10 Jahren und einen Restwert von 20000 €. Berechne die jährliche lineare Abschreibung in €.",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": 10000.0,
     "einheit": "€",
@@ -71,7 +98,35 @@
     "erklaerung": "Lineare Abschreibung: AfA (Absetzung für Abnutzung) = (Anschaffungswert - Restwert) / Nutzungsdauer = (120 000 - 20 000) / 10 = 10 000 €/Jahr. Abschreibungen sind keine Ausgaben (keine Zahlungsflüsse), aber Kosten (reduzieren den Gewinn). Sie bilden Kapital für Ersatzinvestitionen.",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "AfA = (AW - RW) / n = (120 000 - 20 000) € / 10 Jahre = 10 000 €/Jahr",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "aw": {
+          "werte": [60000, 80000, 100000, 120000, 150000, 200000, 250000]
+        },
+        "rest_prozent": {
+          "werte": [0, 5, 10, 15, 20, 25]
+        },
+        "jahre": {
+          "werte": [5, 6, 8, 10, 12, 15]
+        }
+      },
+      "original": {
+        "aw": 120000,
+        "rest_prozent": 16.6667,
+        "jahre": 10
+      },
+      "zwischen": {
+        "rw": "round(aw * rest_prozent / 100)",
+        "differenz": "aw - round(aw * rest_prozent / 100)"
+      },
+      "frage": "Eine Maschine kostet {aw} €, hat eine Nutzungsdauer von {jahre} Jahren und einen Restwert von {rw} €. Berechne die jährliche lineare Abschreibung in €.",
+      "loesung": "(aw - round(aw * rest_prozent / 100)) / jahre",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Lineare Abschreibung: AfA (Absetzung für Abnutzung) = (Anschaffungswert - Restwert) / Nutzungsdauer = ({aw} - {rw}) / {jahre} = {differenz} / {jahre} = {loesung} €/Jahr. Abschreibungen sind keine Ausgaben, aber Kosten - sie bilden Kapital für Ersatzinvestitionen.",
+      "workedExample": "AfA = (AW - RW) / n = ({aw} - {rw}) € / {jahre} Jahre = {loesung} €/Jahr"
+    }
   },
   {
     "id": "ft-wf-006",
@@ -168,7 +223,39 @@
     "erklaerung": "Fertigungszeit je Stück = t_h + t_n = 18 + 6 = 24 min = 0,4 h. Maschinenkosten je Stück = MSS × Fertigungszeit = 75 €/h × 0,4 h = 30 €/Stück. Dazu kommen: Materialkosten, Lohnkosten (Bediener), Gemeinkostenzuschlag → Herstellkosten. Rüstkosten (t_r / Losgröße) anteilig addieren.",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "Fertigungszeit = (18 + 6) min = 24 min = 0,4 h\nMaschinenkosten = 75 €/h · 0,4 h = 30 €/Stück",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "mss": {
+          "werte": [45, 55, 60, 75, 90, 110, 130]
+        },
+        "th": {
+          "von": 5.0,
+          "bis": 60.0,
+          "schritt": 1.0
+        },
+        "tn": {
+          "von": 2.0,
+          "bis": 20.0,
+          "schritt": 1.0
+        }
+      },
+      "original": {
+        "mss": 75,
+        "th": 18,
+        "tn": 6
+      },
+      "zwischen": {
+        "minuten": "th + tn",
+        "stunden": "round((th + tn) / 60 * 10000) / 10000"
+      },
+      "frage": "Eine CNC-Drehmaschine hat einen Maschinenstundensatz von {mss} €/h. Die Hauptzeit eines Werkstücks beträgt {th} min, die Nebenzeit {tn} min. Berechne die Fertigungskosten (Maschinenanteil) je Stück in €.",
+      "loesung": "mss * (th + tn) / 60",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Fertigungszeit je Stück = t_h + t_n = {th} + {tn} = {minuten} min = {stunden} h. Maschinenkosten je Stück = MSS × Fertigungszeit = {mss} €/h × {stunden} h = {loesung} €/Stück. Dazu kommen Material-, Lohn- und Gemeinkosten.",
+      "workedExample": "Fertigungszeit = ({th} + {tn}) min = {minuten} min = {stunden} h\nMaschinenkosten = {mss} €/h · {stunden} h = {loesung} €/Stück"
+    }
   },
   {
     "id": "ft-wf-012",

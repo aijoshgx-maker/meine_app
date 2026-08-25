@@ -63,7 +63,34 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: Nennmaß N = 40 mm, oberes Abmaß ES = +0,025 mm\nFormel: G_o = N + ES\nSchritt 1: G_o = 40 + 0,025 = 40,025 mm\nErgebnis: Höchstmaß = 40,025 mm",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "spalten": [
+        "N",
+        "es"
+      ],
+      "zeilen": [
+        [25, 0.021],
+        [40, 0.025],
+        [50, 0.025],
+        [60, 0.03],
+        [80, 0.03],
+        [100, 0.035]
+      ],
+      "original": {
+        "N": 40,
+        "es": 0.025
+      },
+      "stellen": {
+        "es": 3
+      },
+      "frage": "Ein Bauteil hat das Nennmaß {N} mm mit der Toleranz +{es} / –0,000 mm. Berechnen Sie das Höchstmaß.",
+      "loesung": "N + es",
+      "rundung": 3,
+      "toleranzProzent": 0.01,
+      "erklaerung": "Höchstmaß G_o = Nennmaß + oberes Abmaß = {N} + {es} = {loesung} mm. Das Höchstmaß ist die obere Grenze, die das Fertigmaß nicht überschreiten darf.",
+      "workedExample": "Gegeben: Nennmaß N = {N} mm, oberes Abmaß ES = +{es} mm\nFormel: G_o = N + ES\nSchritt 1: G_o = {N} + {es} = {loesung} mm\nErgebnis: Höchstmaß = {loesung} mm"
+    }
   },
   {
     "id": "ft-mp-003b",

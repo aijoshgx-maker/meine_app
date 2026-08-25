@@ -208,7 +208,36 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gutteile (ohne Nacharbeit) = 2000 - 80 - 40 = 1880\nFPY = 1880 / 2000 = 0,94 = 94%",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "gesamt": {
+          "werte": [500, 800, 1000, 1500, 2000, 2500, 4000, 5000]
+        },
+        "ausschuss_prozent": {
+          "werte": [1, 2, 3, 4, 5]
+        },
+        "nacharbeit_prozent": {
+          "werte": [1, 2, 3, 4]
+        }
+      },
+      "original": {
+        "gesamt": 2000,
+        "ausschuss_prozent": 4,
+        "nacharbeit_prozent": 2
+      },
+      "zwischen": {
+        "ausschuss": "round(gesamt * ausschuss_prozent / 100)",
+        "nacharbeit": "round(gesamt * nacharbeit_prozent / 100)",
+        "gut": "gesamt - round(gesamt * ausschuss_prozent / 100) - round(gesamt * nacharbeit_prozent / 100)"
+      },
+      "frage": "Von {gesamt} gefertigten Teilen werden {ausschuss} als Ausschuss und {nacharbeit} als Nacharbeit bewertet. Berechne die Ausschussrate und die Erstgutrate FPY (First Pass Yield) in %.",
+      "loesung": "(gesamt - round(gesamt * ausschuss_prozent / 100) - round(gesamt * nacharbeit_prozent / 100)) / gesamt * 100",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "FPY = Gutteile ohne Nacharbeit / Gesamtstückzahl. Gutteile auf Anhieb: {gesamt} - {ausschuss} (Ausschuss) - {nacharbeit} (Nacharbeit) = {gut}. FPY = {gut}/{gesamt} = {loesung} %. Ausschussrate = {ausschuss}/{gesamt} = {ausschuss_prozent} %. FPY ist wichtiger als reine Gutmenge, da Nacharbeit Kosten verursacht.",
+      "workedExample": "Gutteile (ohne Nacharbeit) = {gesamt} - {ausschuss} - {nacharbeit} = {gut}\nFPY = {gut} / {gesamt} = {loesung} %"
+    }
   },
   {
     "id": "ft-qs-008",
@@ -373,7 +402,60 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "x̄ = (25,01 + 24,98 + 25,03 + 24,99 + 25,02) / 5 = 125,03 / 5 = 25,006 mm",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "m1": {
+          "von": 24.95,
+          "bis": 25.05,
+          "schritt": 0.01
+        },
+        "m2": {
+          "von": 24.95,
+          "bis": 25.05,
+          "schritt": 0.01
+        },
+        "m3": {
+          "von": 24.95,
+          "bis": 25.05,
+          "schritt": 0.01
+        },
+        "m4": {
+          "von": 24.95,
+          "bis": 25.05,
+          "schritt": 0.01
+        },
+        "m5": {
+          "von": 24.95,
+          "bis": 25.05,
+          "schritt": 0.01
+        }
+      },
+      "original": {
+        "m1": 25.01,
+        "m2": 24.98,
+        "m3": 25.03,
+        "m4": 24.99,
+        "m5": 25.02
+      },
+      "stellen": {
+        "m1": 2,
+        "m2": 2,
+        "m3": 2,
+        "m4": 2,
+        "m5": 2,
+        "summe": 2
+      },
+      "zwischen": {
+        "summe": "round((m1 + m2 + m3 + m4 + m5) * 100) / 100"
+      },
+      "frage": "Eine Messreihe ergibt folgende 5 Messwerte: {m1}; {m2}; {m3}; {m4}; {m5} mm. Berechne den Mittelwert x̄ in mm.",
+      "loesung": "(m1 + m2 + m3 + m4 + m5) / 5",
+      "rundung": 3,
+      "toleranzProzent": 0.01,
+      "erklaerung": "x̄ = Σxi / n = ({m1} + {m2} + {m3} + {m4} + {m5}) / 5 = {summe} / 5 = {loesung} mm. In der Messtechnik: mit Messgeräten immer mehrfach messen und Mittelwert bilden → reduziert zufällige Messfehler (Standardmessunsicherheit sinkt mit √n).",
+      "workedExample": "x̄ = ({m1} + {m2} + {m3} + {m4} + {m5}) / 5 = {summe} / 5 = {loesung} mm"
+    }
   },
   {
     "id": "ft-qs-014",
@@ -470,7 +552,27 @@
     "workedExample": "Anteil = (Anzahl dieser Fehlerart) / (Gesamtfehler) × 100\nAnteil = 3 / 11 × 100 % ≈ 27,3 %",
     "schwierigkeit": 1,
     "pruefung": "W22",
-    "pruefungReihenfolge": 18
+    "pruefungReihenfolge": 18,
+    "varianten": {
+      "variablen": {
+        "gesamt": {
+          "werte": [8, 10, 11, 12, 15, 18, 20, 24, 25]
+        },
+        "davon": {
+          "werte": [2, 3, 4, 5]
+        }
+      },
+      "original": {
+        "gesamt": 11,
+        "davon": 3
+      },
+      "frage": "In einer Stichprobenprüfung wurden insgesamt {gesamt} fehlerhafte Teile gefunden. Davon hatten {davon} Teile eine zu dünne Zinkschichtdicke. Wie viel Prozent (%) dieser Fehlerart entfallen auf alle Fehler (Anteil in der Fehlerstruktur)?",
+      "loesung": "davon / gesamt * 100",
+      "rundung": 1,
+      "toleranzProzent": 2.0,
+      "erklaerung": "{davon} von {gesamt} Fehlern entfallen auf 'zu dünne Zinkschichtdicke': {davon}/{gesamt} × 100 % ≈ {loesung} %. Dies ist der relative Anteil dieser Fehlerart an der Fehlergesamtheit – nützlich für die Pareto-Analyse zur Priorisierung von Verbesserungsmaßnahmen.",
+      "workedExample": "Anteil = (Anzahl dieser Fehlerart) / (Gesamtfehler) × 100\nAnteil = {davon} / {gesamt} × 100 % ≈ {loesung} %"
+    }
   },
   {
     "id": "ft-qs-018",
@@ -568,7 +670,50 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Max = 20,05 mm; Min = 19,98 mm\nR = Max − Min = 20,05 − 19,98 = 0,07 mm",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "spalten": [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5"
+      ],
+      "zeilen": [
+        [20.02, 20.05, 19.98, 20.03, 20.04],
+        [19.99, 20.01, 20.06, 19.97, 20.02],
+        [20.0, 19.96, 20.02, 20.01, 19.99],
+        [20.04, 19.94, 20.0, 20.03, 19.98],
+        [19.97, 20.0, 19.99, 20.05, 20.01],
+        [20.03, 20.02, 19.92, 20.0, 19.99]
+      ],
+      "original": {
+        "m1": 20.02,
+        "m2": 20.05,
+        "m3": 19.98,
+        "m4": 20.03,
+        "m5": 20.04
+      },
+      "stellen": {
+        "m1": 2,
+        "m2": 2,
+        "m3": 2,
+        "m4": 2,
+        "m5": 2,
+        "gross": 2,
+        "klein": 2
+      },
+      "zwischen": {
+        "gross": "max(m1, m2, m3, m4, m5)",
+        "klein": "min(m1, m2, m3, m4, m5)"
+      },
+      "frage": "In einer Stichprobe von 5 gebohrten Löchern werden folgende Durchmesser gemessen: {m1} / {m2} / {m3} / {m4} / {m5} mm. Wie groß ist die Spannweite R (in mm)?",
+      "loesung": "max(m1, m2, m3, m4, m5) - min(m1, m2, m3, m4, m5)",
+      "rundung": 2,
+      "toleranzProzent": 5.0,
+      "erklaerung": "Spannweite R = Maximalwert − Minimalwert. Max = {gross} mm; Min = {klein} mm. R = {gross} − {klein} = {loesung} mm. Die Spannweite ist ein einfaches Streuungsmaß in der statistischen Prozesskontrolle (SPC). Sie zeigt, wie weit die Messwerte auseinanderliegen.",
+      "workedExample": "Max = {gross} mm; Min = {klein} mm\nR = Max − Min = {gross} − {klein} = {loesung} mm"
+    }
   },
   {
     "id": "ft-qs-022",

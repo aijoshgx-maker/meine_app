@@ -72,7 +72,11 @@ Frage baueVariante(Frage frage, Map<String, Object> werte) {
   for (final e in varianten.zwischen.entries) {
     final wert = _rechne(frage.id, e.value, zahlen);
     zahlen[e.key] = wert;
-    texte[e.key] = _deutsch(wert, _maxZwischenstellen);
+    texte[e.key] = _deutsch(
+      wert,
+      varianten.stellen[e.key] ?? _maxZwischenstellen,
+      nullenBehalten: varianten.stellen.containsKey(e.key),
+    );
   }
 
   double? loesungswert;
