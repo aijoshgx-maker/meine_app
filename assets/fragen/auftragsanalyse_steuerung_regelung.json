@@ -469,7 +469,32 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Formel: e = w – x\ne = 80 °C – 74 °C\ne = 6 °C",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "w": {
+          "von": 40.0,
+          "bis": 220.0,
+          "schritt": 5.0
+        },
+        "e": {
+          "werte": [2, 3, 4, 5, 6, 8, 10, 12]
+        }
+      },
+      "original": {
+        "w": 80,
+        "e": 6
+      },
+      "zwischen": {
+        "x": "w - e"
+      },
+      "frage": "Ein Regelkreis hat eine Führungsgröße von w = {w} °C und die gemessene Regelgröße beträgt x = {x} °C. Berechne die Regeldifferenz e.",
+      "loesung": "w - x",
+      "rundung": 1,
+      "toleranzProzent": 2.0,
+      "erklaerung": "Die Regeldifferenz ist die Abweichung zwischen Soll- und Istwert: e = w – x = {w} °C – {x} °C = {loesung} °C.",
+      "workedExample": "Formel: e = w – x\ne = {w} °C – {x} °C\ne = {loesung} °C"
+    }
   },
   {
     "id": "au-sr-017",
@@ -628,7 +653,29 @@
     "selfExplanationPrompt": "Erkläre mit eigenen Worten, warum ein hoher Kp-Wert zu Schwingungen im Regelkreis führen kann.",
     "bildAsset": null,
     "workedExample": "Formel: y = Kp · e\ny = 4 · 2,5\ny = 10",
-    "schwierigkeit": 3
+    "schwierigkeit": 3,
+    "varianten": {
+      "variablen": {
+        "Kp": {
+          "werte": [0.5, 1, 1.5, 2, 2.5, 3, 4, 5, 8, 10]
+        },
+        "e": {
+          "von": 0.5,
+          "bis": 12.0,
+          "schritt": 0.5
+        }
+      },
+      "original": {
+        "Kp": 4,
+        "e": 2.5
+      },
+      "frage": "Ein P-Regler hat Kp = {Kp} und die aktuelle Regeldifferenz beträgt e = {e}. Berechne die Stellgröße y.",
+      "loesung": "Kp * e",
+      "rundung": 2,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Die Stellgröße des P-Reglers berechnet sich: y = Kp · e = {Kp} · {e} = {loesung}. Beim reinen P-Regler ist die Stellgröße direkt proportional zur Regeldifferenz - deshalb bleibt eine bleibende Regelabweichung bestehen.",
+      "workedExample": "Formel: y = Kp · e\ny = {Kp} · {e}\ny = {loesung}"
+    }
   },
   {
     "id": "au-sr-023",

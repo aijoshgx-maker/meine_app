@@ -15,6 +15,7 @@ Wertebereich aendert, laesst das Skript einfach nochmal laufen.
 import io
 import json
 import os
+import re
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -60,21 +61,34 @@ def kompakt(wert, einzug, tiefe):
     return json.dumps(wert, ensure_ascii=False)
 
 
-def block(varianten, einzug):
+def block(varianten, einzug, trenner=": "):
     """Serialisiert den varianten-Block mit dem Einzug der uebrigen Felder."""
-    text = '%s"varianten": %s' % (einzug, kompakt(varianten, einzug, 0))
+    text = '%s"varianten"%s%s' % (einzug, trenner, kompakt(varianten, einzug, 0))
+    if trenner != ": ":
+        text = text.replace('": ', '"%s' % trenner)
     return text.split("\n")
 
 
 def grenzen(zeilen, frage_id):
     """(erste Zeile, Zeile nach der letzten) des Frageobjekts mit dieser id."""
-    marker = '"id": "%s"' % frage_id
-    start = next((i for i, z in enumerate(zeilen) if marker in z), None)
+    # Toleranter Vergleich: einzelne Dateien schreiben "id":  "..." mit
+    # zwei Leerzeichen.
+    marker = re.compile(r'"id"\s*:\s*"%s"' % re.escape(frage_id))
+    start = next((i for i, z in enumerate(zeilen) if marker.search(z)), None)
     if start is None:
         raise KeyError(frage_id)
 
     einzug = zeilen[start][: len(zeilen[start]) - len(zeilen[start].lstrip())]
-    objekt_einzug = einzug[:-2]
+
+    # Der Einzug des Objekts kommt von seiner oeffnenden Klammer, nicht aus
+    # einer Annahme ueber die Einrueckungstiefe: Eine Datei rueckt mit zwei
+    # Leerzeichen ein, eine andere mit vier.
+    objekt_einzug = ""
+    for i in range(start - 1, -1, -1):
+        if zeilen[i].strip() == "{":
+            objekt_einzug = zeilen[i][: len(zeilen[i]) - len(zeilen[i].lstrip())]
+            break
+
     for i in range(start + 1, len(zeilen)):
         rumpf = zeilen[i].rstrip()
         if rumpf in (objekt_einzug + "}", objekt_einzug + "},"):
@@ -108,7 +122,10 @@ def setze(zeilen, frage_id, varianten):
     if not zeilen[letztes].rstrip().endswith(","):
         zeilen[letztes] = zeilen[letztes].rstrip() + ","
 
-    return zeilen[:ende] + block(varianten, einzug) + zeilen[ende:]
+    # Manche Dateien setzen zwei Leerzeichen hinter den Doppelpunkt; der
+    # neue Block soll nicht aus dem Bild fallen.
+    trenner = ":  " if '":  "' in zeilen[start] else ": "
+    return zeilen[:ende] + block(varianten, einzug, trenner) + zeilen[ende:]
 
 
 def korrigiere():

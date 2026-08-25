@@ -101,7 +101,31 @@
         "selfExplanationPrompt":  null,
         "bildAsset":  null,
         "workedExample":  "Gegeben: d = 80 mm = 0,08 m, p = 6 bar = 6 · 10⁵ Pa\nSchritt 1: A = π/4 · d² = π/4 · 0,08² = 0,005027 m²\nSchritt 2: F = p · A = 6 · 10⁵ · 0,005027 = 3016 N",
-        "schwierigkeit":  2
+        "schwierigkeit":  2,
+        "varianten":   {
+          "variablen":  {
+            "d":  {
+              "werte":  [32, 40, 50, 63, 80, 100, 125]
+            },
+            "p":  {
+              "werte":  [4, 5, 6, 7, 8]
+            }
+          },
+          "original":  {
+            "d":  80,
+            "p":  6
+          },
+          "zwischen":  {
+            "d_m":  "d / 1000",
+            "A_m2":  "round(pi / 4 * (d / 1000)^2 * 1000000) / 1000000"
+          },
+          "frage":  "Ein doppeltwirkender Pneumatikzylinder hat einen Kolbendurchmesser von d = {d} mm. Der Betriebsdruck beträgt p = {p} bar. Berechnen Sie die theoretische Vorschubkraft F.",
+          "loesung":  "pi / 4 * d^2 * p / 10",
+          "rundung":  0,
+          "toleranzProzent":  0.5,
+          "erklaerung":  "Kolbenfläche: A = π/4 · d² = π/4 · ({d_m} m)² ≈ {A_m2} m². Druck: p = {p} bar. Kraft: F = p · A ≈ {loesung} N.",
+          "workedExample":  "Gegeben: d = {d} mm = {d_m} m, p = {p} bar\nSchritt 1: A = π/4 · d² = π/4 · {d_m}² = {A_m2} m²\nSchritt 2: F = p · A = {loesung} N"
+        }
     },
     {
         "id":  "au-pn-004",
@@ -135,7 +159,33 @@
         "selfExplanationPrompt":  null,
         "bildAsset":  null,
         "workedExample":  "Gegeben: d = 50 mm, h = 120 mm\nSchritt 1: A = π/4 · 50² = π/4 · 2500 ≈ 1963,5 mm²\nSchritt 2: V = A · h = 1963,5 · 120 ≈ 235 619 mm³",
-        "schwierigkeit":  2
+        "schwierigkeit":  2,
+        "varianten":   {
+          "variablen":  {
+            "d":  {
+              "werte":  [25, 32, 40, 50, 63, 80]
+            },
+            "h":  {
+              "von":  40.0,
+              "bis":  320.0,
+              "schritt":  10.0
+            }
+          },
+          "original":  {
+            "d":  50,
+            "h":  120
+          },
+          "zwischen":  {
+            "A":  "round(pi / 4 * d^2 * 10) / 10",
+            "V_cm3":  "round(pi / 4 * d^2 * h / 100) / 10"
+          },
+          "frage":  "Ein einfachwirkender Zylinder mit Kolbendurchmesser d = {d} mm und Hub h = {h} mm wird ausgefahren. Berechnen Sie das Luftvolumen V, das beim Ausfahren benötigt wird.",
+          "loesung":  "pi / 4 * d^2 * h",
+          "rundung":  0,
+          "toleranzProzent":  0.5,
+          "erklaerung":  "V = A · h = (π/4 · d²) · h = (π/4 · {d}²) · {h} = {A} mm² · {h} mm ≈ {loesung} mm³ ≈ {V_cm3} cm³.",
+          "workedExample":  "Gegeben: d = {d} mm, h = {h} mm\nSchritt 1: A = π/4 · {d}² ≈ {A} mm²\nSchritt 2: V = A · h = {A} · {h} ≈ {loesung} mm³"
+        }
     },
     {
         "id":  "au-pn-005",
@@ -597,7 +647,7 @@
         "luecken":  [
 
                     ],
-        "loesungswert":  1404.0,
+        "loesungswert":  1401.5,
         "einheit":  "N",
         "toleranz":  10.0,
         "akzeptierteKurzantworten":  [
@@ -608,6 +658,34 @@
         "selfExplanationPrompt":  "Erkläre, warum beim Einfahren eines doppeltwirkenden Zylinders eine geringere Kraft erzeugt wird als beim Ausfahren, obwohl derselbe Druck anliegt.",
         "bildAsset":  null,
         "workedExample":  "Gegeben: d_K = 63 mm, d_St = 20 mm, p = 5 bar = 5 · 10⁵ Pa\nSchritt 1: A_ring = π/4 · (63² - 20²) = π/4 · 3569 ≈ 2803,1 mm² = 0,0028031 m²\nSchritt 2: F = p · A = 5 · 10⁵ · 0,0028031 ≈ 1402 N",
-        "schwierigkeit":  3
+        "schwierigkeit":  3,
+        "varianten":   {
+          "variablen":  {
+            "d_K":  {
+              "werte":  [40, 50, 63, 80, 100, 125]
+            },
+            "d_St":  {
+              "werte":  [12, 16, 20, 25, 32]
+            },
+            "p":  {
+              "werte":  [4, 5, 6, 7, 8]
+            }
+          },
+          "original":  {
+            "d_K":  63,
+            "d_St":  20,
+            "p":  5
+          },
+          "zwischen":  {
+            "diff":  "d_K^2 - d_St^2",
+            "A_ring":  "round(pi / 4 * (d_K^2 - d_St^2) * 10) / 10"
+          },
+          "frage":  "Ein doppeltwirkender Zylinder (Kolben-Ø {d_K} mm, Stangen-Ø {d_St} mm) wird bei p = {p} bar eingefahren. Berechnen Sie die Einfahrkraft F_ein.",
+          "loesung":  "pi / 4 * (d_K^2 - d_St^2) * p / 10",
+          "rundung":  1,
+          "toleranzProzent":  1.0,
+          "erklaerung":  "Wirksame Fläche (Ringfläche): A_ring = π/4 · (d_K² - d_St²) = π/4 · ({d_K}² - {d_St}²) = π/4 · {diff} ≈ {A_ring} mm². F = p · A ≈ {loesung} N. Beim Einfahren zählt nur die Ringfläche - die Kolbenstange nimmt Fläche weg, deshalb ist die Einfahrkraft stets kleiner als die Ausfahrkraft.",
+          "workedExample":  "Gegeben: d_K = {d_K} mm, d_St = {d_St} mm, p = {p} bar\nSchritt 1: A_ring = π/4 · ({d_K}² - {d_St}²) = π/4 · {diff} ≈ {A_ring} mm²\nSchritt 2: F = p · A ≈ {loesung} N"
+        }
     }
 ]
