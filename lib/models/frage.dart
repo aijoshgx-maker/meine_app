@@ -1,6 +1,8 @@
 // Eine einzelne Prüfungsfrage. Inhalt kommt aus assets/fragen/, der
 // Lernfortschritt (FsrsCard) wird getrennt davon in Hive gespeichert.
 
+import 'package:meine_app/models/frage_varianten.dart';
+
 class Paar {
   final String links;
   final String rechts;
@@ -73,6 +75,13 @@ class Frage {
   // Bedeutung; steht hier, damit das Feld einen Import/Export übersteht.
   final List<String> bewusstSo;
 
+  // Beschreibung, wie diese Aufgabe mit anderen Zahlen erscheinen kann.
+  //
+  // Null bei allen Fragen, die einen festen Merksatz abfragen - dort wäre
+  // Variation Unsinn. Gesetzt bei Rechen- und Nachschlageaufgaben, wo sonst
+  // das Ergebnis statt des Verfahrens auswendig gelernt wird.
+  final FrageVarianten? varianten;
+
   const Frage({
     required this.id,
     required this.bereich,
@@ -99,7 +108,53 @@ class Frage {
     this.pruefungReihenfolge,
     this.tippsAus = const [],
     this.bewusstSo = const [],
+    this.varianten,
   });
+
+  /// Kopie mit ausgetauschten Feldern.
+  ///
+  /// Gebraucht, um eine gewürfelte Variante zu bauen: Sie ist eine
+  /// gewöhnliche [Frage] mit ersetztem Text und neuem Lösungswert, damit
+  /// Bewertung, Aufdeckung und Lernfortschritt unverändert weiterlaufen.
+  Frage copyWith({
+    String? frage,
+    List<String>? akzeptierteKurzantworten,
+    List<List<String>>? luecken,
+    double? loesungswert,
+    double? toleranz,
+    String? erklaerung,
+    String? workedExample,
+  }) {
+    return Frage(
+      id: id,
+      bereich: bereich,
+      kategorie: kategorie,
+      typ: typ,
+      frage: frage ?? this.frage,
+      optionen: optionen,
+      richtigeIndizes: richtigeIndizes,
+      reihenfolge: reihenfolge,
+      paare: paare,
+      luecken: luecken ?? this.luecken,
+      loesungswert: loesungswert ?? this.loesungswert,
+      einheit: einheit,
+      toleranz: toleranz ?? this.toleranz,
+      akzeptierteKurzantworten:
+          akzeptierteKurzantworten ?? this.akzeptierteKurzantworten,
+      wahr: wahr,
+      erklaerung: erklaerung ?? this.erklaerung,
+      kurzerklaerung: kurzerklaerung,
+      selfExplanationPrompt: selfExplanationPrompt,
+      bildAsset: bildAsset,
+      workedExample: workedExample ?? this.workedExample,
+      schwierigkeit: schwierigkeit,
+      pruefung: pruefung,
+      pruefungReihenfolge: pruefungReihenfolge,
+      tippsAus: tippsAus,
+      bewusstSo: bewusstSo,
+      varianten: varianten,
+    );
+  }
 
   factory Frage.fromJson(Map<String, dynamic> json) {
     List<String> strList(dynamic v) =>
@@ -135,6 +190,11 @@ class Frage {
       pruefungReihenfolge: json['pruefungReihenfolge'] as int?,
       tippsAus: strList(json['tippsAus']),
       bewusstSo: strList(json['bewusstSo']),
+      varianten: json['varianten'] == null
+          ? null
+          : FrageVarianten.fromJson(
+              (json['varianten'] as Map).cast<String, dynamic>(),
+            ),
     );
   }
 
@@ -164,6 +224,7 @@ class Frage {
     'pruefungReihenfolge': pruefungReihenfolge,
     if (tippsAus.isNotEmpty) 'tippsAus': tippsAus,
     if (bewusstSo.isNotEmpty) 'bewusstSo': bewusstSo,
+    if (varianten != null) 'varianten': varianten!.toJson(),
   };
 }
 

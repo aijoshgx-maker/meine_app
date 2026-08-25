@@ -9,6 +9,12 @@
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
+
+import 'package:meine_app/core/formel/formel.dart';
+import 'package:meine_app/core/quiz/frage_variante.dart';
+import 'package:meine_app/models/frage.dart';
+import 'package:meine_app/models/frage_varianten.dart';
 
 const erlaubteTypen = {
   'single',
@@ -542,6 +548,224 @@ void _validiereFrage(
       }
     }
   }
+
+  _pruefeVarianten(datei, id, f);
+}
+
+/// Prüft die Beschreibung einer variierenden Aufgabe.
+///
+/// Hier entscheidet sich, ob die Umstellung verlässlich ist. Eine falsch
+/// abgeschriebene Formel fällt sonst nirgends auf - sie sieht für den
+/// Lernenden aus wie eine Aufgabe, die er selbst falsch gerechnet hat.
+///
+/// Bewusst über den echten Produktionscode ([baueVariante], [wuerfleVariante])
+/// statt über eine Nachbildung: Geprüft werden soll, was die App wirklich
+/// rechnet.
+void _pruefeVarianten(String datei, String id, Map<String, dynamic> f) {
+  if (f['varianten'] == null) return;
+
+  final Frage frage;
+  final FrageVarianten v;
+  try {
+    frage = Frage.fromJson(f);
+    v = frage.varianten!;
+  } catch (e) {
+    fehler(datei, id, 'varianten: nicht lesbar ($e)');
+    return;
+  }
+
+  // --- Quelle ---------------------------------------------------------
+  if (v.variablen.isEmpty && !v.istTabelle) {
+    fehler(datei, id, 'varianten: braucht "variablen" oder "zeilen".');
+    return;
+  }
+  if (v.variablen.isNotEmpty && v.istTabelle) {
+    fehler(datei, id, 'varianten: "variablen" und "zeilen" schließen sich aus.');
+    return;
+  }
+
+  if (v.istTabelle) {
+    if (v.spalten.isEmpty) {
+      fehler(datei, id, 'varianten: "zeilen" ohne "spalten".');
+      return;
+    }
+    for (var i = 0; i < v.zeilen.length; i++) {
+      if (v.zeilen[i].length != v.spalten.length) {
+        fehler(
+          datei,
+          id,
+          'varianten: Zeile $i hat ${v.zeilen[i].length} Werte, '
+          '${v.spalten.length} Spalten sind deklariert.',
+        );
+      }
+    }
+    if (v.zeilen.length < 2) {
+      warnung(
+        datei,
+        id,
+        'varianten: nur eine Zeile - die Aufgabe variiert dann gar nicht.',
+      );
+    }
+  } else {
+    for (final e in v.variablen.entries) {
+      final problem = e.value.fehler;
+      if (problem != null) {
+        fehler(datei, id, 'varianten: Variable "${e.key}" $problem.');
+      }
+    }
+  }
+
+  // --- original -------------------------------------------------------
+  final gebraucht = v.istTabelle
+      ? v.spalten.toSet()
+      : v.variablen.keys.toSet();
+  final fehlendImOriginal = gebraucht.difference(v.original.keys.toSet());
+  if (fehlendImOriginal.isNotEmpty) {
+    fehler(
+      datei,
+      id,
+      'varianten: "original" nennt ${fehlendImOriginal.join(", ")} nicht. '
+      'Ohne die Originalwerte kann der Testlauf die Aufgabe nicht im '
+      'Prüfungswortlaut zeigen.',
+    );
+    return;
+  }
+
+  // --- Formeln --------------------------------------------------------
+  final bekannt = {...gebraucht};
+  var formelnOk = true;
+  void pruefeFormel(String name, String formel) {
+    try {
+      final unbekannt = variablenIn(formel).difference(bekannt);
+      if (unbekannt.isNotEmpty) {
+        formelnOk = false;
+        fehler(
+          datei,
+          id,
+          'varianten: $name greift auf ${unbekannt.join(", ")} zu - '
+          'nirgends deklariert.',
+        );
+      }
+    } on FormelException catch (e) {
+      formelnOk = false;
+      fehler(datei, id, 'varianten: $name ist keine gültige Formel (${e.nachricht}).');
+    }
+  }
+
+  for (final e in v.zwischen.entries) {
+    pruefeFormel('zwischen.${e.key}', e.value);
+    bekannt.add(e.key);
+  }
+  if (v.loesung != null) pruefeFormel('loesung', v.loesung!);
+
+  // --- Platzhalter ----------------------------------------------------
+  final erlaubt = {...bekannt, if (v.loesung != null) 'loesung'};
+  final platzhalter = RegExp(r'\{([A-Za-z_][A-Za-z0-9_]*)\}');
+  void pruefeVorlage(String name, String? vorlage) {
+    if (vorlage == null) return;
+    for (final treffer in platzhalter.allMatches(vorlage)) {
+      final gesucht = treffer.group(1)!;
+      if (!erlaubt.contains(gesucht)) {
+        formelnOk = false;
+        fehler(datei, id, 'varianten: $name nutzt {$gesucht} - nicht belegt.');
+      }
+    }
+  }
+
+  pruefeVorlage('frage', v.frage);
+  pruefeVorlage('erklaerung', v.erklaerung);
+  pruefeVorlage('workedExample', v.workedExample);
+  for (var i = 0; i < v.akzeptierteKurzantworten.length; i++) {
+    pruefeVorlage('akzeptierteKurzantworten[$i]', v.akzeptierteKurzantworten[i]);
+  }
+  for (var i = 0; i < v.luecken.length; i++) {
+    for (final a in v.luecken[i]) {
+      pruefeVorlage('luecken[$i]', a);
+    }
+  }
+
+  if (!formelnOk) return;
+
+  // --- Die Probe: Originalwerte müssen die Frage wiederherstellen ------
+  final Frage original;
+  try {
+    original = baueVariante(frage, v.original);
+  } catch (e) {
+    fehler(datei, id, 'varianten: Originalwerte lassen sich nicht einsetzen ($e).');
+    return;
+  }
+
+  if (v.frage != null && original.frage != frage.frage) {
+    fehler(
+      datei,
+      id,
+      'varianten: Mit den Originalwerten entsteht ein anderer Fragetext.\n'
+      '    gespeichert: ${frage.frage}\n'
+      '    Vorlage:     ${original.frage}',
+    );
+  }
+
+  if (v.loesung != null && frage.loesungswert != null) {
+    // Streng: Auf die Stellenzahl der Frage gerundet muss exakt der Wert
+    // herauskommen, der seit jeher hinterlegt ist. Nur so fällt eine falsch
+    // abgeschriebene Formel auf - eine großzügige Toleranz würde sie decken.
+    final spielraum = 0.5 / _zehnHoch(v.rundung);
+    final abweichung = (original.loesungswert! - frage.loesungswert!).abs();
+    if (abweichung > spielraum) {
+      fehler(
+        datei,
+        id,
+        'varianten: Die Formel ergibt mit den Originalwerten '
+        '${original.loesungswert}, gespeichert ist ${frage.loesungswert}.',
+      );
+    }
+  }
+
+  // --- Und dann viele Ziehungen ---------------------------------------
+  // Fester Seed, damit ein Lauf reproduzierbar ist: Ein Fehler, der nur
+  // jedes zwanzigste Mal auftritt, wäre sonst nicht zu fassen.
+  final zufall = Random(20260825);
+  final originalPositiv = (original.loesungswert ?? 1) > 0;
+
+  for (var i = 0; i < 200; i++) {
+    final Frage gezogen;
+    try {
+      gezogen = wuerfleVariante(frage, zufall);
+    } catch (e) {
+      fehler(datei, id, 'varianten: Ziehung $i schlägt fehl ($e).');
+      return;
+    }
+
+    if (gezogen.frage.contains('{')) {
+      fehler(datei, id, 'varianten: Ziehung $i lässt eine Klammer stehen: ${gezogen.frage}');
+      return;
+    }
+
+    final wert = gezogen.loesungswert;
+    if (v.loesung != null) {
+      if (wert == null || !wert.isFinite) {
+        fehler(datei, id, 'varianten: Ziehung $i ergibt keinen Zahlenwert.');
+        return;
+      }
+      if (originalPositiv && wert <= 0) {
+        fehler(
+          datei,
+          id,
+          'varianten: Ziehung $i ergibt $wert - das Original war positiv. '
+          'Die Wertebereiche lassen unsinnige Aufgaben zu.',
+        );
+        return;
+      }
+    }
+  }
+}
+
+double _zehnHoch(int n) {
+  var wert = 1.0;
+  for (var i = 0; i < n; i++) {
+    wert *= 10;
+  }
+  return wert;
 }
 
 void _pruefeOptionenBlock(

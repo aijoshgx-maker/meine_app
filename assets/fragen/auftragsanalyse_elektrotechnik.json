@@ -46,7 +46,29 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Formel: R = U / I\nR = 24 V / 0,6 A\nR = 40 Ω",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "U": {
+          "werte": [12, 24, 48, 60, 110, 120, 230]
+        },
+        "I": {
+          "von": 0.1,
+          "bis": 3.0,
+          "schritt": 0.1
+        }
+      },
+      "original": {
+        "U": 24,
+        "I": 0.6
+      },
+      "frage": "An einem Widerstand liegen {U} V an. Der fließende Strom beträgt {I} A. Berechne den Widerstandswert R.",
+      "loesung": "U / I",
+      "rundung": 2,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Nach dem Ohm'schen Gesetz gilt: R = U / I = {U} V / {I} A = {loesung} Ω.",
+      "workedExample": "Formel: R = U / I\nR = {U} V / {I} A\nR = {loesung} Ω"
+    }
   },
   {
     "id": "au-et-003",
@@ -68,7 +90,27 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Formel Parallel: 1/R_ges = 1/R1 + 1/R2\n1/R_ges = 1/100 + 1/150\nGemeinsamer Nenner 300: 1/R_ges = 3/300 + 2/300 = 5/300\nR_ges = 300/5 = 60 Ω",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "R1": {
+          "werte": [10, 15, 22, 33, 47, 68, 100, 150, 220, 330, 470, 680]
+        },
+        "R2": {
+          "werte": [10, 15, 22, 33, 47, 68, 100, 150, 220, 330, 470, 680]
+        }
+      },
+      "original": {
+        "R1": 100,
+        "R2": 150
+      },
+      "frage": "Zwei Widerstände R1 = {R1} Ω und R2 = {R2} Ω sind parallel geschaltet. Berechne den Gesamtwiderstand R_ges.",
+      "loesung": "R1 * R2 / (R1 + R2)",
+      "rundung": 2,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Bei Parallelschaltung gilt: 1/R_ges = 1/R1 + 1/R2. Zusammengefasst: R_ges = (R1 · R2)/(R1 + R2) = ({R1} · {R2})/({R1} + {R2}) = {loesung} Ω. Der Gesamtwiderstand ist immer kleiner als der kleinste Einzelwiderstand.",
+      "workedExample": "Formel Parallel: 1/R_ges = 1/R1 + 1/R2\n1/R_ges = 1/{R1} + 1/{R2}\nZusammengefasst: R_ges = (R1 · R2)/(R1 + R2)\nR_ges = ({R1} · {R2})/({R1} + {R2}) = {loesung} Ω"
+    }
   },
   {
     "id": "au-et-004",
@@ -90,7 +132,29 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Formel: P = U · I → I = P / U\nI = 1150 W / 230 V\nI = 5 A",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "U": {
+          "werte": [230, 400]
+        },
+        "P": {
+          "von": 500.0,
+          "bis": 5000.0,
+          "schritt": 50.0
+        }
+      },
+      "original": {
+        "U": 230,
+        "P": 1150
+      },
+      "frage": "Ein elektrisches Gerät nimmt bei {U} V eine Leistung von P = {P} W auf. Welcher Strom I fließt?",
+      "loesung": "P / U",
+      "rundung": 2,
+      "toleranzProzent": 2.0,
+      "erklaerung": "Elektrische Leistung: P = U · I. Umgestellt: I = P / U = {P} W / {U} V = {loesung} A.",
+      "workedExample": "Formel: P = U · I → I = P / U\nI = {P} W / {U} V\nI = {loesung} A"
+    }
   },
   {
     "id": "au-et-005",
@@ -523,7 +587,38 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "R_ges = R1 + R2 + R3 = 10 + 20 + 30 = 60 Ω\nI = U / R_ges = 120 V / 60 Ω\nI = 2 A",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "R1": {
+          "werte": [10, 15, 22, 33, 47, 68, 100, 150, 220, 330, 470, 680]
+        },
+        "R2": {
+          "werte": [10, 15, 22, 33, 47, 68, 100, 150, 220, 330, 470, 680]
+        },
+        "R3": {
+          "werte": [10, 15, 22, 33, 47, 68, 100, 150, 220, 330, 470, 680]
+        },
+        "U": {
+          "werte": [12, 24, 48, 60, 110, 120, 230]
+        }
+      },
+      "original": {
+        "R1": 10,
+        "R2": 20,
+        "R3": 30,
+        "U": 120
+      },
+      "zwischen": {
+        "R_ges": "R1 + R2 + R3"
+      },
+      "frage": "Drei Widerstände R1 = {R1} Ω, R2 = {R2} Ω, R3 = {R3} Ω sind in Reihe geschaltet. An der Gesamtschaltung liegt U = {U} V. Wie groß ist der Strom I?",
+      "loesung": "U / R_ges",
+      "rundung": 3,
+      "toleranzProzent": 2.0,
+      "erklaerung": "Reihenschaltung: R_ges = R1 + R2 + R3 = {R1} + {R2} + {R3} = {R_ges} Ω. Strom: I = U / R_ges = {U} V / {R_ges} Ω = {loesung} A. In der Reihenschaltung fließt durch alle Widerstände derselbe Strom.",
+      "workedExample": "R_ges = R1 + R2 + R3 = {R1} + {R2} + {R3} = {R_ges} Ω\nI = U / R_ges = {U} V / {R_ges} Ω\nI = {loesung} A"
+    }
   },
   {
     "id": "au-et-020",
@@ -590,7 +685,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Elektrotechnik",
     "typ": "rechnung",
-    "frage": "An einem Heizwiderstand R = 1 500 Ω wird eine elektrische Leistung P = 5 W umgesetzt. Berechnen Sie die Stromstärke I (in mA).",
+    "frage": "An einem Heizwiderstand R = 1500 Ω wird eine elektrische Leistung P = 5 W umgesetzt. Berechnen Sie die Stromstärke I (in mA).",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
@@ -607,7 +702,30 @@
     "workedExample": "P = I² · R  →  I² = P/R\nI = √(P/R) = √(5 W / 1500 Ω) = √(0,003333) ≈ 0,05774 A = 57,7 mA",
     "schwierigkeit": 2,
     "pruefung": "W22",
-    "pruefungReihenfolge": 1
+    "pruefungReihenfolge": 1,
+    "varianten": {
+      "variablen": {
+        "R": {
+          "werte": [470, 560, 680, 820, 1000, 1200, 1500, 1800, 2200, 2700]
+        },
+        "P": {
+          "werte": [2, 3, 5, 8, 10, 15, 20, 25]
+        }
+      },
+      "original": {
+        "R": 1500,
+        "P": 5
+      },
+      "zwischen": {
+        "quotient": "round(P / R * 1000000) / 1000000"
+      },
+      "frage": "An einem Heizwiderstand R = {R} Ω wird eine elektrische Leistung P = {P} W umgesetzt. Berechnen Sie die Stromstärke I (in mA).",
+      "loesung": "sqrt(P / R) * 1000",
+      "rundung": 1,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Aus P = I² · R folgt: I = √(P/R) = √({P}/{R}) = √{quotient} ≈ {loesung} mA. Die Umrechnung von A in mA erfolgt mit dem Faktor 1000.",
+      "workedExample": "P = I² · R  →  I² = P/R\nI = √(P/R) = √({P} W / {R} Ω) = √({quotient}) ≈ {loesung} mA"
+    }
   },
   {
     "id": "au-et-023",

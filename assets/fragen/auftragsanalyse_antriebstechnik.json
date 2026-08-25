@@ -41,7 +41,44 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: n₁ = 960 min⁻¹, z₁=20, z₂=60, z₃=15, z₄=45\nSchritt 1: i₁ = z₂/z₁ = 60/20 = 3\nSchritt 2: i₂ = z₄/z₃ = 45/15 = 3\nSchritt 3: i_ges = i₁ · i₂ = 3 · 3 = 9\nSchritt 4: n_ab = n₁ / i_ges = 960 / 9 ≈ 106,67 min⁻¹",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "n1": {
+          "werte": [700, 900, 960, 1000, 1400, 1450, 1500, 2800, 3000]
+        },
+        "z1": {
+          "werte": [15, 18, 20, 25]
+        },
+        "z2": {
+          "werte": [45, 54, 60, 75]
+        },
+        "z3": {
+          "werte": [12, 15, 18, 20]
+        },
+        "z4": {
+          "werte": [36, 45, 54, 60]
+        }
+      },
+      "original": {
+        "n1": 960,
+        "z1": 20,
+        "z2": 60,
+        "z3": 15,
+        "z4": 45
+      },
+      "zwischen": {
+        "i1": "z2 / z1",
+        "i2": "z4 / z3",
+        "i_ges": "i1 * i2"
+      },
+      "frage": "Ein Motor dreht mit n₁ = {n1} min⁻¹ und treibt über ein zweistufiges Getriebe eine Ausgangswelle an. Stufe 1: z₁ = {z1}, z₂ = {z2}. Stufe 2: z₃ = {z3}, z₄ = {z4}. Berechnen Sie die Abtriebsdrehzahl n_ab.",
+      "loesung": "n1 / i_ges",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Gesamtübersetzung: i_ges = i₁ · i₂ = (z₂/z₁) · (z₄/z₃) = {i1} · {i2} = {i_ges}. Abtriebsdrehzahl: n_ab = n₁/i_ges = {n1}/{i_ges} ≈ {loesung} min⁻¹.",
+      "workedExample": "Gegeben: n₁ = {n1} min⁻¹, z₁={z1}, z₂={z2}, z₃={z3}, z₄={z4}\nSchritt 1: i₁ = z₂/z₁ = {z2}/{z1} = {i1}\nSchritt 2: i₂ = z₄/z₃ = {z4}/{z3} = {i2}\nSchritt 3: i_ges = i₁ · i₂ = {i1} · {i2} = {i_ges}\nSchritt 4: n_ab = n₁ / i_ges = {n1} / {i_ges} ≈ {loesung} min⁻¹"
+    }
   },
   {
     "id": "au-at-003",
@@ -63,7 +100,29 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: P₁ = 5,5 kW, η = 0,92\nFormel: η = P₂/P₁ → P₂ = η · P₁\nRechnung: P₂ = 0,92 · 5,5 kW = 5,06 kW",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "P1": {
+          "von": 1.5,
+          "bis": 22.0,
+          "schritt": 0.1
+        },
+        "eta": {
+          "werte": [0.8, 0.82, 0.85, 0.88, 0.9, 0.92, 0.94, 0.95]
+        }
+      },
+      "original": {
+        "P1": 5.5,
+        "eta": 0.92
+      },
+      "frage": "Ein Motor liefert an der Antriebswelle eine Leistung P₁ = {P1} kW bei einem Wirkungsgrad η = {eta}. Berechnen Sie die abgegebene Nutzleistung P₂.",
+      "loesung": "eta * P1",
+      "rundung": 2,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Der Wirkungsgrad beschreibt das Verhältnis von Nutzleistung zu zugeführter Leistung: η = P₂/P₁. Umgestellt: P₂ = η · P₁ = {eta} · {P1} kW = {loesung} kW.",
+      "workedExample": "Gegeben: P₁ = {P1} kW, η = {eta}\nFormel: η = P₂/P₁ → P₂ = η · P₁\nRechnung: P₂ = {eta} · {P1} kW = {loesung} kW"
+    }
   },
   {
     "id": "au-at-004",
@@ -76,7 +135,7 @@
     "reihenfolge": [],
     "paare": [],
     "luecken": [],
-    "loesungswert": 5314.0,
+    "loesungswert": 5314.5,
     "einheit": "W",
     "toleranz": 10.0,
     "akzeptierteKurzantworten": [],
@@ -85,7 +144,33 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: n = 1450 min⁻¹ = 24,167 s⁻¹, M = 35 N·m\nSchritt 1: ω = 2π · n = 2π · 24,167 ≈ 151,84 rad/s\nSchritt 2: P = M · ω = 35 · 151,84 ≈ 5314 W ≈ 5,31 kW",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "n": {
+          "werte": [700, 900, 960, 1000, 1400, 1450, 1500, 2800, 3000]
+        },
+        "M": {
+          "von": 5.0,
+          "bis": 120.0,
+          "schritt": 5.0
+        }
+      },
+      "original": {
+        "n": 1450,
+        "M": 35
+      },
+      "zwischen": {
+        "n_s": "round(n / 60 * 1000) / 1000",
+        "omega": "round(2 * pi * n / 60 * 100) / 100"
+      },
+      "frage": "Ein Elektromotor dreht mit n = {n} min⁻¹ und gibt ein Drehmoment M = {M} N·m ab. Berechnen Sie die abgegebene mechanische Leistung P.",
+      "loesung": "M * 2 * pi * n / 60",
+      "rundung": 1,
+      "toleranzProzent": 0.2,
+      "erklaerung": "P = M · ω = M · 2π · n. Mit n in s⁻¹: n = {n}/60 s⁻¹ ≈ {n_s} s⁻¹. ω = 2π · {n_s} ≈ {omega} rad/s. P = {M} N·m · {omega} rad/s ≈ {loesung} W.",
+      "workedExample": "Gegeben: n = {n} min⁻¹ = {n_s} s⁻¹, M = {M} N·m\nSchritt 1: ω = 2π · n = 2π · {n_s} ≈ {omega} rad/s\nSchritt 2: P = M · ω = {M} · {omega} ≈ {loesung} W"
+    }
   },
   {
     "id": "au-at-005",

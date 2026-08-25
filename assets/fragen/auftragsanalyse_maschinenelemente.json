@@ -138,7 +138,34 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: n₁ = 1450 min⁻¹, z₁ = 18, z₂ = 54\nSchritt 1: i = z₂/z₁ = 54/18 = 3\nSchritt 2: n₂ = n₁/i = 1450 min⁻¹ / 3 = 483,33 min⁻¹",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "n1": {
+          "werte": [700, 900, 960, 1000, 1400, 1450, 1500, 2800, 3000]
+        },
+        "z1": {
+          "werte": [15, 18, 20, 22, 25]
+        },
+        "z2": {
+          "werte": [45, 54, 60, 66, 75]
+        }
+      },
+      "original": {
+        "n1": 1450,
+        "z1": 18,
+        "z2": 54
+      },
+      "zwischen": {
+        "i": "z2 / z1"
+      },
+      "frage": "Ein Antriebsmotor läuft mit n₁ = {n1} min⁻¹ und treibt über ein einstufiges Zahnradgetriebe (z₁ = {z1}, z₂ = {z2}) eine Ausgangswelle an. Berechnen Sie die Abtriebsdrehzahl n₂.",
+      "loesung": "n1 * z1 / z2",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Die Abtriebsdrehzahl berechnet sich über das Übersetzungsverhältnis i = z₂/z₁ = {z2}/{z1} = {i}. Damit gilt n₂ = n₁/i = {n1}/{i} ≈ {loesung} min⁻¹.",
+      "workedExample": "Gegeben: n₁ = {n1} min⁻¹, z₁ = {z1}, z₂ = {z2}\nSchritt 1: i = z₂/z₁ = {z2}/{z1} = {i}\nSchritt 2: n₂ = n₁/i = {n1} min⁻¹ / {i} = {loesung} min⁻¹"
+    }
   },
   {
     "id": "au-me-006",
@@ -250,7 +277,29 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: F = 500 N, r = 0,04 m\nFormel: M = F · r\nRechnung: M = 500 N · 0,04 m = 20 N·m",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "F": {
+          "von": 100.0,
+          "bis": 2000.0,
+          "schritt": 50.0
+        },
+        "r": {
+          "werte": [0.02, 0.03, 0.04, 0.05, 0.06, 0.08, 0.1, 0.125]
+        }
+      },
+      "original": {
+        "F": 500,
+        "r": 0.04
+      },
+      "frage": "An einer Welle mit Radius r = {r} m wirkt eine Tangentialkraft F = {F} N. Berechnen Sie das übertragene Drehmoment M.",
+      "loesung": "F * r",
+      "rundung": 2,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Das Drehmoment berechnet sich nach M = F · r = {F} N · {r} m = {loesung} N·m. Entscheidend ist der Hebelarm: Derselbe Kraftbetrag erzeugt am doppelten Radius das doppelte Moment.",
+      "workedExample": "Gegeben: F = {F} N, r = {r} m\nFormel: M = F · r\nRechnung: M = {F} N · {r} m = {loesung} N·m"
+    }
   },
   {
     "id": "au-me-010",
@@ -423,7 +472,29 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: c = 8 N/mm, F = 120 N\nFormel: F = c · s → s = F/c\nRechnung: s = 120 N / 8 (N/mm) = 15 mm",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "c": {
+          "werte": [4, 5, 6, 8, 10, 12, 15, 20, 25]
+        },
+        "F": {
+          "von": 40.0,
+          "bis": 400.0,
+          "schritt": 10.0
+        }
+      },
+      "original": {
+        "c": 8,
+        "F": 120
+      },
+      "frage": "Eine Druckfeder hat eine Federkonstante c = {c} N/mm. Um wie viel mm wird die Feder komprimiert, wenn eine Kraft von F = {F} N aufgebracht wird?",
+      "loesung": "F / c",
+      "rundung": 2,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Das Hook'sche Gesetz für Federn lautet: F = c · s, umgestellt: s = F/c = {F} N / {c} N/mm = {loesung} mm. Der Federweg wächst linear mit der Kraft, solange die Feder im elastischen Bereich bleibt.",
+      "workedExample": "Gegeben: c = {c} N/mm, F = {F} N\nFormel: F = c · s → s = F/c\nRechnung: s = {F} N / {c} (N/mm) = {loesung} mm"
+    }
   },
   {
     "id": "au-me-016",
@@ -807,7 +878,36 @@
     "workedExample": "i = z₁/z₂ = 66/18 = 3,667\nn₂ = n₁ · i = 750 · 3,667 = 2 750 min⁻¹",
     "schwierigkeit": 2,
     "pruefung": "S19",
-    "pruefungReihenfolge": 12
+    "pruefungReihenfolge": 12,
+    "varianten": {
+      "variablen": {
+        "z1": {
+          "werte": [66]
+        },
+        "z2": {
+          "werte": [18]
+        },
+        "n1": {
+          "von": 400.0,
+          "bis": 1600.0,
+          "schritt": 50.0
+        }
+      },
+      "original": {
+        "z1": 66,
+        "z2": 18,
+        "n1": 750
+      },
+      "zwischen": {
+        "i": "round(z1 / z2 * 1000) / 1000"
+      },
+      "frage": "Das Schieberadgetriebe (S19) hat in Gangstufe 1 die Zahnzahlen z₁={z1} (Antrieb) und z₂={z2} (Spindel). Der Antrieb dreht mit n₁ = {n1} min⁻¹. Welche Drehzahl n₂ (in min⁻¹) erreicht die Spindel?",
+      "loesung": "n1 * z1 / z2",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Übersetzung: i = z₁/z₂ = {z1}/{z2} = {i}. Ausgangsdrehzahl: n₂ = n₁ · z₁/z₂ = {n1} · {z1}/{z2} = {loesung} min⁻¹. Da z₁ > z₂ (große Zähnezahl treibt kleine an), liegt eine Übersetzung ins Schnelle vor.",
+      "workedExample": "i = z₁/z₂ = {z1}/{z2} = {i}\nn₂ = n₁ · z₁/z₂ = {n1} · {z1}/{z2} = {loesung} min⁻¹"
+    }
   },
   {
     "id": "au-me-031",

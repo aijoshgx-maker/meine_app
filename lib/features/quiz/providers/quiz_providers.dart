@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/matching/antwort_matcher.dart';
+import '../../../core/quiz/frage_variante.dart';
 import '../../../core/quiz/options_shuffle.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart';
 import '../../../data/attempt_history_store.dart';
@@ -21,6 +22,15 @@ export '../../../models/konfidenz.dart';
 export 'quiz_modus.dart';
 
 final quizFragenAuswahlProvider = Provider((ref) => QuizFragenAuswahl());
+
+/// Zufallsquelle für die Aufgabenvarianten.
+///
+/// Eigener Provider, damit ein Test einen festen Seed setzen kann - sonst
+/// müsste er darauf hoffen, dass zwei Ziehungen zufällig verschieden
+/// ausfallen.
+final variantenZufallProvider = Provider<math.Random Function()>(
+  (ref) => math.Random.new,
+);
 
 // Fragen des aktiven Kurses. Wechselt der Kurs, lädt hier alles neu -
 // inklusive aller abgeleiteten Provider (Session, Dashboard, Themen).
@@ -221,7 +231,7 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     final kartenstaende = ref
         .read(fsrsCardStoreProvider)
         .alleKartenstaende(_kursId);
-    final fragen = ref
+    final ausgewaehlt = ref
         .read(quizFragenAuswahlProvider)
         .waehleFragen(
           modus,
@@ -229,6 +239,24 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
           kartenstaende: kartenstaende,
           zufall: math.Random(),
         );
+
+    // Rechen- und Nachschlageaufgaben bekommen hier ihre Zahlen. Im Testlauf
+    // die originalen: Dort ist der authentische Prüfungsbogen der Zweck,
+    // überall sonst soll das Verfahren geübt werden und nicht das Ergebnis.
+    //
+    // Gewürfelt wird einmal beim Aufbau der Session. Dadurch zeigt eine
+    // zurückgestellte Frage ("Nochmal") dieselbe Aufgabe noch einmal - man
+    // bekommt die, an der man gescheitert ist.
+    final variantenZufall = ref.read(variantenZufallProvider)();
+    final fragen = [
+      for (final frage in ausgewaehlt)
+        wuerfleVariante(
+          frage,
+          variantenZufall,
+          originalwerte: modus.art == QuizArt.pruefungssimulation,
+        ),
+    ];
+
     final antwort = fragen.isEmpty
         ? const AntwortZustand()
         : AntwortZustand.fuerFrage(fragen.first, math.Random());
