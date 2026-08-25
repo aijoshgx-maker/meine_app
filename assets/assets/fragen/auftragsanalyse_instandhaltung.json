@@ -208,7 +208,37 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "1) Planzeit = 480 - 20 (Wartung) = 460 Min\n2) Betriebszeit = 460 - 60 (Störung) = 400 Min\n3) V = 400/460 × 100 ≈ 86,96 %",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "schicht": {
+          "werte": [420, 450, 480, 510, 540]
+        },
+        "wartung": {
+          "werte": [10, 15, 20, 25, 30, 40]
+        },
+        "stoerung": {
+          "von": 20.0,
+          "bis": 120.0,
+          "schritt": 5.0
+        }
+      },
+      "original": {
+        "schicht": 480,
+        "wartung": 20,
+        "stoerung": 60
+      },
+      "zwischen": {
+        "planzeit": "schicht - wartung",
+        "betriebszeit": "schicht - wartung - stoerung"
+      },
+      "frage": "Eine Anlage lief in einer Schicht von {schicht} Minuten. Davon war sie {stoerung} Minuten wegen Störungen ausgefallen. Die geplante Wartungsunterbrechung betrug {wartung} Minuten. Berechne die Verfügbarkeit V in %.",
+      "loesung": "(schicht - wartung - stoerung) / (schicht - wartung) * 100",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Verfügbarkeit V = (Betriebszeit / Planzeit) × 100. Planzeit = {schicht} - {wartung} (geplante Wartung zählt nicht als Ausfall) = {planzeit} Min. Betriebszeit = {planzeit} - {stoerung} (Störung) = {betriebszeit} Min. V = {betriebszeit}/{planzeit} × 100 ≈ {loesung} %.",
+      "workedExample": "1) Planzeit = {schicht} - {wartung} (Wartung) = {planzeit} Min\n2) Betriebszeit = {planzeit} - {stoerung} (Störung) = {betriebszeit} Min\n3) V = {betriebszeit}/{planzeit} × 100 ≈ {loesung} %"
+    }
   },
   {
     "id": "au-ih-008",
@@ -370,7 +400,37 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "1) Betriebszeit (ohne Stillstand) = 1000 h - 20 h = 980 h\n2) MTBF = 980 h / 5 Ausfälle = 196 h",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "stunden": {
+          "werte": [500, 800, 1000, 1200, 1500, 2000, 2500]
+        },
+        "ausfaelle": {
+          "werte": [3, 4, 5, 6, 8, 10]
+        },
+        "reparatur": {
+          "von": 10.0,
+          "bis": 60.0,
+          "schritt": 5.0
+        }
+      },
+      "original": {
+        "stunden": 1000,
+        "ausfaelle": 5,
+        "reparatur": 20
+      },
+      "zwischen": {
+        "betrieb": "stunden - reparatur",
+        "ohne_abzug": "round(stunden / ausfaelle * 10) / 10"
+      },
+      "frage": "Eine Anlage hatte in {stunden} Betriebsstunden {ausfaelle} Ausfälle. Die gesamte Reparaturdauer betrug {reparatur} Stunden. Berechne den MTBF in Stunden.",
+      "loesung": "(stunden - reparatur) / ausfaelle",
+      "rundung": 1,
+      "toleranzProzent": 3.0,
+      "erklaerung": "MTBF = Betriebszeit / Anzahl Ausfälle. Zieht man die Reparaturzeit von der Betriebszeit ab: Betriebszeit = {stunden} h - {reparatur} h = {betrieb} h, MTBF = {betrieb} h / {ausfaelle} = {loesung} h. Ohne Abzug der Reparaturzeit (reine Kalenderzeit-Methode): MTBF = {stunden} h / {ausfaelle} = {ohne_abzug} h. Beide Rechenwege sind gebräuchlich und liegen innerhalb der Toleranz.",
+      "workedExample": "1) Betriebszeit (ohne Stillstand) = {stunden} h - {reparatur} h = {betrieb} h\n2) MTBF = {betrieb} h / {ausfaelle} Ausfälle = {loesung} h"
+    }
   },
   {
     "id": "au-ih-014",
@@ -698,6 +758,32 @@
     "workedExample": "t_Anlage = 16 / 5 = 3,2 Tage\nt_gesamt = 6 · 3,2 = 19,2 Tage",
     "schwierigkeit": 1,
     "pruefung": "S18",
-    "pruefungReihenfolge": 13
+    "pruefungReihenfolge": 13,
+    "varianten": {
+      "variablen": {
+        "anlagen": {
+          "werte": [4, 5, 6, 8, 10]
+        },
+        "tage": {
+          "von": 8.0,
+          "bis": 36.0,
+          "schritt": 2.0
+        }
+      },
+      "original": {
+        "anlagen": 5,
+        "tage": 16
+      },
+      "zwischen": {
+        "je": "round(tage / anlagen * 100) / 100",
+        "neu": "anlagen + 1"
+      },
+      "frage": "Ein Wartungsteam wartet planmäßig {anlagen} Verladeanlagen (S18) in {tage} Arbeitstagen. Eine baugleiche {neu}. Anlage soll künftig mitgewartet werden. Wie viele Arbeitstage dauert der gesamte Wartungszyklus dann?",
+      "loesung": "tage / anlagen * (anlagen + 1)",
+      "rundung": 2,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Aufwand pro Anlage: t_Anlage = {tage} / {anlagen} = {je} Tage/Anlage. Für {neu} Anlagen: t_gesamt = {neu} · {je} = {loesung} Tage. Der Wartungszyklus verlängert sich um {je} Tage. Dies ist lineare Kapazitätsplanung: gleiche Teamstärke, gleicher Aufwand je Anlage → Zeit wächst proportional zur Anlagenzahl.",
+      "workedExample": "t_Anlage = {tage} / {anlagen} = {je} Tage\nt_gesamt = {neu} · {je} = {loesung} Tage"
+    }
   }
 ]
