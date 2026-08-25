@@ -12,8 +12,9 @@ import varianten_au
 import varianten_ft
 import varianten_hy
 import varianten_tb
+import varianten_wi
 
-MODULE = [varianten_au, varianten_ft, varianten_hy, varianten_tb]
+MODULE = [varianten_au, varianten_ft, varianten_hy, varianten_tb, varianten_wi]
 
 VARIANTEN = {}
 KORREKTUREN = []

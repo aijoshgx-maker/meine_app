@@ -288,7 +288,38 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "1) Nach Rabatt (20%): 1500 × (1-0,20) = 1500 × 0,80 = 1200 €\n2) Nach Skonto (2%): 1200 × (1-0,02) = 1200 × 0,98 = 1176 €",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "liste": {
+          "von": 500.0,
+          "bis": 5000.0,
+          "schritt": 100.0
+        },
+        "rabatt": {
+          "werte": [5, 10, 15, 20, 25, 30]
+        },
+        "skonto": {
+          "werte": [1, 2, 3]
+        }
+      },
+      "original": {
+        "liste": 1500,
+        "rabatt": 20,
+        "skonto": 2
+      },
+      "zwischen": {
+        "nach_rabatt": "round(liste * (100 - rabatt) / 100 * 100) / 100",
+        "r_faktor": "(100 - rabatt) / 100",
+        "s_faktor": "(100 - skonto) / 100"
+      },
+      "frage": "Listenpreis: {liste} € netto. Händlerrabatt: {rabatt}%. Skonto bei Zahlung innerhalb 10 Tagen: {skonto}%. Berechne den Rechnungsbetrag nach Abzug aller Nachlässe (netto) in €.",
+      "loesung": "liste * (100 - rabatt) / 100 * (100 - skonto) / 100",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "1) Rabatt: {liste} × {r_faktor} = {nach_rabatt} € (nach Rabatt). 2) Skonto: {nach_rabatt} × {s_faktor} = {loesung} € (nach Skonto). Reihenfolge immer: Rabatt zuerst, dann Skonto auf den rabattierten Betrag. Rabatt ist ein Preisabschlag auf den Listenpreis, Skonto ein Zahlungsabzug für schnelle Zahlung.",
+      "workedExample": "1) Nach Rabatt ({rabatt}%): {liste} × {r_faktor} = {nach_rabatt} €\n2) Nach Skonto ({skonto}%): {nach_rabatt} × {s_faktor} = {loesung} €"
+    }
   },
   {
     "id": "wi-kv-011",
@@ -509,7 +540,30 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Wirtschaftlichkeit = Ertrag / Aufwand\n= 3 000 000 / 2 000 000 = 1,5",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "aufwand": {
+          "werte": [1, 1.5, 2, 2.5, 3, 4, 5, 8]
+        },
+        "faktor": {
+          "werte": [1.1, 1.2, 1.25, 1.4, 1.5, 1.6, 1.8, 2]
+        }
+      },
+      "original": {
+        "aufwand": 2,
+        "faktor": 1.5
+      },
+      "zwischen": {
+        "ertrag": "round(aufwand * faktor * 100) / 100"
+      },
+      "frage": "Die AllPrint GmbH hat im Geschäftsjahr Erträge von {ertrag} Mio. Euro und einen Aufwand von {aufwand} Mio. Euro. Wie groß ist die Wirtschaftlichkeit des Unternehmens?",
+      "loesung": "round(aufwand * faktor * 100) / 100 / aufwand",
+      "rundung": 2,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Wirtschaftlichkeit = Ertrag / Aufwand = {ertrag} Mio. / {aufwand} Mio. = {loesung}. Ein Wert > 1 bedeutet: Erträge übersteigen den Aufwand → das Unternehmen wirtschaftet rentabel. Der Wert {loesung} bedeutet: für jeden Euro Aufwand werden {loesung} Euro Ertrag erwirtschaftet.",
+      "workedExample": "Wirtschaftlichkeit = Ertrag / Aufwand\n= {ertrag} / {aufwand} = {loesung}"
+    }
   },
   {
     "id": "wi-kv-020",
@@ -546,7 +600,7 @@
     "bereich": "wiso",
     "kategorie": "Kaufvertragsrecht",
     "typ": "rechnung",
-    "frage": "Eine Bestellung für Bohrstations-Zubehör hat einen Nettobetrag von 1 000 €. Bei Zahlung innerhalb von 10 Tagen gewährt der Lieferant 3 % Skonto. Wie viel Euro zahlt der Betrieb bei Nutzung des Skontos?",
+    "frage": "Eine Bestellung für Bohrstations-Zubehör hat einen Nettobetrag von 1000 €. Bei Zahlung innerhalb von 10 Tagen gewährt der Lieferant 3 % Skonto. Wie viel Euro zahlt der Betrieb bei Nutzung des Skontos?",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
@@ -561,7 +615,32 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Skonto = 1 000 · 0,03 = 30 €\nZahlbetrag = 1 000 − 30 = 970 €",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "netto": {
+          "von": 400.0,
+          "bis": 8000.0,
+          "schritt": 50.0
+        },
+        "skonto": {
+          "werte": [1, 2, 2.5, 3]
+        }
+      },
+      "original": {
+        "netto": 1000,
+        "skonto": 3
+      },
+      "zwischen": {
+        "abzug": "round(netto * skonto / 100 * 100) / 100"
+      },
+      "frage": "Eine Bestellung für Bohrstations-Zubehör hat einen Nettobetrag von {netto} €. Bei Zahlung innerhalb von 10 Tagen gewährt der Lieferant {skonto} % Skonto. Wie viel Euro zahlt der Betrieb bei Nutzung des Skontos?",
+      "loesung": "netto * (100 - skonto) / 100",
+      "rundung": 2,
+      "toleranzProzent": 0.1,
+      "erklaerung": "Skonto = {netto} € · {skonto} % = {abzug} €. Zahlbetrag = {netto} € − {abzug} € = {loesung} €. Skonto ist ein Preisnachlass bei fristgerechter Zahlung. Der effektive Jahreszins des Skontos ist meist sehr hoch, daher lohnt sich seine Inanspruchnahme fast immer.",
+      "workedExample": "Skonto = {netto} · {skonto}/100 = {abzug} €\nZahlbetrag = {netto} − {abzug} = {loesung} €"
+    }
   },
   {
     "id": "wi-kv-022",

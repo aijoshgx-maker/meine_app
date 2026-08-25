@@ -6,6 +6,53 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ## [Unveröffentlicht]
 
+### Hinzugefügt
+
+- **Variierende Aufgaben.** Wer eine Rechenaufgabe zum dritten Mal sieht,
+  erinnert sich an „5,06" statt an den Rechenweg. Die Karte gilt dann als
+  sicher, das Verfahren sitzt aber nicht. **86 der 97 Rechenaufgaben**
+  erscheinen jetzt bei jedem Durchgang mit anderen Zahlen.
+
+  Fragen ohne das neue Feld `varianten` bleiben unverändert — Fristen,
+  Paragrafen und Definitionen dürfen nicht variieren, dort *ist* der Wert
+  der Lernstoff.
+
+  **Im Testlauf stehen die Originalwerte.** Dort ist der authentische
+  Prüfungsbogen der Zweck; gewürfelt wird in freier Übung und Wiederholung.
+  Eine zurückgestellte Frage („Nochmal") zeigt dieselbe Aufgabe noch einmal —
+  man bekommt die, an der man gescheitert ist.
+
+  **Der Lernfortschritt bleibt heil.** Die Variante ist eine gewöhnliche
+  Frage mit derselben ID; Bewertung, Aufdeckung, Statistik und FSRS laufen
+  unverändert weiter. Keine Datenmigration.
+
+  Wo Werte zusammengehören, kommen sie aus einer Tabellenzeile statt aus dem
+  Zufallsgenerator: Steigung und Flankendurchmesser eines Gewindes, Nennmaß
+  und Grundabmaß einer Passung, Nennleistung und Nenndrehzahl eines Motors.
+
+  **Elf Aufgaben variieren nicht**, jede mit Begründung in
+  `tool/varianten_*.py`: sieben zeigen eine Zeichnung (die Zahlen stehen im
+  Bild), bei zwei ist jede gegebene Größe eine Eigenschaft der benannten
+  Baugruppe, und zwei müssten Normtabellen bzw. Gesetzestext nachbilden —
+  eine falsche Passungstabelle wäre schlimmer als eine Aufgabe, die sich
+  nicht ändert.
+
+  Abgesichert durch den Validator: Setzt man die hinterlegten Originalwerte
+  ein, muss wieder genau der gespeicherte Fragetext und genau der
+  gespeicherte Lösungswert herauskommen. Dazu 200 Ziehungen je Aufgabe gegen
+  unlösbare Ergebnisse. Der Gurt hat während der Umstellung **elf Fehler
+  gefunden** — darunter eine Spannweiten-Aufgabe, bei der alle fünf
+  Messwerte zusammenfallen konnten.
+
+  Format und Regeln stehen in `docs/FRAGENFORMAT.md`.
+
+- **Neun Datenkorrekturen**, alle vom Validator ausgelöst: acht
+  Ziffernguppierungen mit Leerzeichen bzw. ein Tausenderpunkt in Fragetexten
+  (sonst nirgends im Bestand) und zwei Lösungswerte, die aus dem eigenen
+  Lösungsweg gerundet abgelesen waren — 5314 statt 5314,5 W und 1404 statt
+  1401,5 N. Beide lagen innerhalb der Aufgabentoleranz, waren also nie
+  spürbar.
+
 ### Behoben
 
 - **Richtig gewusst, trotzdem „Falsch".** Die Freitextbewertung verglich

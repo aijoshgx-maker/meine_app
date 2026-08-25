@@ -43,7 +43,7 @@
     "bereich": "wiso",
     "kategorie": "Sozialversicherung",
     "typ": "rechnung",
-    "frage": "Brutto-Arbeitsentgelt: 3 200 €/Monat. Gesamtsozialversicherungsbeitrag (GSVB): 40% des Bruttos. Wie hoch ist der Arbeitnehmeranteil zur Sozialversicherung in €?",
+    "frage": "Brutto-Arbeitsentgelt: 3200 €/Monat. Gesamtsozialversicherungsbeitrag (GSVB): 40% des Bruttos. Wie hoch ist der Arbeitnehmeranteil zur Sozialversicherung in €?",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
@@ -58,7 +58,32 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "GSVB = 40% · 3200 € = 1280 €\nAN-Anteil = 1280 € / 2 = 640 €",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "brutto": {
+          "von": 1500.0,
+          "bis": 6000.0,
+          "schritt": 50.0
+        },
+        "satz": {
+          "werte": [40]
+        }
+      },
+      "original": {
+        "brutto": 3200,
+        "satz": 40
+      },
+      "zwischen": {
+        "gsvb": "round(brutto * satz / 100 * 100) / 100"
+      },
+      "frage": "Brutto-Arbeitsentgelt: {brutto} €/Monat. Gesamtsozialversicherungsbeitrag (GSVB): {satz}% des Bruttos. Wie hoch ist der Arbeitnehmeranteil zur Sozialversicherung in €?",
+      "loesung": "brutto * satz / 100 / 2",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "GSVB = {satz}% × {brutto} = {gsvb} €. Davon trägt der AN die Hälfte: {gsvb} / 2 = {loesung} €. Der AG zahlt ebenfalls {loesung} €. Tatsächlicher Satz 2026: KV ~14,6%, PV ~3,6%, RV 18,6%, AV 2,6% = gesamt ~39,4% (je hälftig, außer UV = nur AG).",
+      "workedExample": "GSVB = {satz}% · {brutto} € = {gsvb} €\nAN-Anteil = {gsvb} € / 2 = {loesung} €"
+    }
   },
   {
     "id": "wi-sv-003",
@@ -557,7 +582,35 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gesamtbeitrag = 900 · 0,175 = 157,50 €\nAN-Anteil = 157,50 / 2 = 78,75 €",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "brutto": {
+          "von": 650.0,
+          "bis": 1500.0,
+          "schritt": 25.0
+        },
+        "satz": {
+          "werte": [17.5]
+        }
+      },
+      "original": {
+        "brutto": 900,
+        "satz": 17.5
+      },
+      "stellen": {
+        "satz": 1
+      },
+      "zwischen": {
+        "gesamt": "round(brutto * satz / 100 * 100) / 100"
+      },
+      "frage": "Ein Auszubildender verdient monatlich {brutto} € brutto. Der GKV-Beitragssatz beträgt insgesamt {satz} % (14,6 % allgemeiner Satz + 2,9 % durchschnittlicher Zusatzbeitrag 2026). AG und AN tragen je 50 %. Wie hoch ist der monatliche GKV-Anteil des Arbeitnehmers (in €)?",
+      "loesung": "brutto * satz / 100 / 2",
+      "rundung": 2,
+      "toleranzProzent": 0.2,
+      "erklaerung": "Gesamtbeitrag = {brutto} € · {satz} % = {gesamt} €. AN-Anteil = {gesamt} / 2 = {loesung} €.",
+      "workedExample": "Gesamtbeitrag = {brutto} · {satz}/100 = {gesamt} €\nAN-Anteil = {gesamt} / 2 = {loesung} €"
+    }
   },
   {
     "id": "wi-sv-022",
@@ -618,7 +671,7 @@
     "bereich": "wiso",
     "kategorie": "Sozialversicherung",
     "typ": "rechnung",
-    "frage": "Paul Fleissig verdient bei der Metall AG 2.850 € brutto/Monat. Der Rentenversicherungsbeitragssatz beträgt 18,6 % (AG und AN tragen je 50 %). Wie hoch ist Pauls monatlicher Rentenversicherungsbeitrag (AN-Anteil, in €)?",
+    "frage": "Paul Fleissig verdient bei der Metall AG 2850 € brutto/Monat. Der Rentenversicherungsbeitragssatz beträgt 18,6 % (AG und AN tragen je 50 %). Wie hoch ist Pauls monatlicher Rentenversicherungsbeitrag (AN-Anteil, in €)?",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
@@ -635,6 +688,34 @@
     "workedExample": "RV-Gesamt = 2 850 · 0,186 = 530,10 €\nAN-Anteil = 530,10 / 2 = 265,05 €",
     "schwierigkeit": 2,
     "pruefung": "S18",
-    "pruefungReihenfolge": 37
+    "pruefungReihenfolge": 37,
+    "varianten": {
+      "variablen": {
+        "brutto": {
+          "von": 1800.0,
+          "bis": 6000.0,
+          "schritt": 50.0
+        },
+        "satz": {
+          "werte": [18.6]
+        }
+      },
+      "original": {
+        "brutto": 2850,
+        "satz": 18.6
+      },
+      "stellen": {
+        "satz": 1
+      },
+      "zwischen": {
+        "gesamt": "round(brutto * satz / 100 * 100) / 100"
+      },
+      "frage": "Paul Fleissig verdient bei der Metall AG {brutto} € brutto/Monat. Der Rentenversicherungsbeitragssatz beträgt {satz} % (AG und AN tragen je 50 %). Wie hoch ist Pauls monatlicher Rentenversicherungsbeitrag (AN-Anteil, in €)?",
+      "loesung": "brutto * satz / 100 / 2",
+      "rundung": 2,
+      "toleranzProzent": 0.2,
+      "erklaerung": "Gesamtbeitrag RV = {brutto} € × {satz} % = {gesamt} €. AN-Anteil (50 %) = {gesamt} / 2 = {loesung} €. Die paritätische Aufteilung gilt für GKV, RV, ALV und PV – Arbeitgeber und Arbeitnehmer tragen je 50 %. Ausnahme: Unfallversicherung – die trägt der AG allein.",
+      "workedExample": "RV-Gesamt = {brutto} · {satz}/100 = {gesamt} €\nAN-Anteil = {gesamt} / 2 = {loesung} €"
+    }
   }
 ]

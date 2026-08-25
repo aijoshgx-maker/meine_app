@@ -72,7 +72,79 @@
     "erklaerung": "Preiselastizität ε = (ΔQ/Q₀) / (ΔP/P₀) = (-200/1000) / (2/10) = -0,2 / 0,2 = -1. Betrag = 1 (einheitselastisch). |ε| > 1: elastisch (Menge reagiert stark). |ε| < 1: unelastisch (Menge reagiert kaum). |ε| = 1: einheitselastisch. Unelastische Güter: lebenswichtig, ohne Substitute (Benzin, Wasser, Medikamente).",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "ΔQ/Q₀ = (800-1000)/1000 = -0,2 (−20%)\nΔP/P₀ = (12-10)/10 = +0,2 (+20%)\nε = −0,2 / +0,2 = −1 → |ε| = 1 (einheitselastisch)",
-    "schwierigkeit": 3
+    "schwierigkeit": 3,
+    "varianten": {
+      "spalten": [
+        "p0",
+        "p1",
+        "q0",
+        "q1",
+        "klasse"
+      ],
+      "zeilen": [
+        [
+          10,
+          12,
+          1000,
+          800,
+          "einheitselastisch"
+        ],
+        [
+          20,
+          22,
+          500,
+          425,
+          "elastisch"
+        ],
+        [
+          50,
+          60,
+          200,
+          190,
+          "unelastisch"
+        ],
+        [
+          8,
+          10,
+          400,
+          300,
+          "einheitselastisch"
+        ],
+        [
+          25,
+          30,
+          1200,
+          720,
+          "elastisch"
+        ],
+        [
+          4,
+          5,
+          900,
+          855,
+          "unelastisch"
+        ]
+      ],
+      "original": {
+        "p0": 10,
+        "p1": 12,
+        "q0": 1000,
+        "q1": 800,
+        "klasse": "einheitselastisch"
+      },
+      "zwischen": {
+        "dq": "q1 - q0",
+        "dp": "p1 - p0",
+        "mengen_aend": "round((q1 - q0) / q0 * 1000) / 1000",
+        "preis_aend": "round((p1 - p0) / p0 * 1000) / 1000"
+      },
+      "frage": "Der Preis eines Produkts steigt von {p0} € auf {p1} €. Dadurch sinkt die Nachfragemenge von {q0} auf {q1} Stück. Berechne die Preiselastizität der Nachfrage (Betrag).",
+      "loesung": "abs(((q1 - q0) / q0) / ((p1 - p0) / p0))",
+      "rundung": 2,
+      "toleranzProzent": 2.0,
+      "erklaerung": "Preiselastizität ε = (ΔQ/Q₀) / (ΔP/P₀) = ({dq}/{q0}) / ({dp}/{p0}) = {mengen_aend} / {preis_aend}. Betrag = {loesung} ({klasse}). |ε| > 1: elastisch (Menge reagiert stark). |ε| < 1: unelastisch (Menge reagiert kaum). |ε| = 1: einheitselastisch.",
+      "workedExample": "ΔQ/Q₀ = ({q1}-{q0})/{q0} = {mengen_aend}\nΔP/P₀ = ({p1}-{p0})/{p0} = {preis_aend}\nε = {mengen_aend} / {preis_aend} → |ε| = {loesung} ({klasse})"
+    }
   },
   {
     "id": "wi-mp-006",

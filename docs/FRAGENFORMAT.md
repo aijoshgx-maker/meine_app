@@ -384,6 +384,136 @@ wandert in den Aufklapper.
 **Faustregel:** ein Satz, der die Frage beantwortet — nicht der Anfang einer
 Herleitung.
 
+## Variierende Aufgaben (`varianten`)
+
+Wer eine Rechenaufgabe zum dritten Mal sieht, erinnert sich an „5,06" statt
+an den Rechenweg. Die Karte gilt dann als sicher, das Verfahren sitzt aber
+nicht. Mit `varianten` erscheint die Aufgabe bei jedem Durchgang mit anderen
+Zahlen.
+
+**Das Feld ist optional und die Ausnahme.** Fragen nach einer Frist, einem
+Paragrafen, einer Werkstoffbezeichnung bekommen es nie — dort *ist* der
+konkrete Wert der Lernstoff.
+
+```json
+{
+  "id": "au-at-003",
+  "typ": "rechnung",
+  "frage": "Ein Motor liefert P₁ = 5,5 kW bei η = 0,92. Berechnen Sie P₂.",
+  "loesungswert": 5.06,
+  "einheit": "kW",
+  "toleranz": 0.05,
+  "varianten": {
+    "variablen": {
+      "P1": { "von": 1.5, "bis": 22.0, "schritt": 0.1 },
+      "eta": { "werte": [0.8, 0.85, 0.9, 0.92, 0.95] }
+    },
+    "original": { "P1": 5.5, "eta": 0.92 },
+    "frage": "Ein Motor liefert P₁ = {P1} kW bei η = {eta}. Berechnen Sie P₂.",
+    "loesung": "eta * P1",
+    "rundung": 2,
+    "toleranzProzent": 1.0,
+    "workedExample": "P₂ = η · P₁ = {eta} · {P1} kW = {loesung} kW"
+  }
+}
+```
+
+### Woher die Werte kommen
+
+**`variablen`** würfelt: entweder aus einer festen Liste (`werte`) oder aus
+einem Bereich (`von`/`bis`/`schritt`). Listen sind für alles, was nicht
+beliebig sein darf — Wirkungsgrade, Zähnezahlen, Normspannungen.
+
+**`zeilen`** + **`spalten`** ziehen eine ganze Tabellenzeile. Nötig überall
+dort, wo Werte zusammengehören: Steigung und Flankendurchmesser eines
+Gewindes, Nennmaß und Grundabmaß einer Passung, Nennleistung und Nenndrehzahl
+eines Motors.
+
+Beides lässt sich **kombinieren** — Gewinde aus der Tabelle, Drehzahl
+gewürfelt.
+
+### `original` ist Pflicht
+
+Es hält fest, mit welchen Werten die Frage ursprünglich dastand. Zwei Dinge
+hängen daran:
+
+- Der **Testlauf** zeigt damit den authentischen Prüfungsbogen. Gewürfelt
+  wird nur in freier Übung und Wiederholung.
+- Der **Validator** rechnet damit nach: Setzt man `original` ein, muss wieder
+  genau der gespeicherte Fragetext und genau der gespeicherte `loesungswert`
+  herauskommen. Eine falsch abgeschriebene Formel fällt so sofort auf.
+
+### Formeln
+
+`loesung` und die Einträge unter `zwischen` sind Rechenausdrücke:
+`+ - * / ^`, Klammern, die Konstante `pi` und die Funktionen
+`sqrt abs round floor ceil min max sin cos tan ln log`.
+
+**Winkelfunktionen rechnen in Grad**, nicht im Bogenmaß — technische
+Aufgaben geben Winkel so an.
+
+`zwischen` wird der Reihe nach ausgewertet; ein späterer Schritt darf auf
+einen früheren zugreifen. Zwei Aufgaben:
+
+1. **Zwischenergebnisse für den Lösungsweg.** Ohne sie wäre der Weg ärmer
+   als vorher.
+2. **Abhängige Größen erzeugen**, statt sie unabhängig zu würfeln. Beispiel:
+   Die Endtemperatur entsteht als `T1 + dT`, damit sie nie unter der
+   Anfangstemperatur liegt. Nach demselben Muster: die verbesserte
+   Bearbeitungszeit, der Istwert eines Regelkreises, der Verkaufspreis über
+   den variablen Kosten.
+
+### Vorlagen
+
+`frage`, `erklaerung`, `workedExample`, `akzeptierteKurzantworten` und
+`luecken` dürfen `{name}` enthalten — jede gewürfelte Variable, jede
+Tabellenspalte, jedes `zwischen` und `{loesung}`. Was nicht als Vorlage
+angegeben ist, bleibt aus der Frage unverändert stehen.
+
+Zahlen werden deutsch geschrieben und ohne nachlaufende Nullen: `5,5`, `40`,
+`106,67`. Wo die Null die Aussage ist — eine Lagerpassung von `0,090 mm` ist
+auf ein Tausendstel angegeben — hält `stellen` sie fest:
+
+```json
+"stellen": { "dd": 3 }
+```
+
+### Toleranz
+
+`toleranzProzent` skaliert mit dem Lösungswert. Bei gewürfelten Zahlen ist
+eine feste Toleranz schief: 10 W sind bei 5314 W großzügig und bei 200 W
+streng. Ohne Angabe bleibt die absolute `toleranz` der Frage gültig. Die
+eigene Rundung ist immer abgedeckt — wer den angezeigten Wert eintippt, darf
+daran nicht scheitern.
+
+### Wann eine Aufgabe **nicht** variieren darf
+
+- **Sie zeigt eine Zeichnung.** Die Zahlen stehen im Bild; im Text stünde
+  sonst etwas anderes als in der Zeichnung.
+- **Sie behauptet etwas über ein benanntes Bauteil.** Bei Prüfungsaufgaben
+  variiert nur, was die Aufgabe als gewählte Betriebsgröße einführt — der
+  Druck an einem Spannzylinder, der Volumenstrom in einem Rohr. Nie eine
+  Abmessung, Nennleistung oder Zähnezahl der genannten Baugruppe.
+- **Der Wert ist Rechtsstand.** Beitragssätze, Fristen, Staffeln aus einem
+  Gesetz. Variabel ist das Entgelt, nie der Satz.
+- **Die Zahlen kämen aus einer Normtabelle, die man nachbilden müsste.**
+  Eine falsche Passungstabelle ist schlimmer als eine Aufgabe, die sich
+  nicht ändert.
+
+### Werkzeug
+
+Die Beschreibungen stehen nach Fachgebiet getrennt in `tool/varianten_*.py`
+und werden mit
+
+```
+python tool/varianten_setzen.py
+```
+
+in die Fragendateien eingetragen. Das Skript ist wiederholt aufrufbar: Ein
+vorhandener `varianten`-Block wird ersetzt. Danach `dart run
+tool/validate_fragen.dart` — er prüft jede Formel, setzt `original` ein und
+zieht 200 Varianten je Aufgabe gegen unlösbare Ergebnisse.
+
 ## Bilder (`bildAsset`)
 
 Zwei Formen:

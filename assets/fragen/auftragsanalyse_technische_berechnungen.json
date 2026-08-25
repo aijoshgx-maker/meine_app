@@ -755,7 +755,34 @@
     "workedExample": "Δt = 50 °C − 20 °C = 30 K\nΔl = l₁ · α · Δt\nΔl = 214 mm · 0,0000161 K⁻¹ · 30 K = 0,103 mm",
     "schwierigkeit": 2,
     "pruefung": "S17",
-    "pruefungReihenfolge": 13
+    "pruefungReihenfolge": 13,
+    "varianten": {
+      "variablen": {
+        "l1": {
+          "werte": [214]
+        },
+        "T1": {
+          "werte": [10, 15, 18, 20, 22, 25]
+        },
+        "dT": {
+          "werte": [20, 25, 30, 35, 40, 50, 60]
+        }
+      },
+      "original": {
+        "l1": 214,
+        "T1": 20,
+        "dT": 30
+      },
+      "zwischen": {
+        "T2": "T1 + dT"
+      },
+      "frage": "Die Antriebswelle aus legiertem Stahl (α = 16,1 × 10⁻⁶ K⁻¹) hat eine Länge l₁ = {l1} mm und erwärmt sich im Betrieb von {T1} °C auf {T2} °C. Wie groß ist die Längenänderung Δl (in mm)?",
+      "loesung": "l1 * 0.0000161 * dT",
+      "rundung": 3,
+      "toleranzProzent": 3.0,
+      "erklaerung": "Thermische Längenänderung: Δl = l₁ · α · Δt = {l1} mm · 16,1×10⁻⁶ K⁻¹ · {dT} K = {loesung} mm. Diese Wärmedehnung muss bei der Lagergestaltung berücksichtigt werden (Fest-Loslager-Anordnung).",
+      "workedExample": "Δt = {T2} °C − {T1} °C = {dT} K\nΔl = l₁ · α · Δt\nΔl = {l1} mm · 0,0000161 K⁻¹ · {dT} K = {loesung} mm"
+    }
   },
   {
     "id": "au-tb-022",

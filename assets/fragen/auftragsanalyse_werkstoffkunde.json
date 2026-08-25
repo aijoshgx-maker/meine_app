@@ -140,7 +140,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Werkstoffkunde",
     "typ": "rechnung",
-    "frage": "Eine Stahlprobe hat im Zugversuch eine Querschnittsfläche von A₀ = 100 mm² und reißt bei einer Kraft F = 60 000 N. Berechne die Zugfestigkeit Rm in N/mm² (MPa).",
+    "frage": "Eine Stahlprobe hat im Zugversuch eine Querschnittsfläche von A₀ = 100 mm² und reißt bei einer Kraft F = 60000 N. Berechne die Zugfestigkeit Rm in N/mm² (MPa).",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
@@ -155,7 +155,30 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Rm = F_max / A₀ = 60 000 N / 100 mm² = 600 N/mm²",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "A": {
+          "werte": [20, 30, 50, 78.5, 100, 150, 200, 250]
+        },
+        "Rm": {
+          "werte": [340, 400, 450, 500, 550, 600, 700, 800, 900]
+        }
+      },
+      "original": {
+        "A": 100,
+        "Rm": 600
+      },
+      "zwischen": {
+        "F": "round(Rm * A)"
+      },
+      "frage": "Eine Stahlprobe hat im Zugversuch eine Querschnittsfläche von A₀ = {A} mm² und reißt bei einer Kraft F = {F} N. Berechne die Zugfestigkeit Rm in N/mm² (MPa).",
+      "loesung": "round(Rm * A) / A",
+      "rundung": 1,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Zugfestigkeit Rm = F_max / A₀ = {F} N / {A} mm² = {loesung} N/mm² = {loesung} MPa. Die Zugfestigkeit ist die wichtigste Werkstoffkenngröße und wird im Zugversuch nach DIN EN ISO 6892-1 ermittelt.",
+      "workedExample": "Rm = F_max / A₀ = {F} N / {A} mm² = {loesung} N/mm²"
+    }
   },
   {
     "id": "au-wk-006",
@@ -334,7 +357,27 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "ΔL = α · L₀ · ΔT = 12·10⁻⁶ K⁻¹ · 2000 mm · 50 K = 1,2 mm",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "L": {
+          "werte": [500, 800, 1000, 1500, 2000, 2500, 3000, 5000]
+        },
+        "dT": {
+          "werte": [20, 30, 40, 50, 60, 80, 100]
+        }
+      },
+      "original": {
+        "L": 2000,
+        "dT": 50
+      },
+      "frage": "Ein Stahlstab hat eine Länge von L = {L} mm und wird auf ΔT = {dT} K erwärmt. Berechne die Längenänderung ΔL in mm. (Wärmeausdehnungskoeffizient α = 12 × 10⁻⁶ K⁻¹)",
+      "loesung": "0.000012 * L * dT",
+      "rundung": 2,
+      "toleranzProzent": 3.0,
+      "erklaerung": "ΔL = α · L · ΔT = 12 × 10⁻⁶ K⁻¹ · {L} mm · {dT} K = {loesung} mm. Wärmedehnung ist in der Konstruktion wichtig: Dehnungsfugen bei Brücken und Rohrleitungen, Passungen beachten.",
+      "workedExample": "ΔL = α · L₀ · ΔT = 12·10⁻⁶ K⁻¹ · {L} mm · {dT} K = {loesung} mm"
+    }
   },
   {
     "id": "au-wk-013",

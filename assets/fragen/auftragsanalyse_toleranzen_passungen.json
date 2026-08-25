@@ -117,7 +117,38 @@
         "selfExplanationPrompt":  null,
         "bildAsset":  null,
         "workedExample":  "Gegeben: Nennmaß = 50 mm, ES = +25 µm = +0,025 mm, EI = 0 µm\nHöchstmaß G_max = Nennmaß + ES = 50 + 0,025 = 50,025 mm\nMindestmaß G_min = Nennmaß + EI = 50 + 0 = 50,000 mm\nToleranz T = G_max – G_min = 50,025 – 50,000 = 0,025 mm = 25 µm",
-        "schwierigkeit":  2
+        "schwierigkeit":  2,
+        "varianten":   {
+          "spalten":  [
+            "N",
+            "es_um"
+          ],
+          "zeilen":  [
+            [25, 21],
+            [40, 25],
+            [50, 25],
+            [60, 30],
+            [80, 30],
+            [100, 35],
+            [120, 35]
+          ],
+          "original":  {
+            "N":  50,
+            "es_um":  25
+          },
+          "zwischen":  {
+            "es_mm":  "es_um / 1000"
+          },
+          "stellen":  {
+            "es_mm":  3
+          },
+          "frage":  "Eine Bohrung ist mit Ø {N} H7 angegeben. Die Grundabmaße für H7 (Ø {N} mm) lauten: EI = 0 µm, ES = +{es_um} µm. Berechnen Sie das Höchstmaß der Bohrung in mm.",
+          "loesung":  "N + es_um / 1000",
+          "rundung":  3,
+          "toleranzProzent":  0.01,
+          "erklaerung":  "Das Höchstmaß einer Bohrung berechnet sich aus: G_max = Nennmaß + oberes Abmaß ES. Mit ES = +{es_um} µm = +{es_mm} mm: G_max = {N} + {es_mm} = {loesung} mm. Die Toleranz H7 bei Ø {N} mm beträgt {es_um} µm.",
+          "workedExample":  "Gegeben: Nennmaß = {N} mm, ES = +{es_um} µm = +{es_mm} mm, EI = 0 µm\nHöchstmaß G_max = Nennmaß + ES = {N} + {es_mm} = {loesung} mm\nMindestmaß G_min = Nennmaß + EI = {N} mm\nToleranz T = G_max – G_min = {es_mm} mm = {es_um} µm"
+        }
     },
     {
         "id":  "au-tp-004",
