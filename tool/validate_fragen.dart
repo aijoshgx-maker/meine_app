@@ -579,8 +579,14 @@ void _pruefeVarianten(String datei, String id, Map<String, dynamic> f) {
     fehler(datei, id, 'varianten: braucht "variablen" oder "zeilen".');
     return;
   }
-  if (v.variablen.isNotEmpty && v.istTabelle) {
-    fehler(datei, id, 'varianten: "variablen" und "zeilen" schließen sich aus.');
+  final doppelt = v.spalten.toSet().intersection(v.variablen.keys.toSet());
+  if (doppelt.isNotEmpty) {
+    fehler(
+      datei,
+      id,
+      'varianten: ${doppelt.join(", ")} steht in "spalten" und in '
+      '"variablen" - welcher Wert gälte?',
+    );
     return;
   }
 
@@ -599,14 +605,15 @@ void _pruefeVarianten(String datei, String id, Map<String, dynamic> f) {
         );
       }
     }
-    if (v.zeilen.length < 2) {
+    if (v.zeilen.length < 2 && v.variablen.isEmpty) {
       warnung(
         datei,
         id,
         'varianten: nur eine Zeile - die Aufgabe variiert dann gar nicht.',
       );
     }
-  } else {
+  }
+  {
     for (final e in v.variablen.entries) {
       final problem = e.value.fehler;
       if (problem != null) {
@@ -616,9 +623,7 @@ void _pruefeVarianten(String datei, String id, Map<String, dynamic> f) {
   }
 
   // --- original -------------------------------------------------------
-  final gebraucht = v.istTabelle
-      ? v.spalten.toSet()
-      : v.variablen.keys.toSet();
+  final gebraucht = {...v.spalten, ...v.variablen.keys};
   final fehlendImOriginal = gebraucht.difference(v.original.keys.toSet());
   if (fehlendImOriginal.isNotEmpty) {
     fehler(

@@ -6,11 +6,15 @@
 // Verfahren sitzt aber nicht. Dasselbe gilt fürs Nachschlagen im
 // Tabellenbuch - geübt werden soll das Nachschlagen, nicht die Zahl.
 //
-// Zwei Quellen, dieselbe Vorlagensyntax:
+// Zwei Quellen, dieselbe Vorlagensyntax - einzeln oder zusammen:
 //
 //   variablen  gewürfelte Zahlen, Lösung aus einer Formel
 //   zeilen     feste Wertegruppen aus einer Tabelle, damit nur echte
 //              Normwerte vorkommen
+//
+// Zusammen sind sie der Regelfall bei Werkzeugaufgaben: Steigung und
+// Flankendurchmesser gehören zum Gewinde und müssen zueinander passen, die
+// Drehzahl wählt der Bearbeiter frei.
 //
 // Fragen ohne dieses Feld bleiben unverändert - Fristen, Paragrafen und
 // Definitionen dürfen nicht variieren, dort IST der Wert der Lernstoff.
@@ -126,6 +130,14 @@ class FrageVarianten {
   /// Nachkommastellen des Lösungswerts.
   final int rundung;
 
+  /// Feste Nachkommastellen einzelner Werte in der Anzeige.
+  ///
+  /// Normalerweise fallen nachlaufende Nullen weg - "0,50" liest sich als
+  /// "0,5". Bei Messgrößen ist die Null aber die Aussage: Eine Aufweitung
+  /// von "0,090 mm" ist auf ein Tausendstel angegeben, "0,09 mm" nur auf
+  /// ein Hundertstel.
+  final Map<String, int> stellen;
+
   /// Toleranz in Prozent des Lösungswerts.
   ///
   /// Bei variierenden Zahlen ist eine feste Toleranz schief: 10 W sind bei
@@ -146,6 +158,7 @@ class FrageVarianten {
     this.akzeptierteKurzantworten = const [],
     this.luecken = const [],
     this.rundung = 2,
+    this.stellen = const {},
     this.toleranzProzent,
   });
 
@@ -189,6 +202,9 @@ class FrageVarianten {
           .map((l) => strListe(l))
           .toList(),
       rundung: json['rundung'] as int? ?? 2,
+      stellen: (json['stellen'] as Map? ?? {}).map(
+        (k, v) => MapEntry(k as String, v as int),
+      ),
       toleranzProzent: (json['toleranzProzent'] as num?)?.toDouble(),
     );
   }
@@ -208,21 +224,27 @@ class FrageVarianten {
       'akzeptierteKurzantworten': akzeptierteKurzantworten,
     if (luecken.isNotEmpty) 'luecken': luecken,
     'rundung': rundung,
+    if (stellen.isNotEmpty) 'stellen': stellen,
     if (toleranzProzent != null) 'toleranzProzent': toleranzProzent,
   };
 
-  /// Zieht einen Satz Werte. Bei der Tabellen-Quelle eine ganze Zeile,
-  /// sonst je Variable einen Wert.
+  /// Zieht einen Satz Werte: eine ganze Tabellenzeile, dazu je Variable
+  /// einen gewürfelten Wert.
+  ///
+  /// Beides zusammen ist der Regelfall bei Werkzeugaufgaben: Steigung und
+  /// Flankendurchmesser gehören zum Gewinde und müssen zusammenpassen, die
+  /// Drehzahl wählt der Bearbeiter frei.
   Map<String, Object> ziehe(Random zufall) {
+    final werte = <String, Object>{};
     if (istTabelle) {
       final zeile = zeilen[zufall.nextInt(zeilen.length)];
-      return {
-        for (var i = 0; i < spalten.length && i < zeile.length; i++)
-          spalten[i]: zeile[i],
-      };
+      for (var i = 0; i < spalten.length && i < zeile.length; i++) {
+        werte[spalten[i]] = zeile[i];
+      }
     }
-    return {
-      for (final e in variablen.entries) e.key: e.value.ziehe(zufall),
-    };
+    for (final e in variablen.entries) {
+      werte[e.key] = e.value.ziehe(zufall);
+    }
+    return werte;
   }
 }

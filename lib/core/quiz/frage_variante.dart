@@ -59,7 +59,11 @@ Frage baueVariante(Frage frage, Map<String, Object> werte) {
   final texte = <String, String>{
     for (final e in werte.entries)
       e.key: e.value is num
-          ? _deutsch((e.value as num).toDouble(), _maxZwischenstellen)
+          ? _deutsch(
+              (e.value as num).toDouble(),
+              varianten.stellen[e.key] ?? _maxZwischenstellen,
+              nullenBehalten: varianten.stellen.containsKey(e.key),
+            )
           : e.value.toString(),
   };
 
@@ -157,9 +161,9 @@ String _ersetze(String frageId, String vorlage, Map<String, String> werte) {
 /// Deutsche Zahlschreibweise, ohne nachlaufende Nullen.
 ///
 /// 5.5 → "5,5", 40.0 → "40", 106.666… → "106,67".
-String _deutsch(double wert, int maxStellen) {
+String _deutsch(double wert, int maxStellen, {bool nullenBehalten = false}) {
   var text = wert.toStringAsFixed(maxStellen);
-  if (text.contains('.')) {
+  if (!nullenBehalten && text.contains('.')) {
     text = text.replaceAll(RegExp(r'0+$'), '');
     text = text.replaceAll(RegExp(r'\.$'), '');
   }
