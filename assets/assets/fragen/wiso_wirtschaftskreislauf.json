@@ -158,7 +158,7 @@
     "bereich": "wiso",
     "kategorie": "Wirtschaftskreislauf",
     "typ": "rechnung",
-    "frage": "Das BIP eines Landes betrug im Vorjahr 3 000 Mrd. €. In diesem Jahr beträgt es 3 090 Mrd. €. Berechne das nominale Wirtschaftswachstum in %.",
+    "frage": "Das BIP eines Landes betrug im Vorjahr 3000 Mrd. €. In diesem Jahr beträgt es 3090 Mrd. €. Berechne das nominale Wirtschaftswachstum in %.",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": 3.0,
     "einheit": "%",
@@ -167,7 +167,31 @@
     "erklaerung": "Wachstumsrate = (BIPt - BIPt-1) / BIPt-1 × 100 = (3090 - 3000) / 3000 × 100 = 90/3000 × 100 = 3%. Nominales Wachstum: enthält Preissteigerungen. Reales Wachstum: inflationsbereinigt (deflationiert mit BIP-Deflator). Wenn Inflation 2%, dann reales Wachstum ≈ 3% - 2% = 1%.",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "Wachstum = (3090 - 3000) / 3000 × 100 = 90 / 3000 × 100 = 3%",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "vorjahr": {
+          "werte": [1200, 1500, 2000, 2500, 3000, 3500, 4000]
+        },
+        "wachstum": {
+          "werte": [0.5, 1, 1.5, 2, 2.5, 3, 4, 5]
+        }
+      },
+      "original": {
+        "vorjahr": 3000,
+        "wachstum": 3
+      },
+      "zwischen": {
+        "aktuell": "round(vorjahr * (1 + wachstum / 100))",
+        "differenz": "round(vorjahr * (1 + wachstum / 100)) - vorjahr"
+      },
+      "frage": "Das BIP eines Landes betrug im Vorjahr {vorjahr} Mrd. €. In diesem Jahr beträgt es {aktuell} Mrd. €. Berechne das nominale Wirtschaftswachstum in %.",
+      "loesung": "(round(vorjahr * (1 + wachstum / 100)) - vorjahr) / vorjahr * 100",
+      "rundung": 2,
+      "toleranzProzent": 2.0,
+      "erklaerung": "Wachstumsrate = (BIPt - BIPt-1) / BIPt-1 × 100 = ({aktuell} - {vorjahr}) / {vorjahr} × 100 = {differenz}/{vorjahr} × 100 = {loesung} %. Nominales Wachstum enthält Preissteigerungen; reales Wachstum ist inflationsbereinigt (deflationiert mit dem BIP-Deflator).",
+      "workedExample": "Wachstum = ({aktuell} - {vorjahr}) / {vorjahr} × 100 = {differenz} / {vorjahr} × 100 = {loesung} %"
+    }
   },
   {
     "id": "wi-wk-012",

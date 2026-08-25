@@ -167,7 +167,32 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: Maßstab 2:1, Zeichnungsmaß = 60 mm\nFormel: Originalmaß = Zeichnungsmaß ÷ Maßstabsfaktor\nRechnung: 60 mm ÷ 2 = 30 mm\nErgebnis: Das tatsächliche Bauteilmaß beträgt 30 mm.",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "faktor": {
+          "werte": [2, 5, 10, 20]
+        },
+        "original_mass": {
+          "von": 5.0,
+          "bis": 60.0,
+          "schritt": 5.0
+        }
+      },
+      "original": {
+        "faktor": 2,
+        "original_mass": 30
+      },
+      "zwischen": {
+        "zeichnungsmass": "faktor * original_mass"
+      },
+      "frage": "Eine technische Zeichnung hat den Maßstab {faktor}:1. Das in der Zeichnung gemessene Maß beträgt {zeichnungsmass} mm. Wie groß ist das tatsächliche Bauteilmaß?",
+      "loesung": "original_mass",
+      "rundung": 0,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Bei einem Maßstab {faktor}:1 (Vergrößerungsmaßstab) ist die Zeichnung {faktor}-mal so groß wie das Original. Das tatsächliche Maß ergibt sich durch Division: {zeichnungsmass} mm ÷ {faktor} = {loesung} mm. Maßstab M = Zeichnungsmaß / Originalmaß.",
+      "workedExample": "Gegeben: Maßstab {faktor}:1, Zeichnungsmaß = {zeichnungsmass} mm\nFormel: Originalmaß = Zeichnungsmaß ÷ Maßstabsfaktor\nRechnung: {zeichnungsmass} mm ÷ {faktor} = {loesung} mm\nErgebnis: Das tatsächliche Bauteilmaß beträgt {loesung} mm."
+    }
   },
   {
     "id": "au-tz-008",
@@ -189,7 +214,32 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: Originallänge = 250 mm, Maßstab 1:5\nFormel: Zeichnungsmaß = Originalmaß ÷ Nenner\nRechnung: 250 mm ÷ 5 = 50 mm\nErgebnis: Die Zeichnungsdarstellung ist 50 mm lang.",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "faktor": {
+          "werte": [2, 5, 10, 20, 50]
+        },
+        "zeichnungsmass": {
+          "von": 10.0,
+          "bis": 120.0,
+          "schritt": 5.0
+        }
+      },
+      "original": {
+        "faktor": 5,
+        "zeichnungsmass": 50
+      },
+      "zwischen": {
+        "original_mass": "faktor * zeichnungsmass"
+      },
+      "frage": "Ein Bauteil ist {original_mass} mm lang. Es soll im Maßstab 1:{faktor} gezeichnet werden. Welche Länge hat die Zeichnungsdarstellung in mm?",
+      "loesung": "zeichnungsmass",
+      "rundung": 0,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Beim Verkleinerungsmaßstab 1:{faktor} ist das Zeichnungsmaß {faktor}-mal kleiner als das Original. Das Zeichnungsmaß ergibt sich durch: {original_mass} mm ÷ {faktor} = {loesung} mm. Für große Bauteile werden Verkleinerungsmaßstäbe (1:2, 1:5, 1:10 usw.) verwendet.",
+      "workedExample": "Gegeben: Originallänge = {original_mass} mm, Maßstab 1:{faktor}\nFormel: Zeichnungsmaß = Originalmaß ÷ Nenner\nRechnung: {original_mass} mm ÷ {faktor} = {loesung} mm\nErgebnis: Die Zeichnungsdarstellung ist {loesung} mm lang."
+    }
   },
   {
     "id": "au-tz-009",

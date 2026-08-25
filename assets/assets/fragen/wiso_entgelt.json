@@ -43,7 +43,37 @@
     "erklaerung": "Netto = Brutto - Steuern - SV-Beiträge = 2800 - 350 - 590 = 1860 €. In der Praxis erstellt der Arbeitgeber monatlich eine Gehaltsabrechnung (Lohnabrechnung). Er führt die einbehaltene Lohnsteuer ans Finanzamt und SV-Beiträge an die jeweiligen Sozialversicherungsträger ab.",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "Netto = Brutto - LSt - SV = 2800 - 350 - 590 = 1860 €",
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "varianten": {
+      "variablen": {
+        "brutto": {
+          "von": 1800.0,
+          "bis": 5000.0,
+          "schritt": 50.0
+        },
+        "steuer_prozent": {
+          "werte": [8, 10, 12, 14, 16, 18]
+        },
+        "sv_prozent": {
+          "werte": [19, 20, 21]
+        }
+      },
+      "original": {
+        "brutto": 2800,
+        "steuer_prozent": 12.5,
+        "sv_prozent": 21.0714
+      },
+      "zwischen": {
+        "lst": "round(brutto * steuer_prozent / 100)",
+        "sv": "round(brutto * sv_prozent / 100)"
+      },
+      "frage": "Ein Arbeitnehmer (ledig, Steuerklasse I, keine Kinder) hat ein Bruttogehalt von {brutto} €/Monat. Lohnsteuer + Soli: {lst} €. SV-Beiträge (AN-Anteil): {sv} €. Wie hoch ist das Nettogehalt in €?",
+      "loesung": "brutto - round(brutto * steuer_prozent / 100) - round(brutto * sv_prozent / 100)",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Netto = Brutto - Steuern - SV-Beiträge = {brutto} - {lst} - {sv} = {loesung} €. In der Praxis erstellt der Arbeitgeber monatlich eine Gehaltsabrechnung. Er führt die einbehaltene Lohnsteuer ans Finanzamt und die SV-Beiträge an die Sozialversicherungsträger ab.",
+      "workedExample": "Netto = Brutto - LSt - SV = {brutto} - {lst} - {sv} = {loesung} €"
+    }
   },
   {
     "id": "wi-ent-004",
@@ -89,7 +119,45 @@
     "erklaerung": "Grundlohn: 168 h × 18,50 €/h = 3108 €. Überstunden: 10 h × 18,50 × 1,25 = 10 × 23,125 = 231,25 €. Gesamt: 3108 + 231,25 = 3339,25 € ≈ 3340 €. Überstundenzuschlag: tariflich geregelt (meist 25-50%). Hinweis: Nur der Zuschlag (25%) ist steuer- und SV-frei, nicht der Grundlohn der Überstunde.",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "Grundgehalt: 168 h × 18,50 €/h = 3108 €\nÜberstunden: 10 h × 18,50 €/h × 1,25 = 231,25 €\nGesamt: 3108 + 231,25 = 3339,25 €",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "stunden": {
+          "werte": [151, 160, 168, 173, 180]
+        },
+        "lohn": {
+          "von": 13.0,
+          "bis": 32.0,
+          "schritt": 0.5
+        },
+        "ueber": {
+          "werte": [4, 6, 8, 10, 12, 15, 20]
+        },
+        "zuschlag": {
+          "werte": [25, 30, 40, 50]
+        }
+      },
+      "original": {
+        "stunden": 168,
+        "lohn": 18.5,
+        "ueber": 10,
+        "zuschlag": 25
+      },
+      "stellen": {
+        "lohn": 2
+      },
+      "zwischen": {
+        "grund": "round(stunden * lohn * 100) / 100",
+        "faktor": "1 + zuschlag / 100",
+        "ueberlohn": "round(ueber * lohn * (1 + zuschlag / 100) * 100) / 100"
+      },
+      "frage": "Ein Arbeitnehmer arbeitet monatlich {stunden} Stunden. Sein Stundenlohn beträgt {lohn} €. Er hat {ueber} Überstunden geleistet, die mit {zuschlag}% Zuschlag vergütet werden. Berechne das Bruttogehalt in €.",
+      "loesung": "stunden * lohn + ueber * lohn * (1 + zuschlag / 100)",
+      "rundung": 2,
+      "toleranzProzent": 0.1,
+      "erklaerung": "Grundlohn: {stunden} h × {lohn} €/h = {grund} €. Überstunden: {ueber} h × {lohn} × {faktor} = {ueberlohn} €. Gesamt: {grund} + {ueberlohn} = {loesung} €. Überstundenzuschlag: tariflich geregelt (meist 25-50%). Hinweis: Nur der Zuschlag ist steuer- und SV-frei, nicht der Grundlohn der Überstunde.",
+      "workedExample": "Grundgehalt: {stunden} h × {lohn} €/h = {grund} €\nÜberstunden: {ueber} h × {lohn} €/h × {faktor} = {ueberlohn} €\nGesamt: {grund} + {ueberlohn} = {loesung} €"
+    }
   },
   {
     "id": "wi-ent-007",
@@ -208,7 +276,37 @@
     "erklaerung": "Stückakkord: Akkordlohn = Richtsatzlohn × (Ist-Stücke / Richtstücke) = 2800 × (600/500) = 2800 × 1,2 = 3360 €. Bei 120% Leistung gibt es 120% des Richtsatzlohns. Wichtig: Gesetzlich gilt der Mindestlohn als Untergrenze – auch im Akkord. Höchstakkord: oft tariflich auf 130-140% begrenzt.",
     "selfExplanationPrompt": null, "bildAsset": null,
     "workedExample": "Akkordlohn = Richtsatzlohn × (Ist/Soll) = 2800 € × (600/500) = 2800 × 1,2 = 3360 €",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "richt_stueck": {
+          "werte": [300, 400, 500, 600, 750, 800]
+        },
+        "richt_lohn": {
+          "von": 2000.0,
+          "bis": 4000.0,
+          "schritt": 100.0
+        },
+        "mehr_prozent": {
+          "werte": [5, 10, 15, 20, 25, 30]
+        }
+      },
+      "original": {
+        "richt_stueck": 500,
+        "richt_lohn": 2800,
+        "mehr_prozent": 20
+      },
+      "zwischen": {
+        "ist_stueck": "round(richt_stueck * (1 + mehr_prozent / 100))",
+        "grad": "round(round(richt_stueck * (1 + mehr_prozent / 100)) / richt_stueck * 1000) / 1000"
+      },
+      "frage": "Ein Akkordarbeiter hat im Monat {ist_stueck} Stück produziert. Der Richtsatz beträgt {richt_stueck} Stück/Monat bei einem Richtsatzlohn von {richt_lohn} €. Berechne den Akkordlohn in €.",
+      "loesung": "richt_lohn * round(richt_stueck * (1 + mehr_prozent / 100)) / richt_stueck",
+      "rundung": 2,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Stückakkord: Akkordlohn = Richtsatzlohn × (Ist-Stücke / Richtstücke) = {richt_lohn} × ({ist_stueck}/{richt_stueck}) = {richt_lohn} × {grad} = {loesung} €. Wichtig: Gesetzlich gilt der Mindestlohn als Untergrenze – auch im Akkord. Höchstakkord: oft tariflich auf 130-140% begrenzt.",
+      "workedExample": "Akkordlohn = Richtsatzlohn × (Ist/Soll) = {richt_lohn} € × ({ist_stueck}/{richt_stueck}) = {richt_lohn} × {grad} = {loesung} €"
+    }
   },
   {
     "id": "wi-ent-015",
