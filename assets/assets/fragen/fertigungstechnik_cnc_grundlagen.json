@@ -138,7 +138,31 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "n = (vc · 1000) / (π · d) = (120 · 1000) / (π · 20) = 120 000 / 62,83 ≈ 1910 min⁻¹",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "d": {
+          "werte": [6, 8, 10, 12, 16, 20, 25, 32, 40, 50, 63]
+        },
+        "vc": {
+          "werte": [80, 100, 120, 150, 180, 200, 250, 300]
+        }
+      },
+      "original": {
+        "d": 20,
+        "vc": 120
+      },
+      "zwischen": {
+        "nenner": "round(pi * d * 100) / 100",
+        "zaehler": "vc * 1000"
+      },
+      "frage": "Ein CNC-Fräser mit Durchmesser d = {d} mm soll mit Schnittgeschwindigkeit vc = {vc} m/min betrieben werden. Berechne die erforderliche Spindeldrehzahl n in min⁻¹.",
+      "loesung": "vc * 1000 / (pi * d)",
+      "rundung": 0,
+      "toleranzProzent": 1.0,
+      "erklaerung": "n = vc × 1000 / (π × d) = {vc} × 1000 / (π × {d}) = {zaehler} / {nenner} ≈ {loesung} min⁻¹. In der CNC-Praxis wird gerundet. Die Schnittgeschwindigkeit hängt vom Werkstoff und Schneidstoff ab; der Programmierer berechnet die Drehzahl daraus.",
+      "workedExample": "n = (vc · 1000) / (π · d) = ({vc} · 1000) / (π · {d}) = {zaehler} / {nenner} ≈ {loesung} min⁻¹"
+    }
   },
   {
     "id": "ft-cnc-006",
@@ -296,7 +320,37 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "vf = fz · z · n = 0,05 mm · 3 · 2500 min⁻¹ = 375 mm/min",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "d": {
+          "werte": [6, 8, 10, 12, 16, 20, 25, 32, 40, 50, 63]
+        },
+        "z": {
+          "werte": [2, 3, 4, 5, 6, 8]
+        },
+        "n": {
+          "von": 800.0,
+          "bis": 6000.0,
+          "schritt": 100.0
+        },
+        "fz": {
+          "werte": [0.02, 0.04, 0.05, 0.06, 0.08, 0.1, 0.12, 0.15]
+        }
+      },
+      "original": {
+        "d": 12,
+        "z": 3,
+        "n": 2500,
+        "fz": 0.05
+      },
+      "frage": "Ein CNC-Fräser (d = {d} mm, z = {z} Schneiden) arbeitet mit n = {n} min⁻¹ und einem Vorschub pro Schneide fz = {fz} mm. Berechne den Tischvorschub vf in mm/min.",
+      "loesung": "fz * z * n",
+      "rundung": 1,
+      "toleranzProzent": 1.0,
+      "erklaerung": "vf = fz · z · n = {fz} mm · {z} · {n} min⁻¹ = {loesung} mm/min. Der Tischvorschub (F-Wert im G-Code mit G94) ergibt sich aus Vorschub je Schneide × Schneidenzahl × Drehzahl. Bei höherer Schneidenzahl oder höherer Drehzahl steigt der Vorschub proportional.",
+      "workedExample": "vf = fz · z · n = {fz} mm · {z} · {n} min⁻¹ = {loesung} mm/min"
+    }
   },
   {
     "id": "ft-cnc-012",
@@ -464,7 +518,33 @@
     "workedExample": "X = R · cos(φ) = 65 · cos(30°) = 65 · 0,866 ≈ 56 mm\nY = R · sin(φ) = 65 · sin(30°) = 65 · 0,5 ≈ 33 mm",
     "schwierigkeit": 2,
     "pruefung": "W22",
-    "pruefungReihenfolge": 16
+    "pruefungReihenfolge": 16,
+    "varianten": {
+      "variablen": {
+        "R": {
+          "werte": [40, 50, 55, 65, 75, 80, 100, 120]
+        },
+        "phi": {
+          "werte": [15, 20, 30, 36, 45, 60, 72]
+        }
+      },
+      "original": {
+        "R": 65,
+        "phi": 30
+      },
+      "zwischen": {
+        "cosw": "round(cos(phi) * 1000) / 1000",
+        "sinw": "round(sin(phi) * 1000) / 1000",
+        "x_genau": "round(R * cos(phi) * 10) / 10",
+        "y": "round(R * sin(phi) * 10) / 10"
+      },
+      "frage": "Beim CNC-Fräsen eines Flansches soll Bohrung P2 auf einem Teilkreis R = {R} mm bei φ = {phi}° angefahren werden. Koordinatenursprung liegt im Kreismittelpunkt. Berechnen Sie die X-Koordinate von P2 (in mm, gerundet auf 1 mm).",
+      "loesung": "R * cos(phi)",
+      "rundung": 0,
+      "toleranzProzent": 2.0,
+      "erklaerung": "X = R · cos(φ) = {R} mm · cos({phi}°) = {R} · {cosw} ≈ {x_genau} mm ≈ {loesung} mm. Y = R · sin({phi}°) = {R} · {sinw} = {y} mm.",
+      "workedExample": "X = R · cos(φ) = {R} · cos({phi}°) = {R} · {cosw} ≈ {loesung} mm\nY = R · sin(φ) = {R} · sin({phi}°) = {R} · {sinw} ≈ {y} mm"
+    }
   },
   {
     "id": "ft-cnc-018",
@@ -512,7 +592,38 @@
     "workedExample": "n = vc·1000 / (π·d) = 250 000 / (π·95) = 837,7 min⁻¹\nvf = n · z · fz = 837,7 · 6 · 0,1 = 502,6 mm/min ≈ 503 mm/min",
     "schwierigkeit": 2,
     "pruefung": "S17",
-    "pruefungReihenfolge": 18
+    "pruefungReihenfolge": 18,
+    "varianten": {
+      "variablen": {
+        "d": {
+          "werte": [95]
+        },
+        "z": {
+          "werte": [6]
+        },
+        "vc": {
+          "werte": [80, 100, 120, 150, 180, 200, 250, 300]
+        },
+        "fz": {
+          "werte": [0.05, 0.08, 0.1, 0.12, 0.15, 0.2]
+        }
+      },
+      "original": {
+        "d": 95,
+        "z": 6,
+        "vc": 250,
+        "fz": 0.1
+      },
+      "zwischen": {
+        "n": "round(vc * 1000 / (pi * d) * 10) / 10"
+      },
+      "frage": "Die Auflagefläche des Schwenklagers wird mit einem Planfräser Ø {d} mm mit {z} Zähnen bearbeitet. Berechnen Sie die Vorschubgeschwindigkeit vf (in mm/min) bei vc = {vc} m/min und fz = {fz} mm.",
+      "loesung": "vc * 1000 / (pi * d) * z * fz",
+      "rundung": 0,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Drehzahl: n = vc·1000/(π·d) = {vc}000/(π·{d}) = {n} min⁻¹. Vorschubgeschwindigkeit: vf = n · z · fz = {n} · {z} · {fz} ≈ {loesung} mm/min.",
+      "workedExample": "n = vc·1000 / (π·d) = {vc} · 1000 / (π·{d}) = {n} min⁻¹\nvf = n · z · fz = {n} · {z} · {fz} ≈ {loesung} mm/min"
+    }
   },
   {
     "id": "ft-cnc-020",
@@ -617,7 +728,53 @@
     "workedExample": "n = vf / p = 420 / 1,5 = 280 min⁻¹",
     "schwierigkeit": 2,
     "pruefung": "S19",
-    "pruefungReihenfolge": 32
+    "pruefungReihenfolge": 32,
+    "varianten": {
+      "spalten": [
+        "gewinde",
+        "p"
+      ],
+      "zeilen": [
+        [
+          "M6",
+          1.0
+        ],
+        [
+          "M8",
+          1.25
+        ],
+        [
+          "M10",
+          1.5
+        ],
+        [
+          "M12",
+          1.75
+        ],
+        [
+          "M16",
+          2.0
+        ]
+      ],
+      "variablen": {
+        "vf": {
+          "von": 150.0,
+          "bis": 900.0,
+          "schritt": 15.0
+        }
+      },
+      "original": {
+        "gewinde": "M10",
+        "p": 1.5,
+        "vf": 420
+      },
+      "frage": "Ein Gewindebohrer {gewinde} (Steigung p = {p} mm) soll mit Vorschubgeschwindigkeit vf = {vf} mm/min arbeiten. Welche Drehzahl n (in min⁻¹) ist einzustellen?",
+      "loesung": "vf / p",
+      "rundung": 1,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Beim Gewindebohren: n = vf / p = {vf} mm/min / {p} mm = {loesung} min⁻¹. Drehzahl und Vorschub müssen synchronisiert werden: vf = n · p. Eine Abweichung würde das Gewinde zerstören. Moderne CNC-Maschinen synchronisieren dies automatisch über rigides Gewindebohren (G84).",
+      "workedExample": "n = vf / p = {vf} / {p} = {loesung} min⁻¹"
+    }
   },
   {
     "id": "ft-cnc-024",

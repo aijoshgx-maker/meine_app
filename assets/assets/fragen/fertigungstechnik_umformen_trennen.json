@@ -91,7 +91,37 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: τ = 320 N/mm², l = 150 mm, s = 4 mm\nSchritt 1: Schnittfläche berechnen: A = l · s = 150 mm · 4 mm = 600 mm²\nSchritt 2: Schnittkraft berechnen: F = τ · A = 320 N/mm² · 600 mm² = 192 000 N\nErgebnis: F = 192 000 N = 192 kN",
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "varianten": {
+      "variablen": {
+        "tau": {
+          "werte": [240, 280, 300, 320, 360, 400, 450]
+        },
+        "l": {
+          "von": 50.0,
+          "bis": 400.0,
+          "schritt": 10.0
+        },
+        "s": {
+          "werte": [1, 1.5, 2, 2.5, 3, 4, 5, 6]
+        }
+      },
+      "original": {
+        "tau": 320,
+        "l": 150,
+        "s": 4
+      },
+      "zwischen": {
+        "A": "l * s",
+        "F_kN": "round(tau * l * s / 100) / 10"
+      },
+      "frage": "Beim Scherschneiden soll ein Stahlblech mit der Scherfestigkeit τ = {tau} N/mm² gestanzt werden. Die Schnittlinie hat eine Länge von {l} mm, die Blechdicke beträgt {s} mm. Berechnen Sie die erforderliche Schnittkraft F.",
+      "loesung": "tau * l * s",
+      "rundung": 0,
+      "toleranzProzent": 0.5,
+      "erklaerung": "Die Schnittkraft berechnet sich nach F = τ · A, wobei A = l · s die Schnittfläche ist. Mit τ = {tau} N/mm², l = {l} mm und s = {s} mm ergibt sich: A = {l} mm · {s} mm = {A} mm². F = {tau} N/mm² · {A} mm² = {loesung} N = {F_kN} kN.",
+      "workedExample": "Gegeben: τ = {tau} N/mm², l = {l} mm, s = {s} mm\nSchritt 1: Schnittfläche berechnen: A = l · s = {l} mm · {s} mm = {A} mm²\nSchritt 2: Schnittkraft berechnen: F = τ · A = {tau} N/mm² · {A} mm² = {loesung} N\nErgebnis: F = {loesung} N = {F_kN} kN"
+    }
   },
   {
     "id": "ft-ut-005",
@@ -185,7 +215,39 @@
     "bildAsset": null,
     "workedExample": "Gegeben: r_i = 5 mm, s = 3 mm, k = 0,4, α = 90° = π/2 rad ≈ 1,5708 rad\nSchritt 1: Radius der neutralen Faser: r_n = r_i + k · s = 5 + 0,4 · 3 = 6,2 mm\nSchritt 2: Bogenlänge: l_Bogen = α · r_n = 1,5708 · 6,2 mm ≈ 9,74 mm\nErgebnis: l_Bogen ≈ 9,74 mm",
     "schwierigkeit": 3,
-    "selfExplanationPrompt": "Erkläre in eigenen Worten, warum die neutrale Faser beim Biegen nicht genau in der Blechmitte liegt und welche Rolle der k-Faktor dabei spielt."
+    "selfExplanationPrompt": "Erkläre in eigenen Worten, warum die neutrale Faser beim Biegen nicht genau in der Blechmitte liegt und welche Rolle der k-Faktor dabei spielt.",
+    "varianten": {
+      "variablen": {
+        "alpha": {
+          "werte": [30, 45, 60, 90, 120]
+        },
+        "s": {
+          "werte": [1, 1.5, 2, 2.5, 3, 4, 5]
+        },
+        "ri": {
+          "werte": [2, 3, 4, 5, 6, 8, 10]
+        },
+        "k": {
+          "werte": [0.3, 0.33, 0.4, 0.45, 0.5]
+        }
+      },
+      "original": {
+        "alpha": 90,
+        "s": 3,
+        "ri": 5,
+        "k": 0.4
+      },
+      "zwischen": {
+        "rad": "round(alpha * pi / 180 * 10000) / 10000",
+        "rn": "ri + k * s"
+      },
+      "frage": "Ein Blechstreifen soll auf einer Länge von 200 mm um {alpha}° gebogen werden. Die Blechdicke beträgt s = {s} mm, der Innenbiegeradius r_i = {ri} mm. Berechnen Sie die Biegelänge (Länge der neutralen Faser) des gebogenen Abschnitts. Der k-Faktor beträgt {k}. Hinweis: l_Bogen = α · (r_i + k · s), α in Bogenmaß.",
+      "loesung": "alpha * pi / 180 * (ri + k * s)",
+      "rundung": 1,
+      "toleranzProzent": 1.0,
+      "erklaerung": "Die neutrale Faser liegt nicht genau in der Mitte der Blechdicke. Mit dem k-Faktor: r_n = r_i + k · s = {ri} + {k} · {s} = {rn} mm. Für {alpha}° gilt α = {rad} rad. l_Bogen = α · r_n = {rad} · {rn} ≈ {loesung} mm.",
+      "workedExample": "Gegeben: r_i = {ri} mm, s = {s} mm, k = {k}, α = {alpha}° = {rad} rad\nSchritt 1: Radius der neutralen Faser: r_n = r_i + k · s = {ri} + {k} · {s} = {rn} mm\nSchritt 2: Bogenlänge: l_Bogen = α · r_n = {rad} · {rn} ≈ {loesung} mm"
+    }
   },
   {
     "id": "ft-ut-009",

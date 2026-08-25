@@ -201,7 +201,40 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": "Gegeben: T1 = 30 min, vc1 = 100 m/min, vc2 = 140 m/min, m = 0,3\nGesucht: T2\nFormel: T2 = T1 · (vc1/vc2)^(1/m)\nSchritt 1: vc1/vc2 = 100/140 = 0,7143\nSchritt 2: 1/m = 1/0,3 = 3,333\nSchritt 3: 0,7143^3,333 ≈ 0,3257\nSchritt 4: T2 = 30 · 0,3257 ≈ 9,8 min\nErgebnis: T2 ≈ 9,8 min",
-    "schwierigkeit": 3
+    "schwierigkeit": 3,
+    "varianten": {
+      "variablen": {
+        "T1": {
+          "werte": [15, 20, 25, 30, 40, 45, 60]
+        },
+        "vc1": {
+          "werte": [80, 100, 120, 150, 180]
+        },
+        "aufschlag": {
+          "werte": [20, 30, 40, 50, 60, 80]
+        },
+        "m": {
+          "werte": [0.2, 0.25, 0.3, 0.35]
+        }
+      },
+      "original": {
+        "T1": 30,
+        "vc1": 100,
+        "aufschlag": 40,
+        "m": 0.3
+      },
+      "zwischen": {
+        "vc2": "vc1 + aufschlag",
+        "verhaeltnis": "round(vc1 / (vc1 + aufschlag) * 10000) / 10000",
+        "exponent": "round(1 / m * 1000) / 1000"
+      },
+      "frage": "Ein Werkzeug hat eine Standzeit von T = {T1} min bei vc = {vc1} m/min (Taylor-Exponent m = {m}). Wie lange ist die Standzeit bei vc = {vc2} m/min? Berechne T2 in min (auf 1 Dezimalstelle).",
+      "loesung": "T1 * (vc1 / (vc1 + aufschlag))^(1 / m)",
+      "rundung": 1,
+      "toleranzProzent": 3.0,
+      "erklaerung": "T2 = T1 · (vc1/vc2)^(1/m) = {T1} · ({vc1}/{vc2})^(1/{m}) ≈ {loesung} min. Schon eine moderate Erhöhung der Schnittgeschwindigkeit verkürzt die Standzeit überproportional.",
+      "workedExample": "Gegeben: T1 = {T1} min, vc1 = {vc1} m/min, vc2 = {vc2} m/min, m = {m}\nFormel: T2 = T1 · (vc1/vc2)^(1/m)\nSchritt 1: vc1/vc2 = {vc1}/{vc2} = {verhaeltnis}\nSchritt 2: 1/m = {exponent}\nSchritt 3: T2 = {T1} · {verhaeltnis}^{exponent} ≈ {loesung} min"
+    }
   },
   {
     "id": "ft-ws-013",
