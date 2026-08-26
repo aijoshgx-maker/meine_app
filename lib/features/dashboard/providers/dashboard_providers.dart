@@ -86,9 +86,25 @@ TagesQuote _tagesQuoteFuer(List<Attempt> versuche, DateTime tag) {
   return TagesQuote(tag: tag, quote: richtige / tagesVersuche.length);
 }
 
-// Gewichtete schriftliche Prüfungsreife: Ø Retrievability je Bereich,
-// kombiniert mit den normalisierten Prüfungsgewichten (20/20/10 -> 40/40/20).
+// Gewichtete schriftliche Prüfungsreife: Ø Behaltenswahrscheinlichkeit je
+// Bereich, kombiniert mit den normalisierten Prüfungsgewichten
+// (20/20/10 -> 40/40/20).
 // Bewusst getrennt vom Arbeitsauftrag-Fortschritt (Phase 7) – siehe Plan.
+
+/// Horizont der Prüfungsreife: Wie viel säße in so vielen Tagen noch?
+///
+/// Vorher stand hier die *aktuelle* Abrufwahrscheinlichkeit. Die fällt mit
+/// jedem Tag ohne Wiederholung und springt nach jeder Session hoch — der
+/// Wert schwankte täglich und bildete eher ab, wann zuletzt gelernt wurde,
+/// als wie viel sitzt. Gemessen ab der letzten Wiederholung hängt die Zahl
+/// nur noch an der Gedächtnisstabilität: Sie steigt, wenn gelernt wird, und
+/// bleibt sonst stehen.
+///
+/// 30 Tage, weil das die Größenordnung zwischen zwei Lernphasen und dem
+/// Prüfungstermin ist — kurz genug, um erreichbar zu sein, lang genug, um
+/// oberflächliches Pauken nicht zu belohnen.
+const pruefungsreifeHorizontTage = 30;
+
 class PruefungsreifeErgebnis {
   final Map<String, double> proBereich;
   final double gewichtet;
@@ -108,7 +124,6 @@ final pruefungsreifeProvider = FutureProvider<PruefungsreifeErgebnis>((
       .read(fsrsCardStoreProvider)
       .alleKartenstaende(paket.kurs.id);
   final scheduler = ref.read(fsrsSchedulerProvider);
-  final jetzt = DateTime.now();
 
   // Gewichte kommen aus dem Kurs. Ohne eigene Angabe zählen alle Bereiche
   // gleich viel.
@@ -120,7 +135,9 @@ final pruefungsreifeProvider = FutureProvider<PruefungsreifeErgebnis>((
     for (final frage in paket.fragen.where((f) => f.bereich == bereich)) {
       final stand = kartenstaende[frage.id];
       if (stand == null) continue;
-      werte.add(scheduler.currentRetrievability(stand.card, jetzt));
+      werte.add(
+        scheduler.retrievabilityNach(stand.card, pruefungsreifeHorizontTage),
+      );
     }
     proBereich[bereich] = werte.isEmpty
         ? 0

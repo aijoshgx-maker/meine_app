@@ -229,6 +229,21 @@ class FsrsScheduler {
     return _retrievability(elapsed < 0 ? 0 : elapsed, card.stability);
   }
 
+  /// Behaltenswahrscheinlichkeit [tage] Tage nach der letzten Wiederholung.
+  ///
+  /// Anders als [currentRetrievability] haengt das Ergebnis nicht am
+  /// Kalender: Es faellt nicht, weil ein Tag vergangen ist, sondern steigt
+  /// nur, wenn tatsaechlich wiederholt wurde.
+  ///
+  /// Fuer Kennzahlen gedacht, die einen Stand ueber einen laengeren Zeitraum
+  /// abbilden sollen. Die aktuelle Abrufwahrscheinlichkeit schwankt von Tag
+  /// zu Tag - eine Zahl, die jeden Morgen anders aussieht, zeigt keinen
+  /// Trend, sondern Rauschen.
+  double retrievabilityNach(FsrsCard card, int tage) {
+    if (card.isNew) return 0;
+    return _retrievability(tage < 0 ? 0 : tage, card.stability);
+  }
+
   // ---------------------------------------------------------------------------
   // Interne FSRS-4.5-Formeln
   // ---------------------------------------------------------------------------

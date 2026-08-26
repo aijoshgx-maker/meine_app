@@ -1,9 +1,9 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../models/kurs.dart';
 import '../providers/dashboard_providers.dart';
+import 'wert_balken.dart';
 
 // Gewichteter Lernstand: ein Balken je Bereich plus eine zusammengefasste,
 // gewichtete Gesamtzahl.
@@ -42,7 +42,7 @@ class PruefungsreifeChart extends ConsumerWidget {
             const SizedBox(height: 4),
             ergebnis.when(
               data: (e) => Text(
-                '${(e.gewichtet * 100).round()} %$gewichtsText',
+                '${prozent(e.gewichtet)}$gewichtsText',
                 style: Theme.of(context).textTheme.headlineMedium,
               ),
               loading: () => const SizedBox(
@@ -52,68 +52,33 @@ class PruefungsreifeChart extends ConsumerWidget {
               ),
               error: (e, _) => const Text('–'),
             ),
+            const SizedBox(height: 4),
+            // Der Horizont gehört sichtbar dazu: Ohne ihn liest sich die Zahl
+            // als "so viel kann ich gerade" und wirkt bei jedem Blick anders,
+            // obwohl sie das gar nicht mehr tut.
+            Text(
+              'Geschätzt: So viel sitzt auch in '
+              '$pruefungsreifeHorizontTage Tagen noch',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
             const SizedBox(height: 12),
-            SizedBox(
-              height: 140,
-              child: ergebnis.when(
-                data: (e) => bereiche.isEmpty
-                    ? const SizedBox.shrink()
-                    : BarChart(
-                        BarChartData(
-                          minY: 0,
-                          maxY: 1,
-                          gridData: const FlGridData(show: false),
-                          borderData: FlBorderData(show: false),
-                          titlesData: FlTitlesData(
-                            leftTitles: const AxisTitles(
-                              sideTitles: SideTitles(showTitles: false),
-                            ),
-                            topTitles: const AxisTitles(
-                              sideTitles: SideTitles(showTitles: false),
-                            ),
-                            rightTitles: const AxisTitles(
-                              sideTitles: SideTitles(showTitles: false),
-                            ),
-                            bottomTitles: AxisTitles(
-                              sideTitles: SideTitles(
-                                showTitles: true,
-                                getTitlesWidget: (value, meta) {
-                                  final index = value.toInt();
-                                  if (index < 0 || index >= bereiche.length) {
-                                    return const SizedBox.shrink();
-                                  }
-                                  return Padding(
-                                    padding: const EdgeInsets.only(top: 4),
-                                    child: Text(
-                                      bereiche[index].titel,
-                                      style: const TextStyle(fontSize: 10),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                    ),
-                                  );
-                                },
-                              ),
-                            ),
-                          ),
-                          barGroups: [
-                            for (var i = 0; i < bereiche.length; i++)
-                              BarChartGroupData(
-                                x: i,
-                                barRods: [
-                                  BarChartRodData(
-                                    toY: e.proBereich[bereiche[i].id] ?? 0,
-                                    color:
-                                        bereiche[i].farbeAlsColor ??
-                                        Theme.of(context).colorScheme.primary,
-                                  ),
-                                ],
-                              ),
-                          ],
-                        ),
-                      ),
-                loading: () => const Center(child: CircularProgressIndicator()),
-                error: (e, _) => const SizedBox.shrink(),
+            ergebnis.when(
+              data: (e) => Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  for (final bereich in bereiche)
+                    WertBalken(
+                      beschriftung: bereich.titel,
+                      anteil: e.proBereich[bereich.id] ?? 0,
+                      wert: prozent(e.proBereich[bereich.id] ?? 0),
+                      farbe:
+                          bereich.farbeAlsColor ??
+                          Theme.of(context).colorScheme.primary,
+                    ),
+                ],
               ),
+              loading: () => const Center(child: CircularProgressIndicator()),
+              error: (e, _) => const SizedBox.shrink(),
             ),
           ],
         ),

@@ -131,6 +131,35 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Behoben
 
+- **Lesbare Diagramme auf dem Dashboard.** Die Beschriftungen standen unter
+  einer gemeinsamen Achse und überlappten sich, sobald ein Name länger war
+  als sein Säulenabstand — „Technische Berechnungen" und „Zerspanung
+  Grundlagen" nebeneinander ergaben Buchstabensalat, und in *Schwache
+  Themen* war schlicht nicht zu erkennen, welcher Balken wozu gehört.
+
+  Aus den senkrechten Säulen sind **waagerechte Balken** geworden: Jede
+  Beschriftung liegt über ihrem eigenen Balken, hat die volle Breite und
+  bricht bei Bedarf um. Überschneiden können sie sich nicht mehr. Der
+  Prozentwert steht rechts daneben, statt geraten werden zu müssen.
+  Betroffen sind *Lernstand*, *Konfidenz-Kalibrierung* und *Schwache
+  Themen*; der 30-Tage-Trend bleibt eine Linie.
+
+  Dazu die **Zahl der Versuche** unter jedem schwachen Thema: 100 % Fehler
+  aus einem einzigen Versuch ist kein schwaches Thema, sondern ein Zufall —
+  ohne die Grundgesamtheit war die Quote nicht einzuordnen.
+
+- **Der Lernstand schwankt nicht mehr täglich.** Er zeigte die *aktuelle*
+  Abrufwahrscheinlichkeit. Die fällt mit jedem Tag ohne Wiederholung und
+  springt nach jeder Session hoch — der Wert bildete damit eher ab, wann
+  zuletzt gelernt wurde, als wie viel sitzt, und war von Morgen zu Morgen
+  ein anderer.
+
+  Gemessen wird jetzt ab der letzten Wiederholung statt ab heute: **„So viel
+  sitzt auch in 30 Tagen noch."** Die Zahl hängt damit nur noch an der
+  Gedächtnisstabilität — sie steigt, wenn gelernt wird, und bleibt sonst
+  stehen. Der Horizont steht als Untertitel auf der Karte, damit die Zahl
+  nicht als Tagesform missverstanden wird.
+
 - **Kein Komma auf der Zahlentastatur.** Zahlenfragen öffneten auf dem
   Telefon den reinen Ziffernblock, „5,06" ließ sich dort gar nicht
   eintippen. Die Bewertung nahm Kommas seit jeher an — es fehlte nur die

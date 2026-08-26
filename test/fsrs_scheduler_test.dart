@@ -123,6 +123,62 @@ void main() {
     });
   });
 
+  // Die Kennzahl fuers Dashboard: Sie soll etwas ueber das Gelernte sagen und
+  // nicht darueber, wie viele Tage seit der letzten Session vergangen sind.
+  group('retrievabilityNach', () {
+    test('haengt nicht am Kalender', () {
+      final card = scheduler.review(
+        FsrsCard.newCard(now: now),
+        Rating.good,
+        now,
+      );
+
+      // Derselbe Kartenstand, betrachtet an drei verschiedenen Tagen: Die
+      // aktuelle Abrufwahrscheinlichkeit faellt, der Horizontwert nicht.
+      final wert = scheduler.retrievabilityNach(card, 30);
+      expect(scheduler.retrievabilityNach(card, 30), wert);
+
+      expect(
+        scheduler.currentRetrievability(card, now.add(const Duration(days: 1))),
+        greaterThan(
+          scheduler.currentRetrievability(
+            card,
+            now.add(const Duration(days: 20)),
+          ),
+        ),
+      );
+    });
+
+    test('steigt, wenn wiederholt wird', () {
+      var card = scheduler.review(FsrsCard.newCard(now: now), Rating.good, now);
+      final vorher = scheduler.retrievabilityNach(card, 30);
+
+      card = scheduler.review(card, Rating.good, card.due);
+      expect(scheduler.retrievabilityNach(card, 30), greaterThan(vorher));
+    });
+
+    test('faellt mit laengerem Horizont', () {
+      final card = scheduler.review(
+        FsrsCard.newCard(now: now),
+        Rating.good,
+        now,
+      );
+
+      expect(
+        scheduler.retrievabilityNach(card, 7),
+        greaterThan(scheduler.retrievabilityNach(card, 30)),
+      );
+      expect(
+        scheduler.retrievabilityNach(card, 30),
+        greaterThan(scheduler.retrievabilityNach(card, 365)),
+      );
+    });
+
+    test('eine nie gelernte Karte steht auf 0', () {
+      expect(scheduler.retrievabilityNach(FsrsCard.newCard(now: now), 30), 0);
+    });
+  });
+
   group('Serialisierung', () {
     test('toMap/fromMap ist verlustfrei', () {
       final card = scheduler.review(

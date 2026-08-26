@@ -8,6 +8,8 @@ import 'package:meine_app/data/attempt_history_store.dart';
 import 'package:meine_app/data/fsrs_card_store.dart';
 import 'package:meine_app/data/settings_store.dart';
 import 'package:meine_app/features/dashboard/screens/dashboard_screen.dart';
+import 'package:meine_app/features/dashboard/providers/dashboard_providers.dart'
+    show pruefungsreifeHorizontTage;
 import 'package:meine_app/features/kurse/providers/kurs_providers.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/models/frage.dart';
@@ -345,6 +347,87 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text(_quizMarke), findsNothing);
+    });
+  });
+
+  // Die Beschriftungen standen einmal unter einer gemeinsamen Achse und
+  // ueberlappten sich, sobald ein Kategoriename laenger war als sein
+  // Saeulenabstand. Jetzt gehoert jede zu genau einem Balken.
+  group('Beschriftungen', () {
+    const langeKategorie = 'Werkzeugmaschinen und Vorrichtungen';
+    const zweiteKategorie = 'Technische Berechnungen und Formeln';
+
+    Future<void> pumpeMitThemen(WidgetTester tester) async {
+      final verlauf = FakeAttemptHistoryStore();
+      final jetzt = DateTime.now();
+      for (final (kategorie, korrekt) in [
+        (langeKategorie, false),
+        (langeKategorie, false),
+        (zweiteKategorie, false),
+        (zweiteKategorie, true),
+      ]) {
+        verlauf.eintraege.add(
+          Attempt(
+            kursId: testKursId,
+            frageId: 'f-$kategorie-$korrekt',
+            zeitpunkt: jetzt,
+            konfidenz: Konfidenz.sicher,
+            korrekt: korrekt,
+            bereich: 'allgemein',
+            kategorie: kategorie,
+          ),
+        );
+      }
+
+      await tester.pumpWidget(
+        _app(
+          karten: FakeFsrsCardStore(),
+          verlauf: verlauf,
+          fragen: [_frage('f1', langeKategorie)],
+        ),
+      );
+      await tester.pumpAndSettle();
+    }
+
+    testWidgets('jeder Balken trägt seinen eigenen Namen und Wert', (
+      tester,
+    ) async {
+      await pumpeMitThemen(tester);
+
+      await tester.dragUntilVisible(
+        find.text('Schwache Themen'),
+        find.byType(ListView),
+        const Offset(0, -300),
+      );
+
+      // Vollständiger Name, nicht auf eine Achsenbeschriftung eingedampft.
+      expect(find.text(langeKategorie), findsOneWidget);
+      expect(find.text(zweiteKategorie), findsOneWidget);
+      expect(find.text('100 %'), findsWidgets);
+      expect(find.text('50 %'), findsWidgets);
+
+      // Eine Quote ohne ihre Grundgesamtheit ist leicht misszuverstehen.
+      expect(find.text('2 Versuche'), findsWidgets);
+
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('der Lernstand nennt seinen Horizont', (tester) async {
+      await pumpeMitThemen(tester);
+
+      await tester.dragUntilVisible(
+        find.textContaining('So viel sitzt auch in'),
+        find.byType(ListView),
+        const Offset(0, -300),
+      );
+
+      expect(
+        find.text(
+          'Geschätzt: So viel sitzt auch in '
+          '$pruefungsreifeHorizontTage Tagen noch',
+        ),
+        findsOneWidget,
+      );
     });
   });
 }

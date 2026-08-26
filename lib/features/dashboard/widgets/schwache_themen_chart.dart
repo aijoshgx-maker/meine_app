@@ -1,8 +1,8 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../providers/dashboard_providers.dart';
+import 'wert_balken.dart';
 
 // Die bis zu 5 Kategorien mit der höchsten Fehlerquote im Attempt-Log.
 class SchwacheThemenChart extends ConsumerWidget {
@@ -24,62 +24,28 @@ class SchwacheThemenChart extends ConsumerWidget {
               'Schwache Themen',
               style: Theme.of(context).textTheme.titleMedium,
             ),
+            const SizedBox(height: 4),
+            Text(
+              'Anteil falscher Antworten',
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
             const SizedBox(height: 12),
             if (themen.isEmpty)
               const Text('Noch keine Daten – erst ein paar Fragen beantworten.')
             else
-              SizedBox(
-                height: 140,
-                child: BarChart(
-                  BarChartData(
-                    minY: 0,
-                    maxY: 1,
-                    gridData: const FlGridData(show: false),
-                    borderData: FlBorderData(show: false),
-                    titlesData: FlTitlesData(
-                      leftTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      topTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      rightTitles: const AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: (value, meta) {
-                            final index = value.toInt();
-                            if (index < 0 || index >= themen.length) {
-                              return const SizedBox.shrink();
-                            }
-                            return Padding(
-                              padding: const EdgeInsets.only(top: 4),
-                              child: Text(
-                                themen[index].kategorie,
-                                style: const TextStyle(fontSize: 10),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                    barGroups: [
-                      for (var i = 0; i < themen.length; i++)
-                        BarChartGroupData(
-                          x: i,
-                          barRods: [
-                            BarChartRodData(
-                              toY: themen[i].fehlerquote,
-                              color: Theme.of(context).colorScheme.error,
-                            ),
-                          ],
-                        ),
-                    ],
-                  ),
+              for (final thema in themen)
+                WertBalken(
+                  beschriftung: thema.kategorie,
+                  anteil: thema.fehlerquote,
+                  wert: prozent(thema.fehlerquote),
+                  farbe: Theme.of(context).colorScheme.error,
+                  // Eine Fehlerquote ohne ihre Grundgesamtheit taeuscht:
+                  // 100 % aus einem einzigen Versuch ist kein schwaches
+                  // Thema, sondern ein Zufall.
+                  zusatz: thema.anzahlVersuche == 1
+                      ? '1 Versuch'
+                      : '${thema.anzahlVersuche} Versuche',
                 ),
-              ),
           ],
         ),
       ),

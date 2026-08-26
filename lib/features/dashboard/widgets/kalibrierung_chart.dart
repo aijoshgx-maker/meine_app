@@ -1,9 +1,9 @@
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../models/konfidenz.dart';
 import '../providers/dashboard_providers.dart';
+import 'wert_balken.dart';
 
 const _konfidenzLabels = {
   Konfidenz.sicher: 'Sicher',
@@ -34,58 +34,19 @@ class KalibrierungChart extends ConsumerWidget {
             ),
             const SizedBox(height: 4),
             Text('Hochkonfident falsch: $hochkonfidentFalsch'),
-            const SizedBox(height: 12),
-            SizedBox(
-              height: 140,
-              child: BarChart(
-                BarChartData(
-                  minY: 0,
-                  maxY: 1,
-                  gridData: const FlGridData(show: false),
-                  borderData: FlBorderData(show: false),
-                  titlesData: FlTitlesData(
-                    leftTitles: const AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
-                    topTitles: const AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
-                    rightTitles: const AxisTitles(
-                      sideTitles: SideTitles(showTitles: false),
-                    ),
-                    bottomTitles: AxisTitles(
-                      sideTitles: SideTitles(
-                        showTitles: true,
-                        getTitlesWidget: (value, meta) {
-                          final konfidenz = Konfidenz.values.elementAt(
-                            value.toInt().clamp(0, Konfidenz.values.length - 1),
-                          );
-                          return Padding(
-                            padding: const EdgeInsets.only(top: 4),
-                            child: Text(
-                              _konfidenzLabels[konfidenz]!,
-                              style: const TextStyle(fontSize: 10),
-                            ),
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  barGroups: [
-                    for (var i = 0; i < Konfidenz.values.length; i++)
-                      BarChartGroupData(
-                        x: i,
-                        barRods: [
-                          BarChartRodData(
-                            toY: kalibrierung[Konfidenz.values[i]] ?? 0,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ),
-                        ],
-                      ),
-                  ],
-                ),
-              ),
+            const SizedBox(height: 4),
+            Text(
+              'Trefferquote je Selbsteinschätzung',
+              style: Theme.of(context).textTheme.bodySmall,
             ),
+            const SizedBox(height: 12),
+            for (final konfidenz in Konfidenz.values)
+              WertBalken(
+                beschriftung: _konfidenzLabels[konfidenz]!,
+                anteil: kalibrierung[konfidenz] ?? 0,
+                wert: prozent(kalibrierung[konfidenz] ?? 0),
+                farbe: Theme.of(context).colorScheme.secondary,
+              ),
           ],
         ),
       ),
