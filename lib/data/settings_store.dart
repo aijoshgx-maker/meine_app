@@ -9,6 +9,14 @@ class SettingsStore {
   static const aktiverKursKey = 'aktiverKurs';
   static const datenVersionKey = 'datenVersion';
   static const letztesAutoBackupKey = 'letztesAutoBackup';
+  static const neueProTagKey = 'neueProTag';
+
+  /// Wie viele bisher ungesehene Karten pro Tag dazukommen.
+  ///
+  /// Der Wert bestimmt das Lerntempo: 20 am Tag bedeutet, dass ein Kurs mit
+  /// 680 Fragen in etwa fünf Wochen einmal vollständig angefangen ist.
+  static const neueProTagStandard = 20;
+  static const neueProTagMax = 50;
 
   Box get _box => Hive.box(boxName);
 
@@ -51,5 +59,15 @@ class SettingsStore {
 
   Future<void> letztesAutoBackupSpeichern(DateTime zeitpunkt) async {
     await _box.put(letztesAutoBackupKey, zeitpunkt.toIso8601String());
+  }
+
+  int neueProTagLaden() {
+    final roh = _box.get(neueProTagKey, defaultValue: neueProTagStandard);
+    final wert = (roh as num).toInt();
+    return wert.clamp(0, neueProTagMax);
+  }
+
+  Future<void> neueProTagSpeichern(int anzahl) async {
+    await _box.put(neueProTagKey, anzahl.clamp(0, neueProTagMax));
   }
 }

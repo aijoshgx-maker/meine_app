@@ -65,21 +65,7 @@ class DashboardScreen extends ConsumerWidget {
           : ListView(
               padding: const EdgeInsets.all(16),
               children: [
-                Card(
-                  color: Theme.of(context).colorScheme.primaryContainer,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Text(
-                      faelligeAnzahl.maybeWhen(
-                        data: (anzahl) => anzahl > 0
-                            ? 'Heute sind $anzahl Karten fällig'
-                            : 'Keine Karten heute fällig – gut gemacht!',
-                        orElse: () => 'Fällige Karten werden geladen...',
-                      ),
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                  ),
-                ),
+                _PensumKarte(pensum: ref.watch(tagespensumProvider)),
                 const SizedBox(height: 16),
                 Wrap(
                   spacing: 8,
@@ -139,6 +125,76 @@ class DashboardScreen extends ConsumerWidget {
                 const SchwacheThemenChart(),
               ],
             ),
+    );
+  }
+}
+
+/// Das heutige Pensum, aufgeteilt in Wiederholungen und neue Karten.
+///
+/// Die Aufteilung steht bewusst da: Eine reine Gesamtzahl sagt nicht, ob
+/// heute viel zu wiederholen ist oder ob nur neues Material ansteht - und
+/// genau das entscheidet, wie anstrengend die Session wird.
+class _PensumKarte extends StatelessWidget {
+  final AsyncValue<Tagespensum> pensum;
+
+  const _PensumKarte({required this.pensum});
+
+  @override
+  Widget build(BuildContext context) {
+    final farben = Theme.of(context).colorScheme;
+
+    return Card(
+      color: farben.primaryContainer,
+      child: Padding(
+        padding: const EdgeInsets.all(16),
+        child: pensum.when(
+          loading: () => const Text('Tagespensum wird geladen …'),
+          error: (_, _) => const Text('Tagespensum nicht verfügbar'),
+          data: (p) {
+            if (p.gesamt == 0) {
+              return Text(
+                'Heute nichts mehr offen – gut gemacht!',
+                style: Theme.of(context).textTheme.titleMedium,
+              );
+            }
+
+            final teile = [
+              if (p.wiederholungen.isNotEmpty)
+                '${p.wiederholungen.length} '
+                    '${p.wiederholungen.length == 1 ? "Wiederholung" : "Wiederholungen"}',
+              if (p.neue.isNotEmpty) '${p.neue.length} neu',
+            ];
+
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Heute ${p.gesamt} ${p.gesamt == 1 ? "Karte" : "Karten"}',
+                  style: Theme.of(context).textTheme.titleMedium,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  teile.join(' · '),
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+                // Aufgestaute Wiederholungen werden genannt, aber nicht ins
+                // Pensum geschlagen: Wer eine Woche ausgesetzt hat, soll
+                // nicht vor dreihundert Karten stehen und gar nicht erst
+                // anfangen.
+                if (p.zurueckgestellt > 0) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    '${p.zurueckgestellt} weitere warten auf die nächsten Tage',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: farben.onPrimaryContainer.withValues(alpha: 0.7),
+                    ),
+                  ),
+                ],
+              ],
+            );
+          },
+        ),
+      ),
     );
   }
 }

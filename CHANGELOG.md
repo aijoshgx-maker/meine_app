@@ -8,6 +8,37 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Hinzugefügt
 
+- **Lerntempo statt Dauerstau.** Der Zähler auf dem Dashboard klebte bei
+  „30 Karten fällig" und bewegte sich nie — egal, wie viel gelernt war.
+  Ursache: Jede noch nie gesehene Frage galt als fällig, und bei 681
+  ungesehenen Fragen war die Obergrenze von 30 dauerhaft erreicht. Die Zahl
+  sagte damit weder etwas über den Fortschritt noch darüber, was einen in
+  der Session erwartet.
+
+  Der Tag hat jetzt ein **Pensum aus zwei Töpfen**: Wiederholungen, deren
+  Termin erreicht ist, plus ein einstellbares Kontingent neuer Karten
+  (**Einstellungen → Lerntempo**, Standard 20 pro Tag, Regler bis 50). Das
+  Dashboard nennt beide getrennt — „Heute 27 Karten · 7 Wiederholungen ·
+  20 neu" —, weil eine Summe nicht verrät, ob die Session anstrengend wird.
+
+  **Wiederholungen sind gedeckelt, aber nicht gestrichen.** Höchstens das
+  Dreifache des Tempos (mindestens 20) kommt an einem Tag dran; der Rest
+  bleibt fällig und wird als „… weitere warten auf die nächsten Tage"
+  ausgewiesen. Wer eine Woche aussetzt, steht so nicht vor dreihundert
+  Karten und fängt gar nicht erst an. Der Deckel hängt am Tempo-Regler und
+  braucht deshalb keinen zweiten.
+
+  **Eine zweite Session am selben Tag tischt nicht erneut auf.** Gezählt
+  wird je Frage der früheste Versuch überhaupt; liegt der heute, war die
+  Karte heute neu und geht vom Kontingent ab. Bei Tempo 0 wird nur noch
+  wiederholt — brauchbar in der Woche vor der Prüfung.
+
+  Dashboard und „Heute fällig" ziehen aus derselben Quelle, die angezeigte
+  Zahl ist also genau die, die man vorgesetzt bekommt. Frei üben, Thema
+  vertiefen, Fehlerquellen und der Testlauf bleiben unberührt — sie haben
+  mit dem Lerntempo nichts zu tun. **Keine Datenmigration:** Ein Gerät ohne
+  gespeicherten Wert startet auf 20.
+
 - **Variierende Aufgaben.** Wer eine Rechenaufgabe zum dritten Mal sieht,
   erinnert sich an „5,06" statt an den Rechenweg. Die Karte gilt dann als
   sicher, das Verfahren sitzt aber nicht. **86 der 97 Rechenaufgaben**
@@ -54,6 +85,12 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
   spürbar.
 
 ### Behoben
+
+- **Kein Komma auf der Zahlentastatur.** Zahlenfragen öffneten auf dem
+  Telefon den reinen Ziffernblock, „5,06" ließ sich dort gar nicht
+  eintippen. Die Bewertung nahm Kommas seit jeher an — es fehlte nur die
+  Taste. Jetzt mit Dezimaltrennzeichen und Vorzeichen, letzteres für die
+  Aufgaben mit negativem Ergebnis.
 
 - **Richtig gewusst, trotzdem „Falsch".** Die Freitextbewertung verglich
   Zeichenketten, wo sie Bedeutung vergleichen musste. Vier gemeldete Fälle,

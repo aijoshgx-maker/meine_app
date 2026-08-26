@@ -85,4 +85,59 @@ void main() {
     expect(await store.kursLoeschen('kurs-a'), 2);
     expect(store.alle(), hasLength(1));
   });
+
+  group('neueKartenAm()', () {
+    late AttemptHistoryStore store;
+    final heute = DateTime(2026, 8, 26, 9);
+    final gestern = heute.subtract(const Duration(days: 1));
+
+    setUp(() => store = AttemptHistoryStore());
+
+    Future<void> versuch(
+      String frageId,
+      DateTime zeitpunkt, {
+      String kursId = 'kurs-a',
+    }) => store.anhaengen(
+      Attempt(
+        kursId: kursId,
+        frageId: frageId,
+        zeitpunkt: zeitpunkt,
+        konfidenz: Konfidenz.sicher,
+        korrekt: true,
+        bereich: 'b',
+        kategorie: 'k',
+      ),
+    );
+
+    test('zählt jede Frage nur einmal, egal wie oft sie drankam', () async {
+      await versuch('f1', heute);
+      await versuch('f1', heute.add(const Duration(minutes: 5)));
+      await versuch('f2', heute.add(const Duration(minutes: 6)));
+
+      expect(store.neueKartenAm('kurs-a', heute), 2);
+    });
+
+    // Der früheste Versuch entscheidet: Eine gestern angefangene Karte ist
+    // heute eine Wiederholung und darf das Neu-Budget nicht belasten.
+    test('eine gestern angefangene Karte zählt heute nicht', () async {
+      await versuch('f1', gestern);
+      await versuch('f1', heute);
+      await versuch('f2', heute);
+
+      expect(store.neueKartenAm('kurs-a', heute), 1);
+      expect(store.neueKartenAm('kurs-a', gestern), 1);
+    });
+
+    test('andere Kurse zählen nicht mit', () async {
+      await versuch('f1', heute);
+      await versuch('f2', heute, kursId: 'kurs-b');
+
+      expect(store.neueKartenAm('kurs-a', heute), 1);
+      expect(store.neueKartenAm('kurs-b', heute), 1);
+    });
+
+    test('ohne Versuche ist die Zählung null', () {
+      expect(store.neueKartenAm('kurs-a', heute), 0);
+    });
+  });
 }

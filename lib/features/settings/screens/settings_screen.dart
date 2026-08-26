@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../app/settings_providers.dart';
 import '../../../core/notifications/notification_service.dart';
+import '../../../data/settings_store.dart' show SettingsStore;
 
 // Lädt nur das "stand"-Datum aus _rechtsstand.json - der Rest der Datei
 // (Beitragssätze etc.) wird direkt in den Fragetexten verwendet, siehe
@@ -38,6 +39,7 @@ class SettingsScreen extends ConsumerWidget {
     final remindersEnabled = ref.watch(remindersEnabledProvider);
     final remindersController = ref.read(remindersEnabledProvider.notifier);
     final rechtsstand = ref.watch(_wisoRechtsstandProvider);
+    final neueProTag = ref.watch(neueProTagProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Einstellungen')),
@@ -61,14 +63,39 @@ class SettingsScreen extends ConsumerWidget {
           if (NotificationService.unterstuetzt) ...[
             const SizedBox(height: 24),
             SwitchListTile(
-              title: const Text('Erinnerung an fällige Karten'),
+              title: const Text('Erinnerung an das Tagespensum'),
               subtitle: const Text(
-                'Tägliche Erinnerung um 18 Uhr, wenn Karten fällig sind.',
+                'Tägliche Erinnerung um 18 Uhr, wenn noch etwas ansteht.',
               ),
               value: remindersEnabled,
               onChanged: remindersController.setzen,
             ),
           ],
+          const SizedBox(height: 24),
+          Text('Lerntempo', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          // Der Regler steuert nur die NEUEN Karten. Wiederholungen richten
+          // sich nach dem Terminplan und lassen sich nicht wegdrehen - was
+          // man angefangen hat, kommt zurück.
+          Text(
+            neueProTag == 0
+                ? 'Keine neuen Karten – es wird nur wiederholt.'
+                : '$neueProTag neue Karten pro Tag',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          Slider(
+            value: neueProTag.toDouble(),
+            max: SettingsStore.neueProTagMax.toDouble(),
+            divisions: SettingsStore.neueProTagMax ~/ 5,
+            label: '$neueProTag',
+            onChanged: (wert) =>
+                ref.read(neueProTagProvider.notifier).setzen(wert.round()),
+          ),
+          Text(
+            'Bestimmt, wie viele bisher ungesehene Fragen täglich dazukommen. '
+            'Wiederholungen kommen obendrauf, sobald ihr Termin erreicht ist.',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
           const SizedBox(height: 24),
           Text('Daten', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 8),

@@ -39,7 +39,14 @@ class AntwortEingabe extends ConsumerWidget {
             hinweis: frage.einheit != null
                 ? 'Zahlenwert in ${frage.einheit}'
                 : 'Zahlenwert eingeben',
-            tastatur: TextInputType.number,
+            // TextInputType.number ist auf dem Telefon der reine
+            // Ziffernblock - ohne Komma. Die Bewertung nimmt Kommas seit
+            // jeher an, es fehlte nur die Taste. Vorzeichen, weil einzelne
+            // Aufgaben negative Ergebnisse haben.
+            tastatur: const TextInputType.numberWithOptions(
+              decimal: true,
+              signed: true,
+            ),
           ),
           FrageTyp.kurzantwort => _texteingabe(
             controller: controller,

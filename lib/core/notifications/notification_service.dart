@@ -69,7 +69,7 @@ class NotificationService {
     await _plugin.zonedSchedule(
       id: _dueReminderId,
       title: 'AP2 Lern-App',
-      body: 'Du hast $anzahlFaellig Karten fällig.',
+      body: '$anzahlFaellig Karten stehen heute an.',
       scheduledDate: termin,
       notificationDetails: const NotificationDetails(
         android: AndroidNotificationDetails(

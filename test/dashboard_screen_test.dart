@@ -15,6 +15,8 @@ import 'package:meine_app/models/kurs.dart';
 import 'hilfen/test_kurs.dart';
 
 class _FakeSettingsStore implements SettingsStore {
+  _FakeSettingsStore({this.neueProTag = SettingsStore.neueProTagStandard});
+
   @override
   String? themeModeLaden() => null;
 
@@ -48,6 +50,16 @@ class _FakeSettingsStore implements SettingsStore {
   Future<void> letztesAutoBackupSpeichern(DateTime zeitpunkt) async {
     _letztesAutoBackup = zeitpunkt;
   }
+
+  int neueProTag;
+
+  @override
+  int neueProTagLaden() => neueProTag;
+
+  @override
+  Future<void> neueProTagSpeichern(int anzahl) async {
+    neueProTag = anzahl;
+  }
 }
 
 Frage _frage(String id, String kategorie) => Frage(
@@ -71,11 +83,14 @@ Widget _app({
   required FakeAttemptHistoryStore verlauf,
   required List<Frage> fragen,
   Kurs? kurs,
+  int neueProTag = SettingsStore.neueProTagStandard,
 }) => ProviderScope(
   overrides: [
     fsrsCardStoreProvider.overrideWithValue(karten),
     attemptHistoryStoreProvider.overrideWithValue(verlauf),
-    settingsStoreProvider.overrideWithValue(_FakeSettingsStore()),
+    settingsStoreProvider.overrideWithValue(
+      _FakeSettingsStore(neueProTag: neueProTag),
+    ),
     aktivesPaketProvider.overrideWith(
       (_) async => testPaket(fragen, kurs: kurs),
     ),
@@ -185,5 +200,94 @@ void main() {
 
     expect(find.text('Testlauf'), findsNothing);
     expect(find.text('Dialog'), findsNothing);
+  });
+
+  // Die Pensum-Karte ist der einzige Ort, an dem die Aufteilung sichtbar
+  // wird. Eine reine Gesamtzahl sagte nicht, ob heute wiederholt oder neu
+  // gelernt wird - und genau das entscheidet, wie anstrengend es wird.
+  group('Pensum-Karte', () {
+    final jetzt = DateTime.now();
+
+    GespeicherteKarte stand(Duration faelligIn) => GespeicherteKarte(
+      card: FsrsCard.newCard(now: jetzt).copyWith(due: jetzt.add(faelligIn)),
+    );
+
+    testWidgets('zeigt Wiederholungen und neue Karten getrennt', (
+      tester,
+    ) async {
+      final karten = FakeFsrsCardStore();
+      await karten.speichern(testKursId, 'f1', stand(const Duration(days: -1)));
+
+      await tester.pumpWidget(
+        _app(
+          karten: karten,
+          verlauf: FakeAttemptHistoryStore(),
+          fragen: [
+            _frage('f1', 'Thema A'),
+            _frage('f2', 'Thema B'),
+            _frage('f3', 'Thema B'),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Heute 3 Karten'), findsOneWidget);
+      expect(find.text('1 Wiederholung · 2 neu'), findsOneWidget);
+    });
+
+    testWidgets('meldet Feierabend, wenn nichts mehr offen ist', (
+      tester,
+    ) async {
+      final karten = FakeFsrsCardStore();
+      await karten.speichern(testKursId, 'f1', stand(const Duration(days: 3)));
+
+      await tester.pumpWidget(
+        _app(
+          karten: karten,
+          verlauf: FakeAttemptHistoryStore(),
+          fragen: [_frage('f1', 'Thema A')],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(
+        find.text('Heute nichts mehr offen – gut gemacht!'),
+        findsOneWidget,
+      );
+    });
+
+    // Aufgestaute Wiederholungen werden genannt, aber nicht ins Pensum
+    // geschlagen - sonst steht man nach einer Woche Pause vor 300 Karten
+    // und fängt gar nicht erst an.
+    testWidgets('nennt zurückgestellte Wiederholungen separat', (
+      tester,
+    ) async {
+      final karten = FakeFsrsCardStore();
+      final fragen = [for (var i = 0; i < 25; i++) _frage('f$i', 'Thema A')];
+      for (final f in fragen) {
+        await karten.speichern(
+          testKursId,
+          f.id,
+          stand(const Duration(days: -1)),
+        );
+      }
+
+      await tester.pumpWidget(
+        _app(
+          karten: karten,
+          verlauf: FakeAttemptHistoryStore(),
+          fragen: fragen,
+          neueProTag: 0,
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.text('Heute 20 Karten'), findsOneWidget);
+      expect(find.text('20 Wiederholungen'), findsOneWidget);
+      expect(
+        find.text('5 weitere warten auf die nächsten Tage'),
+        findsOneWidget,
+      );
+    });
   });
 }

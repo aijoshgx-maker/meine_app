@@ -31,6 +31,24 @@ class ThemeModeController extends Notifier<ThemeMode> {
   }
 }
 
+/// Wie viele bisher ungesehene Karten pro Tag dazukommen dürfen.
+///
+/// Steuert das Lerntempo und damit indirekt auch die Wiederholungslast:
+/// Was heute neu angefangen wird, kommt in den nächsten Tagen zurück.
+final neueProTagProvider = NotifierProvider<NeueProTagController, int>(
+  NeueProTagController.new,
+);
+
+class NeueProTagController extends Notifier<int> {
+  @override
+  int build() => ref.read(settingsStoreProvider).neueProTagLaden();
+
+  Future<void> setzen(int anzahl) async {
+    state = anzahl.clamp(0, SettingsStore.neueProTagMax);
+    await ref.read(settingsStoreProvider).neueProTagSpeichern(state);
+  }
+}
+
 // Erinnerungen sind standardmäßig aus; die Android-13-Berechtigung wird erst
 // angefragt, wenn der Nutzer sie hier aktiv einschaltet (kein ungefragter
 // Permission-Dialog beim ersten App-Start).

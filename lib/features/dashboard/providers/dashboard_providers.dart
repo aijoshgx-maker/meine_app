@@ -6,11 +6,13 @@ import '../../quiz/providers/quiz_providers.dart';
 
 export '../../kurse/providers/kurs_providers.dart'
     show aktiverKursProvider, lernfortschrittVersionProvider;
+export '../../quiz/providers/quiz_fragen_auswahl.dart' show Tagespensum;
 export '../../quiz/providers/quiz_providers.dart'
     show
         attemptHistoryStoreProvider,
         faelligeAnzahlProvider,
-        fehlerquellenAnzahlProvider;
+        fehlerquellenAnzahlProvider,
+        tagespensumProvider;
 
 // Alle Auswertungen beziehen sich immer auf genau den aktiven Kurs - sonst
 // würden sich Fortschritte verschiedener Lernthemen zu einer nichtssagenden

@@ -52,6 +52,16 @@ class _FakeSettingsStore implements SettingsStore {
   Future<void> letztesAutoBackupSpeichern(DateTime zeitpunkt) async {
     _letztesAutoBackup = zeitpunkt;
   }
+
+  int _neueProTag = SettingsStore.neueProTagStandard;
+
+  @override
+  int neueProTagLaden() => _neueProTag;
+
+  @override
+  Future<void> neueProTagSpeichern(int anzahl) async {
+    _neueProTag = anzahl;
+  }
 }
 
 void main() {
@@ -77,5 +87,49 @@ void main() {
 
     expect(container.read(themeModeProvider), ThemeMode.dark);
     expect(store.themeModeLaden(), 'dark');
+  });
+
+  group('neueProTagProvider', () {
+    ProviderContainer mitStore(_FakeSettingsStore store) {
+      final container = ProviderContainer(
+        overrides: [settingsStoreProvider.overrideWithValue(store)],
+      );
+      addTearDown(container.dispose);
+      return container;
+    }
+
+    test('startet auf dem Standardtempo', () {
+      final container = mitStore(_FakeSettingsStore());
+
+      expect(
+        container.read(neueProTagProvider),
+        SettingsStore.neueProTagStandard,
+      );
+    });
+
+    test('setzen() persistiert im Store', () async {
+      final store = _FakeSettingsStore();
+      final container = mitStore(store);
+
+      await container.read(neueProTagProvider.notifier).setzen(35);
+
+      expect(container.read(neueProTagProvider), 35);
+      expect(store.neueProTagLaden(), 35);
+    });
+
+    // Der Regler kann nicht über das Maximum hinaus, ein manipulierter oder
+    // aus einer späteren Version stammender Wert schon.
+    test('Werte außerhalb der Grenzen werden geklemmt', () async {
+      final store = _FakeSettingsStore();
+      final container = mitStore(store);
+      final controller = container.read(neueProTagProvider.notifier);
+
+      await controller.setzen(SettingsStore.neueProTagMax + 30);
+      expect(container.read(neueProTagProvider), SettingsStore.neueProTagMax);
+
+      await controller.setzen(-5);
+      expect(container.read(neueProTagProvider), 0);
+      expect(store.neueProTagLaden(), 0);
+    });
   });
 }

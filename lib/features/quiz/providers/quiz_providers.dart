@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart' show setEquals;
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../app/settings_providers.dart' show neueProTagProvider;
 import '../../../core/matching/antwort_matcher.dart';
 import '../../../core/quiz/frage_variante.dart';
 import '../../../core/quiz/options_shuffle.dart';
@@ -38,23 +39,41 @@ final fragenProvider = FutureProvider<List<Frage>>(
   (ref) async => (await ref.watch(aktivesPaketProvider.future)).fragen,
 );
 
-// Anzahl der heute fälligen Karten im aktiven Kurs. Wird vom Dashboard als
-// Badge genutzt. Zeigt max. _tageslimit fällige Karten an — verhindert den
-// visuellen Overflow-Effekt, wenn mehrere Tage ausgelassen wurden.
-final faelligeAnzahlProvider = FutureProvider<int>((ref) async {
+/// Das heutige Pensum des aktiven Kurses: Wiederholungen plus neue Karten.
+///
+/// Dashboard und "Heute fällig"-Session ziehen beide aus diesem Provider,
+/// damit die angezeigte Zahl auch die ist, die man dann vorgesetzt bekommt.
+///
+/// Vorher galt jede nie gesehene Frage als fällig. Bei 681 ungesehenen
+/// Fragen stand der Zähler dadurch dauerhaft an seiner Obergrenze und
+/// bewegte sich nie - egal wie viel man gelernt hatte.
+final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
   ref.watch(lernfortschrittVersionProvider);
   final paket = await ref.watch(aktivesPaketProvider.future);
+  final neueProTag = ref.watch(neueProTagProvider);
+
   final kartenstaende = ref
       .read(fsrsCardStoreProvider)
       .alleKartenstaende(paket.kurs.id);
-  final jetzt = DateTime.now();
-  final anzahl = paket.fragen.where((f) {
-    final stand = kartenstaende[f.id];
-    if (stand == null) return true;
-    return !stand.card.due.isAfter(jetzt);
-  }).length;
-  return anzahl.clamp(0, 30);
+  final neueHeuteSchon = ref
+      .read(attemptHistoryStoreProvider)
+      .neueKartenAm(paket.kurs.id, DateTime.now());
+
+  return ref
+      .read(quizFragenAuswahlProvider)
+      .tagespensum(
+        paket.fragen,
+        kartenstaende: kartenstaende,
+        zufall: math.Random(),
+        neueProTag: neueProTag,
+        neueHeuteSchon: neueHeuteSchon,
+      );
 });
+
+/// Nur die Gesamtzahl - für die Erinnerung und einfache Anzeigen.
+final faelligeAnzahlProvider = FutureProvider<int>(
+  (ref) async => (await ref.watch(tagespensumProvider.future)).gesamt,
+);
 
 // Anzahl der Karten, die beim letzten Mal "sicher, aber falsch" waren.
 //
@@ -231,6 +250,10 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     final kartenstaende = ref
         .read(fsrsCardStoreProvider)
         .alleKartenstaende(_kursId);
+    // Tagesbudget nur dort ermitteln, wo es zählt. Die übrigen Modi haben
+    // mit dem Lerntempo nichts zu tun und sollen nicht von Einstellungen
+    // und Versuchshistorie abhängen.
+    final istTagespensum = modus.art == QuizArt.heuteFaellig;
     final ausgewaehlt = ref
         .read(quizFragenAuswahlProvider)
         .waehleFragen(
@@ -238,6 +261,12 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
           paket.fragen,
           kartenstaende: kartenstaende,
           zufall: math.Random(),
+          neueProTag: istTagespensum ? ref.read(neueProTagProvider) : 0,
+          neueHeuteSchon: istTagespensum
+              ? ref
+                    .read(attemptHistoryStoreProvider)
+                    .neueKartenAm(_kursId, DateTime.now())
+              : 0,
         );
 
     // Rechen- und Nachschlageaufgaben bekommen hier ihre Zahlen. Im Testlauf
