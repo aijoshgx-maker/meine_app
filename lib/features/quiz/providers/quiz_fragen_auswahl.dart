@@ -4,35 +4,30 @@ import '../../../data/fsrs_card_store.dart';
 import '../../../models/frage.dart';
 import 'quiz_modus.dart';
 
-/// Das Tagespensum: was heute an Wiederholungen und neuen Karten ansteht.
+/// Das Tagespensum: die Karten, die heute anstehen.
+///
+/// Ein einziges Budget fuer beides. Wiederholungen und neue Karten getrennt
+/// zu deckeln hiess in der Praxis, dass an einem Tag achtzig Karten
+/// vorlagen - eine Zahl, vor der man gar nicht erst anfaengt.
 ///
 /// Bewusst ein eigener Typ und nicht nur eine Zahl: Dashboard und Session
-/// müssen dasselbe meinen, und die Aufteilung gehört in den Text auf dem
-/// Dashboard ("7 Wiederholungen + 20 neue Karten"). Eine reine Summe hätte
-/// sich früher oder später auseinanderentwickelt.
+/// muessen dasselbe meinen, und die Aufteilung gehoert in den Text auf dem
+/// Dashboard ("13 Wiederholungen · 7 neu").
 class Tagespensum {
-  /// Karten mit gespeichertem Stand, deren Termin erreicht ist - gedeckelt.
+  /// Karten mit gespeichertem Stand, deren Termin erreicht ist.
   final List<Frage> wiederholungen;
 
   /// Bisher ungesehene Karten, soweit das Tagesbudget noch reicht.
   final List<Frage> neue;
 
-  /// Wie viele Wiederholungen heute überfällig sind, aber nicht mehr ins
-  /// Pensum passen. Nur zur Anzeige - sie kommen morgen wieder.
-  final int zurueckgestellt;
-
-  const Tagespensum({
-    required this.wiederholungen,
-    required this.neue,
-    this.zurueckgestellt = 0,
-  });
+  const Tagespensum({required this.wiederholungen, required this.neue});
 
   static const leer = Tagespensum(wiederholungen: [], neue: []);
 
   int get gesamt => wiederholungen.length + neue.length;
 
   /// Wiederholungen zuerst: Was man schon einmal wusste, ist am ehesten
-  /// wieder zu verlieren. Neue Karten kommen danach.
+  /// wieder zu verlieren. Neue Karten fuellen auf, was danach noch frei ist.
   List<Frage> get fragen => [...wiederholungen, ...neue];
 }
 
@@ -41,28 +36,23 @@ class Tagespensum {
 // QuizSessionController mode-agnostisch und diese Klasse ist ohne
 // Provider-Setup unit-testbar.
 class QuizFragenAuswahl {
-  /// Obergrenze der Wiederholungen, als Vielfaches des Tagesbudgets.
-  ///
-  /// Wer eine Woche aussetzt, hat sonst dreihundert fällige Karten vor sich
-  /// und macht gar nichts mehr. Der Rest bleibt fällig und kommt morgen -
-  /// nur eben nicht alles an einem Tag. Als Vielfaches, damit die Grenze mit
-  /// dem gewählten Tempo mitwächst und keinen zweiten Regler braucht.
-  static const int wiederholungsFaktor = 3;
-
-  /// Auch bei "0 neue Karten pro Tag" soll noch wiederholt werden können.
-  static const int mindestWiederholungen = 20;
-
   /// Stellt das Tagespensum zusammen.
   ///
-  /// [neueHeuteSchon] sind die heute bereits angefangenen neuen Karten; sie
-  /// gehen vom Budget ab, damit eine zweite Session am selben Tag nicht
-  /// wieder zwanzig neue auftischt.
+  /// [kartenProTag] ist die Obergrenze fuer den ganzen Tag, nicht je Topf.
+  /// [heuteSchonBearbeitet] geht davon ab: Was heute schon beantwortet
+  /// wurde, zaehlt aufs Tagessoll, damit eine zweite Session nicht noch
+  /// einmal das volle Pensum auftischt.
+  ///
+  /// Ueberfaellige Wiederholungen summieren sich nicht auf. Wer eine Woche
+  /// aussetzt, findet am achten Tag genauso [kartenProTag] Karten vor wie am
+  /// ersten - nur eben die am laengsten faelligen zuerst. Alles andere fuehrt
+  /// zu einem Berg, vor dem man kapituliert.
   Tagespensum tagespensum(
     List<Frage> alle, {
     required Map<String, GespeicherteKarte> kartenstaende,
     required Random zufall,
-    required int neueProTag,
-    required int neueHeuteSchon,
+    required int kartenProTag,
+    required int heuteSchonBearbeitet,
     DateTime? jetzt,
   }) {
     final zeitpunkt = jetzt ?? DateTime.now();
@@ -78,23 +68,21 @@ class QuizFragenAuswahl {
       }
     }
 
+    // Die am laengsten ueberfaellige Karte zuerst: Sie ist am ehesten wieder
+    // verloren. Gemischt wird nur, was am selben Termin haengt.
     faellige.shuffle(zufall);
+    faellige.sort(
+      (a, b) => kartenstaende[a.id]!.card.due.compareTo(
+        kartenstaende[b.id]!.card.due,
+      ),
+    );
     ungesehen.shuffle(zufall);
 
-    final wLimit = max(
-      mindestWiederholungen,
-      neueProTag * wiederholungsFaktor,
-    );
-    final wiederholungen = faellige.take(wLimit).toList();
+    final budget = max(0, kartenProTag - heuteSchonBearbeitet);
+    final wiederholungen = faellige.take(budget).toList();
+    final neue = ungesehen.take(budget - wiederholungen.length).toList();
 
-    final budget = max(0, neueProTag - neueHeuteSchon);
-    final neue = ungesehen.take(budget).toList();
-
-    return Tagespensum(
-      wiederholungen: wiederholungen,
-      neue: neue,
-      zurueckgestellt: faellige.length - wiederholungen.length,
-    );
+    return Tagespensum(wiederholungen: wiederholungen, neue: neue);
   }
 
   List<Frage> waehleFragen(
@@ -102,8 +90,8 @@ class QuizFragenAuswahl {
     List<Frage> alle, {
     required Map<String, GespeicherteKarte> kartenstaende,
     required Random zufall,
-    int neueProTag = 20,
-    int neueHeuteSchon = 0,
+    int kartenProTag = 20,
+    int heuteSchonBearbeitet = 0,
   }) {
     switch (modus.art) {
       case QuizArt.freiUebung:
@@ -113,8 +101,8 @@ class QuizFragenAuswahl {
           alle,
           kartenstaende: kartenstaende,
           zufall: zufall,
-          neueProTag: neueProTag,
-          neueHeuteSchon: neueHeuteSchon,
+          kartenProTag: kartenProTag,
+          heuteSchonBearbeitet: heuteSchonBearbeitet,
         ).fragen;
       case QuizArt.fehlerquellen:
         // Karten, die beim letzten Mal "sicher, aber falsch" waren. Das Flag

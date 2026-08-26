@@ -53,14 +53,14 @@ class _FakeSettingsStore implements SettingsStore {
     _letztesAutoBackup = zeitpunkt;
   }
 
-  int _neueProTag = SettingsStore.neueProTagStandard;
+  int _kartenProTag = SettingsStore.kartenProTagStandard;
 
   @override
-  int neueProTagLaden() => _neueProTag;
+  int kartenProTagLaden() => _kartenProTag;
 
   @override
-  Future<void> neueProTagSpeichern(int anzahl) async {
-    _neueProTag = anzahl;
+  Future<void> kartenProTagSpeichern(int anzahl) async {
+    _kartenProTag = anzahl;
   }
 
   bool _steigendeSchwierigkeit = true;
@@ -99,7 +99,7 @@ void main() {
     expect(store.themeModeLaden(), 'dark');
   });
 
-  group('neueProTagProvider', () {
+  group('kartenProTagProvider', () {
     ProviderContainer mitStore(_FakeSettingsStore store) {
       final container = ProviderContainer(
         overrides: [settingsStoreProvider.overrideWithValue(store)],
@@ -112,8 +112,8 @@ void main() {
       final container = mitStore(_FakeSettingsStore());
 
       expect(
-        container.read(neueProTagProvider),
-        SettingsStore.neueProTagStandard,
+        container.read(kartenProTagProvider),
+        SettingsStore.kartenProTagStandard,
       );
     });
 
@@ -121,10 +121,10 @@ void main() {
       final store = _FakeSettingsStore();
       final container = mitStore(store);
 
-      await container.read(neueProTagProvider.notifier).setzen(35);
+      await container.read(kartenProTagProvider.notifier).setzen(35);
 
-      expect(container.read(neueProTagProvider), 35);
-      expect(store.neueProTagLaden(), 35);
+      expect(container.read(kartenProTagProvider), 35);
+      expect(store.kartenProTagLaden(), 35);
     });
 
     // Der Regler kann nicht über das Maximum hinaus, ein manipulierter oder
@@ -132,14 +132,14 @@ void main() {
     test('Werte außerhalb der Grenzen werden geklemmt', () async {
       final store = _FakeSettingsStore();
       final container = mitStore(store);
-      final controller = container.read(neueProTagProvider.notifier);
+      final controller = container.read(kartenProTagProvider.notifier);
 
-      await controller.setzen(SettingsStore.neueProTagMax + 30);
-      expect(container.read(neueProTagProvider), SettingsStore.neueProTagMax);
+      await controller.setzen(SettingsStore.kartenProTagMax + 30);
+      expect(container.read(kartenProTagProvider), SettingsStore.kartenProTagMax);
 
       await controller.setzen(-5);
-      expect(container.read(neueProTagProvider), 0);
-      expect(store.neueProTagLaden(), 0);
+      expect(container.read(kartenProTagProvider), 0);
+      expect(store.kartenProTagLaden(), 0);
     });
   });
 

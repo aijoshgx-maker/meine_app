@@ -5,7 +5,7 @@ import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/settings_providers.dart'
-    show neueProTagProvider, steigendeSchwierigkeitProvider;
+    show kartenProTagProvider, steigendeSchwierigkeitProvider;
 import '../../../core/matching/antwort_matcher.dart';
 import '../../../core/quiz/frage_haerte.dart';
 import '../../../core/quiz/frage_variante.dart';
@@ -46,20 +46,20 @@ final fragenProvider = FutureProvider<List<Frage>>(
 /// Dashboard und "Heute fällig"-Session ziehen beide aus diesem Provider,
 /// damit die angezeigte Zahl auch die ist, die man dann vorgesetzt bekommt.
 ///
-/// Vorher galt jede nie gesehene Frage als fällig. Bei 681 ungesehenen
-/// Fragen stand der Zähler dadurch dauerhaft an seiner Obergrenze und
-/// bewegte sich nie - egal wie viel man gelernt hatte.
+/// Ein Budget für Wiederholungen und neue Karten zusammen. Getrennt gedeckelt
+/// standen an einem Tag achtzig Karten an - eine Zahl, vor der man gar nicht
+/// erst anfängt. Nicht Bearbeitetes summiert sich nicht auf.
 final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
   ref.watch(lernfortschrittVersionProvider);
   final paket = await ref.watch(aktivesPaketProvider.future);
-  final neueProTag = ref.watch(neueProTagProvider);
+  final kartenProTag = ref.watch(kartenProTagProvider);
 
   final kartenstaende = ref
       .read(fsrsCardStoreProvider)
       .alleKartenstaende(paket.kurs.id);
-  final neueHeuteSchon = ref
+  final heuteSchonBearbeitet = ref
       .read(attemptHistoryStoreProvider)
-      .neueKartenAm(paket.kurs.id, DateTime.now());
+      .bearbeiteteAm(paket.kurs.id, DateTime.now());
 
   return ref
       .read(quizFragenAuswahlProvider)
@@ -67,8 +67,8 @@ final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
         paket.fragen,
         kartenstaende: kartenstaende,
         zufall: math.Random(),
-        neueProTag: neueProTag,
-        neueHeuteSchon: neueHeuteSchon,
+        kartenProTag: kartenProTag,
+        heuteSchonBearbeitet: heuteSchonBearbeitet,
       );
 });
 
@@ -279,11 +279,11 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
           paket.fragen,
           kartenstaende: kartenstaende,
           zufall: math.Random(),
-          neueProTag: istTagespensum ? ref.read(neueProTagProvider) : 0,
-          neueHeuteSchon: istTagespensum
+          kartenProTag: istTagespensum ? ref.read(kartenProTagProvider) : 0,
+          heuteSchonBearbeitet: istTagespensum
               ? ref
                     .read(attemptHistoryStoreProvider)
-                    .neueKartenAm(_kursId, DateTime.now())
+                    .bearbeiteteAm(_kursId, DateTime.now())
               : 0,
         );
 

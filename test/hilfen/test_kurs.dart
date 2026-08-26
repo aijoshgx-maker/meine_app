@@ -93,7 +93,7 @@ class FakeAttemptHistoryStore implements AttemptHistoryStore {
       eintraege.where((a) => a.kursId == kursId).toList();
 
   @override
-  int neueKartenAm(String kursId, DateTime tag) {
+  int bearbeiteteAm(String kursId, DateTime tag) {
     final erster = <String, DateTime>{};
     for (final a in fuerKurs(kursId)) {
       final bisher = erster[a.frageId];
@@ -124,11 +124,11 @@ class FakeAttemptHistoryStore implements AttemptHistoryStore {
 /// gegen eine nicht geoeffnete Hive-Box.
 class FakeSettingsStore implements SettingsStore {
   FakeSettingsStore({
-    this.neueProTag = SettingsStore.neueProTagStandard,
+    this.kartenProTag = SettingsStore.kartenProTagStandard,
     this.steigendeSchwierigkeit = true,
   });
 
-  int neueProTag;
+  int kartenProTag;
   bool steigendeSchwierigkeit;
   String? _themeMode;
   bool _reminders = false;
@@ -171,10 +171,10 @@ class FakeSettingsStore implements SettingsStore {
       _letztesAutoBackup = zeitpunkt;
 
   @override
-  int neueProTagLaden() => neueProTag;
+  int kartenProTagLaden() => kartenProTag;
 
   @override
-  Future<void> neueProTagSpeichern(int anzahl) async => neueProTag = anzahl;
+  Future<void> kartenProTagSpeichern(int anzahl) async => kartenProTag = anzahl;
 
   @override
   bool steigendeSchwierigkeitLaden() => steigendeSchwierigkeit;

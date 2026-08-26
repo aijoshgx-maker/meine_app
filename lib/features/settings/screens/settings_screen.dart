@@ -39,7 +39,7 @@ class SettingsScreen extends ConsumerWidget {
     final remindersEnabled = ref.watch(remindersEnabledProvider);
     final remindersController = ref.read(remindersEnabledProvider.notifier);
     final rechtsstand = ref.watch(_wisoRechtsstandProvider);
-    final neueProTag = ref.watch(neueProTagProvider);
+    final kartenProTag = ref.watch(kartenProTagProvider);
     final steigendeSchwierigkeit = ref.watch(steigendeSchwierigkeitProvider);
 
     return Scaffold(
@@ -75,26 +75,27 @@ class SettingsScreen extends ConsumerWidget {
           const SizedBox(height: 24),
           Text('Lerntempo', style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 8),
-          // Der Regler steuert nur die NEUEN Karten. Wiederholungen richten
-          // sich nach dem Terminplan und lassen sich nicht wegdrehen - was
-          // man angefangen hat, kommt zurück.
+          // Ein Budget für Wiederholungen UND neue Karten. Getrennt gedeckelt
+          // standen an einem Tag achtzig Karten an - eine Zahl, vor der man
+          // gar nicht erst anfängt.
           Text(
-            neueProTag == 0
-                ? 'Keine neuen Karten – es wird nur wiederholt.'
-                : '$neueProTag neue Karten pro Tag',
+            kartenProTag == 0
+                ? 'Pausiert – es steht nichts an.'
+                : '$kartenProTag Karten pro Tag',
             style: Theme.of(context).textTheme.bodyLarge,
           ),
           Slider(
-            value: neueProTag.toDouble(),
-            max: SettingsStore.neueProTagMax.toDouble(),
-            divisions: SettingsStore.neueProTagMax ~/ 5,
-            label: '$neueProTag',
+            value: kartenProTag.toDouble(),
+            max: SettingsStore.kartenProTagMax.toDouble(),
+            divisions: SettingsStore.kartenProTagMax ~/ 5,
+            label: '$kartenProTag',
             onChanged: (wert) =>
-                ref.read(neueProTagProvider.notifier).setzen(wert.round()),
+                ref.read(kartenProTagProvider.notifier).setzen(wert.round()),
           ),
           Text(
-            'Bestimmt, wie viele bisher ungesehene Fragen täglich dazukommen. '
-            'Wiederholungen kommen obendrauf, sobald ihr Termin erreicht ist.',
+            'Das ganze Tagespensum: fällige Wiederholungen zuerst, neue '
+            'Fragen füllen auf. Was liegen bleibt, staut sich nicht auf – '
+            'morgen sind es wieder genauso viele.',
             style: Theme.of(context).textTheme.bodySmall,
           ),
           const SizedBox(height: 24),

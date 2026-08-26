@@ -80,22 +80,17 @@ class AttemptHistoryStore {
   List<Attempt> fuerKurs(String kursId) =>
       alle().where((a) => a.kursId == kursId).toList();
 
-  /// Wie viele bisher ungesehene Karten an [tag] neu angefangen wurden.
+  /// Wie viele verschiedene Karten an [tag] beantwortet wurden.
   ///
-  /// Gezählt wird je Frage der früheste Versuch überhaupt: Liegt der an
-  /// diesem Tag, war die Karte an diesem Tag neu. Ohne diese Zählung würde
-  /// eine zweite Session am selben Tag noch einmal das volle Neu-Kontingent
-  /// auftischen.
-  int neueKartenAm(String kursId, DateTime tag) {
-    final erster = <String, DateTime>{};
-    for (final a in fuerKurs(kursId)) {
-      final bisher = erster[a.frageId];
-      if (bisher == null || a.zeitpunkt.isBefore(bisher)) {
-        erster[a.frageId] = a.zeitpunkt;
-      }
-    }
-    return erster.values.where((z) => _gleicherTag(z, tag)).length;
-  }
+  /// Zaehlt aufs Tagessoll: Wer sein Pensum vormittags erledigt hat, soll
+  /// abends nicht noch einmal dasselbe Kontingent vorgesetzt bekommen. Je
+  /// Frage einmal - eine zweimal beantwortete Karte war ein Durchgang, kein
+  /// zwei.
+  int bearbeiteteAm(String kursId, DateTime tag) => fuerKurs(kursId)
+      .where((a) => _gleicherTag(a.zeitpunkt, tag))
+      .map((a) => a.frageId)
+      .toSet()
+      .length;
 
   static bool _gleicherTag(DateTime a, DateTime b) =>
       a.year == b.year && a.month == b.month && a.day == b.day;

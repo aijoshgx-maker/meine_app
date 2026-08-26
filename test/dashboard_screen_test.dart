@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:go_router/go_router.dart';
 import 'package:meine_app/app/settings_providers.dart';
 import 'package:meine_app/core/spaced_repetition/fsrs_scheduler.dart';
 import 'package:meine_app/data/attempt_history_store.dart';
@@ -15,7 +16,7 @@ import 'package:meine_app/models/kurs.dart';
 import 'hilfen/test_kurs.dart';
 
 class _FakeSettingsStore implements SettingsStore {
-  _FakeSettingsStore({this.neueProTag = SettingsStore.neueProTagStandard});
+  _FakeSettingsStore({this.kartenProTag = SettingsStore.kartenProTagStandard});
 
   @override
   String? themeModeLaden() => null;
@@ -51,14 +52,14 @@ class _FakeSettingsStore implements SettingsStore {
     _letztesAutoBackup = zeitpunkt;
   }
 
-  int neueProTag;
+  int kartenProTag;
 
   @override
-  int neueProTagLaden() => neueProTag;
+  int kartenProTagLaden() => kartenProTag;
 
   @override
-  Future<void> neueProTagSpeichern(int anzahl) async {
-    neueProTag = anzahl;
+  Future<void> kartenProTagSpeichern(int anzahl) async {
+    kartenProTag = anzahl;
   }
 
   bool _steigendeSchwierigkeit = true;
@@ -93,20 +94,32 @@ Widget _app({
   required FakeAttemptHistoryStore verlauf,
   required List<Frage> fragen,
   Kurs? kurs,
-  int neueProTag = SettingsStore.neueProTagStandard,
+  int kartenProTag = SettingsStore.kartenProTagStandard,
 }) => ProviderScope(
   overrides: [
     fsrsCardStoreProvider.overrideWithValue(karten),
     attemptHistoryStoreProvider.overrideWithValue(verlauf),
     settingsStoreProvider.overrideWithValue(
-      _FakeSettingsStore(neueProTag: neueProTag),
+      _FakeSettingsStore(kartenProTag: kartenProTag),
     ),
     aktivesPaketProvider.overrideWith(
       (_) async => testPaket(fragen, kurs: kurs),
     ),
   ],
-  child: const MaterialApp(home: DashboardScreen()),
+  child: MaterialApp.router(routerConfig: _router()),
 );
+
+/// Minimaler Router: Das Dashboard navigiert per context.go, ein nacktes
+/// MaterialApp waere dafuer kein tragfaehiger Untergrund. Statt des echten
+/// Quiz steht am Ziel ein Erkennungszeichen.
+GoRouter _router() => GoRouter(
+  routes: [
+    GoRoute(path: '/', builder: (_, _) => const DashboardScreen()),
+    GoRoute(path: '/quiz', builder: (_, _) => const Text(_quizMarke)),
+  ],
+);
+
+const _quizMarke = 'QUIZ-SESSION';
 
 void main() {
   testWidgets('Dashboard rendert alle Kennzahlen ohne Fehler (leere Daten)', (
@@ -266,19 +279,16 @@ void main() {
       );
     });
 
-    // Aufgestaute Wiederholungen werden genannt, aber nicht ins Pensum
-    // geschlagen - sonst steht man nach einer Woche Pause vor 300 Karten
-    // und fängt gar nicht erst an.
-    testWidgets('nennt zurückgestellte Wiederholungen separat', (
-      tester,
-    ) async {
+    // Das Versprechen des einen Topfes: Wer eine Woche aussetzt, findet am
+    // achten Tag genauso viele Karten vor wie am ersten.
+    testWidgets('Versäumtes staut sich nicht auf', (tester) async {
       final karten = FakeFsrsCardStore();
-      final fragen = [for (var i = 0; i < 25; i++) _frage('f$i', 'Thema A')];
+      final fragen = [for (var i = 0; i < 80; i++) _frage('f$i', 'Thema A')];
       for (final f in fragen) {
         await karten.speichern(
           testKursId,
           f.id,
-          stand(const Duration(days: -1)),
+          stand(const Duration(days: -14)),
         );
       }
 
@@ -287,17 +297,54 @@ void main() {
           karten: karten,
           verlauf: FakeAttemptHistoryStore(),
           fragen: fragen,
-          neueProTag: 0,
+          kartenProTag: 20,
         ),
       );
       await tester.pumpAndSettle();
 
       expect(find.text('Heute 20 Karten'), findsOneWidget);
       expect(find.text('20 Wiederholungen'), findsOneWidget);
-      expect(
-        find.text('5 weitere warten auf die nächsten Tage'),
-        findsOneWidget,
+      expect(find.textContaining('warten'), findsNothing);
+    });
+
+    testWidgets('ein Tippen führt direkt in die Session', (tester) async {
+      final karten = FakeFsrsCardStore();
+      await karten.speichern(testKursId, 'f1', stand(const Duration(days: -1)));
+
+      await tester.pumpWidget(
+        _app(
+          karten: karten,
+          verlauf: FakeAttemptHistoryStore(),
+          fragen: [_frage('f1', 'Thema A')],
+        ),
       );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Heute 1 Karte'));
+      await tester.pumpAndSettle();
+
+      expect(find.text(_quizMarke), findsOneWidget);
+    });
+
+    // Ein Tippen, das in eine leere Session führt, wäre ein leeres
+    // Versprechen.
+    testWidgets('erledigt ist die Karte nicht antippbar', (tester) async {
+      final karten = FakeFsrsCardStore();
+      await karten.speichern(testKursId, 'f1', stand(const Duration(days: 3)));
+
+      await tester.pumpWidget(
+        _app(
+          karten: karten,
+          verlauf: FakeAttemptHistoryStore(),
+          fragen: [_frage('f1', 'Thema A')],
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('Heute nichts mehr offen – gut gemacht!'));
+      await tester.pumpAndSettle();
+
+      expect(find.text(_quizMarke), findsNothing);
     });
   });
 }

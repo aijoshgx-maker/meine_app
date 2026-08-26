@@ -9,15 +9,21 @@ class SettingsStore {
   static const aktiverKursKey = 'aktiverKurs';
   static const datenVersionKey = 'datenVersion';
   static const letztesAutoBackupKey = 'letztesAutoBackup';
-  static const neueProTagKey = 'neueProTag';
+  static const kartenProTagKey = 'kartenProTag';
+
+  /// Vorgaenger-Schluessel: Der Regler stand einmal fuer die NEUEN Karten
+  /// pro Tag, inzwischen fuer das ganze Tagespensum. Wer damals einen Wert
+  /// eingestellt hat, behaelt ihn - die Zahl bedeutet nur etwas anderes.
+  static const _altNeueProTagKey = 'neueProTag';
   static const steigendeSchwierigkeitKey = 'steigendeSchwierigkeit';
 
-  /// Wie viele bisher ungesehene Karten pro Tag dazukommen.
+  /// Wie viele Karten insgesamt pro Tag anstehen - Wiederholungen und neue
+  /// zusammen.
   ///
-  /// Der Wert bestimmt das Lerntempo: 20 am Tag bedeutet, dass ein Kurs mit
-  /// 680 Fragen in etwa fünf Wochen einmal vollständig angefangen ist.
-  static const neueProTagStandard = 20;
-  static const neueProTagMax = 50;
+  /// Ein Topf statt zwei: 20 am Tag heisst 20, nicht 20 plus so viele
+  /// Wiederholungen, wie gerade faellig sind.
+  static const kartenProTagStandard = 20;
+  static const kartenProTagMax = 50;
 
   Box get _box => Hive.box(boxName);
 
@@ -62,14 +68,17 @@ class SettingsStore {
     await _box.put(letztesAutoBackupKey, zeitpunkt.toIso8601String());
   }
 
-  int neueProTagLaden() {
-    final roh = _box.get(neueProTagKey, defaultValue: neueProTagStandard);
+  int kartenProTagLaden() {
+    final roh =
+        _box.get(kartenProTagKey) ??
+        _box.get(_altNeueProTagKey) ??
+        kartenProTagStandard;
     final wert = (roh as num).toInt();
-    return wert.clamp(0, neueProTagMax);
+    return wert.clamp(0, kartenProTagMax);
   }
 
-  Future<void> neueProTagSpeichern(int anzahl) async {
-    await _box.put(neueProTagKey, anzahl.clamp(0, neueProTagMax));
+  Future<void> kartenProTagSpeichern(int anzahl) async {
+    await _box.put(kartenProTagKey, anzahl.clamp(0, kartenProTagMax));
   }
 
   /// Ob Fragen mit dem Koennen haerter werden sollen.

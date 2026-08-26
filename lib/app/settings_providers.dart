@@ -31,21 +31,22 @@ class ThemeModeController extends Notifier<ThemeMode> {
   }
 }
 
-/// Wie viele bisher ungesehene Karten pro Tag dazukommen dürfen.
+/// Wie viele Karten pro Tag insgesamt anstehen.
 ///
-/// Steuert das Lerntempo und damit indirekt auch die Wiederholungslast:
-/// Was heute neu angefangen wird, kommt in den nächsten Tagen zurück.
-final neueProTagProvider = NotifierProvider<NeueProTagController, int>(
-  NeueProTagController.new,
+/// Ein Budget für Wiederholungen UND neue Karten zusammen. Was nicht
+/// bearbeitet wird, staut sich nicht auf - morgen sind es wieder genauso
+/// viele.
+final kartenProTagProvider = NotifierProvider<KartenProTagController, int>(
+  KartenProTagController.new,
 );
 
-class NeueProTagController extends Notifier<int> {
+class KartenProTagController extends Notifier<int> {
   @override
-  int build() => ref.read(settingsStoreProvider).neueProTagLaden();
+  int build() => ref.read(settingsStoreProvider).kartenProTagLaden();
 
   Future<void> setzen(int anzahl) async {
-    state = anzahl.clamp(0, SettingsStore.neueProTagMax);
-    await ref.read(settingsStoreProvider).neueProTagSpeichern(state);
+    state = anzahl.clamp(0, SettingsStore.kartenProTagMax);
+    await ref.read(settingsStoreProvider).kartenProTagSpeichern(state);
   }
 }
 

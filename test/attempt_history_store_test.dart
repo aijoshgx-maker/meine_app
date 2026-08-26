@@ -86,7 +86,7 @@ void main() {
     expect(store.alle(), hasLength(1));
   });
 
-  group('neueKartenAm()', () {
+  group('bearbeiteteAm()', () {
     late AttemptHistoryStore store;
     final heute = DateTime(2026, 8, 26, 9);
     final gestern = heute.subtract(const Duration(days: 1));
@@ -114,30 +114,31 @@ void main() {
       await versuch('f1', heute.add(const Duration(minutes: 5)));
       await versuch('f2', heute.add(const Duration(minutes: 6)));
 
-      expect(store.neueKartenAm('kurs-a', heute), 2);
+      expect(store.bearbeiteteAm('kurs-a', heute), 2);
     });
 
-    // Der früheste Versuch entscheidet: Eine gestern angefangene Karte ist
-    // heute eine Wiederholung und darf das Neu-Budget nicht belasten.
-    test('eine gestern angefangene Karte zählt heute nicht', () async {
+    // Gezählt wird der Tag der Bearbeitung, nicht der Beginn: Eine gestern
+    // angefangene Karte belastet heute das Tagessoll genauso wie eine neue -
+    // sie ist ein Durchgang wie jeder andere.
+    test('jeder Tag zählt für sich', () async {
       await versuch('f1', gestern);
       await versuch('f1', heute);
       await versuch('f2', heute);
 
-      expect(store.neueKartenAm('kurs-a', heute), 1);
-      expect(store.neueKartenAm('kurs-a', gestern), 1);
+      expect(store.bearbeiteteAm('kurs-a', heute), 2);
+      expect(store.bearbeiteteAm('kurs-a', gestern), 1);
     });
 
     test('andere Kurse zählen nicht mit', () async {
       await versuch('f1', heute);
       await versuch('f2', heute, kursId: 'kurs-b');
 
-      expect(store.neueKartenAm('kurs-a', heute), 1);
-      expect(store.neueKartenAm('kurs-b', heute), 1);
+      expect(store.bearbeiteteAm('kurs-a', heute), 1);
+      expect(store.bearbeiteteAm('kurs-b', heute), 1);
     });
 
     test('ohne Versuche ist die Zählung null', () {
-      expect(store.neueKartenAm('kurs-a', heute), 0);
+      expect(store.bearbeiteteAm('kurs-a', heute), 0);
     });
   });
 }

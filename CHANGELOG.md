@@ -51,36 +51,38 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
   Format und Aufnahmekriterien stehen in `docs/FRAGENFORMAT.md`.
 
-- **Lerntempo statt Dauerstau.** Der Zähler auf dem Dashboard klebte bei
-  „30 Karten fällig" und bewegte sich nie — egal, wie viel gelernt war.
-  Ursache: Jede noch nie gesehene Frage galt als fällig, und bei 681
-  ungesehenen Fragen war die Obergrenze von 30 dauerhaft erreicht. Die Zahl
-  sagte damit weder etwas über den Fortschritt noch darüber, was einen in
-  der Session erwartet.
+- **Lerntempo: 20 Karten am Tag, und dabei bleibt es.** Der Zähler auf dem
+  Dashboard klebte bei „30 Karten fällig" und bewegte sich nie — egal, wie
+  viel gelernt war. Ursache: Jede noch nie gesehene Frage galt als fällig,
+  und bei 681 ungesehenen Fragen war die Obergrenze dauerhaft erreicht. Die
+  Zahl sagte weder etwas über den Fortschritt noch darüber, was einen in der
+  Session erwartet.
 
-  Der Tag hat jetzt ein **Pensum aus zwei Töpfen**: Wiederholungen, deren
-  Termin erreicht ist, plus ein einstellbares Kontingent neuer Karten
-  (**Einstellungen → Lerntempo**, Standard 20 pro Tag, Regler bis 50). Das
-  Dashboard nennt beide getrennt — „Heute 27 Karten · 7 Wiederholungen ·
-  20 neu" —, weil eine Summe nicht verrät, ob die Session anstrengend wird.
+  Der Tag hat jetzt **ein einziges Pensum** für Wiederholungen und neue
+  Karten zusammen (**Einstellungen → Lerntempo**, Standard 20, Regler bis
+  50). Fällige Wiederholungen kommen zuerst, die am längsten überfälligen
+  vorneweg; neue Fragen füllen auf, was danach frei ist. Das Dashboard nennt
+  die Aufteilung — „Heute 20 Karten · 13 Wiederholungen · 7 neu" —, weil
+  eine reine Summe nicht verrät, ob die Session anstrengend wird.
 
-  **Wiederholungen sind gedeckelt, aber nicht gestrichen.** Höchstens das
-  Dreifache des Tempos (mindestens 20) kommt an einem Tag dran; der Rest
-  bleibt fällig und wird als „… weitere warten auf die nächsten Tage"
-  ausgewiesen. Wer eine Woche aussetzt, steht so nicht vor dreihundert
-  Karten und fängt gar nicht erst an. Der Deckel hängt am Tempo-Regler und
-  braucht deshalb keinen zweiten.
+  **Versäumtes summiert sich nicht auf.** Wer eine Woche aussetzt, findet am
+  achten Tag genauso 20 Karten vor wie am ersten. Ein Berg, vor dem man
+  kapituliert, entsteht so gar nicht erst.
 
-  **Eine zweite Session am selben Tag tischt nicht erneut auf.** Gezählt
-  wird je Frage der früheste Versuch überhaupt; liegt der heute, war die
-  Karte heute neu und geht vom Kontingent ab. Bei Tempo 0 wird nur noch
-  wiederholt — brauchbar in der Woche vor der Prüfung.
+  **Eine zweite Session am selben Tag tischt nicht erneut auf.** Was heute
+  schon beantwortet wurde, zählt aufs Tagessoll — je Frage einmal, egal wie
+  oft sie drankam. Bei Tempo 0 steht nichts an, brauchbar als Pause.
+
+  **Ein Tippen auf die Pensum-Karte startet die Session** — der kürzeste Weg
+  vom Lesen zum Loslegen.
 
   Dashboard und „Heute fällig" ziehen aus derselben Quelle, die angezeigte
   Zahl ist also genau die, die man vorgesetzt bekommt. Frei üben, Thema
   vertiefen, Fehlerquellen und der Testlauf bleiben unberührt — sie haben
   mit dem Lerntempo nichts zu tun. **Keine Datenmigration:** Ein Gerät ohne
-  gespeicherten Wert startet auf 20.
+  gespeicherten Wert startet auf 20; ein zuvor eingestellter Wert wird
+  übernommen und gilt dann für das ganze Pensum statt nur für die neuen
+  Karten.
 
 - **Variierende Aufgaben.** Wer eine Rechenaufgabe zum dritten Mal sieht,
   erinnert sich an „5,06" statt an den Rechenweg. Die Karte gilt dann als
