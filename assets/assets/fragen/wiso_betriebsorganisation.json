@@ -175,7 +175,10 @@
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
     "erklaerung": "AG-Organe: Hauptversammlung (Aktionäre) → wählt Aufsichtsrat (Kontroll- und Beratungsorgan) → bestellt Vorstand (Leitungsorgan). Bei großen AG: Mitbestimmung im Aufsichtsrat (1/3 oder 1/2 der AR-Sitze für Arbeitnehmervertreter nach DrittelbG / MitbestG). Wirtschaftsprüfer: extern, prüft Jahresabschluss.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2,
+    "freieAntwort": [
+      "Aufsichtsrat"
+    ]
   },
   {
     "id": "wi-bo-013",

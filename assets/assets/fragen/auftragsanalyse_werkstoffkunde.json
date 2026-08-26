@@ -254,7 +254,12 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "freieAntwort": [
+      "Rockwell",
+      "Rockwell-Härteprüfung",
+      "HRC"
+    ]
   },
   {
     "id": "au-wk-009",
@@ -481,7 +486,10 @@
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "W22",
-    "pruefungReihenfolge": 14
+    "pruefungReihenfolge": 14,
+    "freieAntwort": [
+      "Einsatzstahl"
+    ]
   },
   {
     "id": "au-wk-017",
@@ -649,7 +657,10 @@
     "workedExample": null,
     "schwierigkeit": 1,
     "pruefung": "S19",
-    "pruefungReihenfolge": 26
+    "pruefungReihenfolge": 26,
+    "freieAntwort": [
+      "Thermoplast"
+    ]
   },
   {
     "id": "au-wk-024",

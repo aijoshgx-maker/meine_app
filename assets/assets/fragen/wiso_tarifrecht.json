@@ -454,7 +454,10 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "freieAntwort": [
+      "Arbeitsgericht"
+    ]
   },
   {
     "id": "wi-tr-017",
@@ -520,7 +523,12 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "freieAntwort": [
+      "20",
+      "20 Beschäftigte",
+      "Ab 20 Beschäftigten"
+    ]
   },
   {
     "id": "wi-tr-020",

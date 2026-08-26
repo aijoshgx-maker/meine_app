@@ -532,7 +532,10 @@
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "S17",
-    "pruefungReihenfolge": 20
+    "pruefungReihenfolge": 20,
+    "freieAntwort": [
+      "Spannungsarmglühen"
+    ]
   },
   {
     "id": "ft-ww-019",

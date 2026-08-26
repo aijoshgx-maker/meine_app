@@ -390,7 +390,11 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "freieAntwort": [
+      "Wirkungsgrad",
+      "Wirkungsgrad η"
+    ]
   },
   {
     "id": "au-at-014",

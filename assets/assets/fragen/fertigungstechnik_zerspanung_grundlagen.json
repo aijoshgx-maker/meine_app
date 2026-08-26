@@ -157,7 +157,10 @@
         "selfExplanationPrompt":  null,
         "bildAsset":  null,
         "workedExample":  null,
-        "schwierigkeit":  1
+        "schwierigkeit":  1,
+        "freieAntwort":  [
+          "Fließspan"
+        ]
     },
     {
         "id":  "ft-zg-005",
@@ -577,7 +580,10 @@
         "selfExplanationPrompt":  null,
         "bildAsset":  null,
         "workedExample":  null,
-        "schwierigkeit":  1
+        "schwierigkeit":  1,
+        "freieAntwort":  [
+          "Reiben"
+        ]
     },
     {
         "id":  "ft-zg-016",

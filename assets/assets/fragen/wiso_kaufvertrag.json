@@ -518,7 +518,10 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "freieAntwort": [
+      "Kapitalgesellschaft"
+    ]
   },
   {
     "id": "wi-kv-019",

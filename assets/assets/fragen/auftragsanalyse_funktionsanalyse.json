@@ -203,7 +203,10 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "freieAntwort": [
+      "Wirkliniendiagramm"
+    ]
   },
   {
     "id": "au-fa-008",

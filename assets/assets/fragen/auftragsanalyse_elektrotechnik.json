@@ -543,7 +543,13 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "freieAntwort": [
+      "Schutzleiter",
+      "Schutzleiter (PE)",
+      "PE",
+      "Schutzerdung"
+    ]
   },
   {
     "id": "au-et-018",

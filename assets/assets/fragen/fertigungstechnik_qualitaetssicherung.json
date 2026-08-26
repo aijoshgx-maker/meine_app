@@ -594,7 +594,11 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "freieAntwort": [
+      "Tastschnittgerät",
+      "Profilometer"
+    ]
   },
   {
     "id": "ft-qs-019",

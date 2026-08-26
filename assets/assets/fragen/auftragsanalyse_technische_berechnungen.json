@@ -289,7 +289,12 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 3
+    "schwierigkeit": 3,
+    "freieAntwort": [
+      "Polares Widerstandsmoment",
+      "Polares Widerstandsmoment Wp",
+      "Wp"
+    ]
   },
   {
     "id": "au-tb-009",

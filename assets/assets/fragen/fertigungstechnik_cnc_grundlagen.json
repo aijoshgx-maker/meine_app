@@ -298,7 +298,11 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 1
+    "schwierigkeit": 1,
+    "freieAntwort": [
+      "M03",
+      "M3"
+    ]
   },
   {
     "id": "ft-cnc-011",

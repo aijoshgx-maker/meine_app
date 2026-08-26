@@ -199,7 +199,11 @@
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
     "erklaerung": "Optimale Losgröße (Harris-Andler-Formel): q_opt = √(2 · D · Rüstkosten / Lagerkostensatz) mit D = Jahresbedarf. Kleine Lose: häufiges Rüsten (hohe Rüstkosten), geringe Lagerkosten. Große Lose: seltenes Rüsten, hohe Lagerkosten. Minimum der Gesamtkosten = optimale Losgröße.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2,
+    "freieAntwort": [
+      "Optimale Losgröße",
+      "Losgröße"
+    ]
   },
   {
     "id": "ft-ap-012",

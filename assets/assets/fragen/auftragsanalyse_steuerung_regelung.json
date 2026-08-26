@@ -792,7 +792,11 @@
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "S17",
-    "pruefungReihenfolge": 9
+    "pruefungReihenfolge": 9,
+    "freieAntwort": [
+      "Reed-Kontakt",
+      "Reedschalter"
+    ]
   },
   {
     "id": "au-sr-027",
@@ -816,7 +820,13 @@
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "S19",
-    "pruefungReihenfolge": 16
+    "pruefungReihenfolge": 16,
+    "freieAntwort": [
+      "UND",
+      "AND",
+      "UND-Verknüpfung",
+      "Konjunktion"
+    ]
   },
   {
     "id": "au-sr-028",
@@ -864,7 +874,13 @@
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "S19",
-    "pruefungReihenfolge": 18
+    "pruefungReihenfolge": 18,
+    "freieAntwort": [
+      "AND-Baustein",
+      "UND-Baustein",
+      "AND",
+      "UND"
+    ]
   },
   {
     "id": "au-sr-030",

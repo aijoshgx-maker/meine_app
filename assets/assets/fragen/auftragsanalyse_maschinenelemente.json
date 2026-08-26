@@ -630,7 +630,11 @@
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
-    "schwierigkeit": 2
+    "schwierigkeit": 2,
+    "freieAntwort": [
+      "Umfangslast",
+      "Laufring mit Umfangslast"
+    ]
   },
   {
     "id": "au-me-021",
@@ -678,7 +682,11 @@
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "W22",
-    "pruefungReihenfolge": 9
+    "pruefungReihenfolge": 9,
+    "freieAntwort": [
+      "Keilwellenverbindung",
+      "Keilwelle"
+    ]
   },
   {
     "id": "au-me-023",
@@ -806,7 +814,10 @@
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "S17",
-    "pruefungReihenfolge": 8
+    "pruefungReihenfolge": 8,
+    "freieAntwort": [
+      "Rutschkupplung"
+    ]
   },
   {
     "id": "au-me-028",
