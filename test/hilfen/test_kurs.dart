@@ -6,6 +6,7 @@
 
 import 'package:meine_app/data/attempt_history_store.dart';
 import 'package:meine_app/data/fsrs_card_store.dart';
+import 'package:meine_app/data/settings_store.dart';
 import 'package:meine_app/models/fachgespraech_szenario.dart';
 import 'package:meine_app/models/frage.dart';
 import 'package:meine_app/models/kurs.dart';
@@ -114,4 +115,71 @@ class FakeAttemptHistoryStore implements AttemptHistoryStore {
     eintraege.removeWhere((a) => a.kursId == kursId);
     return vorher - eintraege.length;
   }
+}
+
+/// In-Memory-Ersatz fuer den Hive-gestuetzten Einstellungsspeicher.
+///
+/// Braucht jeder Test, der eine Quiz-Session aufbaut: Der Sessionaufbau liest
+/// den Schalter fuer die steigende Schwierigkeit, und ohne Override liefe das
+/// gegen eine nicht geoeffnete Hive-Box.
+class FakeSettingsStore implements SettingsStore {
+  FakeSettingsStore({
+    this.neueProTag = SettingsStore.neueProTagStandard,
+    this.steigendeSchwierigkeit = true,
+  });
+
+  int neueProTag;
+  bool steigendeSchwierigkeit;
+  String? _themeMode;
+  bool _reminders = false;
+  String? _aktiverKurs = testKursId;
+  int _datenVersion = 1;
+  DateTime? _letztesAutoBackup;
+
+  @override
+  String? themeModeLaden() => _themeMode;
+
+  @override
+  Future<void> themeModeSpeichern(String wert) async => _themeMode = wert;
+
+  @override
+  bool remindersAktiviert() => _reminders;
+
+  @override
+  Future<void> remindersAktiviertSpeichern(bool aktiviert) async =>
+      _reminders = aktiviert;
+
+  @override
+  String? aktiverKursLaden() => _aktiverKurs;
+
+  @override
+  Future<void> aktiverKursSpeichern(String kursId) async =>
+      _aktiverKurs = kursId;
+
+  @override
+  int datenVersionLaden() => _datenVersion;
+
+  @override
+  Future<void> datenVersionSpeichern(int version) async =>
+      _datenVersion = version;
+
+  @override
+  DateTime? letztesAutoBackupLaden() => _letztesAutoBackup;
+
+  @override
+  Future<void> letztesAutoBackupSpeichern(DateTime zeitpunkt) async =>
+      _letztesAutoBackup = zeitpunkt;
+
+  @override
+  int neueProTagLaden() => neueProTag;
+
+  @override
+  Future<void> neueProTagSpeichern(int anzahl) async => neueProTag = anzahl;
+
+  @override
+  bool steigendeSchwierigkeitLaden() => steigendeSchwierigkeit;
+
+  @override
+  Future<void> steigendeSchwierigkeitSpeichern(bool aktiv) async =>
+      steigendeSchwierigkeit = aktiv;
 }

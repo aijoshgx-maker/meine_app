@@ -8,6 +8,49 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Hinzugefügt
 
+- **Fragen wachsen mit (Erprobung).** Eine Frage, die man dreimal sicher
+  richtig beantwortet hat, ist als Auswahlfrage keine Prüfung mehr — man
+  erkennt die richtige Option wieder, statt die Antwort abzurufen. Der
+  Lernstand steigt, das Können nicht zwingend mit.
+
+  Solche Fragen werden jetzt **schrittweise härter gestellt**, und die harte
+  Fassung **ersetzt** die leichte:
+
+  - **ab 2× sicher richtig:** der Tipp-Knopf unter der Frage verschwindet.
+    Er erklärt Formelzeichen und Begriffe *vor* dem Antworten — genau die
+    Stütze, die man irgendwann nicht mehr braucht.
+  - **ab 4× sicher richtig:** die Frage selbst wird härter. Bei 31
+    Auswahlfragen fallen die Optionen weg und man tippt frei; bei
+    Rechenaufgaben nennt der Eingabehinweis die Einheit nicht mehr.
+
+  Gezählt wird nur **sicher und richtig** — wer richtig rät, hat es nicht
+  gekonnt. Ein Fehler nimmt **genau eine Stufe** zurück, nicht den ganzen
+  Weg: Wer an der freien Antwort einmal scheitert, sieht sie wieder mit
+  Auswahl, muss aber nicht von vorn anfangen. Der Testlauf bleibt unberührt
+  — dort zählt der authentische Prüfungsbogen.
+
+  **Welche Frage frei abgefragt werden kann, steht in den Daten und wird
+  nicht geraten.** Von den 171 Auswahlfragen haben 34 eine kurze richtige
+  Option, aber nur ein Teil davon taugt als freie Antwort: „Reed-Kontakt"
+  und „Aufsichtsrat" schon, „Er fällt exponentiell." oder „Ja, für 9 Monate"
+  nicht — das sind Antworten auf eine Auswahl und ohne sie unlösbar. Eine
+  automatische Ableitung hätte Fragen erzeugt, an denen man zu Unrecht
+  scheitert. Hinterlegt sind daher **31 von Hand geprüfte Fragen** im neuen
+  Feld `freieAntwort`; alle übrigen bleiben auf der mittleren Stufe.
+
+  Abgesichert durch einen Gurt über den Bestand: Jede hinterlegte Antwort
+  muss von der Bewertung als richtig erkannt werden, und kein Ablenker
+  derselben Frage darf durchgehen — sonst wäre die harte Fassung leichter
+  als die leichte.
+
+  **Das Ganze hängt an einem Schalter** (Einstellungen → Erprobung,
+  standardmäßig an). Ausgeschaltet verhält sich die App exakt wie vorher;
+  der Zähler läuft trotzdem weiter, damit ein späteres Einschalten nicht bei
+  null beginnt. **Keine Datenmigration** — Karten ohne den Zähler starten
+  auf 0.
+
+  Format und Aufnahmekriterien stehen in `docs/FRAGENFORMAT.md`.
+
 - **Lerntempo statt Dauerstau.** Der Zähler auf dem Dashboard klebte bei
   „30 Karten fällig" und bewegte sich nie — egal, wie viel gelernt war.
   Ursache: Jede noch nie gesehene Frage galt als fällig, und bei 681

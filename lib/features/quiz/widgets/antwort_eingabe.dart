@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../core/quiz/frage_haerte.dart';
 import '../../../models/frage.dart';
 import '../providers/quiz_providers.dart';
 
@@ -9,11 +10,17 @@ class AntwortEingabe extends ConsumerWidget {
   final AntwortZustand antwort;
   final QuizModus modus;
 
+  /// Steuert die Hinweise an den Eingabefeldern. Was sich am Inhalt der
+  /// Frage aendert, ist zu diesem Zeitpunkt bereits geschehen - siehe
+  /// core/quiz/frage_haerte.dart.
+  final Haertegrad haertegrad;
+
   const AntwortEingabe({
     super.key,
     required this.frage,
     required this.antwort,
     required this.modus,
+    this.haertegrad = Haertegrad.normal,
   });
 
   @override
@@ -36,7 +43,10 @@ class AntwortEingabe extends ConsumerWidget {
           FrageTyp.zuordnung => _zuordnungListe(context, controller),
           FrageTyp.rechnung => _texteingabe(
             controller: controller,
-            hinweis: frage.einheit != null
+            // Ab Stufe 2 nennt der Hinweis die Einheit nicht mehr - sie
+            // gehoert dann zum Gewussten, nicht zur Aufgabenstellung.
+            hinweis:
+                frage.einheit != null && haertegrad != Haertegrad.freierAbruf
                 ? 'Zahlenwert in ${frage.einheit}'
                 : 'Zahlenwert eingeben',
             // TextInputType.number ist auf dem Telefon der reine

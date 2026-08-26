@@ -49,6 +49,27 @@ class NeueProTagController extends Notifier<int> {
   }
 }
 
+/// Ob Fragen, die mehrfach sicher richtig beantwortet wurden, in einer
+/// haerteren Fassung gestellt werden.
+///
+/// Erprobung. Der Schalter steht in den Einstellungen unter "Erprobung"; ist
+/// er aus, verhaelt sich die App wie vorher. Der Zaehler an der Karte laeuft
+/// trotzdem weiter, damit ein spaeteres Einschalten nicht bei null beginnt.
+final steigendeSchwierigkeitProvider =
+    NotifierProvider<SteigendeSchwierigkeitController, bool>(
+      SteigendeSchwierigkeitController.new,
+    );
+
+class SteigendeSchwierigkeitController extends Notifier<bool> {
+  @override
+  bool build() => ref.read(settingsStoreProvider).steigendeSchwierigkeitLaden();
+
+  Future<void> setzen(bool aktiv) async {
+    state = aktiv;
+    await ref.read(settingsStoreProvider).steigendeSchwierigkeitSpeichern(aktiv);
+  }
+}
+
 // Erinnerungen sind standardmäßig aus; die Android-13-Berechtigung wird erst
 // angefragt, wenn der Nutzer sie hier aktiv einschaltet (kein ungefragter
 // Permission-Dialog beim ersten App-Start).

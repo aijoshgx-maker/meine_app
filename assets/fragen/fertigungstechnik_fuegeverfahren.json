@@ -78,7 +78,10 @@
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
     "erklaerung": "Wellenlöten: Leiterplatte wird über eine Lotwelle geführt → THT-Bauteile werden benetzt. Reflow-Löten: SMD-Bauteile mit Lotpaste bestückt, dann in Ofen erhitzt → Lot schmilzt und erstarrt. Wellenlöten für THT, Reflow für SMD. Hartlöten: T > 450°C, Flammenlöten für mechanisch hochbelastete Verbindungen.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2,
+    "freieAntwort": [
+      "Wellenlöten"
+    ]
   },
   {
     "id": "ft-fv-006",
@@ -230,7 +233,10 @@
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [], "wahr": null,
     "erklaerung": "Ultraschallschweißen: Mechanische Ultraschallschwingungen (15-40 kHz) erzeugen Reibungswärme an der Fügeebene → Thermoplast schmilzt lokal → Druckbeaufschlagung → Verbindung. Sekunden-schneller Prozess, gut automatisierbar. Einsatz: Automotive, Medizintechnik, Verpackungen. Kein Zusatzmaterial, saubere Verbindung.",
-    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2
+    "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 2,
+    "freieAntwort": [
+      "Ultraschallschweißen"
+    ]
   },
   {
     "id": "ft-fv-014",

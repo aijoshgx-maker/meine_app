@@ -2,26 +2,39 @@ import 'package:hive/hive.dart';
 
 import '../core/spaced_repetition/fsrs_scheduler.dart';
 
-// Persistierter Stand einer Karte: der FSRS-Stand selbst plus das
-// Hypercorrection-Flag (sicher geantwortet, aber falsch).
+// Persistierter Stand einer Karte: der FSRS-Stand selbst, das
+// Hypercorrection-Flag (sicher geantwortet, aber falsch) und der Zaehler fuer
+// die steigende Schwierigkeit.
 class GespeicherteKarte {
   final FsrsCard card;
   final bool hochkonfidentFalsch;
 
+  /// Wie oft diese Karte zuletzt in Folge sicher UND richtig beantwortet
+  /// wurde. Bestimmt den Haertegrad, in dem die Frage gestellt wird - siehe
+  /// core/quiz/frage_haerte.dart.
+  ///
+  /// Nur "sicher" zaehlt hoch: Wer richtig raet, hat es nicht gekonnt.
+  final int sicherRichtigInFolge;
+
   const GespeicherteKarte({
     required this.card,
     this.hochkonfidentFalsch = false,
+    this.sicherRichtigInFolge = 0,
   });
 
   Map<String, dynamic> toMap() => {
     ...card.toMap(),
     'hochkonfidentFalsch': hochkonfidentFalsch,
+    'sicherRichtigInFolge': sicherRichtigInFolge,
   };
 
+  // Bestandskarten aus der Zeit vor der steigenden Schwierigkeit haben das
+  // Feld nicht und starten damit auf 0 - keine Migration noetig.
   factory GespeicherteKarte.fromMap(Map<String, dynamic> map) =>
       GespeicherteKarte(
         card: FsrsCard.fromMap(map),
         hochkonfidentFalsch: map['hochkonfidentFalsch'] as bool? ?? false,
+        sicherRichtigInFolge: (map['sicherRichtigInFolge'] as num?)?.toInt() ?? 0,
       );
 }
 

@@ -10,6 +10,7 @@ class SettingsStore {
   static const datenVersionKey = 'datenVersion';
   static const letztesAutoBackupKey = 'letztesAutoBackup';
   static const neueProTagKey = 'neueProTag';
+  static const steigendeSchwierigkeitKey = 'steigendeSchwierigkeit';
 
   /// Wie viele bisher ungesehene Karten pro Tag dazukommen.
   ///
@@ -69,5 +70,16 @@ class SettingsStore {
 
   Future<void> neueProTagSpeichern(int anzahl) async {
     await _box.put(neueProTagKey, anzahl.clamp(0, neueProTagMax));
+  }
+
+  /// Ob Fragen mit dem Koennen haerter werden sollen.
+  ///
+  /// Erprobung, deshalb ein eigener Schalter: Ohne ihn liesse sich der
+  /// Versuch nur durch einen Eingriff in den Code beenden.
+  bool steigendeSchwierigkeitLaden() =>
+      _box.get(steigendeSchwierigkeitKey, defaultValue: true) as bool;
+
+  Future<void> steigendeSchwierigkeitSpeichern(bool aktiv) async {
+    await _box.put(steigendeSchwierigkeitKey, aktiv);
   }
 }

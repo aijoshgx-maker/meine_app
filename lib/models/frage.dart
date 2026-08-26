@@ -75,6 +75,15 @@ class Frage {
   // Bedeutung; steht hier, damit das Feld einen Import/Export übersteht.
   final List<String> bewusstSo;
 
+  // Antworten, die als freie Texteingabe gelten, wenn diese Frage auf der
+  // hoechsten Haertestufe ohne ihre Optionen gestellt wird.
+  //
+  // Leer bei allen Fragen, deren richtige Option nur im Zusammenspiel mit den
+  // uebrigen Optionen Sinn ergibt ("Ja, fuer 9 Monate") - dort waere die
+  // Frage ohne Auswahl unloesbar. Nur bei typ == single gefuellt; siehe
+  // core/quiz/frage_haerte.dart.
+  final List<String> freieAntwort;
+
   // Beschreibung, wie diese Aufgabe mit anderen Zahlen erscheinen kann.
   //
   // Null bei allen Fragen, die einen festen Merksatz abfragen - dort wäre
@@ -108,6 +117,7 @@ class Frage {
     this.pruefungReihenfolge,
     this.tippsAus = const [],
     this.bewusstSo = const [],
+    this.freieAntwort = const [],
     this.varianten,
   });
 
@@ -117,7 +127,9 @@ class Frage {
   /// gewöhnliche [Frage] mit ersetztem Text und neuem Lösungswert, damit
   /// Bewertung, Aufdeckung und Lernfortschritt unverändert weiterlaufen.
   Frage copyWith({
+    String? typ,
     String? frage,
+    List<String>? optionen,
     List<String>? akzeptierteKurzantworten,
     List<List<String>>? luecken,
     double? loesungswert,
@@ -129,9 +141,9 @@ class Frage {
       id: id,
       bereich: bereich,
       kategorie: kategorie,
-      typ: typ,
+      typ: typ ?? this.typ,
       frage: frage ?? this.frage,
-      optionen: optionen,
+      optionen: optionen ?? this.optionen,
       richtigeIndizes: richtigeIndizes,
       reihenfolge: reihenfolge,
       paare: paare,
@@ -152,6 +164,7 @@ class Frage {
       pruefungReihenfolge: pruefungReihenfolge,
       tippsAus: tippsAus,
       bewusstSo: bewusstSo,
+      freieAntwort: freieAntwort,
       varianten: varianten,
     );
   }
@@ -190,6 +203,7 @@ class Frage {
       pruefungReihenfolge: json['pruefungReihenfolge'] as int?,
       tippsAus: strList(json['tippsAus']),
       bewusstSo: strList(json['bewusstSo']),
+      freieAntwort: strList(json['freieAntwort']),
       varianten: json['varianten'] == null
           ? null
           : FrageVarianten.fromJson(
@@ -224,6 +238,7 @@ class Frage {
     'pruefungReihenfolge': pruefungReihenfolge,
     if (tippsAus.isNotEmpty) 'tippsAus': tippsAus,
     if (bewusstSo.isNotEmpty) 'bewusstSo': bewusstSo,
+    if (freieAntwort.isNotEmpty) 'freieAntwort': freieAntwort,
     if (varianten != null) 'varianten': varianten!.toJson(),
   };
 }

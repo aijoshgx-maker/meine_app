@@ -7,6 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/app/settings_providers.dart';
 import 'package:meine_app/features/kurse/providers/kurs_providers.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/features/quiz/providers/session_timer_provider.dart';
@@ -48,6 +49,7 @@ Future<(ProviderContainer, TimerZustand Function())> _pumpe(
   final container = ProviderContainer(
     overrides: [
       fsrsCardStoreProvider.overrideWithValue(FakeFsrsCardStore()),
+      settingsStoreProvider.overrideWithValue(FakeSettingsStore()),
       attemptHistoryStoreProvider.overrideWithValue(FakeAttemptHistoryStore()),
       aktivesPaketProvider.overrideWith((_) async => testPaket(_testFragen)),
     ],

@@ -71,6 +71,44 @@ sie mit `[]` bzw. `null` auf.
 }
 ```
 
+### Freie Antwort auf der höchsten Stufe (`freieAntwort`)
+
+Wer eine Frage viermal in Folge **sicher und richtig** beantwortet hat,
+bekommt sie ohne ihre Optionen gestellt — aus Wiedererkennen wird Abrufen
+(siehe `lib/core/quiz/frage_haerte.dart`). Was dann als richtig gilt, steht
+in `freieAntwort`:
+
+```json
+"freieAntwort": ["Reed-Kontakt", "Reedschalter"]
+```
+
+Der **Wortlaut der richtigen Option gilt immer mit** und muss hier nicht
+wiederholt werden. `freieAntwort` trägt nur die kürzeren und die
+gleichwertigen Formulierungen nach — bei „Rockwell-Härteprüfung (HRC/HRB)"
+also `["Rockwell", "Rockwell-Härteprüfung", "HRC"]`.
+
+**Nur bei `typ: "single"`.** An jedem anderen Typ wäre das Feld wirkungslos;
+der Validator meldet es als Fehler.
+
+**Wann eine Frage das Feld bekommt:** Sie fragt nach genau einem Begriff,
+Kennwert oder Verfahren, und der ist ohne Blick auf die Optionen benennbar.
+
+**Wann nicht:**
+
+- Ja/Nein-Antworten („Ja, für 9 Monate") — ohne die Auswahl unlösbar
+- ganze Sätze („Er fällt exponentiell.")
+- Antworten, die nur eine von mehreren angebotenen Formulierungen sind
+- Antworten, die einen Schaltplan voraussetzen („-RM1")
+
+Ohne das Feld bleibt die Frage auf der mittleren Stufe stehen — das ist der
+Normalfall und kostet nichts.
+
+Gepflegt wird die Liste in `tool/freie_antwort_setzen.py`; ein erneuter Lauf
+schreibt sie in die Fragendateien. Abgesichert durch
+`test/frage_haerte_bestand_test.dart`: Jede hinterlegte Antwort muss von der
+Bewertung als richtig erkannt werden, und **kein Ablenker derselben Frage
+darf durchgehen** — sonst wäre die harte Fassung leichter als die leichte.
+
 ## `multi` - Mehrfachauswahl
 
 **Pflichtfelder zusätzlich:** `optionen` (≥2 Einträge), `richtigeIndizes`

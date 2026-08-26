@@ -6,6 +6,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/app/settings_providers.dart';
 import 'package:meine_app/features/kurse/providers/kurs_providers.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/features/quiz/screens/quiz_screen.dart';
@@ -59,6 +60,7 @@ Future<void> _pumpe(
     ProviderScope(
       overrides: [
         fsrsCardStoreProvider.overrideWithValue(FakeFsrsCardStore()),
+        settingsStoreProvider.overrideWithValue(FakeSettingsStore()),
         attemptHistoryStoreProvider.overrideWithValue(
           FakeAttemptHistoryStore(),
         ),

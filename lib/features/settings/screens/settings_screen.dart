@@ -40,6 +40,7 @@ class SettingsScreen extends ConsumerWidget {
     final remindersController = ref.read(remindersEnabledProvider.notifier);
     final rechtsstand = ref.watch(_wisoRechtsstandProvider);
     final neueProTag = ref.watch(neueProTagProvider);
+    final steigendeSchwierigkeit = ref.watch(steigendeSchwierigkeitProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Einstellungen')),
@@ -95,6 +96,23 @@ class SettingsScreen extends ConsumerWidget {
             'Bestimmt, wie viele bisher ungesehene Fragen täglich dazukommen. '
             'Wiederholungen kommen obendrauf, sobald ihr Termin erreicht ist.',
             style: Theme.of(context).textTheme.bodySmall,
+          ),
+          const SizedBox(height: 24),
+          Text('Erprobung', style: Theme.of(context).textTheme.titleMedium),
+          const SizedBox(height: 8),
+          // Eigener Abschnitt, damit erkennbar bleibt: Das ist ein Versuch,
+          // keine fertige Funktion. Wer ihn ausschaltet, bekommt die App
+          // exakt wie vorher.
+          SwitchListTile(
+            contentPadding: EdgeInsets.zero,
+            title: const Text('Steigende Schwierigkeit'),
+            subtitle: const Text(
+              'Fragen, die du mehrmals sicher und richtig beantwortet hast, '
+              'werden schrittweise härter gestellt – erst ohne Tipps, dann '
+              'ohne Antwortauswahl. Ein Fehler nimmt eine Stufe zurück.',
+            ),
+            value: steigendeSchwierigkeit,
+            onChanged: ref.read(steigendeSchwierigkeitProvider.notifier).setzen,
           ),
           const SizedBox(height: 24),
           Text('Daten', style: Theme.of(context).textTheme.titleMedium),

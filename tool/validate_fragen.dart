@@ -328,6 +328,19 @@ void _validiereFrage(
     return; // Typspezifische Prüfungen ergeben ohne gültigen Typ keinen Sinn.
   }
 
+  // 'freieAntwort' traegt die Antworten fuer die haerteste Stufe, auf der
+  // eine Auswahlfrage ohne ihre Optionen gestellt wird. An jedem anderen Typ
+  // waere das Feld wirkungslos und wuerde nur eine Pflege vortaeuschen.
+  final freieAntwort = _strList(f['freieAntwort']);
+  if (freieAntwort.isNotEmpty) {
+    if (typ != 'single') {
+      fehler(datei, id, "'freieAntwort' nur bei typ 'single' erlaubt (typ: $typ).");
+    }
+    if (freieAntwort.any((a) => a.trim().isEmpty)) {
+      fehler(datei, id, "'freieAntwort' enthaelt einen leeren Eintrag.");
+    }
+  }
+
   switch (typ) {
     case 'single':
       if (richtigeIndizes.length != 1) {

@@ -62,6 +62,16 @@ class _FakeSettingsStore implements SettingsStore {
   Future<void> neueProTagSpeichern(int anzahl) async {
     _neueProTag = anzahl;
   }
+
+  bool _steigendeSchwierigkeit = true;
+
+  @override
+  bool steigendeSchwierigkeitLaden() => _steigendeSchwierigkeit;
+
+  @override
+  Future<void> steigendeSchwierigkeitSpeichern(bool aktiv) async {
+    _steigendeSchwierigkeit = aktiv;
+  }
 }
 
 void main() {
@@ -130,6 +140,32 @@ void main() {
       await controller.setzen(-5);
       expect(container.read(neueProTagProvider), 0);
       expect(store.neueProTagLaden(), 0);
+    });
+  });
+
+  group('steigendeSchwierigkeitProvider', () {
+    test('ist standardmäßig eingeschaltet', () {
+      final container = ProviderContainer(
+        overrides: [
+          settingsStoreProvider.overrideWithValue(_FakeSettingsStore()),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      expect(container.read(steigendeSchwierigkeitProvider), isTrue);
+    });
+
+    test('setzen() persistiert im Store', () async {
+      final store = _FakeSettingsStore();
+      final container = ProviderContainer(
+        overrides: [settingsStoreProvider.overrideWithValue(store)],
+      );
+      addTearDown(container.dispose);
+
+      await container.read(steigendeSchwierigkeitProvider.notifier).setzen(false);
+
+      expect(container.read(steigendeSchwierigkeitProvider), isFalse);
+      expect(store.steigendeSchwierigkeitLaden(), isFalse);
     });
   });
 }

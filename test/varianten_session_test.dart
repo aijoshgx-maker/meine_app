@@ -8,6 +8,7 @@ import 'dart:math';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/app/settings_providers.dart';
 import 'package:meine_app/features/kurse/providers/kurs_providers.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/models/frage.dart';
@@ -51,6 +52,7 @@ const _aufgabe = Frage(
 ProviderContainer _container(int seed) => ProviderContainer(
   overrides: [
     fsrsCardStoreProvider.overrideWithValue(FakeFsrsCardStore()),
+    settingsStoreProvider.overrideWithValue(FakeSettingsStore()),
     attemptHistoryStoreProvider.overrideWithValue(FakeAttemptHistoryStore()),
     // Fester Seed statt Hoffnung darauf, dass zwei Ziehungen verschieden
     // ausfallen.

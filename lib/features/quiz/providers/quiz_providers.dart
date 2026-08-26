@@ -4,8 +4,10 @@ import 'package:flutter/foundation.dart' show setEquals;
 import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../app/settings_providers.dart' show neueProTagProvider;
+import '../../../app/settings_providers.dart'
+    show neueProTagProvider, steigendeSchwierigkeitProvider;
 import '../../../core/matching/antwort_matcher.dart';
+import '../../../core/quiz/frage_haerte.dart';
 import '../../../core/quiz/frage_variante.dart';
 import '../../../core/quiz/options_shuffle.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart';
@@ -190,6 +192,14 @@ class QuizSessionState {
   uebersprungeneIds; // IDs bereits einmal übersprungener Fragen
   final bool fertig;
 
+  /// Haertegrad je Frage-ID (steigende Schwierigkeit).
+  ///
+  /// Eine Map statt einer Liste parallel zu [fragen]: Beim Ueberspringen
+  /// wandert eine Frage ans Ende, eine positionsgebundene Liste geriete
+  /// dabei aus dem Tritt. Fehlt ein Eintrag, gilt [Haertegrad.normal] -
+  /// so bleibt der Zustand ohne die Erprobung schlicht leer.
+  final Map<String, Haertegrad> haertegrade;
+
   QuizSessionState({
     required this.modus,
     required this.fragen,
@@ -199,11 +209,17 @@ class QuizSessionState {
     int? gesamtFragen,
     Set<String>? uebersprungeneIds,
     this.fertig = false,
+    Map<String, Haertegrad>? haertegrade,
   }) : gesamtFragen = gesamtFragen ?? fragen.length,
-       uebersprungeneIds = uebersprungeneIds ?? const {};
+       uebersprungeneIds = uebersprungeneIds ?? const {},
+       haertegrade = haertegrade ?? const {};
 
   Frage? get aktuelleFrage =>
       (fertig || index >= fragen.length) ? null : fragen[index];
+
+  /// Haertegrad der gerade gezeigten Frage.
+  Haertegrad get aktuellerHaertegrad =>
+      haertegrade[aktuelleFrage?.id] ?? Haertegrad.normal;
 
   QuizSessionState copyWith({
     List<Frage>? fragen,
@@ -213,6 +229,7 @@ class QuizSessionState {
     int? gesamtFragen,
     Set<String>? uebersprungeneIds,
     bool? fertig,
+    Map<String, Haertegrad>? haertegrade,
   }) {
     return QuizSessionState(
       modus: modus,
@@ -223,6 +240,7 @@ class QuizSessionState {
       gesamtFragen: gesamtFragen ?? this.gesamtFragen,
       uebersprungeneIds: uebersprungeneIds ?? this.uebersprungeneIds,
       fertig: fertig ?? this.fertig,
+      haertegrade: haertegrade ?? this.haertegrade,
     );
   }
 }
@@ -277,7 +295,7 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
     // zurückgestellte Frage ("Nochmal") dieselbe Aufgabe noch einmal - man
     // bekommt die, an der man gescheitert ist.
     final variantenZufall = ref.read(variantenZufallProvider)();
-    final fragen = [
+    final gewuerfelt = [
       for (final frage in ausgewaehlt)
         wuerfleVariante(
           frage,
@@ -286,10 +304,33 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
         ),
     ];
 
+    // Steigende Schwierigkeit: Wer eine Frage mehrfach sicher richtig
+    // beantwortet hat, bekommt sie haerter - und zwar STATT der leichten.
+    //
+    // Nicht im Testlauf: Dort zaehlt der authentische Pruefungsbogen,
+    // dieselbe Regel wie bei den Varianten.
+    final haerteAn =
+        ref.read(steigendeSchwierigkeitProvider) &&
+        modus.art != QuizArt.pruefungssimulation;
+    final haertegrade = <String, Haertegrad>{};
+    final fragen = <Frage>[];
+    for (final frage in gewuerfelt) {
+      final grad = haerteAn
+          ? haertegradVon(kartenstaende[frage.id]?.sicherRichtigInFolge ?? 0)
+          : Haertegrad.normal;
+      if (grad != Haertegrad.normal) haertegrade[frage.id] = grad;
+      fragen.add(haerteFrage(frage, grad));
+    }
+
     final antwort = fragen.isEmpty
         ? const AntwortZustand()
         : AntwortZustand.fuerFrage(fragen.first, math.Random());
-    return QuizSessionState(modus: modus, fragen: fragen, antwort: antwort);
+    return QuizSessionState(
+      modus: modus,
+      fragen: fragen,
+      antwort: antwort,
+      haertegrade: haertegrade,
+    );
   }
 
   // Beendet die Session sofort (z.B. wenn das Zeitlimit einer
@@ -502,12 +543,22 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
       );
     }
 
+    // Zaehler fuer die steigende Schwierigkeit. Laeuft bewusst auch bei
+    // ausgeschaltetem Schalter weiter - sonst stuende man nach dem
+    // Einschalten wieder bei null.
+    final zaehler = naechsterZaehler(
+      bisherigerStand?.sicherRichtigInFolge ?? 0,
+      korrekt: aktuell.antwort.korrekt == true,
+      sicher: aktuell.antwort.konfidenz == Konfidenz.sicher,
+    );
+
     await store.speichern(
       _kursId,
       frage.id,
       GespeicherteKarte(
         card: neueKarte,
         hochkonfidentFalsch: hochkonfidentFalsch,
+        sicherRichtigInFolge: zaehler,
       ),
     );
 

@@ -324,7 +324,12 @@
     "wahr": null,
     "erklaerung": "A = ap [mm] · f [mm/U] = mm² (pro Umdrehung). Der Spanungsquerschnitt hat die Einheit mm² und repräsentiert die Querschnittsfläche des abzunehmenden Spans.",
     "selfExplanationPrompt": null,
-    "bildAsset": null, "workedExample": null, "schwierigkeit": 1
+    "bildAsset": null, "workedExample": null, "schwierigkeit": 1,
+    "freieAntwort": [
+      "mm²",
+      "mm2",
+      "Quadratmillimeter"
+    ]
   },
   {
     "id": "ft-sd-011",

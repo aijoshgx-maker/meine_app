@@ -534,7 +534,11 @@
     "workedExample": null,
     "schwierigkeit": 2,
     "pruefung": "W22",
-    "pruefungReihenfolge": 6
+    "pruefungReihenfolge": 6,
+    "freieAntwort": [
+      "DIN 31051",
+      "31051"
+    ]
   },
   {
     "id": "au-ih-018",

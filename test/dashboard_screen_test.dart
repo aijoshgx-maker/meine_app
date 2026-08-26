@@ -60,6 +60,16 @@ class _FakeSettingsStore implements SettingsStore {
   Future<void> neueProTagSpeichern(int anzahl) async {
     neueProTag = anzahl;
   }
+
+  bool _steigendeSchwierigkeit = true;
+
+  @override
+  bool steigendeSchwierigkeitLaden() => _steigendeSchwierigkeit;
+
+  @override
+  Future<void> steigendeSchwierigkeitSpeichern(bool aktiv) async {
+    _steigendeSchwierigkeit = aktiv;
+  }
 }
 
 Frage _frage(String id, String kategorie) => Frage(

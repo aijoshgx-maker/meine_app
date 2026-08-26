@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/kurse/kurs_bilder.dart';
 import '../../../core/quiz/erklaerung_teilen.dart';
+import '../../../core/quiz/frage_haerte.dart';
 import '../../../core/spaced_repetition/fsrs_scheduler.dart' show Rating;
 import '../../../models/frage.dart';
 import '../../../models/glossar.dart';
@@ -255,6 +256,7 @@ class _QuizBody extends ConsumerWidget {
         final bereitsUebersprungen = session.uebersprungeneIds.contains(
           frage.id,
         );
+        final haertegrad = session.aktuellerHaertegrad;
         final zeigeSkip =
             session.antwort.phase == FragePhase.antworten &&
             session.fragen.length > 1;
@@ -334,6 +336,8 @@ class _QuizBody extends ConsumerWidget {
                     ],
                   ),
                 ),
+              if (haertegrad != Haertegrad.normal)
+                _HaerteAbzeichen(grad: haertegrad),
               Text(
                 frage.frage.replaceAllMapped(
                   RegExp(r'\{\{\d+\}\}'),
@@ -344,7 +348,10 @@ class _QuizBody extends ConsumerWidget {
               // Erklaert Formelzeichen aus dem Fragetext. Steht direkt
               // unter der Frage, weil er dort gebraucht wird - beim Lesen,
               // nicht nach dem Antworten.
-              TippKnopf(eintraege: tipps),
+              //
+              // Ab Stufe 1 faellt er weg: Wer eine Frage mehrfach sicher
+              // beherrscht, soll die Formelzeichen selbst kennen.
+              if (haertegrad == Haertegrad.normal) TippKnopf(eintraege: tipps),
               if (frage.bildAsset != null) ...[
                 const SizedBox(height: 12),
                 _FrageBild(bildAsset: frage.bildAsset!),
@@ -359,6 +366,7 @@ class _QuizBody extends ConsumerWidget {
                       frage: frage,
                       antwort: session.antwort,
                       modus: modus,
+                      haertegrad: haertegrad,
                     ),
                     FragePhase.konfidenz => KonfidenzAuswahl(modus: modus),
                     FragePhase.aufgedeckt => _AufdeckungsAnsicht(
@@ -970,6 +978,51 @@ class _StuecklistenAbschnitt extends StatelessWidget {
                 ],
               ),
             ),
+        ],
+      ),
+    );
+  }
+}
+
+/// Zeigt an, dass diese Frage gerade haerter gestellt wird.
+///
+/// Kein Zierrat: Wenn bei einer vertrauten Frage ploetzlich die Optionen
+/// fehlen, muss erkennbar sein, dass das Absicht ist und kein Fehler.
+class _HaerteAbzeichen extends StatelessWidget {
+  final Haertegrad grad;
+
+  const _HaerteAbzeichen({required this.grad});
+
+  @override
+  Widget build(BuildContext context) {
+    final farben = Theme.of(context).colorScheme;
+    final (text, symbol) = switch (grad) {
+      Haertegrad.ohneTipps => ('Stufe 1 – ohne Tipps', Icons.trending_up),
+      Haertegrad.freierAbruf => (
+        'Stufe 2 – frei antworten',
+        Icons.workspace_premium_outlined,
+      ),
+      Haertegrad.normal => ('', Icons.trending_up),
+    };
+
+    return Container(
+      margin: const EdgeInsets.only(bottom: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration: BoxDecoration(
+        color: farben.secondaryContainer.withAlpha(160),
+        borderRadius: BorderRadius.circular(6),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(symbol, size: 14, color: farben.onSecondaryContainer),
+          const SizedBox(width: 4),
+          Text(
+            text,
+            style: Theme.of(context).textTheme.labelSmall?.copyWith(
+              color: farben.onSecondaryContainer,
+            ),
+          ),
         ],
       ),
     );

@@ -4,6 +4,7 @@
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/app/settings_providers.dart';
 import 'package:meine_app/features/kurse/providers/kurs_providers.dart';
 import 'package:meine_app/features/quiz/providers/quiz_providers.dart';
 import 'package:meine_app/models/frage.dart';
@@ -19,6 +20,7 @@ Future<(ProviderContainer, QuizSessionController)> _session(Frage frage) async {
   final container = ProviderContainer(
     overrides: [
       fsrsCardStoreProvider.overrideWithValue(FakeFsrsCardStore()),
+      settingsStoreProvider.overrideWithValue(FakeSettingsStore()),
       attemptHistoryStoreProvider.overrideWithValue(FakeAttemptHistoryStore()),
       aktivesPaketProvider.overrideWith((_) async => testPaket([frage])),
     ],
