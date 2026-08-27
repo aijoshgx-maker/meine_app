@@ -682,7 +682,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
-    "frage": "Welches Sensorelement wird in der Steuerung der Verzinkungsanlage verwendet, um die Temperatur des Zinkbades zu messen (Bezeichnung BT1)?",
+    "frage": "Welches Sensorelement wird eingesetzt, um die Temperatur eines Schmelzbades zu messen?",
     "optionen": ["Temperatursensor (Thermoelement / PT100)","Lichtschranke","Reedkontakt","Induktiver Näherungsschalter","Kapazitiver Näherungsschalter"],
     "richtigeIndizes": [0],
     "reihenfolge": [],
@@ -693,7 +693,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "BT1 ist in der IHK-Schaltplanbezeichnung ein Temperatursensor (B = Sensor/Messumformer, T = Temperatur). In Zinkbädern werden häufig Thermoelemente (Typ K/N) oder PT100-Widerstandsthermometer eingesetzt. Reedkontakte (BG, magnetisch) und Näherungsschalter (BG, induktiv/kapazitiv) erfassen Positionen, keine Temperatur.",
+    "erklaerung": "Für Temperaturen in Schmelzbädern werden Thermoelemente (Typ K oder N) oder PT100-Widerstandsthermometer eingesetzt. Reedkontakte reagieren auf Magnetfelder, induktive und kapazitive Näherungsschalter auf Annäherung – alle drei erfassen Positionen, keine Temperaturen. Eine Lichtschranke erkennt die Unterbrechung eines Lichtwegs.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -706,8 +706,14 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
-    "frage": "In einem GRAFCET-Netz (SFC) soll ein Heizstab EH1 nach Erreichen der Solltemperatur abgeschaltet werden. Welche GRAFCET-Element-Kombination beschreibt diesen Ablauf korrekt?",
-    "optionen": ["Transition (BT1 ≥ ϑ_soll) → Schritt (Aktion: EH1 ein) → Schritt","Schritt → Schritt → Transition","Aktion (EH1 ein) → Schritt → Aktion (EH1 aus)","Transition → Aktion → Schritt","Schritt (Aktion: EH1 ein) → Transition (BT1 ≥ ϑ_soll) → Schritt (Aktion: EH1 aus)"],
+    "frage": "In einem GRAFCET-Netz (SFC) soll ein Heizstab nach Erreichen der Solltemperatur abgeschaltet werden. Welche GRAFCET-Element-Kombination beschreibt diesen Ablauf korrekt?",
+    "optionen": [
+      "Transition (Temperatursensor ≥ ϑ_soll) → Schritt (Aktion: Heizstab ein) → Schritt",
+      "Schritt → Schritt → Transition",
+      "Aktion (Heizstab ein) → Schritt → Aktion (Heizstab aus)",
+      "Transition → Aktion → Schritt",
+      "Schritt (Aktion: Heizstab ein) → Transition (Temperatursensor ≥ ϑ_soll) → Schritt (Aktion: Heizstab aus)"
+    ],
     "richtigeIndizes": [4],
     "reihenfolge": [],
     "paare": [],
@@ -717,7 +723,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "GRAFCET besteht aus Schritten (Zuständen mit Aktionen) und Transitionen (Übergangsbedingungen). Der korrekte Ablauf ist: Schritt mit Aktion 'EH1 ein' → Transition 'BT1 ≥ ϑ_soll' schaltet → nächster Schritt mit Aktion 'EH1 aus'. Aktionen sind immer einem Schritt zugeordnet; Transitionen sind reine Bedingungen ohne eigene Aktion.",
+    "erklaerung": "GRAFCET besteht aus Schritten (Zuständen mit Aktionen) und Transitionen (Übergangsbedingungen). Der korrekte Ablauf ist: Schritt mit der Aktion „Heizstab ein“ → die Transition „Temperatursensor ≥ ϑ_soll“ schaltet → nächster Schritt mit der Aktion „Heizstab aus“. Aktionen sind immer einem Schritt zugeordnet, nie einer Transition.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -730,21 +736,21 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "zuordnung",
-    "frage": "Ordnen Sie den Baugruppen-Bezeichnungen (BG7, BG10, BT1) der Steuerung der Verzinkungsanlage den richtigen Sensortyp zu.",
+    "frage": "Ordnen Sie den Einsatzfällen den passenden Sensortyp zu.",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
     "paare": [
       {
-        "links": "BG7 (Materialkorb in Endstellung oben)",
+        "links": "Zylinder in Endstellung (Magnet am Kolben)",
         "rechts": "Reedkontakt"
       },
       {
-        "links": "BG10 (Werkstückträgererkennung Metall)",
+        "links": "Erkennung eines metallischen Werkstückträgers",
         "rechts": "Induktiver Näherungsschalter"
       },
       {
-        "links": "BT1 (Zinkbad-Temperatur)",
+        "links": "Temperatur eines Schmelzbades",
         "rechts": "Temperatursensor (Thermoelement)"
       }
     ],
@@ -754,7 +760,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "BG7 ist ein Reedkontakt (Magnet an Zylinder betätigt Kontakt). BG10 erkennt metallische Werkstückträger induktiv (Wirbelstromprinzip). BT1 misst die Temperatur des Zinkbades über ein Thermoelement oder einen PT100.",
+    "erklaerung": "Der Reedkontakt wird von einem Permanentmagneten am Zylinderkolben betätigt und meldet so die Endstellung. Der induktive Näherungsschalter erkennt metallische Werkstückträger über das Wirbelstromprinzip. Die Temperatur eines Schmelzbades misst man mit einem Thermoelement oder einem PT100.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -803,7 +809,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
-    "frage": "Im GRAFCET der Bohrstation (S19) soll erst dann in Schritt 3 (Bohren) übergegangen werden, wenn BEIDE Druckschalter BP1 UND BP2 geschlossen haben. Welcher logische Operator verknüpft die beiden Signale in der Transitionsbedingung?",
+    "frage": "In einem GRAFCET soll erst dann in den nächsten Schritt übergegangen werden, wenn BEIDE Druckschalter einer Spannvorrichtung geschlossen haben. Welcher logische Operator verknüpft die beiden Signale in der Transitionsbedingung?",
     "optionen": ["NAND","ODER (OR)","UND (AND)","NICHT (NOT)","EXOR (XOR)"],
     "richtigeIndizes": [2],
     "reihenfolge": [],
@@ -814,7 +820,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Die Transitionsbedingung lautet: BP1 UND BP2. Erst wenn beide Druckschalter (Spannzylinder MM2a und MM2b) den Spanndruck erreicht haben, darf gebohrt werden. Dies ist ein UND (AND / Konjunktion): Alle Bedingungen müssen erfüllt sein. Ein ODER würde bereits beim Ansprechen EINES Druckschalters freigeben – das würde unsicheres Bohren ermöglichen.",
+    "erklaerung": "Die Transitionsbedingung lautet: Druckschalter 1 UND Druckschalter 2. Erst wenn beide Spannzylinder den Spanndruck erreicht haben, darf gebohrt werden. Das ist ein UND (AND, Konjunktion): Alle Bedingungen müssen erfüllt sein. Ein ODER würde bereits beim Ansprechen EINES Druckschalters freigeben – damit wäre unsicheres Bohren möglich.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -833,7 +839,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
-    "frage": "Der Reed-Kontakt BG1 an der Bohrstation (S19) erkennt die Endlage des Längenanschlags (MM1). Worauf reagiert ein Reed-Kontakt?",
+    "frage": "Ein Reed-Kontakt erkennt die Endlage eines Anschlags. Worauf reagiert ein Reed-Kontakt?",
     "optionen": ["Auf Temperaturänderungen (thermisch)","Auf Metallannäherung durch Wirbelstrom (induktiv)","Auf elektrischen Strom im Leiter (induktiv)","Auf Licht (optisch)","Auf einen Permanentmagneten in der Nähe (magnetisch)"],
     "richtigeIndizes": [4],
     "reihenfolge": [],
@@ -857,7 +863,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
-    "frage": "Die GRAFCET-Transitionsbedingung 'BP1 · BP2' (Punkt = UND) soll in die Funktionsbausteinsprache (FBS/FBD, IEC 61131-3) der SPS übertragen werden. Welcher Funktionsbaustein wird verwendet?",
+    "frage": "Eine GRAFCET-Transitionsbedingung verknüpft zwei Signale mit einem Punkt (·), also mit UND. Sie soll in die Funktionsbausteinsprache (FBS/FBD, IEC 61131-3) der SPS übertragen werden. Welcher Funktionsbaustein wird verwendet?",
     "optionen": ["NOT-Baustein (Negation)","XOR-Baustein (Antivalenz)","RS-Flipflop (Speicher)","OR-Baustein (Disjunktion)","AND-Baustein (Konjunktion)"],
     "richtigeIndizes": [4],
     "reihenfolge": [],
@@ -868,7 +874,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Die GRAFCET-UND-Verknüpfung 'BP1 · BP2' entspricht in der Funktionsbausteinsprache (FBS, IEC 61131-3) einem AND-Baustein. Beide Eingänge BP1 und BP2 müssen '1' (wahr) sein, damit der Ausgang des AND-Bausteins '1' wird und die Transition schaltet. Der AND-Baustein ist die direkte grafische Entsprechung der Booleschen UND-Funktion.",
+    "erklaerung": "Die GRAFCET-UND-Verknüpfung entspricht in der Funktionsbausteinsprache (FBS, IEC 61131-3) einem AND-Baustein. Beide Eingänge müssen „1“ (wahr) sein, damit der Ausgang „1“ wird und die Transition schaltet. Der AND-Baustein ist die direkte grafische Entsprechung der Booleschen UND-Funktion.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -887,7 +893,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
-    "frage": "In der GRAFCET-Ablaufsteuerung (S18) der Palettenzuführung unterscheidet man Schritte und Transitionen. Was beschreibt ein Schritt (Étape), und was beschreibt eine Transition?",
+    "frage": "In einer GRAFCET-Ablaufsteuerung unterscheidet man Schritte und Transitionen. Was beschreibt ein Schritt (Étape), und was beschreibt eine Transition?",
     "optionen": [
       "Schritt = Bedingung, unter der eine Aktion ausgeführt wird; Transition = die Aktion selbst.",
       "Schritt = aktiver Zustand mit zugeordneten Aktionen (was wird getan?); Transition = Weiterschaltbedingung (wann wird weitergeschaltet?).",
@@ -919,26 +925,26 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "zuordnung",
-    "frage": "Ordnen Sie den Ventilbezeichnungen aus dem Hydraulikplan der Schaltvorrichtung/Verladeanlage (S18) ihre Funktion zu.",
+    "frage": "Ordnen Sie die Hydraulikventile ihrer Funktion zu.",
     "optionen": [],
     "richtigeIndizes": [],
     "reihenfolge": [],
     "paare": [
       {
-        "links": "QM1",
-        "rechts": "5/3-Wegeventil, elektrisch betätigt (Hubtisch)"
+        "links": "4/3-Wegeventil",
+        "rechts": "Steuert die Bewegungsrichtung eines doppeltwirkenden Zylinders"
       },
       {
-        "links": "QM2",
-        "rechts": "5/2-Wegeventil, manuell betätigt (Richtzylinder)"
+        "links": "Druckbegrenzungsventil",
+        "rechts": "Begrenzt den Systemdruck und leitet Überschussöl zum Tank"
       },
       {
-        "links": "QN1",
-        "rechts": "Druckbegrenzungsventil 130 bar (Gesamtanlagen-Schutz)"
+        "links": "Drosselrückschlagventil",
+        "rechts": "Drosselt in einer Richtung, in der Gegenrichtung fließt das Öl frei"
       },
       {
-        "links": "QN2",
-        "rechts": "Druckbegrenzungsventil 60 bar (Richtzylinder-Schutz)"
+        "links": "Entsperrbares Rückschlagventil",
+        "rechts": "Hält eine angehobene Last und wird zum Absenken gezielt geöffnet"
       }
     ],
     "luecken": [],
@@ -947,7 +953,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Ventilkennzeichnung im Hydraulikplan: QM = Wegeventil (Richtungssteuerung, M = Motion); QN = Druckventil (Druckbegrenzung, N = pressure limiN). QN1 (130 bar) schützt die Gesamtanlage, QN2 (60 bar) begrenzt den Druck am Richtzylinder separat – da dieser nur geringe Ausrichtkräfte benötigt und höherer Druck die Betonteile oder die Führungskonstruktion beschädigen würde.",
+    "erklaerung": "Wegeventile steuern die Richtung des Ölstroms, Druckventile den Druck. Das Druckbegrenzungsventil öffnet bei Überschreiten des eingestellten Werts zum Tank hin. Das Drosselrückschlagventil wirkt nur in einer Richtung drosselnd und bestimmt damit die Geschwindigkeit. Das entsperrbare Rückschlagventil sperrt selbsttätig und wird zum Absenken über eine Steuerleitung geöffnet – so bleibt eine angehobene Last auch bei Druckverlust stehen.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -960,7 +966,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Steuerung und Regelung",
     "typ": "single",
-    "frage": "Die GRAFCET-Steuerung der Palettenzuführung (S18) hat 6 Schritte (S0–S5). Der erste Schritt S0 ist immer aktiv, wenn die Anlage in Ruhe ist. Wie nennt man diesen Ausgangszustand, und wie wird er im GRAFCET-Diagramm gekennzeichnet?",
+    "frage": "Eine GRAFCET-Ablaufsteuerung hat sechs Schritte (S0–S5). Der erste Schritt S0 ist immer aktiv, wenn die Anlage in Ruhe ist. Wie nennt man diesen Ausgangszustand, und wie wird er im GRAFCET-Diagramm gekennzeichnet?",
     "optionen": ["Synchronisationsschritt; gekennzeichnet durch eine horizontale Linie über dem Schrittsymbol.","Ablaufschritt; keine besondere Kennzeichnung.","Notaus-Schritt; gekennzeichnet durch einen roten Rahmen.","Initialschritt (Grundstellung); gekennzeichnet durch eine doppelte Umrahmung des Schrittsymbols.","Fehlerzustand; gekennzeichnet durch einen blinkenden Rahmen."],
     "richtigeIndizes": [3],
     "reihenfolge": [],

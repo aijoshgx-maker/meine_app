@@ -461,13 +461,13 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Funktionsanalyse",
     "typ": "single",
-    "frage": "Welche Aussage zum Funktionsprinzip der im Schaltplan dargestellten Hydraulikanlage ist korrekt?",
+    "frage": "Welche Aussage über eine Hydraulikanlage mit Pumpe, Druckbegrenzungsventil, 4/3-Wegeventil und Hubzylinder ist korrekt?",
     "optionen": [
-      "Die Pumpe -GP1 saugt Öl aus dem Druckspeicher.",
-      "Das 4/3-Wegeventil -QM2 steuert das Aus-/Einfahren des Hubzylinders und die Mittelstellung trennt die Pumpe vom Verbraucher.",
-      "Der Filter -HQ1 reinigt nur das Rücklauföl.",
-      "Das Druckbegrenzungsventil -QN1 erhöht den Systemdruck.",
-      "Beim Absenken des Materialkorbs öffnet das Rückschlagventil -RM1 selbstständig durch Schwerkraft."
+      "Die Pumpe saugt das Öl aus dem Druckspeicher an.",
+      "Das 4/3-Wegeventil steuert das Aus- und Einfahren des Hubzylinders; in Mittelstellung ist die Pumpe vom Verbraucher getrennt.",
+      "Der Filter reinigt ausschließlich das Rücklauföl.",
+      "Das Druckbegrenzungsventil erhöht den Systemdruck.",
+      "Beim Absenken der Last öffnet das Rückschlagventil selbsttätig durch die Schwerkraft."
     ],
     "richtigeIndizes": [
       1
@@ -493,7 +493,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Funktionsanalyse",
     "typ": "single",
-    "frage": "Das Kegelradgetriebe des Einstellantriebs besitzt zwei gleich große Kegelräder (m = 2, z = 26). Welche Aufgabe erfüllt dieses Getriebe?",
+    "frage": "Ein Kegelradgetriebe besitzt zwei gleich große Kegelräder (m = 2, z = 26). Welche Aufgabe erfüllt dieses Getriebe?",
     "optionen": ["Es erhöht das Drehmoment und senkt die Drehzahl durch das Übersetzungsverhältnis.","Es übersetzt die Eingangsdrehzahl ins Schnelle (Drehzahl steigt).","Es übersetzt die Eingangsdrehzahl ins Langsame (Drehzahl sinkt).","Es überträgt das Drehmoment zwischen zwei parallelen Wellen.","Es überträgt das Drehmoment zwischen zwei sich unter 90° schneidenden Wellen bei gleichbleibender Drehzahl."],
     "richtigeIndizes": [4],
     "reihenfolge": [],
@@ -619,8 +619,14 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Funktionsanalyse",
     "typ": "single",
-    "frage": "Der Richtzylinder der Verladeanlage (S18) ist mit einem eigenen Druckbegrenzungsventil QN2 (60 bar) abgesichert, obwohl das Hauptsystem-DBV QN1 auf 130 bar eingestellt ist. Warum ist ein separates DBV für den Richtzylinder notwendig?",
-    "optionen": ["Weil QN2 den Richtzylinder nach dem Ausrichten arretiert.","Weil 130 bar für den Richtzylinder nicht ausreichend wären.","Weil QN2 den Volumenstrom am Richtzylinder reguliert.","Weil der Richtzylinder nur geringe Ausrichtkräfte benötigt und zu hoher Druck die Betonteile oder die Führungskonstruktion beschädigen würde.","Weil QN1 zu weit vom Richtzylinder entfernt ist."],
+    "frage": "In einer Hydraulikanlage ist ein Positionierzylinder mit einem eigenen Druckbegrenzungsventil (60 bar) abgesichert, obwohl das Hauptdruckbegrenzungsventil der Anlage auf 130 bar eingestellt ist. Warum ist die separate Absicherung notwendig?",
+    "optionen": [
+      "Weil das zweite Ventil den Zylinder nach dem Positionieren arretiert.",
+      "Weil 130 bar für diesen Zylinder nicht ausreichen würden.",
+      "Weil das zweite Ventil den Volumenstrom am Zylinder reguliert.",
+      "Weil der Zylinder nur geringe Kräfte benötigt und zu hoher Druck das Werkstück oder die Führungskonstruktion beschädigen würde.",
+      "Weil das Hauptventil zu weit vom Zylinder entfernt sitzt."
+    ],
     "richtigeIndizes": [3],
     "reihenfolge": [],
     "paare": [],
@@ -630,7 +636,7 @@
     "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
-    "erklaerung": "Der Richtzylinder dient nur zur Ausrichtung (Positionierung) der Palette – 130-bar-Druck wäre überdimensioniert und könnte die Betonteile oder die Führungskonstruktion überlasten. Das separate DBV QN2 (60 bar) begrenzt den Druck am Richtzylinder auf einen sicheren Wert. Dieses Prinzip – separate Druckbegrenzung für empfindliche Teilkreise – ist typisch in Hydraulikanlagen mit unterschiedlichen Kraftanforderungen.",
+    "erklaerung": "Der Positionierzylinder dient nur zum Ausrichten – 130 bar wären dafür überdimensioniert und könnten das Werkstück oder die Führungskonstruktion überlasten. Das separate Druckbegrenzungsventil mit 60 bar begrenzt den Druck in diesem Teilkreis auf einen sicheren Wert. Eine eigene Druckbegrenzung für empfindliche Teilkreise ist in Hydraulikanlagen mit unterschiedlichen Kraftanforderungen üblich.",
     "selfExplanationPrompt": null,
     "bildAsset": null,
     "workedExample": null,
@@ -643,7 +649,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Funktionsanalyse",
     "typ": "single",
-    "frage": "Die Verladeanlage (S18) besteht aus einer Stahlrahmenkonstruktion; als Abdeckungen werden Aluminiumbleche direkt auf den Stahlträgern befestigt. Im Außenbereich tritt Korrosion an den Aluminiumblechen auf. Wie lässt sich diese Kontaktkorrosion gezielt verhindern?",
+    "frage": "Eine Anlage im Außenbereich besteht aus einer Stahlrahmenkonstruktion; als Abdeckungen sind Aluminiumbleche direkt auf den Stahlträgern befestigt. An den Aluminiumblechen tritt Korrosion auf. Wie lässt sich diese Kontaktkorrosion gezielt verhindern?",
     "optionen": ["Durch eine elektrisch isolierende Trennschicht (Kunststoffdichtband, Isolierbuchsen) zwischen Aluminium und Stahl, um den galvanischen Kontakt zu unterbrechen.","Durch Verwendung von feuerverzinktem Stahl statt normalem Baustahl.","Durch Lackierung nur der Aluminiumbleche.","Durch regelmäßiges Reinigen der Stahlträger mit Säure.","Durch elektrische Heizungen, die Feuchtigkeit fernhalten."],
     "richtigeIndizes": [0],
     "reihenfolge": [],

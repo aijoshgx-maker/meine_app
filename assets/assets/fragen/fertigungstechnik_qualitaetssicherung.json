@@ -724,7 +724,7 @@
     "bereich": "fertigungstechnik",
     "kategorie": "Qualitätssicherung",
     "typ": "single",
-    "frage": "Die Bohrstation (S19) hat hohe Stillstandszeiten. Um die Hauptursachen zu identifizieren, sollen die Störungsmeldungen nach Häufigkeit geordnet und die wichtigsten Ursachen priorisiert werden. Welche Qualitätsmethode ist hierfür geeignet?",
+    "frage": "Eine Fertigungsanlage hat hohe Stillstandszeiten. Um die Hauptursachen zu identifizieren, sollen die Störungsmeldungen nach Häufigkeit geordnet und die wichtigsten Ursachen priorisiert werden. Welche Qualitätsmethode ist hierfür geeignet?",
     "optionen": ["Paretoanalyse (ABC-Analyse nach Häufigkeit)","FMEA (Fehlermöglichkeits- und Einflussanalyse)","Stichprobenkontrolle nach AQL","Gage R&R (Messsystemanalyse)","Ishikawa-Diagramm (Ursache-Wirkungs-Diagramm)"],
     "richtigeIndizes": [0],
     "reihenfolge": [],
