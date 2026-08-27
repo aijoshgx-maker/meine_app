@@ -302,6 +302,7 @@
     }
   ],
   "fragenDateien": [
+    "komplexaufgaben.json",
     "auftragsanalyse_antriebstechnik.json",
     "auftragsanalyse_elektrotechnik.json",
     "auftragsanalyse_form_lagetoleranzen.json",
