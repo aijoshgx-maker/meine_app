@@ -331,6 +331,21 @@ void _validiereFrage(
   // 'freieAntwort' traegt die Antworten fuer die haerteste Stufe, auf der
   // eine Auswahlfrage ohne ihre Optionen gestellt wird. An jedem anderen Typ
   // waere das Feld wirkungslos und wuerde nur eine Pflege vortaeuschen.
+  // 'komplex' markiert eine mehrstufige Rechenaufgabe. An einer Frage ohne
+  // Rechenweg waere die Markierung wirkungslos, und ohne varianten wuerde
+  // die Aufgabe des Tages beim zweiten Mal auswendig gewusst.
+  if (f['komplex'] == true) {
+    if (typ != 'rechnung') {
+      fehler(datei, id, "'komplex' nur bei typ 'rechnung' erlaubt (typ: $typ).");
+    }
+    if (f['varianten'] == null) {
+      fehler(datei, id, "'komplex' verlangt einen varianten-Block.");
+    }
+    if (workedExample == null || (workedExample as String).trim().isEmpty) {
+      fehler(datei, id, "'komplex' verlangt einen workedExample.");
+    }
+  }
+
   final freieAntwort = _strList(f['freieAntwort']);
   if (freieAntwort.isNotEmpty) {
     if (typ != 'single') {

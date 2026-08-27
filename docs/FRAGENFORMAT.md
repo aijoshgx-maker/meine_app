@@ -422,6 +422,47 @@ wandert in den Aufklapper.
 **Faustregel:** ein Satz, der die Frage beantwortet — nicht der Anfang einer
 Herleitung.
 
+## Mehrstufige Aufgaben (`komplex`)
+
+Eine Aufgabe ist nicht schwerer, weil die Zahlen größer sind, sondern weil
+zwischen Angabe und Ergebnis Schritte liegen, die sie nicht nennt. Bei der
+Hauptzeit am Drehteil steht die Vorschubgeschwindigkeit nirgends — sie
+entsteht erst aus Drehzahl und Vorschub, und die Drehzahl erst aus
+Schnittgeschwindigkeit und Durchmesser. Genau diese Kette ist der Lernstoff.
+
+```json
+"komplex": true
+```
+
+**Wirkung:** Solche Aufgaben laufen nicht im normalen Tagespensum mit,
+sondern über ein eigenes Fach — **genau eine pro Tag**. Zwischen neunzehn
+Karteikarten würde eine Aufgabe, die zehn Minuten Rechnen kostet, entweder
+übersprungen oder als Störung empfunden. Der Platz zählt gegen das
+Tagesbudget, kommt also nicht obendrauf.
+
+Ausgewählt wird die fällige mit dem ältesten Termin; ist keine fällig, eine
+noch ungesehene. Wurde heute schon eine bearbeitet, kommt keine zweite, und
+der Platz fällt an die übrigen Karten zurück.
+
+**Voraussetzungen** (der Validator besteht darauf):
+
+- `typ: "rechnung"` — an einem anderen Typ wäre die Markierung wirkungslos
+- ein `varianten`-Block — ohne ihn wäre die Aufgabe des Tages beim zweiten
+  Mal auswendig gewusst statt gerechnet
+- ein `workedExample` — wer an Schritt drei von fünf scheitert, braucht den
+  ganzen Weg, nicht nur das Ergebnis
+
+Dazu prüft `test/komplexaufgaben_test.dart`, dass mindestens **zwei
+Zwischenschritte** hinterlegt sind. Weniger heißt: eine Formel einsetzen, und
+das kann der übrige Bestand schon.
+
+**Gepflegt wird nicht die JSON-Datei**, sondern
+`tool/komplex_daten.py`; `tool/komplex_setzen.py` erzeugt daraus
+`assets/fragen/komplexaufgaben.json`. Grund: Fragetext, Lösungswert,
+Erklärung und Lösungsweg entstehen aus denselben Formeln, aus denen später
+gewürfelt wird — getrennt gepflegt liefen sie früher oder später
+auseinander.
+
 ## Variierende Aufgaben (`varianten`)
 
 Wer eine Rechenaufgabe zum dritten Mal sieht, erinnert sich an „5,06" statt

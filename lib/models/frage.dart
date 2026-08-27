@@ -75,6 +75,14 @@ class Frage {
   // Bedeutung; steht hier, damit das Feld einen Import/Export übersteht.
   final List<String> bewusstSo;
 
+  // Mehrstufige Rechenaufgabe: zwischen Angabe und Ergebnis liegen mehrere
+  // Schritte, die die Aufgabe nicht nennt.
+  //
+  // Solche Aufgaben laufen ueber ein eigenes Tagesfach - genau eine je Tag -
+  // statt im normalen Pensum unterzugehen. Siehe
+  // features/quiz/providers/quiz_fragen_auswahl.dart.
+  final bool komplex;
+
   // Antworten, die als freie Texteingabe gelten, wenn diese Frage auf der
   // hoechsten Haertestufe ohne ihre Optionen gestellt wird.
   //
@@ -118,6 +126,7 @@ class Frage {
     this.tippsAus = const [],
     this.bewusstSo = const [],
     this.freieAntwort = const [],
+    this.komplex = false,
     this.varianten,
   });
 
@@ -165,6 +174,7 @@ class Frage {
       tippsAus: tippsAus,
       bewusstSo: bewusstSo,
       freieAntwort: freieAntwort,
+      komplex: komplex,
       varianten: varianten,
     );
   }
@@ -204,6 +214,7 @@ class Frage {
       tippsAus: strList(json['tippsAus']),
       bewusstSo: strList(json['bewusstSo']),
       freieAntwort: strList(json['freieAntwort']),
+      komplex: json['komplex'] as bool? ?? false,
       varianten: json['varianten'] == null
           ? null
           : FrageVarianten.fromJson(
@@ -239,6 +250,7 @@ class Frage {
     if (tippsAus.isNotEmpty) 'tippsAus': tippsAus,
     if (bewusstSo.isNotEmpty) 'bewusstSo': bewusstSo,
     if (freieAntwort.isNotEmpty) 'freieAntwort': freieAntwort,
+    if (komplex) 'komplex': true,
     if (varianten != null) 'varianten': varianten!.toJson(),
   };
 }

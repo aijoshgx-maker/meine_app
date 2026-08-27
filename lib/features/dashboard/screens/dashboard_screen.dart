@@ -179,6 +179,10 @@ class _PensumKarte extends StatelessWidget {
                   '${p.wiederholungen.length} '
                       '${p.wiederholungen.length == 1 ? "Wiederholung" : "Wiederholungen"}',
                 if (p.neue.isNotEmpty) '${p.neue.length} neu',
+                // Die Komplexaufgabe wird eigens genannt: Sie kostet ein
+                // Vielfaches der Zeit einer Karteikarte, und wer das nicht
+                // weiß, plant die Session zu knapp.
+                if (p.komplex.isNotEmpty) '1 Komplexaufgabe',
               ];
 
               return Row(

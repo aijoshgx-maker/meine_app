@@ -32,5 +32,6 @@
   "wiso_markt_preisbildung.json",
   "wiso_kaufvertrag.json",
   "wiso_wirtschaftskreislauf.json",
-  "wiso_verbraucherschutz.json"
+  "wiso_verbraucherschutz.json",
+  "komplexaufgaben.json"
 ]

@@ -10,10 +10,16 @@ import 'package:meine_app/models/frage.dart';
 void main() {
   final auswahl = QuizFragenAuswahl();
 
-  Frage frage(String id, String bereich, {String kategorie = 'Test'}) => Frage(
+  Frage frage(
+    String id,
+    String bereich, {
+    String kategorie = 'Test',
+    bool komplex = false,
+  }) => Frage(
     id: id,
     bereich: bereich,
     kategorie: kategorie,
+    komplex: komplex,
     typ: 'single',
     frage: 'Frage $id?',
     optionen: const ['a', 'b'],
@@ -70,7 +76,7 @@ void main() {
         kartenstaende: alleFaellig(faellige),
         zufall: Random(1),
         kartenProTag: 20,
-        heuteSchonBearbeitet: 0,
+        heuteBearbeitet: const {},
         jetzt: jetzt,
       );
 
@@ -87,7 +93,7 @@ void main() {
         kartenstaende: alleFaellig(faellige),
         zufall: Random(1),
         kartenProTag: 20,
-        heuteSchonBearbeitet: 0,
+        heuteBearbeitet: const {},
         jetzt: jetzt,
       );
 
@@ -102,7 +108,7 @@ void main() {
         kartenstaende: const {},
         zufall: Random(1),
         kartenProTag: 20,
-        heuteSchonBearbeitet: 0,
+        heuteBearbeitet: const {},
         jetzt: jetzt,
       );
 
@@ -118,7 +124,7 @@ void main() {
         kartenstaende: const {},
         zufall: Random(1),
         kartenProTag: 20,
-        heuteSchonBearbeitet: 15,
+        heuteBearbeitet: const {'x0', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x11', 'x12', 'x13', 'x14'},
         jetzt: jetzt,
       );
 
@@ -132,7 +138,7 @@ void main() {
         kartenstaende: alleFaellig(faellige),
         zufall: Random(1),
         kartenProTag: 20,
-        heuteSchonBearbeitet: 20,
+        heuteBearbeitet: const {'x0', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x11', 'x12', 'x13', 'x14', 'x15', 'x16', 'x17', 'x18', 'x19'},
         jetzt: jetzt,
       );
 
@@ -145,7 +151,7 @@ void main() {
         kartenstaende: const {},
         zufall: Random(1),
         kartenProTag: 5,
-        heuteSchonBearbeitet: 30,
+        heuteBearbeitet: const {'x0', 'x1', 'x2', 'x3', 'x4', 'x5', 'x6', 'x7', 'x8', 'x9', 'x10', 'x11', 'x12', 'x13', 'x14', 'x15', 'x16', 'x17', 'x18', 'x19', 'x20', 'x21', 'x22', 'x23', 'x24', 'x25', 'x26', 'x27', 'x28', 'x29'},
         jetzt: jetzt,
       );
 
@@ -161,7 +167,7 @@ void main() {
         kartenstaende: alleFaellig(faellige, tageUeberfaellig: 14),
         zufall: Random(1),
         kartenProTag: 20,
-        heuteSchonBearbeitet: 0,
+        heuteBearbeitet: const {},
         jetzt: jetzt,
       );
 
@@ -178,7 +184,7 @@ void main() {
         },
         zufall: Random(1),
         kartenProTag: 3,
-        heuteSchonBearbeitet: 0,
+        heuteBearbeitet: const {},
         jetzt: jetzt,
       );
 
@@ -193,7 +199,7 @@ void main() {
         kartenstaende: alleFaellig(faellige),
         zufall: Random(1),
         kartenProTag: 0,
-        heuteSchonBearbeitet: 0,
+        heuteBearbeitet: const {},
         jetzt: jetzt,
       );
 
@@ -209,7 +215,7 @@ void main() {
         },
         zufall: Random(1),
         kartenProTag: 20,
-        heuteSchonBearbeitet: 0,
+        heuteBearbeitet: const {},
         jetzt: jetzt,
       );
 
@@ -224,12 +230,126 @@ void main() {
         kartenstaende: {'a1': stand(faelligIn: const Duration(days: -1))},
         zufall: Random(1),
         kartenProTag: 20,
-        heuteSchonBearbeitet: 0,
+        heuteBearbeitet: const {},
         jetzt: jetzt,
       );
 
       expect(pensum.fragen.first.id, 'a1');
       expect(pensum.fragen.length, 3);
+    });
+  });
+
+  // Eine mehrstufige Rechenaufgabe kostet ein Vielfaches der Zeit einer
+  // Karteikarte. Zwischen neunzehn Karten wuerde sie uebersprungen - deshalb
+  // ein eigener Platz, genau einer je Tag.
+  group('Komplexaufgabe des Tages', () {
+    final jetzt = DateTime(2026, 8, 27, 10);
+
+    GespeicherteKarte stand({required Duration faelligIn}) => GespeicherteKarte(
+      card: FsrsCard.newCard(now: jetzt).copyWith(due: jetzt.add(faelligIn)),
+    );
+
+    List<Frage> normale(int anzahl) =>
+        List.generate(anzahl, (i) => frage('n$i', 'wiso'));
+
+    List<Frage> komplexe(int anzahl) => List.generate(
+      anzahl,
+      (i) => frage('k$i', 'wiso', komplex: true),
+    );
+
+    Tagespensum pensum(
+      List<Frage> fragen, {
+      Map<String, GespeicherteKarte> kartenstaende = const {},
+      Set<String> heuteBearbeitet = const {},
+      int kartenProTag = 20,
+    }) => auswahl.tagespensum(
+      fragen,
+      kartenstaende: kartenstaende,
+      zufall: Random(1),
+      kartenProTag: kartenProTag,
+      heuteBearbeitet: heuteBearbeitet,
+      jetzt: jetzt,
+    );
+
+    test('genau eine kommt ins Pensum, auch wenn viele bereitstehen', () {
+      final p = pensum([...normale(30), ...komplexe(5)]);
+
+      expect(p.komplex, hasLength(1));
+      expect(p.gesamt, 20);
+    });
+
+    test('sie belegt einen Platz im Tagesbudget, nicht einen zusätzlichen', () {
+      final p = pensum([...normale(30), ...komplexe(5)]);
+
+      expect(p.wiederholungen.length + p.neue.length, 19);
+      expect(p.gesamt, 20);
+    });
+
+    // Sonst käme sie im normalen Topf ein zweites Mal vor.
+    test('Komplexaufgaben tauchen nicht als gewöhnliche Karten auf', () {
+      final p = pensum([...normale(5), ...komplexe(5)]);
+
+      expect(p.neue.where((f) => f.komplex), isEmpty);
+      expect(p.wiederholungen.where((f) => f.komplex), isEmpty);
+      expect(p.neue, hasLength(5));
+    });
+
+    test('ist heute schon eine bearbeitet, kommt keine zweite', () {
+      final p = pensum(
+        [...normale(30), ...komplexe(5)],
+        heuteBearbeitet: const {'k2'},
+      );
+
+      expect(p.komplex, isEmpty);
+      // Der frei gewordene Platz fällt an die übrigen Karten zurück.
+      expect(p.gesamt, 19);
+    });
+
+    test('eine fällige geht einer ungesehenen vor', () {
+      final alle = komplexe(3);
+      final p = pensum(
+        alle,
+        kartenstaende: {'k1': stand(faelligIn: const Duration(days: -2))},
+      );
+
+      expect(p.komplex.single.id, 'k1');
+    });
+
+    test('von mehreren fälligen kommt die am längsten überfällige', () {
+      final alle = komplexe(3);
+      final p = pensum(
+        alle,
+        kartenstaende: {
+          'k0': stand(faelligIn: const Duration(days: -1)),
+          'k1': stand(faelligIn: const Duration(days: -9)),
+          'k2': stand(faelligIn: const Duration(days: -3)),
+        },
+      );
+
+      expect(p.komplex.single.id, 'k1');
+    });
+
+    test('eine noch nicht fällige bleibt liegen', () {
+      final alle = komplexe(1);
+      final p = pensum(
+        alle,
+        kartenstaende: {'k0': stand(faelligIn: const Duration(days: 4))},
+      );
+
+      expect(p.komplex, isEmpty);
+    });
+
+    test('ohne Komplexaufgaben im Kurs ändert sich nichts', () {
+      final p = pensum(normale(30));
+
+      expect(p.komplex, isEmpty);
+      expect(p.gesamt, 20);
+    });
+
+    test('sie steht in der Session vorn', () {
+      final p = pensum([...normale(5), ...komplexe(2)]);
+
+      expect(p.fragen.first.komplex, isTrue);
     });
   });
 

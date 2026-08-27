@@ -80,17 +80,19 @@ class AttemptHistoryStore {
   List<Attempt> fuerKurs(String kursId) =>
       alle().where((a) => a.kursId == kursId).toList();
 
-  /// Wie viele verschiedene Karten an [tag] beantwortet wurden.
+  /// Welche Karten an [tag] beantwortet wurden.
   ///
   /// Zaehlt aufs Tagessoll: Wer sein Pensum vormittags erledigt hat, soll
   /// abends nicht noch einmal dasselbe Kontingent vorgesetzt bekommen. Je
   /// Frage einmal - eine zweimal beantwortete Karte war ein Durchgang, kein
   /// zwei.
-  int bearbeiteteAm(String kursId, DateTime tag) => fuerKurs(kursId)
+  ///
+  /// Die Ids und nicht nur ihre Anzahl, weil das Pensum auch wissen muss,
+  /// OB die Komplexaufgabe des Tages darunter war.
+  Set<String> bearbeiteteAm(String kursId, DateTime tag) => fuerKurs(kursId)
       .where((a) => _gleicherTag(a.zeitpunkt, tag))
       .map((a) => a.frageId)
-      .toSet()
-      .length;
+      .toSet();
 
   static bool _gleicherTag(DateTime a, DateTime b) =>
       a.year == b.year && a.month == b.month && a.day == b.day;

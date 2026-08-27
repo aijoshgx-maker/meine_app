@@ -111,7 +111,7 @@ class LoesungsAnsicht extends StatelessWidget {
   // --- rechnung -----------------------------------------------------------
 
   List<Widget> _rechnung(BuildContext context) {
-    final einheit = frage.einheit == null ? '' : ' ${frage.einheit}';
+    final einheit = (frage.einheit?.isEmpty ?? true) ? '' : ' ${frage.einheit}';
     final wert = frage.loesungswert;
 
     return [

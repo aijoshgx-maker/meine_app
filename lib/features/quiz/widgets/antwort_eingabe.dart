@@ -45,8 +45,12 @@ class AntwortEingabe extends ConsumerWidget {
             controller: controller,
             // Ab Stufe 2 nennt der Hinweis die Einheit nicht mehr - sie
             // gehoert dann zum Gewussten, nicht zur Aufgabenstellung.
+            // Dimensionslose Ergebnisse (Sicherheit, cpk, Uebersetzung)
+            // tragen eine leere Einheit - daraus wuerde sonst der Hinweis
+            // "Zahlenwert in " mit nichts dahinter.
             hinweis:
-                frage.einheit != null && haertegrad != Haertegrad.freierAbruf
+                (frage.einheit?.isNotEmpty ?? false) &&
+                    haertegrad != Haertegrad.freierAbruf
                 ? 'Zahlenwert in ${frage.einheit}'
                 : 'Zahlenwert eingeben',
             // TextInputType.number ist auf dem Telefon der reine

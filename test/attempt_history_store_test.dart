@@ -114,7 +114,7 @@ void main() {
       await versuch('f1', heute.add(const Duration(minutes: 5)));
       await versuch('f2', heute.add(const Duration(minutes: 6)));
 
-      expect(store.bearbeiteteAm('kurs-a', heute), 2);
+      expect(store.bearbeiteteAm('kurs-a', heute), hasLength(2));
     });
 
     // Gezählt wird der Tag der Bearbeitung, nicht der Beginn: Eine gestern
@@ -125,20 +125,20 @@ void main() {
       await versuch('f1', heute);
       await versuch('f2', heute);
 
-      expect(store.bearbeiteteAm('kurs-a', heute), 2);
-      expect(store.bearbeiteteAm('kurs-a', gestern), 1);
+      expect(store.bearbeiteteAm('kurs-a', heute), hasLength(2));
+      expect(store.bearbeiteteAm('kurs-a', gestern), hasLength(1));
     });
 
     test('andere Kurse zählen nicht mit', () async {
       await versuch('f1', heute);
       await versuch('f2', heute, kursId: 'kurs-b');
 
-      expect(store.bearbeiteteAm('kurs-a', heute), 1);
-      expect(store.bearbeiteteAm('kurs-b', heute), 1);
+      expect(store.bearbeiteteAm('kurs-a', heute), hasLength(1));
+      expect(store.bearbeiteteAm('kurs-b', heute), hasLength(1));
     });
 
     test('ohne Versuche ist die Zählung null', () {
-      expect(store.bearbeiteteAm('kurs-a', heute), 0);
+      expect(store.bearbeiteteAm('kurs-a', heute), hasLength(0));
     });
   });
 }

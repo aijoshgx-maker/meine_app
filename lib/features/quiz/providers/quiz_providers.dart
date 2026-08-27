@@ -57,7 +57,7 @@ final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
   final kartenstaende = ref
       .read(fsrsCardStoreProvider)
       .alleKartenstaende(paket.kurs.id);
-  final heuteSchonBearbeitet = ref
+  final heuteBearbeitet = ref
       .read(attemptHistoryStoreProvider)
       .bearbeiteteAm(paket.kurs.id, DateTime.now());
 
@@ -68,7 +68,7 @@ final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
         kartenstaende: kartenstaende,
         zufall: math.Random(),
         kartenProTag: kartenProTag,
-        heuteSchonBearbeitet: heuteSchonBearbeitet,
+        heuteBearbeitet: heuteBearbeitet,
       );
 });
 
@@ -280,11 +280,11 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
           kartenstaende: kartenstaende,
           zufall: math.Random(),
           kartenProTag: istTagespensum ? ref.read(kartenProTagProvider) : 0,
-          heuteSchonBearbeitet: istTagespensum
+          heuteBearbeitet: istTagespensum
               ? ref
                     .read(attemptHistoryStoreProvider)
                     .bearbeiteteAm(_kursId, DateTime.now())
-              : 0,
+              : const {},
         );
 
     // Rechen- und Nachschlageaufgaben bekommen hier ihre Zahlen. Im Testlauf

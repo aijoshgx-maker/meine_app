@@ -93,21 +93,15 @@ class FakeAttemptHistoryStore implements AttemptHistoryStore {
       eintraege.where((a) => a.kursId == kursId).toList();
 
   @override
-  int bearbeiteteAm(String kursId, DateTime tag) {
-    final erster = <String, DateTime>{};
-    for (final a in fuerKurs(kursId)) {
-      final bisher = erster[a.frageId];
-      if (bisher == null || a.zeitpunkt.isBefore(bisher)) {
-        erster[a.frageId] = a.zeitpunkt;
-      }
-    }
-    return erster.values
-        .where(
-          (z) =>
-              z.year == tag.year && z.month == tag.month && z.day == tag.day,
-        )
-        .length;
-  }
+  Set<String> bearbeiteteAm(String kursId, DateTime tag) => fuerKurs(kursId)
+      .where(
+        (a) =>
+            a.zeitpunkt.year == tag.year &&
+            a.zeitpunkt.month == tag.month &&
+            a.zeitpunkt.day == tag.day,
+      )
+      .map((a) => a.frageId)
+      .toSet();
 
   @override
   Future<int> kursLoeschen(String kursId) async {

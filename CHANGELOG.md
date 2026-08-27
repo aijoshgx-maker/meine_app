@@ -8,6 +8,49 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Hinzugefügt
 
+- **Eine mehrstufige Rechenaufgabe pro Tag.** Der Bestand hatte 97
+  Rechenaufgaben, aber die meisten waren nach zwei bis drei Zeilen erledigt:
+  Formel hinschreiben, Werte einsetzen, fertig. Was in der Prüfung Punkte
+  kostet, ist die Aufgabe, bei der eine gesuchte Größe gar nicht in der
+  Angabe steht.
+
+  **20 neue Aufgaben** schließen die Lücke. Sie verlangen drei bis fünf
+  Schritte, und der entscheidende ist meist der, den man nicht sieht — bei
+  der Hauptzeit am Drehteil etwa die Vorschubgeschwindigkeit, die erst über
+  die Drehzahl zugänglich wird.
+
+  Acht sind aus vorhandenen Themen weitergedacht (Schnittdaten bis zur
+  Hauptzeit, zweistufiges Getriebe mit Wirkungsgradkette, Doppelhub am
+  Differentialzylinder, Erwärmen **und** Schmelzen, Höchstspiel aus
+  Abmaßen). Zwölf bringen Themen, die es bisher gar nicht gab:
+  **Wälzlager-Lebensdauer**, **Riemenlänge**, **Federarbeit**,
+  **Schraubenzahl einer Flanschverbindung**, **Kehlnaht-Sicherheit**,
+  **Luftverbrauch eines Pneumatikzylinders**, **Prozessfähigkeit cpk**,
+  **Fügetemperatur mit Fügespiel**, **technische Verfügbarkeit**,
+  **kritische Menge zweier Fertigungsverfahren**, **Kegeldurchmesser über
+  den Einstellwinkel** und **Sicherheit gegen bleibende Verformung**.
+
+  **Sie laufen über ein eigenes Tagesfach: genau eine am Tag.** Zwischen
+  neunzehn Karteikarten würde eine Aufgabe, die zehn Minuten Rechnen kostet,
+  entweder übersprungen oder als Störung empfunden. Der Platz zählt gegen
+  das Tagesbudget, kommt also nicht obendrauf, und steht in der Session
+  vorn — dort ist die Aufmerksamkeit am größten. Ist sie erledigt, fällt der
+  Platz an die übrigen Karten zurück.
+
+  Jede variiert bei jedem Durchgang mit anderen Zahlen und bringt einen
+  Lösungsweg mit, der die Schritte einzeln benennt. Abgesichert durch
+  `test/komplexaufgaben_test.dart`: Mit den Originalwerten muss genau der
+  gespeicherte Text und Wert herauskommen, und 200 Ziehungen je Aufgabe
+  dürfen kein unbrauchbares Ergebnis erzeugen.
+
+  Gepflegt werden sie in `tool/komplex_daten.py` — Fragetext, Lösungswert,
+  Erklärung und Lösungsweg entstehen dort aus denselben Formeln, aus denen
+  gewürfelt wird, und können deshalb nicht auseinanderlaufen.
+
+- **Dimensionslose Ergebnisse** (Sicherheit, cpk) zeigten am Eingabefeld
+  „Zahlenwert in " mit nichts dahinter. Eine leere Einheit gilt jetzt wie
+  keine.
+
 - **Fragen von den Prüfungssätzen gelöst.** 115 Fragen trugen einen Bezug
   auf einen konkreten IHK-Prüfungssatz. Nicht im Wortlaut — die Fragen waren
   immer eigenständig formuliert —, sondern in der **Konstruktion**:
