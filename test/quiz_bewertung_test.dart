@@ -258,6 +258,28 @@ void main() {
     expect(_korrekt(container), isFalse);
   });
 
+  // Mehrere Paare duerfen auf denselben Wert zeigen (wi-av-005: fuenf
+  // Pflichten, zwei Vertragsparteien). Gezaehlt wird der Text, nicht der
+  // Index - sonst waere eine inhaltlich richtige Zuordnung falsch, nur weil
+  // man den Eintrag aus der falschen Zeile angetippt hat.
+  test('zuordnung: textgleiche Wahl ueber einen anderen Index -> korrekt', () async {
+    final frage = _basis(
+      typ: 'zuordnung',
+      paare: const [
+        Paar(links: 'Arbeitspflicht', rechts: 'Arbeitnehmer'),
+        Paar(links: 'Verguetungspflicht', rechts: 'Arbeitgeber'),
+        Paar(links: 'Treuepflicht', rechts: 'Arbeitnehmer'),
+      ],
+    );
+    final (container, controller) = await _session(frage);
+    // Zeile 0 nimmt "Arbeitnehmer" aus Paar 2 statt aus Paar 0.
+    controller.zuordnungAuswaehlen(0, 2);
+    controller.zuordnungAuswaehlen(1, 1);
+    controller.zuordnungAuswaehlen(2, 0);
+    controller.aufdecken();
+    expect(_korrekt(container), isTrue);
+  });
+
   test('reihenfolge: korrekte Sortierung -> korrekt', () async {
     final frage = _basis(
       typ: 'reihenfolge',

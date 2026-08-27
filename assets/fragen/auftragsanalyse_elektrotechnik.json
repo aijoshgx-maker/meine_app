@@ -14,8 +14,8 @@
     "einheit": null,
     "toleranz": null,
     "akzeptierteKurzantworten": [
+      "U = R * I",
       "U = R · I",
-      "U=R*I",
       "U=RI",
       "U = R mal I"
     ],

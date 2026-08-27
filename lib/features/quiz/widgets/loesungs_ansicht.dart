@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/matching/antwort_matcher.dart';
 import '../../../models/frage.dart';
 import '../providers/quiz_providers.dart';
 
@@ -162,9 +163,11 @@ class LoesungsAnsicht extends StatelessWidget {
       if (erwartet.isEmpty) continue;
 
       final eigene = (antwort.lueckenAntworten[i] ?? '').trim();
-      final passt = erwartet.any(
-        (e) => e.toLowerCase() == eigene.toLowerCase(),
-      );
+      // Derselbe Vergleich, mit dem auch bewertet wird. Ein strengerer
+      // haette hier "Dehnungen" rot angestrichen, obwohl die Bewertung es
+      // anerkennt - und wer eine gruene Ueberschrift ueber einer roten
+      // Zeile sieht, glaubt der roten.
+      final passt = AntwortMatcher.passtGegenListe(eigene, erwartet);
 
       zeilen.add(
         _LoesungsZeile(
@@ -187,20 +190,32 @@ class LoesungsAnsicht extends StatelessWidget {
   List<Widget> _zuordnung(BuildContext context) {
     if (frage.paare.isEmpty) return const [];
 
+    // Verglichen wird der Text der rechten Seite, nicht ihr Index - genau
+    // wie in der Bewertung. Mehrere Paare duerfen auf denselben Wert zeigen
+    // ("Arbeitnehmer" dreimal in wi-av-005); wer ihn ueber den Eintrag eines
+    // anderen Paares waehlt, hat inhaltlich richtig zugeordnet. Ein
+    // Indexvergleich hatte das rot angestrichen, waehrend oben "Richtig"
+    // stand.
     return [
       for (var i = 0; i < frage.paare.length; i++) ...[
         _LoesungsZeile(
           text: '${frage.paare[i].links}  →  ${frage.paare[i].rechts}',
           zustand: _Zustand.richtig,
         ),
-        if (antwort.zuordnungsAuswahl[i] != null &&
-            antwort.zuordnungsAuswahl[i] != i)
+        if (_weichtAb(i))
           _Nebenzeile(
             text: 'du: ${frage.paare[antwort.zuordnungsAuswahl[i]!].rechts}',
             abweichung: true,
           ),
       ],
     ];
+  }
+
+  bool _weichtAb(int i) {
+    final gewaehlt = antwort.zuordnungsAuswahl[i];
+    if (gewaehlt == null) return false;
+    if (gewaehlt < 0 || gewaehlt >= frage.paare.length) return false;
+    return frage.paare[gewaehlt].rechts != frage.paare[i].rechts;
   }
 
   // --- reihenfolge --------------------------------------------------------

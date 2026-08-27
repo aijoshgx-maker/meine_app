@@ -86,6 +86,9 @@ class AntwortMatcher {
   /// - führende/folgende Leerzeichen weg, Mehrfach-Leerzeichen auf eines
   /// - Bindestriche und Schrägstriche als Leerzeichen behandeln
   ///   ("Lockout Tagout" == "Lockout-Tagout" == "Lockout/Tagout")
+  /// - Malzeichen ebenso: "v · A" == "v * A" == "v A". Das Zeichen · steht
+  ///   auf keiner Handytastatur; wer es nicht findet, soll nicht an der
+  ///   Schreibweise scheitern statt an der Formel.
   /// - Dezimaltrennzeichen , und . zwischen Ziffern vereinheitlicht
   /// - ausgeschriebene und römische Zahlen als Ziffern
   static String normalisieren(String text) {
@@ -95,7 +98,7 @@ class AntwortMatcher {
         .replaceAll('ö', 'oe')
         .replaceAll('ü', 'ue')
         .replaceAll('ß', 'ss');
-    t = t.replaceAll(RegExp(r'[-/]'), ' ');
+    t = t.replaceAll(RegExp(r'[-/·⋅×*]'), ' ');
     t = t.replaceAll(RegExp(r'\s+'), ' ').trim();
     t = t.replaceAllMapped(RegExp(r'(\d)[.,](\d)'), (m) => '${m[1]},${m[2]}');
     // Wortweise, damit nur ganze Tokens ersetzt werden: "sieben" wird zur 7,

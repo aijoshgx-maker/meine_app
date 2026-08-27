@@ -91,7 +91,13 @@
     "frage": "Welche Mindestüberlappungslänge l_Ü wird beim Kleben mit Strukturklebstoffen generell empfohlen, um Schälfestigkeit zu minimieren und hohe Schubkräfte zu übertragen?",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [], "paare": [], "luecken": [],
     "loesungswert": null, "einheit": null, "toleranz": null,
-    "akzeptierteKurzantworten": ["l/d ≥ 5-10", "5-10 fache Fügeteildicke", "mindestens 10 mm", "10-20 mm"],
+    "akzeptierteKurzantworten": [
+      "5-10 fache Fügeteildicke",
+      "l/d >= 5-10",
+      "l/d ≥ 5-10",
+      "mindestens 10 mm",
+      "10-20 mm"
+    ],
     "wahr": null,
     "erklaerung": "Klebverbindungen: Die Überlappungslänge sollte ca. 5–10-fache Fügeteildicke betragen (Faustformel). Zu kurze Überlappung → Schälbeanspruchung an den Rändern dominiert (Klebstoffe sind schälanfällig!). Optimale Fugendicke: 0,1–0,3 mm. Klebflächen müssen gereinigt, entfettet und ggf. vorbehandelt (sandgestrahlt, primert) sein.",
     "selfExplanationPrompt": null, "bildAsset": null, "workedExample": null, "schwierigkeit": 3

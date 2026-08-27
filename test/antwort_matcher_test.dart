@@ -38,6 +38,19 @@ void main() {
       );
     });
 
+    // Das Malzeichen · steht auf keiner Handytastatur. Wer die Formel kennt,
+    // soll nicht an der Wahl des Zeichens scheitern.
+    test('Malzeichen und Leerzeichen sind äquivalent', () {
+      expect(AntwortMatcher.passtGenau('v * A', 'v · A'), isTrue);
+      expect(AntwortMatcher.passtGenau('v A', 'v · A'), isTrue);
+      expect(AntwortMatcher.passtGenau('v × A', 'v · A'), isTrue);
+      expect(AntwortMatcher.passtGenau('Pa*s', 'Pa·s'), isTrue);
+    });
+
+    test('das Malzeichen macht nicht beliebige Antworten gleich', () {
+      expect(AntwortMatcher.passtGenau('v * B', 'v · A'), isFalse);
+    });
+
     test('LOTO wird NICHT automatisch als Abkürzung erkannt', () {
       // Reine Normalisierung deckt keine Abkürzungen ab - das bleibt eine
       // fachliche Varianten-Entscheidung in den JSON-Daten, kein

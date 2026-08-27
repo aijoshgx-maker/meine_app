@@ -131,6 +131,39 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Behoben
 
+- **Richtig zugeordnet, trotzdem rot angestrichen.** Bei „Ordne die
+  Pflichten den jeweiligen Vertragsparteien zu" stand oben **Richtig**, und
+  in der Lösung waren trotzdem drei Zeilen rot mit „du: Arbeitnehmer"
+  markiert — mit genau dem Wort, das direkt darüber als richtig stand.
+
+  Ursache: Bewertung und Lösungsansicht urteilten nach verschiedenen Regeln.
+  Die eine verglich den **Text** der rechten Seite, die andere ihren
+  **Index**. Solange alle rechten Seiten verschieden sind, fällt das nicht
+  auf — diese Frage hat aber fünf Pflichten auf nur zwei Vertragsparteien.
+  Wer „Arbeitnehmer" über den Eintrag eines anderen Paares wählte, ordnete
+  inhaltlich richtig zu, hatte aber einen anderen Index.
+
+  Beide Stellen vergleichen jetzt den Text. **Dieselbe Bauart, zweite
+  Stelle:** Der Lückentext-Vergleich in der Lösungsansicht war strenger als
+  die Bewertung und strich „Dehnungen" rot an, obwohl es anerkannt wird —
+  auch das läuft jetzt über dieselbe Funktion.
+
+- **Lücken, die ein untippbares Zeichen verlangten.** Beim Hookeschen Gesetz
+  zeigte die Lösung „Lücke 1: **ε**". Das Zeichen steht auf keiner deutschen
+  Handytastatur; man las eine Antwort, die man nie würde eintippen können.
+
+  Angezeigt wird immer die erste hinterlegte Schreibweise — dort steht jetzt
+  überall die **ausgeschriebene** Fassung („Epsilon", „eta", „pi", „v * A"),
+  das Zeichen selbst bleibt als weitere gültige Schreibweise dahinter.
+  Betroffen waren acht Stellen; bei zweien (`au-hy-004`, `au-tb-014`) ließ
+  sich vorher **überhaupt keine** Variante tippen.
+
+  Dazu behandelt die Bewertung `·`, `×` und `*` jetzt wie ein Leerzeichen,
+  so wie Bindestrich und Schrägstrich schon: „v · A", „v * A" und „v A"
+  meinen dasselbe. Abgesichert über den bestehenden Kollisionsgurt, der
+  keine neue Verwechslung meldet, und einen neuen Bestandstest, der jede
+  angezeigte Antwort gegen die Tastatur prüft.
+
 - **Lesbare Diagramme auf dem Dashboard.** Die Beschriftungen standen unter
   einer gemeinsamen Achse und überlappten sich, sobald ein Name länger war
   als sein Säulenabstand — „Technische Berechnungen" und „Zerspanung

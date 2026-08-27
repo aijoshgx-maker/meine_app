@@ -232,6 +232,28 @@ void main() {
       expect(find.text('du: Stockholm'), findsOneWidget);
       expect(find.text('du: Oslo'), findsNothing);
     });
+
+    // Angezeigt wird mit derselben Regel geurteilt wie bewertet. Ein
+    // strengerer Vergleich strich hier Schreibweisen rot an, die die
+    // Bewertung längst anerkennt.
+    testWidgets('vom Matcher anerkannte Schreibweisen gelten', (tester) async {
+      await _pumpe(
+        tester,
+        _frage(
+          typ: 'lueckentext',
+          luecken: const [
+            ['Dehnung'],
+            ['Höchstmaß'],
+          ],
+        ),
+        const AntwortZustand(
+          lueckenAntworten: {0: 'dehnungen', 1: 'hoechstmass'},
+          korrekt: true,
+        ),
+      );
+
+      expect(find.textContaining('du: '), findsNothing);
+    });
   });
 
   group('zuordnung', () {
@@ -263,6 +285,54 @@ void main() {
 
       expect(find.text('du: Druckumformen'), findsOneWidget);
       expect(find.text('du: Zugdruckumformen'), findsOneWidget);
+    });
+
+    // Der gemeldete Fall aus wi-av-005: fünf Pflichten auf nur zwei
+    // Vertragsparteien. Wer "Arbeitnehmer" über den Eintrag eines anderen
+    // Paares wählt, hat inhaltlich richtig zugeordnet - ein Indexvergleich
+    // strich das rot an, während oben "Richtig" stand.
+    group('mehrere Paare mit derselben rechten Seite', () {
+      final pflichten = _frage(
+        typ: 'zuordnung',
+        paare: const [
+          Paar(links: 'Arbeitspflicht', rechts: 'Arbeitnehmer'),
+          Paar(links: 'Vergütungspflicht', rechts: 'Arbeitgeber'),
+          Paar(links: 'Treuepflicht', rechts: 'Arbeitnehmer'),
+          Paar(links: 'Fürsorgepflicht', rechts: 'Arbeitgeber'),
+        ],
+      );
+
+      testWidgets('textgleiche Wahl über einen anderen Index gilt', (
+        tester,
+      ) async {
+        await _pumpe(
+          tester,
+          pflichten,
+          // Zeile 0 nimmt "Arbeitnehmer" aus Paar 2, Zeile 3 "Arbeitgeber"
+          // aus Paar 1 - beides derselbe Text, nur ein anderer Index.
+          const AntwortZustand(
+            zuordnungsAuswahl: {0: 2, 1: 1, 2: 2, 3: 1},
+            korrekt: true,
+          ),
+        );
+
+        expect(find.textContaining('du: '), findsNothing);
+      });
+
+      testWidgets('eine echte Vertauschung wird weiterhin gezeigt', (
+        tester,
+      ) async {
+        await _pumpe(
+          tester,
+          pflichten,
+          const AntwortZustand(
+            zuordnungsAuswahl: {0: 1, 1: 1, 2: 2, 3: 1},
+            korrekt: false,
+          ),
+        );
+
+        expect(find.text('du: Arbeitgeber'), findsOneWidget);
+      });
     });
   });
 

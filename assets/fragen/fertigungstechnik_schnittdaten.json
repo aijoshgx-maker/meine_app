@@ -274,7 +274,19 @@
     "frage": "Die Schnittgeschwindigkeit ergibt sich aus der Formel vc = {{1}}·d·n / 1000 mit der Einheit {{2}}. Die Drehzahl n ergibt sich umgestellt zu n = vc·1000 / ({{3}}·d).",
     "optionen": [], "richtigeIndizes": [], "reihenfolge": [],
     "paare": [],
-    "luecken": [["π", "pi"], ["m/min"], ["π", "pi"]],
+    "luecken": [
+      [
+        "pi",
+        "π"
+      ],
+      [
+        "m/min"
+      ],
+      [
+        "pi",
+        "π"
+      ]
+    ],
     "loesungswert": null, "einheit": null, "toleranz": null,
     "akzeptierteKurzantworten": [],
     "wahr": null,
