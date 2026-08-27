@@ -84,6 +84,8 @@
     "paare": [],
     "luecken": [
       [
+        "Epsilon",
+        "eps",
         "ε",
         "Dehnung"
       ],
@@ -512,6 +514,8 @@
     "einheit": null,
     "toleranz": null,
     "akzeptierteKurzantworten": [
+      "Pa*s",
+      "Pascalsekunde",
       "Pa·s",
       "Pascal·Sekunde",
       "mPa·s",

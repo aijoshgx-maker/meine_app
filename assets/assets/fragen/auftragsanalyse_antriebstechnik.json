@@ -288,7 +288,13 @@
     "loesungswert": null,
     "einheit": null,
     "toleranz": null,
-    "akzeptierteKurzantworten": ["ω = 2π · n/60", "ω = (2π · n) / 60", "ω = 2πn/60", "2 pi n durch 60"],
+    "akzeptierteKurzantworten": [
+      "omega = 2 * pi * n / 60",
+      "2 pi n durch 60",
+      "ω = 2π · n/60",
+      "ω = (2π · n) / 60",
+      "ω = 2πn/60"
+    ],
     "wahr": null,
     "erklaerung": "Da n in min⁻¹ angegeben wird, muss durch 60 dividiert werden: ω = 2π · n/60 [rad/s]. Alternativ direkt: ω = 2π · n_s, wenn n bereits in s⁻¹ vorliegt.",
     "selfExplanationPrompt": null,
@@ -356,8 +362,15 @@
     "reihenfolge": [],
     "paare": [],
     "luecken": [
-      ["η", "eta", "Wirkungsgrad"],
-      ["38", "38,0"]
+      [
+        "eta",
+        "Wirkungsgrad",
+        "η"
+      ],
+      [
+        "38",
+        "38,0"
+      ]
     ],
     "loesungswert": null,
     "einheit": null,
