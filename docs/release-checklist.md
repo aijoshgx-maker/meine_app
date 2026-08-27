@@ -48,6 +48,23 @@ Im Zertifikat muss der Inhaber deines Upload-Keystores stehen —
       (in Git Bash `MSYS_NO_PATHCONV=1` voranstellen, sonst wird
       `--base-href` zu einem Windows-Pfad verbogen)
 
+## Inhaltsrechte — vor dem Upload zu klären
+
+- [ ] **Die vier Zeichnungssätze unter `assets/zeichnungen/` sind
+      Reproduktionen der Original-Prüfungsblätter** (gerendert von
+      `tool/zeichnungen_extrahieren.py`). Sie müssen vor dem Upload raus,
+      durch eigene Skizzen ersetzt oder lizenziert werden.
+- [ ] **27 Fragen hängen an diesen Zeichnungen** und nennen deren
+      Positionsnummern. Gehen die Zeichnungen, müssen auch sie gelöst
+      werden — `test/pruefungsbezug_test.dart` zeigt, welche das sind, und
+      die Zahl 27 dort ist entsprechend zu senken. Die übrigen Fragen sind
+      seit August 2026 gelöst (`tool/pruefungsbezug_loesen.py`).
+- [ ] **Nicht mit „echten IHK-Prüfungen" werben** — der Satz ist aus dem
+      Store-Entwurf entfernt.
+- [ ] Prüfen, ob die Prüfungscodes `S17`/`S18`/`S19`/`W22` in
+      `assets/kurse/…/kurs.json` durch neutrale Bezeichnungen ersetzt werden
+      sollen.
+
 ## Vor dem allerersten Upload — einmalig und unwiderruflich
 
 - [ ] **Application-ID festgelegt** und ersetzt in:

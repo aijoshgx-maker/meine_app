@@ -27,8 +27,7 @@ solltest — und der nicht auf ein einziges Thema festgelegt ist.
 MITGELIEFERT: ABSCHLUSSPRÜFUNG TEIL 2 INDUSTRIEMECHANIKER
 
 681 Fragen aus Auftrags- und Funktionsanalyse, Fertigungstechnik sowie
-Wirtschafts- und Sozialkunde. Dazu Fragen aus vier echten IHK-Prüfungen und
-38 Szenarien fürs Fachgespräch.
+Wirtschafts- und Sozialkunde, dazu 38 Szenarien fürs Fachgespräch.
 
 ACHT FRAGETYPEN
 
@@ -76,6 +75,13 @@ Lernfortschritt bleibt auf deinem Gerät — und lässt sich als Datei sichern
 und auf ein neues Gerät übertragen.
 ```
 *ca. 1950 Zeichen*
+
+> **Nicht mehr mit „echten IHK-Prüfungen" werben.** Der Satz stand hier bis
+> August 2026. Die Fragen sind seitdem von den konkreten Prüfungssätzen
+> gelöst — die Werbeaussage wäre nicht nur unzutreffend, sie würde auch die
+> Herkunft der Inhalte behaupten, die man gerade nicht behaupten will.
+> Solange die vier Zeichnungssätze noch mitgeliefert werden, ist der
+> Store-Eintrag ohnehin nicht einreichungsreif; siehe `release-checklist.md`.
 
 ## Grafiken
 

@@ -738,7 +738,7 @@
     "bereich": "auftragsanalyse",
     "kategorie": "Elektrotechnik",
     "typ": "single",
-    "frage": "In einem Heizkreis der Verzinkungsanlage ist ein NTC-Widerstand (Thermistor) verbaut. Wie verändert sich sein elektrischer Widerstand bei steigender Temperatur?",
+    "frage": "In einem Heizkreis ist ein NTC-Widerstand (Thermistor) verbaut. Wie verändert sich sein elektrischer Widerstand bei steigender Temperatur?",
     "optionen": [
       "Er bleibt konstant.",
       "Er steigt proportional zur Temperatur.",

@@ -8,6 +8,35 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Hinzugefügt
 
+- **Fragen von den Prüfungssätzen gelöst.** 115 Fragen trugen einen Bezug
+  auf einen konkreten IHK-Prüfungssatz. Nicht im Wortlaut — die Fragen waren
+  immer eigenständig formuliert —, sondern in der **Konstruktion**:
+  Einstellantrieb, Werkzeugspindelkasten, Verladeanlage, Schaltvorrichtung,
+  Bohrstation, Verzinkungsanlage, dazu Positionsnummern (`Pos. 6`) und
+  Bauteilkennzeichen (`-RM1`, `QN1`, `BP1/BP2`, `BT1`) aus genau diesen
+  Blättern.
+
+  **63 Fragen sind jetzt eigenständig.** Aus „Durch welches Bauteil im
+  hydraulischen Schaltplan wird verhindert, dass sich der Materialkorb
+  absenkt?" mit den Antworten `-RM1`, `-PG1`, `-QN1` wird „Durch welches
+  Bauteil wird in einem Hydraulikkreis verhindert, dass eine angehobene Last
+  bei Druckverlust schlagartig absinkt?" mit den Antworten Rückschlagventil,
+  Manometer, Druckbegrenzungsventil. Der fachliche Inhalt ist unverändert:
+  Zahlen, Lösungswerte und richtige Antworten sind dieselben geblieben.
+
+  Nebenbei werden die Fragen dadurch **ohne die Zeichnung lösbar** — vorher
+  war „Welches Bauteil im Schaltplan …" in der freien Übung nicht zu
+  beantworten, weil dort gar kein Schaltplan zu sehen ist.
+
+  **27 Fragen bleiben vorerst**, weil sie zu einer Prüfungszeichnung gehören
+  und nur zusammen mit ihr Sinn ergeben. Sie sind in
+  `test/pruefungsbezug_test.dart` als benannte Ausnahme geführt; jede weitere
+  Frage mit Prüfungsbezug lässt den Test anschlagen.
+
+  Eingetragen über `tool/pruefungsbezug_loesen.py`, abgesichert durch den
+  Varianten-Validator (die Vorlagen der 20 variierenden Aufgaben mussten
+  mitgezogen werden) und den Kollisionsgurt.
+
 - **Fragen wachsen mit (Erprobung).** Eine Frage, die man dreimal sicher
   richtig beantwortet hat, ist als Auswahlfrage keine Prüfung mehr — man
   erkennt die richtige Option wieder, statt die Antwort abzurufen. Der
