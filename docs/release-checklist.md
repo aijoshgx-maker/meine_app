@@ -63,8 +63,10 @@ Im Zertifikat muss der Inhaber deines Upload-Keystores stehen —
 
 ## Play Console
 
-- [ ] Datenschutzerklärung öffentlich erreichbar
-      (`docs/store/datenschutz.md`, Kontaktangabe ergänzt)
+- [ ] Datenschutzerklärung öffentlich erreichbar — sie liegt als
+      `web/datenschutz.html` im Repo und geht mit dem Web-Deploy live:
+      https://aijoshgx-maker.github.io/meine_app/datenschutz.html
+      Diese URL kommt in die Play Console.
 - [ ] Data-Safety-Formular ausgefüllt (Antworten in
       `docs/store/store-eintrag.md`)
 - [ ] Inhaltsbewertung beantwortet
