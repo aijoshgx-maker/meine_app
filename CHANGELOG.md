@@ -262,6 +262,22 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Behoben
 
+- **Die Testläufe waren nicht anwählbar.** Auf der Karte jedes Testlaufs
+  standen die Diagramm-Chips in einem `Wrap` ohne Breitenbegrenzung, daneben
+  ein `Spacer` und der Starten-Knopf. Das Wrap nahm sich seine natürliche
+  Breite, der Spacer fiel auf null zusammen — und der Knopf wurde aus dem
+  Bild geschoben. Schon auf 736 Pixel Breite lief die Zeile um 88 Pixel
+  über; auf einem 360-Pixel-Handy war der Knopf gar nicht mehr erreichbar.
+
+  Die Chips stehen jetzt in einem `Expanded` und brechen um, statt den Knopf
+  zu verdrängen.
+
+  Aufgefallen ist der Fehler nicht, weil der bisherige Test einen
+  **synthetischen** Kurs ohne Diagramm-Chips benutzte — dort konnte nichts
+  überlaufen. Der neue Test lädt den **echten** Kurs und rendert ihn auf
+  360×800 und 320×700: kein Überlauf, der Knopf liegt im sichtbaren Bereich,
+  und ein Tippen landet tatsächlich im Testlauf.
+
 - **Viele Fragen kamen nie dran.** Die Auswahl gab den fälligen
   Wiederholungen zuerst das **ganze** Tagesbudget und füllte erst mit neuen
   Karten auf, was übrig blieb:

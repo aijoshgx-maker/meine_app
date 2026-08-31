@@ -166,28 +166,35 @@ class _PruefungsKarte extends StatelessWidget {
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 12),
+            // Die Diagramm-Chips MUESSEN in Expanded stehen. Ohne das nimmt
+            // sich das Wrap seine natuerliche Breite, der Spacer faellt auf
+            // null zusammen und der Starten-Knopf wird aus dem Bild
+            // geschoben - er war dann nicht mehr antippbar.
             Row(
               children: [
-                Wrap(
-                  spacing: 4,
-                  children: [
-                    for (final key in info.diagrammKeys.take(3))
-                      Chip(
-                        label: Text(key.replaceAll('_', ' ')),
-                        visualDensity: VisualDensity.compact,
-                        padding: EdgeInsets.zero,
-                        labelStyle: Theme.of(context).textTheme.labelSmall,
-                      ),
-                    if (info.diagrammKeys.length > 3)
-                      Chip(
-                        label: Text('+${info.diagrammKeys.length - 3}'),
-                        visualDensity: VisualDensity.compact,
-                        padding: EdgeInsets.zero,
-                        labelStyle: Theme.of(context).textTheme.labelSmall,
-                      ),
-                  ],
+                Expanded(
+                  child: Wrap(
+                    spacing: 4,
+                    runSpacing: 4,
+                    children: [
+                      for (final key in info.diagrammKeys.take(3))
+                        Chip(
+                          label: Text(key.replaceAll('_', ' ')),
+                          visualDensity: VisualDensity.compact,
+                          padding: EdgeInsets.zero,
+                          labelStyle: Theme.of(context).textTheme.labelSmall,
+                        ),
+                      if (info.diagrammKeys.length > 3)
+                        Chip(
+                          label: Text('+${info.diagrammKeys.length - 3}'),
+                          visualDensity: VisualDensity.compact,
+                          padding: EdgeInsets.zero,
+                          labelStyle: Theme.of(context).textTheme.labelSmall,
+                        ),
+                    ],
+                  ),
                 ),
-                const Spacer(),
+                const SizedBox(width: 8),
                 FilledButton.icon(
                   onPressed: onStart,
                   icon: const Icon(Icons.play_arrow, size: 18),
