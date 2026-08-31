@@ -113,6 +113,14 @@ class PruefungsDefinition {
   final List<String> diagrammKeys;
   final Map<String, String> stueckliste;
 
+  /// Wie viele Aufgaben dieser Testlauf haben SOLL.
+  ///
+  /// Nur gesetzt, wenn der Kurs die Sollzahl wirklich kennt. Dann - und nur
+  /// dann - meldet die Auswahl einen unvollstaendigen Datensatz. Ohne Angabe
+  /// gibt es keine Sollzahl, gegen die sich vergleichen liesse, und die
+  /// Karte nennt schlicht die vorhandene Anzahl.
+  final int? aufgabenAnzahl;
+
   const PruefungsDefinition({
     required this.code,
     required this.titel,
@@ -121,6 +129,7 @@ class PruefungsDefinition {
     this.zeichnungen = const [],
     this.diagrammKeys = const [],
     this.stueckliste = const {},
+    this.aufgabenAnzahl,
   });
 
   factory PruefungsDefinition.fromJson(Map<String, dynamic> json) =>
@@ -132,6 +141,7 @@ class PruefungsDefinition {
         zeichnungen: (json['zeichnungen'] as List? ?? [])
             .map((z) => Zeichnung.fromJson(Map<String, dynamic>.from(z as Map)))
             .toList(),
+        aufgabenAnzahl: (json['aufgabenAnzahl'] as num?)?.toInt(),
         diagrammKeys: (json['diagrammKeys'] as List? ?? [])
             .map((e) => e as String)
             .toList(),
@@ -148,6 +158,7 @@ class PruefungsDefinition {
     'zeichnungen': zeichnungen.map((z) => z.toJson()).toList(),
     'diagrammKeys': diagrammKeys,
     'stueckliste': stueckliste,
+    if (aufgabenAnzahl != null) 'aufgabenAnzahl': aufgabenAnzahl,
   };
 }
 

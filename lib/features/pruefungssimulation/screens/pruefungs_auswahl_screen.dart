@@ -10,9 +10,17 @@ import '../../quiz/providers/session_timer_provider.dart';
 // Testläufe auf Zeit. Welche es gibt, steht im aktiven Kurs - früher war das
 // eine feste Liste der vier IHK-Prüfungen im Dart-Code.
 //
-// Ein Testlauf zieht seine Aufgaben über frage.pruefung == code. Ist ein
-// Datensatz lückenhaft, zeigt die Karte das transparent an, statt still eine
-// unvollständige Prüfung zu simulieren.
+// Ein Testlauf zieht seine Aufgaben über frage.pruefung == code.
+//
+// Ist im Kurs eine Sollzahl (`aufgabenAnzahl`) hinterlegt und wird sie nicht
+// erreicht, sagt die Karte das - statt still eine unvollständige Prüfung zu
+// simulieren. Ohne Sollzahl gibt es nichts zu vergleichen, und die Karte
+// nennt einfach die vorhandene Anzahl.
+//
+// Früher stand hier ein Vergleich gegen den GRÖSSTEN der vorhandenen
+// Testläufe. Das markierte zwangsläufig alle bis auf einen als
+// "unvollständigen Datensatz" - denn nur einer kann der größte sein. Die
+// Meldung behauptete damit ein Datenproblem, das es nicht gab.
 class PruefungsAuswahlScreen extends ConsumerWidget {
   const PruefungsAuswahlScreen({super.key});
 
@@ -52,8 +60,6 @@ class PruefungsAuswahlScreen extends ConsumerWidget {
             );
           }
 
-          final maximal = anzahl.values.reduce((a, b) => a > b ? a : b);
-
           return ListView(
             padding: const EdgeInsets.all(16),
             children: [
@@ -72,7 +78,7 @@ class PruefungsAuswahlScreen extends ConsumerWidget {
                 _PruefungsKarte(
                   info: pruefung,
                   anzahlVerfuegbar: anzahl[pruefung.code],
-                  anzahlMaximal: maximal,
+                  anzahlSoll: pruefung.aufgabenAnzahl,
                   onStart: () => _starteSimulation(context, ref, pruefung),
                 ),
             ],
@@ -101,13 +107,15 @@ class PruefungsAuswahlScreen extends ConsumerWidget {
 class _PruefungsKarte extends StatelessWidget {
   final PruefungsDefinition info;
   final int? anzahlVerfuegbar;
-  final int? anzahlMaximal;
+
+  /// Sollzahl aus dem Kurs, oder null, wenn er keine kennt.
+  final int? anzahlSoll;
   final VoidCallback onStart;
 
   const _PruefungsKarte({
     required this.info,
     required this.anzahlVerfuegbar,
-    required this.anzahlMaximal,
+    required this.anzahlSoll,
     required this.onStart,
   });
 
@@ -116,8 +124,8 @@ class _PruefungsKarte extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     final unvollstaendig =
         anzahlVerfuegbar != null &&
-        anzahlMaximal != null &&
-        anzahlVerfuegbar! < anzahlMaximal!;
+        anzahlSoll != null &&
+        anzahlVerfuegbar! < anzahlSoll!;
     return Card(
       margin: const EdgeInsets.only(bottom: 14),
       child: Padding(
@@ -142,7 +150,8 @@ class _PruefungsKarte extends StatelessWidget {
               const SizedBox(height: 4),
               Text(
                 unvollstaendig
-                    ? '$anzahlVerfuegbar von bis zu $anzahlMaximal Aufgaben verfügbar (unvollständiger Datensatz)'
+                    ? '$anzahlVerfuegbar von $anzahlSoll Aufgaben verfügbar '
+                          '(unvollständiger Datensatz)'
                     : '$anzahlVerfuegbar Aufgaben verfügbar',
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                   color: unvollstaendig ? cs.error : cs.onSurfaceVariant,

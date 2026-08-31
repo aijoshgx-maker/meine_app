@@ -161,7 +161,8 @@ Die Zuordnung läuft über `pruefung` an der Frage:
       { "pfad": "bilder/uebersicht.png", "label": "Übersichtsplan" }
     ],
     "diagrammKeys": [],
-    "stueckliste": { "1": "Bauteil A" }
+    "stueckliste": { "1": "Bauteil A" },
+    "aufgabenAnzahl": 40
   }
 ]
 ```
@@ -176,6 +177,11 @@ An der Frage dann:
 - `zeichnungen` sind über einen Knopf während des Testlaufs einsehbar.
   Fehlt eine Bilddatei, zeigt die App einen Platzhalter mit der `stueckliste`
   als Textliste.
+- `aufgabenAnzahl` ist **optional** und nennt die Sollzahl: Wie viele
+  Aufgaben dieser Testlauf haben soll. Werden es weniger, meldet die Auswahl
+  „unvollständiger Datensatz". Ohne die Angabe gibt es keinen Maßstab, und
+  die Karte nennt schlicht die vorhandene Anzahl — setze sie also nur, wenn
+  du die Sollzahl wirklich kennst.
 - `stueckliste` ordnet Positionsnummern Bezeichnungen zu — nützlich, wenn
   Fragen sich auf „Pos. X" einer Abbildung beziehen.
 - `diagrammKeys` verweisen auf fest eingebaute Zeichnungen und sind für

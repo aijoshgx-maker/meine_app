@@ -233,6 +233,20 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Behoben
 
+- **„Unvollständiger Datensatz" bei Testläufen, die vollständig waren.** Die
+  Auswahl verglich jeden Testlauf mit dem **größten** der vorhandenen. Da nur
+  einer der größte sein kann, waren drei von vier immer rot markiert — bei
+  20, 21, 36 und 38 Aufgaben blieb allein der mit 38 unauffällig. Die Meldung
+  behauptete ein Datenproblem, das es nicht gab, und der Maßstab war reine
+  Willkür: Käme ein fünfter Testlauf mit mehr Aufgaben dazu, wären plötzlich
+  alle vier rot.
+
+  Verglichen wird jetzt gegen eine **Sollzahl aus dem Kurs**
+  (`aufgabenAnzahl` je Testlauf). Kennt der Kurs keine — und der
+  mitgelieferte kennt keine —, gibt es nichts zu vergleichen, und die Karte
+  nennt einfach die vorhandene Anzahl. Der Hinweis bleibt für importierte
+  Kurse verfügbar, die ihre Sollzahl wirklich kennen.
+
 - **Richtig zugeordnet, trotzdem rot angestrichen.** Bei „Ordne die
   Pflichten den jeweiligen Vertragsparteien zu" stand oben **Richtig**, und
   in der Lösung waren trotzdem drei Zeilen rot mit „du: Arbeitnehmer"
