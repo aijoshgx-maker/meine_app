@@ -3,30 +3,35 @@
     "begriff": "ω (Winkelgeschwindigkeit)",
     "alias": ["ω", "omega", "Winkelgeschwindigkeit"],
     "kurz": "Wie schnell sich etwas dreht — im Bogenmaß, Einheit rad/s.",
+    "formeln": ["ω = 2 · π · n        (n in 1/s)", "ω = 2 · π · n / 60   (n in min⁻¹)"],
     "mehr": "Nicht mit der Drehzahl n verwechseln: n zählt Umdrehungen, ω misst den überstrichenen Winkel.\n\nω = 2 · π · n, wobei n in 1/s einzusetzen ist.\nAus min⁻¹: ω = 2 · π · n / 60.\n\nBeispiel: n = 1500 min⁻¹ → ω = 2 · π · 1500 / 60 = 157,1 rad/s"
   },
   {
     "begriff": "n (Drehzahl)",
     "alias": ["Drehzahl"],
     "kurz": "Umdrehungen pro Zeit, meist in min⁻¹ (Umdrehungen je Minute).",
+    "formeln": ["vc = π · d · n / 1000"],
     "mehr": "Achtung bei Einheiten: In Formeln steht n oft in 1/s, auf Maschinenschildern dagegen in min⁻¹. Umrechnung: n[1/s] = n[min⁻¹] / 60.\n\nIn der Schnittgeschwindigkeit vc = π · d · n / 1000 wird n in min⁻¹ eingesetzt, d in mm — das Ergebnis kommt in m/min heraus."
   },
   {
     "begriff": "vc (Schnittgeschwindigkeit)",
     "alias": ["vc", "Schnittgeschwindigkeit"],
     "kurz": "Geschwindigkeit der Schneide gegenüber dem Werkstück, in m/min.",
+    "formeln": ["vc = π · d · n / 1000"],
     "mehr": "vc = π · d · n / 1000\n\nd in mm, n in min⁻¹, Ergebnis in m/min. Die 1000 rechnet mm in m um.\n\nvc hängt vom Werkstoff und vom Schneidstoff ab — zu hohe Werte kosten Standzeit."
   },
   {
     "begriff": "f (Vorschub)",
     "alias": ["Vorschub"],
     "kurz": "Weg des Werkzeugs je Umdrehung, in mm/U.",
+    "formeln": ["vf = f · n", "vf = fz · z · n   (Fräsen)"],
     "mehr": "Zu unterscheiden:\n• f — Vorschub je Umdrehung (mm/U)\n• fz — Vorschub je Schneide (mm/Zahn), beim Fräsen\n• vf — Vorschubgeschwindigkeit (mm/min), vf = f · n"
   },
   {
     "begriff": "ap (Schnitttiefe)",
     "alias": ["ap", "Schnitttiefe", "Zustellung"],
     "kurz": "Wie tief das Werkzeug ins Material greift, in mm.",
+    "formeln": ["A = ap · f", "Q = ap · f · vc"],
     "mehr": "Beim Drehen ist ap die Zustellung senkrecht zur Vorschubrichtung. Zusammen mit dem Vorschub ergibt sie den Spanungsquerschnitt A = ap · f."
   },
   {
@@ -49,8 +54,9 @@
   },
   {
     "begriff": "Passung",
-    "alias": ["Passung", "Spielpassung", "Übergangspassung", "Presspassung"],
+    "alias": ["Passung", "Spielpassung", "Übergangspassung", "Presspassung", "Abmaß", "Höchstspiel", "Mindestspiel"],
     "kurz": "Wie Welle und Bohrung zusammenpassen — mit Spiel, stramm oder fest.",
+    "formeln": ["Höchstspiel = ES − ei", "Mindestspiel = EI − es"],
     "mehr": "• Spielpassung: Es bleibt immer Luft, das Teil lässt sich verschieben.\n• Übergangspassung: Je nach Istmaß Spiel oder leichtes Übermaß.\n• Presspassung: Immer Übermaß, muss gefügt werden (Presse, Erwärmen)."
   },
   {
@@ -67,32 +73,37 @@
   },
   {
     "begriff": "p (Druck)",
-    "alias": ["Druck"],
+    "alias": ["Druck", "Kolben", "hydraulische Presse"],
     "kurz": "Kraft je Fläche, in bar oder N/mm² (1 N/mm² = 10 bar).",
+    "formeln": ["p = F / A"],
     "mehr": "p = F / A\n\nIn der Hydraulik meist in bar, in Festigkeitsrechnungen in N/mm². Für die Kolbenkraft: F = p · A, mit p in N/mm² und A in mm² → F in N."
   },
   {
     "begriff": "Q (Volumenstrom)",
     "alias": ["Volumenstrom", "Förderstrom"],
     "kurz": "Wie viel Flüssigkeit je Zeit fließt, in l/min.",
+    "formeln": ["Q = A · v", "Q = V / t"],
     "mehr": "Q = A · v — Fläche mal Strömungsgeschwindigkeit.\n\nBeim Hydraulikzylinder bestimmt Q die Geschwindigkeit, p die Kraft. Das ist die zentrale Trennung: Druck macht Kraft, Volumenstrom macht Tempo."
   },
   {
     "begriff": "M (Drehmoment)",
     "alias": ["Drehmoment"],
     "kurz": "Drehwirkung einer Kraft, in Nm — Kraft mal Hebelarm.",
+    "formeln": ["M = F · r", "P = M · ω        (ω in rad/s)", "M = 9550 · P / n (P in kW, n in min⁻¹)"],
     "mehr": "M = F · r\n\nZusammenhang mit der Leistung: P = M · ω, mit ω in rad/s und M in Nm → P in Watt.\n\nIm Getriebe: Was an Drehzahl verloren geht, kommt als Drehmoment dazu (abzüglich Verluste)."
   },
   {
     "begriff": "i (Übersetzung)",
     "alias": ["Übersetzung", "Übersetzungsverhältnis"],
     "kurz": "Verhältnis von An- zu Abtriebsdrehzahl im Getriebe.",
+    "formeln": ["i = n_an / n_ab = z_ab / z_an"],
     "mehr": "i = n_an / n_ab = z_ab / z_an\n\nAchtung auf die Richtung: Die Zähnezahlen stehen umgekehrt zu den Drehzahlen. i > 1 heißt Untersetzung — langsamer, dafür mehr Drehmoment."
   },
   {
     "begriff": "m (Modul)",
     "alias": ["Modul"],
     "kurz": "Größenmaß der Zähne eines Zahnrads, in mm.",
+    "formeln": ["m = d / z", "da = m · (z + 2)"],
     "mehr": "m = d / z — Teilkreisdurchmesser durch Zähnezahl.\n\nZwei Zahnräder können nur kämmen, wenn sie denselben Modul haben. Der Modul ist genormt (1; 1,25; 1,5; 2; 2,5; 3; …)."
   },
   {
@@ -105,6 +116,7 @@
     "begriff": "ν (Sicherheitsbeiwert)",
     "alias": ["Sicherheitsbeiwert", "Sicherheitsfaktor"],
     "kurz": "Abstand zwischen zulässiger Spannung und Werkstoffgrenze.",
+    "formeln": ["σ_zul = Re / ν"],
     "mehr": "σ_zul = Re / ν\n\nDeckt ab, was die Rechnung nicht erfasst: Werkstoffstreuung, Lastspitzen, Kerbwirkung."
   },
   {
@@ -135,6 +147,7 @@
     "begriff": "OEE / Verfügbarkeit",
     "alias": ["OEE", "Verfügbarkeit", "Gesamtanlageneffektivität"],
     "kurz": "Wie viel eine Anlage von ihrer möglichen Leistung tatsächlich bringt.",
+    "formeln": ["OEE = Verfügbarkeit · Leistungsgrad · Qualitätsrate", "Verfügbarkeit = MTBF / (MTBF + MTTR)", "MTBF = Betriebszeit / Anzahl Ausfälle"],
     "mehr": "OEE = Verfügbarkeit × Leistungsgrad × Qualitätsrate\n\nVerfügbarkeit = tatsächliche Laufzeit / geplante Laufzeit.\n\nWeil multipliziert wird, schlagen schon drei mäßige Werte hart durch: 0,9 × 0,9 × 0,9 ≈ 0,73."
   },
   {
@@ -148,5 +161,103 @@
     "alias": ["Beitragsbemessungsgrenze", "BBG"],
     "kurz": "Bis zu diesem Einkommen werden Sozialbeiträge berechnet — darüber nicht mehr.",
     "mehr": "Wer mehr verdient, zahlt auf den übersteigenden Teil keine Beiträge. Der Beitrag steigt also nicht unbegrenzt mit dem Einkommen.\n\nDie Grenzen unterscheiden sich zwischen Kranken-/Pflege- und Renten-/Arbeitslosenversicherung und werden jährlich angepasst."
+  },
+  {
+    "begriff": "th (Hauptzeit)",
+    "alias": ["Hauptzeit"],
+    "kurz": "Reine Bearbeitungszeit eines Arbeitsgangs, ohne Rüsten und Wechseln.",
+    "formeln": ["th = L / vf", "L = Werkstücklänge + An- und Überlauf"],
+    "mehr": "Die Vorschubgeschwindigkeit vf steht selten in der Aufgabe — sie entsteht erst aus Drehzahl und Vorschub. An- und Überlauf gehören zum Weg: Das Werkzeug muss vor dem Werkstück anlaufen und hinter ihm austreten."
+  },
+  {
+    "begriff": "L₁₀ₕ (Lagerlebensdauer)",
+    "alias": ["Lebensdauer", "Tragzahl"],
+    "kurz": "Erwartete Laufzeit eines Wälzlagers, bei der 90 % noch nicht ausgefallen sind.",
+    "formeln": ["L₁₀ = (C / P)^p        (p = 3 Kugel-, 10/3 Rollenlager)", "L₁₀ₕ = L₁₀ · 10⁶ / (60 · n)"],
+    "mehr": "C ist die dynamische Tragzahl des Lagers, P die äquivalente Belastung. L₁₀ kommt in Millionen Umdrehungen heraus — erst die Drehzahl macht daraus eine Zeit."
+  },
+  {
+    "begriff": "Riementrieb",
+    "alias": ["Riemenlänge", "Achsabstand"],
+    "kurz": "Zugmitteltrieb zwischen zwei Scheiben, formschlüssig (Zahnriemen) oder reibschlüssig (Keil-, Flachriemen).",
+    "formeln": ["L = 2 · e + π/2 · (d₁ + d₂) + (d₂ − d₁)² / (4 · e)", "i = d₂ / d₁"],
+    "mehr": "Die Riemenlänge besteht aus den geraden Trumen, dem Umschlingungsanteil beider Scheiben und einem Zuschlag für die Schräglage der Trume. Der dritte Summand wird gern vergessen."
+  },
+  {
+    "begriff": "R (Federrate)",
+    "alias": ["Federrate", "Druckfeder", "Federkraft"],
+    "kurz": "Kraft je Federweg — wie hart eine Feder ist, in N/mm.",
+    "formeln": ["R = F / s", "W = R/2 · (s₂² − s₁²)"],
+    "mehr": "Die Federarbeit ist die Fläche unter der Kennlinie. Zwischen zwei Wegen zählt die Differenz der Quadrate — nicht das Quadrat der Differenz."
+  },
+  {
+    "begriff": "Q (Wärmemenge)",
+    "alias": ["Wärmemenge", "Wärmekapazität", "Schmelzwärme"],
+    "kurz": "Energie, die ein Körper beim Erwärmen aufnimmt oder beim Abkühlen abgibt.",
+    "formeln": ["Q = m · c · Δϑ   (Erwärmen)", "Q = m · q       (Schmelzen)"],
+    "mehr": "Während des Schmelzens steigt die Temperatur nicht — die Energie steckt in der Umwandlung. Wer nur den Erwärmungsanteil rechnet, unterschätzt den Bedarf erheblich."
+  },
+  {
+    "begriff": "Kehlnaht",
+    "alias": ["Kehlnaht", "Nahtdicke", "Schweißnaht"],
+    "kurz": "Schweißnaht im rechten Winkel zwischen zwei Blechen; a ist die Höhe des eingeschriebenen Dreiecks.",
+    "formeln": ["A_w = a · l", "σ = F / A_w", "S = σ_zul / σ_vorh"],
+    "mehr": "Die Nahtdicke a ist nicht die Blechdicke. Bei zwei Nähten zählt die doppelte Fläche."
+  },
+  {
+    "begriff": "cpk (Prozessfähigkeit)",
+    "alias": ["cpk", "Prozessfähigkeit", "Standardabweichung"],
+    "kurz": "Wie sicher ein Prozess innerhalb der Toleranz bleibt — Streuung UND Lage.",
+    "formeln": ["cp  = (OSG − USG) / (6 · s)", "cpk = min(OSG − x̄, x̄ − USG) / (3 · s)"],
+    "mehr": "cp sieht nur die Streuung, cpk auch die Lage: Maßgeblich ist der kleinere Abstand des Mittelwerts zu einer der beiden Grenzen. Ein enger, aber außermittiger Prozess bekommt deshalb einen schlechten cpk."
+  },
+  {
+    "begriff": "α (Wärmeausdehnung)",
+    "alias": ["Wärmeausdehnung", "Wärmeausdehnungskoeffizient", "Fügespiel"],
+    "kurz": "Wie stark sich ein Werkstoff je Kelvin ausdehnt, in 10⁻⁶/K.",
+    "formeln": ["Δl = l · α · ΔT"],
+    "mehr": "Beim Fügen durch Erwärmen ist nicht nur das Übermaß zu weiten, sondern auch ein Fügespiel — sonst klemmt das Teil genau dann, wenn es sitzen soll. Das Ergebnis ist eine Temperaturdifferenz; die Raumtemperatur kommt noch dazu."
+  },
+  {
+    "begriff": "Luftverbrauch (Pneumatik)",
+    "alias": ["Luftverbrauch", "Verdichtungsverhältnis", "Doppelhub"],
+    "kurz": "Bedarf an angesaugter Luft, nicht an verdichteter — der Unterschied ist der Faktor, der gern fehlt.",
+    "formeln": ["V = A · s", "Verdichtungsverhältnis = (p + 1) / 1", "V_angesaugt = V · Verdichtungsverhältnis"],
+    "mehr": "Bei 6 bar Überdruck ist das der Faktor 7. Wer ihn weglässt, meldet ein Siebtel des tatsächlichen Bedarfs — und der Kompressor ist zu klein."
+  },
+  {
+    "begriff": "σ (Zugspannung)",
+    "alias": ["Zugspannung", "Streckgrenze"],
+    "kurz": "Kraft je Querschnittsfläche, in N/mm².",
+    "formeln": ["σ = F / A", "A = π/4 · d²   (Rundquerschnitt)", "S = Re / σ"],
+    "mehr": "Der Querschnitt eines Rundstabs ist π/4 · d², nicht π · d². Bei kN und mm² muss vor dem Teilen auf N umgerechnet werden."
+  },
+  {
+    "begriff": "Kritische Menge",
+    "alias": ["kritische Menge", "Fixkosten"],
+    "kurz": "Stückzahl, ab der sich zwei Fertigungsverfahren in den Gesamtkosten die Waage halten.",
+    "formeln": ["K = Kf + kv · x", "Kf₁ + kv₁ · x = Kf₂ + kv₂ · x"],
+    "mehr": "Aufgelöst ergibt sich die Differenz der Fixkosten geteilt durch die Ersparnis je Stück. Weil ab dieser Menge das andere Verfahren günstiger sein soll, wird aufgerundet — genau bei der kritischen Menge sind beide noch gleich teuer."
+  },
+  {
+    "begriff": "cos φ (Leistungsfaktor)",
+    "alias": ["cos φ", "Leistungsfaktor", "Drehstrom"],
+    "kurz": "Verhältnis von Wirk- zu Scheinleistung im Wechselstromnetz.",
+    "formeln": ["P = √3 · U · I · cos φ   (Drehstrom)", "η = P_ab / P_zu"],
+    "mehr": "Die Typenschildleistung eines Motors ist die ABGEGEBENE Leistung — aufgenommen wird mehr, nämlich P/η. Und der Faktor √3 gehört bei Drehstrom dazu; wer ihn vergisst, landet um 73 % zu hoch."
+  },
+  {
+    "begriff": "Kegel",
+    "alias": ["Kegelverhältnis", "Einstellwinkel", "Kegellänge"],
+    "kurz": "Verjüngung eines Körpers, angegeben als Verhältnis C = 1 : x.",
+    "formeln": ["C = (D − d) / L", "tan(α/2) = (D − d) / (2 · L)"],
+    "mehr": "Der Einstellwinkel am Oberschlitten ist der HALBE Kegelwinkel — er beschreibt die Neigung einer Mantellinie zur Achse. Der Radius wächst um L · tan(α/2), der Durchmesser um das Doppelte."
+  },
+  {
+    "begriff": "Hydraulikzylinder",
+    "alias": ["Kolbenfläche", "Ringfläche", "Kolbendurchmesser"],
+    "kurz": "Wandelt Druck in Kraft und Bewegung; ausfahrend wirkt die volle Kolbenfläche, einfahrend nur die Ringfläche.",
+    "formeln": ["A_K = π/4 · d²", "A_R = π/4 · (d² − dₛ²)", "F = p · A · η", "t = V / Q"],
+    "mehr": "Bei gleichem Volumenstrom fährt der Zylinder schneller ein als aus, weil die Kolbenstange Platz wegnimmt. 1 bar = 0,1 N/mm²."
   }
 ]
