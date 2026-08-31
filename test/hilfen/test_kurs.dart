@@ -195,12 +195,4 @@ class FakeSettingsStore implements SettingsStore {
   Future<void> steigendeSchwierigkeitSpeichern(bool aktiv) async =>
       steigendeSchwierigkeit = aktiv;
 
-  int einfuehrungsFenster = SettingsStore.einfuehrungsFensterStandard;
-
-  @override
-  int einfuehrungsFensterLaden() => einfuehrungsFenster;
-
-  @override
-  Future<void> einfuehrungsFensterSpeichern(int tage) async =>
-      einfuehrungsFenster = tage;
 }

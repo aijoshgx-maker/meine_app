@@ -5,10 +5,7 @@ import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/settings_providers.dart'
-    show
-        einfuehrungsFensterProvider,
-        kartenProTagProvider,
-        steigendeSchwierigkeitProvider;
+    show kartenProTagProvider, steigendeSchwierigkeitProvider;
 import '../../../core/matching/antwort_matcher.dart';
 import '../../../core/quiz/frage_haerte.dart';
 import '../../../core/quiz/frage_variante.dart';
@@ -49,9 +46,9 @@ final fragenProvider = FutureProvider<List<Frage>>(
 /// Dashboard und "Heute fällig"-Session ziehen beide aus diesem Provider,
 /// damit die angezeigte Zahl auch die ist, die man dann vorgesetzt bekommt.
 ///
-/// Ein Budget für Wiederholungen und neue Karten zusammen. Getrennt gedeckelt
-/// standen an einem Tag achtzig Karten an - eine Zahl, vor der man gar nicht
-/// erst anfängt. Nicht Bearbeitetes summiert sich nicht auf.
+/// Neue Fragen laufen mit [kartenProTagProvider] am Tag durch. Wiederholt
+/// wird nur, was ausdrücklich mit "Nochmal" zurückgelegt wurde - das kommt
+/// obendrauf, nicht aus dem Kontingent.
 final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
   ref.watch(lernfortschrittVersionProvider);
   final paket = await ref.watch(aktivesPaketProvider.future);
@@ -76,7 +73,6 @@ final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
         kartenProTag: kartenProTag,
         heuteBearbeitet: heuteBearbeitet,
         neueHeuteSchon: neueHeuteSchon,
-        einfuehrungsFensterTage: ref.watch(einfuehrungsFensterProvider),
       );
 });
 
@@ -299,7 +295,6 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
                     .erstmalsBearbeitetAm(_kursId, DateTime.now())
                     .length
               : 0,
-          einfuehrungsFensterTage: ref.read(einfuehrungsFensterProvider),
         );
 
     // Rechen- und Nachschlageaufgaben bekommen hier ihre Zahlen. Im Testlauf
@@ -574,6 +569,9 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
         card: neueKarte,
         hochkonfidentFalsch: hochkonfidentFalsch,
         sicherRichtigInFolge: zaehler,
+        // Der einzige Weg auf die Wiedervorlage - und der einzige Weg
+        // herunter: Jede andere Bewertung raeumt die Karte wieder ab.
+        nochmal: rating == Rating.again,
       ),
     );
 

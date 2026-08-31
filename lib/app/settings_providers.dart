@@ -31,11 +31,10 @@ class ThemeModeController extends Notifier<ThemeMode> {
   }
 }
 
-/// Wie viele Karten pro Tag insgesamt anstehen.
+/// Wie viele bisher ungesehene Fragen pro Tag drankommen.
 ///
-/// Ein Budget für Wiederholungen UND neue Karten zusammen. Was nicht
-/// bearbeitet wird, staut sich nicht auf - morgen sind es wieder genauso
-/// viele.
+/// Bestimmt das Tempo, mit dem der Kurs einmal durchläuft. Zurückgelegte
+/// Karten ("Nochmal") kommen obendrauf und zählen nicht dagegen.
 final kartenProTagProvider = NotifierProvider<KartenProTagController, int>(
   KartenProTagController.new,
 );
@@ -47,29 +46,6 @@ class KartenProTagController extends Notifier<int> {
   Future<void> setzen(int anzahl) async {
     state = anzahl.clamp(0, SettingsStore.kartenProTagMax);
     await ref.read(settingsStoreProvider).kartenProTagSpeichern(state);
-  }
-}
-
-/// In wie vielen Tagen der ganze Kurs mindestens einmal drankommen soll.
-///
-/// Daraus ergibt sich, wie viele ungesehene Fragen taeglich fest eingeplant
-/// werden. Ohne dieses Kontingent nehmen die faelligen Wiederholungen das
-/// ganze Tagesbudget ein - und der Rest des Kurses kommt nie dran.
-final einfuehrungsFensterProvider =
-    NotifierProvider<EinfuehrungsFensterController, int>(
-      EinfuehrungsFensterController.new,
-    );
-
-class EinfuehrungsFensterController extends Notifier<int> {
-  @override
-  int build() => ref.read(settingsStoreProvider).einfuehrungsFensterLaden();
-
-  Future<void> setzen(int tage) async {
-    state = tage.clamp(
-      SettingsStore.einfuehrungsFensterMin,
-      SettingsStore.einfuehrungsFensterMax,
-    );
-    await ref.read(settingsStoreProvider).einfuehrungsFensterSpeichern(state);
   }
 }
 

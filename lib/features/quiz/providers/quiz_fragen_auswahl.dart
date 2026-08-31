@@ -6,18 +6,19 @@ import 'quiz_modus.dart';
 
 /// Das Tagespensum: die Karten, die heute anstehen.
 ///
-/// Ein einziges Budget fuer alles. Wiederholungen und neue Karten getrennt
-/// zu deckeln hiess in der Praxis, dass an einem Tag achtzig Karten
-/// vorlagen - eine Zahl, vor der man gar nicht erst anfaengt.
+/// Zwei getrennte Toepfe mit unterschiedlicher Rolle:
 ///
-/// Bewusst ein eigener Typ und nicht nur eine Zahl: Dashboard und Session
-/// muessen dasselbe meinen, und die Aufteilung gehoert in den Text auf dem
-/// Dashboard ("13 Wiederholungen · 7 neu").
+/// - [neue] sind bisher ungesehene Fragen. Sie laufen der Reihe nach durch,
+///   [kartenProTag] Stueck am Tag. Das ist das eigentliche Kontingent.
+/// - [wiederholungen] sind Karten, die man selbst mit "Nochmal" auf
+///   Wiedervorlage gelegt hat. Sie kommen OBENDRAUF, nicht aus dem
+///   Kontingent - wer eine Frage zurueckgelegt hat, will sie wiedersehen,
+///   ohne dass dafuer eine neue ausfaellt.
 class Tagespensum {
-  /// Karten mit gespeichertem Stand, deren Termin erreicht ist.
+  /// Selbst zurueckgelegte Karten ("Nochmal"). Zaehlen nicht aufs Kontingent.
   final List<Frage> wiederholungen;
 
-  /// Bisher ungesehene Karten, soweit das Tagesbudget noch reicht.
+  /// Bisher ungesehene Karten, so viele wie das Tagesbudget hergibt.
   final List<Frage> neue;
 
   /// Die Komplexaufgabe des Tages - hoechstens eine, oft keine.
@@ -33,12 +34,12 @@ class Tagespensum {
 
   int get gesamt => wiederholungen.length + neue.length + komplex.length;
 
-  /// Die Komplexaufgabe zuerst, danach Wiederholungen, zuletzt neue Karten.
+  /// Die Komplexaufgabe zuerst, danach die Wiedervorlage, zuletzt Neues.
   ///
   /// Die mehrstufige Aufgabe steht vorn, weil sie die meiste Aufmerksamkeit
-  /// verlangt - und die ist am Anfang einer Session am groessten. Danach
-  /// gilt wie bisher: Was man schon einmal wusste, ist am ehesten wieder zu
-  /// verlieren; neue Karten fuellen auf, was frei bleibt.
+  /// verlangt - und die ist am Anfang am groessten. Die zurueckgelegten
+  /// Karten davor, weil man sie bewusst noch einmal sehen wollte; neues
+  /// Material danach.
   List<Frage> get fragen => [...komplex, ...wiederholungen, ...neue];
 }
 
@@ -47,53 +48,26 @@ class Tagespensum {
 // QuizSessionController mode-agnostisch und diese Klasse ist ohne
 // Provider-Setup unit-testbar.
 class QuizFragenAuswahl {
-  /// Hoechstanteil des Tagesbudgets, der an ungesehene Karten gehen darf.
-  ///
-  /// Ohne Deckel wuerde ein knapp gesetztes Einfuehrungsfenster die
-  /// Wiederholungen ganz verdraengen - und was man neu anfaengt und nie
-  /// wiederholt, ist nach zwei Wochen wieder weg. Ein Drittel des Tages
-  /// bleibt deshalb immer fuer Wiederholungen reserviert.
-  static const int neuAnteilZaehler = 2;
-  static const int neuAnteilNenner = 3;
-
-  /// Wie viele ungesehene Karten an einem Tag fest eingeplant werden.
-  ///
-  /// [gesamt] geteilt durch das Einfuehrungsfenster ergibt die Rate, mit der
-  /// der Kurs durchlaufen wird: 681 Fragen in 90 Tagen sind 8 am Tag. Die
-  /// Rate ist konstant, nicht abklingend - nur so ist das Fenster wirklich
-  /// eingehalten.
-  static int neuKontingent({
-    required int gesamt,
-    required int fensterTage,
-    required int kartenProTag,
-  }) {
-    if (gesamt <= 0 || fensterTage <= 0 || kartenProTag <= 0) return 0;
-    final rate = (gesamt / fensterTage).ceil();
-    final deckel = kartenProTag * neuAnteilZaehler ~/ neuAnteilNenner;
-    return rate.clamp(0, max(1, deckel));
-  }
-
   /// Stellt das Tagespensum zusammen.
   ///
-  /// [kartenProTag] ist die Obergrenze fuer den ganzen Tag, nicht je Topf.
-  /// [heuteBearbeitet] sind die heute schon beantworteten Fragen; sie gehen
-  /// vom Budget ab, damit eine zweite Session nicht noch einmal das volle
-  /// Pensum auftischt.
+  /// [kartenProTag] begrenzt die NEUEN Fragen - der Kurs laeuft damit in
+  /// `Fragenzahl / kartenProTag` Tagen einmal durch. [neueHeuteSchon] geht
+  /// davon ab, damit eine zweite Session am selben Tag nicht noch einmal das
+  /// volle Kontingent auftischt.
   ///
-  /// Ueberfaellige Wiederholungen summieren sich nicht auf. Wer eine Woche
-  /// aussetzt, findet am achten Tag genauso [kartenProTag] Karten vor wie am
-  /// ersten - nur eben die am laengsten faelligen zuerst. Alles andere fuehrt
-  /// zu einem Berg, vor dem man kapituliert.
+  /// Wiederholt wird nur, was ausdruecklich mit "Nochmal" bewertet wurde.
+  /// Diese Karten kommen zusaetzlich zum Kontingent und bleiben, bis sie
+  /// einmal anders bewertet werden. Ein Terminplan, der von sich aus Karten
+  /// zurueckholt, existiert nicht mehr.
   ///
-  /// [neueHeuteSchon] sind die heute bereits erstmals gestellten Fragen; sie
-  /// gehen vom Neu-Kontingent ab, damit eine zweite Session am selben Tag
-  /// nicht noch einmal das volle Kontingent einfuehrt.
+  /// [heuteBearbeitet] haelt fest, was heute schon dran war - eine gerade
+  /// beantwortete Wiedervorlage soll nicht in derselben Sitzung wieder
+  /// auftauchen.
   ///
-  /// Genau ein Platz ist fuer eine Komplexaufgabe reserviert. Sie laeuft
-  /// nicht im normalen Topf mit: Zwischen neunzehn Karteikarten wuerde eine
-  /// Aufgabe, die zehn Minuten Rechnen kostet, entweder uebersprungen oder
-  /// als Stoerung empfunden. Ist sie heute schon erledigt, faellt der Platz
-  /// an die uebrigen Karten zurueck.
+  /// Genau ein Platz ist zusaetzlich fuer eine Komplexaufgabe reserviert.
+  /// Sie laeuft nicht im normalen Topf mit: Zwischen neunzehn Karteikarten
+  /// wuerde eine Aufgabe, die zehn Minuten Rechnen kostet, entweder
+  /// uebersprungen oder als Stoerung empfunden.
   Tagespensum tagespensum(
     List<Frage> alle, {
     required Map<String, GespeicherteKarte> kartenstaende,
@@ -101,70 +75,42 @@ class QuizFragenAuswahl {
     required int kartenProTag,
     Set<String> heuteBearbeitet = const {},
     int neueHeuteSchon = 0,
-    int einfuehrungsFensterTage = 90,
     DateTime? jetzt,
   }) {
-    final zeitpunkt = jetzt ?? DateTime.now();
-    final budget = max(0, kartenProTag - heuteBearbeitet.length);
-    if (budget == 0) return Tagespensum.leer;
-
     final komplex = _komplexaufgabeDesTages(
       alle,
       kartenstaende: kartenstaende,
       zufall: zufall,
       heuteBearbeitet: heuteBearbeitet,
-      jetzt: zeitpunkt,
+      jetzt: jetzt ?? DateTime.now(),
     );
 
     // Komplexaufgaben laufen ausschliesslich ueber ihren eigenen Platz -
     // sonst koennten am selben Tag mehrere davon im Pensum landen.
-    final faellige = <Frage>[];
+    final zurueckgelegt = <Frage>[];
     final ungesehen = <Frage>[];
     for (final frage in alle) {
       if (frage.komplex) continue;
+      if (heuteBearbeitet.contains(frage.id)) continue;
       final stand = kartenstaende[frage.id];
       if (stand == null) {
         ungesehen.add(frage);
-      } else if (!stand.card.due.isAfter(zeitpunkt)) {
-        faellige.add(frage);
+      } else if (stand.nochmal) {
+        zurueckgelegt.add(frage);
       }
     }
 
-    // Die am laengsten ueberfaellige Karte zuerst: Sie ist am ehesten wieder
-    // verloren. Gemischt wird nur, was am selben Termin haengt.
-    faellige.shuffle(zufall);
-    faellige.sort(
-      (a, b) => kartenstaende[a.id]!.card.due.compareTo(
-        kartenstaende[b.id]!.card.due,
-      ),
-    );
+    zurueckgelegt.shuffle(zufall);
     ungesehen.shuffle(zufall);
 
-    final rest = budget - komplex.length;
-
-    // Der Kern: Ein Teil des Tages gehoert den ungesehenen Karten, BEVOR die
-    // Wiederholungen zugreifen. Vorher nahmen die Wiederholungen zuerst das
-    // ganze Budget - sobald taeglich genug faellig war, kam keine neue Frage
-    // mehr dazu, und der groesste Teil des Kurses blieb ungesehen.
-    final kontingent = neuKontingent(
-      gesamt: alle.where((f) => !f.komplex).length,
-      fensterTage: einfuehrungsFensterTage,
-      kartenProTag: kartenProTag,
-    );
-    final offenesKontingent = max(0, kontingent - neueHeuteSchon);
-
-    final neue = ungesehen.take(min(offenesKontingent, rest)).toList();
-    final wiederholungen = faellige.take(rest - neue.length).toList();
-
-    // Was der eine Topf nicht braucht, nimmt der andere. Sind heute wenige
-    // Wiederholungen faellig, ruecken weitere neue Karten nach - so bleibt
-    // kein Platz ungenutzt.
-    final frei = rest - neue.length - wiederholungen.length;
-    if (frei > 0) neue.addAll(ungesehen.skip(neue.length).take(frei));
+    // Die Komplexaufgabe belegt einen Platz des Kontingents, keinen
+    // zusaetzlichen: Sie ist selbst neues Material. Nur die Wiedervorlage
+    // kommt obendrauf, weil man sie ausdruecklich zurueckgelegt hat.
+    final neuBudget = max(0, kartenProTag - neueHeuteSchon - komplex.length);
 
     return Tagespensum(
-      wiederholungen: wiederholungen,
-      neue: neue,
+      wiederholungen: zurueckgelegt,
+      neue: ungesehen.take(neuBudget).toList(),
       komplex: komplex,
     );
   }
@@ -216,7 +162,6 @@ class QuizFragenAuswahl {
     int kartenProTag = 20,
     Set<String> heuteBearbeitet = const {},
     int neueHeuteSchon = 0,
-    int einfuehrungsFensterTage = 90,
   }) {
     switch (modus.art) {
       case QuizArt.freiUebung:
@@ -229,7 +174,6 @@ class QuizFragenAuswahl {
           kartenProTag: kartenProTag,
           heuteBearbeitet: heuteBearbeitet,
           neueHeuteSchon: neueHeuteSchon,
-          einfuehrungsFensterTage: einfuehrungsFensterTage,
         ).fragen;
       case QuizArt.fehlerquellen:
         // Karten, die beim letzten Mal "sicher, aber falsch" waren. Das Flag

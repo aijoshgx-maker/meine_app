@@ -8,6 +8,35 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Hinzugefügt
 
+- **Wiederholt wird nur noch, was du selbst zurücklegst.** Die App holte
+  Karten nach einem Terminplan zurück (FSRS). Wer davon einen Rückstand hatte,
+  bekam täglich dieselben Karten vorgesetzt, während der Rest des Kurses nie
+  auftauchte.
+
+  Neues Modell: **Die Fragen laufen durch.** Eine Frage, die du beantwortest,
+  ist erledigt — es sei denn, du wählst **„Nochmal"**. Nur dann kommt sie
+  wieder, und zwar **zusätzlich zum Tageskontingent**: Wer eine Frage
+  zurücklegt, will sie wiedersehen, ohne dass dafür eine neue ausfällt.
+
+  Der Regler in *Einstellungen → Lerntempo* heißt entsprechend jetzt
+  **„neue Fragen pro Tag"** und zeigt, wie lange der Kurs damit braucht — bei
+  681 Fragen und 20 am Tag sind das 35 Tage. Das Dashboard nennt die
+  Aufteilung getrennt: „20 neu · 3 zurückgelegt".
+
+  **Der Regler „Jede Frage einmal in X Tagen" ist wieder entfallen.** Er war
+  eingeführt worden, um die neuen Karten vor den Wiederholungen zu schützen —
+  ein Problem, das es ohne Terminplan nicht mehr gibt.
+
+  **Was du dabei aufgibst:** Eine Frage, die du einmal richtig beantwortest
+  und nicht zurücklegst, kommt nie wieder — auch nach Monaten nicht. Die
+  Fehlerquellen-Ansicht („sicher, aber falsch") bleibt als Netz erhalten, und
+  die Auswertungen auf dem Dashboard rechnen unverändert mit dem
+  FSRS-Gedächtnismodell weiter.
+
+  Abgesichert durch `test/abdeckung_simulation_test.dart`: 35 Tage
+  durchgespielt, jede der 681 Fragen kam dran — auch wenn durchweg „Nochmal"
+  gewählt wird, weil das den Durchlauf nicht bremst.
+
 - **Antworten im Fachgespräch diktieren.** Ein Fachgespräch wird gesprochen
   geführt. Eine Antwort zu formulieren und laut auszusprechen ist eine andere
   Übung als sie zu tippen — und näher an dem, was in der Prüfung verlangt

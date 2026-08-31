@@ -16,16 +16,26 @@ class GespeicherteKarte {
   /// Nur "sicher" zaehlt hoch: Wer richtig raet, hat es nicht gekonnt.
   final int sicherRichtigInFolge;
 
+  /// Auf Wiedervorlage gelegt, weil beim letzten Mal "Nochmal" gewaehlt
+  /// wurde.
+  ///
+  /// Das ist der einzige Grund, aus dem eine Karte erneut ins Tagespensum
+  /// kommt. Wiederholt wird, was man selbst zurueckgelegt hat - nicht, was
+  /// ein Terminplan vorschlaegt.
+  final bool nochmal;
+
   const GespeicherteKarte({
     required this.card,
     this.hochkonfidentFalsch = false,
     this.sicherRichtigInFolge = 0,
+    this.nochmal = false,
   });
 
   Map<String, dynamic> toMap() => {
     ...card.toMap(),
     'hochkonfidentFalsch': hochkonfidentFalsch,
     'sicherRichtigInFolge': sicherRichtigInFolge,
+    'nochmal': nochmal,
   };
 
   // Bestandskarten aus der Zeit vor der steigenden Schwierigkeit haben das
@@ -35,6 +45,7 @@ class GespeicherteKarte {
         card: FsrsCard.fromMap(map),
         hochkonfidentFalsch: map['hochkonfidentFalsch'] as bool? ?? false,
         sicherRichtigInFolge: (map['sicherRichtigInFolge'] as num?)?.toInt() ?? 0,
+        nochmal: map['nochmal'] as bool? ?? false,
       );
 }
 

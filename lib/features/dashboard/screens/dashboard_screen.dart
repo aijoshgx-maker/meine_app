@@ -175,10 +175,12 @@ class _PensumKarte extends StatelessWidget {
               }
 
               final teile = [
-                if (p.wiederholungen.isNotEmpty)
-                  '${p.wiederholungen.length} '
-                      '${p.wiederholungen.length == 1 ? "Wiederholung" : "Wiederholungen"}',
                 if (p.neue.isNotEmpty) '${p.neue.length} neu',
+                // "Zurückgelegt" statt "Wiederholung": Sie stehen hier, weil
+                // man sie selbst mit "Nochmal" dorthin gelegt hat - nicht,
+                // weil ein Terminplan sie zurückgeholt hätte.
+                if (p.wiederholungen.isNotEmpty)
+                  '${p.wiederholungen.length} zurückgelegt',
                 // Die Komplexaufgabe wird eigens genannt: Sie kostet ein
                 // Vielfaches der Zeit einer Karteikarte, und wer das nicht
                 // weiß, plant die Session zu knapp.

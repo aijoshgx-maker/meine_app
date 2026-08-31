@@ -74,14 +74,6 @@ class _FakeSettingsStore implements SettingsStore {
     _steigendeSchwierigkeit = aktiv;
   }
 
-  int einfuehrungsFenster = SettingsStore.einfuehrungsFensterStandard;
-
-  @override
-  int einfuehrungsFensterLaden() => einfuehrungsFenster;
-
-  @override
-  Future<void> einfuehrungsFensterSpeichern(int tage) async =>
-      einfuehrungsFenster = tage;
 }
 
 Frage _frage(String id, String kategorie) => Frage(
@@ -242,15 +234,19 @@ void main() {
   group('Pensum-Karte', () {
     final jetzt = DateTime.now();
 
-    GespeicherteKarte stand(Duration faelligIn) => GespeicherteKarte(
-      card: FsrsCard.newCard(now: jetzt).copyWith(due: jetzt.add(faelligIn)),
+    /// Karte, die mit „Nochmal" zurückgelegt wurde.
+    GespeicherteKarte zurueckgelegt() => GespeicherteKarte(
+      card: FsrsCard.newCard(now: jetzt),
+      nochmal: true,
     );
 
-    testWidgets('zeigt Wiederholungen und neue Karten getrennt', (
-      tester,
-    ) async {
+    /// Erledigte Karte - sie kommt nicht von selbst wieder.
+    GespeicherteKarte erledigt() =>
+        GespeicherteKarte(card: FsrsCard.newCard(now: jetzt));
+
+    testWidgets('zeigt Neues und Zurückgelegtes getrennt', (tester) async {
       final karten = FakeFsrsCardStore();
-      await karten.speichern(testKursId, 'f1', stand(const Duration(days: -1)));
+      await karten.speichern(testKursId, 'f1', zurueckgelegt());
 
       await tester.pumpWidget(
         _app(
@@ -266,14 +262,14 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.text('Heute 3 Karten'), findsOneWidget);
-      expect(find.text('1 Wiederholung · 2 neu'), findsOneWidget);
+      expect(find.text('2 neu · 1 zurückgelegt'), findsOneWidget);
     });
 
     testWidgets('meldet Feierabend, wenn nichts mehr offen ist', (
       tester,
     ) async {
       final karten = FakeFsrsCardStore();
-      await karten.speichern(testKursId, 'f1', stand(const Duration(days: 3)));
+      await karten.speichern(testKursId, 'f1', erledigt());
 
       await tester.pumpWidget(
         _app(
@@ -290,17 +286,13 @@ void main() {
       );
     });
 
-    // Das Versprechen des einen Topfes: Wer eine Woche aussetzt, findet am
-    // achten Tag genauso viele Karten vor wie am ersten.
-    testWidgets('Versäumtes staut sich nicht auf', (tester) async {
+    // Erledigtes bleibt erledigt: Ohne "Nochmal" gibt es keinen Grund, eine
+    // Karte wiederzusehen.
+    testWidgets('erledigte Karten stauen sich nicht auf', (tester) async {
       final karten = FakeFsrsCardStore();
       final fragen = [for (var i = 0; i < 80; i++) _frage('f$i', 'Thema A')];
       for (final f in fragen) {
-        await karten.speichern(
-          testKursId,
-          f.id,
-          stand(const Duration(days: -14)),
-        );
+        await karten.speichern(testKursId, f.id, erledigt());
       }
 
       await tester.pumpWidget(
@@ -313,14 +305,15 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('Heute 20 Karten'), findsOneWidget);
-      expect(find.text('20 Wiederholungen'), findsOneWidget);
-      expect(find.textContaining('warten'), findsNothing);
+      expect(
+        find.text('Heute nichts mehr offen – gut gemacht!'),
+        findsOneWidget,
+      );
     });
 
     testWidgets('ein Tippen führt direkt in die Session', (tester) async {
       final karten = FakeFsrsCardStore();
-      await karten.speichern(testKursId, 'f1', stand(const Duration(days: -1)));
+      await karten.speichern(testKursId, 'f1', zurueckgelegt());
 
       await tester.pumpWidget(
         _app(
@@ -341,7 +334,7 @@ void main() {
     // Versprechen.
     testWidgets('erledigt ist die Karte nicht antippbar', (tester) async {
       final karten = FakeFsrsCardStore();
-      await karten.speichern(testKursId, 'f1', stand(const Duration(days: 3)));
+      await karten.speichern(testKursId, 'f1', erledigt());
 
       await tester.pumpWidget(
         _app(

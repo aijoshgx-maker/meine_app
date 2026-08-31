@@ -1,16 +1,14 @@
-// Kommt wirklich jede Frage im eingestellten Zeitraum dran?
+// Läuft der Kurs wirklich durch, und kommt Zurückgelegtes wirklich wieder?
 //
 // Der Anlass: In der App kamen viele Fragen gar nicht vor, während sich
-// einige zu schnell wiederholten. Ursache war die Reihenfolge in der
-// Auswahl - die fälligen Wiederholungen nahmen sich zuerst das ganze
-// Tagesbudget. Sobald täglich zwanzig Karten fällig waren, wurde nie wieder
-// eine neue Frage eingeführt, und der größte Teil des Kurses blieb liegen.
+// einige zu schnell wiederholten. Ursache war ein Terminplan, der sich
+// zuerst das ganze Tagesbudget nahm. Wiederholt wird jetzt nur noch, was man
+// selbst mit "Nochmal" zurücklegt - und das kommt obendrauf.
 //
-// Einzelne Behauptungen über das Kontingent stehen in
+// Einzelne Behauptungen über die Auswahl stehen in
 // quiz_fragen_auswahl_test.dart. Hier läuft stattdessen die Uhr: Der Test
-// spielt Tag für Tag durch, mit echtem FSRS-Scheduler, und prüft am Ende,
-// was tatsächlich drangekommen ist. Nur das beantwortet die Frage, die
-// gestellt war.
+// spielt Tag für Tag durch und prüft am Ende, was tatsächlich drankam. Nur
+// das beantwortet die Frage, die gestellt war.
 
 import 'dart:math';
 
@@ -60,7 +58,6 @@ _Verlauf _spiele({
   required int anzahlFragen,
   required int tage,
   required int kartenProTag,
-  required int fensterTage,
   required bool antwortGut,
 }) {
   final auswahl = QuizFragenAuswahl();
@@ -89,7 +86,6 @@ _Verlauf _spiele({
         kartenProTag: kartenProTag,
         heuteBearbeitet: bearbeitet,
         neueHeuteSchon: neueHeute.length,
-        einfuehrungsFensterTage: fensterTage,
         jetzt: jetzt,
       );
       if (pensum.gesamt == 0) break;
@@ -101,12 +97,11 @@ _Verlauf _spiele({
         bearbeitet.add(frage.id);
 
         final karte = staende[frage.id]?.card ?? FsrsCard.newCard(now: jetzt);
+        final rating = antwortGut ? Rating.good : Rating.again;
         staende[frage.id] = GespeicherteKarte(
-          card: scheduler.review(
-            karte,
-            antwortGut ? Rating.good : Rating.hard,
-            jetzt,
-          ),
+          card: scheduler.review(karte, rating, jetzt),
+          // Nur "Nochmal" legt eine Karte auf Wiedervorlage.
+          nochmal: rating == Rating.again,
         );
       }
     }
@@ -121,20 +116,17 @@ _Verlauf _spiele({
 void main() {
   const anzahlFragen = 681;
   const kartenProTag = 20;
-  const fenster = 90;
 
-  group('Einführungsfenster von $fenster Tagen, $kartenProTag Karten am Tag', () {
-    // Die eigentliche Zusage: Innerhalb des Fensters ist jede Frage einmal
-    // drangekommen. Gerechnet wird mit schlechten Antworten - dem
-    // ungünstigen Fall, weil kurze Intervalle die Wiederholungslast
-    // hochtreiben.
-    test('jede Frage kommt im Fenster mindestens einmal dran', () {
+  // 681 Fragen zu 20 am Tag: nach 35 Tagen ist der Kurs einmal durch.
+  const durchlaufTage = 35;
+
+  group('$kartenProTag neue Fragen am Tag', () {
+    test('nach $durchlaufTage Tagen ist jede Frage einmal drangewesen', () {
       final verlauf = _spiele(
         anzahlFragen: anzahlFragen,
-        tage: fenster,
+        tage: durchlaufTage,
         kartenProTag: kartenProTag,
-        fensterTage: fenster,
-        antwortGut: false,
+        antwortGut: true,
       );
 
       final nieDran = [
@@ -146,56 +138,34 @@ void main() {
         nieDran,
         isEmpty,
         reason:
-            '${nieDran.length} von $anzahlFragen Fragen kamen in $fenster '
-            'Tagen nie dran',
+            '${nieDran.length} von $anzahlFragen Fragen kamen in '
+            '$durchlaufTage Tagen nie dran',
       );
     });
 
-    test('auch bei guten Antworten bleibt keine liegen', () {
+    // Der Durchlauf darf nicht davon abhängen, wie gut geantwortet wird.
+    // Zurückgelegte Karten kommen obendrauf und bremsen ihn deshalb nicht.
+    test('auch mit lauter "Nochmal" bleibt keine Frage liegen', () {
       final verlauf = _spiele(
         anzahlFragen: anzahlFragen,
-        tage: fenster,
+        tage: durchlaufTage,
         kartenProTag: kartenProTag,
-        fensterTage: fenster,
-        antwortGut: true,
+        antwortGut: false,
       );
 
       expect(verlauf.erstesMal, hasLength(anzahlFragen));
     });
 
-    // Die zweite Hälfte der Meldung: "einige wiederholen sich zu schnell".
-    // Ganz vermeiden lässt sich das nicht - eine schlecht gewusste Karte SOLL
-    // früher wiederkommen. Aber keine darf das Pensum an sich reißen.
-    test('keine Frage frisst einen unverhältnismäßigen Anteil', () {
+    test('täglich kommen genau $kartenProTag neue Fragen dazu', () {
       final verlauf = _spiele(
         anzahlFragen: anzahlFragen,
-        tage: fenster,
+        tage: 10,
         kartenProTag: kartenProTag,
-        fensterTage: fenster,
-        antwortGut: false,
+        antwortGut: true,
       );
 
-      final gesamtKarten = verlauf.proTag.reduce((a, b) => a + b);
-      final oefteste = verlauf.haeufigkeit.values.reduce(max);
-
-      expect(
-        oefteste / gesamtKarten,
-        lessThan(0.01),
-        reason:
-            'Eine einzelne Frage nimmt $oefteste von $gesamtKarten Plätzen '
-            'ein',
-      );
-    });
-
-    test('das Tagesbudget wird ausgeschöpft, nicht überschritten', () {
-      final verlauf = _spiele(
-        anzahlFragen: anzahlFragen,
-        tage: 30,
-        kartenProTag: kartenProTag,
-        fensterTage: fenster,
-        antwortGut: false,
-      );
-
+      // Bei guten Antworten liegt nichts auf Wiedervorlage, das Pensum
+      // besteht also nur aus den neuen Fragen.
       for (var tag = 0; tag < verlauf.proTag.length; tag++) {
         expect(
           verlauf.proTag[tag],
@@ -204,20 +174,35 @@ void main() {
         );
       }
     });
-  });
 
-  // Gegenprobe: Ohne das Kontingent - also mit einem Fenster, das so weit
-  // gefasst ist, dass praktisch keine neuen Karten eingeplant werden - bleibt
-  // der Kurs liegen. Das ist der Zustand, der gemeldet wurde.
-  test('ein zu weites Fenster lässt den Kurs erwartungsgemäß liegen', () {
-    final verlauf = _spiele(
-      anzahlFragen: anzahlFragen,
-      tage: fenster,
-      kartenProTag: kartenProTag,
-      fensterTage: 100000,
-      antwortGut: false,
-    );
+    // Wer alles zurücklegt, bekommt alles wieder - und zwar zusätzlich.
+    test('Zurückgelegtes kommt obendrauf', () {
+      final verlauf = _spiele(
+        anzahlFragen: anzahlFragen,
+        tage: 5,
+        kartenProTag: kartenProTag,
+        antwortGut: false,
+      );
 
-    expect(verlauf.erstesMal.length, lessThan(anzahlFragen));
+      // Tag 1: 20 neue. Ab Tag 2 kommen die zurückgelegten dazu.
+      expect(verlauf.proTag.first, kartenProTag);
+      expect(verlauf.proTag[1], greaterThan(kartenProTag));
+    });
+
+    test('was einmal gut beantwortet wurde, kommt nicht von selbst wieder', () {
+      final verlauf = _spiele(
+        anzahlFragen: anzahlFragen,
+        tage: durchlaufTage,
+        kartenProTag: kartenProTag,
+        antwortGut: true,
+      );
+
+      final oefteste = verlauf.haeufigkeit.values.reduce(max);
+      expect(
+        oefteste,
+        1,
+        reason: 'Eine Frage kam $oefteste-mal dran, obwohl sie saß',
+      );
+    });
   });
 }
