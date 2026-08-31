@@ -8,6 +8,36 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Hinzugefügt
 
+- **Antworten im Fachgespräch diktieren.** Ein Fachgespräch wird gesprochen
+  geführt. Eine Antwort zu formulieren und laut auszusprechen ist eine andere
+  Übung als sie zu tippen — und näher an dem, was in der Prüfung verlangt
+  wird. Unter dem Eingabefeld steht jetzt **Antwort diktieren**; der erkannte
+  Text landet im selben Feld wie getippter und wird genauso auf
+  Schlüsselbegriffe geprüft.
+
+  **Die Tastatur bleibt gleichberechtigt daneben.** Nicht jedes Gerät kann
+  Spracherkennung, und nicht überall lässt sich laut sprechen. Wo sie fehlt,
+  sagt die App das statt einen Knopf anzubieten, der nichts tut. Schon
+  Getipptes bleibt beim Diktieren stehen — die Erkennung liefert immer den
+  ganzen Text, nicht nur das Neue, und würde eine begonnene Antwort sonst
+  überschreiben.
+
+  **Das Mikrofon wird nur auf Druck eingeschaltet.** Die Berechtigung wird
+  erst beim ersten Tippen auf den Knopf abgefragt, nicht beim App-Start.
+
+- **Datenschutzerklärung angepasst.** Sie sagte bisher, die App fordere genau
+  zwei Berechtigungen an und es verlasse nichts das Gerät. Mit dem Mikrofon
+  stimmt beides so nicht mehr: Die Erkennung übernimmt der Systemdienst des
+  Geräts, und **ob der den Ton an seinen Hersteller sendet, entscheidet das
+  Gerät, nicht die App**. Das steht jetzt als eigener Abschnitt darin, samt
+  dem, was unverändert gilt — die App fordert weiterhin keinen
+  Internetzugriff an, speichert keine Tonaufnahme, und ohne Druck auf den
+  Diktierknopf wird das Mikrofon nie eingeschaltet.
+
+  Die Data-Safety-Antworten im Store-Entwurf sind entsprechend ergänzt; ob
+  Play das als „Sprachaufnahmen" deklariert haben will, ist dort als offener
+  Punkt vermerkt.
+
 - **Eine mehrstufige Rechenaufgabe pro Tag.** Der Bestand hatte 97
   Rechenaufgaben, aber die meisten waren nach zwei bis drei Zeilen erledigt:
   Formel hinschreiben, Werte einsetzen, fertig. Was in der Prüfung Punkte

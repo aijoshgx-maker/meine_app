@@ -11,6 +11,11 @@
          Defensiv trotzdem ausschließen, falls sie über eine künftige
          Abhängigkeit zurückkehrt. -->
     <uses-permission android:name="android.permission.DUMP" tools:node="remove" />
+    <!-- Für das Diktieren der Antwort im Fachgespräch. Die Erkennung selbst
+         läuft im Systemdienst des Geräts, nicht in dieser App - deshalb
+         braucht die App weiterhin keinen Internetzugriff. Die Berechtigung
+         wird erst abgefragt, wenn man den Diktierknopf drückt. -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <application
         android:label="AP2 Trainer"
         android:name="${applicationName}"
@@ -52,6 +57,11 @@
         <intent>
             <action android:name="android.intent.action.PROCESS_TEXT"/>
             <data android:mimeType="text/plain"/>
+        </intent>
+        <!-- Ohne das findet speech_to_text ab Android 11 den
+             Spracherkennungsdienst nicht und meldet "nicht verfügbar". -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
         </intent>
     </queries>
 </manifest>

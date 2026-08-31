@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/matching/antwort_matcher.dart';
+import '../../../core/sprache/spracheingabe.dart';
 import '../../../models/fachgespraech_szenario.dart';
 import '../../quiz/widgets/illustrationen/technische_illustration.dart';
 import '../providers/fachgespraech_provider.dart';
@@ -416,7 +417,14 @@ class _NutzerAntwortBubble extends StatelessWidget {
   }
 }
 
-class _AntwortEingabe extends StatelessWidget {
+/// Eingabefeld mit Diktierknopf.
+///
+/// Ein Fachgespraech wird gesprochen gefuehrt. Eine Antwort zu formulieren
+/// und laut auszusprechen ist eine andere Uebung als sie zu tippen - und
+/// naeher an dem, was in der Pruefung verlangt wird. Die Tastatur bleibt
+/// gleichberechtigt daneben: Nicht jedes Geraet kann Spracherkennung, und
+/// nicht ueberall kann man laut sprechen.
+class _AntwortEingabe extends ConsumerStatefulWidget {
   final TextEditingController controller;
   final VoidCallback onBestaetigen;
 
@@ -426,24 +434,127 @@ class _AntwortEingabe extends StatelessWidget {
   });
 
   @override
+  ConsumerState<_AntwortEingabe> createState() => _AntwortEingabeState();
+}
+
+class _AntwortEingabeState extends ConsumerState<_AntwortEingabe> {
+  /// In einem Feld gehalten, nicht bei jedem Zugriff neu gelesen: In
+  /// dispose() ist `ref` nicht mehr benutzbar, die laufende Aufnahme muss
+  /// dort aber noch gestoppt werden.
+  late final Spracheingabe _sprache;
+
+  bool _hoert = false;
+
+  /// Was im Feld stand, als die Aufnahme begann.
+  ///
+  /// Die Erkennung liefert immer den gesamten erkannten Text, nicht nur das
+  /// Neue. Ohne diesen Merkpunkt wuerde jede Zwischenmeldung eine bereits
+  /// getippte Antwort ueberschreiben.
+  String _basis = '';
+
+  @override
+  void initState() {
+    super.initState();
+    _sprache = ref.read(spracheingabeProvider);
+  }
+
+  @override
+  void dispose() {
+    // Ohne das liefe die Aufnahme weiter, wenn man die Frage verlaesst.
+    if (_hoert) _sprache.stoppen();
+    super.dispose();
+  }
+
+  Future<void> _umschalten() async {
+    final sprache = _sprache;
+
+    if (_hoert) {
+      await sprache.stoppen();
+      if (mounted) setState(() => _hoert = false);
+      return;
+    }
+
+    // Erst hier, nicht beim App-Start: Der Berechtigungsdialog gehoert an
+    // die Stelle, an der man das Mikrofon auch benutzen will.
+    final bereit = await sprache.vorbereiten();
+    if (!mounted) return;
+    if (!bereit) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text(
+            'Spracheingabe ist auf diesem Gerät nicht verfügbar. '
+            'Du kannst deine Antwort tippen.',
+          ),
+        ),
+      );
+      return;
+    }
+
+    _basis = widget.controller.text.trimRight();
+    setState(() => _hoert = true);
+
+    await sprache.starten(
+      onText: (text, endgueltig) {
+        if (!mounted) return;
+        final trenner = _basis.isEmpty ? '' : ' ';
+        widget.controller.text = '$_basis$trenner$text';
+        widget.controller.selection = TextSelection.collapsed(
+          offset: widget.controller.text.length,
+        );
+      },
+      onEnde: () {
+        if (mounted) setState(() => _hoert = false);
+      },
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final farben = Theme.of(context).colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TextField(
-          controller: controller,
+          controller: widget.controller,
           maxLines: 5,
           minLines: 3,
-          decoration: const InputDecoration(
-            hintText: 'Ihre Antwort hier eingeben...',
-            border: OutlineInputBorder(),
+          decoration: InputDecoration(
+            hintText: _hoert
+                ? 'Sprich jetzt …'
+                : 'Ihre Antwort hier eingeben oder diktieren...',
+            border: const OutlineInputBorder(),
             alignLabelWithHint: true,
           ),
           textInputAction: TextInputAction.newline,
         ),
         const SizedBox(height: 12),
+        Row(
+          children: [
+            // Waehrend der Aufnahme fuellt der Knopf sich farbig - ein
+            // laufendes Mikrofon muss man sehen koennen, ohne hinzuhoeren.
+            Expanded(
+              child: _hoert
+                  ? FilledButton.icon(
+                      onPressed: _umschalten,
+                      style: FilledButton.styleFrom(
+                        backgroundColor: farben.error,
+                        foregroundColor: farben.onError,
+                      ),
+                      icon: const Icon(Icons.stop),
+                      label: const Text('Aufnahme beenden'),
+                    )
+                  : OutlinedButton.icon(
+                      onPressed: _umschalten,
+                      icon: const Icon(Icons.mic_none),
+                      label: const Text('Antwort diktieren'),
+                    ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
         ElevatedButton.icon(
-          onPressed: onBestaetigen,
+          onPressed: _hoert ? null : widget.onBestaetigen,
           icon: const Icon(Icons.send),
           label: const Text('Antwort bestätigen'),
         ),

@@ -46,6 +46,10 @@ dependencies:
   # Entpackt importierte Lernpakete im ZIP-Format (kurs.json + Bilder).
   archive: ^4.0.7
   file_selector: ^1.0.3
+  # Diktierte Antworten im Fachgespräch. Die Erkennung übernimmt der
+  # Systemdienst des Geräts - die App selbst braucht dafür keinen
+  # Internetzugriff, siehe web/datenschutz.html.
+  speech_to_text: ^7.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -87,12 +87,17 @@
 <main>
 
 <h1>Datenschutzerklärung</h1>
-<p class="stand">AP2 Trainer · Stand: 27. August 2026</p>
+<p class="stand">AP2 Trainer · Stand: 28. August 2026</p>
 
 <div class="kurz">
 <p>Diese App erhebt, speichert und überträgt <strong>keine personenbezogenen
 Daten</strong>. Es gibt keinen Server, kein Benutzerkonto und keine Analyse-
 oder Werbedienste. Alles, was du in der App tust, bleibt auf deinem Gerät.</p>
+<p><strong>Eine Ausnahme, die du selbst auslöst:</strong> Wenn du im
+Fachgespräch die Antwort diktierst, wird deine Stimme an die
+Spracherkennung deines Geräts übergeben — und die kann sie je nach Gerät und
+Einstellung zur Verarbeitung an ihren Hersteller senden. Näheres unter
+<a href="#spracheingabe">Spracheingabe</a>.</p>
 </div>
 
 <h2>Welche Daten entstehen und wo sie liegen</h2>
@@ -130,10 +135,13 @@ noch an Dritte übermittelt.</p>
 
 <h2>Keine Internetverbindung</h2>
 <p>Die App fordert die Berechtigung für Internetzugriff gar nicht erst an. Sie
-funktioniert vollständig offline.</p>
+funktioniert vollständig offline. Die einzige Stelle, an der Daten das Gerät
+verlassen können, ist die <a href="#spracheingabe">Spracheingabe</a> — und
+auch dort ist es der Systemdienst des Geräts, der überträgt, nicht die
+App.</p>
 
 <h2>Berechtigungen</h2>
-<p>Die App fordert genau zwei Berechtigungen an:</p>
+<p>Die App fordert drei Berechtigungen an:</p>
 <ul>
 <li><strong>Benachrichtigungen anzeigen</strong> — nur für die tägliche
 Erinnerung an fällige Wiederholungen. Die Erinnerung ist standardmäßig
@@ -141,7 +149,36 @@ Erinnerung an fällige Wiederholungen. Die Erinnerung ist standardmäßig
 eingeschaltet. Die Benachrichtigung wird lokal auf dem Gerät erzeugt.</li>
 <li><strong>Start nach Geräteneustart</strong> — damit eine eingeschaltete
 Erinnerung einen Neustart übersteht.</li>
+<li><strong>Mikrofon</strong> — nur für das Diktieren im Fachgespräch. Die
+Berechtigung wird erst abgefragt, wenn du den Diktierknopf zum ersten Mal
+drückst, nicht beim Start der App. Wer nicht diktiert, wird nie danach
+gefragt.</li>
 </ul>
+
+<h2 id="spracheingabe">Spracheingabe im Fachgespräch</h2>
+<p>Im Fachgespräch kannst du deine Antwort sprechen statt tippen. Dabei
+passiert Folgendes:</p>
+<ul>
+<li>Die App nimmt den Ton auf, solange die Aufnahme sichtbar läuft, und
+übergibt ihn an die <strong>Spracherkennung deines Geräts</strong> — unter
+Android an den Systemdienst, unter iOS an die Diktierfunktion, im Browser an
+dessen eigene Spracherkennung.</li>
+<li><strong>Ob dieser Dienst offline arbeitet oder den Ton an seinen
+Hersteller sendet, entscheidet dein Gerät, nicht diese App.</strong> Viele
+Android-Geräte und die Browser-Spracherkennung von Chrome übertragen den Ton
+zur Verarbeitung. Es gelten dann die Datenschutzbestimmungen des jeweiligen
+Anbieters.</li>
+<li>Die App selbst <strong>speichert keine Tonaufnahme</strong>. Zurück
+kommt nur der erkannte Text, und der landet im Antwortfeld — genau dort, wo
+auch getippter Text steht. Er wird wie jede andere Antwort behandelt und
+verlässt das Gerät nicht.</li>
+<li>Die App fordert weiterhin <strong>keinen Internetzugriff</strong> an. Sie
+kann selbst nichts senden; die Übertragung, falls sie stattfindet, macht der
+Systemdienst.</li>
+</ul>
+<p>Wer das nicht möchte, tippt die Antwort — die Tastatur bleibt
+gleichberechtigt daneben, und ohne Druck auf den Diktierknopf wird das
+Mikrofon nie eingeschaltet.</p>
 
 <h2>Daten, die du selbst weitergibst</h2>
 <p>Zwei Funktionen geben Daten aus der App heraus — beide <strong>nur auf

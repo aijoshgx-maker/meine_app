@@ -73,6 +73,10 @@ Kein Konto, keine Registrierung, keine Werbung, kein Tracking. Die App
 fordert nicht einmal die Berechtigung für Internetzugriff an. Dein
 Lernfortschritt bleibt auf deinem Gerät — und lässt sich als Datei sichern
 und auf ein neues Gerät übertragen.
+
+Im Fachgespräch kannst du deine Antwort diktieren statt tippen. Das Mikrofon
+wird nur auf deinen Druck hin eingeschaltet; die Erkennung übernimmt der
+Systemdienst deines Geräts.
 ```
 *ca. 1950 Zeichen*
 
@@ -101,8 +105,9 @@ laufendem Timer.
 
 | Frage | Antwort |
 |---|---|
-| Werden Daten erhoben oder geteilt? | **Nein** |
-| Verschlüsselung bei Übertragung? | entfällt — keine Übertragung |
+| Werden Daten erhoben oder geteilt? | **Nein** — die App selbst sammelt und sendet nichts |
+| Audio/Sprachaufnahmen? | Die App speichert und überträgt keine. Beim Diktieren im Fachgespräch übergibt sie den Ton an die Spracherkennung des Geräts; ob die ihn überträgt, entscheidet das Gerät. **Im Fragebogen prüfen, ob Google das als „Sprachaufnahmen" deklariert haben will** — die Antwort hängt davon ab, wie eng Play den Begriff fasst |
+| Verschlüsselung bei Übertragung? | entfällt — keine Übertragung durch die App |
 | Können Nutzer Löschung verlangen? | Daten liegen nur lokal; Deinstallation löscht alles |
 | Zielgruppe | Erwachsene und Auszubildende |
 | Enthält Werbung? | Nein |

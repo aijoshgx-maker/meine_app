@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/core/sprache/spracheingabe.dart';
 import 'package:meine_app/features/fachgespraech/screens/fachgespraech_session_screen.dart';
 import 'package:meine_app/features/kurse/providers/kurs_providers.dart';
 import 'package:meine_app/models/fachgespraech_szenario.dart';
@@ -42,16 +43,68 @@ final _szenario = FachgespraechSzenario(
   ],
 );
 
+/// Mikrofon-Ersatz: Ein Widget-Test kann keine echte Erkennung starten.
+///
+/// [verfuegbar] bildet ein Geraet ohne Spracherkennung nach, [erkannt] das,
+/// was der Dienst zurueckmeldet.
+class _FakeSpracheingabe implements Spracheingabe {
+  _FakeSpracheingabe({this.verfuegbarkeit = true, this.erkannt = const []});
+
+  final bool verfuegbarkeit;
+
+  /// Die Meldungen, die der Dienst nacheinander liefert (Text, endgueltig).
+  final List<(String, bool)> erkannt;
+
+  bool vorbereitet = false;
+  bool gestartet = false;
+  bool gestoppt = false;
+  bool _laeuft = false;
+
+  @override
+  bool get verfuegbar => vorbereitet && verfuegbarkeit;
+
+  @override
+  bool get laeuft => _laeuft;
+
+  @override
+  Future<bool> vorbereiten() async {
+    vorbereitet = true;
+    return verfuegbarkeit;
+  }
+
+  @override
+  Future<void> starten({
+    required void Function(String text, bool endgueltig) onText,
+    void Function()? onEnde,
+  }) async {
+    gestartet = true;
+    _laeuft = true;
+    for (final (text, endgueltig) in erkannt) {
+      onText(text, endgueltig);
+    }
+  }
+
+  @override
+  Future<void> stoppen() async {
+    gestoppt = true;
+    _laeuft = false;
+  }
+}
+
 Future<void> _pumpe(
   WidgetTester tester, {
   String szenarioId = _szenarioId,
   List<FachgespraechSzenario>? szenarien,
+  Spracheingabe? sprache,
 }) async {
   await tester.pumpWidget(
     ProviderScope(
       overrides: [
         aktivesPaketProvider.overrideWith(
           (_) async => testPaket(const [], szenarien: szenarien ?? [_szenario]),
+        ),
+        spracheingabeProvider.overrideWithValue(
+          sprache ?? _FakeSpracheingabe(),
         ),
       ],
       child: MaterialApp(
@@ -207,4 +260,81 @@ void main() {
     expect(find.text('Szenario nicht gefunden.'), findsOneWidget);
     expect(tester.takeException(), isNull);
   });
+  group('Diktierfunktion', () {
+    testWidgets('der Knopf steht neben dem Eingabefeld', (tester) async {
+      await _pumpe(tester);
+
+      expect(find.text('Antwort diktieren'), findsOneWidget);
+      expect(find.byType(TextField), findsOneWidget);
+    });
+
+    testWidgets('Diktiertes landet im Eingabefeld', (tester) async {
+      final sprache = _FakeSpracheingabe(
+        erkannt: const [('Das Festlager', false), ('Das Festlager führt', true)],
+      );
+      await _pumpe(tester, sprache: sprache);
+
+      await _tippe(tester, 'Antwort diktieren');
+
+      expect(sprache.vorbereitet, isTrue);
+      expect(sprache.gestartet, isTrue);
+      final feld = tester.widget<TextField>(find.byType(TextField));
+      expect(feld.controller!.text, 'Das Festlager führt');
+    });
+
+    // Die Erkennung liefert immer den GESAMTEN erkannten Text. Ohne den
+    // Merkpunkt würde eine schon getippte Antwort überschrieben.
+    testWidgets('bereits Getipptes bleibt stehen', (tester) async {
+      final sprache = _FakeSpracheingabe(erkannt: const [('und dichtet ab', true)]);
+      await _pumpe(tester, sprache: sprache);
+
+      await tester.enterText(find.byType(TextField), 'Der Wellendichtring');
+      await _tippe(tester, 'Antwort diktieren');
+
+      final feld = tester.widget<TextField>(find.byType(TextField));
+      expect(feld.controller!.text, 'Der Wellendichtring und dichtet ab');
+    });
+
+    testWidgets('ein zweites Tippen beendet die Aufnahme', (tester) async {
+      final sprache = _FakeSpracheingabe(erkannt: const [('Text', false)]);
+      await _pumpe(tester, sprache: sprache);
+
+      await _tippe(tester, 'Antwort diktieren');
+      expect(find.text('Aufnahme beenden'), findsOneWidget);
+
+      await _tippe(tester, 'Aufnahme beenden');
+      expect(sprache.gestoppt, isTrue);
+      expect(find.text('Antwort diktieren'), findsOneWidget);
+    });
+
+    // Ein Knopf, der nichts tut, wäre schlimmer als ein Hinweis.
+    testWidgets('ohne Spracherkennung erscheint ein Hinweis', (tester) async {
+      final sprache = _FakeSpracheingabe(verfuegbarkeit: false);
+      await _pumpe(tester, sprache: sprache);
+
+      await _tippe(tester, 'Antwort diktieren');
+
+      expect(sprache.gestartet, isFalse);
+      expect(
+        find.textContaining('nicht verfügbar'),
+        findsOneWidget,
+      );
+    });
+
+    // Sonst liefe das Mikrofon weiter, während die Musterlösung dasteht.
+    testWidgets('das Bestätigen ist während der Aufnahme gesperrt', (
+      tester,
+    ) async {
+      final sprache = _FakeSpracheingabe(erkannt: const [('Text', false)]);
+      await _pumpe(tester, sprache: sprache);
+
+      await _tippe(tester, 'Antwort diktieren');
+
+      final knopf = tester.widget<ElevatedButton>(
+        find.widgetWithText(ElevatedButton, 'Antwort bestätigen'),
+      );
+      expect(knopf.onPressed, isNull);
+    });
+  });
+
 }
