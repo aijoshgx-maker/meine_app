@@ -93,6 +93,24 @@ class FakeAttemptHistoryStore implements AttemptHistoryStore {
       eintraege.where((a) => a.kursId == kursId).toList();
 
   @override
+  Set<String> erstmalsBearbeitetAm(String kursId, DateTime tag) {
+    final erster = <String, DateTime>{};
+    for (final a in fuerKurs(kursId)) {
+      final bisher = erster[a.frageId];
+      if (bisher == null || a.zeitpunkt.isBefore(bisher)) {
+        erster[a.frageId] = a.zeitpunkt;
+      }
+    }
+    return {
+      for (final e in erster.entries)
+        if (e.value.year == tag.year &&
+            e.value.month == tag.month &&
+            e.value.day == tag.day)
+          e.key,
+    };
+  }
+
+  @override
   Set<String> bearbeiteteAm(String kursId, DateTime tag) => fuerKurs(kursId)
       .where(
         (a) =>
@@ -176,4 +194,13 @@ class FakeSettingsStore implements SettingsStore {
   @override
   Future<void> steigendeSchwierigkeitSpeichern(bool aktiv) async =>
       steigendeSchwierigkeit = aktiv;
+
+  int einfuehrungsFenster = SettingsStore.einfuehrungsFensterStandard;
+
+  @override
+  int einfuehrungsFensterLaden() => einfuehrungsFenster;
+
+  @override
+  Future<void> einfuehrungsFensterSpeichern(int tage) async =>
+      einfuehrungsFenster = tage;
 }

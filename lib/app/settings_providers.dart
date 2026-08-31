@@ -50,6 +50,29 @@ class KartenProTagController extends Notifier<int> {
   }
 }
 
+/// In wie vielen Tagen der ganze Kurs mindestens einmal drankommen soll.
+///
+/// Daraus ergibt sich, wie viele ungesehene Fragen taeglich fest eingeplant
+/// werden. Ohne dieses Kontingent nehmen die faelligen Wiederholungen das
+/// ganze Tagesbudget ein - und der Rest des Kurses kommt nie dran.
+final einfuehrungsFensterProvider =
+    NotifierProvider<EinfuehrungsFensterController, int>(
+      EinfuehrungsFensterController.new,
+    );
+
+class EinfuehrungsFensterController extends Notifier<int> {
+  @override
+  int build() => ref.read(settingsStoreProvider).einfuehrungsFensterLaden();
+
+  Future<void> setzen(int tage) async {
+    state = tage.clamp(
+      SettingsStore.einfuehrungsFensterMin,
+      SettingsStore.einfuehrungsFensterMax,
+    );
+    await ref.read(settingsStoreProvider).einfuehrungsFensterSpeichern(state);
+  }
+}
+
 /// Ob Fragen, die mehrfach sicher richtig beantwortet wurden, in einer
 /// haerteren Fassung gestellt werden.
 ///

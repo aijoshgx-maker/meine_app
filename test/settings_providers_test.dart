@@ -72,6 +72,15 @@ class _FakeSettingsStore implements SettingsStore {
   Future<void> steigendeSchwierigkeitSpeichern(bool aktiv) async {
     _steigendeSchwierigkeit = aktiv;
   }
+
+  int einfuehrungsFenster = SettingsStore.einfuehrungsFensterStandard;
+
+  @override
+  int einfuehrungsFensterLaden() => einfuehrungsFenster;
+
+  @override
+  Future<void> einfuehrungsFensterSpeichern(int tage) async =>
+      einfuehrungsFenster = tage;
 }
 
 void main() {
@@ -166,6 +175,47 @@ void main() {
 
       expect(container.read(steigendeSchwierigkeitProvider), isFalse);
       expect(store.steigendeSchwierigkeitLaden(), isFalse);
+    });
+  });
+
+  group('einfuehrungsFensterProvider', () {
+    test('startet auf dem Standardfenster', () {
+      final container = ProviderContainer(
+        overrides: [
+          settingsStoreProvider.overrideWithValue(_FakeSettingsStore()),
+        ],
+      );
+      addTearDown(container.dispose);
+
+      expect(
+        container.read(einfuehrungsFensterProvider),
+        SettingsStore.einfuehrungsFensterStandard,
+      );
+    });
+
+    test('setzen() persistiert und klemmt an den Grenzen', () async {
+      final store = _FakeSettingsStore();
+      final container = ProviderContainer(
+        overrides: [settingsStoreProvider.overrideWithValue(store)],
+      );
+      addTearDown(container.dispose);
+      final controller = container.read(einfuehrungsFensterProvider.notifier);
+
+      await controller.setzen(60);
+      expect(container.read(einfuehrungsFensterProvider), 60);
+      expect(store.einfuehrungsFensterLaden(), 60);
+
+      await controller.setzen(5);
+      expect(
+        container.read(einfuehrungsFensterProvider),
+        SettingsStore.einfuehrungsFensterMin,
+      );
+
+      await controller.setzen(9999);
+      expect(
+        container.read(einfuehrungsFensterProvider),
+        SettingsStore.einfuehrungsFensterMax,
+      );
     });
   });
 }

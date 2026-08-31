@@ -233,6 +233,37 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Behoben
 
+- **Viele Fragen kamen nie dran.** Die Auswahl gab den fälligen
+  Wiederholungen zuerst das **ganze** Tagesbudget und füllte erst mit neuen
+  Karten auf, was übrig blieb:
+
+  ```dart
+  final wiederholungen = faellige.take(rest).toList();
+  final neue = ungesehen.take(rest - wiederholungen.length).toList();
+  ```
+
+  Sobald täglich zwanzig Karten fällig waren — und dahin kommt man nach
+  wenigen Wochen — blieb für ungesehene Fragen **nichts** übrig. Die Auswahl
+  kreiste dann dauerhaft um denselben Bestand, während der größere Teil des
+  Kurses nie auftauchte. Genau die zwei Symptome, die gemeldet wurden.
+
+  **Ungesehene Karten haben jetzt ein festes Kontingent**, das vor den
+  Wiederholungen bedient wird. Wie groß es ist, ergibt sich aus einem neuen
+  Regler: **Jede Frage einmal in X Tagen** (Einstellungen → Lerntempo,
+  Standard 90 Tage, 30 bis 180). Bei 681 Fragen und 90 Tagen sind das 8 neue
+  am Tag; die übrigen 12 Plätze gehen an die Wiederholungen. Sind an einem
+  Tag weniger fällig, rücken weitere neue nach — kein Platz bleibt ungenutzt.
+
+  **Den Wiederholungen bleibt immer mindestens ein Drittel des Tages.** Ein
+  knapp gesetztes Fenster kann sie nicht ganz verdrängen: Was man neu
+  anfängt und nie wiederholt, ist nach zwei Wochen wieder weg.
+
+  Abgesichert durch `test/abdeckung_simulation_test.dart` — der Test spielt
+  90 Tage mit echtem FSRS-Scheduler durch und prüft, dass **jede der 681
+  Fragen** mindestens einmal drankam, auch im ungünstigen Fall durchweg
+  schlechter Antworten. Dazu die Gegenprobe: Ohne Kontingent bleibt der Kurs
+  nachweislich liegen.
+
 - **„Unvollständiger Datensatz" bei Testläufen, die vollständig waren.** Die
   Auswahl verglich jeden Testlauf mit dem **größten** der vorhandenen. Da nur
   einer der größte sein kann, waren drei von vier immer rot markiert — bei

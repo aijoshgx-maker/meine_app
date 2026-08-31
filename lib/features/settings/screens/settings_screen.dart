@@ -8,6 +8,9 @@ import 'package:go_router/go_router.dart';
 import '../../../app/settings_providers.dart';
 import '../../../core/notifications/notification_service.dart';
 import '../../../data/settings_store.dart' show SettingsStore;
+import '../../kurse/providers/kurs_providers.dart' show aktivesPaketProvider;
+import '../../quiz/providers/quiz_fragen_auswahl.dart'
+    show QuizFragenAuswahl;
 
 // Lädt nur das "stand"-Datum aus _rechtsstand.json - der Rest der Datei
 // (Beitragssätze etc.) wird direkt in den Fragetexten verwendet, siehe
@@ -41,6 +44,9 @@ class SettingsScreen extends ConsumerWidget {
     final rechtsstand = ref.watch(_wisoRechtsstandProvider);
     final kartenProTag = ref.watch(kartenProTagProvider);
     final steigendeSchwierigkeit = ref.watch(steigendeSchwierigkeitProvider);
+    final fenster = ref.watch(einfuehrungsFensterProvider);
+    // Ohne die Fragenzahl des Kurses bliebe der Regler eine abstrakte Zahl.
+    final fragenImKurs = ref.watch(aktivesPaketProvider).value?.fragen.length;
 
     return Scaffold(
       appBar: AppBar(title: const Text('Einstellungen')),
@@ -93,9 +99,41 @@ class SettingsScreen extends ConsumerWidget {
                 ref.read(kartenProTagProvider.notifier).setzen(wert.round()),
           ),
           Text(
-            'Das ganze Tagespensum: fällige Wiederholungen zuerst, neue '
-            'Fragen füllen auf. Was liegen bleibt, staut sich nicht auf – '
-            'morgen sind es wieder genauso viele.',
+            'Das ganze Tagespensum: Wiederholungen und neue Fragen zusammen. '
+            'Was liegen bleibt, staut sich nicht auf – morgen sind es wieder '
+            'genauso viele.',
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+          const SizedBox(height: 20),
+          // Ohne dieses Kontingent nahmen die fälligen Wiederholungen das
+          // ganze Tagesbudget ein, und der Rest des Kurses kam nie dran.
+          Text(
+            'Jede Frage einmal in $fenster Tagen',
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          Slider(
+            value: fenster.toDouble(),
+            min: SettingsStore.einfuehrungsFensterMin.toDouble(),
+            max: SettingsStore.einfuehrungsFensterMax.toDouble(),
+            divisions:
+                (SettingsStore.einfuehrungsFensterMax -
+                    SettingsStore.einfuehrungsFensterMin) ~/
+                10,
+            label: '$fenster Tage',
+            onChanged: (wert) => ref
+                .read(einfuehrungsFensterProvider.notifier)
+                .setzen(wert.round()),
+          ),
+          Text(
+            fragenImKurs == null
+                ? 'So viele bisher ungesehene Fragen werden täglich fest '
+                      'eingeplant, dass der ganze Kurs in dieser Zeit einmal '
+                      'durchläuft.'
+                : 'Bei $fragenImKurs Fragen im Kurs sind das etwa '
+                      '${QuizFragenAuswahl.neuKontingent(gesamt: fragenImKurs, fensterTage: fenster, kartenProTag: kartenProTag)} '
+                      'neue Fragen am Tag. Der Rest des Pensums geht an die '
+                      'Wiederholungen – mindestens ein Drittel bleibt ihnen '
+                      'immer.',
             style: Theme.of(context).textTheme.bodySmall,
           ),
           const SizedBox(height: 24),

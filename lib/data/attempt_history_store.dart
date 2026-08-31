@@ -94,6 +94,26 @@ class AttemptHistoryStore {
       .map((a) => a.frageId)
       .toSet();
 
+  /// Welche Karten an [tag] zum ERSTEN Mal ueberhaupt drankamen.
+  ///
+  /// Das Tagespensum haelt neuen Karten ein festes Kontingent frei. Um zu
+  /// wissen, wie viel davon heute schon verbraucht ist, reicht
+  /// [bearbeiteteAm] nicht: Dort stehen auch die Wiederholungen. Gezaehlt
+  /// wird deshalb je Frage der frueheste Versuch ueberhaupt.
+  Set<String> erstmalsBearbeitetAm(String kursId, DateTime tag) {
+    final erster = <String, DateTime>{};
+    for (final a in fuerKurs(kursId)) {
+      final bisher = erster[a.frageId];
+      if (bisher == null || a.zeitpunkt.isBefore(bisher)) {
+        erster[a.frageId] = a.zeitpunkt;
+      }
+    }
+    return {
+      for (final e in erster.entries)
+        if (_gleicherTag(e.value, tag)) e.key,
+    };
+  }
+
   static bool _gleicherTag(DateTime a, DateTime b) =>
       a.year == b.year && a.month == b.month && a.day == b.day;
 

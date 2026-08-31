@@ -16,6 +16,17 @@ class SettingsStore {
   /// eingestellt hat, behaelt ihn - die Zahl bedeutet nur etwas anderes.
   static const _altNeueProTagKey = 'neueProTag';
   static const steigendeSchwierigkeitKey = 'steigendeSchwierigkeit';
+  static const einfuehrungsFensterKey = 'einfuehrungsFenster';
+
+  /// In wie vielen Tagen jede Frage mindestens einmal drankommen soll.
+  ///
+  /// Aus diesem Fenster leitet sich ab, wie viele bisher ungesehene Fragen
+  /// taeglich fest eingeplant werden. Ohne ein solches Kontingent nehmen die
+  /// faelligen Wiederholungen das ganze Tagesbudget ein, und der Rest des
+  /// Kurses kommt nie dran.
+  static const einfuehrungsFensterStandard = 90;
+  static const einfuehrungsFensterMin = 30;
+  static const einfuehrungsFensterMax = 180;
 
   /// Wie viele Karten insgesamt pro Tag anstehen - Wiederholungen und neue
   /// zusammen.
@@ -90,5 +101,23 @@ class SettingsStore {
 
   Future<void> steigendeSchwierigkeitSpeichern(bool aktiv) async {
     await _box.put(steigendeSchwierigkeitKey, aktiv);
+  }
+
+  int einfuehrungsFensterLaden() {
+    final roh = _box.get(
+      einfuehrungsFensterKey,
+      defaultValue: einfuehrungsFensterStandard,
+    );
+    return (roh as num).toInt().clamp(
+      einfuehrungsFensterMin,
+      einfuehrungsFensterMax,
+    );
+  }
+
+  Future<void> einfuehrungsFensterSpeichern(int tage) async {
+    await _box.put(
+      einfuehrungsFensterKey,
+      tage.clamp(einfuehrungsFensterMin, einfuehrungsFensterMax),
+    );
   }
 }

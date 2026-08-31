@@ -80,9 +80,13 @@ void main() {
         jetzt: jetzt,
       );
 
+      // Zusammen genau das Tagesbudget - aber nicht mehr ausschliesslich
+      // Wiederholungen: Ein Teil ist den ungesehenen Karten vorbehalten,
+      // sonst kaeme der Rest des Kurses nie dran.
       expect(pensum.gesamt, 20);
-      expect(pensum.wiederholungen.length, 20);
-      expect(pensum.neue, isEmpty);
+      expect(pensum.wiederholungen, isNotEmpty);
+      expect(pensum.neue, isNotEmpty);
+      expect(pensum.wiederholungen.length + pensum.neue.length, 20);
     });
 
     test('neue Karten füllen auf, was die Wiederholungen frei lassen', () {
@@ -242,6 +246,125 @@ void main() {
   // Eine mehrstufige Rechenaufgabe kostet ein Vielfaches der Zeit einer
   // Karteikarte. Zwischen neunzehn Karten wuerde sie uebersprungen - deshalb
   // ein eigener Platz, genau einer je Tag.
+  // Der gemeldete Fehler: "Viele Fragen kommen gar nicht vor, während einige
+  // sich zu schnell wiederholen." Ursache war die Reihenfolge - die
+  // Wiederholungen nahmen sich zuerst das ganze Tagesbudget, und sobald
+  // täglich genug fällig war, kam nie wieder eine neue Frage dazu.
+  group('Kontingent für ungesehene Karten', () {
+    final jetzt = DateTime(2026, 8, 28, 10);
+
+    GespeicherteKarte faellig() => GespeicherteKarte(
+      card: FsrsCard.newCard(
+        now: jetzt,
+      ).copyWith(due: jetzt.subtract(const Duration(days: 1))),
+    );
+
+    List<Frage> viele(String praefix, int anzahl) =>
+        List.generate(anzahl, (i) => frage('$praefix$i', 'wiso'));
+
+    test('neue Karten kommen dran, auch wenn genug fällig wäre', () {
+      final faellige = viele('w', 200);
+      final neue = viele('n', 481);
+      final pensum = auswahl.tagespensum(
+        [...faellige, ...neue],
+        kartenstaende: {for (final f in faellige) f.id: faellig()},
+        zufall: Random(1),
+        kartenProTag: 20,
+        einfuehrungsFensterTage: 90,
+        jetzt: jetzt,
+      );
+
+      // 681 Fragen in 90 Tagen sind aufgerundet 8 am Tag.
+      expect(pensum.neue, hasLength(8));
+      expect(pensum.wiederholungen, hasLength(12));
+      expect(pensum.gesamt, 20);
+    });
+
+    test('das Kontingent folgt dem eingestellten Fenster', () {
+      final faellige = viele('w', 200);
+      final neue = viele('n', 481);
+      Tagespensum mitFenster(int tage) => auswahl.tagespensum(
+        [...faellige, ...neue],
+        kartenstaende: {for (final f in faellige) f.id: faellig()},
+        zufall: Random(1),
+        kartenProTag: 20,
+        einfuehrungsFensterTage: tage,
+        jetzt: jetzt,
+      );
+
+      expect(mitFenster(180).neue, hasLength(4));
+      expect(mitFenster(90).neue, hasLength(8));
+      // Ein knappes Fenster verlangt mehr, als der Deckel zulässt.
+      expect(mitFenster(30).neue, hasLength(13));
+    });
+
+    // Ein Drittel des Tages bleibt den Wiederholungen. Was man neu anfängt
+    // und nie wiederholt, ist nach zwei Wochen wieder weg.
+    test('der Anteil neuer Karten ist gedeckelt', () {
+      final faellige = viele('w', 200);
+      final neue = viele('n', 481);
+      final pensum = auswahl.tagespensum(
+        [...faellige, ...neue],
+        kartenstaende: {for (final f in faellige) f.id: faellig()},
+        zufall: Random(1),
+        kartenProTag: 20,
+        einfuehrungsFensterTage: 1,
+        jetzt: jetzt,
+      );
+
+      expect(pensum.neue, hasLength(13));
+      expect(pensum.wiederholungen, hasLength(7));
+    });
+
+    test('heute schon eingeführte Karten gehen vom Kontingent ab', () {
+      final faellige = viele('w', 200);
+      final neue = viele('n', 481);
+      final pensum = auswahl.tagespensum(
+        [...faellige, ...neue],
+        kartenstaende: {for (final f in faellige) f.id: faellig()},
+        zufall: Random(1),
+        kartenProTag: 20,
+        neueHeuteSchon: 6,
+        einfuehrungsFensterTage: 90,
+        jetzt: jetzt,
+      );
+
+      expect(pensum.neue, hasLength(2));
+    });
+
+    test('sind wenige fällig, rücken weitere neue nach', () {
+      final faellige = viele('w', 3);
+      final neue = viele('n', 100);
+      final pensum = auswahl.tagespensum(
+        [...faellige, ...neue],
+        kartenstaende: {for (final f in faellige) f.id: faellig()},
+        zufall: Random(1),
+        kartenProTag: 20,
+        einfuehrungsFensterTage: 90,
+        jetzt: jetzt,
+      );
+
+      expect(pensum.wiederholungen, hasLength(3));
+      expect(pensum.neue, hasLength(17));
+      expect(pensum.gesamt, 20);
+    });
+
+    test('ohne ungesehene Karten geht alles an die Wiederholungen', () {
+      final faellige = viele('w', 200);
+      final pensum = auswahl.tagespensum(
+        faellige,
+        kartenstaende: {for (final f in faellige) f.id: faellig()},
+        zufall: Random(1),
+        kartenProTag: 20,
+        einfuehrungsFensterTage: 90,
+        jetzt: jetzt,
+      );
+
+      expect(pensum.neue, isEmpty);
+      expect(pensum.wiederholungen, hasLength(20));
+    });
+  });
+
   group('Komplexaufgabe des Tages', () {
     final jetzt = DateTime(2026, 8, 27, 10);
 

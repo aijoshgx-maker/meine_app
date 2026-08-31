@@ -5,7 +5,10 @@ import 'package:flutter/services.dart' show HapticFeedback;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../app/settings_providers.dart'
-    show kartenProTagProvider, steigendeSchwierigkeitProvider;
+    show
+        einfuehrungsFensterProvider,
+        kartenProTagProvider,
+        steigendeSchwierigkeitProvider;
 import '../../../core/matching/antwort_matcher.dart';
 import '../../../core/quiz/frage_haerte.dart';
 import '../../../core/quiz/frage_variante.dart';
@@ -57,9 +60,12 @@ final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
   final kartenstaende = ref
       .read(fsrsCardStoreProvider)
       .alleKartenstaende(paket.kurs.id);
-  final heuteBearbeitet = ref
-      .read(attemptHistoryStoreProvider)
-      .bearbeiteteAm(paket.kurs.id, DateTime.now());
+  final verlauf = ref.read(attemptHistoryStoreProvider);
+  final heute = DateTime.now();
+  final heuteBearbeitet = verlauf.bearbeiteteAm(paket.kurs.id, heute);
+  final neueHeuteSchon = verlauf
+      .erstmalsBearbeitetAm(paket.kurs.id, heute)
+      .length;
 
   return ref
       .read(quizFragenAuswahlProvider)
@@ -69,6 +75,8 @@ final tagespensumProvider = FutureProvider<Tagespensum>((ref) async {
         zufall: math.Random(),
         kartenProTag: kartenProTag,
         heuteBearbeitet: heuteBearbeitet,
+        neueHeuteSchon: neueHeuteSchon,
+        einfuehrungsFensterTage: ref.watch(einfuehrungsFensterProvider),
       );
 });
 
@@ -285,6 +293,13 @@ class QuizSessionController extends AsyncNotifier<QuizSessionState> {
                     .read(attemptHistoryStoreProvider)
                     .bearbeiteteAm(_kursId, DateTime.now())
               : const {},
+          neueHeuteSchon: istTagespensum
+              ? ref
+                    .read(attemptHistoryStoreProvider)
+                    .erstmalsBearbeitetAm(_kursId, DateTime.now())
+                    .length
+              : 0,
+          einfuehrungsFensterTage: ref.read(einfuehrungsFensterProvider),
         );
 
     // Rechen- und Nachschlageaufgaben bekommen hier ihre Zahlen. Im Testlauf

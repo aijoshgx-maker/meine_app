@@ -140,5 +140,17 @@ void main() {
     test('ohne Versuche ist die Zählung null', () {
       expect(store.bearbeiteteAm('kurs-a', heute), hasLength(0));
     });
+
+    // Das Neu-Kontingent im Tagespensum muss wissen, wie viel davon heute
+    // schon verbraucht ist - dafür zählt nur der allererste Versuch.
+    test('erstmalsBearbeitetAm zählt nur den allerersten Versuch', () async {
+      await versuch('f1', gestern);
+      await versuch('f1', heute);
+      await versuch('f2', heute);
+      await versuch('f2', heute.add(const Duration(minutes: 5)));
+
+      expect(store.erstmalsBearbeitetAm('kurs-a', heute), {'f2'});
+      expect(store.erstmalsBearbeitetAm('kurs-a', gestern), {'f1'});
+    });
   });
 }
