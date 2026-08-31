@@ -81,6 +81,7 @@ class _TippBlatt extends StatelessWidget {
           ),
         ),
         const Divider(height: 1),
+        _Formelblock(eintraege: eintraege),
         // Flexible statt fester Höhe: Bei einem Begriff bleibt das Blatt
         // niedrig, bei vielen wird es scrollbar statt überzulaufen.
         Flexible(
@@ -93,6 +94,71 @@ class _TippBlatt extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+/// Die Formeln aller gefundenen Begriffe, gesammelt und ohne Doppelungen.
+///
+/// Sie stehen oben und nicht bei den einzelnen Begriffen: Wer rechnet,
+/// braucht sie zusammen - und muss sie nicht aus drei aufgeklappten
+/// Absaetzen zusammensuchen.
+///
+/// Gezeigt wird die ROHFORM, nicht die nach der gesuchten Groesse
+/// aufgeloeste. Das Umstellen ist der Lernstoff; wer es abnimmt, nimmt die
+/// Aufgabe weg.
+class _Formelblock extends StatelessWidget {
+  final List<GlossarEintrag> eintraege;
+
+  const _Formelblock({required this.eintraege});
+
+  @override
+  Widget build(BuildContext context) {
+    // Ueber die Eintraege hinweg entdoppeln: vc taucht bei "Drehzahl" und
+    // bei "Schnittgeschwindigkeit" auf, gehoert aber einmal in die Liste.
+    final formeln = <String>{
+      for (final e in eintraege) ...e.formeln,
+    }.toList();
+    if (formeln.isEmpty) return const SizedBox.shrink();
+
+    final cs = Theme.of(context).colorScheme;
+
+    return Container(
+      width: double.infinity,
+      margin: const EdgeInsets.fromLTRB(20, 12, 20, 0),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: cs.surfaceContainerHighest,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            formeln.length == 1 ? 'Formel' : 'Formeln',
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+          const SizedBox(height: 6),
+          for (final formel in formeln)
+            Padding(
+              padding: const EdgeInsets.only(bottom: 4),
+              child: Text(
+                formel,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  fontFamily: 'monospace',
+                ),
+              ),
+            ),
+          const SizedBox(height: 4),
+          Text(
+            'In Grundform — nach der gesuchten Größe umstellen musst du '
+            'selbst.',
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+              color: cs.onSurfaceVariant,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

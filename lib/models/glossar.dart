@@ -20,13 +20,26 @@ class GlossarEintrag {
   /// Ein Satz, der erklärt, was gemeint ist.
   final String kurz;
 
-  /// Optionale Vertiefung: Formel, Einheit, Abgrenzung zu Nachbarbegriffen.
+  /// Die Formeln zu diesem Begriff - in Rohform, nicht umgestellt.
+  ///
+  /// Bewusst ein eigenes Feld und kein Fliesstext: So lassen sie sich in der
+  /// Tippfunktion sammeln und als Liste zeigen, statt dass man sie sich aus
+  /// einem Absatz heraussuchen muss.
+  ///
+  /// **Rohform heisst: die definierende Beziehung, nicht nach der gesuchten
+  /// Groesse aufgeloest.** Bei einer Frage nach der Drehzahl steht hier
+  /// `vc = π · d · n / 1000` - das Umstellen ist der Lernstoff und wird
+  /// nicht abgenommen.
+  final List<String> formeln;
+
+  /// Optionale Vertiefung: Einheit, Abgrenzung zu Nachbarbegriffen.
   final String? mehr;
 
   const GlossarEintrag({
     required this.begriff,
     this.alias = const [],
     required this.kurz,
+    this.formeln = const [],
     this.mehr,
   });
 
@@ -36,6 +49,9 @@ class GlossarEintrag {
         .map((e) => e.toString())
         .toList(),
     kurz: json['kurz'] as String,
+    formeln: ((json['formeln'] as List?) ?? const [])
+        .map((e) => e.toString())
+        .toList(),
     mehr: json['mehr'] as String?,
   );
 
@@ -43,6 +59,7 @@ class GlossarEintrag {
     'begriff': begriff,
     if (alias.isNotEmpty) 'alias': alias,
     'kurz': kurz,
+    if (formeln.isNotEmpty) 'formeln': formeln,
     if (mehr != null) 'mehr': mehr,
   };
 

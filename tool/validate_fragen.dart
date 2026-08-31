@@ -1088,6 +1088,28 @@ void _pruefeGlossar(Directory fragenDir) {
       fehler('_glossar.json', begriff, 'Begriff kommt mehrfach vor.');
     }
 
+    // 'formeln' ist die Rohform - eine Beziehung, kein Fliesstext. Ohne
+    // Gleichheitszeichen ist es keine Formel, und in der Tippfunktion stuende
+    // dann ein Satz zwischen den Formeln.
+    final formeln = eintrag['formeln'];
+    if (formeln != null) {
+      if (formeln is! List) {
+        fehler('_glossar.json', begriff, "'formeln' muss eine Liste sein.");
+      } else {
+        for (final f in formeln) {
+          if (f is! String || f.trim().isEmpty) {
+            fehler('_glossar.json', begriff, "'formeln' hat einen leeren Eintrag.");
+          } else if (!f.contains('=')) {
+            fehler(
+              '_glossar.json',
+              begriff,
+              "'formeln' enthaelt keine Gleichung: \"$f\"",
+            );
+          }
+        }
+      }
+    }
+
     final kurz = eintrag['kurz'];
     if (kurz is! String || kurz.trim().isEmpty) {
       fehler('_glossar.json', begriff, "'kurz' fehlt oder ist leer.");

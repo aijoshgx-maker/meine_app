@@ -5,6 +5,8 @@
 // nach drei Fragen unbrauchbar und wird ignoriert.
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:meine_app/data/kurs_repository.dart';
+import 'package:meine_app/models/frage.dart';
 import 'package:meine_app/models/glossar.dart';
 
 const _omega = GlossarEintrag(
@@ -29,6 +31,8 @@ const _durchmesser = GlossarEintrag(
 final _glossar = Glossar(const [_omega, _kraft, _durchmesser]);
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   test('findet ein Formelzeichen im Text', () {
     final treffer = _glossar.findeIn('Berechne ω bei n = 1500 min⁻¹.');
     expect(treffer.map((e) => e.begriff), ['ω']);
@@ -96,4 +100,88 @@ void main() {
     // Ohne "mehr" bleibt das Feld auch nach dem Roundtrip leer.
     expect(zurueck.eintraege[1].mehr, isNull);
   });
+  group('Formeln im echten Glossar', () {
+    late Glossar glossar;
+    late List<Frage> fragen;
+
+    setUpAll(() async {
+      final paket = await KursRepository().paketFuer(
+        KursRepository.standardKursId,
+      );
+      glossar = paket.glossar;
+      fragen = paket.fragen;
+    });
+
+    test('es gibt überhaupt Formeln', () {
+      // Sonst prüfte alles Folgende still eine leere Menge.
+      expect(
+        glossar.eintraege.where((e) => e.formeln.isNotEmpty).length,
+        greaterThanOrEqualTo(20),
+      );
+    });
+
+    test('jede Formel ist eine Gleichung', () {
+      for (final e in glossar.eintraege) {
+        for (final f in e.formeln) {
+          expect(f.trim(), isNotEmpty, reason: e.begriff);
+          expect(f, contains('='), reason: '${e.begriff}: "$f"');
+        }
+      }
+    });
+
+    // Der Tipp erklärt, was gemeint ist - er gibt nicht die Antwort. Eine
+    // Formel, in der die richtige Antwort wörtlich steht, täte genau das.
+    test('keine Formel enthält die richtige Antwort einer Frage', () {
+      String schluessel(String t) =>
+          t.toLowerCase().replaceAll(RegExp(r'[^a-zä-ü0-9]'), '');
+
+      final verdacht = <String>[];
+      for (final frage in fragen) {
+        final treffer = glossar.findeIn(
+          frage.frage,
+          ausnahmen: frage.tippsAus.toSet(),
+        );
+        final formeltext = schluessel(
+          treffer.expand((e) => e.formeln).join(' '),
+        );
+        if (formeltext.isEmpty) continue;
+
+        final antworten = <String>[
+          for (final i in frage.richtigeIndizes)
+            if (i >= 0 && i < frage.optionen.length) frage.optionen[i],
+          ...frage.akzeptierteKurzantworten,
+        ];
+        for (final a in antworten) {
+          final na = schluessel(a);
+          if (na.length >= 6 && formeltext.contains(na)) {
+            verdacht.add('${frage.id}: "$a"');
+            break;
+          }
+        }
+      }
+
+      expect(
+        verdacht,
+        isEmpty,
+        reason:
+            'Der Tipp verrät hier die Antwort. Entweder die Formel anders '
+            'fassen oder den Begriff per "tippsAus" ausblenden: '
+            '${verdacht.join(" · ")}',
+      );
+    });
+
+    // Der Punkt der ganzen Sache: Wer rechnen soll, bekommt die Formel.
+    test('die mehrstufigen Aufgaben bekommen alle eine Formel', () {
+      final ohne = [
+        for (final f in fragen.where((f) => f.komplex))
+          if (glossar
+              .findeIn(f.frage, ausnahmen: f.tippsAus.toSet())
+              .every((e) => e.formeln.isEmpty))
+            f.id,
+      ];
+
+      expect(ohne, isEmpty, reason: 'Ohne Formel im Tipp: ${ohne.join(", ")}');
+    });
+  });
+
 }

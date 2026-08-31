@@ -665,6 +665,28 @@ direkt an Zahlen („Ø32"). Wörter dagegen nur an Wortgrenzen — sonst würde
 „Kraft" auch in „Kraftstoffpumpe" anschlagen und die Tippliste unbrauchbar
 machen.
 
+### Formeln (`formeln`)
+
+Ein Glossareintrag kann seine Formeln in einem eigenen Feld führen. Die
+Tippfunktion sammelt sie über alle gefundenen Begriffe, entfernt Doppelungen
+und stellt sie oben ins Blatt — wer rechnet, braucht sie zusammen und muss
+sie nicht aus drei aufgeklappten Absätzen zusammensuchen.
+
+```json
+"formeln": ["vc = π · d · n / 1000"]
+```
+
+**In Rohform, nicht umgestellt.** Bei einer Frage nach der Drehzahl steht
+dort `vc = π · d · n / 1000` und *nicht* `n = vc · 1000 / (π · d)`. Das
+Umstellen ist der Lernstoff; wer es abnimmt, nimmt die Aufgabe weg. Das Blatt
+schreibt das auch dazu.
+
+Jeder Eintrag muss ein `=` enthalten — sonst ist es keine Formel, sondern ein
+Satz, und der gehört nach `mehr`. Der Validator besteht darauf.
+
+Gepflegt wird die Liste in `tool/glossar_formeln_setzen.py`; ein erneuter Lauf
+schreibt sie ins Glossar.
+
 ### Wenn der Tipp die Antwort verrät
 
 Bei „Welche Einheit hat die Winkelgeschwindigkeit?" wäre der Eintrag die

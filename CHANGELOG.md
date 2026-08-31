@@ -8,6 +8,34 @@ Alle inhaltlichen und technischen Änderungen aus der Überarbeitung nach
 
 ### Hinzugefügt
 
+- **Formeln im Tipp.** Der Tipp erklärte bisher nur Begriffe; die Formeln
+  standen im Fließtext der Vertiefung, mitten in einem Absatz hinter einem
+  Ausklapper. Wer an einer Rechenaufgabe sitzt, braucht sie zusammen und
+  sofort.
+
+  Das Tipp-Blatt beginnt jetzt mit einem **Formelblock**: alle Formeln der
+  gefundenen Begriffe, gesammelt und ohne Doppelungen. Bei einer
+  Zerspanungsaufgabe stehen dort etwa `vc = π · d · n / 1000`, `vf = f · n`
+  und `th = L / vf` untereinander.
+
+  **In Rohform, nicht umgestellt.** Bei einer Frage nach der Drehzahl steht
+  `vc = π · d · n / 1000` da — nicht die nach n aufgelöste Fassung. Das
+  Umstellen ist der Lernstoff, und das Blatt sagt es auch: „In Grundform —
+  nach der gesuchten Größe umstellen musst du selbst."
+
+  Dafür hat das Glossar ein neues Feld `formeln` bekommen, gefüllt für **27
+  von 39 Einträgen**. Vierzehn Begriffe sind neu dazugekommen, vor allem für
+  die mehrstufigen Aufgaben: Lagerlebensdauer, Riementrieb, Federrate,
+  Wärmemenge, Kehlnaht, cpk, Wärmeausdehnung, Luftverbrauch, Zugspannung,
+  kritische Menge, Leistungsfaktor, Kegel, Hauptzeit, Hydraulikzylinder.
+  Damit bekommen **69 der 117 Rechenaufgaben** ihre Formeln angezeigt — und
+  alle zwanzig Komplexaufgaben.
+
+  Abgesichert durch `test/glossar_test.dart`: Jede Formel muss eine Gleichung
+  sein, jede Komplexaufgabe muss eine bekommen — und **keine Formel darf die
+  richtige Antwort einer Frage enthalten**. Der Tipp erklärt, was gemeint
+  ist; er gibt nicht die Lösung.
+
 - **Wiederholt wird nur noch, was du selbst zurücklegst.** Die App holte
   Karten nach einem Terminplan zurück (FSRS). Wer davon einen Rückstand hatte,
   bekam täglich dieselben Karten vorgesetzt, während der Rest des Kurses nie

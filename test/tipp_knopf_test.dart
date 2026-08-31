@@ -21,12 +21,15 @@ final _glossar = Glossar(const [
     begriff: 'ω (Winkelgeschwindigkeit)',
     alias: ['ω', 'Winkelgeschwindigkeit'],
     kurz: 'Wie schnell sich etwas dreht, in rad/s.',
-    mehr: 'ω = 2 · π · n, mit n in 1/s.',
+    formeln: ['ω = 2 · π · n'],
+    mehr: 'Nicht mit der Drehzahl verwechseln.',
   ),
   GlossarEintrag(
     begriff: 'n (Drehzahl)',
     alias: ['Drehzahl'],
     kurz: 'Umdrehungen pro Zeit, meist in min⁻¹.',
+    // Absichtlich dieselbe Formel: Sie darf im Blatt nur einmal stehen.
+    formeln: ['ω = 2 · π · n', 'vc = π · d · n / 1000'],
   ),
 ]);
 
@@ -117,8 +120,10 @@ void main() {
       find.text('Wie schnell sich etwas dreht, in rad/s.'),
       findsOneWidget,
     );
-    // Die Vertiefung steckt noch im Aufklapper.
-    expect(find.textContaining('2 · π · n'), findsNothing);
+    // Die Vertiefung steckt noch im Aufklapper. Die Formel dagegen steht
+    // seit August 2026 sofort da - dafür ist der Formelblock gedacht.
+    expect(find.textContaining('Nicht mit der Drehzahl'), findsNothing);
+    expect(find.text('ω = 2 · π · n'), findsOneWidget);
   });
 
   testWidgets('"Mehr" klappt die Vertiefung auf', (tester) async {
@@ -155,4 +160,55 @@ void main() {
 
     expect(find.textContaining('Tipp'), findsNothing);
   });
+  group('Formeln', () {
+    testWidgets('das Blatt listet die Formeln der gefundenen Begriffe', (
+      tester,
+    ) async {
+      await _pumpe(tester, _frage(id: 'x', text: 'Bei ω und der Drehzahl n ...'));
+      await tester.tap(find.textContaining('Tipp'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Formeln'), findsOneWidget);
+      expect(find.text('vc = π · d · n / 1000'), findsOneWidget);
+    });
+
+    // vc taucht bei zwei Begriffen auf, gehört aber einmal in die Liste.
+    testWidgets('dieselbe Formel steht nur einmal da', (tester) async {
+      await _pumpe(tester, _frage(id: 'x', text: 'Bei ω und der Drehzahl n ...'));
+      await tester.tap(find.textContaining('Tipp'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('ω = 2 · π · n'), findsOneWidget);
+    });
+
+    // Der Hinweis ist wichtig: Die Formel steht in Grundform da, das
+    // Umstellen bleibt Aufgabe des Lernenden.
+    testWidgets('der Hinweis auf die Grundform steht dabei', (tester) async {
+      await _pumpe(tester, _frage(id: 'x', text: 'Bei ω ...'));
+      await tester.tap(find.textContaining('Tipp'));
+      await tester.pumpAndSettle();
+
+      expect(find.textContaining('umstellen musst du selbst'), findsOneWidget);
+    });
+
+    testWidgets('ohne Formeln fehlt der Block ganz', (tester) async {
+      await _pumpe(
+        tester,
+        _frage(id: 'x', text: 'Ein Begriff mit Kerbwirkung.'),
+        glossar: Glossar([
+          const GlossarEintrag(
+            begriff: 'Kerbwirkung',
+            alias: ['Kerbwirkung'],
+            kurz: 'Spannungsspitze an einem Querschnittssprung.',
+          ),
+        ]),
+      );
+      await tester.tap(find.textContaining('Tipp'));
+      await tester.pumpAndSettle();
+
+      expect(find.text('Formeln'), findsNothing);
+      expect(find.text('Formel'), findsNothing);
+    });
+  });
+
 }
